@@ -12,8 +12,15 @@ abstract class OperatorSpec(private val operand1: Int, private val operand2: Int
         "NUM2" to createNum(operand2.toString())
     )
 ){
-    override fun visit(visitors: MutableMap<String, Block>, layer: Int, parent: String?, index: Int, next: String?) {
-        super.visit(visitors, layer, parent, index, null)
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        layer: Int,
+        parent: String?,
+        index: Int,
+        next: Boolean,
+        listIndex: Int
+    ) {
+        super.visit(visitors, layer, parent, index, false,listIndex)
     }
 }
 

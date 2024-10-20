@@ -7,7 +7,14 @@ import scratch.Block
 class DeleteThisClone() : BlockSpecSpec(
    opcode = OpCode.control_delete_this_clone,
 ){
-   override fun visit(visitors: MutableMap<String, Block>, layer: Int, parent: String?, index: Int, next: String?) {
-      super.visit(visitors, layer, parent, index, null)
+   override fun visit(
+      visitors: MutableMap<String, Block>,
+      layer: Int,
+      parent: String?,
+      index: Int,
+      next: Boolean,
+      listIndex: Int
+   ) {
+      super.visit(visitors, layer, parent, index, false,listIndex)
    }
 }

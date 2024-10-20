@@ -11,14 +11,22 @@ import scratch.Visitor
 
 data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Visitor {
 
-    override fun visit(visitors: MutableMap<String, Block>, layer: Int, parent: String?, index: Int, next: String?) {
-        val name = "block$index$layer"
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        layer: Int,
+        parent: String?,
+        index: Int,
+        next: Boolean,
+        listIndex: Int
+    ) {
+        val name = "${listIndex}_${layer}_$index"
+        val newNext = if (!next) null else "${listIndex}_${layer}_${index + 1}"
 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
                 is LooksSayContent.Literal -> createLiteralMessage(content.message)
                 is LooksSayContent.Operators -> {
-                    createBlockRef("block0${layer + 1}")
+                    createBlockRef("${listIndex}_${layer+1}_${index + 1}")
                 }
 
                 is LooksSayContent.Keywords -> {
@@ -39,10 +47,10 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[name] = spec.toBlock(next, parent, layer == 0 && index == 0)
+        visitors[name] = spec.toBlock(newNext, parent, layer == 0 && index == 0)
 
         if (content is LooksSayContent.Operators) {
-            content.operatorSpec.visit(visitors, layer + 1, name, 0, next)
+            content.operatorSpec.visit(visitors, layer +1, name, index+1, next,listIndex)
         }
     }
 }
