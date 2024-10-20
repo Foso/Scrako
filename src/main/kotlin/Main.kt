@@ -4,17 +4,12 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import me.jens.scratch.BlockSpecSpec
-import me.jens.scratch.control.ControlStop
-import me.jens.scratch.event.FlagClicked
-import me.jens.scratch.looks.LooksSay
-import me.jens.scratch.looks.LooksSayContent
-import me.jens.scratch.motion.MoveSteps
-import scratch.Blocks
 import me.jens.scratch.OpCode
-import me.jens.scratch.control.DeleteThisClone
-import scratch.createBlocks2
-import scratch.looks.Hide
-import scratch.looks.Show
+import me.jens.scratch.control.IfElse
+import me.jens.scratch.event.FlagClicked
+import me.jens.scratch.looks.Say
+import scratch.Blocks
+import scratch.createBlocks23
 import java.io.File
 
 val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A\\00\", align 1\n" +
@@ -34,15 +29,15 @@ fun main() {
 
     val blockSpecs = listOf(
         FlagClicked(),
-        LooksSay(LooksSayContent.Operators(OperatorAdd(4,3)),55),
-        MoveSteps(13),
-        Show(),
-        ControlWait("1"),
-        Hide(),
-        DeleteThisClone(),
-        ControlStop()
-
-
+        IfElse(
+            OperatorEquals(3,4),
+            listOf(
+                Say("Hello, World!")
+            ),
+            listOf(
+                Say("Bye, World!")
+            )
+        ),
         /*
         BlockSpec(
             opcode = OpCode.LooksSay,
@@ -53,7 +48,7 @@ fun main() {
          */
     )
 
-    val blocks = createBlocks2(blockSpecs)
+    val blocks = createBlocks23(listOf(blockSpecs))
 
     val input = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/temp.txt").readText()
 
@@ -65,12 +60,7 @@ fun main() {
 
 interface Event
 
-class OperatorEqualsSpec(private val operand1: String, private val operand2: String) : BlockSpecSpec(
-    OpCode.operator_equals, inputs = mapOf(
-        "OPERAND1" to createOperand(operand1),
-        "OPERAND2" to createOperand(operand2)
-    )
-)
+
 
 private fun ControlRepeat(times: Int, childs: List<BlockSpecSpec>) = BlockSpecSpec(
     opcode = OpCode.control_repeat,
@@ -92,8 +82,6 @@ fun SensingAskandWait(message: String) = BlockSpecSpec(
         "QUESTION" to createLiteralMessage(message)
     )
 )
-
-
 
 
 fun ControlWait(message: String) = BlockSpecSpec(

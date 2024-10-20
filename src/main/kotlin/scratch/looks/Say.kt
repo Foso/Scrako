@@ -9,7 +9,7 @@ import scratch.Block
 import me.jens.scratch.OpCode
 import scratch.Visitor
 
-class LooksSay(private val content: LooksSayContent, private val seconds: Int? = null) : Visitor {
+data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Visitor {
 
     override fun visit(visitors: MutableMap<String, Block>, layer: Int, parent: String?, index: Int, next: String?) {
         val name = "block$index$layer"
@@ -19,6 +19,10 @@ class LooksSay(private val content: LooksSayContent, private val seconds: Int? =
                 is LooksSayContent.Literal -> createLiteralMessage(content.message)
                 is LooksSayContent.Operators -> {
                     createBlockRef("block0${layer + 1}")
+                }
+
+                is LooksSayContent.Keywords -> {
+                    createBlockRef(content.keyword.name.toLowerCase())
                 }
             }
         )
@@ -46,4 +50,8 @@ class LooksSay(private val content: LooksSayContent, private val seconds: Int? =
 sealed interface LooksSayContent {
     class Literal(val message: String) : LooksSayContent
     class Operators(val operatorSpec: OperatorSpec) : LooksSayContent
+    class Keywords(val keyword: ScratchKeywords) : LooksSayContent
 }
+
+
+fun Say( message: String, seconds: Int? = null) = Say(LooksSayContent.Literal(message), seconds)

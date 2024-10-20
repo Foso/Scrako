@@ -5,7 +5,7 @@ import scratch.Block
 import me.jens.scratch.OpCode
 import scratch.Visitor
 
-class ControlStop() : Visitor {
+class Stop() : Visitor {
     override fun visit(visitors: MutableMap<String, Block>, layer: Int, parent: String?, index: Int, next: String?) {
         val name = "block$index$layer"
 

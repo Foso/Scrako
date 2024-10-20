@@ -27,6 +27,7 @@ open class BlockSpecSpec(
 
     override fun visit(visitors: MutableMap<String, Block>, layer: Int, parent: String?, index: Int, next: String?) {
         val name = "block$index$layer"
-        visitors[name] = toBlock(next, parent, layer == 0 && index == 0)
+        val newNext =  next
+        visitors[name] = toBlock(newNext, parent, layer == 0 && index == 0)
     }
 }

@@ -93,20 +93,16 @@ interface Visitor {
     fun visit(visitors: MutableMap<String, Block>, layer: Int = 0, parent: String? = null, index: Int, next: String?)
 }
 
-fun CommonBlockSpec.toBlock(next: String?, parent: String?, topLevel: Boolean) = Block(
-    opcode = opcode,
-    next = next,
-    parent = parent,
-    inputs = inputs,
-    fields = fields,
-    shadow = shadow,
-    topLevel = topLevel,
-    x = x,
-    y = y
-)
+fun createBlocks23(blockSpecs: List<List<Visitor>>, ): Blocks {
+   val test : Map<String, Block> = blockSpecs.mapIndexed { index, visitors ->  createBlocks2(visitors) }.map { it.blocks }.flatMap { it.toList() }.toMap()
+    return Blocks(test)
+}
 
-fun createBlocks2(blockSpecs: List<Visitor>, layer: Int = 0, parent2: String? = null): Blocks {
 
+
+fun createBlocks2(blockSpecs: List<Visitor>, ): Blocks {
+    val layer: Int = 0
+    val parent2: String? = null
     val blockMap = mutableMapOf<String, Block>()
 
     blockSpecs.forEachIndexed { index, blockSpec ->
@@ -122,7 +118,6 @@ fun createBlocks2(blockSpecs: List<Visitor>, layer: Int = 0, parent2: String? = 
              if (index == blockSpecs.lastIndex) null else "block${index + 1}$layer"
 
         blockSpec.visit(blockMap, layer,parent, index, next)
-
 
     }
 

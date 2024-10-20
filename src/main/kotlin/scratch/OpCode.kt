@@ -15,6 +15,7 @@ class OpCode(val value: String) {
         val control_wait = "control_wait"
         val control_repeat = "control_repeat"
         val control_if = "control_if"
+        val control_if_else = "control_if_else"
         val control_forever = "control_forever"
         val looks_sayforsecs = "looks_sayforsecs"
         val sensing_answer = "sensing_answer"
