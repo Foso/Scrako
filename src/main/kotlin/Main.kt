@@ -3,10 +3,18 @@ package me.jens
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
-import scratch.BlockSpec
+import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.control.ControlStop
+import me.jens.scratch.event.FlagClicked
+import me.jens.scratch.looks.LooksSay
+import me.jens.scratch.looks.LooksSayContent
+import me.jens.scratch.motion.MoveSteps
 import scratch.Blocks
-import scratch.OpCode
-import scratch.createBlocks
+import me.jens.scratch.OpCode
+import me.jens.scratch.control.DeleteThisClone
+import scratch.createBlocks2
+import scratch.looks.Hide
+import scratch.looks.Show
 import java.io.File
 
 val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A\\00\", align 1\n" +
@@ -26,8 +34,14 @@ fun main() {
 
     val blockSpecs = listOf(
         FlagClicked(),
-        ControlIf(listOf(OperatorEquals("Hello", "World"), LooksSay("what"))),
-        //ControlIf(listOf(OperatorEquals("Hello", "World")))
+        LooksSay(LooksSayContent.Operators(OperatorAdd(4,3)),55),
+        MoveSteps(13),
+        Show(),
+        ControlWait("1"),
+        Hide(),
+        DeleteThisClone(),
+        ControlStop()
+
 
         /*
         BlockSpec(
@@ -39,7 +53,7 @@ fun main() {
          */
     )
 
-    val blocks = createBlocks(blockSpecs)
+    val blocks = createBlocks2(blockSpecs)
 
     val input = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/temp.txt").readText()
 
@@ -49,21 +63,16 @@ fun main() {
     File("/Users/jens.klingenberg/Downloads/Archive(1)/project.json").writeText(output)
 }
 
-private fun FlagClicked() = BlockSpec(
-    opcode = OpCode.Whenflagclicked,
-    x = -444,
-    y = 102
-)
+interface Event
 
-private fun OperatorEquals(operand1: String, operand2: String) = BlockSpec(
-    opcode = OpCode.operator_equals,
-    inputs = mapOf(
+class OperatorEqualsSpec(private val operand1: String, private val operand2: String) : BlockSpecSpec(
+    OpCode.operator_equals, inputs = mapOf(
         "OPERAND1" to createOperand(operand1),
         "OPERAND2" to createOperand(operand2)
-    ),
+    )
 )
 
-private fun ControlRepeat(times: Int, childs: List<BlockSpec>) = BlockSpec(
+private fun ControlRepeat(times: Int, childs: List<BlockSpecSpec>) = BlockSpecSpec(
     opcode = OpCode.control_repeat,
     inputs = mapOf(
         "TIMES" to createTimes(times.toString()),
@@ -71,60 +80,31 @@ private fun ControlRepeat(times: Int, childs: List<BlockSpec>) = BlockSpec(
     childBlocks = childs
 )
 
-fun ControlIf(childs: List<BlockSpec>) = BlockSpec(
+fun ControlIf(childs: List<BlockSpecSpec>) = BlockSpecSpec(
     opcode = OpCode.control_if,
     childBlocks = childs
 )
 
-fun LooksSay(message: String) = BlockSpec(
-    opcode = OpCode.LooksSay,
-    inputs = mapOf(
-        "MESSAGE" to createMessage(message)
-    )
-)
 
-fun LooksSayAnswer() = BlockSpec(
-    opcode = OpCode.LooksSay,
-    inputs = mapOf(
-        "MESSAGE" to createAnswer()
-    )
-)
-
-
-fun SensingAnswer() = BlockSpec(
-    opcode = OpCode.sensing_answer,
-)
-
-fun SensingAskandWait(message: String) = BlockSpec(
+fun SensingAskandWait(message: String) = BlockSpecSpec(
     opcode = OpCode.sensing_askandwait,
     inputs = mapOf(
-        "QUESTION" to createMessage(message)
-    )
-)
-
-fun LooksSayForSecs(message: String, duration: Int) = BlockSpec(
-    opcode = OpCode.looks_sayforsecs,
-    inputs = mapOf(
-        "MESSAGE" to createMessage(message),
-        "SECS" to createSecs(duration.toString())
+        "QUESTION" to createLiteralMessage(message)
     )
 )
 
 
-fun ControlWait(message: String) = BlockSpec(
+
+
+fun ControlWait(message: String) = BlockSpecSpec(
     opcode = OpCode.ControlWait,
     inputs = mapOf(
         "DURATION" to createDuration(message)
     )
 )
 
-fun ControlForever(childs: List<BlockSpec>) = BlockSpec(
-    opcode = OpCode.control_forever,
-    childBlocks = childs
-)
 
-
-private fun createMessage(message: String) = JsonArray(
+fun createLiteralMessage(message: String) = JsonArray(
     listOf(
         JsonPrimitive(1),
         JsonArray(
@@ -136,10 +116,11 @@ private fun createMessage(message: String) = JsonArray(
     )
 )
 
-private fun createAnswer() = JsonArray(
+
+fun createBlockRef(refId: String) = JsonArray(
     listOf(
         JsonPrimitive(3),
-        JsonPrimitive("answer"),
+        JsonPrimitive(refId),
         JsonArray(
             listOf(
                 JsonPrimitive(10),
@@ -161,7 +142,7 @@ private fun createDuration(message: String = "1") = JsonArray(
     )
 )
 
-private fun createSecs(message: String = "1") = JsonArray(
+fun createSecs(message: String = "1") = JsonArray(
     listOf(
         JsonPrimitive(1),
         JsonArray(
@@ -185,22 +166,3 @@ private fun createTimes(message: String = "10") = JsonArray(
     )
 )
 
-
-private fun createOperand(message: String) = JsonArray(
-    listOf(
-        JsonPrimitive(1),
-        JsonArray(
-            listOf(
-                JsonPrimitive(10),
-                JsonPrimitive(message)
-            )
-        )
-    )
-)
-
-
-class Builder() {
-    fun getString(): String {
-        return "Hello, World!"
-    }
-}
