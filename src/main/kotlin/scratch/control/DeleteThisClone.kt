@@ -13,7 +13,6 @@ class DeleteThisClone() : BlockSpecSpec(
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int
@@ -21,6 +20,6 @@ class DeleteThisClone() : BlockSpecSpec(
         if (nextUUID != null) {
             throw IllegalArgumentException("DeleteThisClone block cannot have a next block")
         }
-        super.visit(visitors, parent, index, listIndex, name, null, layer)
+        super.visit(visitors, parent, index, name, null, layer)
     }
 }

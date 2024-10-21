@@ -16,7 +16,6 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int
@@ -26,8 +25,6 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
             throw IllegalArgumentException("Forever block can't have a next block")
         }
 
-        val blockMap = mutableMapOf<String, Block>()
-
         val childUUIDS = childs.map { UUID.randomUUID() }
         childs.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -35,10 +32,9 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
 
             val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
             visitor.visit(
-                blockMap,
+                visitors,
                 parent = name.toString(),
                 index = childIndex,
-                listIndex,
                 childUUIDS[childIndex],
                 nextUUID,
                 layer + 1
@@ -47,8 +43,8 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
 
         val inputs: MutableMap<String, JsonArray> = mutableMapOf()
 
-        if (blockMap.keys.isNotEmpty()) {
-            inputs["SUBSTACK"] = createSubStack(blockMap.keys.first())
+        if (childs.isNotEmpty()) {
+            inputs["SUBSTACK"] = createSubStack(childUUIDS.first().toString())
         }
 
         visitors[name.toString()] = BlockSpecSpec(
@@ -56,7 +52,6 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
             inputs = inputs
         ).toBlock(null, parent, index == 0)
 
-        visitors.putAll(blockMap)
     }
 }
 

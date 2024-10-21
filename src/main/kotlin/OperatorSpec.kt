@@ -17,12 +17,11 @@ abstract class OperatorSpec(private val operand1: Int, private val operand2: Int
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int
     ) {
-        super.visit(visitors, parent, index, listIndex, name, null, layer)
+        super.visit(visitors, parent, index, name, null, layer)
     }
 }
 

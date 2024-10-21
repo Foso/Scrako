@@ -29,7 +29,6 @@ open class BlockSpecSpec(
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int

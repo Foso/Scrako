@@ -18,11 +18,17 @@ data class ScratchProject(
 )
 
 @Serializable
+data class ScratchList(
+    val name: String,
+    val contents: List<String>
+)
+
+@Serializable
 data class Target(
     val isStage: Boolean,
     val name: String,
     val variables: Map<String, List<String>>,
-    val lists: Map<String, List<String>>,
+    val lists: Map<String, JsonArray>,
     val broadcasts: Map<String, String>,
     val blocks: Map<String, Block>,
     val comments: Map<String, Comment>,
@@ -51,48 +57,6 @@ class Broadcast(val name: String) {
 }
 
 fun createTarget(blocks: Map<String, Block>, sprite: Sprite): List<Target> {
-
-    val target1 = Target(
-        isStage = true,
-        name = "Stage",
-        variables = emptyMap(),
-        lists = emptyMap(),
-        broadcasts = emptyMap(),
-        blocks = emptyMap(),
-        comments = emptyMap(),
-        currentCostume = 0,
-        costumes = listOf(
-            Costume(
-                name = "backdrop1",
-                bitmapResolution = 1,
-                dataFormat = "svg",
-                assetId = "cd21514d0531fdffb22204e0ec5ed84a",
-                md5ext = "cd21514d0531fdffb22204e0ec5ed84a.svg",
-                rotationCenterX = 240,
-                rotationCenterY = 180
-            )
-        ),
-        sounds = listOf(
-            Sound(
-                name = "pop",
-                assetId = "83a9787d4cb6f3b7632b4ddfebf74367",
-                dataFormat = "wav",
-                format = "",
-                rate = 48000,
-                sampleCount = 1123,
-                md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
-            )
-        ),
-        volume = 100,
-        layerOrder = 0,
-        visible = false,
-        x = 0,
-        y = 0,
-        size = 100,
-        direction = 90,
-        draggable = false,
-        rotationStyle = "all around"
-    )
     val targe2 = Target(
         isStage = false,
         name = sprite.name,
@@ -115,8 +79,63 @@ fun createTarget(blocks: Map<String, Block>, sprite: Sprite): List<Target> {
         rotationStyle = "all around"
     )
 
-    return listOf(target1, targe2)
+
+
+
+    return listOf( targe2)
 }
+
+class List2(val name: String, val contents: List<String>) {
+
+    val id = UUID.randomUUID()
+    fun getMap(): Map<String, JsonArray> {
+        return mapOf(
+            name to JsonArray(contents.map { JsonPrimitive(it) })
+        )
+    }
+}
+
+fun createStage(lists: List<List2>? = emptyList()) = Target(
+    isStage = true,
+    name = "Stage",
+    variables = emptyMap(),
+    lists = lists?.associate { it.id.toString() to JsonArray(listOf(JsonPrimitive(it.name), JsonArray(it.contents.map { JsonPrimitive(it) }))) } ?: emptyMap(),
+    broadcasts = emptyMap(),
+    blocks = emptyMap(),
+    comments = emptyMap(),
+    currentCostume = 0,
+    costumes = listOf(
+        Costume(
+            name = "backdrop1",
+            bitmapResolution = 1,
+            dataFormat = "svg",
+            assetId = "cd21514d0531fdffb22204e0ec5ed84a",
+            md5ext = "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            rotationCenterX = 240,
+            rotationCenterY = 180
+        )
+    ),
+    sounds = listOf(
+        Sound(
+            name = "pop",
+            assetId = "83a9787d4cb6f3b7632b4ddfebf74367",
+            dataFormat = "wav",
+            format = "",
+            rate = 48000,
+            sampleCount = 1123,
+            md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+        )
+    ),
+    volume = 100,
+    layerOrder = 0,
+    visible = false,
+    x = 0,
+    y = 0,
+    size = 100,
+    direction = 90,
+    draggable = false,
+    rotationStyle = "all around"
+)
 
 fun writeProject(scratchProject: ScratchProject) {
 
@@ -151,13 +170,6 @@ data class Block(
     val x: Int? = null,
     val y: Int? = null
 )
-
-@Serializable
-data class Input(
-    val type: Int,
-    val value: List<String>
-)
-
 
 
 interface CommonBlockSpec : Node {

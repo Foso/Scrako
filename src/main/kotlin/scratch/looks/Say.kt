@@ -16,7 +16,6 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int
@@ -54,7 +53,7 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
         visitors[name2] = spec.toBlock(newNext, parent, layer == 0 && index == 0)
 
         if (content is LooksSayContent.Operators) {
-            content.operatorSpec.visit(visitors, name2, index + 1, listIndex, operatorUUID, null)
+            content.operatorSpec.visit(visitors, name2, index + 1, operatorUUID, null)
         }
     }
 }

@@ -7,16 +7,19 @@ import me.jens.scratch.common.OpCode
 import me.jens.scratch.common.createBlocks23
 import me.jens.scratch.control.Repeat
 import me.jens.scratch.control.Wait
+import me.jens.scratch.data.AddToList
 import me.jens.scratch.event.ReceiveBroadcast
 import me.jens.scratch.event.SendBroadcast
 import me.jens.scratch.event.WhenKeyPress
 import me.jens.scratch.looks.Say
 import scratch.Broadcast
 import scratch.Costume
+import scratch.List2
 import scratch.Meta
 import scratch.ScratchProject
 import scratch.Sound
 import scratch.Sprite
+import scratch.createStage
 import scratch.createTarget
 import scratch.looks.Hide
 import scratch.writeProject
@@ -40,11 +43,13 @@ val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A
 fun main() {
 
     val broadcast = Broadcast("hello")
+    val myList = List2("myData", listOf("1", "2", "3"))
 
     val list1 = listOf(
         WhenKeyPress("space"),
         SendBroadcast(broadcast),
-        Repeat(10,
+        Repeat(
+            10,
             Say("hello"),
             Wait(1),
             Say("world"),
@@ -53,7 +58,7 @@ fun main() {
 
     val list2 = listOf(
         ReceiveBroadcast(broadcast),
-        Say("hello"),
+        AddToList("hello", myList),
     )
 
     val list3 = listOf(
@@ -61,7 +66,7 @@ fun main() {
         Hide(),
     )
 
-    val files=  File("/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/").listFiles()
+    val files = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/").listFiles()
     val targetPath = "/Users/jens.klingenberg/Downloads"
     files?.forEach {
         Files.copy(it.toPath(), File("$targetPath/Archive(1)/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
@@ -70,8 +75,18 @@ fun main() {
 
     val test = createBlocks23(listOf(list1, list2, list3))
 
-    val sprite = createSprite()
-    val targets = createTarget(test,sprite)
+    val sprite = Sprite(
+        "sprite1", listOf(
+            costume1,
+            costum2
+        ), listOf(
+            sound1
+        )
+    )
+
+
+    val target1 = createStage(listOf(myList))
+    val targets = listOf(target1)+createTarget(test, sprite)
 
     val scratchProject = ScratchProject(
         targets = targets,
@@ -97,46 +112,37 @@ fun main() {
     }
 }
 
-private fun createSprite(): Sprite {
-    val costume1 = Costume(
-        name = "costume1",
-        bitmapResolution = 1,
-        dataFormat = "svg",
-        assetId = "bcf454acf82e4504149f7ffe07081dbc",
-        md5ext = "bcf454acf82e4504149f7ffe07081dbc.svg",
-        rotationCenterX = 48,
-        rotationCenterY = 50
-    )
-    return Sprite(
-        "sprite1", listOf(
-            costume1,
-            Costume(
-                name = "costume2",
-                bitmapResolution = 1,
-                dataFormat = "svg",
-                assetId = "0fb9be3e8397c983338cb71dc84d0b25",
-                md5ext = "0fb9be3e8397c983338cb71dc84d0b25.svg",
-                rotationCenterX = 46,
-                rotationCenterY = 53
-            )
-        ), listOf(
-            Sound(
-                name = "Meow",
-                assetId = "83c36d806dc92327b9e7049a565c6bff",
-                dataFormat = "wav",
-                format = "",
-                rate = 48000,
-                sampleCount = 40681,
-                md5ext = "83c36d806dc92327b9e7049a565c6bff.wav"
-            )
-        )
-    )
-}
+val costume1 = Costume(
+    name = "costume1",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "bcf454acf82e4504149f7ffe07081dbc",
+    md5ext = "bcf454acf82e4504149f7ffe07081dbc.svg",
+    rotationCenterX = 48,
+    rotationCenterY = 50
+)
+
+val costum2 = Costume(
+    name = "costume2",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "0fb9be3e8397c983338cb71dc84d0b25",
+    md5ext = "0fb9be3e8397c983338cb71dc84d0b25.svg",
+    rotationCenterX = 46,
+    rotationCenterY = 53
+)
+val sound1 = Sound(
+    name = "Meow",
+    assetId = "83c36d806dc92327b9e7049a565c6bff",
+    dataFormat = "wav",
+    format = "",
+    rate = 48000,
+    sampleCount = 40681,
+    md5ext = "83c36d806dc92327b9e7049a565c6bff.wav"
+)
+
 
 interface Event
-
-
-
 
 
 fun SensingAskandWait(message: String) = BlockSpecSpec(

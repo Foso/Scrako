@@ -32,6 +32,7 @@ class OpCode(val value: String) {
         val operator_divide = "operator_divide"
         val sound_playuntildone = "sound_playuntildone"
         val sound_sounds_menu = "sound_sounds_menu"
+        val data_addtolist = "data_addtolist"
         val control_delete_this_clone = "control_delete_this_clone"
     }
 }

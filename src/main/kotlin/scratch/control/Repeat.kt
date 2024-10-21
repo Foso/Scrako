@@ -13,7 +13,6 @@ class Repeat(val times: Int, private vararg val childs: Node) : BlockSpecSpec(Op
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int
@@ -31,7 +30,6 @@ class Repeat(val times: Int, private vararg val childs: Node) : BlockSpecSpec(Op
                 visitors,
                 parent = name2,
                 index = childIndex,
-                listIndex,
                 childUUIDS[childIndex],
                 nextUUID,
                 layer+1

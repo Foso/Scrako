@@ -11,13 +11,12 @@ class Stop(private val option: StopOption) : Node {
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int
     ) {
 
-        if (nextUUID != null) {
+        if (option == StopOption.ALL && nextUUID != null) {
             throw IllegalArgumentException("Stop block with All cannot have a next block")
         }
         val newNext = nextUUID?.toString()

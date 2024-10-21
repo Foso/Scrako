@@ -8,7 +8,6 @@ interface Node {
         visitors: MutableMap<String, Block>,
         parent: String? = null,
         index: Int,
-        listIndex: Int,
         name: UUID,
         nextUUID: UUID?,
         layer: Int = 0

@@ -7,7 +7,7 @@ import me.jens.scratch.BlockSpecSpec
 import me.jens.scratch.common.OpCode
 import scratch.Broadcast
 
-class SendBroadcast(private val broadcast: Broadcast) : BlockSpecSpec(
+class SendBroadcast(broadcast: Broadcast) : BlockSpecSpec(
     opcode = OpCode.event_broadcast,
     inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast))
 ), Event
