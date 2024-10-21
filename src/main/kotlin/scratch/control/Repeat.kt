@@ -2,38 +2,51 @@ package me.jens.scratch.control
 
 import me.jens.createTimes
 import me.jens.scratch.BlockSpecSpec
-import me.jens.scratch.OpCode
+import me.jens.scratch.common.Node
+import me.jens.scratch.common.OpCode
 import scratch.Block
 import scratch.createSubStack
+import java.util.UUID
 
-class Repeat(val times: Int, private val childs: List<BlockSpecSpec>) : BlockSpecSpec(OpCode.control_repeat) {
+class Repeat(val times: Int, private vararg val childs: Node) : BlockSpecSpec(OpCode.control_repeat) {
     override fun visit(
         visitors: MutableMap<String, Block>,
-        layer: Int,
         parent: String?,
         index: Int,
-        next: Boolean,
-        listIndex: Int
+        listIndex: Int,
+        name: UUID,
+        nextUUID: UUID?,
+        layer: Int
     ) {
-        val name = "${listIndex}_${layer}_$index"
-        val newNext = if (!next) null else "${listIndex}_${layer}_${index + 1}"
-        val blockMap = mutableMapOf<String, Block>()
+        val name2 = name.toString()
+        val newNext = nextUUID?.toString()
 
+        val childUUIDS = childs.map { UUID.randomUUID() }
         childs.mapIndexed { childIndex, visitor ->
             val nextchild =
                 childIndex != childs.lastIndex
-            visitor.visit(blockMap, layer + 1, parent = name, index = childIndex, next = nextchild,listIndex)
+
+            val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
+            visitor.visit(
+                visitors,
+                parent = name2,
+                index = childIndex,
+                listIndex,
+                childUUIDS[childIndex],
+                nextUUID,
+                layer+1
+            )
         }
 
-        visitors[name] = BlockSpecSpec(
+        val inputs = mutableMapOf("TIMES" to createTimes(times.toString()))
+        if (childs.isNotEmpty()) {
+            inputs["SUBSTACK"] = createSubStack(childUUIDS.first().toString())
+        }
+
+        visitors[name2] = BlockSpecSpec(
             opcode = OpCode.control_repeat,
-            childBlocks = emptyList(),
-            inputs = mapOf(
-                "TIMES" to createTimes(times.toString()),
-                "SUBSTACK" to createSubStack(blockMap.keys.first())
-            )
+            inputs = inputs
         ).toBlock(newNext, parent, layer == 0 && index == 0)
 
-        visitors.putAll(blockMap)
     }
 }

@@ -1,4 +1,4 @@
-package me.jens.scratch
+package me.jens.scratch.common
 
 import kotlinx.serialization.Serializable
 
@@ -16,6 +16,8 @@ class OpCode(val value: String) {
         val control_repeat = "control_repeat"
         val control_if = "control_if"
         val event_whenkeypressed = "event_whenkeypressed"
+        val event_whenbroadcastreceived = "event_whenbroadcastreceived"
+        val event_broadcast = "event_broadcast"
         val control_if_else = "control_if_else"
         val control_forever = "control_forever"
         val looks_sayforsecs = "looks_sayforsecs"

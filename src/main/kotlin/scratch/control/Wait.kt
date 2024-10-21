@@ -3,7 +3,7 @@ package me.jens.scratch.control
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import me.jens.scratch.BlockSpecSpec
-import me.jens.scratch.OpCode
+import me.jens.scratch.common.OpCode
 
 class Wait(seconds: Int) : BlockSpecSpec(
     opcode = OpCode.ControlWait,

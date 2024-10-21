@@ -5,28 +5,32 @@ import me.jens.createBlockRef
 import me.jens.createLiteralMessage
 import me.jens.createSecs
 import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Node
+import me.jens.scratch.common.OpCode
 import scratch.Block
-import me.jens.scratch.OpCode
-import scratch.Visitor
+import java.util.UUID
 
-data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Visitor {
+data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
-        layer: Int,
         parent: String?,
         index: Int,
-        next: Boolean,
-        listIndex: Int
+        listIndex: Int,
+        name: UUID,
+        nextUUID: UUID?,
+        layer: Int
     ) {
-        val name = "${listIndex}_${layer}_$index"
-        val newNext = if (!next) null else "${listIndex}_${layer}_${index + 1}"
+        val name2 = name.toString()
+        val newNext = nextUUID?.toString()
+
+        val operatorUUID = UUID.randomUUID()
 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
                 is LooksSayContent.Literal -> createLiteralMessage(content.message)
                 is LooksSayContent.Operators -> {
-                    createBlockRef("${listIndex}_${layer+1}_${index + 1}")
+                    createBlockRef(operatorUUID.toString())
                 }
 
                 is LooksSayContent.Keywords -> {
@@ -47,10 +51,10 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[name] = spec.toBlock(newNext, parent, layer == 0 && index == 0)
+        visitors[name2] = spec.toBlock(newNext, parent, layer == 0 && index == 0)
 
         if (content is LooksSayContent.Operators) {
-            content.operatorSpec.visit(visitors, layer +1, name, index+1, next,listIndex)
+            content.operatorSpec.visit(visitors, name2, index + 1, listIndex, operatorUUID, null)
         }
     }
 }
@@ -62,4 +66,4 @@ sealed interface LooksSayContent {
 }
 
 
-fun Say( message: String, seconds: Int? = null) = Say(LooksSayContent.Literal(message), seconds)
+fun Say(message: String, seconds: Int? = null) = Say(LooksSayContent.Literal(message), seconds)

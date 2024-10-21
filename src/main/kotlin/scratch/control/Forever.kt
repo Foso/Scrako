@@ -1,36 +1,60 @@
 package me.jens.scratch.control
 
+import kotlinx.serialization.json.JsonArray
 import me.jens.scratch.BlockSpecSpec
-import me.jens.scratch.OpCode
+import me.jens.scratch.common.CBlock
+import me.jens.scratch.common.CapBlock
+import me.jens.scratch.common.Node
+import me.jens.scratch.common.OpCode
 import scratch.Block
-import scratch.Visitor
 import scratch.createSubStack
+import java.util.UUID
 
-class Forever(private val childs: List<Visitor>) : Visitor {
+class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
-        layer: Int,
         parent: String?,
         index: Int,
-        next: Boolean,
-        listIndex: Int
+        listIndex: Int,
+        name: UUID,
+        nextUUID: UUID?,
+        layer: Int
     ) {
-        val name = "${listIndex}_${layer}_$index"
-        val newNext = if (!next) null else "${listIndex}_${layer}_${index + 1}"
+
+        if (nextUUID != null) {
+            throw IllegalArgumentException("Forever block can't have a next block")
+        }
+
         val blockMap = mutableMapOf<String, Block>()
 
+        val childUUIDS = childs.map { UUID.randomUUID() }
         childs.mapIndexed { childIndex, visitor ->
             val nextchild =
                 if (childIndex == childs.lastIndex) false else true
-            visitor.visit(blockMap, layer + 1, parent = name, index = childIndex, next = nextchild,listIndex)
+
+            val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
+            visitor.visit(
+                blockMap,
+                parent = name.toString(),
+                index = childIndex,
+                listIndex,
+                childUUIDS[childIndex],
+                nextUUID,
+                layer + 1
+            )
         }
 
-        visitors[name] = BlockSpecSpec(
+        val inputs: MutableMap<String, JsonArray> = mutableMapOf()
+
+        if (blockMap.keys.isNotEmpty()) {
+            inputs["SUBSTACK"] = createSubStack(blockMap.keys.first())
+        }
+
+        visitors[name.toString()] = BlockSpecSpec(
             opcode = OpCode.control_forever,
-            childBlocks = emptyList(),
-            inputs = mapOf("SUBSTACK" to createSubStack(blockMap.keys.first()))
-        ).toBlock(newNext, parent, layer == 0 && index == 0)
+            inputs = inputs
+        ).toBlock(null, parent, index == 0)
 
         visitors.putAll(blockMap)
     }

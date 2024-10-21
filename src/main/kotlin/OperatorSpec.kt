@@ -4,23 +4,25 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import me.jens.scratch.BlockSpecSpec
 import scratch.Block
-import me.jens.scratch.OpCode
+import me.jens.scratch.common.OpCode
+import java.util.UUID
 
 abstract class OperatorSpec(private val operand1: Int, private val operand2: Int, override val opcode: String) : BlockSpecSpec(
     opcode, inputs = mapOf(
-        "NUM1" to createNum(operand1.toString()),
-        "NUM2" to createNum(operand2.toString())
+        "OPERAND1" to createNum(operand1.toString()),
+        "OPERAND2" to createNum(operand2.toString())
     )
 ){
     override fun visit(
         visitors: MutableMap<String, Block>,
-        layer: Int,
         parent: String?,
         index: Int,
-        next: Boolean,
-        listIndex: Int
+        listIndex: Int,
+        name: UUID,
+        nextUUID: UUID?,
+        layer: Int
     ) {
-        super.visit(visitors, layer, parent, index, false,listIndex)
+        super.visit(visitors, parent, index, listIndex, name, null, layer)
     }
 }
 
@@ -29,7 +31,7 @@ class OperatorEquals(operand1: Int, operand2: Int) : OperatorSpec(operand1, oper
 class OperatorGreaterThan(operand1: Int, operand2: Int) : OperatorSpec(operand1, operand2, "operator_gt")
 class OperatorLessThan(operand1: Int, operand2: Int) : OperatorSpec(operand1, operand2, "operator_lt")
 class OperatorSubtract(operand1: Int, operand2: Int) : OperatorSpec(operand1, operand2, "operator_subtract")
-class OperatorMultiply(operand1: Int, operand2: Int) : OperatorSpec(operand1, operand2, "operator_multiply")
+class Multiply(operand1: Int, operand2: Int) : OperatorSpec(operand1, operand2, "operator_multiply")
 class OperatorDivide(operand1: Int, operand2: Int) : OperatorSpec(operand1, operand2, "operator_divide")
 
 fun createOperand(message: String) = JsonArray(

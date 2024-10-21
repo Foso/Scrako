@@ -3,6 +3,7 @@ package me.jens.scratch
 import kotlinx.serialization.json.JsonArray
 import scratch.Block
 import scratch.CommonBlockSpec
+import java.util.UUID
 
 open class BlockSpecSpec(
     override val opcode: String,
@@ -11,7 +12,6 @@ open class BlockSpecSpec(
     override val shadow: Boolean = false,
     override val x: Int? = null,
     override val y: Int? = null,
-    override val childBlocks: List<CommonBlockSpec> = emptyList()
 ) : CommonBlockSpec {
     fun toBlock(next: String?, parent: String?, topLevel: Boolean) = Block(
         opcode = opcode,
@@ -27,14 +27,15 @@ open class BlockSpecSpec(
 
     override fun visit(
         visitors: MutableMap<String, Block>,
-        layer: Int,
         parent: String?,
         index: Int,
-        next: Boolean,
-        listIndex: Int
+        listIndex: Int,
+        name: UUID,
+        nextUUID: UUID?,
+        layer: Int
     ) {
-        val name = "${listIndex}_${layer}_$index"
-        val newNext = if (!next) null else "${listIndex}_${layer}_${index + 1}"
-        visitors[name] = toBlock(newNext, parent, layer == 0 && index == 0)
+        // val name = "${listIndex}_${layer}_$index"
+        val newNext = nextUUID?.toString()
+        visitors[name.toString()] = toBlock(newNext, parent, layer == 0 && index == 0)
     }
 }

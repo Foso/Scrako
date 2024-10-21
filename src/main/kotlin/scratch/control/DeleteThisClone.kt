@@ -1,20 +1,26 @@
 package me.jens.scratch.control
 
 import me.jens.scratch.BlockSpecSpec
-import me.jens.scratch.OpCode
+import me.jens.scratch.common.CapBlock
+import me.jens.scratch.common.OpCode
 import scratch.Block
+import java.util.UUID
 
 class DeleteThisClone() : BlockSpecSpec(
-   opcode = OpCode.control_delete_this_clone,
-){
-   override fun visit(
-      visitors: MutableMap<String, Block>,
-      layer: Int,
-      parent: String?,
-      index: Int,
-      next: Boolean,
-      listIndex: Int
-   ) {
-      super.visit(visitors, layer, parent, index, false,listIndex)
-   }
+    opcode = OpCode.control_delete_this_clone,
+) , CapBlock {
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        parent: String?,
+        index: Int,
+        listIndex: Int,
+        name: UUID,
+        nextUUID: UUID?,
+        layer: Int
+    ) {
+        if (nextUUID != null) {
+            throw IllegalArgumentException("DeleteThisClone block cannot have a next block")
+        }
+        super.visit(visitors, parent, index, listIndex, name, null, layer)
+    }
 }
