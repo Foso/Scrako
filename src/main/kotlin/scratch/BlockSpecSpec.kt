@@ -1,8 +1,9 @@
 package me.jens.scratch
 
 import kotlinx.serialization.json.JsonArray
-import scratch.Block
-import scratch.CommonBlockSpec
+import me.jens.scratch.common.Context
+import me.jens.scratch.common.Node
+import scratch.Comment
 import java.util.UUID
 
 open class BlockSpecSpec(
@@ -13,7 +14,9 @@ open class BlockSpecSpec(
     override val x: Int? = null,
     override val y: Int? = null,
 ) : CommonBlockSpec {
-    fun toBlock(next: String?, parent: String?, topLevel: Boolean) = Block(
+
+    open var comment: Comment?=null
+    fun toBlock(next: String?, parent: String?, topLevel: Boolean, comment: String?=null) = Block(
         opcode = opcode,
         next = next,
         parent = parent,
@@ -22,7 +25,8 @@ open class BlockSpecSpec(
         shadow = shadow,
         topLevel = topLevel,
         x = x,
-        y = y
+        y = y,
+        comment = comment
     )
 
     override fun visit(
@@ -31,10 +35,15 @@ open class BlockSpecSpec(
         index: Int,
         name: UUID,
         nextUUID: UUID?,
-        layer: Int
+        layer: Int,
+        context: Context
     ) {
-        // val name = "${listIndex}_${layer}_$index"
-        val newNext = nextUUID?.toString()
-        visitors[name.toString()] = toBlock(newNext, parent, layer == 0 && index == 0)
+        comment?.addBlock(name.toString())
+        visitors[name.toString()] = toBlock(nextUUID?.toString(), context.parent, layer == 0 && index == 0, comment?.id)
+    }
+
+    fun addComment(comment: Comment): Node {
+        this.comment = comment
+        return this
     }
 }

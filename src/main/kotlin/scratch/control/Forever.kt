@@ -1,12 +1,13 @@
 package me.jens.scratch.control
 
 import kotlinx.serialization.json.JsonArray
+import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
 import me.jens.scratch.common.CBlock
 import me.jens.scratch.common.CapBlock
+import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
-import scratch.Block
 import scratch.createSubStack
 import java.util.UUID
 
@@ -18,7 +19,8 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
         index: Int,
         name: UUID,
         nextUUID: UUID?,
-        layer: Int
+        layer: Int,
+        context: Context
     ) {
 
         if (nextUUID != null) {
@@ -37,7 +39,8 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
                 index = childIndex,
                 childUUIDS[childIndex],
                 nextUUID,
-                layer + 1
+                layer + 1,
+                context
             )
         }
 

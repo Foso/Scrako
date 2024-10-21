@@ -1,6 +1,6 @@
 package me.jens.scratch.common
 
-import scratch.Block
+import me.jens.scratch.Block
 import java.util.UUID
 
 
@@ -26,7 +26,7 @@ fun createBlocks2(blockSpecs: List<Node>): Map<String, Block> {
 
         val nextNode = if (index != blockSpecs.lastIndex) uuids[index + 1] else null
 
-        blockSpec.visit(blockMap, parent, index, uuids[index], nextNode)
+        blockSpec.visit(blockMap, parent, index, uuids[index], nextNode, 0,Context(parent))
 
     }
 

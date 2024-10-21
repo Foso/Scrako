@@ -33,6 +33,8 @@ class OpCode(val value: String) {
         val sound_playuntildone = "sound_playuntildone"
         val sound_sounds_menu = "sound_sounds_menu"
         val data_addtolist = "data_addtolist"
+        val data_deletealloflist = "data_deletealloflist"
         val control_delete_this_clone = "control_delete_this_clone"
+        val data_replaceitemoflist = "data_replaceitemoflist"
     }
 }

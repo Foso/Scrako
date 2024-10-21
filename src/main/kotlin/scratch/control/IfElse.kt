@@ -1,10 +1,11 @@
 package me.jens.scratch.control
 
 import me.jens.OperatorSpec
+import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
-import scratch.Block
 import scratch.createSubStack
 import java.util.UUID
 
@@ -20,7 +21,8 @@ class IfElse(
         index: Int,
         name: UUID,
         nextUUID: UUID?,
-        layer: Int
+        layer: Int,
+        context: Context
     ) {
         val name2 = name.toString()
         val newNext = nextUUID?.toString()
@@ -36,7 +38,7 @@ class IfElse(
                 "SUBSTACK2" to createSubStack(rightUUIDs.first().toString())
             )
         ).toBlock(newNext, parent, layer == 0 && index == 0)
-        operatorSpec.visit(visitors, name2, 0, blockMap, null, layer + 1)
+        operatorSpec.visit(visitors, name2, 0, blockMap, null, layer + 1, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -49,7 +51,8 @@ class IfElse(
                 index = childIndex,
                 leftUUIDs[childIndex],
                 nextUUID,
-                layer + 1
+                layer + 1,
+                context
             )
         }
 
@@ -64,7 +67,8 @@ class IfElse(
                 index = childIndex,
                 rightUUIDs[childIndex],
                 nextUUID,
-                layer + 1
+                layer + 1,
+                context
             )
         }
 

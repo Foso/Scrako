@@ -1,9 +1,10 @@
 package me.jens.scratch.control
 
+import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
-import scratch.Block
 import java.util.UUID
 
 class Stop(private val option: StopOption) : Node {
@@ -13,7 +14,8 @@ class Stop(private val option: StopOption) : Node {
         index: Int,
         name: UUID,
         nextUUID: UUID?,
-        layer: Int
+        layer: Int,
+        context: Context
     ) {
 
         if (option == StopOption.ALL && nextUUID != null) {

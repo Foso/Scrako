@@ -1,10 +1,11 @@
 package me.jens.scratch.control
 
 import me.jens.createTimes
+import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
-import scratch.Block
 import scratch.createSubStack
 import java.util.UUID
 
@@ -15,7 +16,8 @@ class Repeat(val times: Int, private vararg val childs: Node) : BlockSpecSpec(Op
         index: Int,
         name: UUID,
         nextUUID: UUID?,
-        layer: Int
+        layer: Int,
+        context: Context
     ) {
         val name2 = name.toString()
         val newNext = nextUUID?.toString()
@@ -32,7 +34,8 @@ class Repeat(val times: Int, private vararg val childs: Node) : BlockSpecSpec(Op
                 index = childIndex,
                 childUUIDS[childIndex],
                 nextUUID,
-                layer+1
+                layer+1,
+                context
             )
         }
 

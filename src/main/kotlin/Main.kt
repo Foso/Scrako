@@ -7,20 +7,22 @@ import me.jens.scratch.common.OpCode
 import me.jens.scratch.common.createBlocks23
 import me.jens.scratch.control.Repeat
 import me.jens.scratch.control.Wait
-import me.jens.scratch.data.AddToList
+import me.jens.scratch.createTarget
+import me.jens.scratch.data.DeleteAllOf
+import me.jens.scratch.data.ReplaceItemOfWith
 import me.jens.scratch.event.ReceiveBroadcast
 import me.jens.scratch.event.SendBroadcast
 import me.jens.scratch.event.WhenKeyPress
 import me.jens.scratch.looks.Say
 import scratch.Broadcast
+import scratch.Comment
 import scratch.Costume
-import scratch.List2
+import scratch.ScratchList
 import scratch.Meta
 import scratch.ScratchProject
 import scratch.Sound
 import scratch.Sprite
 import scratch.createStage
-import scratch.createTarget
 import scratch.looks.Hide
 import scratch.writeProject
 import java.io.File
@@ -43,7 +45,10 @@ val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A
 fun main() {
 
     val broadcast = Broadcast("hello")
-    val myList = List2("myData", listOf("1", "2", "3"))
+    val myList = ScratchList("jens", listOf("1", "2", "3"))
+    val comment = Comment(
+        text = "Test"
+    )
 
     val list1 = listOf(
         WhenKeyPress("space"),
@@ -58,7 +63,8 @@ fun main() {
 
     val list2 = listOf(
         ReceiveBroadcast(broadcast),
-        AddToList("hello", myList),
+        DeleteAllOf(myList),
+        ReplaceItemOfWith(1, myList, "hello")
     )
 
     val list3 = listOf(
@@ -153,12 +159,14 @@ fun SensingAskandWait(message: String) = BlockSpecSpec(
 )
 
 
-fun createLiteralMessage(message: String) = JsonArray(
+fun createLiteralMessage(message: String) = createMessage(1,10,message)
+
+fun createMessage( first: Int, second: Int,message: String) = JsonArray(
     listOf(
-        JsonPrimitive(1),
+        JsonPrimitive(first),
         JsonArray(
             listOf(
-                JsonPrimitive(10),
+                JsonPrimitive(second),
                 JsonPrimitive(message)
             )
         )

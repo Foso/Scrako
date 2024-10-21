@@ -4,10 +4,12 @@ import me.jens.OperatorSpec
 import me.jens.createBlockRef
 import me.jens.createLiteralMessage
 import me.jens.createSecs
+import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
-import scratch.Block
+
 import java.util.UUID
 
 data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
@@ -18,10 +20,9 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
         index: Int,
         name: UUID,
         nextUUID: UUID?,
-        layer: Int
+        layer: Int,
+        context: Context
     ) {
-        val name2 = name.toString()
-        val newNext = nextUUID?.toString()
 
         val operatorUUID = UUID.randomUUID()
 
@@ -50,10 +51,10 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[name2] = spec.toBlock(newNext, parent, layer == 0 && index == 0)
+        visitors[name.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
 
         if (content is LooksSayContent.Operators) {
-            content.operatorSpec.visit(visitors, name2, index + 1, operatorUUID, null)
+            content.operatorSpec.visit(visitors, name.toString(), index + 1, operatorUUID, null, layer + 1, context)
         }
     }
 }

@@ -2,8 +2,9 @@ package me.jens
 
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
+import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
-import scratch.Block
+import me.jens.scratch.common.Context
 import me.jens.scratch.common.OpCode
 import java.util.UUID
 
@@ -19,9 +20,10 @@ abstract class OperatorSpec(private val operand1: Int, private val operand2: Int
         index: Int,
         name: UUID,
         nextUUID: UUID?,
-        layer: Int
+        layer: Int,
+        context: Context
     ) {
-        super.visit(visitors, parent, index, name, null, layer)
+        super.visit(visitors, parent, index, name, null, layer,context)
     }
 }
 

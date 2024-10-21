@@ -1,13 +1,14 @@
 package scratch
 
-import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
-import me.jens.scratch.common.Node
+import me.jens.scratch.Block
 import java.io.File
 import java.util.UUID
+import me.jens.scratch.Target
 
 @Serializable
 data class ScratchProject(
@@ -17,89 +18,30 @@ data class ScratchProject(
     val meta: Meta
 )
 
-@Serializable
-data class ScratchList(
-    val name: String,
-    val contents: List<String>
-)
-
-@Serializable
-data class Target(
-    val isStage: Boolean,
-    val name: String,
-    val variables: Map<String, List<String>>,
-    val lists: Map<String, JsonArray>,
-    val broadcasts: Map<String, String>,
-    val blocks: Map<String, Block>,
-    val comments: Map<String, Comment>,
-    val currentCostume: Int,
-    val costumes: List<Costume>,
-    val sounds: List<Sound>,
-    val volume: Int,
-    val layerOrder: Int,
-    val visible: Boolean,
-    val x: Int,
-    val y: Int,
-    val size: Int,
-    val direction: Int,
-    val draggable: Boolean,
-    val rotationStyle: String,
-    val tempo: Int? = null,
-    val videoTransparency: Int? = null,
-    val videoState: String? = null,
-    val textToSpeechLanguage: String? = null
-)
-
 class Sprite(val name: String, val costumes: List<Costume>, val sounds: List<Sound>)
 
 class Broadcast(val name: String) {
-    val id = UUID.randomUUID()
+    val id: UUID = UUID.randomUUID()
 }
 
-fun createTarget(blocks: Map<String, Block>, sprite: Sprite): List<Target> {
-    val targe2 = Target(
-        isStage = false,
-        name = sprite.name,
-        variables = emptyMap(),
-        lists = emptyMap(),
-        broadcasts = emptyMap(),
-        blocks = blocks,
-        comments = emptyMap(),
-        currentCostume = 0,
-        costumes = sprite.costumes,
-        sounds = sprite.sounds,
-        volume = 100,
-        layerOrder = 1,
-        visible = true,
-        x = 0,
-        y = 0,
-        size = 100,
-        direction = 90,
-        draggable = false,
-        rotationStyle = "all around"
-    )
 
 
-
-
-    return listOf( targe2)
+class ScratchList(val name: String, val contents: List<String>) {
+    val id: UUID = UUID.randomUUID()
 }
 
-class List2(val name: String, val contents: List<String>) {
-
-    val id = UUID.randomUUID()
-    fun getMap(): Map<String, JsonArray> {
-        return mapOf(
-            name to JsonArray(contents.map { JsonPrimitive(it) })
-        )
-    }
-}
-
-fun createStage(lists: List<List2>? = emptyList()) = Target(
+fun createStage(lists: List<ScratchList>? = emptyList()) = Target(
     isStage = true,
     name = "Stage",
     variables = emptyMap(),
-    lists = lists?.associate { it.id.toString() to JsonArray(listOf(JsonPrimitive(it.name), JsonArray(it.contents.map { JsonPrimitive(it) }))) } ?: emptyMap(),
+    lists = lists?.associate {
+        it.id.toString() to JsonArray(
+            listOf(
+                JsonPrimitive(it.name),
+                JsonArray(it.contents.map { JsonPrimitive(it) })
+            )
+        )
+    } ?: emptyMap(),
     broadcasts = emptyMap(),
     blocks = emptyMap(),
     comments = emptyMap(),
@@ -158,30 +100,6 @@ private fun createCondition(operatorId: String) = JsonArray(
 )
 
 
-@Serializable
-data class Block(
-    val opcode: String,
-    val next: String?,
-    val parent: String?,
-    @EncodeDefault val inputs: Map<String, JsonArray> = emptyMap(),
-    @EncodeDefault val fields: Map<String, List<String?>> = emptyMap(),
-    val shadow: Boolean,
-    val topLevel: Boolean,
-    val x: Int? = null,
-    val y: Int? = null
-)
-
-
-interface CommonBlockSpec : Node {
-    val opcode: String
-    val inputs: Map<String, JsonArray>
-    val fields: Map<String, List<String?>>
-    val shadow: Boolean
-    val x: Int?
-    val y: Int?
-}
-
-
 fun createSubStack(message: String) = JsonArray(
     listOf(
         JsonPrimitive(2),
@@ -191,14 +109,21 @@ fun createSubStack(message: String) = JsonArray(
 
 @Serializable
 data class Comment(
-    val blockId: String,
     val text: String,
-    val x: Int,
-    val y: Int,
-    val width: Int,
-    val height: Int,
-    val minimized: Boolean
-)
+    val x: Double = 0.0,
+    val y: Double = 0.0,
+    val width: Int = 50,
+    val height: Int = 50,
+    val minimized: Boolean = true
+) {
+    private var blockId: String = ""
+    @Transient
+    val id = UUID.randomUUID().toString()
+
+    fun addBlock(id: String) {
+        blockId = id
+    }
+}
 
 @Serializable
 data class Costume(
