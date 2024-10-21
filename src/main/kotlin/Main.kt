@@ -2,28 +2,27 @@ package me.jens
 
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
-import me.jens.scratch.BlockSpecSpec
-import me.jens.scratch.common.OpCode
 import me.jens.scratch.common.createBlocks23
 import me.jens.scratch.control.Repeat
 import me.jens.scratch.control.Wait
 import me.jens.scratch.createTarget
 import me.jens.scratch.data.DeleteAllOf
 import me.jens.scratch.data.ReplaceItemOfWith
-import me.jens.scratch.event.ReceiveBroadcast
 import me.jens.scratch.event.SendBroadcast
+import me.jens.scratch.event.WhenIRecieve
 import me.jens.scratch.event.WhenKeyPress
+import me.jens.scratch.looks.LooksSayContent
 import me.jens.scratch.looks.Say
+import me.jens.scratch.looks.Think
+import me.jens.scratch.sensing.Answer
 import scratch.Broadcast
-import scratch.Comment
 import scratch.Costume
-import scratch.ScratchList
 import scratch.Meta
+import scratch.ScratchList
 import scratch.ScratchProject
 import scratch.Sound
 import scratch.Sprite
 import scratch.createStage
-import scratch.looks.Hide
 import scratch.writeProject
 import java.io.File
 import java.nio.file.Files
@@ -45,10 +44,7 @@ val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A
 fun main() {
 
     val broadcast = Broadcast("hello")
-    val myList = ScratchList("jens", listOf("1", "2", "3"))
-    val comment = Comment(
-        text = "Test"
-    )
+    val myList = ScratchList("jens2", listOf("1", "abc", "3"))
 
     val list1 = listOf(
         WhenKeyPress("space"),
@@ -62,14 +58,13 @@ fun main() {
     )
 
     val list2 = listOf(
-        ReceiveBroadcast(broadcast),
-        DeleteAllOf(myList),
-        ReplaceItemOfWith(1, myList, "hello")
+        WhenIRecieve(broadcast),
+       Think("Hello",10)
     )
 
     val list3 = listOf(
-        ReceiveBroadcast(broadcast),
-        Hide(),
+        AskandWait("Hey i dont care"),
+        Say(LooksSayContent.Operators(Answer()))
     )
 
     val files = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/").listFiles()
@@ -77,7 +72,6 @@ fun main() {
     files?.forEach {
         Files.copy(it.toPath(), File("$targetPath/Archive(1)/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
     }
-
 
     val test = createBlocks23(listOf(list1, list2, list3))
 
@@ -92,7 +86,7 @@ fun main() {
 
 
     val target1 = createStage(listOf(myList))
-    val targets = listOf(target1)+createTarget(test, sprite)
+    val targets = listOf(target1) + createTarget(test, sprite)
 
     val scratchProject = ScratchProject(
         targets = targets,
@@ -116,6 +110,10 @@ fun main() {
     } catch (e: Exception) {
         e.printStackTrace()
     }
+}
+
+fun AskandWait(content: String): AskandWait {
+    return AskandWait(LooksSayContent.Literal(content))
 }
 
 val costume1 = Costume(
@@ -151,27 +149,24 @@ val sound1 = Sound(
 interface Event
 
 
-fun SensingAskandWait(message: String) = BlockSpecSpec(
-    opcode = OpCode.sensing_askandwait,
-    inputs = mapOf(
-        "QUESTION" to createLiteralMessage(message)
-    )
-)
+fun createLiteralMessage(message: String) = createMessage(1, 10, message)
 
-
-fun createLiteralMessage(message: String) = createMessage(1,10,message)
-
-fun createMessage( first: Int, second: Int,message: String) = JsonArray(
-    listOf(
-        JsonPrimitive(first),
-        JsonArray(
-            listOf(
-                JsonPrimitive(second),
-                JsonPrimitive(message)
+fun createMessage(first: Int, second: Int, message: String): JsonArray {
+    if (message.length > 330) {
+        throw IllegalArgumentException("Message is too long")
+    }
+    return JsonArray(
+        listOf(
+            JsonPrimitive(first),
+            JsonArray(
+                listOf(
+                    JsonPrimitive(second),
+                    JsonPrimitive(message)
+                )
             )
         )
     )
-)
+}
 
 
 fun createBlockRef(refId: String) = JsonArray(

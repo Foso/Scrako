@@ -1,6 +1,5 @@
 package me.jens.scratch.data
 
-import me.jens.createLiteralMessage
 import me.jens.createMessage
 import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
@@ -10,7 +9,7 @@ import me.jens.scratch.common.OpCode
 import scratch.ScratchList
 import java.util.UUID
 
-class ReplaceItemOfWith(private val index: Int, private val list: ScratchList, private val replace: String) : Node {
+class ItemOfList(private val index: Int, private val list: ScratchList) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -21,13 +20,13 @@ class ReplaceItemOfWith(private val index: Int, private val list: ScratchList, p
         context: Context
     ) {
         visitors[name.toString()] = BlockSpecSpec(
-            opcode = OpCode.data_replaceitemoflist,
+            opcode = OpCode.data_itemoflist,
             inputs = mapOf(
                 "INDEX" to createMessage(1, 7, this.index.toString()),
-                "ITEM" to createLiteralMessage(replace)
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID?.toString(), parent, index == 0)
     }
 }
+
 

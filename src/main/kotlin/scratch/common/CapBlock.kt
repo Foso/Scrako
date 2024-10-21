@@ -7,3 +7,5 @@ package me.jens.scratch.common
 interface CapBlock
 
 interface CBlock
+
+interface ReporterBlock : Node

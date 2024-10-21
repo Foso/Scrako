@@ -6,6 +6,7 @@ import me.jens.scratch.Block
 import me.jens.scratch.BlockSpecSpec
 import me.jens.scratch.common.Context
 import me.jens.scratch.common.OpCode
+import me.jens.scratch.common.ReporterBlock
 import java.util.UUID
 
 abstract class OperatorSpec(private val operand1: Int, private val operand2: Int, override val opcode: String) : BlockSpecSpec(
@@ -13,7 +14,7 @@ abstract class OperatorSpec(private val operand1: Int, private val operand2: Int
         "OPERAND1" to createNum(operand1.toString()),
         "OPERAND2" to createNum(operand2.toString())
     )
-){
+), ReporterBlock{
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

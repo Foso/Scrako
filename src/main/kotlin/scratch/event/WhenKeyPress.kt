@@ -4,7 +4,6 @@ import me.jens.Event
 import me.jens.scratch.BlockSpecSpec
 import me.jens.scratch.common.OpCode
 import scratch.Broadcast
-import scratch.Comment
 
 class WhenKeyPress(key: String) : BlockSpecSpec(
     opcode = OpCode.event_whenkeypressed,
@@ -12,7 +11,7 @@ class WhenKeyPress(key: String) : BlockSpecSpec(
 ), Event
 
 
-class ReceiveBroadcast(broadcast: Broadcast) : BlockSpecSpec(
+class WhenIRecieve(broadcast: Broadcast) : BlockSpecSpec(
     opcode = OpCode.event_whenbroadcastreceived,
     fields = mapOf("BROADCAST_OPTION" to listOf(broadcast.name, broadcast.id.toString()))
 ), Event

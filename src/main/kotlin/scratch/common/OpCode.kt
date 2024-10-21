@@ -5,11 +5,20 @@ import kotlinx.serialization.Serializable
 @Serializable
 class OpCode(val value: String) {
     companion object {
+        val motion_xposition = "motion_xposition"
+        val motion_yposition = "motion_yposition"
+        val motion_direction = "motion_direction"
+        val looks_thinkforsecs = "looks_thinkforsecs"
+        val sensing_distanceto = "sensing_distanceto"
+        val sensing_distancetomenu = "sensing_distancetomenu"
+        val data_lengthoflist = "data_lengthoflist"
+        val data_itemoflist = "data_itemoflist"
         val motion_movesteps = "motion_movesteps"
         val control_stop: String = "control_stop"
         val ControlWait = "control_wait"
         val Whenflagclicked = ("event_whenflagclicked")
         val LooksSay = "looks_say"
+        val LooksThink = "looks_think"
         val looks_show = "looks_show"
         val looks_hide = "looks_hide"
         val control_wait = "control_wait"
@@ -36,5 +45,6 @@ class OpCode(val value: String) {
         val data_deletealloflist = "data_deletealloflist"
         val control_delete_this_clone = "control_delete_this_clone"
         val data_replaceitemoflist = "data_replaceitemoflist"
+        val data_itemnumoflist = "data_itemnumoflist"
     }
 }

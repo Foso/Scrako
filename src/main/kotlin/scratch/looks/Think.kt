@@ -11,7 +11,7 @@ import me.jens.scratch.common.OpCode
 import me.jens.scratch.common.ReporterBlock
 import java.util.UUID
 
-data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
+data class Think(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -43,8 +43,8 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
         }
 
         val opCode = when (seconds) {
-            null -> OpCode.LooksSay
-            else -> OpCode.looks_sayforsecs
+            null -> OpCode.LooksThink
+            else -> OpCode.looks_thinkforsecs
         }
         val spec = BlockSpecSpec(
             opcode = opCode,
@@ -58,11 +58,5 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
     }
 }
 
-sealed interface LooksSayContent {
-    class Literal(val message: String) : LooksSayContent
-    class Operators(val operatorSpec: ReporterBlock) : LooksSayContent
-    class Keywords(val keyword: ScratchKeywords) : LooksSayContent
-}
 
-
-fun Say(message: String, seconds: Int? = null) = Say(LooksSayContent.Literal(message), seconds)
+fun Think(message: String, seconds: Int? = null) = Think(LooksSayContent.Literal(message), seconds)
