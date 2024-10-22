@@ -1,12 +1,10 @@
 package me.jens
 
-import scratch.Costume
-import scratch.ScratchList
-import scratch.ScratchProject
-import scratch.Sound
-import scratch.createStage
-import scratch.writeProject
-import java.io.File
+import de.jensklingenberg.scratch.Costume
+import de.jensklingenberg.scratch.ScratchList
+import de.jensklingenberg.scratch.Target
+import de.jensklingenberg.scratch.createStage
+import de.jensklingenberg.scratch.readList
 
 val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A\\00\", align 1\n" +
         "\n" +
@@ -17,31 +15,21 @@ val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A
         "  %0 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str, i32 0, i32 0))\n" +
         "  ret i32 0\n" +
         "}"
-const val resFolder = "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/"
-
-fun readList(name: String): List<String> {
-    val list = mutableListOf<String>()
-    File("${resFolder}lists/$name").forEachLine {
-        list.add(it)
-    }
-    return list
-}
 
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
     val myList = ScratchList("jens2", readList("jens.txt"))
     val stageTarget = createStage(listOf(myList), listOf())
 
     val sprite1 = MySprite(myList)
 
-    val targets = listOf(stageTarget, sprite1)
+    val targets:List<Target> = listOf(stageTarget, sprite1)
 
-    val scratchProject = ScratchProject(
+    val scratchProject = de.jensklingenberg.scratch.ScratchProject(
         targets = targets
     )
-    writeProject(scratchProject)
+
+    de.jensklingenberg.scratch.writeProject(scratchProject)
 }
 
 
@@ -64,7 +52,7 @@ val costum2 = Costume(
     rotationCenterX = 46,
     rotationCenterY = 53
 )
-val sound1 = Sound(
+val sound1 = de.jensklingenberg.scratch.Sound(
     name = "Meow",
     assetId = "83c36d806dc92327b9e7049a565c6bff",
     dataFormat = "wav",

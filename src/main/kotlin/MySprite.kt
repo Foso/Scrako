@@ -1,28 +1,24 @@
 package me.jens
 
-import me.jens.scratch.Target
-import me.jens.scratch.common.createBlocks23
-import me.jens.scratch.control.Repeat
-import me.jens.scratch.createTarget
-import me.jens.scratch.data.ItemOfXList
-import me.jens.scratch.event.Key
-import me.jens.scratch.event.SendBroadcastAndWait
-import me.jens.scratch.event.WhenFlagClicked
-import me.jens.scratch.event.WhenKeyPress
-import me.jens.scratch.looks.GoToFront
-import me.jens.scratch.looks.Say
-import me.jens.scratch.motion.SwitchCostume
-import me.jens.scratch.operator.LetterOf
-import me.jens.scratch.procedures.Call
-import me.jens.scratch.procedures.Definition
-import me.jens.scratch.sensing.DaysSince2000
-import scratch.Broadcast
-import scratch.ScratchList
-import scratch.Sprite
+import de.jensklingenberg.scratch.common.createBlocks23
+import de.jensklingenberg.scratch.control.Repeat
+import de.jensklingenberg.scratch.createTarget
+import de.jensklingenberg.scratch.data.ItemOfXList
+import de.jensklingenberg.scratch.event.Key
+import de.jensklingenberg.scratch.event.SendBroadcastAndWait
+import de.jensklingenberg.scratch.event.WhenFlagClicked
+import de.jensklingenberg.scratch.event.WhenKeyPress
+import de.jensklingenberg.scratch.looks.GoToFront
+import de.jensklingenberg.scratch.looks.Say
+import de.jensklingenberg.scratch.motion.SwitchCostume
+import de.jensklingenberg.scratch.operator.LetterOf
+import de.jensklingenberg.scratch.procedures.Call
+import de.jensklingenberg.scratch.procedures.Definition
+import de.jensklingenberg.scratch.sensing.DaysSince2000
 
-fun MySprite(jensList: ScratchList): Target {
+fun MySprite(jensList: de.jensklingenberg.scratch.ScratchList): de.jensklingenberg.scratch.Target {
 
-    val sprite = Sprite(
+    val sprite = de.jensklingenberg.scratch.Sprite(
         "Sprite1", listOf(
             costume1,
             costum2
@@ -30,7 +26,7 @@ fun MySprite(jensList: ScratchList): Target {
             sound1
         )
     )
-    val broadcast = Broadcast("hello")
+    val broadcast = de.jensklingenberg.scratch.Broadcast("hello")
 
     val list1 = listOf(
         WhenKeyPress(Key.TWO),
