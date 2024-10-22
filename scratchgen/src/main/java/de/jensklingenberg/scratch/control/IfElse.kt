@@ -4,14 +4,21 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.operator.OperatorSpec
 import java.util.UUID
 
+fun NodeBuilder.ifElse(
+    operatorSpec: ReporterBlock,
+    leftStack: NodeBuilder.()->Unit,
+    rightStack: NodeBuilder.()->Unit,
+) = addChild(IfElse(operatorSpec, leftStack = NodeBuilder().apply(leftStack).childs, rightStack = NodeBuilder().apply(rightStack).childs))
+
 class IfElse(
-    private val operatorSpec: OperatorSpec,
+    private val operatorSpec: ReporterBlock,
     private val leftStack: List<Node>,
     private val rightStack: List<Node>
 ) : Node {

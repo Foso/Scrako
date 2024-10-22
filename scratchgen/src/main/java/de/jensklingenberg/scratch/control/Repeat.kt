@@ -4,6 +4,7 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createBlockRef
@@ -17,6 +18,8 @@ sealed interface RepeatOption {
 }
 
 fun Repeat(times: Int, vararg childs: Node) = Repeat(RepeatOption.Times(times), *childs)
+
+fun NodeBuilder.repeat(times: Int, childs : NodeBuilder.()->Unit) = addChild(Repeat(times, *NodeBuilder().apply(childs).childs.toTypedArray()))
 
 class Repeat(private val option: RepeatOption, private vararg val childs: Node) : BlockSpec(OpCode.control_repeat) {
     override fun visit(

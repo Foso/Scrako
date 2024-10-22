@@ -5,13 +5,18 @@ import de.jensklingenberg.scratch.common.CBlock
 import de.jensklingenberg.scratch.common.CapBlock
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
 import java.util.UUID
 
-class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
+fun NodeBuilder.forever(block: NodeBuilder.() -> Unit) {
+    childs.add(Forever(NodeBuilder().apply(block).childs))
+}
+
+class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
 
     override fun visit(
         visitors: MutableMap<String, Block>,

@@ -1,5 +1,7 @@
 package de.jensklingenberg.scratch
 
+import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.model.Costume
 import de.jensklingenberg.scratch.model.Meta
 import de.jensklingenberg.scratch.model.Monitor
@@ -27,6 +29,11 @@ data class ScratchProject(
     )
 )
 
+fun blockBuilder(ff: NodeBuilder.() -> Unit): List<Node> {
+    val node = NodeBuilder()
+    ff.invoke(node)
+    return node.childs
+}
 class Sprite(
     val name: String,
     val costumes: List<Costume>,

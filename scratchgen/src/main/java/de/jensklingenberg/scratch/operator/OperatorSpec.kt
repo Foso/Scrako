@@ -16,7 +16,7 @@ abstract class OperatorSpec(
     override val opcode: String, map: Map<String, JsonArray>
 ) : BlockSpec(
     opcode, inputs = map
-), BooleanBlock {
+) {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -37,26 +37,33 @@ class OperatorAdd(operand1: Int, operand2: Int) : OperatorSpec(
     )
 )
 
+class PickRandom(from: Int, to: Int) : OperatorSpec(
+    OpCode.operator_random, mapOf(
+        "FROM" to createNum(from.toString()),
+        "TO" to createNum(to.toString())
+    )
+)
+
 class OperatorEquals(operand1: Int, operand2: Int) : OperatorSpec(
     "operator_equals", mapOf(
         "OPERAND1" to createNum(operand1.toString()),
         "OPERAND2" to createNum(operand2.toString())
     )
-)
+), BooleanBlock
 
 class GreaterThan(operand1: Int, operand2: Int) : OperatorSpec(
     "operator_gt", mapOf(
         "OPERAND1" to createNum(operand1.toString()),
         "OPERAND2" to createNum(operand2.toString())
     )
-)
+), BooleanBlock
 
-class OperatorLessThan(operand1: Int, operand2: Int) : OperatorSpec(
+class LessThan(operand1: Int, operand2: Int) : OperatorSpec(
     "operator_lt", mapOf(
         "OPERAND1" to createNum(operand1.toString()),
         "OPERAND2" to createNum(operand2.toString())
     )
-)
+), BooleanBlock
 
 class OperatorSubtract(operand1: Int, operand2: Int) : OperatorSpec(
     "operator_subtract", mapOf(

@@ -1,14 +1,13 @@
 package de.jensklingenberg.scratch.common
 
 import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scratch.motion.SwitchCostume
 import java.util.UUID
 
 
 fun createBlocks23(blockSpecs: List<List<Node>>): Map<String, Block> {
-    val test: Map<String, Block> =
-        blockSpecs.map { createBlocks2(it) }.flatMap { it.toList() }.toMap()
 
-    return test
+    return blockSpecs.map { createBlocks2(it) }.flatMap { it.toList() }.toMap()
 }
 
 

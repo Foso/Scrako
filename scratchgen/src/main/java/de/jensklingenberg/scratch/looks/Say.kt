@@ -9,6 +9,7 @@ import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.common.createSecs
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
@@ -70,5 +71,4 @@ sealed interface LooksSayContent {
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
-
-fun Say(message: String, seconds: Int? = null) = Say(LooksSayContent.Literal(message), seconds)
+fun NodeBuilder.Say(message: String, seconds: Int? = null) = addChild(Say(LooksSayContent.Literal(message), seconds))

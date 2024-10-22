@@ -5,6 +5,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 class OpCode(val value: String) {
     companion object {
+        val motion_turnright = "motion_turnright"
+        val motion_turnleft = "motion_turnleft"
+        val motion_ifonedgebounce = "motion_ifonedgebounce"
+        val control_create_clone_of = "control_create_clone_of"
+        val control_create_clone_of_menu = "control_create_clone_of_menu"
+        val operator_random = "operator_random"
         val event_broadcastandwait = "event_broadcastandwait"
         val looks_gotofrontback = "looks_gotofrontback"
         val looks_switchcostumeto = "looks_switchcostumeto"
