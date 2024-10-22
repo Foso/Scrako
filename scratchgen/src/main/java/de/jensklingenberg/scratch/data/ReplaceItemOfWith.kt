@@ -20,7 +20,6 @@ class ReplaceItemOfWith(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

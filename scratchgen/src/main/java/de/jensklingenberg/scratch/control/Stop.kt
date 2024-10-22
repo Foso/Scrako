@@ -14,7 +14,6 @@ class Stop(private val option: StopOption) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
 

@@ -37,7 +37,6 @@ open class BlockSpec(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         comment?.addBlock(identifier.toString())

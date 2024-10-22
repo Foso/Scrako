@@ -16,7 +16,6 @@ class ItemNumOfList(private val item: Int, private val list: de.jensklingenberg.
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

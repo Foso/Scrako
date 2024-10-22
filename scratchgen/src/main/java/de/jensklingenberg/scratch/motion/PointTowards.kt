@@ -17,7 +17,6 @@ class PointTowards(private val target: String) : Node{
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val uuid = UUID.randomUUID()
@@ -28,7 +27,7 @@ class PointTowards(private val target: String) : Node{
             )
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
 
-        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, 1, context.copy(topLevel = false))
+        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }
 }
 

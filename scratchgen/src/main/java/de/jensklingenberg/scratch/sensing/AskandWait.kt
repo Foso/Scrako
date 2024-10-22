@@ -17,7 +17,6 @@ data class AskandWait(val content: LooksSayContent) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val operatorUUID = UUID.randomUUID()
@@ -43,7 +42,6 @@ data class AskandWait(val content: LooksSayContent) : Node {
                 identifier.toString(),
                 operatorUUID,
                 null,
-                layer + 1,
                 context.copy(topLevel = false)
             )
         }

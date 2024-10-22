@@ -16,7 +16,6 @@ class DistanceTo(private val destination: ReporterBlock) : Node, ReporterBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val destinationUUID = UUID.randomUUID()
@@ -31,7 +30,7 @@ class DistanceTo(private val destination: ReporterBlock) : Node, ReporterBlock {
                 )
             )
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
-        destination.visit(visitors, identifier.toString(), destinationUUID, null, layer + 1, context)
+        destination.visit(visitors, identifier.toString(), destinationUUID, null, context)
 
     }
 }

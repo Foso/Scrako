@@ -16,7 +16,6 @@ class GoTo(private val value: String) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val newNext = nextUUID?.toString()

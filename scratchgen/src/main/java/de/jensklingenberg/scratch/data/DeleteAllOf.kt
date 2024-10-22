@@ -16,7 +16,6 @@ class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

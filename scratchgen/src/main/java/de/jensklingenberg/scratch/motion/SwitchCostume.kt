@@ -17,7 +17,6 @@ class SwitchCostume(private val value: ReporterBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val protoUUID = UUID.randomUUID()
@@ -26,6 +25,6 @@ class SwitchCostume(private val value: ReporterBlock) : Node {
             inputs = mapOf("COSTUME" to JsonArray(listOf(JsonPrimitive(2), JsonPrimitive(protoUUID.toString())))),
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
 
-        value.visit(visitors, identifier.toString(), protoUUID, null, layer + 1, context)
+        value.visit(visitors, identifier.toString(), protoUUID, null, context)
     }
 }

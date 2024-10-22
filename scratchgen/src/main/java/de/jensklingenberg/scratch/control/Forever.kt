@@ -23,7 +23,6 @@ class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
 
@@ -41,7 +40,6 @@ class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
                 parent = identifier.toString(),
                 childUUIDS[childIndex],
                 nextUUID,
-                layer + 1,
                 context.copy(topLevel = false)
             )
         }

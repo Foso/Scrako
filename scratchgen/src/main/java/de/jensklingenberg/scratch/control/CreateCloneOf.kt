@@ -17,7 +17,6 @@ class CreateCloneOf(private val spriteName: String) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val uuid = UUID.randomUUID()
@@ -30,7 +29,6 @@ class CreateCloneOf(private val spriteName: String) : Node {
             identifier.toString(),
             uuid,
             null,
-            layer,
             context.copy(topLevel = false)
         )
     }
@@ -42,7 +40,6 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node{
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

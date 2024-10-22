@@ -8,7 +8,6 @@ import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scratch.control.createCloneOf
 import de.jensklingenberg.scratch.control.forever
 import de.jensklingenberg.scratch.data.deleteAllOf
-import de.jensklingenberg.scratch.event.WhenIRecieve
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.event.whenIRecieve
 import de.jensklingenberg.scratch.looks.say
@@ -23,12 +22,14 @@ import de.jensklingenberg.scratch.motion.turnRight
 import de.jensklingenberg.scratch.operator.OperatorContains
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
+import de.jensklingenberg.scratch.procedures.Input
+import de.jensklingenberg.scratch.procedures.call
 import de.jensklingenberg.scratch.procedures.definition
 
 
 fun MySprite(jensList: ScratchList): Target {
-    val elements = ArgumentBoolean("bool")
-    val elements1 = ArgumentString("bool2")
+    val elements = Input(ArgumentBoolean("bool"))
+    val elements1 = Input(ArgumentString("bool2"))
 
     val sprite = Sprite(
         "Sprite1", listOf(
@@ -55,6 +56,7 @@ fun MySprite(jensList: ScratchList): Target {
         pointTowards("_mouse_")
         pointInDirection(90)
         move(10)
+        call("Hey", listOf(elements))
         forever {
             say(OperatorContains("Hello", "H"))
         }
@@ -63,11 +65,11 @@ fun MySprite(jensList: ScratchList): Target {
 
     val list3 = blockBuilder {
 
-        definition("Hey", true, listOf(elements, elements1))
-        say(elements1)
+        definition("Hey", true, listOf(elements))
+        say(elements1.argument)
     }
 
-    val blockMap = createBlocks23(listOf(list2,list3,list))
+    val blockMap = createBlocks23(listOf(list2, list3, list))
 
     return createTarget(blockMap, sprite, emptyList(), listOf(jensList))
 }

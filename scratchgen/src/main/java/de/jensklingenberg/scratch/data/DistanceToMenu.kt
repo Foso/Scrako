@@ -14,7 +14,6 @@ class DistanceToMenu(private val destination: String) : Node, ReporterBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

@@ -14,7 +14,6 @@ class ChangeVariable(private val variable: de.jensklingenberg.scratch.ScratchVar
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

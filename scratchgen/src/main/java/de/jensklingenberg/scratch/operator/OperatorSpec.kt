@@ -2,7 +2,6 @@ package de.jensklingenberg.scratch.operator
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
@@ -23,10 +22,9 @@ abstract class OperatorSpec(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
-        super.visit(visitors, parent, identifier, null, layer, context)
+        super.visit(visitors, parent, identifier, null, context)
     }
 }
 

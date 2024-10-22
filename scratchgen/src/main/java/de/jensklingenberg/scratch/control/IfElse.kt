@@ -28,7 +28,6 @@ class IfElse(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val name2 = identifier.toString()
@@ -45,7 +44,7 @@ class IfElse(
                 "SUBSTACK2" to createSubStack(rightUUIDs.first().toString())
             )
         ).toBlock(newNext, parent, context.topLevel)
-        operatorSpec.visit(visitors, name2, operatorUUID, null, layer + 1, context)
+        operatorSpec.visit(visitors, name2, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -57,7 +56,6 @@ class IfElse(
                 parent = name2,
                 leftUUIDs[childIndex],
                 nextUUID,
-                layer + 1,
                 context
             )
         }
@@ -72,7 +70,6 @@ class IfElse(
                 parent = name2,
                 rightUUIDs[childIndex],
                 nextUUID,
-                layer + 1,
                 context
             )
         }

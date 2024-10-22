@@ -12,13 +12,16 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class Definition(private val prototypeName: String, private val withoutRefresh: Boolean, private val arguments : List<Argument> = emptyList()) : Node {
+class Definition(
+    private val prototypeName: String,
+    private val withoutRefresh: Boolean,
+    private val inputs: List<Input> = emptyList()
+) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val protoUUID = UUID.randomUUID()
@@ -27,43 +30,51 @@ class Definition(private val prototypeName: String, private val withoutRefresh: 
             inputs = mapOf("custom_block" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(protoUUID.toString())))),
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
 
-        Prototype(this.prototypeName, withoutRefresh, arguments).visit(
+        Prototype(this.prototypeName, withoutRefresh, inputs).visit(
             visitors,
             identifier.toString(),
             protoUUID,
             null,
-            1,
             context.copy(topLevel = false)
         )
     }
 }
 
-private class Prototype(val name: String, private val withoutRefresh: Boolean, val arguments : List<Argument>) : Node {
+private class Prototype(val name: String, private val withoutRefresh: Boolean, val inputs: List<Input>) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
-        val argsIds = arguments.map { it.id }
-        val inputIds = argsIds.map { UUID.randomUUID() }
-
+        val inputIds = inputs.map { it.id }
+        val arguments = inputs.map { it.argument }
+        val argIds = arguments.map { it.id }
         arguments.forEachIndexed { index, argument ->
             argument.visit(
                 visitors,
                 identifier.toString(),
-                argsIds[index],
-                argsIds.getOrNull(index + 1),
-                layer + 1,
+                argIds[index],
+                argIds.getOrNull(index + 1),
                 context.copy(topLevel = false)
             )
         }
 
         val inputs = mutableMapOf<String, JsonArray>()
-        arguments.forEachIndexed { index, _ ->
-            inputs[inputIds[index].toString()] = JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(argsIds[index].toString())))
+        this.inputs.map { it.argument }.forEachIndexed { index, argument ->
+            inputs[inputIds[index].toString()] = when (argument) {
+                is ArgumentBoolean -> JsonArray(
+                    listOf(JsonPrimitive(1), JsonPrimitive(argIds[index].toString()))
+                )
+
+                is ArgumentString -> JsonArray(
+                    listOf(JsonPrimitive(1), JsonPrimitive(argIds[index].toString()))
+                )
+
+                else -> throw IllegalArgumentException("Unknown argument type")
+
+            }
         }
 
         val proccode = this.name + " " + arguments.joinToString(" ") {
@@ -74,11 +85,11 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
             }
         }
         val argumentNames = arguments.joinToString(", ") {
-           "\""+ it.name+"\""
+            "\"" + it.name + "\""
         }
 
         val argumentDefaults = arguments.filter { it.defaultValue.isNotBlank() }.joinToString(", ") {
-            "\""+ it.defaultValue+"\""
+            "\"" + it.defaultValue + "\""
         }
 
 
@@ -91,19 +102,19 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
                 proccode = proccode,
                 warp = "$withoutRefresh",
                 argumentnames = "[$argumentNames]",
-                argumentids = "[${inputIds.joinToString { "\""+it.toString()+"\"" }}]",
+                argumentids = "[${argIds.joinToString { "\"" + it.toString() + "\"" }}]",
             )
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }
 
-class ArgumentString(override val name: String, override val defaultValue: String = "") :  Argument {
+class ArgumentString(override val name: String, override val defaultValue: String = "") : Argument {
+    override val id: UUID = UUID.randomUUID()
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(
@@ -113,21 +124,25 @@ class ArgumentString(override val name: String, override val defaultValue: Strin
     }
 }
 
-interface Argument : Node, ReporterBlock{
+interface Argument : Node, ReporterBlock {
     val name: String
     val defaultValue: String
     val id: UUID
-        get() = UUID.randomUUID()
+
+}
+
+data class Input(val argument: Argument) {
+    val id: UUID = UUID.randomUUID()
 }
 
 class ArgumentBoolean(override val name: String, override val defaultValue: String = "") : Argument {
+    override val id: UUID = UUID.randomUUID()
 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(
@@ -137,5 +152,9 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
     }
 }
 
-fun NodeBuilder.definition(prototypeName: String, withoutRefresh: Boolean = false, arguments : List<Argument> = emptyList()) =
+fun NodeBuilder.definition(
+    prototypeName: String,
+    withoutRefresh: Boolean = false,
+    arguments: List<Input> = emptyList()
+) =
     addChild(Definition(prototypeName, withoutRefresh, arguments))

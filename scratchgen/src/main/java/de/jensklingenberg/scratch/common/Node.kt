@@ -11,7 +11,6 @@ interface Node {
         parent: String? = null,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int = 0,
         context: Context,
     )
 }

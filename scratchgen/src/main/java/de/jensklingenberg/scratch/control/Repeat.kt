@@ -27,7 +27,6 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         val name2 = identifier.toString()
@@ -45,7 +44,6 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
                 parent = name2,
                 childUUIDS[childIndex],
                 nextUUID,
-                layer + 1,
                 context
             )
         }
@@ -73,7 +71,6 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
                 identifier.toString(),
                 operatorUUID,
                 null,
-                layer + 1,
                 context
             )
         }

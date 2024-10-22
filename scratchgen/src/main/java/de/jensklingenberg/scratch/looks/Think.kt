@@ -18,7 +18,6 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
 
@@ -53,7 +52,6 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
                 identifier.toString(),
                 operatorUUID,
                 null,
-                layer + 1,
                 context
             )
         }

@@ -14,7 +14,6 @@ class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchList) : N
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

@@ -16,7 +16,6 @@ class ItemOfXList(private val index: Int, private val list: de.jensklingenberg.s
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(

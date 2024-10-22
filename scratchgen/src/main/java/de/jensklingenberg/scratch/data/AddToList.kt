@@ -15,7 +15,6 @@ class AddToList(private val item: String, private val list: de.jensklingenberg.s
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        layer: Int,
         context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(
