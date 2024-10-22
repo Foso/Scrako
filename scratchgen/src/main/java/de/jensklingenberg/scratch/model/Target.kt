@@ -1,6 +1,7 @@
-package de.jensklingenberg.scratch
+package de.jensklingenberg.scratch.model
 
-import de.jensklingenberg.scratch.common.Block
+import de.jensklingenberg.scratch.ScratchList
+import de.jensklingenberg.scratch.Sprite
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -13,10 +14,10 @@ data class Target(
     val lists: Map<String, JsonArray>,
     val broadcasts: Map<String, String>,
     val blocks: Map<String, Block>,
-    val comments: Map<String, de.jensklingenberg.scratch.Comment>,
+    val comments: Map<String, Comment>,
     val currentCostume: Int,
-    val costumes: List<de.jensklingenberg.scratch.Costume>,
-    val sounds: List<de.jensklingenberg.scratch.Sound>,
+    val costumes: List<Costume>,
+    val sounds: List<Sound>,
     val volume: Int,
     val layerOrder: Int,
     val visible: Boolean,
@@ -32,7 +33,7 @@ data class Target(
     val textToSpeechLanguage: String? = null
 )
 
-fun createTarget(blocks: Map<String, Block>, sprite: de.jensklingenberg.scratch.Sprite, comments: List<de.jensklingenberg.scratch.Comment> = emptyList(), lists: List<de.jensklingenberg.scratch.ScratchList>? = emptyList()): Target {
+fun createTarget(blocks: Map<String, Block>, sprite: Sprite, comments: List<Comment> = emptyList(), lists: List<ScratchList>? = emptyList()): Target {
     val targe2 = Target(
         isStage = false,
         name = sprite.name,

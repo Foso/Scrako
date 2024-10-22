@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch.data
 
 
-import de.jensklingenberg.scratch.common.Block
+import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -23,7 +23,7 @@ class AddToList(private val item: String, private val list: de.jensklingenberg.s
             opcode = OpCode.data_addtolist,
             inputs = mapOf("ITEM" to createLiteralMessage(item)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, index == 0)
+        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }
 

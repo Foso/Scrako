@@ -1,8 +1,9 @@
 package de.jensklingenberg.scratch.common
 
+import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class Context(val parent: String? = null)
+data class Context(val parent: String? = null, val topLevel: Boolean)
 
 interface Node {
     fun visit(

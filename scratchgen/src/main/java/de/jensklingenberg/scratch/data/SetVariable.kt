@@ -1,12 +1,11 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scratch.common.Block
+import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.createLiteralMessage
-import de.jensklingenberg.scratch.ScratchVariable
 import java.util.UUID
 
 class SetVariable(private val variable: de.jensklingenberg.scratch.ScratchVariable, private val item: String) : Node {

@@ -1,7 +1,11 @@
 package de.jensklingenberg.scratch
 
+import de.jensklingenberg.scratch.model.Costume
+import de.jensklingenberg.scratch.model.Meta
+import de.jensklingenberg.scratch.model.Monitor
+import de.jensklingenberg.scratch.model.Sound
+import de.jensklingenberg.scratch.model.Target
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -13,16 +17,20 @@ import java.util.UUID
 @Serializable
 data class ScratchProject(
     val targets: List<Target>,
-    val monitors: List<de.jensklingenberg.scratch.Monitor> = emptyList(),
+    val monitors: List<Monitor> = emptyList(),
     val extensions: List<String> = emptyList(),
-    val meta: de.jensklingenberg.scratch.Meta = de.jensklingenberg.scratch.Meta(
+    val meta: Meta = Meta(
         semver = "3.0.0",
         vm = "0.2.0",
         agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
     )
 )
 
-class Sprite(val name: String, val costumes: List<de.jensklingenberg.scratch.Costume>, val sounds: List<de.jensklingenberg.scratch.Sound>)
+class Sprite(
+    val name: String,
+    val costumes: List<Costume>,
+    val sounds: List<Sound>
+)
 
 class Broadcast(val name: String) {
     val id: UUID = UUID.randomUUID()
@@ -46,7 +54,10 @@ fun readList(name: String): List<String> {
     return list
 }
 
-fun createStage(lists: List<de.jensklingenberg.scratch.ScratchList>? = emptyList(), variables : List<de.jensklingenberg.scratch.ScratchVariable>) = Target(
+fun createStage(
+    lists: List<ScratchList>? = emptyList(),
+    variables: List<ScratchVariable>
+) = Target(
     isStage = true,
     name = "Stage",
     variables = variables.associate {
@@ -56,7 +67,7 @@ fun createStage(lists: List<de.jensklingenberg.scratch.ScratchList>? = emptyList
                 JsonPrimitive(it.value)
             )
         )
-    } ?: emptyMap(),
+    },
     lists = lists?.associate {
         it.id.toString() to JsonArray(
             listOf(
@@ -70,7 +81,7 @@ fun createStage(lists: List<de.jensklingenberg.scratch.ScratchList>? = emptyList
     comments = emptyMap(),
     currentCostume = 0,
     costumes = listOf(
-        de.jensklingenberg.scratch.Costume(
+        Costume(
             name = "backdrop1",
             bitmapResolution = 1,
             dataFormat = "svg",
@@ -81,7 +92,7 @@ fun createStage(lists: List<de.jensklingenberg.scratch.ScratchList>? = emptyList
         )
     ),
     sounds = listOf(
-        de.jensklingenberg.scratch.Sound(
+        Sound(
             name = "pop",
             assetId = "83a9787d4cb6f3b7632b4ddfebf74367",
             dataFormat = "wav",
@@ -115,11 +126,12 @@ fun copyFiles(targetPath: String) {
         Files.copy(it.toPath(), File("$targetPath/Archive(1)/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
     }
 }
-fun writeProject(scratchProject: de.jensklingenberg.scratch.ScratchProject) {
-    val targetPath = "/Users/jens.klingenberg/Downloads"
-    de.jensklingenberg.scratch.copyFiles(targetPath)
 
-    val text = Json.encodeToString(de.jensklingenberg.scratch.ScratchProject.serializer(), scratchProject)
+fun writeProject(scratchProject: ScratchProject) {
+    val targetPath = "/Users/jens.klingenberg/Downloads"
+    copyFiles(targetPath)
+
+    val text = Json.encodeToString(ScratchProject.serializer(), scratchProject)
 
     File("/Users/jens.klingenberg/Downloads/Archive(1)/project.json").writeText(text)
 
@@ -155,66 +167,4 @@ fun createSubStack(message: String) = JsonArray(
         JsonPrimitive(2),
         JsonPrimitive(message)
     )
-)
-
-@Serializable
-data class Comment(
-    val text: String,
-    val x: Double = 0.0,
-    val y: Double = 0.0,
-    val width: Int = 50,
-    val height: Int = 50,
-    val minimized: Boolean = true
-) {
-    private var blockId: String = ""
-    @Transient
-    val id = UUID.randomUUID().toString()
-
-    fun addBlock(id: String) {
-        blockId = id
-    }
-}
-
-@Serializable
-data class Costume(
-    val name: String,
-    val bitmapResolution: Int? = null,
-    val dataFormat: String,
-    val assetId: String,
-    val md5ext: String,
-    val rotationCenterX: Int,
-    val rotationCenterY: Int
-)
-
-@Serializable
-data class Sound(
-    val name: String,
-    val assetId: String,
-    val dataFormat: String,
-    val format: String,
-    val rate: Int,
-    val sampleCount: Int,
-    val md5ext: String
-)
-
-@Serializable
-data class Monitor(
-    val id: String,
-    val mode: String,
-    val opcode: String,
-    val params: Map<String, String>,
-    val spriteName: String?,
-    val value: String,
-    val width: Int,
-    val height: Int,
-    val x: Int,
-    val y: Int,
-    val visible: Boolean
-)
-
-@Serializable
-data class Meta(
-    val semver: String,
-    val vm: String,
-    val agent: String
 )

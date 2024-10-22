@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch.sensing
 
 
-import de.jensklingenberg.scratch.common.Block
+import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -36,10 +36,10 @@ data class AskandWait(val content: LooksSayContent): Node {
             opcode = OpCode.sensing_askandwait,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, context.topLevel)
 
         if (content is LooksSayContent.Reporter) {
-            content.operatorSpec.visit(visitors, identifier.toString(), index + 1, operatorUUID, null, layer + 1, context)
+            content.operatorSpec.visit(visitors, identifier.toString(), index + 1, operatorUUID, null, layer + 1, context.copy(topLevel = false))
         }
     }
 }

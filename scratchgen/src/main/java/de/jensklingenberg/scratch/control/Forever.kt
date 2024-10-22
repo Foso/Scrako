@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch.control
 
-import de.jensklingenberg.scratch.common.Block
+import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.CBlock
 import de.jensklingenberg.scratch.common.CapBlock

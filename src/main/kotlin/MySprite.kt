@@ -1,8 +1,12 @@
 package me.jens
 
+import de.jensklingenberg.scratch.Broadcast
+import de.jensklingenberg.scratch.ScratchList
+import de.jensklingenberg.scratch.Sprite
+import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scratch.control.Repeat
-import de.jensklingenberg.scratch.createTarget
+import de.jensklingenberg.scratch.model.createTarget
 import de.jensklingenberg.scratch.data.ItemOfXList
 import de.jensklingenberg.scratch.event.Key
 import de.jensklingenberg.scratch.event.SendBroadcastAndWait
@@ -16,9 +20,9 @@ import de.jensklingenberg.scratch.procedures.Call
 import de.jensklingenberg.scratch.procedures.Definition
 import de.jensklingenberg.scratch.sensing.DaysSince2000
 
-fun MySprite(jensList: de.jensklingenberg.scratch.ScratchList): de.jensklingenberg.scratch.Target {
+fun MySprite(jensList: ScratchList): Target {
 
-    val sprite = de.jensklingenberg.scratch.Sprite(
+    val sprite = Sprite(
         "Sprite1", listOf(
             costume1,
             costum2
@@ -26,7 +30,7 @@ fun MySprite(jensList: de.jensklingenberg.scratch.ScratchList): de.jensklingenbe
             sound1
         )
     )
-    val broadcast = de.jensklingenberg.scratch.Broadcast("hello")
+    val broadcast = Broadcast("hello")
 
     val list1 = listOf(
         WhenKeyPress(Key.TWO),

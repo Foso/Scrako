@@ -1,7 +1,9 @@
 package de.jensklingenberg.scratch.common
 
+import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
-import de.jensklingenberg.scratch.Comment
+import de.jensklingenberg.scratch.model.Comment
+import de.jensklingenberg.scratch.model.Mutation
 import java.util.UUID
 
 open class BlockSpec(
@@ -14,7 +16,7 @@ open class BlockSpec(
     val mutation: Mutation? = null
 ) : CommonBlockSpec {
 
-    open var comment: de.jensklingenberg.scratch.Comment? = null
+    open var comment: Comment? = null
     fun toBlock(next: String?, parent: String?, topLevel: Boolean, comment: String? = null) = Block(
         opcode = opcode,
         next = next,
@@ -41,10 +43,10 @@ open class BlockSpec(
     ) {
         comment?.addBlock(identifier.toString())
         visitors[identifier.toString()] =
-            toBlock(nextUUID?.toString(), context.parent, layer == 0 && index == 0, comment?.id)
+            toBlock(nextUUID?.toString(), context.parent, context.topLevel, comment?.id)
     }
 
-    fun addComment(comment: de.jensklingenberg.scratch.Comment): Node {
+    fun addComment(comment: Comment): Node {
         this.comment = comment
         return this
     }
