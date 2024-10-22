@@ -12,7 +12,6 @@ class ChangeVariable(private val variable: de.jensklingenberg.scratch.ScratchVar
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,

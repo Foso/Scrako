@@ -15,7 +15,6 @@ data class AskandWait(val content: LooksSayContent) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -42,7 +41,6 @@ data class AskandWait(val content: LooksSayContent) : Node {
             content.operatorSpec.visit(
                 visitors,
                 identifier.toString(),
-                index + 1,
                 operatorUUID,
                 null,
                 layer + 1,

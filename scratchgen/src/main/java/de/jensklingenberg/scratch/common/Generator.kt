@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.common
 
 import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.motion.SwitchCostume
 import java.util.UUID
 
 
@@ -25,7 +24,7 @@ private fun createBlocks2(blockSpecs: List<Node>): Map<String, Block> {
 
         val nextNode = if (index != blockSpecs.lastIndex) uuids[index + 1] else null
 
-        blockSpec.visit(blockMap, parent, index, uuids[index], nextNode, 0, Context(parent, topLevel = index == 0))
+        blockSpec.visit(blockMap, parent, uuids[index], nextNode, 0, Context(parent, topLevel = index == 0))
 
     }
 

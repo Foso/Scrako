@@ -2,6 +2,7 @@ package de.jensklingenberg.scratch.operator
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
@@ -20,13 +21,12 @@ abstract class OperatorSpec(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
         context: Context
     ) {
-        super.visit(visitors, parent, index, identifier, null, layer, context)
+        super.visit(visitors, parent, identifier, null, layer, context)
     }
 }
 
@@ -36,6 +36,14 @@ class OperatorAdd(operand1: Int, operand2: Int) : OperatorSpec(
         "OPERAND2" to createNum(operand2.toString())
     )
 )
+
+class OperatorContains(operand1: String, operand2: String) : OperatorSpec(
+    OpCode.operator_contains, mapOf(
+        "STRING1" to createNum(operand1),
+        "STRING2" to createNum(operand2)
+    )
+), ReporterBlock
+
 
 class PickRandom(from: Int, to: Int) : OperatorSpec(
     OpCode.operator_random, mapOf(

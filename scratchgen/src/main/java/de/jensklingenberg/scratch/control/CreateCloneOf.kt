@@ -15,7 +15,6 @@ class CreateCloneOf(private val spriteName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -26,7 +25,14 @@ class CreateCloneOf(private val spriteName: String) : Node {
             opcode = OpCode.control_create_clone_of,
             inputs = mapOf("CLONE_OPTION" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString()))))
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
-        CreateCloneOfMenu(spriteName).visit(visitors, identifier.toString(), 0, uuid, null, layer, context.copy(topLevel = false))
+        CreateCloneOfMenu(spriteName).visit(
+            visitors,
+            identifier.toString(),
+            uuid,
+            null,
+            layer,
+            context.copy(topLevel = false)
+        )
     }
 }
 
@@ -34,7 +40,6 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node{
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,

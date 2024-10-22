@@ -15,7 +15,6 @@ class SwitchCostume(private val value: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -27,6 +26,6 @@ class SwitchCostume(private val value: ReporterBlock) : Node {
             inputs = mapOf("COSTUME" to JsonArray(listOf(JsonPrimitive(2), JsonPrimitive(protoUUID.toString())))),
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
 
-        value.visit(visitors, identifier.toString(), 0, protoUUID, null, layer + 1, context)
+        value.visit(visitors, identifier.toString(), protoUUID, null, layer + 1, context)
     }
 }

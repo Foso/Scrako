@@ -21,7 +21,6 @@ class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -40,7 +39,6 @@ class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
             visitor.visit(
                 visitors,
                 parent = identifier.toString(),
-                index = childIndex,
                 childUUIDS[childIndex],
                 nextUUID,
                 layer + 1,
@@ -57,7 +55,7 @@ class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_forever,
             inputs = inputs
-        ).toBlock(null, parent, index == 0)
+        ).toBlock(null, parent, context.topLevel)
 
     }
 }

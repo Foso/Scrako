@@ -12,7 +12,6 @@ class Stop(private val option: StopOption) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -26,7 +25,7 @@ class Stop(private val option: StopOption) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_stop,
             fields = mapOf("STOP_OPTION" to listOf((option.s), null))
-        ).toBlock(newNext, parent, layer == 0 && index == 0)
+        ).toBlock(newNext, parent, context.topLevel)
     }
 }
 

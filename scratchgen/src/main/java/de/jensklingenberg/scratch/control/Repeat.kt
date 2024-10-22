@@ -25,7 +25,6 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -44,7 +43,6 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
             visitor.visit(
                 visitors,
                 parent = name2,
-                index = childIndex,
                 childUUIDS[childIndex],
                 nextUUID,
                 layer + 1,
@@ -67,13 +65,12 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
         visitors[name2] = BlockSpec(
             opcode = OpCode.control_repeat,
             inputs = inputs
-        ).toBlock(newNext, parent, layer == 0 && index == 0)
+        ).toBlock(newNext, parent, context.topLevel)
 
         if (option is RepeatOption.Until) {
             option.reporterBlock.visit(
                 visitors,
                 identifier.toString(),
-                index + 1,
                 operatorUUID,
                 null,
                 layer + 1,

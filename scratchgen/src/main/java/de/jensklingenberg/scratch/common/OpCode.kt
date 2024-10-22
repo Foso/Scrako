@@ -5,6 +5,12 @@ import kotlinx.serialization.Serializable
 @Serializable
 class OpCode(val value: String) {
     companion object {
+        val operator_contains = "operator_contains"
+        val argument_reporter_boolean = "argument_reporter_boolean"
+        val argument_reporter_string_number = "argument_reporter_string_number"
+        val motion_pointtowards_menu = "motion_pointtowards_menu"
+        val motion_pointtowards = "motion_pointtowards"
+        val motion_pointindirection = "motion_pointindirection"
         val motion_turnright = "motion_turnright"
         val motion_turnleft = "motion_turnleft"
         val motion_ifonedgebounce = "motion_ifonedgebounce"

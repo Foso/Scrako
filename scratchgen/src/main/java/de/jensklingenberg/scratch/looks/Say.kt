@@ -13,14 +13,13 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-fun Say(reporterBlock: ReporterBlock) = Say(LooksSayContent.Reporter(reporterBlock))
+fun NodeBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(LooksSayContent.Reporter(reporterBlock)))
 
 data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -50,13 +49,12 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, context.topLevel)
 
         if (content is LooksSayContent.Reporter) {
             content.operatorSpec.visit(
                 visitors,
                 identifier.toString(),
-                index + 1,
                 operatorUUID,
                 null,
                 layer + 1,
@@ -71,4 +69,4 @@ sealed interface LooksSayContent {
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
-fun NodeBuilder.Say(message: String, seconds: Int? = null) = addChild(Say(LooksSayContent.Literal(message), seconds))
+fun NodeBuilder.say(message: String, seconds: Int? = null) = addChild(Say(LooksSayContent.Literal(message), seconds))

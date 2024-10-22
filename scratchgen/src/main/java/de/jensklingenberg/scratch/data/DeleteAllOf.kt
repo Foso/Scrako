@@ -1,18 +1,19 @@
 package de.jensklingenberg.scratch.data
 
 
+import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class DeleteAllOf(private val list: de.jensklingenberg.scratch.ScratchList) : Node {
+class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -21,6 +22,11 @@ class DeleteAllOf(private val list: de.jensklingenberg.scratch.ScratchList) : No
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_deletealloflist,
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, index == 0)
+        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }
+
+fun NodeBuilder.deleteAllOf(list: ScratchList) = addChild(DeleteAllOf(list))
+
+interface VariablesBlock
+interface ListBlock : VariablesBlock

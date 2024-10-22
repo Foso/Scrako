@@ -26,7 +26,6 @@ class IfElse(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -45,8 +44,8 @@ class IfElse(
                 "SUBSTACK" to createSubStack(leftUUIDs.first().toString()),
                 "SUBSTACK2" to createSubStack(rightUUIDs.first().toString())
             )
-        ).toBlock(newNext, parent, layer == 0 && index == 0)
-        operatorSpec.visit(visitors, name2, 0, operatorUUID, null, layer + 1, context)
+        ).toBlock(newNext, parent, context.topLevel)
+        operatorSpec.visit(visitors, name2, operatorUUID, null, layer + 1, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -56,7 +55,6 @@ class IfElse(
             visitor.visit(
                 visitors,
                 parent = name2,
-                index = childIndex,
                 leftUUIDs[childIndex],
                 nextUUID,
                 layer + 1,
@@ -72,7 +70,6 @@ class IfElse(
             visitor.visit(
                 visitors,
                 parent = name2,
-                index = childIndex,
                 rightUUIDs[childIndex],
                 nextUUID,
                 layer + 1,

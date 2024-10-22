@@ -14,7 +14,6 @@ class ItemOfXList(private val index: Int, private val list: de.jensklingenberg.s
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,

@@ -12,7 +12,6 @@ class DistanceToMenu(private val destination: String) : Node, ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -21,7 +20,7 @@ class DistanceToMenu(private val destination: String) : Node, ReporterBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sensing_distancetomenu,
             fields = mapOf("DISTANCETOMENU" to listOf(destination, null))
-        ).toBlock(nextUUID?.toString(), parent, index == 0 && layer == 0)
+        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }
 

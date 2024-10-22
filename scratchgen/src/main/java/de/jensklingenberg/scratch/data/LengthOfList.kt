@@ -12,7 +12,6 @@ class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchList) : N
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -21,6 +20,6 @@ class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchList) : N
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_lengthoflist,
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, index == 0)
+        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }

@@ -5,10 +5,9 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.operator.createNum
 
-class TurnLeft(steps: Int) : BlockSpec(
-    opcode = OpCode.motion_turnleft,
-    inputs = mapOf("DEGREES" to createNum(steps.toString()))
+class PointInDirection(degrees: Int) : BlockSpec(
+    opcode = OpCode.motion_pointindirection,
+    inputs = mapOf("DIRECTION" to createNum(degrees.toString()))
 )
 
-fun NodeBuilder.turnLeft(steps: Int) = addChild(TurnLeft(steps))
-
+fun NodeBuilder.pointInDirection(degrees: Int) = addChild(PointInDirection(degrees))

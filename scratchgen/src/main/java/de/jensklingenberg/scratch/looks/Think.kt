@@ -16,7 +16,6 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -46,13 +45,12 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, context.topLevel)
 
         if (content is LooksSayContent.Reporter) {
             content.operatorSpec.visit(
                 visitors,
                 identifier.toString(),
-                index + 1,
                 operatorUUID,
                 null,
                 layer + 1,

@@ -9,7 +9,6 @@ interface Node {
     fun visit(
         visitors: MutableMap<String, Block>,
         parent: String? = null,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int = 0,

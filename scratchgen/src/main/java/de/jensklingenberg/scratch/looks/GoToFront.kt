@@ -14,7 +14,6 @@ class GoTo(private val value: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        index: Int,
         identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
@@ -24,6 +23,6 @@ class GoTo(private val value: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_gotofrontback,
             fields = mapOf("FRONT_BACK" to listOf(value, null))
-        ).toBlock(newNext, parent, layer == 0 && index == 0)
+        ).toBlock(newNext, parent, context.topLevel)
     }
 }

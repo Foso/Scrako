@@ -1,16 +1,17 @@
-package de.jensklingenberg.scratch.data
+package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class DistanceTo(private val destination: ReporterBlock) : Node, ReporterBlock {
+class PointTowards(private val target: String) : Node{
+
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -19,19 +20,21 @@ class DistanceTo(private val destination: ReporterBlock) : Node, ReporterBlock {
         layer: Int,
         context: Context
     ) {
-        val destinationUUID = UUID.randomUUID()
+        val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.sensing_distanceto,
+            opcode = OpCode.motion_pointtowards,
             inputs = mapOf(
-                "DISTANCETOMENU" to JsonArray(
-                    listOf(
-                        JsonPrimitive(1),
-                        JsonPrimitive(destinationUUID.toString())
-                    )
-                )
+                "TOWARDS" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString())))
             )
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
-        destination.visit(visitors, identifier.toString(), destinationUUID, null, layer + 1, context)
 
+        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, 1, context.copy(topLevel = false))
     }
 }
+
+fun NodeBuilder.pointTowards(target: String) = addChild(PointTowards(target))
+
+private class PointTowardsMenu(target: String) : BlockSpec(
+    opcode = OpCode.motion_pointtowards_menu,
+    fields = mapOf("TOWARDS" to listOf(target, null))
+)
