@@ -4,7 +4,6 @@ import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.OpCode
 import me.jens.scratch.common.ReporterBlock
 
-class Answer() : BlockSpec(
-    opcode = OpCode.sensing_answer,
+class Volume() : BlockSpec(
+    opcode = OpCode.sound_volume,
 ), ReporterBlock
-

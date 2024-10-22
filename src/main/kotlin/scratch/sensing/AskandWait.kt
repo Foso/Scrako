@@ -1,10 +1,13 @@
-package me.jens
+package me.jens.scratch.sensing
 
-import me.jens.scratch.Block
-import me.jens.scratch.BlockSpecSpec
+
+import me.jens.scratch.common.Block
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
+import me.jens.scratch.common.createBlockRef
+import me.jens.scratch.common.createLiteralMessage
 import me.jens.scratch.looks.LooksSayContent
 import java.util.UUID
 
@@ -13,7 +16,7 @@ data class AskandWait(val content: LooksSayContent): Node {
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        name: UUID,
+        identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
         context: Context
@@ -23,24 +26,20 @@ data class AskandWait(val content: LooksSayContent): Node {
         val inputMap = mutableMapOf(
             "QUESTION" to when (content) {
                 is LooksSayContent.Literal -> createLiteralMessage(content.message)
-                is LooksSayContent.Operators -> {
+                is LooksSayContent.Reporter -> {
                     createBlockRef(operatorUUID.toString())
-                }
-
-                is LooksSayContent.Keywords -> {
-                    createBlockRef(content.keyword.name.toLowerCase())
                 }
             }
         )
 
-        val spec = BlockSpecSpec(
+        val spec = BlockSpec(
             opcode = OpCode.sensing_askandwait,
             inputs = inputMap
         )
-        visitors[name.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
 
-        if (content is LooksSayContent.Operators) {
-            content.operatorSpec.visit(visitors, name.toString(), index + 1, operatorUUID, null, layer + 1, context)
+        if (content is LooksSayContent.Reporter) {
+            content.operatorSpec.visit(visitors, identifier.toString(), index + 1, operatorUUID, null, layer + 1, context)
         }
     }
 }

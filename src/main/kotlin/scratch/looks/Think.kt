@@ -1,14 +1,14 @@
 package me.jens.scratch.looks
 
-import me.jens.createBlockRef
-import me.jens.createLiteralMessage
-import me.jens.createSecs
-import me.jens.scratch.Block
-import me.jens.scratch.BlockSpecSpec
+
+import me.jens.scratch.common.Block
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
-import me.jens.scratch.common.ReporterBlock
+import me.jens.scratch.common.createBlockRef
+import me.jens.scratch.common.createLiteralMessage
+import me.jens.scratch.common.createSecs
 import java.util.UUID
 
 data class Think(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
@@ -17,7 +17,7 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        name: UUID,
+        identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
         context: Context
@@ -28,12 +28,8 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
                 is LooksSayContent.Literal -> createLiteralMessage(content.message)
-                is LooksSayContent.Operators -> {
+                is LooksSayContent.Reporter -> {
                     createBlockRef(operatorUUID.toString())
-                }
-
-                is LooksSayContent.Keywords -> {
-                    createBlockRef(content.keyword.name.toLowerCase())
                 }
             }
         )
@@ -46,14 +42,14 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
             null -> OpCode.LooksThink
             else -> OpCode.looks_thinkforsecs
         }
-        val spec = BlockSpecSpec(
+        val spec = BlockSpec(
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[name.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
 
-        if (content is LooksSayContent.Operators) {
-            content.operatorSpec.visit(visitors, name.toString(), index + 1, operatorUUID, null, layer + 1, context)
+        if (content is LooksSayContent.Reporter) {
+            content.operatorSpec.visit(visitors, identifier.toString(), index + 1, operatorUUID, null, layer + 1, context)
         }
     }
 }

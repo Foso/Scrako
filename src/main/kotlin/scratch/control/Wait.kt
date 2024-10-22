@@ -1,10 +1,10 @@
 package me.jens.scratch.control
 
-import me.jens.createMessage
-import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.OpCode
+import me.jens.scratch.common.createMessage
 
-class Wait(seconds: Int) : BlockSpecSpec(
+class Wait(seconds: Int) : BlockSpec(
     opcode = OpCode.ControlWait,
     inputs = mapOf(
         "DURATION" to createDuration(seconds.toString())

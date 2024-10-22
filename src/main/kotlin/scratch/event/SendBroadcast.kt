@@ -2,13 +2,17 @@ package me.jens.scratch.event
 
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
-import me.jens.Event
-import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.OpCode
 import scratch.Broadcast
 
-class SendBroadcast(broadcast: Broadcast) : BlockSpecSpec(
+class SendBroadcast(broadcast: Broadcast) : BlockSpec(
     opcode = OpCode.event_broadcast,
+    inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast))
+), Event
+
+class SendBroadcastAndWait(broadcast: Broadcast) : BlockSpec(
+    opcode = OpCode.event_broadcastandwait,
     inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast))
 ), Event
 

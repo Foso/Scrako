@@ -1,7 +1,7 @@
 package me.jens.scratch.data
 
-import me.jens.scratch.Block
-import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Block
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
@@ -13,12 +13,12 @@ class DeleteAllOf(private val list: ScratchList) : Node {
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        name: UUID,
+        identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
         context: Context
     ) {
-        visitors[name.toString()] = BlockSpecSpec(
+        visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_deletealloflist,
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID?.toString(), parent, index == 0)

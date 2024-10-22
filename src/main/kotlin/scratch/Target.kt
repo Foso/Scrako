@@ -2,8 +2,11 @@ package me.jens.scratch
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
+import me.jens.scratch.common.Block
 import scratch.Comment
 import scratch.Costume
+import scratch.ScratchList
 import scratch.Sound
 import scratch.Sprite
 
@@ -11,7 +14,7 @@ import scratch.Sprite
 data class Target(
     val isStage: Boolean,
     val name: String,
-    val variables: Map<String, List<String>>,
+    val variables: Map<String, JsonArray>,
     val lists: Map<String, JsonArray>,
     val broadcasts: Map<String, String>,
     val blocks: Map<String, Block>,
@@ -34,12 +37,19 @@ data class Target(
     val textToSpeechLanguage: String? = null
 )
 
-fun createTarget(blocks: Map<String, Block>, sprite: Sprite, comments: List<Comment> = emptyList()): List<Target> {
+fun createTarget(blocks: Map<String, Block>, sprite: Sprite, comments: List<Comment> = emptyList(),lists: List<ScratchList>? = emptyList()): Target {
     val targe2 = Target(
         isStage = false,
         name = sprite.name,
         variables = emptyMap(),
-        lists = emptyMap(),
+        lists = lists?.associate {
+            it.id.toString() to JsonArray(
+                listOf(
+                    JsonPrimitive(it.name),
+                    JsonArray(it.contents.map { JsonPrimitive(it) })
+                )
+            )
+        } ?: emptyMap(),
         broadcasts = emptyMap(),
         blocks = blocks,
         comments = comments.associateBy { it.id },
@@ -56,5 +66,5 @@ fun createTarget(blocks: Map<String, Block>, sprite: Sprite, comments: List<Comm
         draggable = false,
         rotationStyle = "all around"
     )
-    return listOf(targe2)
+    return targe2
 }

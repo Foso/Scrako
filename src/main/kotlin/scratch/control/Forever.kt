@@ -1,8 +1,8 @@
 package me.jens.scratch.control
 
 import kotlinx.serialization.json.JsonArray
-import me.jens.scratch.Block
-import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Block
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.CBlock
 import me.jens.scratch.common.CapBlock
 import me.jens.scratch.common.Context
@@ -17,7 +17,7 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        name: UUID,
+        identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
         context: Context
@@ -29,13 +29,12 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
 
         val childUUIDS = childs.map { UUID.randomUUID() }
         childs.mapIndexed { childIndex, visitor ->
-            val nextchild =
-                if (childIndex == childs.lastIndex) false else true
+            val nextchild = childIndex != childs.lastIndex
 
             val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = name.toString(),
+                parent = identifier.toString(),
                 index = childIndex,
                 childUUIDS[childIndex],
                 nextUUID,
@@ -46,11 +45,11 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
 
         val inputs: MutableMap<String, JsonArray> = mutableMapOf()
 
-        if (childs.isNotEmpty()) {
-            inputs["SUBSTACK"] = createSubStack(childUUIDS.first().toString())
+        childUUIDS.firstOrNull()?.let {
+            inputs["SUBSTACK"] = createSubStack(it.toString())
         }
 
-        visitors[name.toString()] = BlockSpecSpec(
+        visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_forever,
             inputs = inputs
         ).toBlock(null, parent, index == 0)

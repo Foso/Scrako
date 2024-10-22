@@ -5,17 +5,23 @@ import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
-import me.jens.scratch.Block
-import java.io.File
-import java.util.UUID
+import me.jens.resFolder
 import me.jens.scratch.Target
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+import java.util.UUID
 
 @Serializable
 data class ScratchProject(
     val targets: List<Target>,
     val monitors: List<Monitor> = emptyList(),
     val extensions: List<String> = emptyList(),
-    val meta: Meta
+    val meta: Meta = Meta(
+        semver = "3.0.0",
+        vm = "0.2.0",
+        agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
+    )
 )
 
 class Sprite(val name: String, val costumes: List<Costume>, val sounds: List<Sound>)
@@ -24,16 +30,26 @@ class Broadcast(val name: String) {
     val id: UUID = UUID.randomUUID()
 }
 
-
-
-class ScratchList(val name: String, val contents: List<String>) {
+class ScratchVariable(val name: String, val value: String) {
     val id: UUID = UUID.randomUUID()
 }
 
-fun createStage(lists: List<ScratchList>? = emptyList()) = Target(
+open class ScratchList(open val name: String, val contents: List<String>) {
+    val id: UUID = UUID.randomUUID()
+}
+
+
+fun createStage(lists: List<ScratchList>? = emptyList(), variables : List<ScratchVariable>) = Target(
     isStage = true,
     name = "Stage",
-    variables = emptyMap(),
+    variables = variables.associate {
+        it.id.toString() to JsonArray(
+            listOf(
+                JsonPrimitive(it.name),
+                JsonPrimitive(it.value)
+            )
+        )
+    } ?: emptyMap(),
     lists = lists?.associate {
         it.id.toString() to JsonArray(
             listOf(
@@ -79,12 +95,39 @@ fun createStage(lists: List<ScratchList>? = emptyList()) = Target(
     rotationStyle = "all around"
 )
 
-fun writeProject(scratchProject: ScratchProject) {
+fun copyFiles(targetPath: String) {
+    val soundFiles = File(resFolder + "sounds").listFiles()
 
+    soundFiles?.forEach {
+        Files.copy(it.toPath(), File("$targetPath/Archive(1)/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+    }
+
+    val spriteFiles = File(resFolder + "sprites").listFiles()
+
+    spriteFiles?.forEach {
+        Files.copy(it.toPath(), File("$targetPath/Archive(1)/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+    }
+}
+fun writeProject(scratchProject: ScratchProject) {
+    val targetPath = "/Users/jens.klingenberg/Downloads"
+    copyFiles(targetPath)
 
     val text = Json.encodeToString(ScratchProject.serializer(), scratchProject)
 
     File("/Users/jens.klingenberg/Downloads/Archive(1)/project.json").writeText(text)
+
+    val command = listOf("zip", "-r", "./test2.sb3", "./Archive(1)/")
+    val processBuilder = ProcessBuilder(command)
+    processBuilder.directory(File(targetPath))
+    processBuilder.inheritIO() // This will redirect the output to the console
+
+    try {
+        val process = processBuilder.start()
+        val exitCode = process.waitFor()
+        println("Process exited with code: $exitCode")
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
 }
 
 

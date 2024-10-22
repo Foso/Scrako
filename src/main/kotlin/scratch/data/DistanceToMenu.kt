@@ -1,7 +1,7 @@
 package me.jens.scratch.data
 
-import me.jens.scratch.Block
-import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Block
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
@@ -13,12 +13,12 @@ class DistanceToMenu(private val destination: String) : Node, ReporterBlock {
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        name: UUID,
+        identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
         context: Context
     ) {
-        visitors[name.toString()] = BlockSpecSpec(
+        visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sensing_distancetomenu,
             fields = mapOf("DISTANCETOMENU" to listOf(destination,null))
         ).toBlock(nextUUID?.toString(), parent, index == 0 && layer ==0)

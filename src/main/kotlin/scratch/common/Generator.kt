@@ -1,6 +1,5 @@
 package me.jens.scratch.common
 
-import me.jens.scratch.Block
 import java.util.UUID
 
 
@@ -12,7 +11,7 @@ fun createBlocks23(blockSpecs: List<List<Node>>): Map<String, Block> {
 }
 
 
-fun createBlocks2(blockSpecs: List<Node>): Map<String, Block> {
+private fun createBlocks2(blockSpecs: List<Node>): Map<String, Block> {
     val blockMap = mutableMapOf<String, Block>()
 
     val uuids = blockSpecs.map { UUID.randomUUID() }

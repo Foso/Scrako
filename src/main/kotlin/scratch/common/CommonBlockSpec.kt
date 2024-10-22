@@ -1,7 +1,6 @@
-package me.jens.scratch
+package me.jens.scratch.common
 
 import kotlinx.serialization.json.JsonArray
-import me.jens.scratch.common.Node
 
 interface CommonBlockSpec : Node {
     val opcode: String

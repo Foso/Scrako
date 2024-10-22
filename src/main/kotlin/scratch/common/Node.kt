@@ -1,6 +1,5 @@
 package me.jens.scratch.common
 
-import me.jens.scratch.Block
 import java.util.UUID
 
 class Context(val parent: String? = null)
@@ -10,7 +9,7 @@ interface Node {
         visitors: MutableMap<String, Block>,
         parent: String? = null,
         index: Int,
-        name: UUID,
+        identifier: UUID,
         nextUUID: UUID?,
         layer: Int = 0,
         context: Context,

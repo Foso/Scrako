@@ -1,7 +1,7 @@
 package me.jens.scratch.control
 
-import me.jens.scratch.Block
-import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.Block
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.Context
 import me.jens.scratch.common.Node
 import me.jens.scratch.common.OpCode
@@ -12,7 +12,7 @@ class Stop(private val option: StopOption) : Node {
         visitors: MutableMap<String, Block>,
         parent: String?,
         index: Int,
-        name: UUID,
+        identifier: UUID,
         nextUUID: UUID?,
         layer: Int,
         context: Context
@@ -22,7 +22,7 @@ class Stop(private val option: StopOption) : Node {
             throw IllegalArgumentException("Stop block with All cannot have a next block")
         }
         val newNext = nextUUID?.toString()
-        visitors[name.toString()] = BlockSpecSpec(
+        visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_stop,
             fields = mapOf("STOP_OPTION" to listOf((option.s), null))
         ).toBlock(newNext, parent, layer == 0 && index == 0)
@@ -32,3 +32,4 @@ class Stop(private val option: StopOption) : Node {
 enum class StopOption(val s: String) {
     ALL("all"), OTHER("other scripts in sprite"), THIS("this script")
 }
+

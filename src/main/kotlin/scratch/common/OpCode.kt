@@ -5,6 +5,19 @@ import kotlinx.serialization.Serializable
 @Serializable
 class OpCode(val value: String) {
     companion object {
+        val event_broadcastandwait = "event_broadcastandwait"
+        val looks_gotofrontback = "looks_gotofrontback"
+        val looks_switchcostumeto = "looks_switchcostumeto"
+        val motion_changexby = "motion_changexby"
+        val motion_changeyby = "motion_changeyby"
+        val sensing_dayssince2000 = "sensing_dayssince2000"
+        val operator_letter_of = "operator_letter_of"
+        val procedures_call = "procedures_call"
+        val procedures_definition = "procedures_definition"
+        val procedures_prototype = "procedures_prototype"
+        val data_changevariableby = "data_changevariableby"
+        val data_setvariableto = "data_setvariableto"
+        val sound_volume = "sound_volume"
         val motion_xposition = "motion_xposition"
         val motion_yposition = "motion_yposition"
         val motion_direction = "motion_direction"

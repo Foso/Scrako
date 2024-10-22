@@ -1,12 +1,9 @@
 package scratch.looks
 
-import me.jens.scratch.BlockSpecSpec
+import me.jens.scratch.common.BlockSpec
 import me.jens.scratch.common.OpCode
 
-class Show() : BlockSpecSpec(
+class Show() : BlockSpec(
     opcode = OpCode.looks_show,
 )
 
-class Hide() : BlockSpecSpec(
-    opcode = OpCode.looks_hide,
-)
