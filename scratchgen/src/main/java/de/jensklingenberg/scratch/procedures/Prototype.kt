@@ -24,9 +24,8 @@ class Prototype(val name: String) : Node {
             mutation = Mutation(tagName = "mutation",
                 proccode = this.name,
                 warp = "false",
-                argumentnames = "["
             )
-        ).toBlock(nextUUID?.toString(), parent, index == 0 && layer == 0)
+        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }
 

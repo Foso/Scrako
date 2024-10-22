@@ -7,6 +7,7 @@ import de.jensklingenberg.scratch.common.CapBlock
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.createSubStack
 import kotlinx.serialization.json.JsonArray
 import java.util.UUID
 
@@ -38,14 +39,14 @@ class Forever(private vararg val childs: Node) : Node, CapBlock, CBlock {
                 childUUIDS[childIndex],
                 nextUUID,
                 layer + 1,
-                context
+                context.copy(topLevel = false)
             )
         }
 
         val inputs: MutableMap<String, JsonArray> = mutableMapOf()
 
         childUUIDS.firstOrNull()?.let {
-            inputs["SUBSTACK"] = de.jensklingenberg.scratch.createSubStack(it.toString())
+            inputs["SUBSTACK"] = createSubStack(it.toString())
         }
 
         visitors[identifier.toString()] = BlockSpec(

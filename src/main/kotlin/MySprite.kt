@@ -5,6 +5,7 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.common.createBlocks23
+import de.jensklingenberg.scratch.control.Forever
 import de.jensklingenberg.scratch.control.Repeat
 import de.jensklingenberg.scratch.model.createTarget
 import de.jensklingenberg.scratch.data.ItemOfXList
@@ -34,12 +35,7 @@ fun MySprite(jensList: ScratchList): Target {
 
     val list1 = listOf(
         WhenKeyPress(Key.TWO),
-        GoToFront(),
-        SendBroadcastAndWait(broadcast),
-        Repeat(
-            10,
-            SwitchCostume(ItemOfXList(1, jensList))
-        )
+        Forever(GoToFront())
     )
 
     val list2 = listOf(

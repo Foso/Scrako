@@ -22,6 +22,6 @@ class ChangeVariable(private val variable: de.jensklingenberg.scratch.ScratchVar
             opcode = OpCode.data_changevariableby,
             inputs = mapOf("VALUE" to createLiteralMessage(item.toString())),
             fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, index == 0 && layer == 0)
+        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }

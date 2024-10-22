@@ -25,6 +25,6 @@ class Definition(private val prototypeName: String) : Node {
             inputs = mapOf("custom_block" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(protoUUID.toString())))),
         ).toBlock(nextUUID?.toString(), parent, index == 0)
 
-        Prototype(this.prototypeName).visit(visitors, identifier.toString(), 0, protoUUID, null, 1, context)
+        Prototype(this.prototypeName).visit(visitors, identifier.toString(), 0, protoUUID, null, 1, context.copy(topLevel = false))
     }
 }

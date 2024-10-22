@@ -22,6 +22,6 @@ class Call(val name: String) : Node {
             opcode = OpCode.procedures_call,
             shadow = true,
             mutation = Mutation(tagName = "mutation", proccode = this.name, warp = "false")
-        ).toBlock(nextUUID?.toString(), parent, index == 0 && layer == 0)
+        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
     }
 }
