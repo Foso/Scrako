@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch.procedures
 
-import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.model.Mutation
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scratch.model.Mutation
 import java.util.UUID
 
 class Prototype(val name: String) : Node {
@@ -21,7 +21,8 @@ class Prototype(val name: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.procedures_prototype,
             shadow = true,
-            mutation = Mutation(tagName = "mutation",
+            mutation = Mutation(
+                tagName = "mutation",
                 proccode = this.name,
                 warp = "false",
             )

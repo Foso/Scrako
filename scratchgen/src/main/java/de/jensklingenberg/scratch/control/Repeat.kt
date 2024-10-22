@@ -1,8 +1,6 @@
 package de.jensklingenberg.scratch.control
 
 
-
-import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -10,11 +8,12 @@ import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createTimes
+import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-sealed interface RepeatOption{
-    class Times(val times: Int): RepeatOption
-    class Until(val reporterBlock: ReporterBlock): RepeatOption
+sealed interface RepeatOption {
+    class Times(val times: Int) : RepeatOption
+    class Until(val reporterBlock: ReporterBlock) : RepeatOption
 }
 
 fun Repeat(times: Int, vararg childs: Node) = Repeat(RepeatOption.Times(times), *childs)
@@ -45,15 +44,17 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
                 index = childIndex,
                 childUUIDS[childIndex],
                 nextUUID,
-                layer+1,
+                layer + 1,
                 context
             )
         }
 
-        val inputs = mutableMapOf("TIMES" to when(option){
-            is RepeatOption.Times -> createTimes(option.times.toString())
-            is RepeatOption.Until -> createBlockRef(operatorUUID.toString())
-        })
+        val inputs = mutableMapOf(
+            "TIMES" to when (option) {
+                is RepeatOption.Times -> createTimes(option.times.toString())
+                is RepeatOption.Until -> createBlockRef(operatorUUID.toString())
+            }
+        )
 
 
         if (childs.isNotEmpty()) {
@@ -66,7 +67,15 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
         ).toBlock(newNext, parent, layer == 0 && index == 0)
 
         if (option is RepeatOption.Until) {
-            option.reporterBlock.visit(visitors, identifier.toString(), index + 1, operatorUUID, null, layer + 1, context)
+            option.reporterBlock.visit(
+                visitors,
+                identifier.toString(),
+                index + 1,
+                operatorUUID,
+                null,
+                layer + 1,
+                context
+            )
         }
     }
 }

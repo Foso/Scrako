@@ -33,7 +33,12 @@ data class Target(
     val textToSpeechLanguage: String? = null
 )
 
-fun createTarget(blocks: Map<String, Block>, sprite: Sprite, comments: List<Comment> = emptyList(), lists: List<ScratchList>? = emptyList()): Target {
+fun createTarget(
+    blocks: Map<String, Block>,
+    sprite: Sprite,
+    comments: List<Comment> = emptyList(),
+    lists: List<ScratchList>? = emptyList()
+): Target {
     val targe2 = Target(
         isStage = false,
         name = sprite.name,

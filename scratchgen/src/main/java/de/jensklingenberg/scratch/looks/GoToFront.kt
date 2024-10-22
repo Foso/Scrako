@@ -1,10 +1,10 @@
 package de.jensklingenberg.scratch.looks
 
-import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 fun GoToFront() = GoTo("front")

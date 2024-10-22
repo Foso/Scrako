@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
+import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -32,7 +32,7 @@ class DistanceTo(private val destination: ReporterBlock) : Node, ReporterBlock {
                 )
             )
         ).toBlock(nextUUID?.toString(), parent, index == 0)
-        destination.visit(visitors, identifier.toString(), 0, destinationUUID, null, layer+1, context)
+        destination.visit(visitors, identifier.toString(), 0, destinationUUID, null, layer + 1, context)
 
     }
 }

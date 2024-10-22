@@ -1,13 +1,13 @@
 package de.jensklingenberg.scratch.operator
 
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
-import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
+import de.jensklingenberg.scratch.model.Block
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 interface BooleanBlock : ReporterBlock

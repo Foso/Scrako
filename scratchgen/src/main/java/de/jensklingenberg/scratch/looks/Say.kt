@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.looks
 
 
-import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -10,6 +9,7 @@ import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.common.createSecs
+import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 fun Say(reporterBlock: ReporterBlock) = Say(LooksSayContent.Reporter(reporterBlock))
@@ -52,7 +52,15 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
         visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, layer == 0 && index == 0)
 
         if (content is LooksSayContent.Reporter) {
-            content.operatorSpec.visit(visitors, identifier.toString(), index + 1, operatorUUID, null, layer + 1, context.copy(topLevel = false))
+            content.operatorSpec.visit(
+                visitors,
+                identifier.toString(),
+                index + 1,
+                operatorUUID,
+                null,
+                layer + 1,
+                context.copy(topLevel = false)
+            )
         }
     }
 }

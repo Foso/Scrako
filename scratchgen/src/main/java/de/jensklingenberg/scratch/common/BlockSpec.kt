@@ -1,9 +1,9 @@
 package de.jensklingenberg.scratch.common
 
 import de.jensklingenberg.scratch.model.Block
-import kotlinx.serialization.json.JsonArray
 import de.jensklingenberg.scratch.model.Comment
 import de.jensklingenberg.scratch.model.Mutation
+import kotlinx.serialization.json.JsonArray
 import java.util.UUID
 
 open class BlockSpec(

@@ -1,10 +1,9 @@
 package de.jensklingenberg.scratch.event
 
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.Broadcast
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 
 class SendBroadcast(broadcast: de.jensklingenberg.scratch.Broadcast) : BlockSpec(
     opcode = OpCode.event_broadcast,

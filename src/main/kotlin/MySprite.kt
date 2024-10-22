@@ -13,8 +13,10 @@ import de.jensklingenberg.scratch.event.Key
 import de.jensklingenberg.scratch.event.SendBroadcastAndWait
 import de.jensklingenberg.scratch.event.WhenFlagClicked
 import de.jensklingenberg.scratch.event.WhenKeyPress
+import de.jensklingenberg.scratch.extension.pen.Stamp
 import de.jensklingenberg.scratch.looks.GoToFront
 import de.jensklingenberg.scratch.looks.Say
+import de.jensklingenberg.scratch.motion.ChangeXby
 import de.jensklingenberg.scratch.motion.SwitchCostume
 import de.jensklingenberg.scratch.operator.LetterOf
 import de.jensklingenberg.scratch.procedures.Call
@@ -35,7 +37,9 @@ fun MySprite(jensList: ScratchList): Target {
 
     val list1 = listOf(
         WhenKeyPress(Key.TWO),
-        Forever(GoToFront())
+        Repeat(10,
+            Stamp(),
+            ChangeXby(10)),
     )
 
     val list2 = listOf(

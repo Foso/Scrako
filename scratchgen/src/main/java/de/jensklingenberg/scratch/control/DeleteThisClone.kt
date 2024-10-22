@@ -1,16 +1,16 @@
 package de.jensklingenberg.scratch.control
 
 
-import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.CapBlock
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 class DeleteThisClone() : BlockSpec(
     opcode = OpCode.control_delete_this_clone,
-) , CapBlock {
+), CapBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
