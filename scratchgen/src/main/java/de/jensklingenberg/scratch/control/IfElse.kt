@@ -27,7 +27,7 @@ fun NodeBuilder.switch(operatorSpec: SwitchContext.() -> Unit) {
     val test = SwitchContext().apply(operatorSpec)
 
     if(test.mutableList.size == 1){
-        ife(test.mutableList.first().operatorSpec){
+        ifThen(test.mutableList.first().operatorSpec){
             test.mutableList.first().leftStack(this)
         }
     }else{
@@ -69,7 +69,7 @@ class IfElse(
         context: Context
     ) {
         val name2 = identifier.toString()
-        val newNext = nextUUID?.toString()
+        val newNext = nextUUID
         val operatorUUID = UUID.randomUUID()
         val leftUUIDs = leftStack.map { UUID.randomUUID() }
         val rightUUIDs = rightStack.map { UUID.randomUUID() }
@@ -115,10 +115,10 @@ class IfElse(
     }
 }
 
-fun NodeBuilder.ife(
-    operatorSpec: ReporterBlock,
+fun NodeBuilder.ifThen(
+    block: ReporterBlock,
     leftStack: NodeBuilder.() -> Unit
-) = addChild(IfE(operatorSpec, leftStack = NodeBuilder().apply(leftStack).childs))
+) = addChild(IfE(block, leftStack = NodeBuilder().apply(leftStack).childs))
 
 class IfE(
     private val reporterBlock: ReporterBlock,
@@ -133,7 +133,7 @@ class IfE(
         context: Context
     ) {
         val name2 = identifier.toString()
-        val newNext = nextUUID?.toString()
+        val newNext = nextUUID
         val operatorUUID = UUID.randomUUID()
         val leftUUIDs = leftStack.map { UUID.randomUUID() }
 

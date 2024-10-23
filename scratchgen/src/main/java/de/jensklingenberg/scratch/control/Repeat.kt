@@ -7,9 +7,11 @@ import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createBlockRef
-import de.jensklingenberg.scratch.common.createTimes
+import de.jensklingenberg.scratch.common.setValue
+import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scratch.motion.DoubleBlock
+import de.jensklingenberg.scratch.motion.IntBlock
 import java.util.UUID
 
 sealed interface RepeatOption {
@@ -17,11 +19,13 @@ sealed interface RepeatOption {
     class Until(val reporterBlock: ReporterBlock) : RepeatOption
 }
 
-fun Repeat(times: Int, vararg childs: Node) = Repeat(RepeatOption.Times(times), *childs)
+fun NodeBuilder.repeat(times: Int, childs: NodeBuilder.() -> Unit) = repeat(IntBlock(times), childs)
+fun NodeBuilder.repeat(times: Double, childs: NodeBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
 
-fun NodeBuilder.repeat(times: Int, childs : NodeBuilder.()->Unit) = addChild(Repeat(times, *NodeBuilder().apply(childs).childs.toTypedArray()))
+fun NodeBuilder.repeat(times: ReporterBlock, childs: NodeBuilder.() -> Unit) =
+    addChild(Repeat(times, *NodeBuilder().apply(childs).childs.toTypedArray()))
 
-class Repeat(private val option: RepeatOption, private vararg val childs: Node) : BlockSpec(OpCode.control_repeat) {
+class Repeat(private val option: ReporterBlock, private vararg val childs: Node) : BlockSpec(OpCode.control_repeat) {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -29,8 +33,6 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
         nextUUID: UUID?,
         context: Context
     ) {
-        val name2 = identifier.toString()
-        val newNext = nextUUID?.toString()
         val operatorUUID = UUID.randomUUID()
 
         val childUUIDS = childs.map { UUID.randomUUID() }
@@ -41,7 +43,7 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
             val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = name2,
+                parent = identifier.toString(),
                 childUUIDS[childIndex],
                 nextUUID,
                 context
@@ -49,30 +51,25 @@ class Repeat(private val option: RepeatOption, private vararg val childs: Node) 
         }
 
         val inputs = mutableMapOf(
-            "TIMES" to when (option) {
-                is RepeatOption.Times -> createTimes(option.times.toString())
-                is RepeatOption.Until -> createBlockRef(operatorUUID.toString())
-            }
+            "TIMES" to setValue(option, operatorUUID)
         )
 
-
-        if (childs.isNotEmpty()) {
-            inputs["SUBSTACK"] = de.jensklingenberg.scratch.createSubStack(childUUIDS.first().toString())
+        childs.firstOrNull()?.let {
+            inputs["SUBSTACK"] = createSubStack(childUUIDS.first().toString())
         }
 
-        visitors[name2] = BlockSpec(
+        visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_repeat,
             inputs = inputs
-        ).toBlock(newNext, parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
+        
+        option.visit(
+            visitors,
+            identifier.toString(),
+            operatorUUID,
+            null,
+            context
+        )
 
-        if (option is RepeatOption.Until) {
-            option.reporterBlock.visit(
-                visitors,
-                identifier.toString(),
-                operatorUUID,
-                null,
-                context
-            )
-        }
     }
 }

@@ -35,7 +35,7 @@ data class AskandWait(val content: LooksSayContent) : Node {
             opcode = OpCode.sensing_askandwait,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, context.topLevel)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent, context.topLevel)
 
         if (content is LooksSayContent.Reporter) {
             content.operatorSpec.visit(

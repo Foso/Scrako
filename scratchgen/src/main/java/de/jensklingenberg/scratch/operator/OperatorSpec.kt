@@ -13,8 +13,7 @@ interface BooleanBlock : ReporterBlock
 
 
 abstract class Operator(
-    private val operand1: ReporterBlock,
-    private val operand2: ReporterBlock,
+    private val operand1: List<ReporterBlock>,
     private val inputName: List<String>,
     private val opCode: String
 ) : Node, ReporterBlock {
@@ -25,17 +24,19 @@ abstract class Operator(
         nextUUID: UUID?,
         context: Context
     ) {
-        val operatorUUID1 = UUID.randomUUID()
-        val operatorUUID2 = UUID.randomUUID()
+        val operatorUUID1 = operand1.associateWith { UUID.randomUUID() }
+
+        val inputs = inputName.mapIndexed { index, s ->
+            s to setValue(operand1[index], operatorUUID1[operand1[index]]!!)
+        }.toMap()
         visitors[identifier.toString()] = BlockSpec(
             opcode = opCode,
-            inputs = mapOf(
-                inputName[0] to setValue(operand1, operatorUUID1),
-                inputName[1] to setValue(operand2, operatorUUID2)
-            )
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
-        operand1.visit(visitors, identifier.toString(), operatorUUID1, null, context)
-        operand2.visit(visitors, identifier.toString(), operatorUUID2, null, context)
+            inputs = inputs
+        ).toBlock(nextUUID, parent, context.topLevel)
+        operatorUUID1.forEach { (t, u) ->
+            t.visit(visitors, identifier.toString(), u, null, context)
+        }
+       // operand2?.visit(visitors, identifier.toString(), operatorUUID2, null, context)
     }
 
     operator fun plus(add: Add): Add {
@@ -56,4 +57,4 @@ abstract class Operator(
 }
 
 
-fun createNum(message: String) = createMessage(1, 4, message)
+fun createNum(message: String) = createMessage(1, 10, message)

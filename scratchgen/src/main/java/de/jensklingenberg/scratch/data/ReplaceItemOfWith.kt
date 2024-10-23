@@ -29,7 +29,7 @@ class ReplaceItemOfWith(
                 "ITEM" to createLiteralMessage(replace)
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, index == 0)
+        ).toBlock(nextUUID, parent, index == 0)
     }
 }
 

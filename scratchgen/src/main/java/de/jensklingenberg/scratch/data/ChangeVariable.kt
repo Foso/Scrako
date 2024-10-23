@@ -21,6 +21,6 @@ class ChangeVariable(private val variable: ScratchVariable, private val item: In
             opcode = OpCode.data_changevariableby,
             inputs = mapOf("VALUE" to createLiteralMessage(item.toString())),
             fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }

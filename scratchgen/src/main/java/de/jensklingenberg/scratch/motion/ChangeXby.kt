@@ -6,7 +6,6 @@ import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createMessage
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
@@ -25,7 +24,7 @@ class ChangeXby(val value: ReporterBlock) : Node, ReporterBlock {
             inputs = mapOf(
                 "DX" to setValue(value, operatorUUID)
             )
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
         value.visit(visitors, identifier.toString(), operatorUUID, null, context)
     }
 }

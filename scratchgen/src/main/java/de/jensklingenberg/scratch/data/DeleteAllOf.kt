@@ -21,7 +21,7 @@ class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_deletealloflist,
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
 

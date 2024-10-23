@@ -28,7 +28,7 @@ class Definition(
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.procedures_definition,
             inputs = mapOf("custom_block" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(protoUUID.toString())))),
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
 
         Prototype(this.prototypeName, withoutRefresh, inputs).visit(
             visitors,
@@ -104,7 +104,7 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
                 argumentnames = "[$argumentNames]",
                 argumentids = "[${argIds.joinToString { "\"" + it.toString() + "\"" }}]",
             )
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
 

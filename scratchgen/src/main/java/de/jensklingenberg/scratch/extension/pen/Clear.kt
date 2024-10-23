@@ -16,6 +16,6 @@ class EraseAll : Node {
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = PenOpCode.pen_clear,
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }

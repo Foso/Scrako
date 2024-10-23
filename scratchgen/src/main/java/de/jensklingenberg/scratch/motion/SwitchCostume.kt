@@ -24,7 +24,7 @@ class SwitchCostume(private val value: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_switchcostumeto,
             inputs = mapOf("COSTUME" to JsonArray(listOf(JsonPrimitive(2), JsonPrimitive(protoUUID.toString())))),
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
 
         value.visit(visitors, identifier.toString(), protoUUID, null, context)
     }

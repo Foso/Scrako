@@ -5,7 +5,6 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.looks.StringReporter
 import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.model.Mutation
 import de.jensklingenberg.scratch.motion.IntBlock
@@ -51,7 +50,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
                     listOf(JsonPrimitive(1),  JsonPrimitive(test.toString()))
                 )
             }
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
 
 
         GreaterThan(IntBlock(3),IntBlock(4)).visit(

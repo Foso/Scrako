@@ -21,7 +21,7 @@ class AddToList(private val item: String, private val list: de.jensklingenberg.s
             opcode = OpCode.data_addtolist,
             inputs = mapOf("ITEM" to createLiteralMessage(item)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
 

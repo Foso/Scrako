@@ -6,8 +6,7 @@ import de.jensklingenberg.scratch.motion.DoubleBlock
 import de.jensklingenberg.scratch.motion.IntBlock
 
 class PickRandom(from: ReporterBlock, to: ReporterBlock) : Operator(
-    from,
-    to,
+    listOf(from),
     listOf("FROM", "TO"),
     OpCode.operator_random
 ), ReporterBlock

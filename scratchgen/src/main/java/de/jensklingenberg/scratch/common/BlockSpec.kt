@@ -17,9 +17,9 @@ open class BlockSpec(
 ) : CommonBlockSpec {
 
     open var comment: Comment? = null
-    fun toBlock(next: String?, parent: String?, topLevel: Boolean, comment: String? = null) = Block(
+    fun toBlock(next: UUID?, parent: String?, topLevel: Boolean, comment: String? = null) = Block(
         opcode = opcode,
-        next = next,
+        next = next?.toString(),
         parent = parent,
         inputs = inputs,
         fields = fields,
@@ -29,7 +29,6 @@ open class BlockSpec(
         y = y,
         comment = comment,
         mutation = mutation
-
     )
 
     override fun visit(
@@ -41,7 +40,7 @@ open class BlockSpec(
     ) {
         comment?.addBlock(identifier.toString())
         visitors[identifier.toString()] =
-            toBlock(nextUUID?.toString(), context.parent, context.topLevel, comment?.id)
+            toBlock(nextUUID, context.parent, context.topLevel, comment?.id)
     }
 
     fun addComment(comment: Comment): Node {

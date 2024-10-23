@@ -22,6 +22,6 @@ class ItemNumOfList(private val item: Int, private val list: de.jensklingenberg.
             opcode = OpCode.data_itemnumoflist,
             inputs = mapOf("ITEM" to createLiteralMessage(item.toString())),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }

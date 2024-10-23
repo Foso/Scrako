@@ -25,7 +25,7 @@ class PointTowards(private val target: String) : Node{
             inputs = mapOf(
                 "TOWARDS" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString())))
             )
-        ).toBlock(nextUUID?.toString(), parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
 
         PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }

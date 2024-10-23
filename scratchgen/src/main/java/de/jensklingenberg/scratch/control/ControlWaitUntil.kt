@@ -1,14 +1,15 @@
 package de.jensklingenberg.scratch.control
 
-
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scratch.operator.BooleanBlock
 import java.util.UUID
 
-class Stop(private val option: StopOption) : Node {
+class ControlWaitUntil(private val block: BooleanBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -16,19 +17,13 @@ class Stop(private val option: StopOption) : Node {
         nextUUID: UUID?,
         context: Context
     ) {
-
-        if (option == StopOption.ALL && nextUUID != null) {
-            throw IllegalArgumentException("Stop block with All cannot have a next block")
-        }
-        val newNext = nextUUID
+        val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.control_stop,
-            fields = mapOf("STOP_OPTION" to listOf((option.s), null))
-        ).toBlock(newNext, parent, context.topLevel)
+            opcode = OpCode.control_wait_until,
+            inputs = mapOf(
+                "CONDITION" to setValue(block, uuid)
+            )
+        ).toBlock(nextUUID, parent, context.topLevel)
+        block.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }
 }
-
-enum class StopOption(val s: String) {
-    ALL("all"), OTHER("other scripts in sprite"), THIS("this script")
-}
-

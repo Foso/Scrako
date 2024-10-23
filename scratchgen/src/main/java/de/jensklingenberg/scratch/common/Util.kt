@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.common
 import de.jensklingenberg.scratch.looks.StringReporter
 import de.jensklingenberg.scratch.motion.DoubleBlock
 import de.jensklingenberg.scratch.motion.IntBlock
+import de.jensklingenberg.scratch.operator.OperatorAnd
 import de.jensklingenberg.scratch.operator.createNum
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -98,7 +99,18 @@ fun setValue(
         createLiteralMessage(reporterBlock.value)
     }
 
+    is OperatorAnd -> {
+        createCondition( operatorUUID.toString())
+    }
+
     else -> {
         createBlockRef(operatorUUID.toString())
     }
 }
+
+fun createCondition(operatorId: String) = JsonArray(
+    listOf(
+        JsonPrimitive(2),
+        JsonPrimitive(operatorId)
+    )
+)

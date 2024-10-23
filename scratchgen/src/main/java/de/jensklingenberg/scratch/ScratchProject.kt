@@ -125,25 +125,25 @@ fun copyFiles(targetPath: String) {
     val soundFiles = File(resFolder + "sounds").listFiles()
 
     soundFiles?.forEach {
-        Files.copy(it.toPath(), File("$targetPath/Archive(1)/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+        Files.copy(it.toPath(), File("$targetPath/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
     }
 
     val spriteFiles = File(resFolder + "sprites").listFiles()
 
     spriteFiles?.forEach {
-        Files.copy(it.toPath(), File("$targetPath/Archive(1)/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+        Files.copy(it.toPath(), File("$targetPath/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
     }
 }
 
 fun writeProject(scratchProject: ScratchProject) {
-    val targetPath = "/Users/jens.klingenberg/Downloads"
+    val targetPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
     copyFiles(targetPath)
 
     val text = Json.encodeToString(ScratchProject.serializer(), scratchProject)
 
-    File("/Users/jens.klingenberg/Downloads/Archive(1)/project.json").writeText(text)
+    File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"+"/project.json").writeText(text)
 
-    val command = listOf("zip", "-r", "./test2.sb3", "./Archive(1)/")
+    val command = listOf("zip", "-r", "./test2.sb3", "./")
     val processBuilder = ProcessBuilder(command)
     processBuilder.directory(File(targetPath))
     processBuilder.inheritIO() // This will redirect the output to the console
@@ -158,16 +158,7 @@ fun writeProject(scratchProject: ScratchProject) {
 }
 
 
-private fun createCondition(operatorId: String) = JsonArray(
-    listOf(
-        JsonPrimitive(2),
-        JsonArray(
-            listOf(
-                JsonPrimitive(operatorId)
-            )
-        )
-    )
-)
+
 
 
 fun createSubStack(message: String) = JsonArray(

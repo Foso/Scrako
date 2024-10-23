@@ -1,15 +1,39 @@
 package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scratch.common.BlockSpec
+import de.jensklingenberg.scratch.common.Context
+import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.createMessage
+import de.jensklingenberg.scratch.common.ReporterBlock
+import de.jensklingenberg.scratch.common.setValue
+import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scratch.motion.DoubleBlock
+import de.jensklingenberg.scratch.motion.IntBlock
+import de.jensklingenberg.scratch.operator.BooleanBlock
+import java.util.UUID
 
-class Wait(seconds: Int) : BlockSpec(
-    opcode = OpCode.ControlWait,
-    inputs = mapOf(
-        "DURATION" to createDuration(seconds.toString())
-    )
-)
+class Wait(private val seconds: ReporterBlock) : Node {
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        parent: String?,
+        identifier: UUID,
+        nextUUID: UUID?,
+        context: Context
+    ) {
+        val uuid = UUID.randomUUID()
+        visitors[identifier.toString()] = BlockSpec(
+            opcode = OpCode.ControlWait,
+            inputs = mapOf(
+                "DURATION" to setValue(seconds,uuid)
+            )
+        ).toBlock(nextUUID, parent, context.topLevel)
+        seconds.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
+    }
+}
 
-private fun createDuration(message: String) = createMessage(1, 5, message)
+fun NodeBuilder.wait(seconds: Double) = addChild(Wait(DoubleBlock(seconds)))
+fun NodeBuilder.wait(seconds: Int) = addChild(Wait(IntBlock(seconds)))
+fun NodeBuilder.wait(block: ReporterBlock) = addChild(Wait(block))
+
+fun NodeBuilder.waitUntil(block: BooleanBlock) = addChild(ControlWaitUntil(block))
