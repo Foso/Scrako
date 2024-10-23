@@ -12,3 +12,10 @@ class WhenFlagClicked : BlockSpec(
     opcode = OpCode.Whenflagclicked,
 ), Event, HatBlock
 
+
+
+class WhenStartAsClone : BlockSpec(
+    opcode = OpCode.control_start_as_clone,
+), Event, HatBlock
+
+fun NodeBuilder.whenStartAsClone() = addChild(WhenStartAsClone())

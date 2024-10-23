@@ -1,5 +1,6 @@
 package de.jensklingenberg.scratch.common
 
+import de.jensklingenberg.scratch.event.Event
 import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.model.Comment
 import de.jensklingenberg.scratch.model.Mutation
@@ -38,6 +39,9 @@ open class BlockSpec(
         nextUUID: UUID?,
         context: Context
     ) {
+        if(this is Event && parent != null) {
+            throw IllegalStateException("Event blocks can't have a parent")
+        }
         comment?.addBlock(identifier.toString())
         visitors[identifier.toString()] =
             toBlock(nextUUID, context.parent, context.topLevel, comment?.id)

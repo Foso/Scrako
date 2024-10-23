@@ -8,7 +8,9 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.createSubStack
+import de.jensklingenberg.scratch.looks.StringReporter
 import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scratch.operator.OperatorEquals
 import java.util.UUID
 
 fun NodeBuilder.ifElse(
@@ -23,18 +25,18 @@ fun NodeBuilder.ifElse(
     )
 )
 
-fun NodeBuilder.switch(operatorSpec: SwitchContext.() -> Unit) {
+fun NodeBuilder.switch(block: ReporterBlock,operatorSpec: SwitchContext.() -> Unit) {
     val test = SwitchContext().apply(operatorSpec)
 
     if(test.mutableList.size == 1){
-        ifThen(test.mutableList.first().operatorSpec){
+        ifThen(OperatorEquals(block,test.mutableList.first().operatorSpec)){
             test.mutableList.first().leftStack(this)
         }
     }else{
-        ifElse(test.mutableList.first().operatorSpec,{
+        ifElse(OperatorEquals(block,test.mutableList.first().operatorSpec),{
             test.mutableList.first().leftStack(this)
         },{
-            switch {
+            switch(block) {
                 test.mutableList.drop(1).forEach {
                     case(it.operatorSpec,it.leftStack)
                 }
@@ -44,6 +46,7 @@ fun NodeBuilder.switch(operatorSpec: SwitchContext.() -> Unit) {
 }
 
 fun SwitchContext.case(operatorSpec: ReporterBlock,leftStack: NodeBuilder.() -> Unit,) = addChild(Case(operatorSpec,leftStack))
+fun SwitchContext.case(operatorSpec: String,leftStack: NodeBuilder.() -> Unit,) = addChild(Case(StringReporter(operatorSpec),leftStack))
 
 class SwitchContext{
     val mutableList = mutableListOf<Case>()
@@ -132,19 +135,18 @@ class IfE(
         nextUUID: UUID?,
         context: Context
     ) {
-        val name2 = identifier.toString()
         val newNext = nextUUID
         val operatorUUID = UUID.randomUUID()
         val leftUUIDs = leftStack.map { UUID.randomUUID() }
 
-        visitors[name2] = BlockSpec(
+        visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_if,
             inputs = mapOf(
                 "CONDITION" to createSubStack(operatorUUID.toString()),
                 "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
             )
         ).toBlock(newNext, parent, context.topLevel)
-        reporterBlock.visit(visitors, name2, operatorUUID, null, context)
+        reporterBlock.visit(visitors, identifier.toString(), operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -153,7 +155,7 @@ class IfE(
             val nextUUID = if (nextchild) leftUUIDs[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = name2,
+                parent = identifier.toString(),
                 leftUUIDs[childIndex],
                 nextUUID,
                 context
