@@ -15,3 +15,15 @@ object Loudness : BlockSpec(
 object Username : BlockSpec(
     opcode = OpCode.sensing_username,
 ), ReporterBlock
+
+object MouseDown : BlockSpec(
+    opcode = OpCode.sensing_mousedown,
+), ReporterBlock
+
+object MouseX : BlockSpec(
+    opcode = OpCode.sensing_mousex,
+), ReporterBlock
+
+object MouseY : BlockSpec(
+    opcode = OpCode.sensing_mousey,
+), ReporterBlock

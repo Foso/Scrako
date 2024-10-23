@@ -5,12 +5,10 @@ import de.jensklingenberg.scratch.common.HatBlock
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.NodeBuilder
 
-fun NodeBuilder.whenFlagClicked(x: Int = 0, y: Int = 0) = addChild(WhenFlagClicked(x, y))
+fun NodeBuilder.whenFlagClicked() = addChild(WhenFlagClicked())
 
 
-class WhenFlagClicked(x: Int = 0, y: Int = 0) : BlockSpec(
+class WhenFlagClicked : BlockSpec(
     opcode = OpCode.Whenflagclicked,
-    x = x,
-    y = y
 ), Event, HatBlock
 

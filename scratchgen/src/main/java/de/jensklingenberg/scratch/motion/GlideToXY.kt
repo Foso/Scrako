@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createMessage
-import de.jensklingenberg.scratch.operator.OperatorSpec
+import de.jensklingenberg.scratch.operator.Operator
 
 class GlideToXY(sec: String, toX: String, toY: String) : BlockSpec(
     opcode = OpCode.motion_glidesecstoxy,
@@ -19,7 +19,7 @@ class GlideToXY(sec: String, toX: String, toY: String) : BlockSpec(
 fun checkType(data: Any): Int {
 
   return  when(data){
-        is OperatorSpec->{
+        is Operator ->{
             ScratchType.BLOCKREF.value
         }
 

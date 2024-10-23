@@ -5,6 +5,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 class OpCode(val value: String) {
     companion object {
+        val looks_size = "looks_size"
+        val sensing_mousey = "sensing_mousey"
+        val sensing_mousex = "sensing_mousex"
+        val sensing_mousedown = "sensing_mousedown"
         val sensing_username = "sensing_username"
         val sensing_loudness = "sensing_loudness"
         val sensing_timer = "sensing_timer"
