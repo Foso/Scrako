@@ -67,4 +67,5 @@ sealed interface LooksSayContent {
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
+fun NodeBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(),seconds)
 fun NodeBuilder.say(message: String, seconds: Int? = null) = addChild(Say(LooksSayContent.Literal(message), seconds))
