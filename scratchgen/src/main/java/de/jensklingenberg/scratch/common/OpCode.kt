@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 class OpCode(val value: String) {
     companion object {
+        val sound_play = "sound_play"
         val sensing_coloristouchingcolor = "sensing_coloristouchingcolor"
         val control_start_as_clone = "control_start_as_clone"
         val sensing_touchingcolor = "sensing_touchingcolor"

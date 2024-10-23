@@ -25,6 +25,8 @@ fun NodeBuilder.ifElse(
     )
 )
 
+fun NodeBuilder.switch(block: String,operatorSpec: SwitchContext.() -> Unit)  = switch(StringReporter(block),operatorSpec)
+
 fun NodeBuilder.switch(block: ReporterBlock,operatorSpec: SwitchContext.() -> Unit) {
     val test = SwitchContext().apply(operatorSpec)
 

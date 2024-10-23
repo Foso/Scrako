@@ -33,3 +33,13 @@ val sound1 = Sound(
     md5ext = "83c36d806dc92327b9e7049a565c6bff.wav"
 )
 
+val sound2 = Sound(
+    name = "Test",
+    assetId = "83a9787d4cb6f3b7632b4ddfebf74367",
+    dataFormat = "wav",
+    format = "",
+    rate = 48000,
+    sampleCount = 40681,
+    md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+)
+
