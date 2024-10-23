@@ -5,8 +5,10 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.looks.StringReporter
 import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.model.Mutation
+import de.jensklingenberg.scratch.motion.IntBlock
 import de.jensklingenberg.scratch.operator.GreaterThan
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -52,7 +54,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
 
 
-        GreaterThan(3,4).visit(
+        GreaterThan(IntBlock(3),IntBlock(4)).visit(
             visitors,
             identifier.toString(),
             test,

@@ -121,7 +121,7 @@ fun NodeBuilder.ife(
 ) = addChild(IfE(operatorSpec, leftStack = NodeBuilder().apply(leftStack).childs))
 
 class IfE(
-    private val operatorSpec: ReporterBlock,
+    private val reporterBlock: ReporterBlock,
     private val leftStack: List<Node>
 ) : Node {
 
@@ -144,7 +144,7 @@ class IfE(
                 "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
             )
         ).toBlock(newNext, parent, context.topLevel)
-        operatorSpec.visit(visitors, name2, operatorUUID, null, context)
+        reporterBlock.visit(visitors, name2, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =

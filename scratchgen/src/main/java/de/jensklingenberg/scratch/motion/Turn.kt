@@ -3,15 +3,14 @@ package de.jensklingenberg.scratch.motion
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createMessage
+import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scratch.operator.createNum
 import java.util.UUID
 
-class ChangeXby(val value: ReporterBlock) : Node, ReporterBlock {
+abstract class Turn(val opcode: String, private val reporterBlock: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -20,16 +19,16 @@ class ChangeXby(val value: ReporterBlock) : Node, ReporterBlock {
         context: Context
     ) {
         val operatorUUID = UUID.randomUUID()
+
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.motion_changexby,
+            opcode = opcode,
             inputs = mapOf(
-                "DX" to setValue(value, operatorUUID)
+                "DEGREES" to setValue(reporterBlock, operatorUUID)
             )
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
-        value.visit(visitors, identifier.toString(), operatorUUID, null, context)
-    }
-}
+        reporterBlock.visit(visitors, identifier.toString(), operatorUUID, null, context)
 
-fun NodeBuilder.changeXby(value: ReporterBlock) = addChild(ChangeXby(value))
-fun NodeBuilder.changeXby(value: Double) = addChild(ChangeXby(DoubleBlock(value)))
-fun NodeBuilder.changeXby(value: Int) = addChild(ChangeXby(IntBlock(value)))
+    }
+
+
+}

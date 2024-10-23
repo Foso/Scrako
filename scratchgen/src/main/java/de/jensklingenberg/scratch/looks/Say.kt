@@ -4,17 +4,18 @@ package de.jensklingenberg.scratch.looks
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
+import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
-import de.jensklingenberg.scratch.common.createSecs
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.getScratchType
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 
-data class Say(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
+data class Say(private val content: ReporterBlock, private val seconds: Int? = null) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -28,15 +29,15 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
-                is LooksSayContent.Literal -> createLiteralMessage(content.message)
-                is LooksSayContent.Reporter -> {
+                is StringReporter -> createLiteralMessage(content.value)
+                else -> {
                     createBlockRef(operatorUUID.toString())
                 }
             }
         )
 
         if (seconds != null) {
-            inputMap["SECS"] = createSecs(seconds.toString())
+            inputMap["SECS"] = getScratchType(seconds.toString(), ScratchType.POSITIVE_NUMBER)
         }
 
         val opCode = when (seconds) {
@@ -49,15 +50,14 @@ data class Say(private val content: LooksSayContent, private val seconds: Int? =
         )
         visitors[identifier.toString()] = spec.toBlock(nextUUID?.toString(), parent, context.topLevel)
 
-        if (content is LooksSayContent.Reporter) {
-            content.operatorSpec.visit(
-                visitors,
-                identifier.toString(),
-                operatorUUID,
-                null,
-                context.copy(topLevel = false)
-            )
-        }
+        content.visit(
+            visitors,
+            identifier.toString(),
+            operatorUUID,
+            null,
+            context.copy(topLevel = false)
+        )
+
     }
 }
 
@@ -66,6 +66,18 @@ sealed interface LooksSayContent {
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
-fun NodeBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(LooksSayContent.Reporter(reporterBlock)))
-fun NodeBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(),seconds)
-fun NodeBuilder.say(message: String, seconds: Int? = null) = addChild(Say(LooksSayContent.Literal(message), seconds))
+class StringReporter(val value: String) : ReporterBlock {
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        parent: String?,
+        identifier: UUID,
+        nextUUID: UUID?,
+        context: Context
+    ) {
+
+    }
+}
+
+fun NodeBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))
+fun NodeBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
+fun NodeBuilder.say(message: String, seconds: Int? = null) = addChild(Say(StringReporter(message), seconds))

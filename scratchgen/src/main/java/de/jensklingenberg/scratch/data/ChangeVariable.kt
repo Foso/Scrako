@@ -1,5 +1,6 @@
 package de.jensklingenberg.scratch.data
 
+import de.jensklingenberg.scratch.ScratchVariable
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -8,7 +9,7 @@ import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class ChangeVariable(private val variable: de.jensklingenberg.scratch.ScratchVariable, private val item: Int) : Node {
+class ChangeVariable(private val variable: ScratchVariable, private val item: Int) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

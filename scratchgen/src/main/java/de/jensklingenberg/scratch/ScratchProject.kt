@@ -44,7 +44,7 @@ class Broadcast(val name: String) {
     val id: UUID = UUID.randomUUID()
 }
 
-class ScratchVariable(val name: String, val value: String) {
+class ScratchVariable(val name: String) {
     val id: UUID = UUID.randomUUID()
 }
 
@@ -72,7 +72,7 @@ fun createStage(
         it.id.toString() to JsonArray(
             listOf(
                 JsonPrimitive(it.name),
-                JsonPrimitive(it.value)
+                JsonPrimitive("")
             )
         )
     },

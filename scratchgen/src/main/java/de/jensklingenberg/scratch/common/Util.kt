@@ -1,10 +1,30 @@
 package de.jensklingenberg.scratch.common
 
+import de.jensklingenberg.scratch.looks.StringReporter
+import de.jensklingenberg.scratch.motion.DoubleBlock
+import de.jensklingenberg.scratch.motion.IntBlock
+import de.jensklingenberg.scratch.operator.createNum
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
+import java.util.UUID
+
+enum class ScratchType(val value: Int) {
+    BLOCKREF(3),
+    NUMBER(4),
+    POSITIVE_NUMBER(5),
+    POSITIVE_INT(6),
+    INT(7),
+    ANGLE(8),
+    COLOR(9),
+    STRING(10),
+    BROADCAST(11),
+    VARIABLE(12),
+    LIST(13)
+}
 
 
-fun createLiteralMessage(message: String) = createMessage(1, 10, message)
+
+fun createLiteralMessage(message: String) = createMessage(1, ScratchType.STRING.value, message)
 
 fun createMessage(first: Int, second: Int, message: String): JsonArray {
     if (message.length > 330) {
@@ -30,7 +50,7 @@ fun createBlockRef(refId: String) = JsonArray(
         JsonPrimitive(refId),
         JsonArray(
             listOf(
-                JsonPrimitive(10),
+                JsonPrimitive(ScratchType.STRING.value),
                 JsonPrimitive("Hello")
             )
         )
@@ -38,12 +58,12 @@ fun createBlockRef(refId: String) = JsonArray(
 )
 
 
-fun createSecs(message: String = "1") = JsonArray(
+fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
     listOf(
         JsonPrimitive(1),
         JsonArray(
             listOf(
-                JsonPrimitive(5),
+                JsonPrimitive(scratchType.value),
                 JsonPrimitive(message)
             )
         )
@@ -62,3 +82,23 @@ fun createTimes(message: String = "10") = JsonArray(
     )
 )
 
+fun setValue(
+    reporterBlock: ReporterBlock,
+    operatorUUID: UUID
+) = when (reporterBlock) {
+    is IntBlock -> {
+        createNum(reporterBlock.value.toString())
+    }
+
+    is DoubleBlock -> {
+        createNum(reporterBlock.value.toString())
+    }
+
+    is StringReporter -> {
+        createLiteralMessage(reporterBlock.value)
+    }
+
+    else -> {
+        createBlockRef(operatorUUID.toString())
+    }
+}

@@ -5,9 +5,10 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
-import de.jensklingenberg.scratch.common.createSecs
+import de.jensklingenberg.scratch.common.getScratchType
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
@@ -33,7 +34,7 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
         )
 
         if (seconds != null) {
-            inputMap["SECS"] = createSecs(seconds.toString())
+            inputMap["SECS"] = getScratchType(seconds.toString(),ScratchType.NUMBER)
         }
 
         val opCode = when (seconds) {
