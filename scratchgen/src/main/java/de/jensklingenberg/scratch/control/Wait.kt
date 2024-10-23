@@ -1,6 +1,7 @@
 package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scratch.common.BlockSpec
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.createMessage
 

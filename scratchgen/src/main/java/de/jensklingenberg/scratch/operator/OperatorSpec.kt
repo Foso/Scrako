@@ -2,6 +2,7 @@ package de.jensklingenberg.scratch.operator
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
@@ -13,10 +14,11 @@ import java.util.UUID
 interface BooleanBlock : ReporterBlock
 
 abstract class OperatorSpec(
-    override val opcode: String, map: Map<String, JsonArray>
+    override val opcode: String, inputs: Map<String, JsonArray> = emptyMap(), fields : Map<String,List<String?>> =  emptyMap()
 ) : BlockSpec(
-    opcode, inputs = map
+    opcode, inputs = inputs, fields = fields
 ) {
+
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -26,14 +28,25 @@ abstract class OperatorSpec(
     ) {
         super.visit(visitors, parent, identifier, null, context)
     }
+
+
 }
 
-class OperatorAdd(operand1: Int, operand2: Int) : OperatorSpec(
-    OpCode.operator_add, mapOf(
-        "OPERAND1" to createNum(operand1.toString()),
-        "OPERAND2" to createNum(operand2.toString())
+
+
+class OperatorMathOps(operand1: String, operand2: Int) : OperatorSpec(
+    OpCode.operator_mathop, inputs = mapOf(
+        "NUM" to createMessage(1,4,operand1),
+        "OPERATOR" to createNum(operand2.toString())
     )
 )
+
+class OperatorAdd(operand1: Int, operand2: Int) : OperatorSpec(
+    OpCode.operator_add, inputs = mapOf(
+        "NUM1" to createNum(operand1.toString()),
+        "NUM2" to createNum(operand2.toString())
+    )
+), ReporterBlock
 
 class OperatorContains(operand1: String, operand2: String) : OperatorSpec(
     OpCode.operator_contains, mapOf(
@@ -110,6 +123,8 @@ fun createOperand(message: String) = JsonArray(
         )
     )
 )
-
-
+fun contains(operand1: String, operand2: String) = OperatorContains(operand1, operand2)
+fun lt(operand1: Int, operand2: Int) = LessThan(operand1, operand2)
+fun gt(operand1: Int, operand2: Int) = GreaterThan(operand1, operand2)
+fun add(operand1: Int, operand2: Int) = OperatorAdd(operand1, operand2)
 fun createNum(message: String) = createMessage(1, 4, message)

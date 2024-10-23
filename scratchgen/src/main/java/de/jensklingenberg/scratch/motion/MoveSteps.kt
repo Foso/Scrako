@@ -5,9 +5,9 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.operator.createNum
 
-class Move(steps: Int) : BlockSpec(
+class Move(steps: Double) : BlockSpec(
     opcode = OpCode.motion_movesteps,
     inputs = mapOf("STEPS" to createNum(steps.toString()))
 )
 
-fun NodeBuilder.move(steps: Int) = addChild(Move(steps))
+fun NodeBuilder.move(steps: Double) = addChild(Move(steps))

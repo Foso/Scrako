@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 class OpCode(val value: String) {
     companion object {
+        val operator_mathop = "operator_mathop"
+        val motion_glidesecstoxy = "motion_glidesecstoxy"
+        val motion_setrotationstyle = "motion_setrotationstyle"
         val operator_contains = "operator_contains"
         val argument_reporter_boolean = "argument_reporter_boolean"
         val argument_reporter_string_number = "argument_reporter_string_number"

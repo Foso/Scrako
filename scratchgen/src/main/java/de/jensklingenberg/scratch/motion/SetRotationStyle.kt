@@ -5,14 +5,10 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class SwitchCostume(private val value: ReporterBlock) : Node {
-
+private class SetRotationStyle(private val style: RotationStyle) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -20,14 +16,17 @@ class SwitchCostume(private val value: ReporterBlock) : Node {
         nextUUID: UUID?,
         context: Context
     ) {
-        val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.looks_switchcostumeto,
-            inputs = mapOf("COSTUME" to JsonArray(listOf(JsonPrimitive(2), JsonPrimitive(protoUUID.toString())))),
+            opcode = OpCode.motion_setrotationstyle,
+            fields = mapOf("STYLE" to listOf(style.spriteName, null))
         ).toBlock(nextUUID?.toString(), parent, context.topLevel)
-
-        value.visit(visitors, identifier.toString(), protoUUID, null, context)
     }
 }
 
-fun NodeBuilder.switchCostume(value: ReporterBlock) = addChild(SwitchCostume(value))
+enum class RotationStyle(val spriteName: String) {
+    ALL_AROUND("all around"),
+    LEFT_RIGHT("left-right"),
+    DONT_ROTATE("don't rotate")
+}
+
+fun NodeBuilder.setRotationStyle(style: RotationStyle) = addChild(SetRotationStyle(style))
