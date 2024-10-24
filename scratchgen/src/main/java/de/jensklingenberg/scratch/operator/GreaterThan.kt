@@ -7,7 +7,7 @@ import de.jensklingenberg.scratch.motion.DoubleBlock
 import de.jensklingenberg.scratch.motion.IntBlock
 
 class GreaterThan(operand1: ReporterBlock, operand2: ReporterBlock) : Operator(
-    listOf(operand1,operand2), listOf("OPERAND1", "OPERAND2"), OpCode.operator_gt
+    listOf(operand1, operand2), listOf("OPERAND1", "OPERAND2"), OpCode.operator_gt
 ), ReporterBlock, BooleanBlock
 
 fun gt(operand1: Double, operand2: Double) = GreaterThan(DoubleBlock(operand1), DoubleBlock(operand2))

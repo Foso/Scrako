@@ -7,8 +7,8 @@ import de.jensklingenberg.scratch.motion.DoubleBlock
 import de.jensklingenberg.scratch.motion.IntBlock
 
 
-class Subtract(operand : ReporterBlock, operand2: ReporterBlock) : Operator(
-    listOf(operand,operand2),
+class Subtract(operand: ReporterBlock, operand2: ReporterBlock) : Operator(
+    listOf(operand, operand2),
     listOf("OPERAND1", "OPERAND2"),
     OpCode.operator_subtract
 ), ReporterBlock

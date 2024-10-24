@@ -36,7 +36,7 @@ abstract class Operator(
         operatorUUID1.forEach { (t, u) ->
             t.visit(visitors, identifier.toString(), u, null, context)
         }
-       // operand2?.visit(visitors, identifier.toString(), operatorUUID2, null, context)
+        // operand2?.visit(visitors, identifier.toString(), operatorUUID2, null, context)
     }
 
     operator fun plus(add: Add): Add {

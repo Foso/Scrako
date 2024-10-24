@@ -23,8 +23,6 @@ enum class ScratchType(val value: Int) {
     LIST(13)
 }
 
-
-
 fun createLiteralMessage(message: String) = createMessage(1, ScratchType.STRING.value, message)
 
 fun createMessage(first: Int, second: Int, message: String): JsonArray {
@@ -57,7 +55,6 @@ fun createBlockRef(refId: String) = JsonArray(
         )
     )
 )
-
 
 fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
     listOf(
@@ -101,7 +98,7 @@ fun setValue(
     }
 
     is And -> {
-        createCondition( operatorUUID.toString())
+        createCondition(operatorUUID.toString())
     }
 
     else -> {

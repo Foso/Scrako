@@ -34,7 +34,7 @@ class CreateCloneOf(private val spriteName: String) : Node {
     }
 }
 
-private class CreateCloneOfMenu(private val spriteName: String) : Node{
+private class CreateCloneOfMenu(private val spriteName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -49,6 +49,6 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node{
     }
 }
 
-fun NodeBuilder.createCloneOf(spriteName: String)  = addChild(CreateCloneOf(spriteName))
+fun NodeBuilder.createCloneOf(spriteName: String) = addChild(CreateCloneOf(spriteName))
 
-fun NodeBuilder.createCloneOf(spriteName: Sprite)  = createCloneOf(spriteName.name)
+fun NodeBuilder.createCloneOf(spriteName: Sprite) = createCloneOf(spriteName.name)

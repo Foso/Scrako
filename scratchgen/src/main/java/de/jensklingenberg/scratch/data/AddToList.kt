@@ -1,6 +1,7 @@
 package de.jensklingenberg.scratch.data
 
 
+import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -9,7 +10,7 @@ import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class AddToList(private val item: String, private val list: de.jensklingenberg.scratch.ScratchList) : Node {
+class AddToList(private val item: String, private val list: ScratchList) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

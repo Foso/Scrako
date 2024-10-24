@@ -18,15 +18,15 @@ class GlideToXY(sec: String, toX: String, toY: String) : BlockSpec(
 
 fun checkType(data: Any): Int {
 
-  return  when(data){
-        is Operator ->{
+    return when (data) {
+        is Operator -> {
             ScratchType.BLOCKREF.value
         }
 
-      else -> {
-          ScratchType.STRING.value
-      }
-  }
+        else -> {
+            ScratchType.STRING.value
+        }
+    }
 }
 
 fun NodeBuilder.glideToXY(sec: Double, toX: Double, toY: Double) =

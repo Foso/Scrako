@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch.common
 
-class NodeBuilder{
+class NodeBuilder {
 
     fun addChild(whenFlagClicked: Node) {
         childs.add(whenFlagClicked)

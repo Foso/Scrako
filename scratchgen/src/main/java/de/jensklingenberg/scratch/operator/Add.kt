@@ -7,7 +7,7 @@ import de.jensklingenberg.scratch.motion.DoubleBlock
 import de.jensklingenberg.scratch.motion.IntBlock
 
 class Add(operand1: ReporterBlock, operand2: ReporterBlock) :
-    Operator(listOf(operand1,operand2), listOf("NUM1", "NUM2"), OpCode.operator_add), ReporterBlock
+    Operator(listOf(operand1, operand2), listOf("NUM1", "NUM2"), OpCode.operator_add), ReporterBlock
 
 
 fun add(operand1: Double, operand2: Double) = Add(DoubleBlock(operand1), DoubleBlock(operand2))

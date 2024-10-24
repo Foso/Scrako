@@ -62,7 +62,7 @@ class Repeat(private val option: ReporterBlock, private vararg val childs: Node)
             opcode = OpCode.control_repeat,
             inputs = inputs
         ).toBlock(nextUUID, parent, context.topLevel)
-        
+
         option.visit(
             visitors,
             identifier.toString(),

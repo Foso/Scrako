@@ -16,7 +16,7 @@ class TouchingColor(color: String) : BlockSpec(
 
 fun NodeBuilder.touchingColor(color: String) = addChild(TouchingColor(color))
 
-class ColorIsTouchingColor(color: String,color2: String) : BlockSpec(
+class ColorIsTouchingColor(color: String, color2: String) : BlockSpec(
     opcode = OpCode.sensing_coloristouchingcolor,
     inputs = mapOf(
         "COLOR" to createMessage(1, 9, color),
@@ -24,4 +24,4 @@ class ColorIsTouchingColor(color: String,color2: String) : BlockSpec(
     )
 ), BooleanBlock, ReporterBlock
 
-fun NodeBuilder.colorIsTouchingColor(color: String,color2: String) = addChild(ColorIsTouchingColor(color,color2))
+fun NodeBuilder.colorIsTouchingColor(color: String, color2: String) = addChild(ColorIsTouchingColor(color, color2))

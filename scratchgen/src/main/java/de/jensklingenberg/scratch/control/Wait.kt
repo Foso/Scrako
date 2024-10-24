@@ -13,7 +13,7 @@ import de.jensklingenberg.scratch.motion.IntBlock
 import de.jensklingenberg.scratch.operator.BooleanBlock
 import java.util.UUID
 
-class Wait(private val seconds: ReporterBlock) : Node {
+class Wait(private val block: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -25,10 +25,10 @@ class Wait(private val seconds: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.ControlWait,
             inputs = mapOf(
-                "DURATION" to setValue(seconds,uuid)
+                "DURATION" to setValue(block, uuid)
             )
         ).toBlock(nextUUID, parent, context.topLevel)
-        seconds.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
+        block.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }
 }
 

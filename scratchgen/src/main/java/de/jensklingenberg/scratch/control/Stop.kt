@@ -20,11 +20,10 @@ class Stop(private val option: StopOption) : Node {
         if (option == StopOption.ALL && nextUUID != null) {
             throw IllegalArgumentException("Stop block with All cannot have a next block")
         }
-        val newNext = nextUUID
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_stop,
             fields = mapOf("STOP_OPTION" to listOf((option.s), null))
-        ).toBlock(newNext, parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
 

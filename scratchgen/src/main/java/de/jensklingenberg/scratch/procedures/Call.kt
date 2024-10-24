@@ -23,7 +23,6 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
     ) {
 
 
-
         val arguments = inputs.map { it.argument }
         val proccode = this.name + " " + arguments.joinToString(" ") {
             when (it) {
@@ -47,13 +46,13 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
 
             inputs = inputs.associate {
                 it.id.toString() to JsonArray(
-                    listOf(JsonPrimitive(1),  JsonPrimitive(test.toString()))
+                    listOf(JsonPrimitive(1), JsonPrimitive(test.toString()))
                 )
             }
         ).toBlock(nextUUID, parent, context.topLevel)
 
 
-        GreaterThan(IntBlock(3),IntBlock(4)).visit(
+        GreaterThan(IntBlock(3), IntBlock(4)).visit(
             visitors,
             identifier.toString(),
             test,

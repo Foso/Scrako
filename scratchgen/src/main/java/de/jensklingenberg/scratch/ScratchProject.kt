@@ -34,6 +34,7 @@ fun blockBuilder(ff: NodeBuilder.() -> Unit): List<Node> {
     ff.invoke(node)
     return node.childs
 }
+
 class Sprite(
     val name: String,
     val costumes: List<Costume>,

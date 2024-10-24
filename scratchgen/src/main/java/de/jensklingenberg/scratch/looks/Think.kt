@@ -34,7 +34,7 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
         )
 
         if (seconds != null) {
-            inputMap["SECS"] = getScratchType(seconds.toString(),ScratchType.NUMBER)
+            inputMap["SECS"] = getScratchType(seconds.toString(), ScratchType.NUMBER)
         }
 
         val opCode = when (seconds) {

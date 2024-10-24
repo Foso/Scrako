@@ -8,9 +8,7 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.createSubStack
-import de.jensklingenberg.scratch.looks.StringReporter
 import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.operator.OperatorEquals
 import java.util.UUID
 
 fun NodeBuilder.ifElse(
@@ -25,40 +23,6 @@ fun NodeBuilder.ifElse(
     )
 )
 
-fun NodeBuilder.switch(block: String,operatorSpec: SwitchContext.() -> Unit)  = switch(StringReporter(block),operatorSpec)
-
-fun NodeBuilder.switch(block: ReporterBlock,operatorSpec: SwitchContext.() -> Unit) {
-    val test = SwitchContext().apply(operatorSpec)
-
-    if(test.mutableList.size == 1){
-        ifThen(OperatorEquals(block,test.mutableList.first().operatorSpec)){
-            test.mutableList.first().leftStack(this)
-        }
-    }else{
-        ifElse(OperatorEquals(block,test.mutableList.first().operatorSpec),{
-            test.mutableList.first().leftStack(this)
-        },{
-            switch(block) {
-                test.mutableList.drop(1).forEach {
-                    case(it.operatorSpec,it.leftStack)
-                }
-            }
-        })
-    }
-}
-
-fun SwitchContext.case(operatorSpec: ReporterBlock,leftStack: NodeBuilder.() -> Unit,) = addChild(Case(operatorSpec,leftStack))
-fun SwitchContext.case(operatorSpec: String,leftStack: NodeBuilder.() -> Unit,) = addChild(Case(StringReporter(operatorSpec),leftStack))
-
-class SwitchContext{
-    val mutableList = mutableListOf<Case>()
-
-    fun addChild(whenFlagClicked: Case) {
-        mutableList.add(whenFlagClicked)
-    }
-}
-
-data class Case(val operatorSpec: ReporterBlock,val leftStack: NodeBuilder.() -> Unit)
 
 class IfElse(
     private val operatorSpec: ReporterBlock,
@@ -99,7 +63,7 @@ class IfElse(
                 parent = name2,
                 leftUUIDs[childIndex],
                 nextUUID,
-                context
+                context.copy(topLevel = false)
             )
         }
 
@@ -113,7 +77,7 @@ class IfElse(
                 parent = name2,
                 rightUUIDs[childIndex],
                 nextUUID,
-                context
+                context.copy(topLevel = false)
             )
         }
 

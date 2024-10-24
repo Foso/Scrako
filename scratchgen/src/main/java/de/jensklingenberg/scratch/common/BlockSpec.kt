@@ -39,7 +39,7 @@ open class BlockSpec(
         nextUUID: UUID?,
         context: Context
     ) {
-        if(this is Event && parent != null) {
+        if (this is Event && parent != null) {
             throw IllegalStateException("Event blocks can't have a parent")
         }
         comment?.addBlock(identifier.toString())

@@ -10,7 +10,7 @@ class OpCode(val value: String) {
         val control_start_as_clone = "control_start_as_clone"
         val sensing_touchingcolor = "sensing_touchingcolor"
         val operator_or = "operator_or"
-        val operator_not    = "operator_not"
+        val operator_not = "operator_not"
         val operator_and = "operator_and"
         val control_wait_until = "control_wait_until"
         val looks_size = "looks_size"
