@@ -7,12 +7,12 @@ import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
 import de.jensklingenberg.scratch.operator.BooleanBlock
 
-private class TouchingColor(color: String) : BlockSpec(
-    opcode = OpCode.sensing_touchingcolor,
+class ColorIsTouchingColor(color: String, color2: String) : BlockSpec(
+    opcode = OpCode.sensing_coloristouchingcolor,
     inputs = mapOf(
-        "COLOR" to createMessage(1, 9, color)
+        "COLOR" to createMessage(1, 9, color),
+        "COLOR2" to createMessage(2, 9, color2)
     )
 ), BooleanBlock
 
-fun NodeBuilder.touchingColor(color: String) = addChild(TouchingColor(color))
-
+fun NodeBuilder.colorIsTouchingColor(color: String, color2: String) = addChild(ColorIsTouchingColor(color, color2))

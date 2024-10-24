@@ -3,7 +3,6 @@ package de.jensklingenberg.scratch.common
 import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.looks.StringReporter
 import de.jensklingenberg.scratch.operator.And
-import de.jensklingenberg.scratch.operator.createNum
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -88,7 +87,8 @@ internal fun createVariableContent(content: ScratchVariable) = JsonArray(
                 JsonPrimitive(content.name),
                 JsonPrimitive(content.id.toString())
             )
-        )
+        ),
+        JsonPrimitive(null)
     )
 )
 
@@ -105,19 +105,21 @@ internal fun createListContent(content: ScratchList) = JsonArray(
     )
 )
 
+fun createNum(message: String) = createMessage(1, 10, message)
+
 internal fun setValue(
     reporterBlock: ReporterBlock,
     operatorUUID: UUID
 ) = when (reporterBlock) {
     is IntBlock -> {
-        createNum(reporterBlock.value.toString())
+        createMessage(1, 4, reporterBlock.value.toString())
     }
 
-    is ScratchVariable ->{
+    is ScratchVariable -> {
         createVariableContent(reporterBlock)
     }
 
-    is ScratchList ->{
+    is ScratchList -> {
         createListContent(reporterBlock)
     }
 
@@ -144,3 +146,6 @@ internal fun createCondition(operatorId: String) = JsonArray(
         JsonPrimitive(operatorId)
     )
 )
+
+val Random = StringReporter("_random_")
+val MousePointer = StringReporter("_mouse_")

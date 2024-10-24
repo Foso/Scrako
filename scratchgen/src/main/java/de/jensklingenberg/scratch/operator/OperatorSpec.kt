@@ -55,4 +55,3 @@ abstract class Operator(
 }
 
 
-fun createNum(message: String) = createMessage(1, 10, message)

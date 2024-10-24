@@ -5,6 +5,15 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal class OpCode(val value: String) {
     companion object {
+        val operator_mod = "operator_mod"
+        val operator_join = "operator_join"
+        val operator_round = "operator_round"
+        val looks_setsizeto = "looks_setsizeto"
+        val looks_nextbackdrop = "looks_nextbackdrop"
+        val looks_backdrop = "looks_backdrop"
+        val looks_nextcostume = "looks_nextcostume"
+        val motion_goto_menu = "motion_goto_menu"
+        val motion_goto = "motion_goto"
         val sound_play = "sound_play"
         val sensing_coloristouchingcolor = "sensing_coloristouchingcolor"
         val control_start_as_clone = "control_start_as_clone"
