@@ -2,7 +2,6 @@ package de.jensklingenberg.scratch.looks
 
 
 import de.jensklingenberg.scratch.ScratchList
-import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -10,6 +9,7 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchType
+import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.common.getScratchType

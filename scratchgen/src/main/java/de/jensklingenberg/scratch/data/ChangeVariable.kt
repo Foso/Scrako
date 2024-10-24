@@ -1,6 +1,5 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
@@ -9,6 +8,7 @@ import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
+import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
@@ -32,8 +32,11 @@ private class ChangeVariable(private val variable: ScratchVariable, private val 
 }
 
 
+fun NodeBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) =
+    addChild(ChangeVariable(variable, item))
 
+fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Int) =
+    addChild(ChangeVariable(variable, IntBlock(item)))
 
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) = addChild(ChangeVariable(variable, item))
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Int) = addChild(ChangeVariable(variable, IntBlock(item)))
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Double) = addChild(ChangeVariable(variable, DoubleBlock(item)))
+fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Double) =
+    addChild(ChangeVariable(variable, DoubleBlock(item)))

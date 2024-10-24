@@ -130,7 +130,7 @@ fun createStage(
     rotationStyle = "all around"
 )
 
-fun copyFiles(inputPath:String,targetPath: String) {
+fun copyFiles(inputPath: String, targetPath: String) {
     val soundFiles = File(inputPath + "sounds").listFiles()
 
     soundFiles?.forEach {
@@ -146,7 +146,7 @@ fun copyFiles(inputPath:String,targetPath: String) {
 
 fun writeProject(scratchProject: ScratchProject, inputPath: String, targetPath: String) {
 
-    copyFiles(inputPath,targetPath)
+    copyFiles(inputPath, targetPath)
 
     val text = Json.encodeToString(ScratchProject.serializer(), scratchProject)
 

@@ -1,10 +1,10 @@
 package de.jensklingenberg.scratch.operator
 
+import de.jensklingenberg.scratch.common.DoubleBlock
+import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.looks.StringBlock
-import de.jensklingenberg.scratch.common.DoubleBlock
-import de.jensklingenberg.scratch.common.IntBlock
 
 class LessThan(operand1: ReporterBlock, operand2: ReporterBlock) :
     Operator(listOf(operand1, operand2), listOf("OPERAND1", "OPERAND2"), OpCode.operator_lt), BooleanBlock

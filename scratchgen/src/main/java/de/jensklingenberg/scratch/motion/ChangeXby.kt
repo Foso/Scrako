@@ -4,7 +4,6 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.IntBlock
-import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock

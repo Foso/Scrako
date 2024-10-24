@@ -7,14 +7,11 @@ import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-private class SetSize(val block: ReporterBlock): Node {
+private class SetSize(val block: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

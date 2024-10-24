@@ -9,15 +9,13 @@ import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createLiteralMessage
-import de.jensklingenberg.scratch.common.createMessage
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.looks.StackBlock
 import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-private  class ReplaceItemOfWith(
+private class ReplaceItemOfWith(
     private val index: ReporterBlock,
     private val list: ScratchList,
     private val replace: ReporterBlock
@@ -43,6 +41,7 @@ private  class ReplaceItemOfWith(
         replace.visit(visitors, identifier.toString(), replaceUUID, null, context.copy(topLevel = false))
     }
 }
+
 fun NodeBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
     addChild(ReplaceItemOfWith(index, list, replace))
 

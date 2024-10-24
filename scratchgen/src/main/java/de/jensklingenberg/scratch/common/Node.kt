@@ -10,5 +10,6 @@ interface Node {
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-    ){}
+    ) {
+    }
 }

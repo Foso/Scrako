@@ -1,9 +1,9 @@
 package de.jensklingenberg.scratch.operator
 
-import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.IntBlock
+import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.common.ReporterBlock
 
 class PickRandom(from: ReporterBlock, to: ReporterBlock) : Operator(
     listOf(from),

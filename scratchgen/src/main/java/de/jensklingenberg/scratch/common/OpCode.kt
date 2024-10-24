@@ -5,8 +5,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal class OpCode(val value: String) {
     companion object {
+        val data_hideList = "data_hidelist"
+        val data_showlist = "data_showlist"
         val data_listcontainsitem = "data_listcontainsitem"
-        val data_insertatlist   = "data_insertatlist"
+        val data_insertatlist = "data_insertatlist"
         val data_hidevariable = "data_hidevariable"
         val data_showvariable = "data_showvariable"
         val operator_mod = "operator_mod"

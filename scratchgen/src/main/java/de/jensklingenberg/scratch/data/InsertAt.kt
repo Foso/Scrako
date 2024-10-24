@@ -14,7 +14,11 @@ import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-private class InsertAt(private val block: ReporterBlock, private val list: ScratchList, private val index: ReporterBlock) : Node,
+private class InsertAt(
+    private val block: ReporterBlock,
+    private val list: ScratchList,
+    private val index: ReporterBlock
+) : Node,
     StackBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -39,6 +43,11 @@ private class InsertAt(private val block: ReporterBlock, private val list: Scrat
     }
 }
 
-fun NodeBuilder.insertAt(block: ReporterBlock, list: ScratchList, index: ReporterBlock) = addChild(InsertAt(block, list, index))
-fun NodeBuilder.insertAt(item: String, list: ScratchList, index: ReporterBlock) = addChild(InsertAt(StringBlock(item), list, index))
-fun NodeBuilder.insertAt(item: String, list: ScratchList, index: Int) = addChild(InsertAt(StringBlock(item), list, IntBlock(index)))
+fun NodeBuilder.insertAt(block: ReporterBlock, list: ScratchList, index: ReporterBlock) =
+    addChild(InsertAt(block, list, index))
+
+fun NodeBuilder.insertAt(item: String, list: ScratchList, index: ReporterBlock) =
+    addChild(InsertAt(StringBlock(item), list, index))
+
+fun NodeBuilder.insertAt(item: String, list: ScratchList, index: Int) =
+    addChild(InsertAt(StringBlock(item), list, IntBlock(index)))

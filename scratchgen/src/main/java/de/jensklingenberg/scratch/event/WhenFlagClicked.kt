@@ -6,7 +6,7 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 
 
-private  class WhenFlagClicked : BlockSpec(
+private class WhenFlagClicked : BlockSpec(
     opcode = OpCode.Whenflagclicked,
 ), Event, HatBlock
 

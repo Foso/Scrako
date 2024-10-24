@@ -6,7 +6,6 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
@@ -62,5 +61,6 @@ private data class Think(private val content: LooksSayContent, private val secon
 }
 
 
-fun NodeBuilder.Think(message: String, seconds: Int? = null) = addChild(Think(LooksSayContent.Literal(message), seconds))
+fun NodeBuilder.Think(message: String, seconds: Int? = null) =
+    addChild(Think(LooksSayContent.Literal(message), seconds))
 

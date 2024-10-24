@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 
 @Serializable
- data class Block(
+data class Block(
     val opcode: String,
     val next: String?,
     val parent: String?,

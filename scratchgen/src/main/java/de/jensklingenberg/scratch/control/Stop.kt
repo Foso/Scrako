@@ -4,11 +4,12 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class Stop(private val option: StopOption) : Node {
+private class Stop(private val option: StopOption) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -27,6 +28,7 @@ class Stop(private val option: StopOption) : Node {
     }
 }
 
+fun NodeBuilder.stop(option: StopOption) = addChild(Stop(option))
 enum class StopOption(val s: String) {
     ALL("all"), OTHER("other scripts in sprite"), THIS("this script")
 }

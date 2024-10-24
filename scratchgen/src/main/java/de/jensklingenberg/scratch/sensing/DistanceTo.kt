@@ -1,8 +1,7 @@
-package de.jensklingenberg.scratch.data
+package de.jensklingenberg.scratch.sensing
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
@@ -11,7 +10,8 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-private  class DistanceTo(private val destination: ReporterBlock) : ReporterBlock {
+//Unfishinished
+private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

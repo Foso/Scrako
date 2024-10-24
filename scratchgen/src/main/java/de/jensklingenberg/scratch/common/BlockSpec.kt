@@ -8,12 +8,12 @@ import kotlinx.serialization.json.JsonArray
 import java.util.UUID
 
 open class BlockSpec(
-     val opcode: String,
-     val inputs: Map<String, JsonArray> = emptyMap(),
-     val fields: Map<String, List<String?>> = emptyMap(),
-     val shadow: Boolean = false,
-     val x: Int? = null,
-     val y: Int? = null,
+    val opcode: String,
+    val inputs: Map<String, JsonArray> = emptyMap(),
+    val fields: Map<String, List<String?>> = emptyMap(),
+    val shadow: Boolean = false,
+    val x: Int? = null,
+    val y: Int? = null,
     val mutation: Mutation? = null
 ) : Node {
 

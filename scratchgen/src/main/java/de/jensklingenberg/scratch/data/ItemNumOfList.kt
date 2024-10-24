@@ -5,10 +5,8 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
@@ -32,5 +30,5 @@ private class ItemNumOfList(private val item: ReporterBlock, private val list: S
     }
 }
 
-fun itemNumOfList(item: ReporterBlock, list: ScratchList) : ReporterBlock =ItemNumOfList(item, list)
-fun itemNumOfList(item: Int, list: ScratchList) : ReporterBlock =ItemNumOfList(IntBlock(item), list)
+fun itemNumOfList(item: ReporterBlock, list: ScratchList): ReporterBlock = ItemNumOfList(item, list)
+fun itemNumOfList(item: Int, list: ScratchList): ReporterBlock = ItemNumOfList(IntBlock(item), list)

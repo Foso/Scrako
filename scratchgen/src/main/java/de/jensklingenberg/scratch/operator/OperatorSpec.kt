@@ -2,9 +2,7 @@ package de.jensklingenberg.scratch.operator
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createMessage
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID

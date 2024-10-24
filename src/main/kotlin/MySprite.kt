@@ -6,17 +6,21 @@ import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.blockBuilder
 import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scratch.common.createVariable
+import de.jensklingenberg.scratch.control.StopOption
 import de.jensklingenberg.scratch.control.case
+import de.jensklingenberg.scratch.control.stop
 import de.jensklingenberg.scratch.control.switch
 import de.jensklingenberg.scratch.control.waitUntil
 import de.jensklingenberg.scratch.createList
 import de.jensklingenberg.scratch.data.addToList
+import de.jensklingenberg.scratch.data.hideList
 import de.jensklingenberg.scratch.data.insertAt
 import de.jensklingenberg.scratch.data.itemNumOfList
 import de.jensklingenberg.scratch.data.lengthOfList
 import de.jensklingenberg.scratch.data.listContains
 import de.jensklingenberg.scratch.data.replaceItemOfWith
 import de.jensklingenberg.scratch.data.setVariable
+import de.jensklingenberg.scratch.data.showList
 import de.jensklingenberg.scratch.event.whenStartAsClone
 import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.model.Target
@@ -28,7 +32,8 @@ import de.jensklingenberg.scratch.procedures.ArgumentString
 import de.jensklingenberg.scratch.procedures.Input
 import de.jensklingenberg.scratch.procedures.definition
 import de.jensklingenberg.scratch.sensing.Answer
-import de.jensklingenberg.scratch.sensing.ColorIsTouchingColor
+import de.jensklingenberg.scratch.sensing.colorIsTouchingColor
+import de.jensklingenberg.scratch.sensing.touchingColor
 import de.jensklingenberg.scratch.sound.playSound
 
 
@@ -57,6 +62,11 @@ fun MySprite(jensList: ScratchList): Target {
         replaceItemOfWith(add(3,4), users, add(3,2))
         setVariable(tt, add(3,4))
         say(listContains(users, add(3,4)))
+        showList(users)
+        hideList(users)
+        say(touchingColor("#1f9226"))
+        stop(StopOption.ALL)
+
     }
 
     val list2 = whenFlagClicked(jensList, elements)
@@ -81,7 +91,7 @@ private fun whenFlagClicked(
     // say(lt(1, Not(lt(1, 2))))
     //waitUntil(TouchingColor("#1f9226"))
     whenStartAsClone()
-    waitUntil(ColorIsTouchingColor("#1f9226", "#1f9226"))
+    waitUntil(colorIsTouchingColor("#1f9226", "#1f9226"))
     changeXby(24)
     playSound("Test")
     switch(Answer) {
