@@ -141,7 +141,7 @@ fun writeProject(scratchProject: ScratchProject) {
 
     val text = Json.encodeToString(ScratchProject.serializer(), scratchProject)
 
-    File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"+"/project.json").writeText(text)
+    File("$targetPath/project.json").writeText(text)
 
     val command = listOf("zip", "-r", "./test2.sb3", "./")
     val processBuilder = ProcessBuilder(command)
@@ -156,9 +156,6 @@ fun writeProject(scratchProject: ScratchProject) {
         e.printStackTrace()
     }
 }
-
-
-
 
 
 fun createSubStack(message: String) = JsonArray(

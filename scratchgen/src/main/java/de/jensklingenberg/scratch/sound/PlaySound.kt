@@ -1,9 +1,10 @@
-package de.jensklingenberg.scratch.sounds
+package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.model.Sound
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -27,6 +28,7 @@ class PlaySound(val soundName: String) : Node {
 }
 
 fun NodeBuilder.playSound(s: String) = addChild(PlaySound(s))
+fun NodeBuilder.playSound(s: Sound) = addChild(PlaySound(s.name))
 
 
 private class SoundsMenu(private val soundName: String) : Node {

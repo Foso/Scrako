@@ -24,7 +24,7 @@ import de.jensklingenberg.scratch.procedures.Input
 import de.jensklingenberg.scratch.procedures.definition
 import de.jensklingenberg.scratch.sensing.Answer
 import de.jensklingenberg.scratch.sensing.ColorIsTouchingColor
-import de.jensklingenberg.scratch.sounds.playSound
+import de.jensklingenberg.scratch.sound.playSound
 
 
 fun MySprite(jensList: ScratchList): Target {
@@ -76,7 +76,7 @@ private fun whenFlagClicked(
     waitUntil(ColorIsTouchingColor("#1f9226", "#1f9226"))
     changeXby(24)
     playSound("Test")
-    switch("Hallo"){
+    switch(Answer){
         case(Answer){
             say("1")
         }
@@ -86,6 +86,14 @@ private fun whenFlagClicked(
 
         case("32"){
             say(Answer)
+        }
+
+        case("Martin"){
+            say("Martin")
+        }
+
+        case("Thomas"){
+            say("Thomas")
         }
     }
 }
