@@ -18,7 +18,7 @@ import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 
-private data class Say(private val content: ReporterBlock, private val seconds: Int? = null) : Node {
+private data class Say(private val content: ReporterBlock, private val seconds: Int? = null) : Node, StackBlock {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -32,7 +32,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
-                is StringReporter -> createLiteralMessage(content.value)
+                is StringBlock -> createLiteralMessage(content.value)
                 is ScratchVariable -> setValue(content, operatorUUID)
                 is ScratchList -> setValue(content, operatorUUID)
 
@@ -74,8 +74,8 @@ sealed interface LooksSayContent {
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
-class StringReporter(val value: String) : ReporterBlock
+class StringBlock(val value: String) : ReporterBlock
 
 fun NodeBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))
 fun NodeBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
-fun NodeBuilder.say(message: String, seconds: Int? = null) = addChild(Say(StringReporter(message), seconds))
+fun NodeBuilder.say(message: String, seconds: Int? = null) = addChild(Say(StringBlock(message), seconds))

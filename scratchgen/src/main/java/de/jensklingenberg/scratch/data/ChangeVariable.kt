@@ -31,6 +31,9 @@ private class ChangeVariable(private val variable: ScratchVariable, private val 
     }
 }
 
+
+
+
 fun NodeBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) = addChild(ChangeVariable(variable, item))
 fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Int) = addChild(ChangeVariable(variable, IntBlock(item)))
 fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Double) = addChild(ChangeVariable(variable, DoubleBlock(item)))

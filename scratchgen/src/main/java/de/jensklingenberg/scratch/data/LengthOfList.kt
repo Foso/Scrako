@@ -1,5 +1,6 @@
 package de.jensklingenberg.scratch.data
 
+import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -9,7 +10,7 @@ import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-private class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchList) : ReporterBlock {
+private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -24,5 +25,4 @@ private class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchL
     }
 }
 
-fun NodeBuilder.lengthOfList(list: de.jensklingenberg.scratch.ScratchList) =
-    addChild(LengthOfList(list))
+fun lengthOfList(list: ScratchList): ReporterBlock = LengthOfList(list)

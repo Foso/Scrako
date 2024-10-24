@@ -2,12 +2,12 @@ package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.looks.StringReporter
+import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.operator.OperatorEquals
 
 
 fun NodeBuilder.switch(block: String, operatorSpec: SwitchContext.() -> Unit) =
-    switch(StringReporter(block), operatorSpec)
+    switch(StringBlock(block), operatorSpec)
 
 fun NodeBuilder.switch(block: ReporterBlock, operatorSpec: SwitchContext.() -> Unit) {
     val test = SwitchContext().apply(operatorSpec)
@@ -31,7 +31,7 @@ fun NodeBuilder.switch(block: ReporterBlock, operatorSpec: SwitchContext.() -> U
 
 fun SwitchContext.case(block: ReporterBlock, leftStack: NodeBuilder.() -> Unit) = addChild(Case(block, leftStack))
 fun SwitchContext.case(operatorSpec: String, leftStack: NodeBuilder.() -> Unit) =
-    addChild(Case(StringReporter(operatorSpec), leftStack))
+    addChild(Case(StringBlock(operatorSpec), leftStack))
 
 class SwitchContext {
     val mutableList = mutableListOf<Case>()

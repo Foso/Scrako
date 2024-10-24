@@ -4,28 +4,24 @@ import de.jensklingenberg.scratch.Broadcast
 import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.blockBuilder
-import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scratch.common.createVariable
 import de.jensklingenberg.scratch.control.case
 import de.jensklingenberg.scratch.control.switch
 import de.jensklingenberg.scratch.control.waitUntil
 import de.jensklingenberg.scratch.createList
-import de.jensklingenberg.scratch.data.changeVariable
-import de.jensklingenberg.scratch.event.whenFlagClicked
+import de.jensklingenberg.scratch.data.addToList
+import de.jensklingenberg.scratch.data.insertAt
+import de.jensklingenberg.scratch.data.itemNumOfList
+import de.jensklingenberg.scratch.data.lengthOfList
+import de.jensklingenberg.scratch.data.listContains
+import de.jensklingenberg.scratch.data.replaceItemOfWith
+import de.jensklingenberg.scratch.data.setVariable
 import de.jensklingenberg.scratch.event.whenStartAsClone
-import de.jensklingenberg.scratch.looks.StringReporter
-import de.jensklingenberg.scratch.looks.nextBackdrop
-import de.jensklingenberg.scratch.looks.nextCostume
 import de.jensklingenberg.scratch.looks.say
-import de.jensklingenberg.scratch.looks.setSize
 import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.model.createTarget
 import de.jensklingenberg.scratch.motion.changeXby
-import de.jensklingenberg.scratch.motion.goTo
-import de.jensklingenberg.scratch.operator.Join
-import de.jensklingenberg.scratch.operator.Mod
-import de.jensklingenberg.scratch.operator.Round
 import de.jensklingenberg.scratch.operator.add
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
@@ -54,9 +50,13 @@ fun MySprite(jensList: ScratchList): Target {
     val list = blockBuilder {
         val tt = createVariable("myVariable2")
         val users = createList("Users", listOf("Jens", "Martin", "Thomas"))
-        whenFlagClicked()
-        changeVariable(tt, 23.4)
-        say(tt)
+        say(lengthOfList(users))
+        addToList(add(3,3), users)
+        //insertAt("Jens", users, 1)
+        insertAt(add(44,33), users, add(3,2))
+        replaceItemOfWith(add(3,4), users, add(3,2))
+        setVariable(tt, add(3,4))
+        say(listContains(users, add(3,4)))
     }
 
     val list2 = whenFlagClicked(jensList, elements)

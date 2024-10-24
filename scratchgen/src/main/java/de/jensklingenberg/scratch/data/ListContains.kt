@@ -3,18 +3,15 @@ package de.jensklingenberg.scratch.data
 import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.common.setValue
+import de.jensklingenberg.scratch.looks.StackBlock
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-private class ItemNumOfList(private val item: ReporterBlock, private val list: ScratchList) : Node,
-    ReporterBlock {
+private class ListContains(private val list: ScratchList, private val block: ReporterBlock) : Node, ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -22,15 +19,14 @@ private class ItemNumOfList(private val item: ReporterBlock, private val list: S
         nextUUID: UUID?,
         context: Context
     ) {
-        val itemUUID = UUID.randomUUID()
+        val childId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.data_itemnumoflist,
-            inputs = mapOf("ITEM" to setValue(item, itemUUID)),
+            opcode = OpCode.data_listcontainsitem,
+            inputs = mapOf("ITEM" to setValue(block, childId)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent, context.topLevel)
-        item.visit(visitors, identifier.toString(), itemUUID, null, context)
+        block.visit(visitors, identifier.toString(), childId, null, context)
     }
 }
 
-fun itemNumOfList(item: ReporterBlock, list: ScratchList) : ReporterBlock =ItemNumOfList(item, list)
-fun itemNumOfList(item: Int, list: ScratchList) : ReporterBlock =ItemNumOfList(IntBlock(item), list)
+fun listContains(list: ScratchList, block: ReporterBlock) : ReporterBlock = ListContains(list, block)

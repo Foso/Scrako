@@ -7,7 +7,7 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
-import de.jensklingenberg.scratch.looks.StringReporter
+import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -26,7 +26,7 @@ private class Goto(private val block: ReporterBlock) : Node {
             opcode = OpCode.motion_goto,
             inputs = mapOf(
                 "TO" to when (block) {
-                    is StringReporter -> {
+                    is StringBlock -> {
                         JsonArray(listOf(JsonPrimitive(1), JsonPrimitive((uuid.toString()))))
                     }
 
@@ -38,7 +38,7 @@ private class Goto(private val block: ReporterBlock) : Node {
         ).toBlock(nextUUID, parent, context.topLevel)
 
         when (block) {
-            is StringReporter -> {
+            is StringBlock -> {
                 GotoMenu(block.value).visit(
                     visitors,
                     identifier.toString(),
@@ -72,4 +72,4 @@ private class GotoMenu(val steps: String) : Node {
 }
 
 fun NodeBuilder.goTo(block: ReporterBlock) = addChild(Goto(block))
-fun NodeBuilder.goTo(value: String) = goTo(StringReporter(value))
+fun NodeBuilder.goTo(value: String) = goTo(StringBlock(value))

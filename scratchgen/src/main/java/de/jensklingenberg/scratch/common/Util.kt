@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch.common
 
 import de.jensklingenberg.scratch.ScratchList
-import de.jensklingenberg.scratch.looks.StringReporter
+import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.operator.And
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -127,7 +127,7 @@ internal fun setValue(
         createNum(reporterBlock.value.toString())
     }
 
-    is StringReporter -> {
+    is StringBlock -> {
         createLiteralMessage(reporterBlock.value)
     }
 
@@ -147,5 +147,5 @@ internal fun createCondition(operatorId: String) = JsonArray(
     )
 )
 
-val Random = StringReporter("_random_")
-val MousePointer = StringReporter("_mouse_")
+val Random = StringBlock("_random_")
+val MousePointer = StringBlock("_mouse_")
