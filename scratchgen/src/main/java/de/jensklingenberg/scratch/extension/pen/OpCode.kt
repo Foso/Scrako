@@ -1,4 +1,4 @@
-package de.jensklingenberg.scratch.extension.pen;
+package de.jensklingenberg.scratch.extension.pen
 
 internal class PenOpCode {
     companion object {

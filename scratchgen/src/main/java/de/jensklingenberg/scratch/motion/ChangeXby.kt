@@ -11,7 +11,7 @@ import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-private class ChangeXby(val value: ReporterBlock) : ReporterBlock {
+private class ChangeXby(val block: ReporterBlock) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -23,10 +23,10 @@ private class ChangeXby(val value: ReporterBlock) : ReporterBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_changexby,
             inputs = mapOf(
-                "DX" to setValue(value, operatorUUID)
+                "DX" to setValue(block, operatorUUID)
             )
         ).toBlock(nextUUID, parent, context.topLevel)
-        value.visit(visitors, identifier.toString(), operatorUUID, null, context)
+        block.visit(visitors, identifier.toString(), operatorUUID, null, context)
     }
 }
 

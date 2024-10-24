@@ -5,6 +5,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal class OpCode(val value: String) {
     companion object {
+        val control_repeat_until = "control_repeat_until"
+        val event_whengreaterthan = "event_whengreaterthan"
+        val event_whenthisspriteclicked = "event_whenthisspriteclicked"
+        val sensing_keyoptions = "sensing_keyoptions"
+        val sensing_keypressed = "sensing_keypressed"
         val data_hideList = "data_hidelist"
         val data_showlist = "data_showlist"
         val data_listcontainsitem = "data_listcontainsitem"

@@ -1,6 +1,7 @@
 package de.jensklingenberg.scratch.common
 
 import de.jensklingenberg.scratch.ScratchList
+import de.jensklingenberg.scratch.looks.ColorBlock
 import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.operator.And
 import kotlinx.serialization.json.JsonArray
@@ -121,6 +122,10 @@ internal fun setValue(
 
     is ScratchList -> {
         createListContent(reporterBlock)
+    }
+
+    is ColorBlock -> {
+        createMessage(1, ScratchType.COLOR.value, reporterBlock.value)
     }
 
     is DoubleBlock -> {

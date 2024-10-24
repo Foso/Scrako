@@ -8,6 +8,7 @@ import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scratch.common.createVariable
 import de.jensklingenberg.scratch.control.StopOption
 import de.jensklingenberg.scratch.control.case
+import de.jensklingenberg.scratch.control.repeatUntil
 import de.jensklingenberg.scratch.control.stop
 import de.jensklingenberg.scratch.control.switch
 import de.jensklingenberg.scratch.control.waitUntil
@@ -15,17 +16,22 @@ import de.jensklingenberg.scratch.createList
 import de.jensklingenberg.scratch.data.addToList
 import de.jensklingenberg.scratch.data.hideList
 import de.jensklingenberg.scratch.data.insertAt
-import de.jensklingenberg.scratch.data.itemNumOfList
 import de.jensklingenberg.scratch.data.lengthOfList
 import de.jensklingenberg.scratch.data.listContains
 import de.jensklingenberg.scratch.data.replaceItemOfWith
 import de.jensklingenberg.scratch.data.setVariable
 import de.jensklingenberg.scratch.data.showList
+import de.jensklingenberg.scratch.event.GreaterThanOption
+import de.jensklingenberg.scratch.event.Key
+import de.jensklingenberg.scratch.event.whenGreaterThan
 import de.jensklingenberg.scratch.event.whenStartAsClone
 import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.model.createTarget
 import de.jensklingenberg.scratch.motion.changeXby
+import de.jensklingenberg.scratch.motion.glideToXY
+import de.jensklingenberg.scratch.motion.move
+import de.jensklingenberg.scratch.motion.pointInDirection
 import de.jensklingenberg.scratch.operator.add
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
@@ -33,6 +39,7 @@ import de.jensklingenberg.scratch.procedures.Input
 import de.jensklingenberg.scratch.procedures.definition
 import de.jensklingenberg.scratch.sensing.Answer
 import de.jensklingenberg.scratch.sensing.colorIsTouchingColor
+import de.jensklingenberg.scratch.sensing.keyIsPressed
 import de.jensklingenberg.scratch.sensing.touchingColor
 import de.jensklingenberg.scratch.sound.playSound
 
@@ -55,6 +62,8 @@ fun MySprite(jensList: ScratchList): Target {
     val list = blockBuilder {
         val tt = createVariable("myVariable2")
         val users = createList("Users", listOf("Jens", "Martin", "Thomas"))
+        whenGreaterThan(GreaterThanOption.TIMER, 3.0)
+        glideToXY(add(3,3), add(3,3), add(3,3))
         say(lengthOfList(users))
         addToList(add(3,3), users)
         //insertAt("Jens", users, 1)
@@ -64,7 +73,14 @@ fun MySprite(jensList: ScratchList): Target {
         say(listContains(users, add(3,4)))
         showList(users)
         hideList(users)
-        say(touchingColor("#1f9226"))
+        repeatUntil(keyIsPressed(Key.SPACE)) {
+            val jens = createVariable("jens2")
+            say(jens)
+        }
+        say(touchingColor(add(3,4)))
+        say(keyIsPressed(add(3,4)))
+        move(add(3,4))
+        pointInDirection(add(3,4444))
         stop(StopOption.ALL)
 
     }

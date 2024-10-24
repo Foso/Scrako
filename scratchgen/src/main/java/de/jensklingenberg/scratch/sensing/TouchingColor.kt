@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
-import de.jensklingenberg.scratch.looks.StringBlock
+import de.jensklingenberg.scratch.looks.ColorBlock
 import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.operator.BooleanBlock
 import java.util.UUID
@@ -26,9 +26,10 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
             )
         ).toBlock(nextUUID, parent, context.topLevel)
         color.visit(visitors, identifier.toString(), destinationUUID, null, context)
-
     }
 }
 
-fun touchingColor(color: String): BooleanBlock = TouchingColor(StringBlock(color))
+fun touchingColor(color: String): BooleanBlock = TouchingColor(ColorBlock(color))
+fun touchingColor(color: ReporterBlock): BooleanBlock = TouchingColor(color)
+
 

@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.sensing
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
+import de.jensklingenberg.scratch.operator.BooleanBlock
 
 object Timer : BlockSpec(
     opcode = OpCode.sensing_timer,
@@ -18,7 +19,7 @@ object Username : BlockSpec(
 
 object MouseDown : BlockSpec(
     opcode = OpCode.sensing_mousedown,
-), ReporterBlock
+), BooleanBlock
 
 object MouseX : BlockSpec(
     opcode = OpCode.sensing_mousex,

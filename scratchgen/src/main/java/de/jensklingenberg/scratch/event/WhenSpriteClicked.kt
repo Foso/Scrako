@@ -5,14 +5,8 @@ import de.jensklingenberg.scratch.common.HatBlock
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 
-
-private class WhenFlagClicked : BlockSpec(
-    opcode = OpCode.Whenflagclicked,
+private class WhenSpriteClicked : BlockSpec(
+    opcode = OpCode.event_whenthisspriteclicked,
 ), Event, HatBlock
 
-
-fun NodeBuilder.whenFlagClicked() = addChild(WhenFlagClicked())
-
-
-
-
+fun NodeBuilder.whenSpriteClicked() = addChild(WhenSpriteClicked())

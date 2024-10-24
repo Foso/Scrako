@@ -10,3 +10,4 @@ private class WhenKeyPress(key: Key) : BlockSpec(
 ), Event
 
 fun NodeBuilder.whenKeyPress(key: Key) = addChild(WhenKeyPress(key))
+

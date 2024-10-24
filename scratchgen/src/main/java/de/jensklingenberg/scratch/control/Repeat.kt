@@ -13,7 +13,8 @@ import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class Repeat(private val option: ReporterBlock, private vararg val childs: Node) : BlockSpec(OpCode.control_repeat) {
+private class Repeat(private val times: ReporterBlock, private vararg val childs: Node) :
+    BlockSpec(OpCode.control_repeat) {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -39,7 +40,7 @@ class Repeat(private val option: ReporterBlock, private vararg val childs: Node)
         }
 
         val inputs = mutableMapOf(
-            "TIMES" to setValue(option, operatorUUID)
+            "TIMES" to setValue(times, operatorUUID)
         )
 
         childs.firstOrNull()?.let {
@@ -51,7 +52,7 @@ class Repeat(private val option: ReporterBlock, private vararg val childs: Node)
             inputs = inputs
         ).toBlock(nextUUID, parent, context.topLevel)
 
-        option.visit(
+        times.visit(
             visitors,
             identifier.toString(),
             operatorUUID,

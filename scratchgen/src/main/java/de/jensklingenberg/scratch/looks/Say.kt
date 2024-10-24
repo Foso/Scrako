@@ -75,6 +75,8 @@ sealed interface LooksSayContent {
 }
 
 class StringBlock(val value: String) : ReporterBlock
+class ColorBlock(val value: String) : ReporterBlock
+
 
 fun NodeBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))
 fun NodeBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
