@@ -4,13 +4,14 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class ItemNumOfList(private val item: Int, private val list: ScratchList) : Node,
+private class ItemNumOfList(private val item: Int, private val list: ScratchList) : Node,
     ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -26,3 +27,6 @@ class ItemNumOfList(private val item: Int, private val list: ScratchList) : Node
         ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
+
+fun NodeBuilder.itemNumOfList(item: Int, list: ScratchList) =
+    addChild(ItemNumOfList(item, list))

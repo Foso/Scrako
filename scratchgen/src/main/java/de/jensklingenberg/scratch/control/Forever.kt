@@ -12,11 +12,7 @@ import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
 import java.util.UUID
 
-fun NodeBuilder.forever(block: NodeBuilder.() -> Unit) {
-    childs.add(Forever(NodeBuilder().apply(block).childs))
-}
-
-class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
+internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -58,4 +54,6 @@ class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
     }
 }
 
-
+fun NodeBuilder.forever(block: NodeBuilder.() -> Unit) {
+    childs.add(Forever(NodeBuilder().apply(block).childs))
+}

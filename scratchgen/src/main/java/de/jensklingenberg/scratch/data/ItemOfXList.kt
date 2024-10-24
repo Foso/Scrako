@@ -4,14 +4,14 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class ItemOfXList(private val index: Int, private val list: ScratchList) : Node,
-    ReporterBlock {
+private  class ItemOfXList(private val index: Int, private val list: ScratchList) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -29,5 +29,7 @@ class ItemOfXList(private val index: Int, private val list: ScratchList) : Node,
     }
 }
 
+fun NodeBuilder.itemOfXList(index: Int, list: ScratchList) =
+    addChild(ItemOfXList(index, list))
 
 

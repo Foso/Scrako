@@ -4,6 +4,7 @@ package de.jensklingenberg.scratch.looks
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createBlockRef
@@ -12,7 +13,7 @@ import de.jensklingenberg.scratch.common.getScratchType
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-data class Think(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
+private data class Think(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -60,4 +61,4 @@ data class Think(private val content: LooksSayContent, private val seconds: Int?
 }
 
 
-fun Think(message: String, seconds: Int? = null) = Think(LooksSayContent.Literal(message), seconds)
+fun NodeBuilder.Think(message: String, seconds: Int? = null) = addChild(Think(LooksSayContent.Literal(message), seconds))

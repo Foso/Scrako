@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class SwitchCostume(private val value: ReporterBlock) : Node {
+private class SwitchCostume(private val value: ReporterBlock) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,

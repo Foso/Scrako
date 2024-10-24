@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.data
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
@@ -10,7 +11,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class DistanceTo(private val destination: ReporterBlock) : Node, ReporterBlock {
+private  class DistanceTo(private val destination: ReporterBlock) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -34,3 +35,5 @@ class DistanceTo(private val destination: ReporterBlock) : Node, ReporterBlock {
 
     }
 }
+
+fun NodeBuilder.distanceTo(destination: ReporterBlock) = addChild(DistanceTo(destination))

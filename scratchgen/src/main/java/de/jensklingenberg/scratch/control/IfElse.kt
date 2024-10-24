@@ -11,20 +11,7 @@ import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-fun NodeBuilder.ifElse(
-    operatorSpec: ReporterBlock,
-    leftStack: NodeBuilder.() -> Unit,
-    rightStack: NodeBuilder.() -> Unit,
-) = addChild(
-    IfElse(
-        operatorSpec,
-        leftStack = NodeBuilder().apply(leftStack).childs,
-        rightStack = NodeBuilder().apply(rightStack).childs
-    )
-)
-
-
-class IfElse(
+internal class IfElse(
     private val operatorSpec: ReporterBlock,
     private val leftStack: List<Node>,
     private val rightStack: List<Node>
@@ -84,49 +71,20 @@ class IfElse(
     }
 }
 
+fun NodeBuilder.ifElse(
+    operatorSpec: ReporterBlock,
+    leftStack: NodeBuilder.() -> Unit,
+    rightStack: NodeBuilder.() -> Unit,
+) = addChild(
+    IfElse(
+        operatorSpec,
+        leftStack = NodeBuilder().apply(leftStack).childs,
+        rightStack = NodeBuilder().apply(rightStack).childs
+    )
+)
+
 fun NodeBuilder.ifThen(
     block: ReporterBlock,
     leftStack: NodeBuilder.() -> Unit
 ) = addChild(IfE(block, leftStack = NodeBuilder().apply(leftStack).childs))
 
-class IfE(
-    private val reporterBlock: ReporterBlock,
-    private val leftStack: List<Node>
-) : Node {
-
-    override fun visit(
-        visitors: MutableMap<String, Block>,
-        parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
-        context: Context
-    ) {
-        val newNext = nextUUID
-        val operatorUUID = UUID.randomUUID()
-        val leftUUIDs = leftStack.map { UUID.randomUUID() }
-
-        visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.control_if,
-            inputs = mapOf(
-                "CONDITION" to createSubStack(operatorUUID.toString()),
-                "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
-            )
-        ).toBlock(newNext, parent, context.topLevel)
-        reporterBlock.visit(visitors, identifier.toString(), operatorUUID, null, context)
-
-        leftStack.mapIndexed { childIndex, visitor ->
-            val nextchild =
-                childIndex != leftStack.lastIndex
-
-            val nextUUID = if (nextchild) leftUUIDs[childIndex + 1] else null
-            visitor.visit(
-                visitors,
-                parent = identifier.toString(),
-                leftUUIDs[childIndex],
-                nextUUID,
-                context
-            )
-        }
-
-    }
-}

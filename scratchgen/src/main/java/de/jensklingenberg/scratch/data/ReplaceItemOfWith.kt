@@ -1,18 +1,20 @@
 package de.jensklingenberg.scratch.data
 
 
+import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.common.createMessage
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class ReplaceItemOfWith(
+private  class ReplaceItemOfWith(
     private val index: Int,
-    private val list: de.jensklingenberg.scratch.ScratchList,
+    private val list: ScratchList,
     private val replace: String
 ) : Node {
     override fun visit(
@@ -33,3 +35,5 @@ class ReplaceItemOfWith(
     }
 }
 
+fun NodeBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
+    addChild(ReplaceItemOfWith(index, list, replace))

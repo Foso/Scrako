@@ -4,11 +4,12 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.CapBlock
 import de.jensklingenberg.scratch.common.Context
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class DeleteThisClone() : BlockSpec(
+internal class DeleteThisClone : BlockSpec(
     opcode = OpCode.control_delete_this_clone,
 ), CapBlock {
     override fun visit(
@@ -24,3 +25,5 @@ class DeleteThisClone() : BlockSpec(
         super.visit(visitors, parent, identifier, null, context)
     }
 }
+
+fun NodeBuilder.deleteThisClone() = addChild(DeleteThisClone())

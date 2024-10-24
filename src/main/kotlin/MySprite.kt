@@ -5,19 +5,21 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.blockBuilder
 import de.jensklingenberg.scratch.common.createBlocks23
+import de.jensklingenberg.scratch.common.createVariable
 import de.jensklingenberg.scratch.control.case
+import de.jensklingenberg.scratch.control.forever
 import de.jensklingenberg.scratch.control.switch
 import de.jensklingenberg.scratch.control.waitUntil
-import de.jensklingenberg.scratch.event.whenIRecieve
+import de.jensklingenberg.scratch.createList
+import de.jensklingenberg.scratch.data.setVariable
+import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.event.whenStartAsClone
+import de.jensklingenberg.scratch.extension.pen.eraseAll
+import de.jensklingenberg.scratch.extension.pen.stamp
 import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.model.createTarget
-import de.jensklingenberg.scratch.motion.RotationStyle.ALL_AROUND
 import de.jensklingenberg.scratch.motion.changeXby
-import de.jensklingenberg.scratch.motion.glideToXY
-import de.jensklingenberg.scratch.motion.setRotationStyle
-import de.jensklingenberg.scratch.operator.random
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
 import de.jensklingenberg.scratch.procedures.Input
@@ -43,10 +45,18 @@ fun MySprite(jensList: ScratchList): Target {
     val broadcast = Broadcast("hello")
 
     val list = blockBuilder {
-        whenIRecieve(broadcast)
-        say(random(1, 10))
-        setRotationStyle(ALL_AROUND)
-        glideToXY(1.0, 2.0, 3.0)
+        val tt = createVariable("myVariable2")
+        val users = createList("Users", listOf("Jens", "Martin", "Thomas"))
+        whenFlagClicked()
+
+        setVariable(tt, "Bye")
+        say(tt)
+        forever {
+            val name = createVariable("name")
+            say(name)
+            stamp()
+            eraseAll()
+        }
     }
 
     val list2 = whenFlagClicked(jensList, elements)
@@ -57,12 +67,10 @@ fun MySprite(jensList: ScratchList): Target {
         say(elements1.argument)
     }
 
-    val blockMap = createBlocks23(listOf(list2))
+    val blockMap = createBlocks23(listOf(list.childs))
 
-    return createTarget(blockMap, sprite, emptyList(), listOf(jensList))
+    return createTarget(blockMap, sprite, emptyList(), setOf(jensList) + list.lists, list.variables)
 }
-
-
 
 
 private fun whenFlagClicked(
@@ -70,29 +78,29 @@ private fun whenFlagClicked(
     elements: Input
 ) = blockBuilder {
 
-  // say(lt(1, Not(lt(1, 2))))
+    // say(lt(1, Not(lt(1, 2))))
     //waitUntil(TouchingColor("#1f9226"))
     whenStartAsClone()
     waitUntil(ColorIsTouchingColor("#1f9226", "#1f9226"))
     changeXby(24)
     playSound("Test")
-    switch(Answer){
-        case(Answer){
+    switch(Answer) {
+        case(Answer) {
             say("1")
         }
-        case("Neee"){
+        case("Neee") {
             say("1")
         }
 
-        case("32"){
+        case("32") {
             say(Answer)
         }
 
-        case("Martin"){
+        case("Martin") {
             say("Martin")
         }
 
-        case("Thomas"){
+        case("Thomas") {
             say("Thomas")
         }
     }

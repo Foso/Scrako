@@ -8,7 +8,7 @@ import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-abstract class Turn(val opcode: String, private val reporterBlock: ReporterBlock) : Node {
+internal sealed class Turn(val opcode: String, private val reporterBlock: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -25,8 +25,6 @@ abstract class Turn(val opcode: String, private val reporterBlock: ReporterBlock
             )
         ).toBlock(nextUUID, parent, context.topLevel)
         reporterBlock.visit(visitors, identifier.toString(), operatorUUID, null, context)
-
     }
-
-
 }
+

@@ -8,9 +8,8 @@ import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.motion.DoubleBlock
-import de.jensklingenberg.scratch.motion.IntBlock
-import de.jensklingenberg.scratch.operator.BooleanBlock
+import de.jensklingenberg.scratch.common.DoubleBlock
+import de.jensklingenberg.scratch.common.IntBlock
 import java.util.UUID
 
 class Wait(private val block: ReporterBlock) : Node {
@@ -36,4 +35,3 @@ fun NodeBuilder.wait(seconds: Double) = addChild(Wait(DoubleBlock(seconds)))
 fun NodeBuilder.wait(seconds: Int) = addChild(Wait(IntBlock(seconds)))
 fun NodeBuilder.wait(block: ReporterBlock) = addChild(Wait(block))
 
-fun NodeBuilder.waitUntil(block: BooleanBlock) = addChild(ControlWaitUntil(block))

@@ -3,12 +3,13 @@ package de.jensklingenberg.scratch.data
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchList) : Node, ReporterBlock {
+private class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchList) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -22,3 +23,6 @@ class LengthOfList(private val list: de.jensklingenberg.scratch.ScratchList) : N
         ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
+
+fun NodeBuilder.lengthOfList(list: de.jensklingenberg.scratch.ScratchList) =
+    addChild(LengthOfList(list))

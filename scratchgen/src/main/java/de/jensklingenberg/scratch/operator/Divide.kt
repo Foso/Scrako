@@ -3,8 +3,8 @@ package de.jensklingenberg.scratch.operator
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.looks.StringReporter
-import de.jensklingenberg.scratch.motion.DoubleBlock
-import de.jensklingenberg.scratch.motion.IntBlock
+import de.jensklingenberg.scratch.common.DoubleBlock
+import de.jensklingenberg.scratch.common.IntBlock
 
 class Divide(operand1: ReporterBlock, operand2: ReporterBlock) : Operator(
     listOf(operand1, operand2),

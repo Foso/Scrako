@@ -10,7 +10,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class PointTowards(private val target: String) : Node {
+private class PointTowards(private val target: String) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,

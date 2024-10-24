@@ -124,7 +124,7 @@ class ArgumentString(override val name: String, override val defaultValue: Strin
     }
 }
 
-interface Argument : Node, ReporterBlock {
+interface Argument : ReporterBlock {
     val name: String
     val defaultValue: String
     val id: UUID

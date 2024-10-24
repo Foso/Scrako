@@ -5,10 +5,8 @@ import de.jensklingenberg.scratch.common.HatBlock
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 
-
-private  class WhenFlagClicked : BlockSpec(
-    opcode = OpCode.Whenflagclicked,
+private class WhenStartAsClone : BlockSpec(
+    opcode = OpCode.control_start_as_clone,
 ), Event, HatBlock
 
-
-fun NodeBuilder.whenFlagClicked() = addChild(WhenFlagClicked())
+fun NodeBuilder.whenStartAsClone() = addChild(WhenStartAsClone())

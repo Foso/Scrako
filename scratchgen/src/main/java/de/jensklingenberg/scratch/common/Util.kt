@@ -1,15 +1,14 @@
 package de.jensklingenberg.scratch.common
 
+import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.looks.StringReporter
-import de.jensklingenberg.scratch.motion.DoubleBlock
-import de.jensklingenberg.scratch.motion.IntBlock
 import de.jensklingenberg.scratch.operator.And
 import de.jensklingenberg.scratch.operator.createNum
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-enum class ScratchType(val value: Int) {
+internal enum class ScratchType(val value: Int) {
     BLOCKREF(3),
     NUMBER(4),
     POSITIVE_NUMBER(5),
@@ -23,9 +22,9 @@ enum class ScratchType(val value: Int) {
     LIST(13)
 }
 
-fun createLiteralMessage(message: String) = createMessage(1, ScratchType.STRING.value, message)
+internal fun createLiteralMessage(message: String) = createMessage(1, ScratchType.STRING.value, message)
 
-fun createMessage(first: Int, second: Int, message: String): JsonArray {
+internal fun createMessage(first: Int, second: Int, message: String): JsonArray {
     if (message.length > 330) {
         throw IllegalArgumentException("Message is too long")
     }
@@ -43,9 +42,9 @@ fun createMessage(first: Int, second: Int, message: String): JsonArray {
 }
 
 
-fun createBlockRef(refId: String) = JsonArray(
+internal fun createBlockRef(refId: String, type: ScratchType = ScratchType.BLOCKREF) = JsonArray(
     listOf(
-        JsonPrimitive(3),
+        JsonPrimitive(type.value),
         JsonPrimitive(refId),
         JsonArray(
             listOf(
@@ -56,7 +55,7 @@ fun createBlockRef(refId: String) = JsonArray(
     )
 )
 
-fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
+internal fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
     listOf(
         JsonPrimitive(1),
         JsonArray(
@@ -68,7 +67,7 @@ fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
     )
 )
 
-fun createTimes(message: String = "10") = JsonArray(
+internal fun createTimes(message: String = "10") = JsonArray(
     listOf(
         JsonPrimitive(1),
         JsonArray(
@@ -80,13 +79,46 @@ fun createTimes(message: String = "10") = JsonArray(
     )
 )
 
+internal fun createVariableContent(content: ScratchVariable) = JsonArray(
+    listOf(
+        JsonPrimitive(3),
+        JsonArray(
+            listOf(
+                JsonPrimitive(12),
+                JsonPrimitive(content.name),
+                JsonPrimitive(content.id.toString())
+            )
+        )
+    )
+)
 
-fun setValue(
+internal fun createListContent(content: ScratchList) = JsonArray(
+    listOf(
+        JsonPrimitive(3),
+        JsonArray(
+            listOf(
+                JsonPrimitive(ScratchType.LIST.value),
+                JsonPrimitive(content.name),
+                JsonPrimitive(content.id.toString())
+            )
+        )
+    )
+)
+
+internal fun setValue(
     reporterBlock: ReporterBlock,
     operatorUUID: UUID
 ) = when (reporterBlock) {
     is IntBlock -> {
         createNum(reporterBlock.value.toString())
+    }
+
+    is ScratchVariable ->{
+        createVariableContent(reporterBlock)
+    }
+
+    is ScratchList ->{
+        createListContent(reporterBlock)
     }
 
     is DoubleBlock -> {
@@ -106,7 +138,7 @@ fun setValue(
     }
 }
 
-fun createCondition(operatorId: String) = JsonArray(
+internal fun createCondition(operatorId: String) = JsonArray(
     listOf(
         JsonPrimitive(2),
         JsonPrimitive(operatorId)

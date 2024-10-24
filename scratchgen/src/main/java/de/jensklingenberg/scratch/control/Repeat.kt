@@ -1,8 +1,9 @@
 package de.jensklingenberg.scratch.control
 
-
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
+import de.jensklingenberg.scratch.common.DoubleBlock
+import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -10,20 +11,7 @@ import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.motion.DoubleBlock
-import de.jensklingenberg.scratch.motion.IntBlock
 import java.util.UUID
-
-sealed interface RepeatOption {
-    class Times(val times: Int) : RepeatOption
-    class Until(val reporterBlock: ReporterBlock) : RepeatOption
-}
-
-fun NodeBuilder.repeat(times: Int, childs: NodeBuilder.() -> Unit) = repeat(IntBlock(times), childs)
-fun NodeBuilder.repeat(times: Double, childs: NodeBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
-
-fun NodeBuilder.repeat(times: ReporterBlock, childs: NodeBuilder.() -> Unit) =
-    addChild(Repeat(times, *NodeBuilder().apply(childs).childs.toTypedArray()))
 
 class Repeat(private val option: ReporterBlock, private vararg val childs: Node) : BlockSpec(OpCode.control_repeat) {
     override fun visit(
@@ -73,3 +61,9 @@ class Repeat(private val option: ReporterBlock, private vararg val childs: Node)
 
     }
 }
+
+fun NodeBuilder.repeat(times: Int, childs: NodeBuilder.() -> Unit) = repeat(IntBlock(times), childs)
+fun NodeBuilder.repeat(times: Double, childs: NodeBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
+
+fun NodeBuilder.repeat(times: ReporterBlock, childs: NodeBuilder.() -> Unit) =
+    addChild(Repeat(times, *NodeBuilder().apply(childs).childs.toTypedArray()))

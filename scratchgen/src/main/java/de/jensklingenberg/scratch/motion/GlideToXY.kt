@@ -7,7 +7,7 @@ import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createMessage
 import de.jensklingenberg.scratch.operator.Operator
 
-class GlideToXY(sec: String, toX: String, toY: String) : BlockSpec(
+private class GlideToXY(sec: String, toX: String, toY: String) : BlockSpec(
     opcode = OpCode.motion_glidesecstoxy,
     inputs = mapOf(
         "SECS" to createMessage(1, checkType(sec), sec),
@@ -16,7 +16,7 @@ class GlideToXY(sec: String, toX: String, toY: String) : BlockSpec(
     )
 ), MotionBlock
 
-fun checkType(data: Any): Int {
+private fun checkType(data: Any): Int {
 
     return when (data) {
         is Operator -> {

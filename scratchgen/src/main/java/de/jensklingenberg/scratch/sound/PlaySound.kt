@@ -9,7 +9,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class PlaySound(val soundName: String) : Node {
+private class PlaySound(val soundName: String) : Node {
 
     override fun visit(
         visitors: MutableMap<String, de.jensklingenberg.scratch.model.Block>,

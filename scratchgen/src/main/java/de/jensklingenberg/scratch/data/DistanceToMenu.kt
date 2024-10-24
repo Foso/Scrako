@@ -8,7 +8,7 @@ import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class DistanceToMenu(private val destination: String) : Node, ReporterBlock {
+class DistanceToMenu(private val destination: String) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

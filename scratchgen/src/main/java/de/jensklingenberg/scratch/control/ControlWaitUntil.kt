@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
@@ -27,3 +28,5 @@ class ControlWaitUntil(private val block: BooleanBlock) : Node {
         block.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }
 }
+
+fun NodeBuilder.waitUntil(block: BooleanBlock) = addChild(ControlWaitUntil(block))

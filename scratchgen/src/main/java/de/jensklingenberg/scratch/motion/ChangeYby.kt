@@ -1,11 +1,12 @@
 package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scratch.common.BlockSpec
+import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
 
-class ChangeYby(private val value: Int) : BlockSpec(
+private class ChangeYby(private val value: Int) : BlockSpec(
     opcode = OpCode.motion_changeyby,
     inputs = mapOf(
         "DY" to createMessage(
@@ -13,3 +14,5 @@ class ChangeYby(private val value: Int) : BlockSpec(
         )
     )
 ), ReporterBlock
+
+fun NodeBuilder.changeYby(value: Int) = addChild(ChangeYby(value))

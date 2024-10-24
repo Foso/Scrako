@@ -10,7 +10,7 @@ import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
+private class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -27,5 +27,3 @@ class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
 
 fun NodeBuilder.deleteAllOf(list: ScratchList) = addChild(DeleteAllOf(list))
 
-interface VariablesBlock
-interface ListBlock : VariablesBlock

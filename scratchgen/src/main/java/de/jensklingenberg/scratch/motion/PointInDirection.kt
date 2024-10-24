@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.operator.createNum
 
-class PointInDirection(degrees: Int) : BlockSpec(
+private class PointInDirection(degrees: Int) : BlockSpec(
     opcode = OpCode.motion_pointindirection,
     inputs = mapOf("DIRECTION" to createNum(degrees.toString()))
 )

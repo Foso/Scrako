@@ -12,7 +12,7 @@ import de.jensklingenberg.scratch.looks.LooksSayContent
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-data class AskandWait(val content: LooksSayContent) : Node {
+private data class AskandWait(val content: LooksSayContent) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

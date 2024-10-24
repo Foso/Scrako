@@ -1,6 +1,7 @@
 package de.jensklingenberg.scratch.model
 
 import de.jensklingenberg.scratch.ScratchList
+import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.Sprite
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
@@ -37,12 +38,13 @@ fun createTarget(
     blocks: Map<String, Block>,
     sprite: Sprite,
     comments: List<Comment> = emptyList(),
-    lists: List<ScratchList>? = emptyList()
+    lists: Set<ScratchList>? = emptySet(),
+    variables: Set<ScratchVariable>
 ): Target {
     val targe2 = Target(
         isStage = false,
         name = sprite.name,
-        variables = emptyMap(),
+        variables = variables.associate { it.id.toString() to JsonArray(listOf(JsonPrimitive(it.name), JsonPrimitive(""))) },
         lists = lists?.associate {
             it.id.toString() to JsonArray(
                 listOf(
@@ -50,7 +52,7 @@ fun createTarget(
                     JsonArray(it.contents.map { JsonPrimitive(it) })
                 )
             )
-        } ?: emptyMap(),
+        }?: emptyMap(),
         broadcasts = emptyMap(),
         blocks = blocks,
         comments = comments.associateBy { it.id },

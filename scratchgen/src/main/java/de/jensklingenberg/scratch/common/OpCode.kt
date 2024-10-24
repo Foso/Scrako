@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.common
 import kotlinx.serialization.Serializable
 
 @Serializable
-class OpCode(val value: String) {
+internal class OpCode(val value: String) {
     companion object {
         val sound_play = "sound_play"
         val sensing_coloristouchingcolor = "sensing_coloristouchingcolor"

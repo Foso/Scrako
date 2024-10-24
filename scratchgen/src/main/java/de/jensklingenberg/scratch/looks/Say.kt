@@ -1,6 +1,8 @@
 package de.jensklingenberg.scratch.looks
 
 
+import de.jensklingenberg.scratch.ScratchList
+import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
@@ -11,11 +13,12 @@ import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
 import de.jensklingenberg.scratch.common.getScratchType
+import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 
-data class Say(private val content: ReporterBlock, private val seconds: Int? = null) : Node {
+private data class Say(private val content: ReporterBlock, private val seconds: Int? = null) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -30,6 +33,9 @@ data class Say(private val content: ReporterBlock, private val seconds: Int? = n
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
                 is StringReporter -> createLiteralMessage(content.value)
+                is ScratchVariable -> setValue(content, operatorUUID)
+                is ScratchList -> setValue(content, operatorUUID)
+
                 else -> {
                     createBlockRef(operatorUUID.toString())
                 }
@@ -59,6 +65,8 @@ data class Say(private val content: ReporterBlock, private val seconds: Int? = n
         )
 
     }
+
+
 }
 
 sealed interface LooksSayContent {
@@ -66,17 +74,7 @@ sealed interface LooksSayContent {
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
-class StringReporter(val value: String) : ReporterBlock {
-    override fun visit(
-        visitors: MutableMap<String, Block>,
-        parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
-        context: Context
-    ) {
-
-    }
-}
+class StringReporter(val value: String) : ReporterBlock
 
 fun NodeBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))
 fun NodeBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)

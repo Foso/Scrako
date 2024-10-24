@@ -9,14 +9,12 @@ import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-interface BooleanBlock : ReporterBlock
-
 
 abstract class Operator(
     private val operand1: List<ReporterBlock>,
-    private val inputName: List<String>,
+    private val inputKeys: List<String>,
     private val opCode: String
-) : Node, ReporterBlock {
+) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -26,8 +24,8 @@ abstract class Operator(
     ) {
         val operatorUUID1 = operand1.associateWith { UUID.randomUUID() }
 
-        val inputs = inputName.mapIndexed { index, s ->
-            s to setValue(operand1[index], operatorUUID1[operand1[index]]!!)
+        val inputs = inputKeys.mapIndexed { index, key ->
+            key to setValue(operand1[index], operatorUUID1[operand1[index]]!!)
         }.toMap()
         visitors[identifier.toString()] = BlockSpec(
             opcode = opCode,

@@ -4,6 +4,7 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.ScratchProject
 import de.jensklingenberg.scratch.createStage
 import de.jensklingenberg.scratch.readList
+import de.jensklingenberg.scratch.resFolder
 import de.jensklingenberg.scratch.writeProject
 
 val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A\\00\", align 1\n" +
@@ -18,6 +19,7 @@ val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A
 
 
 fun main() {
+
     val myList = ScratchList("jens2", readList("jens.txt"))
     val stageTarget = createStage(listOf(myList), listOf())
 
@@ -27,6 +29,6 @@ fun main() {
         targets = listOf(stageTarget, sprite1)
     )
 
-    writeProject(scratchProject)
+    writeProject(scratchProject, resFolder, "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp")
 }
 

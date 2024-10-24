@@ -11,7 +11,7 @@ import java.util.UUID
 fun NodeBuilder.GoToFront() = addChild(GoTo("front"))
 fun NodeBuilder.GoToBack() = addChild(GoTo("back"))
 
-class GoTo(private val value: String) : Node {
+private  class GoTo(private val value: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -19,10 +19,9 @@ class GoTo(private val value: String) : Node {
         nextUUID: UUID?,
         context: Context
     ) {
-        val newNext = nextUUID
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_gotofrontback,
             fields = mapOf("FRONT_BACK" to listOf(value, null))
-        ).toBlock(newNext, parent, context.topLevel)
+        ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
