@@ -19,7 +19,8 @@ internal enum class ScratchType(val value: Int) {
     STRING(10),
     BROADCAST(11),
     VARIABLE(12),
-    LIST(13)
+    LIST(13),
+    OBJECT(1)
 }
 
 internal fun createLiteralMessage(message: String) = createMessage(1, ScratchType.STRING.value, message)
@@ -84,7 +85,7 @@ internal fun createVariableContent(content: ScratchVariable) = JsonArray(
         JsonPrimitive(3),
         JsonArray(
             listOf(
-                JsonPrimitive(12),
+                JsonPrimitive(ScratchType.VARIABLE.value),
                 JsonPrimitive(content.name),
                 JsonPrimitive(content.id.toString())
             )
@@ -103,6 +104,13 @@ internal fun createListContent(content: ScratchList) = JsonArray(
                 JsonPrimitive(content.id.toString())
             )
         )
+    )
+)
+
+internal fun createObjectContent(content: UUID) = JsonArray(
+    listOf(
+        JsonPrimitive(ScratchType.OBJECT.value),
+        JsonPrimitive(content.toString()),
     )
 )
 

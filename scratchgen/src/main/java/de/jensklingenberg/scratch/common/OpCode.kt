@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal class OpCode(val value: String) {
     companion object {
+        val looks_changeeffectby = "looks_changeeffectby"
+        val sensing_of_object_menu = "sensing_of_object_menu"
+        val sensing_of = "sensing_of"
         val control_repeat_until = "control_repeat_until"
         val event_whengreaterthan = "event_whengreaterthan"
         val event_whenthisspriteclicked = "event_whenthisspriteclicked"

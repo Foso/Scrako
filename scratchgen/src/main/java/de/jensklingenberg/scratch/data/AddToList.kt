@@ -14,7 +14,7 @@ import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-private class AddToList(private val block: ReporterBlock, private val list: ScratchList) : Node, StackBlock {
+private class AddToList(private val list: ScratchList, private val block: ReporterBlock) : Node, StackBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -33,5 +33,5 @@ private class AddToList(private val block: ReporterBlock, private val list: Scra
 }
 
 
-fun NodeBuilder.addToList(block: ReporterBlock, list: ScratchList) = addChild(AddToList(block, list))
-fun NodeBuilder.addToList(item: String, list: ScratchList) = addChild(AddToList(StringBlock(item), list))
+fun NodeBuilder.addToList(list: ScratchList, block: ReporterBlock) = addChild(AddToList(list, block))
+fun NodeBuilder.addToList(list: ScratchList, item: String) = addChild(AddToList(list, StringBlock(item)))

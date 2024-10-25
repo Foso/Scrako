@@ -29,6 +29,7 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
     }
 }
 
+
 fun keyIsPressed(key: Key): BooleanBlock = KeyIsPressed(KeyOptions(KeyReporter(key)))
 fun keyIsPressed(key: ReporterBlock): BooleanBlock = KeyIsPressed(key)
 
