@@ -144,6 +144,7 @@ fun createStage(
     y = 0,
     size = 100,
     direction = 90,
+    tempo = 60,
     draggable = false,
     rotationStyle = "all around"
 )

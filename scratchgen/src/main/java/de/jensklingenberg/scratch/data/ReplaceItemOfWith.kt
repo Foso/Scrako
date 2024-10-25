@@ -47,3 +47,4 @@ fun NodeBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, repla
 
 fun NodeBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
     addChild(ReplaceItemOfWith(IntBlock(index), list, StringBlock(replace)))
+

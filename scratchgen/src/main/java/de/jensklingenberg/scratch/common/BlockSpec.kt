@@ -39,8 +39,8 @@ open class BlockSpec(
         nextUUID: UUID?,
         context: Context
     ) {
-        if (this is Event && parent != null) {
-            throw IllegalStateException("Event blocks can't have a parent")
+        if (this is HatBlock && parent != null) {
+            throw IllegalStateException("HatBlock blocks can't have a parent")
         }
         comment?.addBlock(identifier.toString())
         visitors[identifier.toString()] =

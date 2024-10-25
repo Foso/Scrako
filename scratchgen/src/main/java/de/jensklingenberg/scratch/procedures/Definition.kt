@@ -152,7 +152,7 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
     }
 }
 
-fun NodeBuilder.definition(
+fun NodeBuilder.define(
     customBlockName: String,
     withoutRefresh: Boolean = false,
     arguments: List<Input> = emptyList()

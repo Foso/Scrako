@@ -25,19 +25,6 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
         val operatorUUID = UUID.randomUUID()
 
         val childUUIDS = childs.map { UUID.randomUUID() }
-        childs.mapIndexed { childIndex, visitor ->
-            val nextchild =
-                childIndex != childs.lastIndex
-
-            val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
-            visitor.visit(
-                visitors,
-                parent = identifier.toString(),
-                childUUIDS[childIndex],
-                nextUUID,
-                context
-            )
-        }
 
         val inputs = mutableMapOf(
             "TIMES" to setValue(times, operatorUUID)
@@ -57,8 +44,26 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
             identifier.toString(),
             operatorUUID,
             null,
-            context
+            context.copy(topLevel = false)
         )
+
+        childs.mapIndexed { childIndex, visitor ->
+            val nextchild =
+                childIndex != childs.lastIndex
+
+            val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
+            visitor.visit(
+                visitors,
+                parent = identifier.toString(),
+                childUUIDS[childIndex],
+                nextUUID,
+                context.copy(topLevel = false)
+            )
+        }
+
+
+
+
 
     }
 }

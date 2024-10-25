@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.motion
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
+import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -29,7 +30,7 @@ private class Move(val block: ReporterBlock) : Node {
 
     }
 }
-
+fun NodeBuilder.move(steps: Int) = addChild(Move(IntBlock(steps)))
 fun NodeBuilder.move(steps: Double) = addChild(Move(DoubleBlock(steps)))
 fun NodeBuilder.move(steps: ReporterBlock) = addChild(Move(steps))
 

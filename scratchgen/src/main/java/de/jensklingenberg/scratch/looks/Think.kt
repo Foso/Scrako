@@ -60,7 +60,6 @@ private data class Think(private val content: LooksSayContent, private val secon
     }
 }
 
-
-fun NodeBuilder.Think(message: String, seconds: Int? = null) =
+fun NodeBuilder.think(message: String, seconds: Int? = null) =
     addChild(Think(LooksSayContent.Literal(message), seconds))
 

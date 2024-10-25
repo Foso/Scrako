@@ -8,9 +8,6 @@ import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-fun NodeBuilder.GoToFront() = addChild(GoTo("front"))
-fun NodeBuilder.GoToBack() = addChild(GoTo("back"))
-
 private class GoTo(private val value: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -25,3 +22,6 @@ private class GoTo(private val value: String) : Node {
         ).toBlock(nextUUID, parent, context.topLevel)
     }
 }
+
+fun NodeBuilder.GoToFront() = addChild(GoTo("front"))
+fun NodeBuilder.GoToBack() = addChild(GoTo("back"))

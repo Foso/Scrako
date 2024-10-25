@@ -10,7 +10,7 @@ import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
-private class SetEffectBy(val block: ReporterBlock, val effectName: String) : Node {
+private class SetEffectTo(val block: ReporterBlock, val effectName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -34,4 +34,4 @@ private class SetEffectBy(val block: ReporterBlock, val effectName: String) : No
     }
 }
 
-fun NodeBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addChild(SetEffectBy(block, effectName))
+fun NodeBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addChild(SetEffectTo(block, effectName))
