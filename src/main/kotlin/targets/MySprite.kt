@@ -1,8 +1,9 @@
-package me.jens
+package me.jens.targets
 
 import de.jensklingenberg.scratch.Broadcast
 import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.blockBuilder
+import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scratch.common.createVariable
@@ -12,13 +13,15 @@ import de.jensklingenberg.scratch.control.waitUntil
 import de.jensklingenberg.scratch.createList
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.event.whenStartAsClone
-import de.jensklingenberg.scratch.looks.Effect
+import de.jensklingenberg.scratch.looks.Effect.GHOST
 import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.looks.changeEffectBy
 import de.jensklingenberg.scratch.looks.say
+import de.jensklingenberg.scratch.looks.setEffectTo
 import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.model.createTarget
 import de.jensklingenberg.scratch.motion.changeXby
+import de.jensklingenberg.scratch.motion.switchCostume
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
 import de.jensklingenberg.scratch.procedures.Input
@@ -28,6 +31,8 @@ import de.jensklingenberg.scratch.sensing.SensingOptions.x_position
 import de.jensklingenberg.scratch.sensing.colorIsTouchingColor
 import de.jensklingenberg.scratch.sensing.sensingOf
 import de.jensklingenberg.scratch.sound.playSound
+import me.jens.sprite
+import me.jens.spriteArrow
 
 
 fun MyTarget(jensList: ScratchList): Target {
@@ -42,8 +47,10 @@ fun MyTarget(jensList: ScratchList): Target {
         val users = createList("Users", listOf("Jens", "Martin", "Thomas"))
         //whenGreaterThan(GreaterThanOption.TIMER, 3.0)
         whenFlagClicked()
+        switchCostume("costume2")
         say(sensingOf(x_position, spriteArrow))
-        changeEffectBy(Effect.GHOST, StringBlock("10"))
+        changeEffectBy(GHOST, StringBlock("10"))
+        setEffectTo(GHOST.name, StringBlock("10"))
     }
 
     val list2 = whenFlagClicked(jensList, elements)
