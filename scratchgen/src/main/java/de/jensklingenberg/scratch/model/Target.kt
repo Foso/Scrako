@@ -71,7 +71,7 @@ fun createTarget(
         visible = true,
         x = 0,
         y = 0,
-        size = 100,
+        size = sprite.size,
         direction = 90,
         draggable = false,
         rotationStyle = "all around"

@@ -7,7 +7,7 @@ class ScratchVariable(val name: String) : ReporterBlock {
     val id: UUID = UUID.randomUUID()
 }
 
-fun NodeBuilder.createVariable(name: String): ScratchVariable {
+fun NodeBuilder.getVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
     variables.add(element)
     return element

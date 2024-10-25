@@ -12,7 +12,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-private class SwitchCostume(private val value: ReporterBlock) : Node {
+private class SwitchCostume(private val block: ReporterBlock) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -26,21 +26,21 @@ private class SwitchCostume(private val value: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_switchcostumeto,
             inputs = mapOf(
-                "COSTUME" to when (value) {
+                "COSTUME" to when (block) {
                     is StringBlock -> JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(menuId.toString())))
                     else -> JsonArray(listOf(JsonPrimitive(3), JsonPrimitive(menuId.toString()),JsonPrimitive(blockId.toString())))
                 }
             ),
         ).toBlock(nextUUID, parent, context.topLevel)
 
-        when (value) {
+        when (block) {
             is StringBlock -> {
-                CostumeMenu(value.value).visit(visitors, identifier.toString(), menuId, null, context)
+                CostumeMenu(block.value).visit(visitors, identifier.toString(), menuId, null, context)
 
             }
             else -> {
                 CostumeMenu().visit(visitors, identifier.toString(), menuId, null, context)
-                value.visit(visitors, identifier.toString(), menuId, null, context)
+                block.visit(visitors, identifier.toString(), menuId, null, context)
             }
         }
 

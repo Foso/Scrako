@@ -4,6 +4,7 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.ScratchProject
 import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.createStage
+import de.jensklingenberg.scratch.model.Sound
 import de.jensklingenberg.scratch.readList
 import de.jensklingenberg.scratch.resFolder
 import de.jensklingenberg.scratch.writeProject
@@ -34,7 +35,19 @@ val spriteArrow = Sprite("Arrow1", listOf(costume1), listOf())
 fun main() {
 
     val myList = ScratchList("jens2", readList("jens.txt"))
-    val stageTarget = createStage(listOf(myList), listOf())
+    val stageTarget = createStage(
+        listOf(myList), listOf(), listOf(
+            Sound(
+                name = "pop",
+                assetId = "83a9787d4cb6f3b7632b4ddfebf74367",
+                dataFormat = "wav",
+                format = "",
+                rate = 48000,
+                sampleCount = 1123,
+                md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+            )
+        )
+    )
 
 
 

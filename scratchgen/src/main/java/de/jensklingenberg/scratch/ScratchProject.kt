@@ -3,11 +3,14 @@ package de.jensklingenberg.scratch
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchVariable
+import de.jensklingenberg.scratch.common.createBlocks23
+import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.model.Costume
 import de.jensklingenberg.scratch.model.Meta
 import de.jensklingenberg.scratch.model.Monitor
 import de.jensklingenberg.scratch.model.Sound
 import de.jensklingenberg.scratch.model.Target
+import de.jensklingenberg.scratch.model.createTarget
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -34,16 +37,40 @@ data class ScratchProject(
     )
 )
 
-fun blockBuilder(ff: NodeBuilder.() -> Unit): NodeBuilder {
+class TargetBuilder{
+    val nodesbuilder = mutableListOf<NodeBuilder>()
+    var sprite : Sprite? = null
+    var blocks: Map<String, Block> = mutableMapOf()
+
+    fun build(): Target {
+        return createTarget(this.blocks, this.sprite!!, emptyList(), this.nodesbuilder.map { it.lists }.flatten().toSet(), this.nodesbuilder.map { it.variables }.flatten().toSet())
+    }
+}
+
+fun TargetBuilder.addSprite(sprite: Sprite){
+    this.sprite = sprite
+}
+
+fun targetBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
+    val node = TargetBuilder()
+    ff.invoke(node)
+    val test = createBlocks23(node.nodesbuilder.map { it.childs })
+    node.blocks = test
+    return node
+}
+
+fun TargetBuilder.blockBuilder(ff: NodeBuilder.() -> Unit): NodeBuilder {
     val node = NodeBuilder()
     ff.invoke(node)
+    nodesbuilder.add(node)
     return node
 }
 
 class Sprite(
     val name: String,
     val costumes: List<Costume>,
-    val sounds: List<Sound>
+    val sounds: List<Sound>,
+    val size: Int = 100,
 )
 
 class Broadcast(val name: String) {
@@ -73,7 +100,8 @@ fun readList(name: String): List<String> {
 
 fun createStage(
     lists: List<ScratchList>? = emptyList(),
-    variables: List<ScratchVariable>
+    variables: List<ScratchVariable>,
+    sounds: List<Sound>
 ) = Target(
     isStage = true,
     name = "Stage",
@@ -108,17 +136,7 @@ fun createStage(
             rotationCenterY = 180
         )
     ),
-    sounds = listOf(
-        Sound(
-            name = "pop",
-            assetId = "83a9787d4cb6f3b7632b4ddfebf74367",
-            dataFormat = "wav",
-            format = "",
-            rate = 48000,
-            sampleCount = 1123,
-            md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
-        )
-    ),
+    sounds = sounds,
     volume = 100,
     layerOrder = 0,
     visible = false,

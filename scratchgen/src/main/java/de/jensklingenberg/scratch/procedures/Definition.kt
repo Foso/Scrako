@@ -153,8 +153,8 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
 }
 
 fun NodeBuilder.definition(
-    prototypeName: String,
+    customBlockName: String,
     withoutRefresh: Boolean = false,
     arguments: List<Input> = emptyList()
 ) =
-    addChild(Definition(prototypeName, withoutRefresh, arguments))
+    addChild(Definition(customBlockName, withoutRefresh, arguments))

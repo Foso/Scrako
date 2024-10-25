@@ -65,6 +65,7 @@ enum class SensingOptions(val value: String) {
     backdrop_number("backdrop #"),
 }
 
+fun SensingOptions.of(sprite: Sprite): ReporterBlock = SensingOfMenu(sprite.name)
 
 fun sensingOf(
     propertyName: SensingOptions,
