@@ -22,6 +22,7 @@ import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.model.createTarget
 import de.jensklingenberg.scratch.motion.changeXby
 import de.jensklingenberg.scratch.motion.switchCostume
+import de.jensklingenberg.scratch.operator.add
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
 import de.jensklingenberg.scratch.procedures.Input
@@ -47,10 +48,11 @@ fun MyTarget(jensList: ScratchList): Target {
         val users = createList("Users", listOf("Jens", "Martin", "Thomas"))
         //whenGreaterThan(GreaterThanOption.TIMER, 3.0)
         whenFlagClicked()
-        switchCostume("costume2")
+        switchCostume( add(3,3))
+        switchCostume("costume1")
         say(sensingOf(x_position, spriteArrow))
         changeEffectBy(GHOST, StringBlock("10"))
-        setEffectTo(GHOST.name, StringBlock("10"))
+        setEffectTo(GHOST.name, add(3,3))
     }
 
     val list2 = whenFlagClicked(jensList, elements)

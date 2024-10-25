@@ -12,7 +12,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-private class SwitchCostume(private val value: CostumeMenu) : Node {
+private class SwitchCostume(private val value: ReporterBlock) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -21,19 +21,34 @@ private class SwitchCostume(private val value: CostumeMenu) : Node {
         nextUUID: UUID?,
         context: Context
     ) {
-        val protoUUID = UUID.randomUUID()
+        val menuId = UUID.randomUUID()
+        val blockId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_switchcostumeto,
-            inputs = mapOf("COSTUME" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(protoUUID.toString())))),
+            inputs = mapOf(
+                "COSTUME" to when (value) {
+                    is StringBlock -> JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(menuId.toString())))
+                    else -> JsonArray(listOf(JsonPrimitive(3), JsonPrimitive(menuId.toString()),JsonPrimitive(blockId.toString())))
+                }
+            ),
         ).toBlock(nextUUID, parent, context.topLevel)
 
-        value.visit(visitors, identifier.toString(), protoUUID, null, context)
+        when (value) {
+            is StringBlock -> {
+                CostumeMenu(value.value).visit(visitors, identifier.toString(), menuId, null, context)
+
+            }
+            else -> {
+                CostumeMenu().visit(visitors, identifier.toString(), menuId, null, context)
+                value.visit(visitors, identifier.toString(), menuId, null, context)
+            }
+        }
+
     }
 }
 
 
-
-private class CostumeMenu(private val value: String) : Node {
+private class CostumeMenu(private val value: String?="costume1") : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -46,9 +61,8 @@ private class CostumeMenu(private val value: String) : Node {
             opcode = OpCode.looks_costume,
             fields = mapOf("COSTUME" to listOf(value, null)),
         ).toBlock(nextUUID, parent, context.topLevel)
-
-
     }
 }
 
-fun NodeBuilder.switchCostume(value: String) = addChild(SwitchCostume(CostumeMenu(value)))
+fun NodeBuilder.switchCostume(value: ReporterBlock) = addChild(SwitchCostume(value))
+fun NodeBuilder.switchCostume(value: String) = addChild(SwitchCostume(StringBlock(value)))
