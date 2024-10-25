@@ -37,17 +37,23 @@ data class ScratchProject(
     )
 )
 
-class TargetBuilder{
+class TargetBuilder {
     val nodesbuilder = mutableListOf<NodeBuilder>()
-    var sprite : Sprite? = null
+    var sprite: Sprite? = null
     var blocks: Map<String, Block> = mutableMapOf()
 
     fun build(): Target {
-        return createTarget(this.blocks, this.sprite!!, emptyList(), this.nodesbuilder.map { it.lists }.flatten().toSet(), this.nodesbuilder.map { it.variables }.flatten().toSet())
+        return createTarget(
+            this.blocks,
+            this.sprite!!,
+            emptyList(),
+            this.nodesbuilder.map { it.lists }.flatten().toSet(),
+            this.nodesbuilder.map { it.variables }.flatten().toSet()
+        )
     }
 }
 
-fun TargetBuilder.addSprite(sprite: Sprite){
+fun TargetBuilder.addSprite(sprite: Sprite) {
     this.sprite = sprite
 }
 

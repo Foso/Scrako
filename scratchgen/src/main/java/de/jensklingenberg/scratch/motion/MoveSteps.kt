@@ -30,6 +30,7 @@ private class Move(val block: ReporterBlock) : Node {
 
     }
 }
+
 fun NodeBuilder.move(steps: Int) = addChild(Move(IntBlock(steps)))
 fun NodeBuilder.move(steps: Double) = addChild(Move(DoubleBlock(steps)))
 fun NodeBuilder.move(steps: ReporterBlock) = addChild(Move(steps))

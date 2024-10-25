@@ -34,7 +34,7 @@ private class ChangeEffectBy(val block: ReporterBlock, val effectName: String) :
     }
 }
 
-enum class Effect{
+enum class Effect {
     COLOR,
     FISHEYE,
     WHIRL,
@@ -43,5 +43,7 @@ enum class Effect{
     BRIGHTNESS,
     GHOST
 }
+
 fun NodeBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addChild(ChangeEffectBy(block, effectName))
-fun NodeBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) = addChild(ChangeEffectBy(block, effect.name.toLowerCase()))
+fun NodeBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) =
+    addChild(ChangeEffectBy(block, effect.name.toLowerCase()))

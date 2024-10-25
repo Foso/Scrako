@@ -28,7 +28,13 @@ private class SwitchCostume(private val block: ReporterBlock) : Node {
             inputs = mapOf(
                 "COSTUME" to when (block) {
                     is StringBlock -> JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(menuId.toString())))
-                    else -> JsonArray(listOf(JsonPrimitive(3), JsonPrimitive(menuId.toString()),JsonPrimitive(blockId.toString())))
+                    else -> JsonArray(
+                        listOf(
+                            JsonPrimitive(3),
+                            JsonPrimitive(menuId.toString()),
+                            JsonPrimitive(blockId.toString())
+                        )
+                    )
                 }
             ),
         ).toBlock(nextUUID, parent, context.topLevel)
@@ -38,6 +44,7 @@ private class SwitchCostume(private val block: ReporterBlock) : Node {
                 CostumeMenu(block.value).visit(visitors, identifier.toString(), menuId, null, context)
 
             }
+
             else -> {
                 CostumeMenu().visit(visitors, identifier.toString(), menuId, null, context)
                 block.visit(visitors, identifier.toString(), menuId, null, context)
@@ -48,7 +55,7 @@ private class SwitchCostume(private val block: ReporterBlock) : Node {
 }
 
 
-private class CostumeMenu(private val value: String?="costume1") : Node {
+private class CostumeMenu(private val value: String? = "costume1") : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,

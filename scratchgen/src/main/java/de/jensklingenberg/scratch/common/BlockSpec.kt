@@ -1,6 +1,5 @@
 package de.jensklingenberg.scratch.common
 
-import de.jensklingenberg.scratch.event.Event
 import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.model.Comment
 import de.jensklingenberg.scratch.model.Mutation
