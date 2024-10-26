@@ -49,7 +49,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
                     listOf(JsonPrimitive(1), JsonPrimitive(test.toString()))
                 )
             }
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
 
         GreaterThan(IntBlock(3), IntBlock(4)).visit(

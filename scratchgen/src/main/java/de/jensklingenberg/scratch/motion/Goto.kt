@@ -35,7 +35,7 @@ private class Goto(private val block: ReporterBlock) : Node {
                     }
                 }
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         when (block) {
             is StringBlock -> {
@@ -66,7 +66,7 @@ private class GotoMenu(val steps: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_goto_menu,
             fields = mapOf("TO" to listOf(steps, null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
     }
 }

@@ -18,19 +18,19 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
         nextUUID: UUID?,
         context: Context
     ) {
-        val operatorUUID = UUID.randomUUID()
+        val block1Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_seteffectto,
             inputs = mapOf(
-                "VALUE" to setValue(block, operatorUUID)
+                "VALUE" to setValue(block, block1Id)
             ),
             fields = mapOf(
                 "EFFECT" to listOf(
                     effectName, null
                 )
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
-        block.visit(visitors, identifier.toString(), operatorUUID, null, context)
+        ).toBlock(nextUUID, parent)
+        block.visit(visitors, identifier.toString(), block1Id, null, context)
     }
 }
 

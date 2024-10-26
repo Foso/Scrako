@@ -17,7 +17,7 @@ private class Stamp : Node {
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = PenOpCode.pen_stamp,
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

@@ -37,7 +37,7 @@ internal class IfElse(
                 "SUBSTACK" to createSubStack(leftUUIDs.first().toString()),
                 "SUBSTACK2" to createSubStack(rightUUIDs.first().toString())
             )
-        ).toBlock(newNext, parent, context.topLevel)
+        ).toBlock(newNext, parent)
         condition.visit(visitors, name2, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->

@@ -21,7 +21,7 @@ private class HideList(private val list: ScratchList) : Node, StackBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_hideList,
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

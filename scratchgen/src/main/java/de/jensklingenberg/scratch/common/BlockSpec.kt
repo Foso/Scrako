@@ -17,14 +17,14 @@ open class BlockSpec(
 ) : Node {
 
     open var comment: Comment? = null
-    fun toBlock(next: UUID?, parent: String?, topLevel: Boolean, comment: String? = null) = Block(
+    fun toBlock(next: UUID?, parent: String?, comment: String? = null) = Block(
         opcode = opcode,
         next = next?.toString(),
         parent = parent,
         inputs = inputs,
         fields = fields,
         shadow = shadow,
-        topLevel = topLevel,
+        topLevel = parent == null,
         x = x,
         y = y,
         comment = comment,
@@ -43,7 +43,7 @@ open class BlockSpec(
         }
         comment?.addBlock(identifier.toString())
         visitors[identifier.toString()] =
-            toBlock(nextUUID, context.parent, context.topLevel, comment?.id)
+            toBlock(nextUUID, context.parent, comment?.id)
     }
 
     fun addComment(comment: Comment): Node {

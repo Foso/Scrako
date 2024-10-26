@@ -32,7 +32,7 @@ internal class IfThen(
                 "CONDITION" to createSubStack(operatorUUID.toString()),
                 "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
             )
-        ).toBlock(newNext, parent, context.topLevel)
+        ).toBlock(newNext, parent)
         condition.visit(visitors, identifier.toString(), operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->

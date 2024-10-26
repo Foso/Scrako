@@ -54,7 +54,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent, context.topLevel)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent)
 
         content.visit(
             visitors,

@@ -27,7 +27,7 @@ private class AddToList(private val list: ScratchList, private val block: Report
             opcode = OpCode.data_addtolist,
             inputs = mapOf("ITEM" to setValue(block, childId)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), childId, null, context)
     }
 }

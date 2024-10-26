@@ -33,7 +33,7 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
                 "X" to setValue(toX, toXID),
                 "Y" to setValue(toY, toYID)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         sec.visit(visitors, identifier.toString(), secID, null, context.copy(topLevel = false))
         toX.visit(visitors, identifier.toString(), toXID, null, context.copy(topLevel = false))

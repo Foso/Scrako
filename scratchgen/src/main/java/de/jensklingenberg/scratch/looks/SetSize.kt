@@ -25,7 +25,7 @@ private class SetSize(val block: ReporterBlock) : Node {
             inputs = mapOf(
                 "SIZE" to setValue(block, operatorUUID)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), operatorUUID, null, context)
     }
 }

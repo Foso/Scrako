@@ -23,7 +23,7 @@ class CreateCloneOf(private val spriteName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_create_clone_of,
             inputs = mapOf("CLONE_OPTION" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString()))))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         CreateCloneOfMenu(spriteName).visit(
             visitors,
             identifier.toString(),
@@ -45,7 +45,7 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_create_clone_of_menu,
             fields = mapOf("CLONE_OPTION" to listOf(spriteName))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

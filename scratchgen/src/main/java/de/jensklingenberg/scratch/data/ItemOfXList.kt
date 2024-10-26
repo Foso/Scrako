@@ -24,7 +24,7 @@ private class ItemOfXList(private val index: Int, private val list: ScratchList)
                 "INDEX" to createMessage(1, 7, this.index.toString()),
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

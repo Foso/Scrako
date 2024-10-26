@@ -24,7 +24,7 @@ private class ControlWaitUntil(private val condition: BooleanBlock) : Node {
             inputs = mapOf(
                 "CONDITION" to setValue(condition, uuid)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         condition.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }
 }

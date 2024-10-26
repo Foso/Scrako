@@ -19,7 +19,7 @@ private class GoTo(private val value: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_gotofrontback,
             fields = mapOf("FRONT_BACK" to listOf(value, null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

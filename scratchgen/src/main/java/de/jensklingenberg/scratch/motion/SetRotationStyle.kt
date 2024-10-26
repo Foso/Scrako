@@ -19,7 +19,7 @@ private class SetRotationStyle(private val style: RotationStyle) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_setrotationstyle,
             fields = mapOf("STYLE" to listOf(style.spriteName, null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

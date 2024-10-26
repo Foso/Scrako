@@ -28,7 +28,7 @@ class Definition(
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.procedures_definition,
             inputs = mapOf("custom_block" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(protoUUID.toString())))),
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         Prototype(this.prototypeName, withoutRefresh, inputs).visit(
             visitors,
@@ -104,7 +104,7 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
                 argumentnames = "[$argumentNames]",
                 argumentids = "[${argIds.joinToString { "\"" + it.toString() + "\"" }}]",
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 
@@ -120,7 +120,7 @@ class ArgumentString(override val name: String, override val defaultValue: Strin
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.argument_reporter_string_number,
             fields = mapOf("VALUE" to listOf(name, null))
-        ).toBlock(null, null, context.topLevel)
+        ).toBlock(null, null)
     }
 }
 
@@ -148,7 +148,7 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.argument_reporter_boolean,
             fields = mapOf("VALUE" to listOf(name, null))
-        ).toBlock(null, parent, context.topLevel)
+        ).toBlock(null, parent)
     }
 }
 

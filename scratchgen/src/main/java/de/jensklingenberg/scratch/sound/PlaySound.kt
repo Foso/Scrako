@@ -22,7 +22,7 @@ private class PlaySound(val soundName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_play,
             inputs = mapOf("SOUND_MENU" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(soundMenuId.toString()))))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         SoundsMenu(soundName).visit(visitors, soundMenuId.toString(), soundMenuId, null, context)
     }
 }
@@ -43,7 +43,7 @@ private class SoundsMenu(private val soundName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_sounds_menu,
             fields = mapOf("SOUND_MENU" to listOf(soundName, null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

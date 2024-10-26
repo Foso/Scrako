@@ -36,7 +36,7 @@ private class InsertAt(
                 "ITEM" to setValue(block, dataBlockId)
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         index.visit(visitors, identifier.toString(), indexBlockId, null, context)
         block.visit(visitors, identifier.toString(), dataBlockId, null, context.copy(topLevel = false))
 

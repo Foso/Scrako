@@ -17,7 +17,7 @@ private class ClearEffects : Node {
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_cleareffects,
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

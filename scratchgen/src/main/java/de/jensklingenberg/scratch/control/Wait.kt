@@ -26,7 +26,7 @@ private class Wait(private val block: ReporterBlock) : Node {
             inputs = mapOf(
                 "DURATION" to setValue(block, uuid)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }
 }

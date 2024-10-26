@@ -29,7 +29,7 @@ private class ChangeEffectBy(val block: ReporterBlock, val effectName: String) :
                     effectName, null
                 )
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), operatorUUID, null, context)
     }
 }

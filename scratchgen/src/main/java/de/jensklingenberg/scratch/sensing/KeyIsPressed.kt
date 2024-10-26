@@ -24,7 +24,7 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
             inputs = mapOf(
                 "KEY_OPTION" to setValue(block, destinationUUID)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), destinationUUID, null, context.copy(topLevel = false))
     }
 }
@@ -47,7 +47,7 @@ private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
             fields = mapOf(
                 "KEY_OPTION" to listOf(reporter.key.key, null)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         reporter.visit(visitors, identifier.toString(), destinationUUID, null, context)
     }
 }

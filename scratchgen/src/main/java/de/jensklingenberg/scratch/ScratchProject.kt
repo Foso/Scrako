@@ -94,7 +94,7 @@ fun NodeBuilder.createList(name: String, contents: List<String>): ScratchList {
     return element
 }
 
-const val resFolder = "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/"
+const val resFolder = "C:\\Users\\jensk\\IdeaProjects\\ScraKo\\src\\main\\resources\\"
 
 fun readList(name: String): List<String> {
     val list = mutableListOf<String>()

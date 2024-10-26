@@ -23,7 +23,7 @@ private class PointInDirection(val block: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_pointindirection,
             inputs = mapOf("DIRECTION" to setValue(block, childId))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), childId, null, context)
 
     }

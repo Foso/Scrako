@@ -37,7 +37,7 @@ private class SwitchCostume(private val block: ReporterBlock) : Node {
                     )
                 }
             ),
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         when (block) {
             is StringBlock -> {
@@ -67,7 +67,7 @@ private class CostumeMenu(private val value: String? = "costume1") : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_costume,
             fields = mapOf("COSTUME" to listOf(value, null)),
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

@@ -65,9 +65,13 @@ fun MyTarget(jensList: ScratchList): Target {
         addSprite(sprite1)
 
         blockBuilder {
+
             whenFlagClicked()
+
             sendBroadcast(broadcast)
             clearEffects()
+
+
         }
 
         blockBuilder {

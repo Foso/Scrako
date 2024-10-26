@@ -49,7 +49,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_forever,
             inputs = inputs
-        ).toBlock(null, parent, context.topLevel)
+        ).toBlock(null, parent)
 
     }
 }

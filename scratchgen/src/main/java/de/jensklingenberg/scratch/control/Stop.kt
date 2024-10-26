@@ -24,7 +24,7 @@ private class Stop(private val option: StopOption) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_stop,
             fields = mapOf("STOP_OPTION" to listOf((option.s), null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

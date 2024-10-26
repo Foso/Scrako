@@ -37,7 +37,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_repeat,
             inputs = inputs
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         times.visit(
             visitors,

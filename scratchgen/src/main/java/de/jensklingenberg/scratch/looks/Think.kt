@@ -46,7 +46,7 @@ private data class Think(private val content: LooksSayContent, private val secon
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent, context.topLevel)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent)
 
         if (content is LooksSayContent.Reporter) {
             content.operatorSpec.visit(

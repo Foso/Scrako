@@ -25,7 +25,7 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock {
             inputs = mapOf(
                 "DX" to setValue(block, operatorUUID)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), operatorUUID, null, context)
     }
 }

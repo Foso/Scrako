@@ -31,7 +31,7 @@ internal class RepeatUntil(
                 "CONDITION" to createSubStack(operatorUUID.toString()),
                 "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         condition.visit(visitors, identifier.toString(), operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->

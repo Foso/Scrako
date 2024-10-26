@@ -30,7 +30,7 @@ private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock
                     )
                 )
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         destination.visit(visitors, identifier.toString(), destinationUUID, null, context)
 
     }

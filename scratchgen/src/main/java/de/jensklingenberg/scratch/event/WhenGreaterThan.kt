@@ -30,7 +30,7 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
             opcode = OpCode.event_whengreaterthan,
             inputs = mapOf("VALUE" to setValue(value, protoUUID)),
             fields = mapOf("WHENGREATERTHANMENU" to listOf(option.option, null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         value.visit(visitors, identifier.toString(), protoUUID, null, context)
     }

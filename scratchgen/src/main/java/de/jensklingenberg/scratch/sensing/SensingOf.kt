@@ -29,7 +29,7 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
                     propertyName, null
                 )
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), destinationUUID, null, context.copy(topLevel = false))
     }
 }
@@ -49,7 +49,7 @@ private class SensingOfMenu(val objectName: String) : BooleanBlock, SensingBlock
                     objectName, null
                 )
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

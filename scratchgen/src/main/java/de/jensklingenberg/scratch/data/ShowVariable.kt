@@ -20,7 +20,7 @@ private open class MyVariable(private val variable: ScratchVariable, val opCode:
         visitors[identifier.toString()] = BlockSpec(
             opcode = opCode,
             fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
-        ).toBlock(nextUUID, identifier.toString(), context.topLevel)
+        ).toBlock(nextUUID, identifier.toString())
     }
 }
 

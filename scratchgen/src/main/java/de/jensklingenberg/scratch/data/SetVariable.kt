@@ -25,7 +25,7 @@ private class SetVariable(private val variable: ScratchVariable, private val ite
             opcode = OpCode.data_setvariableto,
             inputs = mapOf("VALUE" to setValue(item, itemUUID)),
             fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         item.visit(visitors, identifier.toString(), itemUUID, null, context)
     }
 }
