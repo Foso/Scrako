@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchVariable
@@ -32,11 +32,11 @@ private class ChangeVariable(private val variable: ScratchVariable, private val 
 }
 
 
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) =
+fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) =
     addChild(ChangeVariable(variable, item))
 
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Int) =
+fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: Int) =
     addChild(ChangeVariable(variable, IntBlock(item)))
 
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Double) =
+fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: Double) =
     addChild(ChangeVariable(variable, DoubleBlock(item)))

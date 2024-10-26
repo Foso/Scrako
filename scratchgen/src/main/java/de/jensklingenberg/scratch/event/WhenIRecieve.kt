@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch.event
 
 import de.jensklingenberg.scratch.Broadcast
 import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 
 private class WhenIRecieve(broadcast: Broadcast) : BlockSpec(
@@ -10,4 +10,4 @@ private class WhenIRecieve(broadcast: Broadcast) : BlockSpec(
     fields = mapOf("BROADCAST_OPTION" to listOf(broadcast.name, broadcast.id.toString()))
 ), Event
 
-fun NodeBuilder.whenIRecieve(broadcast: Broadcast) = addChild(WhenIRecieve(broadcast))
+fun ScriptBuilder.whenIRecieve(broadcast: Broadcast) = addChild(WhenIRecieve(broadcast))

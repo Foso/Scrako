@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.looks
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -44,6 +44,6 @@ enum class Effect {
     GHOST
 }
 
-fun NodeBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addChild(ChangeEffectBy(block, effectName))
-fun NodeBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) =
+fun ScriptBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addChild(ChangeEffectBy(block, effectName))
+fun ScriptBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) =
     addChild(ChangeEffectBy(block, effect.name.toLowerCase()))

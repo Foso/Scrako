@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.data
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchVariable
@@ -30,8 +30,8 @@ private class SetVariable(private val variable: ScratchVariable, private val ite
     }
 }
 
-fun NodeBuilder.setVariable(variable: ScratchVariable, item: ReporterBlock) = addChild(SetVariable(variable, item))
+fun ScriptBuilder.setVariable(variable: ScratchVariable, item: ReporterBlock) = addChild(SetVariable(variable, item))
 
-fun NodeBuilder.setVariable(variable: ScratchVariable, item: String) =
+fun ScriptBuilder.setVariable(variable: ScratchVariable, item: String) =
     addChild(SetVariable(variable, StringBlock(item)))
 

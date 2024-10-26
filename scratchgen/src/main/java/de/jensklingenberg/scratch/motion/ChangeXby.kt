@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.IntBlock
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -30,6 +30,6 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock {
     }
 }
 
-fun NodeBuilder.changeXby(value: ReporterBlock) = addChild(ChangeXby(value))
-fun NodeBuilder.changeXby(value: Double) = addChild(ChangeXby(DoubleBlock(value)))
-fun NodeBuilder.changeXby(value: Int) = addChild(ChangeXby(IntBlock(value)))
+fun ScriptBuilder.changeXby(value: ReporterBlock) = addChild(ChangeXby(value))
+fun ScriptBuilder.changeXby(value: Double) = addChild(ChangeXby(DoubleBlock(value)))
+fun ScriptBuilder.changeXby(value: Int) = addChild(ChangeXby(IntBlock(value)))

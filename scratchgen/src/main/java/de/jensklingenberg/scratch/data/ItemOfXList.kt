@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.data
 import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.createMessage
@@ -28,7 +28,7 @@ private class ItemOfXList(private val index: Int, private val list: ScratchList)
     }
 }
 
-fun NodeBuilder.itemOfXList(index: Int, list: ScratchList) =
+fun ScriptBuilder.itemOfXList(index: Int, list: ScratchList) =
     addChild(ItemOfXList(index, list))
 
 

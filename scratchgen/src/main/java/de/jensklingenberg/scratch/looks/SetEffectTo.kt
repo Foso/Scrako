@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.looks
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -34,4 +34,4 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
     }
 }
 
-fun NodeBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addChild(SetEffectTo(block, effectName))
+fun ScriptBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addChild(SetEffectTo(block, effectName))

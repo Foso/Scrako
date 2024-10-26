@@ -4,7 +4,7 @@ package de.jensklingenberg.scratch.sensing
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
@@ -49,4 +49,4 @@ private data class AskandWait(val content: LooksSayContent) : Node {
     }
 }
 
-fun NodeBuilder.askAndWait(content: LooksSayContent) = addChild(AskandWait(content))
+fun ScriptBuilder.askAndWait(content: LooksSayContent) = addChild(AskandWait(content))

@@ -42,17 +42,22 @@ fun main() {
     val template =
         File("C:\\Users\\jensk\\IdeaProjects\\ScraKo\\scratchgen\\src\\main\\java\\de\\jensklingenberg\\scratch\\hey.txt").readText()
     tt.targets.forEach {
-        it.blocks.forEach { t, u ->
+        it.blocks.forEach { (t, u) ->
             println(u.opcode)
             // if(u.opcode == "motion_movesteps"){
+
+            u.inputs
+
             val newInputs = u.inputs.map { "\"${it.key}\" to setValue(block, operatorUUID) " }.joinToString("\n") { it }
-            val newFields = u.fields.map { "\"${it.key}\" to setValue(block, operatorUUID) " }.joinToString("\n") { it }
+            val newFields = u.fields.map { "\"${it.key}\" to listOf(${it.value.mapIndexed { index, s -> it }}) " }
+                .joinToString("\n") { it }
             val name = u.opcode.substringAfter("_").capitalize()
             val effects = u.fields.map { "val ${it.key.lowercase()}: String" }.joinToString { it }
-            val ee = (0..<u.inputs.size).mapIndexed { index, i -> "val block${i} = ReporterBlock" }.joinToString { it }
+            val blocks = (0..<u.inputs.size).mapIndexed { _, i -> "val block${i} = ReporterBlock" }.joinToString { it }
+
             val sec = template.replace("REPLACE_INPUT", newInputs)
-                .replace("INSERT_EFFECT",effects)
-                .replace("INSERT_PARAMETER",ee)
+                .replace("INSERT_EFFECT", effects)
+                .replace("INSERT_PARAMETER", blocks)
                 .replace("REPLACE_NAME", name)
                 .replace(
                     "REPLACE_OPCODE", u.opcode

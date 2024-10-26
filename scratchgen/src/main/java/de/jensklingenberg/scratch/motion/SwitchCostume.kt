@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.motion
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.looks.StringBlock
@@ -71,5 +71,5 @@ private class CostumeMenu(private val value: String? = "costume1") : Node {
     }
 }
 
-fun NodeBuilder.switchCostume(value: ReporterBlock) = addChild(SwitchCostume(value))
-fun NodeBuilder.switchCostume(value: String) = addChild(SwitchCostume(StringBlock(value)))
+fun ScriptBuilder.switchCostume(value: ReporterBlock) = addChild(SwitchCostume(value))
+fun ScriptBuilder.switchCostume(value: String) = addChild(SwitchCostume(StringBlock(value)))

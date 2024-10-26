@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.motion
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -71,5 +71,5 @@ private class GotoMenu(val steps: String) : Node {
     }
 }
 
-fun NodeBuilder.goTo(block: ReporterBlock) = addChild(Goto(block))
-fun NodeBuilder.goTo(value: String) = goTo(StringBlock(value))
+fun ScriptBuilder.goTo(block: ReporterBlock) = addChild(Goto(block))
+fun ScriptBuilder.goTo(value: String) = goTo(StringBlock(value))

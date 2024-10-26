@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchType
@@ -55,8 +55,8 @@ private fun checkType(data: Any): Int {
     }
 }
 
-fun NodeBuilder.glideToXY(sec: ReporterBlock, toX: ReporterBlock, toY: ReporterBlock) =
+fun ScriptBuilder.glideToXY(sec: ReporterBlock, toX: ReporterBlock, toY: ReporterBlock) =
     addChild(GlideToXY(sec, toX, toY))
 
-fun NodeBuilder.glideToXY(sec: Double, toX: Double, toY: Double) =
+fun ScriptBuilder.glideToXY(sec: Double, toX: Double, toY: Double) =
     addChild(GlideToXY(DoubleBlock(sec), DoubleBlock(toX), DoubleBlock(toY)))

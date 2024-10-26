@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
@@ -49,6 +49,6 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
     }
 }
 
-fun NodeBuilder.createCloneOf(spriteName: String) = addChild(CreateCloneOf(spriteName))
+fun ScriptBuilder.createCloneOf(spriteName: String) = addChild(CreateCloneOf(spriteName))
 
-fun NodeBuilder.createCloneOf(sprite: Sprite) = createCloneOf(sprite.name)
+fun ScriptBuilder.createCloneOf(sprite: Sprite) = createCloneOf(sprite.name)

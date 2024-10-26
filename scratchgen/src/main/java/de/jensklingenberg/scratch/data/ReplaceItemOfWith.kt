@@ -6,7 +6,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -42,9 +42,9 @@ private class ReplaceItemOfWith(
     }
 }
 
-fun NodeBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
+fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
     addChild(ReplaceItemOfWith(index, list, replace))
 
-fun NodeBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
+fun ScriptBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
     addChild(ReplaceItemOfWith(IntBlock(index), list, StringBlock(replace)))
 

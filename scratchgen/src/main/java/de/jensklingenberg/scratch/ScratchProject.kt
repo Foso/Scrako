@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch
 
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.common.createBlocks23
@@ -38,7 +38,7 @@ data class ScratchProject(
 )
 
 class TargetBuilder {
-    val nodesbuilder = mutableListOf<NodeBuilder>()
+    val nodesbuilder = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
     var blocks: Map<String, Block> = mutableMapOf()
 
@@ -65,9 +65,9 @@ fun targetBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     return node
 }
 
-fun TargetBuilder.blockBuilder(ff: NodeBuilder.() -> Unit): NodeBuilder {
-    val node = NodeBuilder()
-    ff.invoke(node)
+fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
+    val node = ScriptBuilder()
+    builder.invoke(node)
     nodesbuilder.add(node)
     return node
 }
@@ -88,7 +88,7 @@ class ScratchList(val name: String, val contents: List<String>) : ReporterBlock 
     val id: UUID = UUID.randomUUID()
 }
 
-fun NodeBuilder.createList(name: String, contents: List<String>): ScratchList {
+fun ScriptBuilder.createList(name: String, contents: List<String>): ScratchList {
     val element = ScratchList(name, contents)
     lists.add(element)
     return element

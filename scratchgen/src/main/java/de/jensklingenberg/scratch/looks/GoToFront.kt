@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.looks
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
@@ -23,5 +23,5 @@ private class GoTo(private val value: String) : Node {
     }
 }
 
-fun NodeBuilder.GoToFront() = addChild(GoTo("front"))
-fun NodeBuilder.GoToBack() = addChild(GoTo("back"))
+fun ScriptBuilder.GoToFront() = addChild(GoTo("front"))
+fun ScriptBuilder.GoToBack() = addChild(GoTo("back"))

@@ -1,8 +1,7 @@
 package me.jens.targets
 
 import de.jensklingenberg.scratch.addSprite
-import de.jensklingenberg.scratch.blockBuilder
-import de.jensklingenberg.scratch.common.createBlocks23
+import de.jensklingenberg.scratch.scriptBuilder
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.model.Target
@@ -14,7 +13,7 @@ import me.jens.spriteArrow
 fun createSprite2(): Target {
     val block = targetBuilder {
         addSprite(spriteArrow)
-        blockBuilder {
+        scriptBuilder {
             whenFlagClicked()
             say(XPosition)
         }

@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -30,5 +30,5 @@ private class SetSize(val block: ReporterBlock) : Node {
     }
 }
 
-fun NodeBuilder.setSize(block: ReporterBlock) = addChild(SetSize(block))
-fun NodeBuilder.setSize(block: Int) = setSize(IntBlock(block))
+fun ScriptBuilder.setSize(block: ReporterBlock) = addChild(SetSize(block))
+fun ScriptBuilder.setSize(block: Int) = setSize(IntBlock(block))

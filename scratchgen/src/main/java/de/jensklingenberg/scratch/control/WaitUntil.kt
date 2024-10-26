@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.setValue
 import de.jensklingenberg.scratch.model.Block
@@ -29,5 +29,5 @@ private class ControlWaitUntil(private val condition: BooleanBlock) : Node {
     }
 }
 
-fun NodeBuilder.waitUntil(block: BooleanBlock) = addChild(ControlWaitUntil(block))
+fun ScriptBuilder.waitUntil(block: BooleanBlock) = addChild(ControlWaitUntil(block))
 

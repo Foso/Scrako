@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.procedures
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
@@ -152,7 +152,7 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
     }
 }
 
-fun NodeBuilder.define(
+fun ScriptBuilder.define(
     customBlockName: String,
     withoutRefresh: Boolean = false,
     arguments: List<Input> = emptyList()

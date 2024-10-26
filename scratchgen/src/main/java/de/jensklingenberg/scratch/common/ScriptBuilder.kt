@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch.common
 
 import de.jensklingenberg.scratch.ScratchList
 
-class NodeBuilder {
+class ScriptBuilder {
 
     fun addChild(whenFlagClicked: Node) {
         childs.add(whenFlagClicked)

@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.looks.StackBlock
 import de.jensklingenberg.scratch.model.Block
@@ -25,4 +25,4 @@ private class ShowList(private val list: ScratchList) : Node, StackBlock {
     }
 }
 
-fun NodeBuilder.showList(list: ScratchList) = addChild(ShowList(list))
+fun ScriptBuilder.showList(list: ScratchList) = addChild(ShowList(list))
