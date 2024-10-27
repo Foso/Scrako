@@ -1,23 +1,43 @@
 package de.jensklingenberg.scrako.common
 
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
+
 class ProjectBuilder {
-    val targets = mutableListOf<Target>()
-    var stage = defaultStage()
-    var variables = mutableListOf<ScratchVariable>()
+    val targets = mutableListOf<TargetBuilder>()
+    var stage: TargetBuilder? = null
+    private var variables = mutableSetOf<ScratchVariable>()
+
+
+    fun addVariable(name: ScratchVariable) {
+        variables.add(name)
+    }
 
     fun build(): ScratchProject {
-        val target = targets.map { it.variables }
+
+        val newStage = stage?.build(Context(variables)) ?: defaultStage(variables.toList())
+
+        val ee = targets.map { it.build(Context(variables)) }
+
+        //val target = targets.map { it.variables }
         return ScratchProject(
-            targets = listOf(stage) + targets.map { it }
+            targets = listOf(newStage) + ee
         )
     }
 }
 
 
-fun defaultStage() = Target(
+fun defaultStage(variables: List<ScratchVariable>) = Target(
     isStage = true,
     name = "Stage",
-    variables = emptyMap(),
+    variables = variables.associate {
+        it.id.toString() to JsonArray(
+            listOf(
+                JsonPrimitive(it.name),
+                JsonPrimitive("")
+            )
+        )
+    },
     lists = emptyMap(),
     broadcasts = emptyMap(),
     blocks = emptyMap(),

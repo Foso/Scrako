@@ -3,7 +3,6 @@ package de.jensklingenberg.scrako.common
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
-import de.jensklingenberg.scrako.common.createBlocks23
 
 enum class ScratchType(val value: Int) {
     BLOCKREF(3),
@@ -121,7 +120,7 @@ fun setValue(
         createMessage(1, 4, reporterBlock.value.toString())
     }
 
-    is ObjectReporter ->{
+    is ObjectReporter -> {
         createObjectContent(operatorUUID)
     }
 
@@ -146,8 +145,8 @@ fun setValue(
     }
 
     //is And -> {
-   //     createCondition(operatorUUID.toString())
-  //  }
+    //     createCondition(operatorUUID.toString())
+    //  }
 
     else -> {
         createBlockRef(operatorUUID.toString())
@@ -165,17 +164,38 @@ val Random = StringBlock("_random_")
 val MousePointer = StringBlock("_mouse_")
 
 class TargetBuilder {
-    val nodesbuilder = mutableListOf<ScriptBuilder>()
+    val scriptBuilders = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
-    var blocks: Map<String, Block> = mutableMapOf()
 
-    fun build(): Target {
+    fun build(context: Context): Target {
+        val ww = scriptBuilders.map { it.childs }
+
+        val allVariabless = context.variables.toMutableSet()
+        scriptBuilders.forEach {
+            it.variables.forEach { scriptVariable ->
+                if (allVariabless.none { scriptVariable.name == it.name }) {
+                    allVariabless.add(scriptVariable)
+                }
+            }
+        }
+
+        val targetVariables = scriptBuilders.asSequence().map { it.variables }
+            .flatten().toMutableSet().map { scriptVariable ->
+                if (context.variables.any {
+                        scriptVariable.name == it.name
+                    }) {
+                    null
+                } else {
+                    scriptVariable
+                }
+            }.filterNotNull().toSet()
+
         return createTarget(
-            this.blocks,
+            createBlocks23(ww, context.copy(variables = allVariabless)),
             this.sprite!!,
             emptyList(),
-            this.nodesbuilder.map { it.lists }.flatten().toSet(),
-            this.nodesbuilder.map { it.variables }.flatten().toSet()
+            this.scriptBuilders.map { it.lists }.flatten().toSet(),
+            targetVariables
         )
     }
 }
@@ -184,10 +204,8 @@ fun TargetBuilder.addSprite(sprite: Sprite) {
     this.sprite = sprite
 }
 
-fun ProjectBuilder.addStage(target: Target) {
-    if (target.name != "Stage") {
-        throw IllegalStateException("You can only add a stage to a project")
-    }
+fun ProjectBuilder.addStage(target: TargetBuilder) {
+
     stage = target
 }
 
@@ -200,24 +218,32 @@ fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
 fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     val targetBuilder = TargetBuilder()
     ff.invoke(targetBuilder)
-    val test = createBlocks23(targetBuilder.nodesbuilder.map { it.childs })
-    targetBuilder.blocks = test
-    addStage(targetBuilder.build())
+    val test = createBlocks23(targetBuilder.scriptBuilders.map { it.childs }, Context())
+
+    addStage(targetBuilder)
     return targetBuilder
 }
 
 fun ProjectBuilder.targetBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     val targetBuilder = TargetBuilder()
     ff.invoke(targetBuilder)
-    val test = createBlocks23(targetBuilder.nodesbuilder.map { it.childs })
-    targetBuilder.blocks = test
-    targets.add(targetBuilder.build())
+
+    //val test = createBlocks23(targetBuilder.scriptBuilders.map { it.childs })
+    //  targetBuilder.blocks = test
+    targets.add(targetBuilder)
     return targetBuilder
 }
 
 fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
     val scriptBuilder = ScriptBuilder()
     builder.invoke(scriptBuilder)
-    nodesbuilder.add(scriptBuilder)
+    scriptBuilders.add(scriptBuilder)
     return scriptBuilder
+}
+
+
+fun ProjectBuilder.getGlobalVariable(name: String): ScratchVariable {
+    val element = ScratchVariable(name)
+    addVariable(element)
+    return element
 }

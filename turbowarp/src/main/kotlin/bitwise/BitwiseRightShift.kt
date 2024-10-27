@@ -32,8 +32,8 @@ private class BitwiseRightShift(
 
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null,context, )
-        block1.visit(visitors, identifier.toString(), block1Id, null,context, )
+        block0.visit(visitors, identifier.toString(), block0Id, null, context)
+        block1.visit(visitors, identifier.toString(), block1Id, null, context)
     }
 }
 

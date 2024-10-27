@@ -35,7 +35,10 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
                 is StringBlock -> createLiteralMessage(content.value)
-                is ScratchVariable -> setValue(content, operatorUUID)
+                is ScratchVariable -> {
+                    setValue(context.variables.find { it.name == content.name }!!, operatorUUID)
+                }
+
                 is ScratchList -> setValue(content, operatorUUID)
 
                 else -> {

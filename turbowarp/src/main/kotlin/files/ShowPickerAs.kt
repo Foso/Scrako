@@ -9,7 +9,7 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import java.util.UUID
 
-private class ShowPickerAs(val block0 : ReporterBlock, ) : BooleanBlock {
+private class ShowPickerAs(val block0: ReporterBlock) : BooleanBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -22,17 +22,17 @@ private class ShowPickerAs(val block0 : ReporterBlock, ) : BooleanBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = TurboOpCode.files_showPickerAs,
             inputs = mapOf(
-                "as" to setValue(block0, block0Id) 
+                "as" to setValue(block0, block0Id)
             ),
             fields = mapOf(
-                
+
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null,context, )
+        block0.visit(visitors, identifier.toString(), block0Id, null, context)
     }
 }
 
-private class Menu_encoding( val encoding: String) : ObjectReporter {
+private class Menu_encoding(val encoding: String) : ObjectReporter {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -48,11 +48,11 @@ private class Menu_encoding( val encoding: String) : ObjectReporter {
 
             ),
             fields = mapOf(
-                "encoding" to listOf(encoding,null)
+                "encoding" to listOf(encoding, null)
             )
         ).toBlock(nextUUID, parent)
 
     }
 }
 
-fun showPickerAs(encoding: String) : BooleanBlock = ShowPickerAs(Menu_encoding(encoding))
+fun showPickerAs(encoding: String): BooleanBlock = ShowPickerAs(Menu_encoding(encoding))

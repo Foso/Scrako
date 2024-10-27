@@ -2,12 +2,9 @@ package me.jens.targets
 
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ProjectBuilder
-import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scrako.common.Target
 import de.jensklingenberg.scrako.common.addSprite
 import de.jensklingenberg.scrako.common.getVariable
 import de.jensklingenberg.scrako.common.scriptBuilder
@@ -23,7 +20,6 @@ import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
 import de.jensklingenberg.scratch.procedures.Input
-import me.jens.getGlobalVariable
 import me.jens.sprite1
 import java.util.UUID
 
@@ -38,24 +34,23 @@ fun ScriptBuilder.forEachIndexed(users: ScratchList, ff: ScriptBuilder.(index: S
     setVariable(index, IntBlock(0))
 }
 
-fun ProjectBuilder.MyTarget(jensList: ScratchList): Target {
+fun ProjectBuilder.MyTarget(jensList: ScratchList) {
     val elements = Input(ArgumentBoolean("bool"))
     val elements1 = Input(ArgumentString("bool2"))
-    val myVar = getGlobalVariable("myVar")
 
     val broadcast = Broadcast("hello")
 
-    val target = targetBuilder {
+    targetBuilder {
         addSprite(sprite1)
 
         scriptBuilder {
-            val element = getVariable("ddd")
+            val element = getVariable("myVar")
             whenFlagClicked()
-            say(myVar)
+            setVariable(element, IntBlock(1))
+            say(element)
+
             //say(showPickerAs("text"))
         }
 
     }
-
-    return target.build()
 }
