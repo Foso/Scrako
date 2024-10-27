@@ -1,9 +1,9 @@
 package de.jensklingenberg.scratch.event
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.HatBlock
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.HatBlock
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.ScriptBuilder
 
 private class WhenKeyPress(key: Key) : BlockSpec(
     opcode = OpCode.event_whenkeypressed,

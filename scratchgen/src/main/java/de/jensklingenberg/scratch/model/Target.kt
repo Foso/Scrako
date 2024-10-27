@@ -1,38 +1,14 @@
 package de.jensklingenberg.scratch.model
 
-import de.jensklingenberg.scratch.ScratchList
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.Comment
+import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scratch.Sprite
-import de.jensklingenberg.scratch.common.ScratchVariable
-import kotlinx.serialization.Serializable
+import de.jensklingenberg.scrako.common.ScratchVariable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
+import de.jensklingenberg.scrako.common.Target
 
-@Serializable
-data class Target(
-    val isStage: Boolean,
-    val name: String,
-    val variables: Map<String, JsonArray>,
-    val lists: Map<String, JsonArray>,
-    val broadcasts: Map<String, String>,
-    val blocks: Map<String, Block>,
-    val comments: Map<String, Comment>,
-    val currentCostume: Int,
-    val costumes: List<Costume>,
-    val sounds: List<Sound>,
-    val volume: Int,
-    val layerOrder: Int,
-    val visible: Boolean? = null,
-    val x: Int? = null,
-    val y: Int? = null,
-    val size: Int? = null,
-    val direction: Int? = null,
-    val draggable: Boolean? = null,
-    val rotationStyle: String? = null,
-    val tempo: Int? = null,
-    val videoTransparency: Int? = null,
-    val videoState: String? = null,
-    val textToSpeechLanguage: String? = null
-)
 
 fun createTarget(
     blocks: Map<String, Block>,

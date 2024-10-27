@@ -1,6 +1,5 @@
-package de.jensklingenberg.scratch.common
+package de.jensklingenberg.scrako.common
 
-import de.jensklingenberg.scratch.ScratchList
 
 class ScriptBuilder {
 

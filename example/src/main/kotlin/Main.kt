@@ -1,10 +1,10 @@
 package me.jens
 
-import de.jensklingenberg.scratch.ScratchList
-import de.jensklingenberg.scratch.ScratchProject
+import de.jensklingenberg.scrako.common.ScratchProject
+import de.jensklingenberg.scrako.common.Sound
+import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.createStage
-import de.jensklingenberg.scratch.model.Sound
 import de.jensklingenberg.scratch.readList
 import de.jensklingenberg.scratch.writeProject
 import kotlinx.serialization.json.Json
@@ -38,7 +38,7 @@ fun main() {
 
     val tt = Json { ignoreUnknownKeys = true }.decodeFromString<ScratchProject>(projectFile.readText())
     val myList =
-        ScratchList("jens2", readList("/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/lists/jens.txt"))
+        ScratchList("jens2", readList("/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/lists/jens.txt"))
     val template =
         File("/Users/jens.klingenberg/Code/2024/LLVMPoet/docs/hey.txt").readText()
 

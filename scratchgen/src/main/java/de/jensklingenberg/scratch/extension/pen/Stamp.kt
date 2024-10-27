@@ -1,10 +1,10 @@
 package de.jensklingenberg.scratch.extension.pen
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.ScriptBuilder
-import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 private class Stamp : Node {

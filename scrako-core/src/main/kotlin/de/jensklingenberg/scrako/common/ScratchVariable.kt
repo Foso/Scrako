@@ -1,4 +1,4 @@
-package de.jensklingenberg.scratch.common
+package de.jensklingenberg.scrako.common
 
 import java.util.UUID
 

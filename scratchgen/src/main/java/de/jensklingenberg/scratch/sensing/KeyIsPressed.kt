@@ -1,13 +1,13 @@
 package de.jensklingenberg.scratch.sensing
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.setValue
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.event.Key
-import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.operator.BooleanBlock
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.BooleanBlock
 import java.util.UUID
 
 private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {

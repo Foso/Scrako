@@ -1,4 +1,4 @@
-package de.jensklingenberg.scratch.model
+package de.jensklingenberg.scrako.common
 
 import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.Serializable

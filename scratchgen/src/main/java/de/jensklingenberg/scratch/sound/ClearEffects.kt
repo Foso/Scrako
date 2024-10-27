@@ -1,19 +1,21 @@
 package de.jensklingenberg.scratch.sound
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 private class ClearEffects : Node {
 
     override fun visit(
-        visitors: MutableMap<String, de.jensklingenberg.scratch.model.Block>,
+        visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: de.jensklingenberg.scratch.common.Context
+        context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_cleareffects,

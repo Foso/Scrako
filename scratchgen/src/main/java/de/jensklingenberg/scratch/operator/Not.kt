@@ -1,5 +1,6 @@
 package de.jensklingenberg.scratch.operator
 
+import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scratch.common.OpCode
 
 class Not(operand1: BooleanBlock) :

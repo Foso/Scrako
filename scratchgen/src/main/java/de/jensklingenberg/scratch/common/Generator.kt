@@ -1,6 +1,8 @@
 package de.jensklingenberg.scratch.common
 
-import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
 import java.util.UUID
 
 

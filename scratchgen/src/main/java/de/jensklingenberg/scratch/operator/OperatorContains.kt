@@ -1,8 +1,9 @@
 package de.jensklingenberg.scratch.operator
 
+import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.looks.StringBlock
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.StringBlock
 
 class OperatorContains(operand1: ReporterBlock, operand2: ReporterBlock) :
     Operator(listOf(operand1, operand2), listOf("STRING1", "STRING2"), OpCode.operator_contains), ReporterBlock,

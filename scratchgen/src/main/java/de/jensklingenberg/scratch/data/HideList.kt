@@ -1,13 +1,13 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scratch.ScratchList
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.looks.StackBlock
-import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.ScratchList
 import java.util.UUID
 
 private class HideList(private val list: ScratchList) : Node, StackBlock {

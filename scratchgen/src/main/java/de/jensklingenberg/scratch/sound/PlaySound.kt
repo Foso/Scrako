@@ -1,11 +1,13 @@
 package de.jensklingenberg.scratch.sound
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Sound
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.model.Sound
+import de.jensklingenberg.scrako.common.ReporterBlock
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -13,11 +15,11 @@ import java.util.UUID
 private class PlaySound(val soundName: String) : Node {
 
     override fun visit(
-        visitors: MutableMap<String, de.jensklingenberg.scratch.model.Block>,
+        visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: de.jensklingenberg.scratch.common.Context
+        context: Context
     ) {
         val soundMenuId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -35,11 +37,11 @@ fun ScriptBuilder.playSound(s: Sound) = addChild(PlaySound(s.name))
 internal class SoundsMenu(private val soundName: String) : ReporterBlock {
 
     override fun visit(
-        visitors: MutableMap<String, de.jensklingenberg.scratch.model.Block>,
+        visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: de.jensklingenberg.scratch.common.Context
+        context: Context
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_sounds_menu,

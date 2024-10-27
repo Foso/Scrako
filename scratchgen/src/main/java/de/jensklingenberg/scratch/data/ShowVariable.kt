@@ -1,12 +1,12 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ScratchVariable
-import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 private open class MyVariable(private val variable: ScratchVariable, val opCode: String) : Node {

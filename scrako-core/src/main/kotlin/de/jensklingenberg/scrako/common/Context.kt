@@ -1,3 +1,3 @@
-package de.jensklingenberg.scratch.common
+package de.jensklingenberg.scrako.common
 
 data class Context(val parent: String? = null, val topLevel: Boolean)

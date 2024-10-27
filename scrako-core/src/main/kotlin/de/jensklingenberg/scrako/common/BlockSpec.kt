@@ -1,8 +1,5 @@
-package de.jensklingenberg.scratch.common
+package de.jensklingenberg.scrako.common
 
-import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.model.Comment
-import de.jensklingenberg.scratch.model.Mutation
 import kotlinx.serialization.json.JsonArray
 import java.util.UUID
 

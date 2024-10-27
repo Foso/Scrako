@@ -1,14 +1,14 @@
 package de.jensklingenberg.scratch.sound
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scratch.common.OpCode.Companion.sound_playuntildone
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.setValue
-import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.model.Sound
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.Sound
 import java.util.UUID
 
 private class Playuntildone(val block0: ReporterBlock) : Node {

@@ -1,18 +1,16 @@
 package de.jensklingenberg.scratch
 
-import de.jensklingenberg.scratch.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.ScratchVariable
+import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scratch.common.createBlocks23
-import de.jensklingenberg.scratch.model.Block
-import de.jensklingenberg.scratch.model.Costume
-import de.jensklingenberg.scratch.model.Meta
-import de.jensklingenberg.scratch.model.Monitor
-import de.jensklingenberg.scratch.model.Sound
-import de.jensklingenberg.scratch.model.Target
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.Costume
+import de.jensklingenberg.scrako.common.ScratchList
+import de.jensklingenberg.scrako.common.ScratchProject
+import de.jensklingenberg.scrako.common.Sound
+import de.jensklingenberg.scrako.common.Target
 import de.jensklingenberg.scratch.model.createTarget
-import kotlinx.serialization.EncodeDefault
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -25,17 +23,7 @@ import java.util.UUID
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
-@Serializable
-data class ScratchProject(
-    val targets: List<Target>,
-    val monitors: List<Monitor> = emptyList(),
-    val extensions: List<String> = emptyList(),
-    @EncodeDefault val meta: Meta = Meta(
-        semver = "3.0.0",
-        vm = "0.2.0",
-        agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
-    )
-)
+
 
 class TargetBuilder {
     val nodesbuilder = mutableListOf<ScriptBuilder>()
@@ -84,15 +72,8 @@ class Broadcast(val name: String) {
 }
 
 
-class ScratchList(val name: String, val contents: List<String>) : ReporterBlock {
-    val id: UUID = UUID.randomUUID()
-}
 
-fun ScriptBuilder.createList(name: String, contents: List<String>): ScratchList {
-    val element = ScratchList(name, contents)
-    lists.add(element)
-    return element
-}
+
 
 
 fun readList(name: String): List<String> {

@@ -1,13 +1,13 @@
 package de.jensklingenberg.scratch.sound
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.setValue
-import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 private class Changeeffectby(val block0 : ReporterBlock, val effect: String) : Node {
@@ -22,7 +22,7 @@ private class Changeeffectby(val block0 : ReporterBlock, val effect: String) : N
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_changeeffectby,
             inputs = mapOf(
-                "VALUE" to setValue(block0, block0Id) 
+                "VALUE" to setValue(block0, block0Id)
             ),
             fields = mapOf(
                 "EFFECT" to listOf(effect,null)

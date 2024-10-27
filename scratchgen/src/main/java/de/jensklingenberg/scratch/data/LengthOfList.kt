@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scratch.ScratchList
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListBlock {

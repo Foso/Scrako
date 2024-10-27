@@ -1,8 +1,8 @@
 package de.jensklingenberg.scratch.control
 
-import de.jensklingenberg.scratch.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.looks.StringBlock
+import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch.operator.OperatorEquals
 
 

@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch.motion
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.setValue
-import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 internal sealed class Turn(val opcode: String, private val reporterBlock: ReporterBlock) : Node {

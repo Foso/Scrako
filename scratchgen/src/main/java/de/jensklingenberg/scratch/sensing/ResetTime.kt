@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch.sensing
 
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 
 private class ResetTime : BlockSpec(

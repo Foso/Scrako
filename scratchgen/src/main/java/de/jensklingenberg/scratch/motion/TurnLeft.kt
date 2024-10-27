@@ -1,9 +1,9 @@
 package de.jensklingenberg.scratch.motion
 
-import de.jensklingenberg.scratch.common.IntBlock
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ReporterBlock
 
 private class TurnLeft(private val reporterBlock: ReporterBlock) : Turn(OpCode.motion_turnleft, reporterBlock)
 

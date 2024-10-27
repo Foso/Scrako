@@ -1,20 +1,21 @@
 package de.jensklingenberg.scratch.looks
 
 
-import de.jensklingenberg.scratch.ScratchList
-import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.ScratchList
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.common.ReporterBlock
-import de.jensklingenberg.scratch.common.ScratchType
-import de.jensklingenberg.scratch.common.ScratchVariable
-import de.jensklingenberg.scratch.common.createBlockRef
-import de.jensklingenberg.scratch.common.createLiteralMessage
-import de.jensklingenberg.scratch.common.getScratchType
-import de.jensklingenberg.scratch.common.setValue
-import de.jensklingenberg.scratch.model.Block
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.createLiteralMessage
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.ScratchType
+import de.jensklingenberg.scrako.common.StringBlock
+import de.jensklingenberg.scrako.common.createBlockRef
+import de.jensklingenberg.scrako.common.getScratchType
 import java.util.UUID
 
 
@@ -74,8 +75,7 @@ sealed interface LooksSayContent {
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
-class StringBlock(val value: String) : ReporterBlock
-class ColorBlock(val value: String) : ReporterBlock
+
 
 
 fun ScriptBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))

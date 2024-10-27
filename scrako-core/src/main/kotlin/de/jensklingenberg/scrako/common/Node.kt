@@ -1,6 +1,5 @@
-package de.jensklingenberg.scratch.common
+package de.jensklingenberg.scrako.common
 
-import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
 
 interface Node {
