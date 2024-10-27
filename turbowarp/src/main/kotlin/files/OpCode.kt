@@ -1,4 +1,4 @@
-package files;
+package files
 
 internal class TurboOpCode(val value: String) {
     companion object {

@@ -36,7 +36,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
                 parent = identifier.toString(),
                 childUUIDS[childIndex],
                 nextUUID,
-                context.copy(topLevel = false)
+                context
             )
         }
 

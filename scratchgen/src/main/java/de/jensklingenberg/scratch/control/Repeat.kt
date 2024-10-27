@@ -44,7 +44,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
             identifier.toString(),
             operatorUUID,
             null,
-            context.copy(topLevel = false)
+            context
         )
 
         childs.mapIndexed { childIndex, visitor ->
@@ -57,7 +57,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
                 parent = identifier.toString(),
                 childUUIDS[childIndex],
                 nextUUID,
-                context.copy(topLevel = false)
+                context
             )
         }
 

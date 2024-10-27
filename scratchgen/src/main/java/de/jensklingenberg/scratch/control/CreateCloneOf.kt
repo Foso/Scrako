@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class CreateCloneOf(private val spriteName: String) : Node {
+private class CreateCloneOf(private val spriteName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -29,7 +29,7 @@ class CreateCloneOf(private val spriteName: String) : Node {
             identifier.toString(),
             uuid,
             null,
-            context.copy(topLevel = false)
+            context
         )
     }
 }

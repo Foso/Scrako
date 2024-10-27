@@ -27,7 +27,7 @@ private class Wait(private val block: ReporterBlock) : Node {
                 "DURATION" to setValue(block, uuid)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
+        block.visit(visitors, identifier.toString(), uuid, null, context)
     }
 }
 

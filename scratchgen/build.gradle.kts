@@ -15,7 +15,7 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     testImplementation("org.junit.jupiter:junit-jupiter")
-    implementation(project(":scrako-core"))
+    api(project(":scrako-core"))
 
 }
 

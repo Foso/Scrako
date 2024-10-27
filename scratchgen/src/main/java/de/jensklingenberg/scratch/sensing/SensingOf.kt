@@ -30,7 +30,7 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
                 )
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), destinationUUID, null, context.copy(topLevel = false))
+        block.visit(visitors, identifier.toString(), destinationUUID, null, context)
     }
 }
 

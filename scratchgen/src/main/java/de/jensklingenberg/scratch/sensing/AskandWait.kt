@@ -43,7 +43,7 @@ private data class AskandWait(val content: LooksSayContent) : Node {
                 identifier.toString(),
                 operatorUUID,
                 null,
-                context.copy(topLevel = false)
+                context
             )
         }
     }

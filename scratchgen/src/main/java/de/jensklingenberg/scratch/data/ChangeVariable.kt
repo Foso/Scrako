@@ -27,7 +27,7 @@ private class ChangeVariable(private val variable: ScratchVariable, private val 
             inputs = mapOf("VALUE" to setValue(item, itemUUID)),
             fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
         ).toBlock(nextUUID, identifier.toString())
-        item.visit(visitors, identifier.toString(), itemUUID, null, context.copy(topLevel = false))
+        item.visit(visitors, identifier.toString(), itemUUID, null, context)
     }
 }
 

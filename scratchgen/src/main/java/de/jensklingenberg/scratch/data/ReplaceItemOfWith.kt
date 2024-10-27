@@ -37,8 +37,8 @@ private class ReplaceItemOfWith(
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        index.visit(visitors, identifier.toString(), indexUUID, null, context.copy(topLevel = false))
-        replace.visit(visitors, identifier.toString(), replaceUUID, null, context.copy(topLevel = false))
+        index.visit(visitors, identifier.toString(), indexUUID, null, context)
+        replace.visit(visitors, identifier.toString(), replaceUUID, null, context)
     }
 }
 

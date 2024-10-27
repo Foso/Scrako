@@ -62,7 +62,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             identifier.toString(),
             operatorUUID,
             null,
-            context.copy(topLevel = false)
+            context
         )
 
     }

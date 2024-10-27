@@ -50,7 +50,7 @@ internal class IfElse(
                 parent = name2,
                 leftUUIDs[childIndex],
                 nextUUID,
-                context.copy(topLevel = false)
+                context
             )
         }
 
@@ -64,7 +64,7 @@ internal class IfElse(
                 parent = name2,
                 rightUUIDs[childIndex],
                 nextUUID,
-                context.copy(topLevel = false)
+                context
             )
         }
 

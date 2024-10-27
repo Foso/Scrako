@@ -27,7 +27,7 @@ private class PointTowards(private val target: String) : Node {
             )
         ).toBlock(nextUUID, parent)
 
-        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
+        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, context)
     }
 }
 

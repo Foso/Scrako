@@ -24,7 +24,7 @@ import de.jensklingenberg.scratch.targetBuilder
 import me.jens.sprite1
 import java.util.UUID
 import de.jensklingenberg.scrako.common.Target
-import me.jens.files.showPickerAs
+import files.showPickerAs
 
 fun ScriptBuilder.forEachIndexed(users: ScratchList, ff: ScriptBuilder.(index: ScratchVariable) -> Unit) {
     val index = getVariable(UUID.randomUUID().toString())

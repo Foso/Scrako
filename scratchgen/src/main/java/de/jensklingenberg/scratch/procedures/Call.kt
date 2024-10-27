@@ -57,7 +57,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
             identifier.toString(),
             test,
             null,
-            context.copy(topLevel = false)
+            context
         )
     }
 }

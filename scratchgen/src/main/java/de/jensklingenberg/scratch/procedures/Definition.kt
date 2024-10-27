@@ -35,7 +35,7 @@ class Definition(
             identifier.toString(),
             protoUUID,
             null,
-            context.copy(topLevel = false)
+            context
         )
     }
 }
@@ -57,7 +57,7 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
                 identifier.toString(),
                 argIds[index],
                 argIds.getOrNull(index + 1),
-                context.copy(topLevel = false)
+                context
             )
         }
 
