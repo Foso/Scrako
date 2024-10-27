@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.event
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
+import de.jensklingenberg.scratch.common.HatBlock
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.NodeBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -16,7 +17,7 @@ enum class GreaterThanOption(val option: String) {
     TIMER("timer"),
 }
 
-private class WhenGreaterThan(private val option: GreaterThanOption, val value: ReporterBlock) : Node {
+private class WhenGreaterThan(private val option: GreaterThanOption, val value: ReporterBlock) : Node, HatBlock {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
