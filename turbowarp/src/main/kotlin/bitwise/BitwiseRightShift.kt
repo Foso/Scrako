@@ -2,6 +2,7 @@ package bitwise
 
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import files.TurboOpCode
@@ -16,8 +17,9 @@ private class BitwiseRightShift(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val block0Id = UUID.randomUUID()
         val block1Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -30,8 +32,8 @@ private class BitwiseRightShift(
 
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, )
-        block1.visit(visitors, identifier.toString(), block1Id, null, )
+        block0.visit(visitors, identifier.toString(), block0Id, null,context, )
+        block1.visit(visitors, identifier.toString(), block1Id, null,context, )
     }
 }
 

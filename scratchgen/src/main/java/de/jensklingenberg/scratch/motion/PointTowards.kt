@@ -1,10 +1,11 @@
 package de.jensklingenberg.scratch.motion
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.Block
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -16,8 +17,9 @@ private class PointTowards(private val target: String) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_pointtowards,
@@ -26,7 +28,7 @@ private class PointTowards(private val target: String) : Node {
             )
         ).toBlock(nextUUID, parent)
 
-        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, )
+        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, context)
     }
 }
 

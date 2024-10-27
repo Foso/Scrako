@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch.operator
 
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scratch.common.OpCode
 
 class Multiply(operand1: ReporterBlock, operand2: ReporterBlock) : Operator(
     listOf(operand1, operand2),

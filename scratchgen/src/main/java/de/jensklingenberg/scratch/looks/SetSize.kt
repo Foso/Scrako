@@ -1,13 +1,14 @@
 package de.jensklingenberg.scratch.looks
 
-import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 private class SetSize(val block: ReporterBlock) : Node {
@@ -16,8 +17,9 @@ private class SetSize(val block: ReporterBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val operatorUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_setsizeto,
@@ -25,9 +27,9 @@ private class SetSize(val block: ReporterBlock) : Node {
                 "SIZE" to setValue(block, operatorUUID)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), operatorUUID, null, )
+        block.visit(visitors, identifier.toString(), operatorUUID, null, context)
     }
 }
 
 fun ScriptBuilder.setSize(block: ReporterBlock) = addChild(SetSize(block))
-fun ScriptBuilder.setSize(block: Int) : Unit= setSize(IntBlock(block))
+fun ScriptBuilder.setSize(block: Int): Unit = setSize(IntBlock(block))

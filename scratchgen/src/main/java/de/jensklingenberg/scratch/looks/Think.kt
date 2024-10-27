@@ -1,15 +1,16 @@
 package de.jensklingenberg.scratch.looks
 
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ScratchType
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.createBlockRef
 import de.jensklingenberg.scrako.common.createLiteralMessage
 import de.jensklingenberg.scrako.common.getScratchType
-import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 private data class Think(private val content: LooksSayContent, private val seconds: Int? = null) : Node {
@@ -19,8 +20,9 @@ private data class Think(private val content: LooksSayContent, private val secon
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
 
         val operatorUUID = UUID.randomUUID()
 
@@ -52,9 +54,9 @@ private data class Think(private val content: LooksSayContent, private val secon
                 visitors,
                 identifier.toString(),
                 operatorUUID,
-                null,
-                
-            )
+                null, context,
+
+                )
         }
     }
 }

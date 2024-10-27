@@ -2,6 +2,7 @@ package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -16,8 +17,9 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val operatorUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_changexby,
@@ -25,7 +27,7 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock {
                 "DX" to setValue(block, operatorUUID)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), operatorUUID, null, )
+        block.visit(visitors, identifier.toString(), operatorUUID, null, context)
     }
 }
 

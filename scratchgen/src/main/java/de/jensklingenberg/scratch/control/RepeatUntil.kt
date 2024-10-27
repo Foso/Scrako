@@ -1,12 +1,13 @@
 package de.jensklingenberg.scratch.control
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.BooleanBlock
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
-import de.jensklingenberg.scrako.common.Block
-import de.jensklingenberg.scrako.common.BooleanBlock
 import java.util.UUID
 
 internal class RepeatUntil(
@@ -19,8 +20,9 @@ internal class RepeatUntil(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val operatorUUID = UUID.randomUUID()
         val leftUUIDs = leftStack.map { UUID.randomUUID() }
 
@@ -31,7 +33,7 @@ internal class RepeatUntil(
                 "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
             )
         ).toBlock(nextUUID, parent)
-        condition.visit(visitors, identifier.toString(), operatorUUID, null, )
+        condition.visit(visitors, identifier.toString(), operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -42,9 +44,9 @@ internal class RepeatUntil(
                 visitors,
                 parent = identifier.toString(),
                 leftUUIDs[childIndex],
-                nextUUID,
-                
-            )
+                nextUUID, context,
+
+                )
         }
 
     }

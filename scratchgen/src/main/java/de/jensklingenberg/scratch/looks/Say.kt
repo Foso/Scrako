@@ -1,20 +1,21 @@
 package de.jensklingenberg.scratch.looks
 
 
-import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.common.createLiteralMessage
-import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchType
+import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.createBlockRef
+import de.jensklingenberg.scrako.common.createLiteralMessage
 import de.jensklingenberg.scrako.common.getScratchType
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 
@@ -25,8 +26,9 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
 
         val operatorUUID = UUID.randomUUID()
 
@@ -60,9 +62,9 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             visitors,
             identifier.toString(),
             operatorUUID,
-            null,
-            
-        )
+            null, context,
+
+            )
 
     }
 
@@ -73,8 +75,6 @@ sealed interface LooksSayContent {
     class Literal(val message: String) : LooksSayContent
     class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
-
-
 
 
 fun ScriptBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))

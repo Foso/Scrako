@@ -1,12 +1,13 @@
 package de.jensklingenberg.scratch.sensing
 
-import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.ColorBlock
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
@@ -15,8 +16,9 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val destinationUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sensing_touchingcolor,
@@ -24,7 +26,7 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
                 "COLOR" to setValue(color, destinationUUID)
             )
         ).toBlock(nextUUID, parent)
-        color.visit(visitors, identifier.toString(), destinationUUID, null, )
+        color.visit(visitors, identifier.toString(), destinationUUID, null, context)
     }
 }
 

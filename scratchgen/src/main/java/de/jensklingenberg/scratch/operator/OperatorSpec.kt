@@ -1,9 +1,10 @@
 package de.jensklingenberg.scratch.operator
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 
@@ -17,8 +18,9 @@ abstract class Operator(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val operatorUUID1 = operand1.associateWith { UUID.randomUUID() }
 
         val inputs = inputKeys.mapIndexed { index, key ->
@@ -29,7 +31,7 @@ abstract class Operator(
             inputs = inputs
         ).toBlock(nextUUID, parent)
         operatorUUID1.forEach { (t, u) ->
-            t.visit(visitors, identifier.toString(), u, null, )
+            t.visit(visitors, identifier.toString(), u, null, context)
         }
         // operand2?.visit(visitors, identifier.toString(), operatorUUID2, null, )
     }

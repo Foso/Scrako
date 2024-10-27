@@ -1,12 +1,12 @@
 package de.jensklingenberg.scratch.sensing
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.createMessage
+import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.event.Key
-import de.jensklingenberg.scrako.common.BooleanBlock
 
 private class ColorIsTouchingColor(color: String, color2: String) : BlockSpec(
     opcode = OpCode.sensing_coloristouchingcolor,

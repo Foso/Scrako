@@ -1,9 +1,10 @@
 package de.jensklingenberg.scratch.extension.pen
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 private class EraseAll : Node {
@@ -12,8 +13,9 @@ private class EraseAll : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = PenOpCode.pen_clear,
         ).toBlock(nextUUID, parent)

@@ -1,11 +1,12 @@
 package de.jensklingenberg.scratch.control
 
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 private class Stop(private val option: StopOption) : Node {
@@ -14,8 +15,9 @@ private class Stop(private val option: StopOption) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
 
         if (option == StopOption.ALL && nextUUID != null) {
             throw IllegalArgumentException("Stop block with All cannot have a next block")

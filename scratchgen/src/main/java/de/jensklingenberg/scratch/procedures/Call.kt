@@ -1,12 +1,13 @@
 package de.jensklingenberg.scratch.procedures
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.Mutation
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.Block
-import de.jensklingenberg.scrako.common.Mutation
 import de.jensklingenberg.scratch.operator.GreaterThan
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -18,8 +19,9 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
 
 
         val arguments = inputs.map { it.argument }
@@ -55,9 +57,9 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
             visitors,
             identifier.toString(),
             test,
-            null,
-            
-        )
+            null, context,
+
+            )
     }
 }
 

@@ -1,12 +1,13 @@
 package de.jensklingenberg.scratch.procedures
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Mutation
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.Block
-import de.jensklingenberg.scrako.common.Mutation
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -21,8 +22,9 @@ class Definition(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.procedures_definition,
@@ -33,9 +35,9 @@ class Definition(
             visitors,
             identifier.toString(),
             protoUUID,
-            null,
-            
-        )
+            null, context,
+
+            )
     }
 }
 
@@ -45,8 +47,9 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val inputIds = inputs.map { it.id }
         val arguments = inputs.map { it.argument }
         val argIds = arguments.map { it.id }
@@ -55,9 +58,9 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
                 visitors,
                 identifier.toString(),
                 argIds[index],
-                argIds.getOrNull(index + 1),
-                
-            )
+                argIds.getOrNull(index + 1), context,
+
+                )
         }
 
         val inputs = mutableMapOf<String, JsonArray>()
@@ -114,8 +117,9 @@ class ArgumentString(override val name: String, override val defaultValue: Strin
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.argument_reporter_string_number,
             fields = mapOf("VALUE" to listOf(name, null))
@@ -142,8 +146,9 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.argument_reporter_boolean,
             fields = mapOf("VALUE" to listOf(name, null))

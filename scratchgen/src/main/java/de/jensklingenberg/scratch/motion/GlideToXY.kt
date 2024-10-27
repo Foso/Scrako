@@ -1,14 +1,15 @@
 package de.jensklingenberg.scratch.motion
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchType
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.operator.Operator
 import java.util.UUID
 
@@ -19,8 +20,9 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val secID = UUID.randomUUID()
         val toXID = UUID.randomUUID()
         val toYID = UUID.randomUUID()
@@ -34,9 +36,9 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
             )
         ).toBlock(nextUUID, parent)
 
-        sec.visit(visitors, identifier.toString(), secID, null, )
-        toX.visit(visitors, identifier.toString(), toXID, null, )
-        toY.visit(visitors, identifier.toString(), toYID, null, )
+        sec.visit(visitors, identifier.toString(), secID, null, context)
+        toX.visit(visitors, identifier.toString(), toXID, null, context)
+        toY.visit(visitors, identifier.toString(), toYID, null, context)
     }
 }
 

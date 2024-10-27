@@ -1,14 +1,15 @@
 package de.jensklingenberg.scratch.sensing
 
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.createBlockRef
 import de.jensklingenberg.scrako.common.createLiteralMessage
+import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.looks.LooksSayContent
-import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 private data class AskandWait(val content: LooksSayContent) : Node {
@@ -17,8 +18,9 @@ private data class AskandWait(val content: LooksSayContent) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val operatorUUID = UUID.randomUUID()
 
         val inputMap = mutableMapOf(
@@ -41,9 +43,9 @@ private data class AskandWait(val content: LooksSayContent) : Node {
                 visitors,
                 identifier.toString(),
                 operatorUUID,
-                null,
-                
-            )
+                null, context,
+
+                )
         }
     }
 }

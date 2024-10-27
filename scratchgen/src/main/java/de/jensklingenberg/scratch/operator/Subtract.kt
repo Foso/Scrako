@@ -2,9 +2,9 @@ package de.jensklingenberg.scratch.operator
 
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
+import de.jensklingenberg.scratch.common.OpCode
 
 
 class Subtract(operand: ReporterBlock, operand2: ReporterBlock) : Operator(

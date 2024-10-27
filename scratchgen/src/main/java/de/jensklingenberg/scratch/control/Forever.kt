@@ -1,13 +1,14 @@
 package de.jensklingenberg.scratch.control
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.common.CapBlock
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
-import de.jensklingenberg.scrako.common.Block
 import kotlinx.serialization.json.JsonArray
 import java.util.UUID
 
@@ -18,8 +19,9 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
 
         if (nextUUID != null) {
             throw IllegalArgumentException("Forever block can't have a next block")
@@ -35,8 +37,9 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
                 parent = identifier.toString(),
                 childUUIDS[childIndex],
                 nextUUID,
-                
-            )
+                context,
+
+                )
         }
 
         val inputs: MutableMap<String, JsonArray> = mutableMapOf()

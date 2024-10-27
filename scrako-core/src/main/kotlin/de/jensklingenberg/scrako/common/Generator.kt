@@ -22,7 +22,7 @@ private fun createBlocks2(blockSpecs: List<Node>): Map<String, Block> {
 
         val nextNode = if (index != blockSpecs.lastIndex) uuids[index + 1] else null
 
-        blockSpec.visit(blockMap, parent, uuids[index], nextNode)
+        blockSpec.visit(blockMap, parent, uuids[index], nextNode, Context())
 
     }
 

@@ -32,7 +32,8 @@ open class BlockSpec(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
-        nextUUID: UUID?
+        nextUUID: UUID?,
+        context: Context
     ) {
         if (this is HatBlock && parent != null) {
             throw IllegalStateException("HatBlock blocks can't have a parent")

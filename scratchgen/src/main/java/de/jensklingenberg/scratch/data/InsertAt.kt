@@ -1,16 +1,17 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scratch.looks.StackBlock
 import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScratchList
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.StringBlock
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.looks.StackBlock
 import java.util.UUID
 
 private class InsertAt(
@@ -24,8 +25,9 @@ private class InsertAt(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val indexBlockId = UUID.randomUUID()
         val dataBlockId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -36,8 +38,8 @@ private class InsertAt(
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        index.visit(visitors, identifier.toString(), indexBlockId, null, )
-        block.visit(visitors, identifier.toString(), dataBlockId, null, )
+        index.visit(visitors, identifier.toString(), indexBlockId, null, context)
+        block.visit(visitors, identifier.toString(), dataBlockId, null, context)
 
     }
 }

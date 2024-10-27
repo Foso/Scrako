@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.data
 
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
@@ -19,15 +20,16 @@ private class AddToList(private val list: ScratchList, private val block: Report
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val childId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_addtolist,
             inputs = mapOf("ITEM" to setValue(block, childId)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), childId, null, )
+        block.visit(visitors, identifier.toString(), childId, null, context)
     }
 }
 

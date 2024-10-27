@@ -1,15 +1,16 @@
 package de.jensklingenberg.scratch.control
 
+import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
-import de.jensklingenberg.scrako.common.Block
 import java.util.UUID
 
 private class Repeat(private val times: ReporterBlock, private vararg val childs: Node) :
@@ -19,8 +20,9 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        
-    ) {
+        context: Context,
+
+        ) {
         val operatorUUID = UUID.randomUUID()
 
         val childUUIDS = childs.map { UUID.randomUUID() }
@@ -42,9 +44,9 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
             visitors,
             identifier.toString(),
             operatorUUID,
-            null,
-            
-        )
+            null, context,
+
+            )
 
         childs.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -55,9 +57,9 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
                 visitors,
                 parent = identifier.toString(),
                 childUUIDS[childIndex],
-                nextUUID,
-                
-            )
+                nextUUID, context,
+
+                )
         }
 
 
