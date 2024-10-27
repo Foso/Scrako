@@ -4,6 +4,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Node
 import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Sound
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -31,7 +32,7 @@ fun ScriptBuilder.playSound(s: String) = addChild(PlaySound(s))
 fun ScriptBuilder.playSound(s: Sound) = addChild(PlaySound(s.name))
 
 
-private class SoundsMenu(private val soundName: String) : Node {
+internal class SoundsMenu(private val soundName: String) : ReporterBlock {
 
     override fun visit(
         visitors: MutableMap<String, de.jensklingenberg.scratch.model.Block>,

@@ -31,8 +31,8 @@ data class Costume(
     val dataFormat: String,
     val assetId: String,
     val md5ext: String,
-    val rotationCenterX: Int,
-    val rotationCenterY: Int
+    val rotationCenterX: Double,
+    val rotationCenterY: Double
 )
 
 @Serializable

@@ -94,11 +94,10 @@ fun ScriptBuilder.createList(name: String, contents: List<String>): ScratchList 
     return element
 }
 
-const val resFolder = "C:\\Users\\jensk\\IdeaProjects\\ScraKo\\src\\main\\resources\\"
 
 fun readList(name: String): List<String> {
     val list = mutableListOf<String>()
-    File("${resFolder}lists/$name").forEachLine {
+    File(name).forEachLine {
         list.add(it)
     }
     return list
@@ -138,8 +137,8 @@ fun createStage(
             dataFormat = "svg",
             assetId = "cd21514d0531fdffb22204e0ec5ed84a",
             md5ext = "cd21514d0531fdffb22204e0ec5ed84a.svg",
-            rotationCenterX = 240,
-            rotationCenterY = 180
+            rotationCenterX = 240.0,
+            rotationCenterY = 180.0
         )
     ),
     sounds = sounds,

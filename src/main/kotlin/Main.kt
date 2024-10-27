@@ -6,7 +6,6 @@ import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.createStage
 import de.jensklingenberg.scratch.model.Sound
 import de.jensklingenberg.scratch.readList
-import de.jensklingenberg.scratch.resFolder
 import de.jensklingenberg.scratch.writeProject
 import kotlinx.serialization.json.Json
 import me.jens.targets.MyTarget
@@ -35,34 +34,45 @@ val sprite1 = Sprite(
 val spriteArrow = Sprite("Arrow1", listOf(costume1), listOf())
 
 fun main() {
-    val test = File("C:\\Users\\jensk\\IdeaProjects\\ScraKo\\docs\\project.json")
+    val projectFile = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/docs/project.json")
 
-    val tt = Json { ignoreUnknownKeys = true }.decodeFromString<ScratchProject>(test.readText())
-    val myList = ScratchList("jens2", readList("jens.txt"))
+    val tt = Json { ignoreUnknownKeys = true }.decodeFromString<ScratchProject>(projectFile.readText())
+    val myList =
+        ScratchList("jens2", readList("/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/lists/jens.txt"))
     val template =
-        File("C:\\Users\\jensk\\IdeaProjects\\ScraKo\\scratchgen\\src\\main\\java\\de\\jensklingenberg\\scratch\\hey.txt").readText()
+        File("/Users/jens.klingenberg/Code/2024/LLVMPoet/docs/hey.txt").readText()
+
     tt.targets.forEach {
         it.blocks.forEach { (t, u) ->
             println(u.opcode)
             // if(u.opcode == "motion_movesteps"){
 
-            u.inputs
-
-            val newInputs = u.inputs.map { "\"${it.key}\" to setValue(block, operatorUUID) " }.joinToString("\n") { it }
-            val newFields = u.fields.map { "\"${it.key}\" to listOf(${it.value.mapIndexed { index, s -> it }}) " }
+            val newInputs = u.inputs.entries.mapIndexed { index, entry ->  "\"${entry.key}\" to setValue(block${index}, block${index}Id) " }.joinToString("\n") { it }
+            val newFields =  u.fields.entries.mapIndexed { index, entry ->
+                "\"${entry.key}\" to listOf(${entry.key.lowercase()},null)"
+                }
                 .joinToString("\n") { it }
             val name = u.opcode.substringAfter("_").capitalize()
-            val effects = u.fields.map { "val ${it.key.lowercase()}: String" }.joinToString { it }
-            val blocks = (0..<u.inputs.size).mapIndexed { _, i -> "val block${i} = ReporterBlock" }.joinToString { it }
-
+            val effects = u.fields.map {
+                "val ${it.key.lowercase()}: String"
+            }.joinToString { it }
+            val repl =
+                List(u.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID()" }.joinToString("/n") { it }
+            val blocks = (0..<u.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock" }.joinToString { it }
+            val wer = u.inputs.entries.mapIndexed { index, entry ->
+                "block${index}.visit(visitors, identifier.toString(), block${index}Id, null, context)"
+            }.joinToString { it }
             val sec = template.replace("REPLACE_INPUT", newInputs)
+                .replace("REPLACE_BLOCKO", repl)
+                .replace("HERE",wer)
                 .replace("INSERT_EFFECT", effects)
+
                 .replace("INSERT_PARAMETER", blocks)
                 .replace("REPLACE_NAME", name)
                 .replace(
                     "REPLACE_OPCODE", u.opcode
                 ).replace("REPLACE_FIELDS", newFields)
-            File("C:\\Users\\jensk\\IdeaProjects\\ScraKo\\temp\\" + name).writeText(sec)
+            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + name).writeText(sec)
             //  }
         }
     }
@@ -87,6 +97,10 @@ fun main() {
         targets = listOf(stageTarget, sprite1, sprite2)
     )
 
-    writeProject(scratchProject, resFolder, "C:\\Users\\jensk\\IdeaProjects\\ScraKo\\temp")
+    writeProject(
+        scratchProject,
+        "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/",
+        "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
+    )
 }
 

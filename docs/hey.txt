@@ -6,7 +6,7 @@ private class REPLACE_NAME(INSERT_PARAMETER, INSERT_EFFECT) : Node {
         nextUUID: UUID?,
         context: Context
     ) {
-        val blockId = UUID.randomUUID()
+        REPLACE_BLOCKO
         visitors[identifier.toString()] = BlockSpec(
             opcode = REPLACE_OPCODE,
             inputs = mapOf(
@@ -15,7 +15,7 @@ private class REPLACE_NAME(INSERT_PARAMETER, INSERT_EFFECT) : Node {
             fields = mapOf(
                 REPLACE_FIELDS
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
-        block.visit(visitors, identifier.toString(), blockId, null, context)
+        ).toBlock(nextUUID, parent)
+        HERE
     }
 }

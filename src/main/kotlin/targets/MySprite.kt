@@ -9,6 +9,7 @@ import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchVariable
 import de.jensklingenberg.scratch.common.getVariable
+import de.jensklingenberg.scratch.common.showPickerAs
 import de.jensklingenberg.scratch.control.repeat
 import de.jensklingenberg.scratch.control.wait
 import de.jensklingenberg.scratch.createList
@@ -19,13 +20,19 @@ import de.jensklingenberg.scratch.event.sendBroadcast
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.event.whenIRecieve
 import de.jensklingenberg.scratch.looks.StringBlock
+import de.jensklingenberg.scratch.looks.say
+import de.jensklingenberg.scratch.model.Sound
 import de.jensklingenberg.scratch.model.Target
 import de.jensklingenberg.scratch.motion.move
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
 import de.jensklingenberg.scratch.procedures.Input
+import de.jensklingenberg.scratch.sound.changeEffectBy
 import de.jensklingenberg.scratch.sound.clearEffects
+import de.jensklingenberg.scratch.sound.playSoundUntilDone
+import de.jensklingenberg.scratch.sound.stopAllSounds
 import de.jensklingenberg.scratch.targetBuilder
+import me.jens.sound1
 import me.jens.sprite1
 import java.util.UUID
 
@@ -54,23 +61,12 @@ fun MyTarget(jensList: ScratchList): Target {
         scriptBuilder {
 
             whenFlagClicked()
-
-            sendBroadcast(broadcast)
-            clearEffects()
+            say(showPickerAs("text"))
 
 
-        }
-
-        scriptBuilder {
-            val tt = getVariable("myVariable2")
-            val users = createList("Users", listOf("Jens", "Martin", "Thomas"))
-            val index = getVariable("index")
-            whenIRecieve(broadcast)
-            forEachIndexed(users) {
-                move(10)
-            }
 
         }
+
     }
 
     return target.build()

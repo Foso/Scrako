@@ -124,6 +124,10 @@ internal fun setValue(
         createMessage(1, 4, reporterBlock.value.toString())
     }
 
+    is ObjectReporter->{
+        createObjectContent(operatorUUID)
+    }
+
     is ScratchVariable -> {
         createVariableContent(reporterBlock)
     }
