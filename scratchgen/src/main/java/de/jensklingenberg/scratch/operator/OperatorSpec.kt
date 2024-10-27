@@ -28,7 +28,7 @@ abstract class Operator(
         visitors[identifier.toString()] = BlockSpec(
             opcode = opCode,
             inputs = inputs
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         operatorUUID1.forEach { (t, u) ->
             t.visit(visitors, identifier.toString(), u, null, context)
         }

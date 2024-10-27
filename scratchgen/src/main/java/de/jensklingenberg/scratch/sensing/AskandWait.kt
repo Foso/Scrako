@@ -4,7 +4,7 @@ package de.jensklingenberg.scratch.sensing
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.createBlockRef
 import de.jensklingenberg.scratch.common.createLiteralMessage
@@ -35,7 +35,7 @@ private data class AskandWait(val content: LooksSayContent) : Node {
             opcode = OpCode.sensing_askandwait,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent, context.topLevel)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent)
 
         if (content is LooksSayContent.Reporter) {
             content.operatorSpec.visit(
@@ -49,4 +49,4 @@ private data class AskandWait(val content: LooksSayContent) : Node {
     }
 }
 
-fun NodeBuilder.askAndWait(content: LooksSayContent) = addChild(AskandWait(content))
+fun ScriptBuilder.askAndWait(content: LooksSayContent) = addChild(AskandWait(content))

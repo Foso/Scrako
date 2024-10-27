@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch.event
 
 import de.jensklingenberg.scratch.Broadcast
 import de.jensklingenberg.scratch.common.BlockSpec
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -25,4 +25,4 @@ internal fun createBroadcast(operatorId: Broadcast) = JsonArray(
     )
 )
 
-fun NodeBuilder.sendBroadcast(broadcast: Broadcast) = addChild(SendBroadcast(broadcast))
+fun ScriptBuilder.sendBroadcast(broadcast: Broadcast) = addChild(SendBroadcast(broadcast))

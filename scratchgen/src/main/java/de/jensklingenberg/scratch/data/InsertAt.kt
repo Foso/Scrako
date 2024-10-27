@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -36,18 +36,18 @@ private class InsertAt(
                 "ITEM" to setValue(block, dataBlockId)
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         index.visit(visitors, identifier.toString(), indexBlockId, null, context)
         block.visit(visitors, identifier.toString(), dataBlockId, null, context.copy(topLevel = false))
 
     }
 }
 
-fun NodeBuilder.insertAt(block: ReporterBlock, list: ScratchList, index: ReporterBlock) =
+fun ScriptBuilder.insertAt(block: ReporterBlock, list: ScratchList, index: ReporterBlock) =
     addChild(InsertAt(block, list, index))
 
-fun NodeBuilder.insertAt(item: String, list: ScratchList, index: ReporterBlock) =
+fun ScriptBuilder.insertAt(item: String, list: ScratchList, index: ReporterBlock) =
     addChild(InsertAt(StringBlock(item), list, index))
 
-fun NodeBuilder.insertAt(item: String, list: ScratchList, index: Int) =
+fun ScriptBuilder.insertAt(item: String, list: ScratchList, index: Int) =
     addChild(InsertAt(StringBlock(item), list, IntBlock(index)))

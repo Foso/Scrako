@@ -4,7 +4,7 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.CapBlock
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
@@ -26,4 +26,4 @@ internal class DeleteThisClone : BlockSpec(
     }
 }
 
-fun NodeBuilder.deleteThisClone() = addChild(DeleteThisClone())
+fun ScriptBuilder.deleteThisClone() = addChild(DeleteThisClone())

@@ -4,7 +4,7 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import java.util.UUID
@@ -24,11 +24,11 @@ private class Stop(private val option: StopOption) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_stop,
             fields = mapOf("STOP_OPTION" to listOf((option.s), null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 
-fun NodeBuilder.stop(option: StopOption) = addChild(Stop(option))
+fun ScriptBuilder.stop(option: StopOption) = addChild(Stop(option))
 enum class StopOption(val s: String) {
     ALL("all"), OTHER("other scripts in sprite"), THIS("this script")
 }

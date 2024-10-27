@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch.event
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.HatBlock
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 
 
@@ -11,7 +11,7 @@ private class WhenFlagClicked : BlockSpec(
 ), Event, HatBlock
 
 
-fun NodeBuilder.whenFlagClicked() = addChild(WhenFlagClicked())
+fun ScriptBuilder.whenFlagClicked() = addChild(WhenFlagClicked())
 
 
 

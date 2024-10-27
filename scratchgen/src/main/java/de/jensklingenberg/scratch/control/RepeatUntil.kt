@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
@@ -31,7 +31,7 @@ internal class RepeatUntil(
                 "CONDITION" to createSubStack(operatorUUID.toString()),
                 "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         condition.visit(visitors, identifier.toString(), operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
@@ -51,7 +51,7 @@ internal class RepeatUntil(
     }
 }
 
-fun NodeBuilder.repeatUntil(
+fun ScriptBuilder.repeatUntil(
     block: BooleanBlock,
-    leftStack: NodeBuilder.() -> Unit
-) = addChild(RepeatUntil(block, leftStack = NodeBuilder().apply(leftStack).childs))
+    leftStack: ScriptBuilder.() -> Unit
+) = addChild(RepeatUntil(block, leftStack = ScriptBuilder().apply(leftStack).childs))

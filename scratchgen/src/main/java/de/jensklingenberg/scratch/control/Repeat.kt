@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -37,7 +37,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_repeat,
             inputs = inputs
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         times.visit(
             visitors,
@@ -65,8 +65,8 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
     }
 }
 
-fun NodeBuilder.repeat(times: Int, childs: NodeBuilder.() -> Unit) = repeat(IntBlock(times), childs)
-fun NodeBuilder.repeat(times: Double, childs: NodeBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
+fun ScriptBuilder.repeat(times: Int, childs: ScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
+fun ScriptBuilder.repeat(times: Double, childs: ScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
 
-fun NodeBuilder.repeat(times: ReporterBlock, childs: NodeBuilder.() -> Unit) =
-    addChild(Repeat(times, *NodeBuilder().apply(childs).childs.toTypedArray()))
+fun ScriptBuilder.repeat(times: ReporterBlock, childs: ScriptBuilder.() -> Unit) =
+    addChild(Repeat(times, *ScriptBuilder().apply(childs).childs.toTypedArray()))

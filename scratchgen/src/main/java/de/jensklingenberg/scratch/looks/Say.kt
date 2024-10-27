@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.ScratchList
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchType
@@ -54,7 +54,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent, context.topLevel)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent)
 
         content.visit(
             visitors,
@@ -78,6 +78,6 @@ class StringBlock(val value: String) : ReporterBlock
 class ColorBlock(val value: String) : ReporterBlock
 
 
-fun NodeBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))
-fun NodeBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
-fun NodeBuilder.say(message: String, seconds: Int? = null) = addChild(Say(StringBlock(message), seconds))
+fun ScriptBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))
+fun ScriptBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
+fun ScriptBuilder.say(message: String, seconds: Int? = null) = addChild(Say(StringBlock(message), seconds))

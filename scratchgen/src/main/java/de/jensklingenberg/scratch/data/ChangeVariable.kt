@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.ScratchVariable
@@ -26,17 +26,17 @@ private class ChangeVariable(private val variable: ScratchVariable, private val 
             opcode = OpCode.data_changevariableby,
             inputs = mapOf("VALUE" to setValue(item, itemUUID)),
             fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
-        ).toBlock(nextUUID, identifier.toString(), context.topLevel)
+        ).toBlock(nextUUID, identifier.toString())
         item.visit(visitors, identifier.toString(), itemUUID, null, context.copy(topLevel = false))
     }
 }
 
 
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) =
+fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) =
     addChild(ChangeVariable(variable, item))
 
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Int) =
+fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: Int) =
     addChild(ChangeVariable(variable, IntBlock(item)))
 
-fun NodeBuilder.changeVariable(variable: ScratchVariable, item: Double) =
+fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: Double) =
     addChild(ChangeVariable(variable, DoubleBlock(item)))

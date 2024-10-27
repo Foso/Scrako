@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.HatBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -31,15 +31,15 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
             opcode = OpCode.event_whengreaterthan,
             inputs = mapOf("VALUE" to setValue(value, protoUUID)),
             fields = mapOf("WHENGREATERTHANMENU" to listOf(option.option, null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
         value.visit(visitors, identifier.toString(), protoUUID, null, context)
     }
 
 }
 
-fun NodeBuilder.whenGreaterThan(option: GreaterThanOption, value: ReporterBlock) =
+fun ScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: ReporterBlock) =
     addChild(WhenGreaterThan(option, value))
 
-fun NodeBuilder.whenGreaterThan(option: GreaterThanOption, value: Double) =
+fun ScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: Double) =
     addChild(WhenGreaterThan(option, DoubleBlock(value)))

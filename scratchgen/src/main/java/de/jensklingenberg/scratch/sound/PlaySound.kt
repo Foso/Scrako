@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Sound
 import kotlinx.serialization.json.JsonArray
@@ -22,13 +22,13 @@ private class PlaySound(val soundName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_play,
             inputs = mapOf("SOUND_MENU" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(soundMenuId.toString()))))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         SoundsMenu(soundName).visit(visitors, soundMenuId.toString(), soundMenuId, null, context)
     }
 }
 
-fun NodeBuilder.playSound(s: String) = addChild(PlaySound(s))
-fun NodeBuilder.playSound(s: Sound) = addChild(PlaySound(s.name))
+fun ScriptBuilder.playSound(s: String) = addChild(PlaySound(s))
+fun ScriptBuilder.playSound(s: Sound) = addChild(PlaySound(s.name))
 
 
 private class SoundsMenu(private val soundName: String) : Node {
@@ -43,7 +43,7 @@ private class SoundsMenu(private val soundName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_sounds_menu,
             fields = mapOf("SOUND_MENU" to listOf(soundName, null))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

@@ -23,7 +23,7 @@ private class ListContains(private val list: ScratchList, private val block: Rep
             opcode = OpCode.data_listcontainsitem,
             inputs = mapOf("ITEM" to setValue(block, childId)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), childId, null, context)
     }
 }

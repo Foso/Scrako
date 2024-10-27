@@ -6,7 +6,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -36,15 +36,15 @@ private class ReplaceItemOfWith(
                 "ITEM" to setValue(replace, replaceUUID)
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         index.visit(visitors, identifier.toString(), indexUUID, null, context.copy(topLevel = false))
         replace.visit(visitors, identifier.toString(), replaceUUID, null, context.copy(topLevel = false))
     }
 }
 
-fun NodeBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
+fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
     addChild(ReplaceItemOfWith(index, list, replace))
 
-fun NodeBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
+fun ScriptBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
     addChild(ReplaceItemOfWith(IntBlock(index), list, StringBlock(replace)))
 

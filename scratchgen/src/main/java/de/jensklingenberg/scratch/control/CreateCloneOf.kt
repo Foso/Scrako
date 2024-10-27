@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.Sprite
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import kotlinx.serialization.json.JsonArray
@@ -23,7 +23,7 @@ class CreateCloneOf(private val spriteName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_create_clone_of,
             inputs = mapOf("CLONE_OPTION" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString()))))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         CreateCloneOfMenu(spriteName).visit(
             visitors,
             identifier.toString(),
@@ -45,10 +45,10 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_create_clone_of_menu,
             fields = mapOf("CLONE_OPTION" to listOf(spriteName))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 
-fun NodeBuilder.createCloneOf(spriteName: String) = addChild(CreateCloneOf(spriteName))
+fun ScriptBuilder.createCloneOf(spriteName: String) = addChild(CreateCloneOf(spriteName))
 
-fun NodeBuilder.createCloneOf(sprite: Sprite) = createCloneOf(sprite.name)
+fun ScriptBuilder.createCloneOf(sprite: Sprite) = createCloneOf(sprite.name)

@@ -4,7 +4,7 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
@@ -37,7 +37,7 @@ internal class IfElse(
                 "SUBSTACK" to createSubStack(leftUUIDs.first().toString()),
                 "SUBSTACK2" to createSubStack(rightUUIDs.first().toString())
             )
-        ).toBlock(newNext, parent, context.topLevel)
+        ).toBlock(newNext, parent)
         condition.visit(visitors, name2, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
@@ -71,14 +71,14 @@ internal class IfElse(
     }
 }
 
-fun NodeBuilder.ifElse(
+fun ScriptBuilder.ifElse(
     operatorSpec: BooleanBlock,
-    leftStack: NodeBuilder.() -> Unit,
-    rightStack: NodeBuilder.() -> Unit,
+    leftStack: ScriptBuilder.() -> Unit,
+    rightStack: ScriptBuilder.() -> Unit,
 ) = addChild(
     IfElse(
         operatorSpec,
-        leftStack = NodeBuilder().apply(leftStack).childs,
-        rightStack = NodeBuilder().apply(rightStack).childs
+        leftStack = ScriptBuilder().apply(leftStack).childs,
+        rightStack = ScriptBuilder().apply(rightStack).childs
     )
 )

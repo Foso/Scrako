@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch.sensing
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.model.Block
@@ -30,10 +30,10 @@ private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock
                     )
                 )
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         destination.visit(visitors, identifier.toString(), destinationUUID, null, context)
 
     }
 }
 
-fun NodeBuilder.distanceTo(destination: ReporterBlock) = addChild(DistanceTo(destination))
+fun ScriptBuilder.distanceTo(destination: ReporterBlock) = addChild(DistanceTo(destination))

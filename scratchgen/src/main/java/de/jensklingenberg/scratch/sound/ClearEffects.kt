@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
@@ -17,8 +17,8 @@ private class ClearEffects : Node {
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_cleareffects,
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 
-fun NodeBuilder.clearEffects() = addChild(ClearEffects())
+fun ScriptBuilder.clearEffects() = addChild(ClearEffects())

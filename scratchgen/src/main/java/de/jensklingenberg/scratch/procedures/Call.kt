@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.model.Block
 import de.jensklingenberg.scratch.model.Mutation
@@ -49,7 +49,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
                     listOf(JsonPrimitive(1), JsonPrimitive(test.toString()))
                 )
             }
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
 
 
         GreaterThan(IntBlock(3), IntBlock(4)).visit(
@@ -62,4 +62,4 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
     }
 }
 
-fun NodeBuilder.call(name: String, arguments: List<Input>) = addChild(Call(name, arguments))
+fun ScriptBuilder.call(name: String, arguments: List<Input>) = addChild(Call(name, arguments))

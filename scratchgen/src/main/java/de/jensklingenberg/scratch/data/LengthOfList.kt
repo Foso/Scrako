@@ -19,7 +19,7 @@ private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListB
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_lengthoflist,
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
     }
 }
 

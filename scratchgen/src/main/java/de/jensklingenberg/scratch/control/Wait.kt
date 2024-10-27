@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.DoubleBlock
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -26,12 +26,12 @@ private class Wait(private val block: ReporterBlock) : Node {
             inputs = mapOf(
                 "DURATION" to setValue(block, uuid)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), uuid, null, context.copy(topLevel = false))
     }
 }
 
-fun NodeBuilder.wait(seconds: Double) = addChild(Wait(DoubleBlock(seconds)))
-fun NodeBuilder.wait(seconds: Int) = addChild(Wait(IntBlock(seconds)))
-fun NodeBuilder.wait(block: ReporterBlock) = addChild(Wait(block))
+fun ScriptBuilder.wait(seconds: Double) = addChild(Wait(DoubleBlock(seconds)))
+fun ScriptBuilder.wait(seconds: Int) = addChild(Wait(IntBlock(seconds)))
+fun ScriptBuilder.wait(block: ReporterBlock) = addChild(Wait(block))
 

@@ -4,7 +4,7 @@ package de.jensklingenberg.scratch.looks
 import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ScratchType
 import de.jensklingenberg.scratch.common.createBlockRef
@@ -46,7 +46,7 @@ private data class Think(private val content: LooksSayContent, private val secon
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent, context.topLevel)
+        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent)
 
         if (content is LooksSayContent.Reporter) {
             content.operatorSpec.visit(
@@ -60,6 +60,6 @@ private data class Think(private val content: LooksSayContent, private val secon
     }
 }
 
-fun NodeBuilder.think(message: String, seconds: Int? = null) =
+fun ScriptBuilder.think(message: String, seconds: Int? = null) =
     addChild(Think(LooksSayContent.Literal(message), seconds))
 

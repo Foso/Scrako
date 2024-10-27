@@ -25,7 +25,7 @@ private class ItemNumOfList(private val item: ReporterBlock, private val list: S
             opcode = OpCode.data_itemnumoflist,
             inputs = mapOf("ITEM" to setValue(item, itemUUID)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         item.visit(visitors, identifier.toString(), itemUUID, null, context)
     }
 }

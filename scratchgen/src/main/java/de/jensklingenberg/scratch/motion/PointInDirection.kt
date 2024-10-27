@@ -4,7 +4,7 @@ import de.jensklingenberg.scratch.common.BlockSpec
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.IntBlock
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.common.setValue
@@ -23,11 +23,11 @@ private class PointInDirection(val block: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_pointindirection,
             inputs = mapOf("DIRECTION" to setValue(block, childId))
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), childId, null, context)
 
     }
 }
 
-fun NodeBuilder.pointInDirection(block: ReporterBlock) = addChild(PointInDirection(block))
-fun NodeBuilder.pointInDirection(degrees: Int) = addChild(PointInDirection(IntBlock(degrees)))
+fun ScriptBuilder.pointInDirection(block: ReporterBlock) = addChild(PointInDirection(block))
+fun ScriptBuilder.pointInDirection(degrees: Int) = addChild(PointInDirection(IntBlock(degrees)))

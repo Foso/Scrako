@@ -5,7 +5,7 @@ import de.jensklingenberg.scratch.common.CBlock
 import de.jensklingenberg.scratch.common.CapBlock
 import de.jensklingenberg.scratch.common.Context
 import de.jensklingenberg.scratch.common.Node
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
 import de.jensklingenberg.scratch.model.Block
@@ -49,11 +49,11 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_forever,
             inputs = inputs
-        ).toBlock(null, parent, context.topLevel)
+        ).toBlock(null, parent)
 
     }
 }
 
-fun NodeBuilder.forever(block: NodeBuilder.() -> Unit) {
-    childs.add(Forever(NodeBuilder().apply(block).childs))
+fun ScriptBuilder.forever(block: ScriptBuilder.() -> Unit) {
+    childs.add(Forever(ScriptBuilder().apply(block).childs))
 }

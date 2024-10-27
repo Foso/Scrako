@@ -1,15 +1,15 @@
 package de.jensklingenberg.scratch.control
 
-import de.jensklingenberg.scratch.common.NodeBuilder
+import de.jensklingenberg.scratch.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.ReporterBlock
 import de.jensklingenberg.scratch.looks.StringBlock
 import de.jensklingenberg.scratch.operator.OperatorEquals
 
 
-fun NodeBuilder.switch(block: String, operatorSpec: SwitchContext.() -> Unit) =
+fun ScriptBuilder.switch(block: String, operatorSpec: SwitchContext.() -> Unit) =
     switch(StringBlock(block), operatorSpec)
 
-fun NodeBuilder.switch(block: ReporterBlock, operatorSpec: SwitchContext.() -> Unit) {
+fun ScriptBuilder.switch(block: ReporterBlock, operatorSpec: SwitchContext.() -> Unit) {
     val test = SwitchContext().apply(operatorSpec)
 
     if (test.mutableList.size == 1) {
@@ -29,8 +29,8 @@ fun NodeBuilder.switch(block: ReporterBlock, operatorSpec: SwitchContext.() -> U
     }
 }
 
-fun SwitchContext.case(block: ReporterBlock, leftStack: NodeBuilder.() -> Unit) = addChild(Case(block, leftStack))
-fun SwitchContext.case(operatorSpec: String, leftStack: NodeBuilder.() -> Unit) =
+fun SwitchContext.case(block: ReporterBlock, leftStack: ScriptBuilder.() -> Unit) = addChild(Case(block, leftStack))
+fun SwitchContext.case(operatorSpec: String, leftStack: ScriptBuilder.() -> Unit) =
     addChild(Case(StringBlock(operatorSpec), leftStack))
 
 class SwitchContext {
@@ -41,4 +41,4 @@ class SwitchContext {
     }
 }
 
-data class Case(val operatorSpec: ReporterBlock, val leftStack: NodeBuilder.() -> Unit)
+data class Case(val operatorSpec: ReporterBlock, val leftStack: ScriptBuilder.() -> Unit)

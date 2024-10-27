@@ -24,7 +24,7 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
             inputs = mapOf(
                 "COLOR" to setValue(color, destinationUUID)
             )
-        ).toBlock(nextUUID, parent, context.topLevel)
+        ).toBlock(nextUUID, parent)
         color.visit(visitors, identifier.toString(), destinationUUID, null, context)
     }
 }
