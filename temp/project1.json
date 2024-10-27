@@ -4,9 +4,9 @@
       "isStage": true,
       "name": "Stage",
       "variables": {
-        "e5bd4230-f4d5-4ca7-ad48-b28e9de9f3da": [
+        "99ea65f2-a93e-499a-95bc-8e4997b4723f": [
           "myVar",
-          2
+          ""
         ]
       },
       "lists": {},
@@ -21,17 +21,21 @@
           "dataFormat": "svg",
           "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
           "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
-          "rotationCenterX": 240,
-          "rotationCenterY": 180
+          "rotationCenterX": 240.0,
+          "rotationCenterY": 180.0
         }
       ],
       "sounds": [],
       "volume": 100,
       "layerOrder": 0,
-      "tempo": 60,
-      "videoTransparency": 50,
-      "videoState": "on",
-      "textToSpeechLanguage": null
+      "visible": false,
+      "x": 0,
+      "y": 0,
+      "size": 100,
+      "direction": 90,
+      "draggable": false,
+      "rotationStyle": "all around",
+      "tempo": 60
     },
     {
       "isStage": false,
@@ -40,51 +44,50 @@
       "lists": {},
       "broadcasts": {},
       "blocks": {
-        "bdb8fd4e-7799-43ef-9261-553d24d9323e": {
+        "7e95bf88-8088-4026-9bff-141185313e2b": {
           "opcode": "event_whenflagclicked",
-          "next": "19ba9535-12e9-4fea-a5ec-cb981fe056a1",
+          "next": "92e98d20-c174-42b9-98ff-75e13fab0b7e",
           "parent": null,
           "inputs": {},
           "fields": {},
           "shadow": false,
-          "topLevel": true,
-          "x": 475,
-          "y": 385
+          "topLevel": true
         },
-        "19ba9535-12e9-4fea-a5ec-cb981fe056a1": {
-          "opcode": "data_setvariableto",
-          "next": "08317ec4-3abf-4ab8-98fa-8610d07f4a69",
-          "parent": "bdb8fd4e-7799-43ef-9261-553d24d9323e",
+        "92e98d20-c174-42b9-98ff-75e13fab0b7e": {
+          "opcode": "data_changevariableby",
+          "next": "1f07b12d-8be3-4a69-b60d-4dbaf9f8fcd6",
+          "parent": "92e98d20-c174-42b9-98ff-75e13fab0b7e",
           "inputs": {
             "VALUE": [
               1,
               [
-                4,
-                "1"
+                10,
+                "1.0"
               ]
             ]
           },
           "fields": {
             "VARIABLE": [
               "myVar",
-              "e5bd4230-f4d5-4ca7-ad48-b28e9de9f3da"
+              "99ea65f2-a93e-499a-95bc-8e4997b4723f"
             ]
           },
           "shadow": false,
           "topLevel": false
         },
-        "08317ec4-3abf-4ab8-98fa-8610d07f4a69": {
+        "1f07b12d-8be3-4a69-b60d-4dbaf9f8fcd6": {
           "opcode": "looks_say",
           "next": null,
-          "parent": "19ba9535-12e9-4fea-a5ec-cb981fe056a1",
+          "parent": "92e98d20-c174-42b9-98ff-75e13fab0b7e",
           "inputs": {
             "MESSAGE": [
-              2,
+              3,
               [
                 12,
                 "myVar",
-                "e5bd4230-f4d5-4ca7-ad48-b28e9de9f3da"
-              ]
+                "99ea65f2-a93e-499a-95bc-8e4997b4723f"
+              ],
+              null
             ]
           },
           "fields": {},
@@ -101,8 +104,8 @@
           "dataFormat": "svg",
           "assetId": "bcf454acf82e4504149f7ffe07081dbc",
           "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
-          "rotationCenterX": 48,
-          "rotationCenterY": 50
+          "rotationCenterX": 48.0,
+          "rotationCenterY": 50.0
         },
         {
           "name": "costume2",
@@ -110,8 +113,8 @@
           "dataFormat": "svg",
           "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
           "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
-          "rotationCenterX": 46,
-          "rotationCenterY": 53
+          "rotationCenterX": 46.0,
+          "rotationCenterY": 53.0
         }
       ],
       "sounds": [
@@ -121,7 +124,7 @@
           "dataFormat": "wav",
           "format": "",
           "rate": 48000,
-          "sampleCount": 40682,
+          "sampleCount": 40681,
           "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
         },
         {
@@ -130,7 +133,7 @@
           "dataFormat": "wav",
           "format": "",
           "rate": 48000,
-          "sampleCount": 1124,
+          "sampleCount": 40681,
           "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
         }
       ],
@@ -151,21 +154,19 @@
       "lists": {},
       "broadcasts": {},
       "blocks": {
-        "e704f2f0-8614-40d4-a49b-815d6e5257dc": {
+        "a5ceaa9f-0af9-49c8-aaa6-184ff4bca2a5": {
           "opcode": "event_whenflagclicked",
-          "next": "~5zud?*6oOU6Y:W$t(qa",
+          "next": "912092c7-b548-4906-ace6-fc4df19e47e4",
           "parent": null,
           "inputs": {},
           "fields": {},
           "shadow": false,
-          "topLevel": true,
-          "x": 0,
-          "y": 0
+          "topLevel": true
         },
-        "9da9c8a4-3a73-4e76-ae67-5094c44a53e4": {
+        "912092c7-b548-4906-ace6-fc4df19e47e4": {
           "opcode": "data_setvariableto",
-          "next": null,
-          "parent": null,
+          "next": "e7d728e3-48a0-49fb-910f-79178787ba17",
+          "parent": "a5ceaa9f-0af9-49c8-aaa6-184ff4bca2a5",
           "inputs": {
             "VALUE": [
               1,
@@ -178,79 +179,30 @@
           "fields": {
             "VARIABLE": [
               "myVar",
-              "e5bd4230-f4d5-4ca7-ad48-b28e9de9f3da"
+              "99ea65f2-a93e-499a-95bc-8e4997b4723f"
             ]
           },
           "shadow": false,
-          "topLevel": true,
-          "x": 502,
-          "y": 425
+          "topLevel": false
         },
-        "ce333dec-d14b-4494-af44-bb13d3245d0e": {
+        "e7d728e3-48a0-49fb-910f-79178787ba17": {
           "opcode": "looks_say",
           "next": null,
-          "parent": "~5zud?*6oOU6Y:W$t(qa",
+          "parent": "912092c7-b548-4906-ace6-fc4df19e47e4",
           "inputs": {
             "MESSAGE": [
-              2,
+              3,
               [
                 12,
                 "myVar",
-                "e5bd4230-f4d5-4ca7-ad48-b28e9de9f3da"
-              ]
+                "99ea65f2-a93e-499a-95bc-8e4997b4723f"
+              ],
+              null
             ]
           },
           "fields": {},
           "shadow": false,
           "topLevel": false
-        },
-        "~5zud?*6oOU6Y:W$t(qa": {
-          "opcode": "data_changevariableby",
-          "next": "ce333dec-d14b-4494-af44-bb13d3245d0e",
-          "parent": "e704f2f0-8614-40d4-a49b-815d6e5257dc",
-          "inputs": {
-            "VALUE": [
-              1,
-              [
-                4,
-                "1"
-              ]
-            ]
-          },
-          "fields": {
-            "VARIABLE": [
-              "myVar",
-              "e5bd4230-f4d5-4ca7-ad48-b28e9de9f3da"
-            ]
-          },
-          "shadow": false,
-          "topLevel": false
-        },
-        "D74tGnPb0q.g![Q{P[A?": {
-          "opcode": "sensing_coloristouchingcolor",
-          "next": null,
-          "parent": null,
-          "inputs": {
-            "COLOR": [
-              1,
-              [
-                9,
-                "#9fa496"
-              ]
-            ],
-            "COLOR2": [
-              1,
-              [
-                9,
-                "#b2ef4f"
-              ]
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": true,
-          "x": 82,
-          "y": 395
         }
       },
       "comments": {},
@@ -262,27 +214,25 @@
           "dataFormat": "svg",
           "assetId": "bcf454acf82e4504149f7ffe07081dbc",
           "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
-          "rotationCenterX": 48,
-          "rotationCenterY": 50
+          "rotationCenterX": 48.0,
+          "rotationCenterY": 50.0
         }
       ],
       "sounds": [],
       "volume": 100,
-      "layerOrder": 2,
+      "layerOrder": 1,
       "visible": true,
-      "x": -112,
-      "y": -5,
+      "x": 0,
+      "y": 0,
       "size": 100,
       "direction": 90,
       "draggable": false,
       "rotationStyle": "all around"
     }
   ],
-  "monitors": [],
-  "extensions": [],
   "meta": {
     "semver": "3.0.0",
-    "vm": "4.8.32",
-    "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko/20100101 Firefox/131.0"
+    "vm": "0.2.0",
+    "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
   }
 }

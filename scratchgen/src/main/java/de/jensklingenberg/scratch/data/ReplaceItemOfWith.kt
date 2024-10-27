@@ -12,7 +12,7 @@ import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.looks.StackBlock
+import de.jensklingenberg.scrako.common.StackBlock
 import java.util.UUID
 
 private class ReplaceItemOfWith(

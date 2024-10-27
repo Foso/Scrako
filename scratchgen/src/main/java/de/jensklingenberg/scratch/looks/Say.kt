@@ -10,6 +10,7 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.createBlockRef
 import de.jensklingenberg.scrako.common.createLiteralMessage

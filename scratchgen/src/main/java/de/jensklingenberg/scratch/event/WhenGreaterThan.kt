@@ -25,7 +25,6 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-
         ) {
         val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(

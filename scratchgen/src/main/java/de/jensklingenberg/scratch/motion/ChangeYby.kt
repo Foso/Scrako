@@ -4,13 +4,14 @@ import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
-private class ChangeYby(val block: ReporterBlock) : ReporterBlock {
+private class ChangeYby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,

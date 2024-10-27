@@ -16,9 +16,8 @@ private class ControlWaitUntil(private val condition: BooleanBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_wait_until,

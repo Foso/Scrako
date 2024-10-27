@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.motion
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScriptBuilder
@@ -13,14 +14,13 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-private class Goto(private val block: ReporterBlock) : Node {
+private class Goto(private val block: ReporterBlock) : Node, MotionBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-
         ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(

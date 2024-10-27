@@ -16,6 +16,6 @@ private class Say(val block0 : ReporterBlock, ) : Node {
                 
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, )
+        block0.visit(visitors, identifier.toString(), block0Id, null)
     }
 }

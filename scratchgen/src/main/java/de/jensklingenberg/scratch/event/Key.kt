@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch.event
 
-enum class Key(val key: String) {
+enum class Key(val value: String) {
     SPACE("space"),
     LEFT_ARROW("left arrow"),
     RIGHT_ARROW("right arrow"),

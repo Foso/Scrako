@@ -17,8 +17,7 @@ private class ChangeEffectBy(val block0: ReporterBlock, val effect: String) : No
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-
-        ) {
+    ) {
         val block0Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = looks_changeeffectby,

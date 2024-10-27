@@ -47,7 +47,7 @@ private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sensing_keyoptions,
             fields = mapOf(
-                "KEY_OPTION" to listOf(reporter.key.key, null)
+                "KEY_OPTION" to listOf(reporter.key.value, null)
             )
         ).toBlock(nextUUID, parent)
         reporter.visit(visitors, identifier.toString(), destinationUUID, null, context)

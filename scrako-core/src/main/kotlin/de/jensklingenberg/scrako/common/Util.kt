@@ -165,9 +165,7 @@ val MousePointer = StringBlock("_mouse_")
 
 
 
-fun ProjectBuilder.addStage(target: TargetBuilder) {
-    stage = target
-}
+
 
 fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
     val node = ProjectBuilder()
@@ -178,7 +176,6 @@ fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
 fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     val targetBuilder = TargetBuilder()
     ff.invoke(targetBuilder)
-    val test = createBlocks23(targetBuilder.scriptBuilders.map { it.childs }, Context())
 
     addStage(targetBuilder)
     return targetBuilder

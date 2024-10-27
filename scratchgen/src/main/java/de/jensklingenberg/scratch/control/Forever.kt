@@ -20,7 +20,6 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-
         ) {
 
         if (nextUUID != null) {

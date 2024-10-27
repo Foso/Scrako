@@ -1,5 +1,3 @@
 package de.jensklingenberg.scratch.sensing
 
-interface SensingBlock {
-
-}
+interface SensingBlock

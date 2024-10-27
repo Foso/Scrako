@@ -78,42 +78,58 @@ fun createTarget(
 }
 
 
-internal fun defaultStage(variables: List<ScratchVariable>) = Target(
-    isStage = true,
-    name = "Stage",
-    variables = variables.associate {
-        it.id.toString() to JsonArray(
-            listOf(
-                JsonPrimitive(it.name),
-                JsonPrimitive("")
-            )
-        )
-    },
-    lists = emptyMap(),
-    broadcasts = emptyMap(),
-    blocks = emptyMap(),
-    comments = emptyMap(),
-    currentCostume = 0,
-    costumes = listOf(
-        Costume(
-            name = "backdrop1",
-            bitmapResolution = 1,
-            dataFormat = "svg",
-            assetId = "cd21514d0531fdffb22204e0ec5ed84a",
-            md5ext = "cd21514d0531fdffb22204e0ec5ed84a.svg",
-            rotationCenterX = 240.0,
-            rotationCenterY = 180.0
-        )
-    ),
-    sounds = emptyList(),
-    volume = 100,
-    layerOrder = 0,
-    visible = false,
-    x = 0,
-    y = 0,
-    size = 100,
-    direction = 90,
-    tempo = 60,
-    draggable = false,
-    rotationStyle = "all around"
+val backdrop = Costume(
+    name = "backdrop1",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "cd21514d0531fdffb22204e0ec5ed84a",
+    md5ext = "cd21514d0531fdffb22204e0ec5ed84a.svg",
+    rotationCenterX = 240.0,
+    rotationCenterY = 180.0
 )
+
+val basketBall = Costume(
+    name = "Basketball ",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "ae21eac3d1814aee1d37ae82ea287816",
+    md5ext = "ae21eac3d1814aee1d37ae82ea287816.svg",
+    rotationCenterX = 249.0,
+    rotationCenterY = 186.0
+)
+
+
+fun defaultStage(variables: List<ScratchVariable> = emptyList()): Target {
+
+    return Target(
+        isStage = true,
+        name = "Stage",
+        variables = variables.associate {
+            it.id.toString() to JsonArray(
+                listOf(
+                    JsonPrimitive(it.name),
+                    JsonPrimitive("")
+                )
+            )
+        },
+        lists = emptyMap(),
+        broadcasts = emptyMap(),
+        blocks = emptyMap(),
+        comments = emptyMap(),
+        currentCostume = 0,
+        costumes = listOf(
+            backdrop
+        ),
+        sounds = emptyList(),
+        volume = 100,
+        layerOrder = 0,
+        visible = false,
+        x = 0,
+        y = 0,
+        size = 100,
+        direction = 90,
+        tempo = 60,
+        draggable = false,
+        rotationStyle = "all around"
+    )
+}
