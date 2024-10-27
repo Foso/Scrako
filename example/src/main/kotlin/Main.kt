@@ -47,7 +47,7 @@ fun main() {
             println(u.opcode)
             // if(u.opcode == "motion_movesteps"){
 
-            val newInputs = u.inputs.entries.mapIndexed { index, entry ->  "\"${entry.key}\" to setValue(block${index}, block${index}Id) " }.joinToString("\n") { it }
+            val newInputs = u.inputs.entries.mapIndexed { index, entry ->  "\"${entry.key}\" to setValue(block${index}, block${index}Id) " }.joinToString(",\n") { it }
             val newFields =  u.fields.entries.mapIndexed { index, entry ->
                 "\"${entry.key}\" to listOf(${entry.key.lowercase()},null)"
                 }
@@ -57,11 +57,11 @@ fun main() {
                 "val ${it.key.lowercase()}: String"
             }.joinToString { it }
             val repl =
-                List(u.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID()" }.joinToString("/n") { it }
-            val blocks = (0..<u.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock" }.joinToString { it }
+                List(u.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID()" }.joinToString("\n") { it }
+            val blocks = (0..<u.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock," }.joinToString("\n") { it }
             val wer = u.inputs.entries.mapIndexed { index, entry ->
                 "block${index}.visit(visitors, identifier.toString(), block${index}Id, null, context)"
-            }.joinToString { it }
+            }.joinToString("\n") { it }
             val sec = template.replace("REPLACE_INPUT", newInputs)
                 .replace("REPLACE_BLOCKO", repl)
                 .replace("HERE",wer)
@@ -70,7 +70,7 @@ fun main() {
                 .replace("INSERT_PARAMETER", blocks)
                 .replace("REPLACE_NAME", name)
                 .replace(
-                    "REPLACE_OPCODE", u.opcode
+                    "REPLACE_OPCODE", "OpCode."+u.opcode
                 ).replace("REPLACE_FIELDS", newFields)
             File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + name).writeText(sec)
             //  }

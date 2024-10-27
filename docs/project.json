@@ -3,64 +3,13 @@
     {
       "isStage": true,
       "name": "Stage",
-      "variables": {},
-      "lists": {
-        "0fe601b7-a8dc-41a5-a154-dcbf136ff735": [
-          "jens2",
-          [
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "2",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1"
-          ]
+      "variables": {
+        "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+          "my variable",
+          0
         ]
       },
+      "lists": {},
       "broadcasts": {},
       "blocks": {},
       "comments": {},
@@ -68,7 +17,6 @@
       "costumes": [
         {
           "name": "backdrop1",
-          "bitmapResolution": 1,
           "dataFormat": "svg",
           "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
           "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
@@ -101,90 +49,173 @@
       "lists": {},
       "broadcasts": {},
       "blocks": {
-        "e": {
-          "opcode": "event_whenflagclicked",
-          "next": "a",
+        "9|61B`tgJ_c?s%4[r4iH": {
+          "opcode": "sound_playuntildone",
+          "next": null,
           "parent": null,
-          "inputs": {},
+          "inputs": {
+            "SOUND_MENU": [
+              1,
+              "Bf*!}$so2(9Z2*!o$Q~4"
+            ]
+          },
           "fields": {},
           "shadow": false,
           "topLevel": true,
-          "x": 0,
-          "y": 0
+          "x": 274,
+          "y": 270
         },
-        "a": {
-          "opcode": "looks_say",
-          "next": "b",
-          "parent": "e",
-          "inputs": {
-            "MESSAGE": [
-              3,
-              "c",
-              [
-                10,
-                "Hello"
-              ]
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "b": {
-          "opcode": "files_showPickerAs",
+        "Bf*!}$so2(9Z2*!o$Q~4": {
+          "opcode": "sound_sounds_menu",
           "next": null,
-          "parent": "a",
-          "inputs": {
-            "as": [
-              1,
-              "f"
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "f": {
-          "opcode": "files_menu_encoding",
-          "next": null,
-          "parent": "b",
+          "parent": "9|61B`tgJ_c?s%4[r4iH",
           "inputs": {},
           "fields": {
-            "encoding": [
-              "text",
-              null
-            ]
-          },
-          "shadow": false,
-          "topLevel": false
-        },
-        "c": {
-          "opcode": "files_showPickerAs",
-          "next": null,
-          "parent": "a",
-          "inputs": {
-            "as": [
-              1,
-              "g"
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "g": {
-          "opcode": "files_menu_encoding",
-          "next": null,
-          "parent": "c",
-          "inputs": {},
-          "fields": {
-            "encoding": [
-              "text",
+            "SOUND_MENU": [
+              "Meow",
               null
             ]
           },
           "shadow": true,
           "topLevel": false
+        },
+        "j{n#XrQ%rNo[b1Bj?B~G": {
+          "opcode": "sound_play",
+          "next": null,
+          "parent": null,
+          "inputs": {
+            "SOUND_MENU": [
+              1,
+              ")7P$Hfkk3yq(,2k~#S_n"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 274,
+          "y": 394
+        },
+        ")7P$Hfkk3yq(,2k~#S_n": {
+          "opcode": "sound_sounds_menu",
+          "next": null,
+          "parent": "j{n#XrQ%rNo[b1Bj?B~G",
+          "inputs": {},
+          "fields": {
+            "SOUND_MENU": [
+              "Meow",
+              null
+            ]
+          },
+          "shadow": true,
+          "topLevel": false
+        },
+        "8Dw.ywgEA^k%eatCkJw*": {
+          "opcode": "sound_stopallsounds",
+          "next": null,
+          "parent": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 277,
+          "y": 507
+        },
+        "a=dg4b_k3c2;+q6;pX2I": {
+          "opcode": "sound_changeeffectby",
+          "next": null,
+          "parent": null,
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "10"
+              ]
+            ]
+          },
+          "fields": {
+            "EFFECT": [
+              "PITCH",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 234,
+          "y": 643
+        },
+        "+eUu|+cVvz!2nI#:nNvt": {
+          "opcode": "sound_seteffectto",
+          "next": null,
+          "parent": null,
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "100"
+              ]
+            ]
+          },
+          "fields": {
+            "EFFECT": [
+              "PITCH",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 234,
+          "y": 777
+        },
+        "7doqH-[No6W=2x2?:;TU": {
+          "opcode": "sound_cleareffects",
+          "next": null,
+          "parent": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 264,
+          "y": 874
+        },
+        "OGVhNL`)1q*3wf))|+)[": {
+          "opcode": "sound_changevolumeby",
+          "next": null,
+          "parent": null,
+          "inputs": {
+            "VOLUME": [
+              1,
+              [
+                4,
+                "-10"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 253,
+          "y": 1006
+        },
+        "Z+Szl)RT#VB96f8[qHlN": {
+          "opcode": "sound_setvolumeto",
+          "next": null,
+          "parent": null,
+          "inputs": {
+            "VOLUME": [
+              1,
+              [
+                4,
+                "100"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 253,
+          "y": 1162
         }
       },
       "comments": {},
@@ -218,15 +249,6 @@
           "rate": 48000,
           "sampleCount": 40682,
           "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
-        },
-        {
-          "name": "Test",
-          "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
-          "dataFormat": "wav",
-          "format": "",
-          "rate": 48000,
-          "sampleCount": 1124,
-          "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
         }
       ],
       "volume": 100,
@@ -238,92 +260,13 @@
       "direction": 90,
       "draggable": false,
       "rotationStyle": "all around"
-    },
-    {
-      "isStage": false,
-      "name": "Arrow1",
-      "variables": {},
-      "lists": {},
-      "broadcasts": {},
-      "blocks": {
-        "d": {
-          "opcode": "event_whenflagclicked",
-          "next": "h",
-          "parent": null,
-          "inputs": {},
-          "fields": {},
-          "shadow": false,
-          "topLevel": true,
-          "x": 0,
-          "y": 0
-        },
-        "h": {
-          "opcode": "looks_say",
-          "next": null,
-          "parent": "d",
-          "inputs": {
-            "MESSAGE": [
-              3,
-              "i",
-              [
-                10,
-                "Hello"
-              ]
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "i": {
-          "opcode": "motion_xposition",
-          "next": null,
-          "parent": "d",
-          "inputs": {},
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        }
-      },
-      "comments": {},
-      "currentCostume": 0,
-      "costumes": [
-        {
-          "name": "costume1",
-          "bitmapResolution": 1,
-          "dataFormat": "svg",
-          "assetId": "bcf454acf82e4504149f7ffe07081dbc",
-          "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
-          "rotationCenterX": 48,
-          "rotationCenterY": 50
-        }
-      ],
-      "sounds": [],
-      "volume": 100,
-      "layerOrder": 2,
-      "visible": true,
-      "x": 0,
-      "y": 0,
-      "size": 100,
-      "direction": 90,
-      "draggable": false,
-      "rotationStyle": "all around"
     }
   ],
   "monitors": [],
-  "extensions": [
-    "files"
-  ],
-  "extensionURLs": {
-    "files": "https://extensions.turbowarp.org/files.js"
-  },
+  "extensions": [],
   "meta": {
     "semver": "3.0.0",
-    "vm": "0.2.0",
-    "agent": "",
-    "platform": {
-      "name": "TurboWarp",
-      "url": "https://turbowarp.org/"
-    }
+    "vm": "4.8.32",
+    "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko/20100101 Firefox/131.0"
   }
 }

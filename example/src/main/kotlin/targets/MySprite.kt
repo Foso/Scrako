@@ -1,5 +1,6 @@
 package me.jens.targets
 
+import bitwise.bitwiseRightShift
 import de.jensklingenberg.scratch.Broadcast
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scratch.addSprite
@@ -24,6 +25,11 @@ import de.jensklingenberg.scratch.targetBuilder
 import me.jens.sprite1
 import java.util.UUID
 import de.jensklingenberg.scrako.common.Target
+import de.jensklingenberg.scratch.sound.SoundEffect
+import de.jensklingenberg.scratch.sound.changeEffectBy
+import de.jensklingenberg.scratch.sound.changeVolumeBy
+import de.jensklingenberg.scratch.sound.setEffectTo
+import de.jensklingenberg.scratch.sound.setVolumeTo
 import files.showPickerAs
 
 fun ScriptBuilder.forEachIndexed(users: ScratchList, ff: ScriptBuilder.(index: ScratchVariable) -> Unit) {
@@ -50,8 +56,10 @@ fun MyTarget(jensList: ScratchList): Target {
         scriptBuilder {
 
             whenFlagClicked()
-            say(showPickerAs("text"))
-
+            changeVolumeBy(StringBlock("10"))
+            setVolumeTo(StringBlock("100"))
+            setEffectTo(SoundEffect.PAN, StringBlock("10"))
+            changeEffectBy(SoundEffect.VOLUME, StringBlock("10"))
         }
 
     }
