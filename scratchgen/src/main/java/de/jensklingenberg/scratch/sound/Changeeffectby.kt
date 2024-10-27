@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -16,7 +15,7 @@ private class Changeeffectby(val block0 : ReporterBlock, val effect: String) : N
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val block0Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -28,7 +27,7 @@ private class Changeeffectby(val block0 : ReporterBlock, val effect: String) : N
                 "EFFECT" to listOf(effect,null)
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, context)
+        block0.visit(visitors, identifier.toString(), block0Id, null, )
     }
 }
 

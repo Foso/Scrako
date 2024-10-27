@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.sensing
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
@@ -16,7 +15,7 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val destinationUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -25,7 +24,7 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
                 "KEY_OPTION" to setValue(block, destinationUUID)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        block.visit(visitors, identifier.toString(), destinationUUID, null, )
     }
 }
 
@@ -39,7 +38,7 @@ private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val destinationUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -48,6 +47,6 @@ private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
                 "KEY_OPTION" to listOf(reporter.key.key, null)
             )
         ).toBlock(nextUUID, parent)
-        reporter.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        reporter.visit(visitors, identifier.toString(), destinationUUID, null, )
     }
 }

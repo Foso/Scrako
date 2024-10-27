@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -19,7 +18,7 @@ private class SwitchCostume(private val block: ReporterBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val menuId = UUID.randomUUID()
         val blockId = UUID.randomUUID()
@@ -41,13 +40,13 @@ private class SwitchCostume(private val block: ReporterBlock) : Node {
 
         when (block) {
             is StringBlock -> {
-                CostumeMenu(block.value).visit(visitors, identifier.toString(), menuId, null, context)
+                CostumeMenu(block.value).visit(visitors, identifier.toString(), menuId, null, )
 
             }
 
             else -> {
-                CostumeMenu().visit(visitors, identifier.toString(), menuId, null, context)
-                block.visit(visitors, identifier.toString(), menuId, null, context)
+                CostumeMenu().visit(visitors, identifier.toString(), menuId, null, )
+                block.visit(visitors, identifier.toString(), menuId, null, )
             }
         }
 
@@ -62,7 +61,7 @@ private class CostumeMenu(private val value: String? = "costume1") : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_costume,

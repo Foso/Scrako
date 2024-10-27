@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.data
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -16,7 +15,7 @@ private class HideList(private val list: ScratchList) : Node, StackBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_hideList,

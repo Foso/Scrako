@@ -2,7 +2,6 @@ package de.jensklingenberg.scratch.looks
 
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -20,7 +19,7 @@ private data class Think(private val content: LooksSayContent, private val secon
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
 
         val operatorUUID = UUID.randomUUID()
@@ -54,7 +53,7 @@ private data class Think(private val content: LooksSayContent, private val secon
                 identifier.toString(),
                 operatorUUID,
                 null,
-                context
+                
             )
         }
     }

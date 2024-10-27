@@ -3,9 +3,15 @@ package me.jens
 import de.jensklingenberg.scrako.common.ScratchProject
 import de.jensklingenberg.scrako.common.Sound
 import de.jensklingenberg.scrako.common.ScratchList
+import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scratch.ProjectBuilder
 import de.jensklingenberg.scratch.Sprite
+import de.jensklingenberg.scratch.addStage
 import de.jensklingenberg.scratch.createStage
+import de.jensklingenberg.scratch.projectBuilder
 import de.jensklingenberg.scratch.readList
+import de.jensklingenberg.scratch.stageBuilder
 import de.jensklingenberg.scratch.writeProject
 import kotlinx.serialization.json.Json
 import me.jens.targets.MyTarget
@@ -60,7 +66,7 @@ fun main() {
                 List(u.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID()" }.joinToString("\n") { it }
             val blocks = (0..<u.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock," }.joinToString("\n") { it }
             val wer = u.inputs.entries.mapIndexed { index, entry ->
-                "block${index}.visit(visitors, identifier.toString(), block${index}Id, null, context)"
+                "block${index}.visit(visitors, identifier.toString(), block${index}Id, null)"
             }.joinToString("\n") { it }
             val sec = template.replace("REPLACE_INPUT", newInputs)
                 .replace("REPLACE_BLOCKO", repl)
@@ -90,17 +96,24 @@ fun main() {
         )
     )
 
+    val proj = projectBuilder {
+       // addStage(stageTarget)
+        val myVar = getVariable("myVar")
 
-    val sprite1 = MyTarget(myList)
-    val sprite2 = createSprite2()
-    val scratchProject = ScratchProject(
-        targets = listOf(stageTarget, sprite1, sprite2)
-    )
+        MyTarget(myList)
+        createSprite2()
+    }
+
 
     writeProject(
-        scratchProject,
+        proj.build(),
         "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/",
         "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
     )
 }
 
+fun ProjectBuilder.getVariable(name: String): ScratchVariable {
+    val element = ScratchVariable(name)
+    variables.add(element)
+    return element
+}

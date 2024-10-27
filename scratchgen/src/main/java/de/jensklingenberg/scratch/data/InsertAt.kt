@@ -2,7 +2,6 @@ package de.jensklingenberg.scratch.data
 
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -25,7 +24,7 @@ private class InsertAt(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val indexBlockId = UUID.randomUUID()
         val dataBlockId = UUID.randomUUID()
@@ -37,8 +36,8 @@ private class InsertAt(
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        index.visit(visitors, identifier.toString(), indexBlockId, null, context)
-        block.visit(visitors, identifier.toString(), dataBlockId, null, context)
+        index.visit(visitors, identifier.toString(), indexBlockId, null, )
+        block.visit(visitors, identifier.toString(), dataBlockId, null, )
 
     }
 }

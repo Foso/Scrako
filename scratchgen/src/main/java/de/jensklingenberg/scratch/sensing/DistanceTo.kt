@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.sensing
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -17,7 +16,7 @@ private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val destinationUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -31,7 +30,7 @@ private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock
                 )
             )
         ).toBlock(nextUUID, parent)
-        destination.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        destination.visit(visitors, identifier.toString(), destinationUUID, null, )
 
     }
 }

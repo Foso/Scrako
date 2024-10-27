@@ -3,7 +3,6 @@ package files
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ObjectReporter
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
@@ -15,7 +14,7 @@ private class ShowPickerAs(val block0 : ReporterBlock, ) : BooleanBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val block0Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -27,7 +26,7 @@ private class ShowPickerAs(val block0 : ReporterBlock, ) : BooleanBlock {
                 
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, context)
+        block0.visit(visitors, identifier.toString(), block0Id, null, )
     }
 }
 
@@ -37,7 +36,7 @@ private class Menu_encoding( val encoding: String) : ObjectReporter {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
 
         visitors[identifier.toString()] = BlockSpec(

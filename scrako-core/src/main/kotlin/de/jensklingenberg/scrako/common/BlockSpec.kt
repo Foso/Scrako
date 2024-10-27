@@ -32,15 +32,14 @@ open class BlockSpec(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
-        nextUUID: UUID?,
-        context: Context
+        nextUUID: UUID?
     ) {
         if (this is HatBlock && parent != null) {
             throw IllegalStateException("HatBlock blocks can't have a parent")
         }
         comment?.addBlock(identifier.toString())
         visitors[identifier.toString()] =
-            toBlock(nextUUID, context.parent, comment?.id)
+            toBlock(nextUUID, parent, comment?.id)
     }
 
     fun addComment(comment: Comment): Node {

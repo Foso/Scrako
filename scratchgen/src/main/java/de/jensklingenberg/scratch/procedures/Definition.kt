@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.procedures
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -22,7 +21,7 @@ class Definition(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -35,7 +34,7 @@ class Definition(
             identifier.toString(),
             protoUUID,
             null,
-            context
+            
         )
     }
 }
@@ -46,7 +45,7 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val inputIds = inputs.map { it.id }
         val arguments = inputs.map { it.argument }
@@ -57,7 +56,7 @@ private class Prototype(val name: String, private val withoutRefresh: Boolean, v
                 identifier.toString(),
                 argIds[index],
                 argIds.getOrNull(index + 1),
-                context
+                
             )
         }
 
@@ -115,7 +114,7 @@ class ArgumentString(override val name: String, override val defaultValue: Strin
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.argument_reporter_string_number,
@@ -143,7 +142,7 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.argument_reporter_boolean,

@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -16,7 +15,7 @@ private class ControlWaitUntil(private val condition: BooleanBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -25,7 +24,7 @@ private class ControlWaitUntil(private val condition: BooleanBlock) : Node {
                 "CONDITION" to setValue(condition, uuid)
             )
         ).toBlock(nextUUID, parent)
-        condition.visit(visitors, identifier.toString(), uuid, null, context)
+        condition.visit(visitors, identifier.toString(), uuid, null, )
     }
 }
 

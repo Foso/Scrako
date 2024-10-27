@@ -6,11 +6,11 @@ import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch.operator.OperatorEquals
 
 
-fun ScriptBuilder.switch(block: String, operatorSpec: SwitchContext.() -> Unit) =
+fun ScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =
     switch(StringBlock(block), operatorSpec)
 
-fun ScriptBuilder.switch(block: ReporterBlock, operatorSpec: SwitchContext.() -> Unit) {
-    val test = SwitchContext().apply(operatorSpec)
+fun ScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
+    val test = Switch().apply(operatorSpec)
 
     if (test.mutableList.size == 1) {
         ifThen(OperatorEquals(block, test.mutableList.first().operatorSpec)) {
@@ -29,11 +29,11 @@ fun ScriptBuilder.switch(block: ReporterBlock, operatorSpec: SwitchContext.() ->
     }
 }
 
-fun SwitchContext.case(block: ReporterBlock, leftStack: ScriptBuilder.() -> Unit) = addChild(Case(block, leftStack))
-fun SwitchContext.case(operatorSpec: String, leftStack: ScriptBuilder.() -> Unit) =
+fun Switch.case(block: ReporterBlock, leftStack: ScriptBuilder.() -> Unit) = addChild(Case(block, leftStack))
+fun Switch.case(operatorSpec: String, leftStack: ScriptBuilder.() -> Unit) =
     addChild(Case(StringBlock(operatorSpec), leftStack))
 
-class SwitchContext {
+class Switch {
     val mutableList = mutableListOf<Case>()
 
     fun addChild(whenFlagClicked: Case) {

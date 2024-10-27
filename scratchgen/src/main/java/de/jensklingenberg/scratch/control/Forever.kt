@@ -3,7 +3,6 @@ package de.jensklingenberg.scratch.control
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.common.CapBlock
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -19,7 +18,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
 
         if (nextUUID != null) {
@@ -36,7 +35,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
                 parent = identifier.toString(),
                 childUUIDS[childIndex],
                 nextUUID,
-                context
+                
             )
         }
 

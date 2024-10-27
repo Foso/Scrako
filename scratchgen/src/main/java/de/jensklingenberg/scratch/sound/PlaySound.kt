@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.common.Block
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Sound
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Node
@@ -19,14 +18,14 @@ private class PlaySound(val soundName: String) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val soundMenuId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_play,
             inputs = mapOf("SOUND_MENU" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(soundMenuId.toString()))))
         ).toBlock(nextUUID, parent)
-        SoundsMenu(soundName).visit(visitors, soundMenuId.toString(), soundMenuId, null, context)
+        SoundsMenu(soundName).visit(visitors, soundMenuId.toString(), soundMenuId, null, )
     }
 }
 
@@ -41,7 +40,7 @@ internal class SoundsMenu(private val soundName: String) : ReporterBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_sounds_menu,

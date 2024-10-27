@@ -2,7 +2,6 @@ package de.jensklingenberg.scratch.control
 
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -15,7 +14,7 @@ private class Stop(private val option: StopOption) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
 
         if (option == StopOption.ALL && nextUUID != null) {

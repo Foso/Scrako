@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.procedures
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
@@ -19,7 +18,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
 
 
@@ -57,7 +56,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
             identifier.toString(),
             test,
             null,
-            context
+            
         )
     }
 }

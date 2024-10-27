@@ -1,15 +1,14 @@
 package de.jensklingenberg.scratch
 
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.Costume
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
+import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.Sound
 import de.jensklingenberg.scrako.common.Target
+import de.jensklingenberg.scratch.common.createBlocks23
 import de.jensklingenberg.scratch.model.createTarget
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
@@ -22,8 +21,6 @@ import java.nio.file.StandardCopyOption
 import java.util.UUID
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
-
-
 
 class TargetBuilder {
     val nodesbuilder = mutableListOf<ScriptBuilder>()
@@ -45,12 +42,81 @@ fun TargetBuilder.addSprite(sprite: Sprite) {
     this.sprite = sprite
 }
 
-fun targetBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
-    val node = TargetBuilder()
+class ProjectBuilder {
+    val targets = mutableListOf<Target>()
+    var stage = defaultStage()
+    var variables = mutableListOf<ScratchVariable>()
+
+    fun build(): ScratchProject {
+        val target = targets.map { it.variables }
+        return ScratchProject(
+            targets = listOf(stage) +targets.map { it }
+        )
+    }
+}
+
+fun ProjectBuilder.addStage(target: Target) {
+    if (target.name != "Stage") {
+        throw IllegalStateException("You can only add a stage to a project")
+    }
+    stage = target
+}
+
+fun defaultStage() = Target(
+    isStage = true,
+    name = "Stage",
+    variables = emptyMap(),
+    lists = emptyMap(),
+    broadcasts = emptyMap(),
+    blocks = emptyMap(),
+    comments = emptyMap(),
+    currentCostume = 0,
+    costumes = listOf(
+        Costume(
+            name = "backdrop1",
+            bitmapResolution = 1,
+            dataFormat = "svg",
+            assetId = "cd21514d0531fdffb22204e0ec5ed84a",
+            md5ext = "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            rotationCenterX = 240.0,
+            rotationCenterY = 180.0
+        )
+    ),
+    sounds = emptyList(),
+    volume = 100,
+    layerOrder = 0,
+    visible = false,
+    x = 0,
+    y = 0,
+    size = 100,
+    direction = 90,
+    tempo = 60,
+    draggable = false,
+    rotationStyle = "all around"
+)
+
+fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
+    val node = ProjectBuilder()
     ff.invoke(node)
-    val test = createBlocks23(node.nodesbuilder.map { it.childs })
-    node.blocks = test
     return node
+}
+
+fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
+    val targetBuilder = TargetBuilder()
+    ff.invoke(targetBuilder)
+    val test = createBlocks23(targetBuilder.nodesbuilder.map { it.childs })
+    targetBuilder.blocks = test
+    addStage(targetBuilder.build())
+    return targetBuilder
+}
+
+fun ProjectBuilder.targetBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
+    val targetBuilder = TargetBuilder()
+    ff.invoke(targetBuilder)
+    val test = createBlocks23(targetBuilder.nodesbuilder.map { it.childs })
+    targetBuilder.blocks = test
+    targets.add(targetBuilder.build())
+    return targetBuilder
 }
 
 fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
@@ -70,10 +136,6 @@ class Sprite(
 class Broadcast(val name: String) {
     val id: UUID = UUID.randomUUID()
 }
-
-
-
-
 
 
 fun readList(name: String): List<String> {

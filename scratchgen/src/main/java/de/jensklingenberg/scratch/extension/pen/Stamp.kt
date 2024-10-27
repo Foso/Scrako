@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.extension.pen
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.Block
@@ -13,7 +12,7 @@ private class Stamp : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = PenOpCode.pen_stamp,

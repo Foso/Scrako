@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
@@ -20,7 +19,7 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val secID = UUID.randomUUID()
         val toXID = UUID.randomUUID()
@@ -35,9 +34,9 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
             )
         ).toBlock(nextUUID, parent)
 
-        sec.visit(visitors, identifier.toString(), secID, null, context)
-        toX.visit(visitors, identifier.toString(), toXID, null, context)
-        toY.visit(visitors, identifier.toString(), toYID, null, context)
+        sec.visit(visitors, identifier.toString(), secID, null, )
+        toX.visit(visitors, identifier.toString(), toXID, null, )
+        toY.visit(visitors, identifier.toString(), toYID, null, )
     }
 }
 

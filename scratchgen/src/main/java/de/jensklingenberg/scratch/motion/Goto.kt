@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -19,7 +18,7 @@ private class Goto(private val block: ReporterBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -44,12 +43,12 @@ private class Goto(private val block: ReporterBlock) : Node {
                     identifier.toString(),
                     uuid,
                     nextUUID,
-                    context
+                    
                 )
             }
 
             else -> {
-                block.visit(visitors, uuid.toString(), uuid, null, context)
+                block.visit(visitors, uuid.toString(), uuid, null, )
             }
         }
     }
@@ -61,7 +60,7 @@ private class GotoMenu(val steps: String) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_goto_menu,

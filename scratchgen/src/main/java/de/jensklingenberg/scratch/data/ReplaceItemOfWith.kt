@@ -3,7 +3,6 @@ package de.jensklingenberg.scratch.data
 
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
@@ -25,7 +24,7 @@ private class ReplaceItemOfWith(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val indexUUID = UUID.randomUUID()
         val replaceUUID = UUID.randomUUID()
@@ -37,8 +36,8 @@ private class ReplaceItemOfWith(
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        index.visit(visitors, identifier.toString(), indexUUID, null, context)
-        replace.visit(visitors, identifier.toString(), replaceUUID, null, context)
+        index.visit(visitors, identifier.toString(), indexUUID, null, )
+        replace.visit(visitors, identifier.toString(), replaceUUID, null, )
     }
 }
 

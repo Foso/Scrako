@@ -8,9 +8,10 @@ import de.jensklingenberg.scratch.motion.XPosition
 import de.jensklingenberg.scratch.scriptBuilder
 import de.jensklingenberg.scratch.targetBuilder
 import de.jensklingenberg.scrako.common.Target
+import de.jensklingenberg.scratch.ProjectBuilder
 import me.jens.spriteArrow
 
-fun createSprite2(): Target {
+fun ProjectBuilder.createSprite2(): Target {
     val block = targetBuilder {
         addSprite(spriteArrow)
         scriptBuilder {

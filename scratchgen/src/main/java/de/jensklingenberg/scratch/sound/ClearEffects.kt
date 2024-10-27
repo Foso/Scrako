@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.common.Block
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
@@ -15,7 +14,7 @@ private class ClearEffects : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_cleareffects,

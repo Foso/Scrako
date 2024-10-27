@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.data
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -18,7 +17,7 @@ private class SetVariable(private val variable: ScratchVariable, private val ite
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val itemUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -26,7 +25,7 @@ private class SetVariable(private val variable: ScratchVariable, private val ite
             inputs = mapOf("VALUE" to setValue(item, itemUUID)),
             fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
         ).toBlock(nextUUID, parent)
-        item.visit(visitors, identifier.toString(), itemUUID, null, context)
+        item.visit(visitors, identifier.toString(), itemUUID, null, )
     }
 }
 

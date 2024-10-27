@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.looks
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -17,7 +16,7 @@ private class SetSize(val block: ReporterBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val operatorUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -26,7 +25,7 @@ private class SetSize(val block: ReporterBlock) : Node {
                 "SIZE" to setValue(block, operatorUUID)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), operatorUUID, null, context)
+        block.visit(visitors, identifier.toString(), operatorUUID, null, )
     }
 }
 

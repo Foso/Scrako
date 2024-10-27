@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ScriptBuilder
@@ -14,7 +13,7 @@ class StopAllSounds : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
 
         visitors[identifier.toString()] = BlockSpec(

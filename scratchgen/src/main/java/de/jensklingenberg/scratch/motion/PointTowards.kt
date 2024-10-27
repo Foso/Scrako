@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -17,7 +16,7 @@ private class PointTowards(private val target: String) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -27,7 +26,7 @@ private class PointTowards(private val target: String) : Node {
             )
         ).toBlock(nextUUID, parent)
 
-        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, context)
+        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, )
     }
 }
 

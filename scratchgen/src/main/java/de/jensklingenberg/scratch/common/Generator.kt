@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.common
 
 import de.jensklingenberg.scrako.common.Block
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import java.util.UUID
 
@@ -26,7 +25,7 @@ private fun createBlocks2(blockSpecs: List<Node>): Map<String, Block> {
 
         val nextNode = if (index != blockSpecs.lastIndex) uuids[index + 1] else null
 
-        blockSpec.visit(blockMap, parent, uuids[index], nextNode, Context(parent))
+        blockSpec.visit(blockMap, parent, uuids[index], nextNode)
 
     }
 

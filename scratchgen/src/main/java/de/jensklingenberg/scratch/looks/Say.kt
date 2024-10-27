@@ -3,7 +3,6 @@ package de.jensklingenberg.scratch.looks
 
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -26,7 +25,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
 
         val operatorUUID = UUID.randomUUID()
@@ -62,7 +61,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             identifier.toString(),
             operatorUUID,
             null,
-            context
+            
         )
 
     }

@@ -7,8 +7,7 @@ interface Node {
         visitors: MutableMap<String, Block>,
         parent: String? = null,
         identifier: UUID,
-        nextUUID: UUID?,
-        context: Context,
+        nextUUID: UUID?
     ) {
     }
 }

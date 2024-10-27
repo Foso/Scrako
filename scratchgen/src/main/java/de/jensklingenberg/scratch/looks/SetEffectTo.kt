@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.looks
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -16,7 +15,7 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val block1Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -30,7 +29,7 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
                 )
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), block1Id, null, context)
+        block.visit(visitors, identifier.toString(), block1Id, null, )
     }
 }
 

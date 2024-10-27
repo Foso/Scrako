@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
@@ -18,7 +17,7 @@ private class Wait(private val block: ReporterBlock) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -27,7 +26,7 @@ private class Wait(private val block: ReporterBlock) : Node {
                 "DURATION" to setValue(block, uuid)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), uuid, null, context)
+        block.visit(visitors, identifier.toString(), uuid, null, )
     }
 }
 

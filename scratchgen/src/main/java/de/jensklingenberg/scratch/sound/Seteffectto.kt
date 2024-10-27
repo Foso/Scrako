@@ -2,7 +2,6 @@ package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScriptBuilder
@@ -23,7 +22,7 @@ private class Seteffectto(val block0 : ReporterBlock, val effect: String) : Node
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val block0Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -35,7 +34,7 @@ private class Seteffectto(val block0 : ReporterBlock, val effect: String) : Node
                 "EFFECT" to listOf(effect,null)
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, context)
+        block0.visit(visitors, identifier.toString(), block0Id, null, )
     }
 }
 

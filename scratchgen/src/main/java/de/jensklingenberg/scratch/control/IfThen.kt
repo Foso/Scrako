@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -20,7 +19,7 @@ internal class IfThen(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val newNext = nextUUID
         val operatorUUID = UUID.randomUUID()
@@ -33,7 +32,7 @@ internal class IfThen(
                 "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
             )
         ).toBlock(newNext, parent)
-        condition.visit(visitors, identifier.toString(), operatorUUID, null, context)
+        condition.visit(visitors, identifier.toString(), operatorUUID, null, )
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -45,7 +44,7 @@ internal class IfThen(
                 parent = identifier.toString(),
                 leftUUIDs[childIndex],
                 nextUUID,
-                context
+                
             )
         }
 

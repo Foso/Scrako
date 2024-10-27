@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.operator
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.common.Block
@@ -18,7 +17,7 @@ abstract class Operator(
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val operatorUUID1 = operand1.associateWith { UUID.randomUUID() }
 
@@ -30,9 +29,9 @@ abstract class Operator(
             inputs = inputs
         ).toBlock(nextUUID, parent)
         operatorUUID1.forEach { (t, u) ->
-            t.visit(visitors, identifier.toString(), u, null, context)
+            t.visit(visitors, identifier.toString(), u, null, )
         }
-        // operand2?.visit(visitors, identifier.toString(), operatorUUID2, null, context)
+        // operand2?.visit(visitors, identifier.toString(), operatorUUID2, null, )
     }
 
     operator fun plus(add: Add): Add {

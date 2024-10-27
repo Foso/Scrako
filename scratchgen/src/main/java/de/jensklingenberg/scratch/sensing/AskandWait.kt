@@ -2,7 +2,6 @@ package de.jensklingenberg.scratch.sensing
 
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
@@ -18,7 +17,7 @@ private data class AskandWait(val content: LooksSayContent) : Node {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val operatorUUID = UUID.randomUUID()
 
@@ -43,7 +42,7 @@ private data class AskandWait(val content: LooksSayContent) : Node {
                 identifier.toString(),
                 operatorUUID,
                 null,
-                context
+                
             )
         }
     }

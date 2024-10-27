@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.event
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.HatBlock
 import de.jensklingenberg.scrako.common.Node
@@ -24,7 +23,7 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -33,7 +32,7 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
             fields = mapOf("WHENGREATERTHANMENU" to listOf(option.option, null))
         ).toBlock(nextUUID, parent)
 
-        value.visit(visitors, identifier.toString(), protoUUID, null, context)
+        value.visit(visitors, identifier.toString(), protoUUID, null, )
     }
 
 }

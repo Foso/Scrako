@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.sensing
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
@@ -16,7 +15,7 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context
+        
     ) {
         val destinationUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
@@ -25,7 +24,7 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
                 "COLOR" to setValue(color, destinationUUID)
             )
         ).toBlock(nextUUID, parent)
-        color.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        color.visit(visitors, identifier.toString(), destinationUUID, null, )
     }
 }
 
