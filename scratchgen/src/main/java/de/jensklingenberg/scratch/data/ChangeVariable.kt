@@ -13,15 +13,14 @@ import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
-private class ChangeVariable(private val variable: ScratchVariable, private val item: ReporterBlock) : Node {
+private class ChangeVariable(private val item: ReporterBlock, private val variableName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context,
-
-        ) {
+        context: Context, ) {
+        val variable = context.variables.find { it.name == variableName }!!
         val itemUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_changevariableby,
@@ -34,10 +33,10 @@ private class ChangeVariable(private val variable: ScratchVariable, private val 
 
 
 fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: ReporterBlock) =
-    addChild(ChangeVariable(variable, item))
+    addChild(ChangeVariable(item, variable.name))
 
 fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: Int) =
-    addChild(ChangeVariable(variable, IntBlock(item)))
+    addChild(ChangeVariable(IntBlock(item), variable.name))
 
 fun ScriptBuilder.changeVariable(variable: ScratchVariable, item: Double) =
-    addChild(ChangeVariable(variable, DoubleBlock(item)))
+    addChild(ChangeVariable(DoubleBlock(item), variable.name))

@@ -46,7 +46,8 @@ fun ProjectBuilder.MyTarget(jensList: ScratchList) {
         scriptBuilder {
             val element = getVariable("myVar")
             whenFlagClicked()
-            setVariable(element, IntBlock(1))
+            //setVariable(element, IntBlock(1))
+            changeVariable(element, 1.0)
             say(element)
 
             //say(showPickerAs("text"))

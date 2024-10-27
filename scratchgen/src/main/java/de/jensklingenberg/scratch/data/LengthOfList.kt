@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch.data
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.ListBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scratch.common.OpCode

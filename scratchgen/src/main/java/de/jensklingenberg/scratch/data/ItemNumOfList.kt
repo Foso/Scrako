@@ -11,7 +11,7 @@ import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
-private class ItemNumOfList(private val item: ReporterBlock, private val list: ScratchList) : Node,
+private class ItemNumOfList(private val block0: ReporterBlock, private val list: ScratchList) : Node,
     ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -24,10 +24,10 @@ private class ItemNumOfList(private val item: ReporterBlock, private val list: S
         val itemUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_itemnumoflist,
-            inputs = mapOf("ITEM" to setValue(item, itemUUID)),
+            inputs = mapOf("ITEM" to setValue(block0, itemUUID)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        item.visit(visitors, identifier.toString(), itemUUID, null, context)
+        block0.visit(visitors, identifier.toString(), itemUUID, null, context)
     }
 }
 

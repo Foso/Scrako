@@ -4,17 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="reformat">
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/CreateSprite2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/CreateSprite2.kt" afterDir="false" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="variables">
+      <change afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/TargetBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Generator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Generator.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Node.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Node.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ObjectReporter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ObjectReporter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ProjectBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/createList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/createList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/SetVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/SetVariable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/looks/Say.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/looks/Say.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/DeleteAllOf.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/DeleteAllOf.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/ItemNumOfList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/ItemNumOfList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/LengthOfList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/LengthOfList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/ListBlock.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ListBlock.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/VariablesBlock.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/VariablesBlock.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/temp/project.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp/test4.sb3" beforeDir="false" afterPath="$PROJECT_DIR$/temp/test4.sb3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -531,7 +536,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730059899889</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="variables">
+      <option name="closed" value="true" />
+      <created>1730065363067</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1730065363067</updated>
+    </task>
+    <task id="LOCAL-00048" summary="variables">
+      <option name="closed" value="true" />
+      <created>1730065372978</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1730065372978</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -557,7 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="switch" />
     <MESSAGE value="reporterblock" />
     <MESSAGE value="more" />
     <MESSAGE value="operator not" />
@@ -582,7 +602,8 @@
     <MESSAGE value="no context" />
     <MESSAGE value="variable" />
     <MESSAGE value="reformat" />
-    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
+    <MESSAGE value="variables" />
+    <option name="LAST_COMMIT_MESSAGE" value="variables" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -593,31 +614,8 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
-          <line>192</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
-          <line>186</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
-          <line>183</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
-          <line>188</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ProjectBuilder.kt</url>
-          <line>16</line>
+          <line>17</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>

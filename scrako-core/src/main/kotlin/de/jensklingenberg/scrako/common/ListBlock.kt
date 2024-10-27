@@ -1,3 +1,3 @@
 package de.jensklingenberg.scrako.common
 
-interface ObjectReporter : ReporterBlock
+interface ListBlock : VariablesBlock
