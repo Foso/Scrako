@@ -1,0 +1,21 @@
+private class Xposition( ) : Node {
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        parent: String?,
+        identifier: UUID,
+        nextUUID: UUID?,
+
+    ) {
+        
+        visitors[identifier.toString()] = BlockSpec(
+            opcode = OpCode.motion_xposition,
+            inputs = mapOf(
+                
+            ),
+            fields = mapOf(
+                
+            )
+        ).toBlock(nextUUID, parent)
+        
+    }
+}

@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="reformat">
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/CreateSprite2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/CreateSprite2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Generator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Generator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Node.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Node.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ProjectBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/createList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/createList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/SetVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/SetVariable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/looks/Say.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/looks/Say.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin File" />
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="cd3efc5db75a453fb7cb4163211ac797c0577c01" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Foso&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Foso/ScratchPoet.git&quot;,
+    &quot;accountId&quot;: &quot;531f545b-9490-4955-b3c7-c4e115cd4aab&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2nc81owQPpcsdIFxJz8RO1xOi1p" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build LLVMPoet.executor": "Run",
+    "Kotlin.MainKt (1).executor": "Run",
+    "Kotlin.MainKt.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/docs",
+    "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  },
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "/Users/jens.klingenberg/.gradle"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$/example" />
+      <recent name="$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data" />
+      <recent name="$PROJECT_DIR$/.github" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common" />
+      <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/bitwise" />
+      <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/files" />
+      <recent name="$PROJECT_DIR$/example" />
+      <recent name="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="de.jensklingenberg.scratch.sensing" />
+      <recent name="de.jensklingenberg.scratch.looks" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="de.jensklingenberg.scrako.common" />
+      <recent name="de.jensklingenberg.scratch" />
+      <recent name="de.jensklingenberg.scratch.sound" />
+      <recent name="" />
+      <recent name="de.jensklingenberg.scratch.looks" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="scratch.motion" />
+      <recent name="scratch.event" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Kotlin.MainKt (1)">
+    <configuration name="MainKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.jens.MainKt" />
+      <module name="LLVMPoet.example.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.jens.MainKt" />
+      <module name="LLVMPoet.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.MainKt (1)" />
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Kotlin.MainKt" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="" />
+      <created>1729260792686</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729260792686</updated>
+    </task>
+    <task id="LOCAL-00001" summary="ScratchPoet">
+      <option name="closed" value="true" />
+      <created>1729408842090</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729408842090</updated>
+    </task>
+    <task id="LOCAL-00002" summary="ScratchPoet">
+      <option name="closed" value="true" />
+      <created>1729427901316</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729427901316</updated>
+    </task>
+    <task id="LOCAL-00003" summary="IFelse">
+      <option name="closed" value="true" />
+      <created>1729439962857</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1729439962857</updated>
+    </task>
+    <task id="LOCAL-00004" summary="project">
+      <option name="closed" value="true" />
+      <created>1729456125215</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1729456125215</updated>
+    </task>
+    <task id="LOCAL-00005" summary="project">
+      <option name="closed" value="true" />
+      <created>1729517513596</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729517513596</updated>
+    </task>
+    <task id="LOCAL-00006" summary="AddToList">
+      <option name="closed" value="true" />
+      <created>1729527008548</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729527008548</updated>
+    </task>
+    <task id="LOCAL-00007" summary="AddToList">
+      <option name="closed" value="true" />
+      <created>1729533195973</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729533195973</updated>
+    </task>
+    <task id="LOCAL-00008" summary="think">
+      <option name="closed" value="true" />
+      <created>1729539872143</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729539872143</updated>
+    </task>
+    <task id="LOCAL-00009" summary="resources">
+      <option name="closed" value="true" />
+      <created>1729596682930</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729596682930</updated>
+    </task>
+    <task id="LOCAL-00010" summary="module">
+      <option name="closed" value="true" />
+      <created>1729597465364</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729597465364</updated>
+    </task>
+    <task id="LOCAL-00011" summary="module">
+      <option name="closed" value="true" />
+      <created>1729602221764</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729602221764</updated>
+    </task>
+    <task id="LOCAL-00012" summary="module">
+      <option name="closed" value="true" />
+      <created>1729602230075</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729602230075</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix toplevel">
+      <option name="closed" value="true" />
+      <created>1729603878924</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729603878924</updated>
+    </task>
+    <task id="LOCAL-00014" summary="reformat">
+      <option name="closed" value="true" />
+      <created>1729604248504</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729604248504</updated>
+    </task>
+    <task id="LOCAL-00015" summary="DSL">
+      <option name="closed" value="true" />
+      <created>1729623131846</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1729623131846</updated>
+    </task>
+    <task id="LOCAL-00016" summary="DSL2">
+      <option name="closed" value="true" />
+      <created>1729629514961</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729629514961</updated>
+    </task>
+    <task id="LOCAL-00017" summary="DSL3">
+      <option name="closed" value="true" />
+      <created>1729633633205</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729633633206</updated>
+    </task>
+    <task id="LOCAL-00018" summary="DSL3">
+      <option name="closed" value="true" />
+      <created>1729667150711</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1729667150711</updated>
+    </task>
+    <task id="LOCAL-00019" summary="switch">
+      <option name="closed" value="true" />
+      <created>1729686210992</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1729686210992</updated>
+    </task>
+    <task id="LOCAL-00020" summary="reporterblock">
+      <option name="closed" value="true" />
+      <created>1729705367299</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1729705367299</updated>
+    </task>
+    <task id="LOCAL-00021" summary="more">
+      <option name="closed" value="true" />
+      <created>1729710046045</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1729710046045</updated>
+    </task>
+    <task id="LOCAL-00022" summary="operator not">
+      <option name="closed" value="true" />
+      <created>1729715029918</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1729715029918</updated>
+    </task>
+    <task id="LOCAL-00023" summary="switch case">
+      <option name="closed" value="true" />
+      <created>1729717825441</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1729717825441</updated>
+    </task>
+    <task id="LOCAL-00024" summary="stop the sound">
+      <option name="closed" value="true" />
+      <created>1729719119732</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1729719119732</updated>
+    </task>
+    <task id="LOCAL-00025" summary="stop the sound">
+      <option name="closed" value="true" />
+      <created>1729756895029</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1729756895029</updated>
+    </task>
+    <task id="LOCAL-00026" summary="stop the sound2">
+      <option name="closed" value="true" />
+      <created>1729760097023</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1729760097023</updated>
+    </task>
+    <task id="LOCAL-00027" summary="private">
+      <option name="closed" value="true" />
+      <created>1729780674229</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1729780674229</updated>
+    </task>
+    <task id="LOCAL-00028" summary="mods">
+      <option name="closed" value="true" />
+      <created>1729795981702</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1729795981702</updated>
+    </task>
+    <task id="LOCAL-00029" summary="listContains">
+      <option name="closed" value="true" />
+      <created>1729801065090</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1729801065090</updated>
+    </task>
+    <task id="LOCAL-00030" summary="touchingColor">
+      <option name="closed" value="true" />
+      <created>1729802090098</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1729802090098</updated>
+    </task>
+    <task id="LOCAL-00031" summary="repeatUntil">
+      <option name="closed" value="true" />
+      <created>1729806742209</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1729806742209</updated>
+    </task>
+    <task id="LOCAL-00032" summary="ChangeEffectBy">
+      <option name="closed" value="true" />
+      <created>1729833864346</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1729833864346</updated>
+    </task>
+    <task id="LOCAL-00033" summary="switchstomume">
+      <option name="closed" value="true" />
+      <created>1729834796493</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1729834796493</updated>
+    </task>
+    <task id="LOCAL-00034" summary="switchstomume">
+      <option name="closed" value="true" />
+      <created>1729836079411</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1729836079411</updated>
+    </task>
+    <task id="LOCAL-00035" summary="target">
+      <option name="closed" value="true" />
+      <created>1729845804360</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1729845804360</updated>
+    </task>
+    <task id="LOCAL-00036" summary="target">
+      <option name="closed" value="true" />
+      <created>1729845915085</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1729845915085</updated>
+    </task>
+    <task id="LOCAL-00037" summary="target2">
+      <option name="closed" value="true" />
+      <created>1729863943280</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1729863943280</updated>
+    </task>
+    <task id="LOCAL-00038" summary="refomrat">
+      <option name="closed" value="true" />
+      <created>1729864609960</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1729864609960</updated>
+    </task>
+    <task id="LOCAL-00039" summary="hat">
+      <option name="closed" value="true" />
+      <created>1730041696067</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1730041696067</updated>
+    </task>
+    <task id="LOCAL-00040" summary="turbowap test">
+      <option name="closed" value="true" />
+      <created>1730047117025</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1730047117025</updated>
+    </task>
+    <task id="LOCAL-00041" summary="core module">
+      <option name="closed" value="true" />
+      <created>1730049291490</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1730049291490</updated>
+    </task>
+    <task id="LOCAL-00042" summary="fixx">
+      <option name="closed" value="true" />
+      <created>1730049955565</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1730049955565</updated>
+    </task>
+    <task id="LOCAL-00043" summary="new">
+      <option name="closed" value="true" />
+      <created>1730051434456</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1730051434456</updated>
+    </task>
+    <task id="LOCAL-00044" summary="no context">
+      <option name="closed" value="true" />
+      <created>1730057445248</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1730057445248</updated>
+    </task>
+    <task id="LOCAL-00045" summary="variable">
+      <option name="closed" value="true" />
+      <created>1730059300248</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1730059300248</updated>
+    </task>
+    <task id="LOCAL-00046" summary="reformat">
+      <option name="closed" value="true" />
+      <created>1730059899889</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1730059899889</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="switch" />
+    <MESSAGE value="reporterblock" />
+    <MESSAGE value="more" />
+    <MESSAGE value="operator not" />
+    <MESSAGE value="switch case" />
+    <MESSAGE value="stop the sound" />
+    <MESSAGE value="stop the sound2" />
+    <MESSAGE value="private" />
+    <MESSAGE value="mods" />
+    <MESSAGE value="listContains" />
+    <MESSAGE value="touchingColor" />
+    <MESSAGE value="repeatUntil" />
+    <MESSAGE value="ChangeEffectBy" />
+    <MESSAGE value="switchstomume" />
+    <MESSAGE value="target" />
+    <MESSAGE value="target2" />
+    <MESSAGE value="refomrat" />
+    <MESSAGE value="hat" />
+    <MESSAGE value="turbowap test" />
+    <MESSAGE value="core module" />
+    <MESSAGE value="fixx" />
+    <MESSAGE value="new" />
+    <MESSAGE value="no context" />
+    <MESSAGE value="variable" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scratchgen/src/main/java/de/jensklingenberg/scratch/data/SetVariable.kt</url>
+          <line>30</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
+          <line>192</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
+          <line>186</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
+          <line>183</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
+          <line>188</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ProjectBuilder.kt</url>
+          <line>16</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

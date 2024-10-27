@@ -1,0 +1,21 @@
+private class Sounds_menu( val sound_menu: String) : Node {
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        parent: String?,
+        identifier: UUID,
+        nextUUID: UUID?,
+
+    ) {
+        
+        visitors[identifier.toString()] = BlockSpec(
+            opcode = OpCode.sound_sounds_menu,
+            inputs = mapOf(
+                
+            ),
+            fields = mapOf(
+                "SOUND_MENU" to listOf(sound_menu,null)
+            )
+        ).toBlock(nextUUID, parent)
+        
+    }
+}
