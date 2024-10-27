@@ -2,6 +2,7 @@ package de.jensklingenberg.scrako.common
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 
 @Serializable
 data class Target(
@@ -29,3 +30,49 @@ data class Target(
     val videoState: String? = null,
     val textToSpeechLanguage: String? = null
 )
+
+
+fun createTarget(
+    blocks: Map<String, Block>,
+    sprite: Sprite,
+    comments: List<Comment> = emptyList(),
+    lists: Set<ScratchList>? = emptySet(),
+    variables: Set<ScratchVariable>
+): Target {
+    val targe2 = Target(
+        isStage = false,
+        name = sprite.name,
+        variables = variables.associate {
+            it.id.toString() to JsonArray(
+                listOf(
+                    JsonPrimitive(it.name),
+                    JsonPrimitive("")
+                )
+            )
+        },
+        lists = lists?.associate {
+            it.id.toString() to JsonArray(
+                listOf(
+                    JsonPrimitive(it.name),
+                    JsonArray(it.contents.map { JsonPrimitive(it) })
+                )
+            )
+        } ?: emptyMap(),
+        broadcasts = emptyMap(),
+        blocks = blocks,
+        comments = comments.associateBy { it.id },
+        currentCostume = 0,
+        costumes = sprite.costumes,
+        sounds = sprite.sounds,
+        volume = 100,
+        layerOrder = 1,
+        visible = true,
+        x = 0,
+        y = 0,
+        size = sprite.size,
+        direction = 90,
+        draggable = false,
+        rotationStyle = "all around"
+    )
+    return targe2
+}

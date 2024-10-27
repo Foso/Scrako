@@ -1,12 +1,9 @@
-package de.jensklingenberg.scratch.common
+package de.jensklingenberg.scrako.common
 
-import de.jensklingenberg.scrako.common.Block
-import de.jensklingenberg.scrako.common.Node
 import java.util.UUID
 
 
 fun createBlocks23(blockSpecs: List<List<Node>>): Map<String, Block> {
-
     return blockSpecs.map { createBlocks2(it) }.flatMap { it.toList() }.toMap()
 }
 

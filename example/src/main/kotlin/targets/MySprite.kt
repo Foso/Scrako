@@ -1,16 +1,18 @@
 package me.jens.targets
 
 import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.ProjectBuilder
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.ScriptBuilder
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.Target
+import de.jensklingenberg.scrako.common.addSprite
 import de.jensklingenberg.scrako.common.getVariable
+import de.jensklingenberg.scrako.common.scriptBuilder
+import de.jensklingenberg.scrako.common.targetBuilder
 import de.jensklingenberg.scratch.Broadcast
-import de.jensklingenberg.scratch.ProjectBuilder
-import de.jensklingenberg.scratch.addSprite
 import de.jensklingenberg.scratch.control.repeat
 import de.jensklingenberg.scratch.control.wait
 import de.jensklingenberg.scratch.data.changeVariable
@@ -21,9 +23,7 @@ import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import de.jensklingenberg.scratch.procedures.ArgumentString
 import de.jensklingenberg.scratch.procedures.Input
-import de.jensklingenberg.scratch.scriptBuilder
-import de.jensklingenberg.scratch.targetBuilder
-import me.jens.getVariable
+import me.jens.getGlobalVariable
 import me.jens.sprite1
 import java.util.UUID
 
@@ -41,7 +41,7 @@ fun ScriptBuilder.forEachIndexed(users: ScratchList, ff: ScriptBuilder.(index: S
 fun ProjectBuilder.MyTarget(jensList: ScratchList): Target {
     val elements = Input(ArgumentBoolean("bool"))
     val elements1 = Input(ArgumentString("bool2"))
-    val myVar = getVariable("myVar")
+    val myVar = getGlobalVariable("myVar")
 
     val broadcast = Broadcast("hello")
 
@@ -49,6 +49,7 @@ fun ProjectBuilder.MyTarget(jensList: ScratchList): Target {
         addSprite(sprite1)
 
         scriptBuilder {
+            val element = getVariable("ddd")
             whenFlagClicked()
             say(myVar)
             //say(showPickerAs("text"))
@@ -58,8 +59,3 @@ fun ProjectBuilder.MyTarget(jensList: ScratchList): Target {
 
     return target.build()
 }
-
-private operator fun String.unaryPlus(): ReporterBlock {
-    return StringBlock(this)
-}
-

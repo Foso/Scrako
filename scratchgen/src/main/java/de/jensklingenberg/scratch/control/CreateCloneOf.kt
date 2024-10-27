@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch.control
 
-import de.jensklingenberg.scratch.Sprite
+import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScriptBuilder

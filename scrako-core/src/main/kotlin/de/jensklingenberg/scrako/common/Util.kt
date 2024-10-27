@@ -1,9 +1,9 @@
 package de.jensklingenberg.scrako.common
 
-import com.sun.org.apache.xpath.internal.operations.And
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
+import de.jensklingenberg.scrako.common.createBlocks23
 
 enum class ScratchType(val value: Int) {
     BLOCKREF(3),
@@ -163,3 +163,61 @@ internal fun createCondition(operatorId: String) = JsonArray(
 
 val Random = StringBlock("_random_")
 val MousePointer = StringBlock("_mouse_")
+
+class TargetBuilder {
+    val nodesbuilder = mutableListOf<ScriptBuilder>()
+    var sprite: Sprite? = null
+    var blocks: Map<String, Block> = mutableMapOf()
+
+    fun build(): Target {
+        return createTarget(
+            this.blocks,
+            this.sprite!!,
+            emptyList(),
+            this.nodesbuilder.map { it.lists }.flatten().toSet(),
+            this.nodesbuilder.map { it.variables }.flatten().toSet()
+        )
+    }
+}
+
+fun TargetBuilder.addSprite(sprite: Sprite) {
+    this.sprite = sprite
+}
+
+fun ProjectBuilder.addStage(target: Target) {
+    if (target.name != "Stage") {
+        throw IllegalStateException("You can only add a stage to a project")
+    }
+    stage = target
+}
+
+fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
+    val node = ProjectBuilder()
+    ff.invoke(node)
+    return node
+}
+
+fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
+    val targetBuilder = TargetBuilder()
+    ff.invoke(targetBuilder)
+    val test = createBlocks23(targetBuilder.nodesbuilder.map { it.childs })
+    targetBuilder.blocks = test
+    addStage(targetBuilder.build())
+    return targetBuilder
+}
+
+fun ProjectBuilder.targetBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
+    val targetBuilder = TargetBuilder()
+    ff.invoke(targetBuilder)
+    val test = createBlocks23(targetBuilder.nodesbuilder.map { it.childs })
+    targetBuilder.blocks = test
+    targets.add(targetBuilder.build())
+    return targetBuilder
+}
+
+fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
+    val scriptBuilder = ScriptBuilder()
+    builder.invoke(scriptBuilder)
+    nodesbuilder.add(scriptBuilder)
+    return scriptBuilder
+}

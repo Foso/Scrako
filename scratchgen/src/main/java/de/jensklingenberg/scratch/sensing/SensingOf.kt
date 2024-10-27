@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch.sensing
 
-import de.jensklingenberg.scratch.Sprite
+import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scrako.common.ReporterBlock
