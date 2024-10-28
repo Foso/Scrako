@@ -3,6 +3,7 @@ package de.jensklingenberg.scrako.common
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
+import java.util.UUID
 
 @Serializable
 data class Target(
@@ -32,24 +33,24 @@ data class Target(
 )
 
 
-fun createTarget(
+internal fun createTarget(
     blocks: Map<String, Block>,
     sprite: Sprite,
     comments: List<Comment> = emptyList(),
     lists: Set<ScratchList>? = emptySet(),
-    variables: Set<ScratchVariable>
+    variables: Map<String, UUID>
 ): Target {
     val targe2 = Target(
         isStage = false,
         name = sprite.name,
-        variables = variables.associate {
-            it.id.toString() to JsonArray(
+        variables = variables.map {
+            it.key to JsonArray(
                 listOf(
-                    JsonPrimitive(it.name),
-                    JsonPrimitive("")
+                    JsonPrimitive(it.key),
+                    JsonPrimitive(it.value.toString())
                 )
             )
-        },
+        }.toMap(),
         lists = lists?.associate {
             it.id.toString() to JsonArray(
                 listOf(
@@ -77,22 +78,19 @@ fun createTarget(
     return targe2
 }
 
-
-
-
-fun defaultStage(variables: List<ScratchVariable> = emptyList()): Target {
+fun defaultStage(variables: MutableMap<String, UUID> = mutableMapOf()): Target {
 
     return Target(
         isStage = true,
         name = "Stage",
-        variables = variables.associate {
-            it.id.toString() to JsonArray(
+        variables = variables.map { (key, value) ->
+            key to JsonArray(
                 listOf(
-                    JsonPrimitive(it.name),
-                    JsonPrimitive("")
+                    JsonPrimitive(key),
+                    JsonPrimitive(value.toString())
                 )
             )
-        },
+        }.toMap(),
         lists = emptyMap(),
         broadcasts = emptyMap(),
         blocks = emptyMap(),

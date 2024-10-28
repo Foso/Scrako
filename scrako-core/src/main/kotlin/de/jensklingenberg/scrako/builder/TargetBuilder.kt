@@ -6,41 +6,37 @@ import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.Target
 import de.jensklingenberg.scrako.common.createBlocks23
 import de.jensklingenberg.scrako.common.createTarget
+import java.util.UUID
 
 class TargetBuilder {
-   internal val scriptBuilders = mutableListOf<ScriptBuilder>()
+    internal val scriptBuilders = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
     var name: String = ""
+    private val variableMap = mutableMapOf<String, UUID>()
+
+    fun addVariable(name: String) {
+        variableMap[name] = UUID.randomUUID()
+    }
 
     fun build(context: Context, isStage: Boolean): Target {
         val ww = scriptBuilders.map { it.childs }
 
         ww.flatten().forEach {
-            if(isStage && it is MotionBlock){
+            if (isStage && it is MotionBlock) {
                 throw IllegalArgumentException("MotionBlock for Stage not allowed")
             }
         }
 
-        val allVariabless = context.variableMap.toMutableMap()
-        scriptBuilders.forEach {
-            it.variableMap.values.forEach { scriptVariable ->
-                if (allVariabless.entries.none { scriptVariable.name == it.key }) {
-                   allVariabless[scriptVariable.name] = scriptVariable
-                }
+        val allVariabless = variableMap + context.variableMap
+
+        val targetVariabes = variableMap.map {
+            if(context.variableMap.containsKey(it.key)){
+                it.key to null
+            }else{
+                it.key to it.value
             }
-        }
 
-        val targetVariables = scriptBuilders.asSequence().map { it.variableMap.values }
-            .flatten().toMutableSet().map { scriptVariable ->
-                if (context.variableMap.values.any {
-                        scriptVariable.name == it.name
-                    }) {
-                    null
-                } else {
-                    scriptVariable
-                }
-            }.filterNotNull().toSet()
-
+        }.toMap().filter { it.value != null }.map { it.key to it.value!! }.toMap()
         val blocks = createBlocks23(ww, context.copy(variableMap = allVariabless))
 
         return createTarget(
@@ -48,7 +44,7 @@ class TargetBuilder {
             this.sprite!!,
             emptyList(),
             this.scriptBuilders.map { it.lists }.flatten().toSet(),
-            targetVariables
+            targetVariabes
         )
     }
 }

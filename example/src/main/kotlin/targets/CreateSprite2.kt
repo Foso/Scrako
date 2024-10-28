@@ -6,6 +6,7 @@ import de.jensklingenberg.scrako.builder.addSprite
 import de.jensklingenberg.scrako.common.getOrCreateVariable
 import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.targetBuilder
+import de.jensklingenberg.scratch.data.changeVariable
 import de.jensklingenberg.scratch.data.setVariable
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.looks.say
@@ -18,9 +19,8 @@ fun ProjectBuilder.createSprite2() {
         scriptBuilder {
             val element = getOrCreateVariable("myVar")
             whenFlagClicked()
-            setVariable(element, IntBlock(1))
+            changeVariable(element, 1.0)
             say(element)
-            say("Ciao")
             // setVariable(element, IntBlock(1))
             //say(showPickerAs("text"))
         }

@@ -144,7 +144,6 @@ fun main() {
 
 
     val proj = projectBuilder {
-
         getGlobalVariable("myVar")
         MyStage()
         MyTarget(myList)
@@ -168,7 +167,6 @@ fun main() {
     processBuilder2.inheritIO()
     val process2 = processBuilder2.start()
     process2.waitFor()
-
 }
 
 private fun ProjectBuilder.MyStage() {

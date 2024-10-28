@@ -191,6 +191,6 @@ fun FunctionBuilder.define(name: String, builder: ScriptBuilder.() -> Unit) {
 
 fun ProjectBuilder.getGlobalVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
-    addVariable(element)
+    addVariable(name)
     return element
 }

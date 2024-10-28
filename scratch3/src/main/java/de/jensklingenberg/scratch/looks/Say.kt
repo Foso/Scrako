@@ -37,7 +37,8 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             "MESSAGE" to when (content) {
                 is StringBlock -> createMessage(1, ScratchType.STRING.value, content.value)
                 is ScratchVariable -> {
-                    setValue(context.variableMap[content.name]!!, operatorUUID)
+                    val id = context.variableMap[content.name] ?: throw IllegalArgumentException("Variable not found")
+                    setValue(content, id)
                 }
 
                 is ScratchList -> setValue(content, operatorUUID)
