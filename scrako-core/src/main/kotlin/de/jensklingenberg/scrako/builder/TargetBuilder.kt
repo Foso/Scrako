@@ -1,4 +1,11 @@
-package de.jensklingenberg.scrako.common
+package de.jensklingenberg.scrako.builder
+
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.MotionBlock
+import de.jensklingenberg.scrako.common.Sprite
+import de.jensklingenberg.scrako.common.Target
+import de.jensklingenberg.scrako.common.createBlocks23
+import de.jensklingenberg.scrako.common.createTarget
 
 class TargetBuilder {
    internal val scriptBuilders = mutableListOf<ScriptBuilder>()
@@ -8,7 +15,7 @@ class TargetBuilder {
         val ww = scriptBuilders.map { it.childs }
 
         ww.flatten().forEach {
-            if(it is MotionBlock){
+            if(isStage && it is MotionBlock){
                 throw IllegalArgumentException("MotionBlock for Stage not allowed")
             }
         }

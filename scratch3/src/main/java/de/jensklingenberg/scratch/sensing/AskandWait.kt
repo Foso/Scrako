@@ -5,11 +5,13 @@ import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scrako.common.createBlockRef
-import de.jensklingenberg.scrako.common.createLiteralMessage
+import de.jensklingenberg.scrako.common.ScratchType
+import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.looks.LooksSayContent
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 private data class AskandWait(val content: LooksSayContent) : Node {
@@ -25,9 +27,20 @@ private data class AskandWait(val content: LooksSayContent) : Node {
 
         val inputMap = mutableMapOf(
             "QUESTION" to when (content) {
-                is LooksSayContent.Literal -> createLiteralMessage(content.message)
+                is LooksSayContent.Literal -> createMessage(1, ScratchType.STRING.value, content.message)
                 is LooksSayContent.Reporter -> {
-                    createBlockRef(operatorUUID.toString())
+                    JsonArray(
+                        listOf(
+                            JsonPrimitive(ScratchType.BLOCKREF.value),
+                            JsonPrimitive(operatorUUID.toString()),
+                            JsonArray(
+                                listOf(
+                                    JsonPrimitive(ScratchType.STRING.value),
+                                    JsonPrimitive("Hello")
+                                )
+                            )
+                        )
+                    )
                 }
             }
         )

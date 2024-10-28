@@ -5,9 +5,8 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 enum class SoundEffect(val effect: String) {
@@ -28,7 +27,7 @@ private class Seteffectto(val block0: ReporterBlock, val effect: String) : Node 
         ) {
         val block0Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.sound_seteffectto,
+            opcode = "sound_seteffectto",
             inputs = mapOf(
                 "VALUE" to setValue(block0, block0Id)
             ),

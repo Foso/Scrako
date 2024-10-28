@@ -6,7 +6,7 @@ import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.common.CapBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.createSubStack
 import kotlinx.serialization.json.JsonArray

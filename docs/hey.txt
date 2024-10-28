@@ -3,9 +3,7 @@ private class REPLACE_NAME(INSERT_PARAMETER INSERT_EFFECT) : Node {
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
-        nextUUID: UUID?,
-
-    ) {
+        nextUUID: UUID?) {
         REPLACE_BLOCKO
         visitors[identifier.toString()] = BlockSpec(
             opcode = REPLACE_OPCODE,

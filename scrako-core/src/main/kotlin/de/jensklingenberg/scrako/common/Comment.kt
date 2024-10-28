@@ -9,8 +9,8 @@ data class Comment(
     val text: String,
     val x: Double = 0.0,
     val y: Double = 0.0,
-    val width: Int = 50,
-    val height: Int = 50,
+    val width: Double = 50.0,
+    val height: Double = 50.0,
     val minimized: Boolean = true
 ) {
     private var blockId: String = ""
@@ -53,11 +53,11 @@ data class Monitor(
     val opcode: String,
     val params: Map<String, String>,
     val spriteName: String?,
-    val value: String,
-    val width: Int,
-    val height: Int,
-    val x: Int,
-    val y: Int,
+    val value: Double,
+    val width: Double,
+    val height: Double,
+    val x: Double,
+    val y: Double,
     val visible: Boolean
 )
 

@@ -1,5 +1,6 @@
 package de.jensklingenberg.scrako.common
 
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import java.util.UUID
 
 

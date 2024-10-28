@@ -1,11 +1,11 @@
 package me.jens.targets
 
 import de.jensklingenberg.scrako.common.IntBlock
-import de.jensklingenberg.scrako.common.ProjectBuilder
+import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.common.ScriptBuilder
-import de.jensklingenberg.scrako.common.addSprite
+import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.addSprite
 import de.jensklingenberg.scrako.common.getVariable
 import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.targetBuilder

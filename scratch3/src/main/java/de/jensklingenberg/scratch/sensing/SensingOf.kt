@@ -5,9 +5,11 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.Sprite
-import de.jensklingenberg.scrako.common.createObjectContent
 import de.jensklingenberg.scratch.common.OpCode
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 private class SensingOf(val block: ReporterBlock, val propertyName: String) : BooleanBlock, SensingBlock {
@@ -23,7 +25,12 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sensing_of,
             inputs = mapOf(
-                "OBJECT" to createObjectContent(destinationUUID)
+                "OBJECT" to JsonArray(
+                    listOf(
+                        JsonPrimitive(ScratchType.OBJECT.value),
+                        JsonPrimitive(destinationUUID.toString()),
+                    )
+                )
             ),
             fields = mapOf(
                 "PROPERTY" to listOf(

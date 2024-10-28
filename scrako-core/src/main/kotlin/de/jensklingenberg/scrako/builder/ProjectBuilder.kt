@@ -1,10 +1,14 @@
-package de.jensklingenberg.scrako.common
+package de.jensklingenberg.scrako.builder
+
+import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.ScratchProject
+import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.defaultStage
 
 class ProjectBuilder {
     internal val targets = mutableListOf<TargetBuilder>()
     internal var stage: TargetBuilder? = null
     private var variables = mutableSetOf<ScratchVariable>()
-
 
     fun addVariable(name: ScratchVariable) {
         variables.add(name)

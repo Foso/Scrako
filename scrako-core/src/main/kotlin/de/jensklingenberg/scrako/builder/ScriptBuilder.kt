@@ -1,4 +1,8 @@
-package de.jensklingenberg.scrako.common
+package de.jensklingenberg.scrako.builder
+
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.ScratchList
+import de.jensklingenberg.scrako.common.ScratchVariable
 
 
 class ScriptBuilder {

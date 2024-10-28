@@ -1,11 +1,11 @@
 package me.jens
 
-import de.jensklingenberg.scrako.common.ProjectBuilder
+import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
 import de.jensklingenberg.scrako.common.Sound
 import de.jensklingenberg.scrako.common.Sprite
-import de.jensklingenberg.scrako.common.addSprite
+import de.jensklingenberg.scrako.builder.addSprite
 import de.jensklingenberg.scrako.common.basketBall
 import de.jensklingenberg.scrako.common.getGlobalVariable
 import de.jensklingenberg.scrako.common.projectBuilder
@@ -13,7 +13,6 @@ import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.stageBuilder
 import de.jensklingenberg.scratch.createStage
 import de.jensklingenberg.scratch.event.whenFlagClicked
-import de.jensklingenberg.scratch.motion.goTo
 import de.jensklingenberg.scratch.readList
 import de.jensklingenberg.scratch.writeProject
 import kotlinx.serialization.json.Json
@@ -52,7 +51,10 @@ val spriteArrow = Sprite("Arrow1", listOf(costume1), listOf())
 fun main() {
     val projectFile = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/docs/project.json")
 
-    val tt = Json { ignoreUnknownKeys = true }.decodeFromString<ScratchProject>(projectFile.readText())
+    val tt = Json {
+        ignoreUnknownKeys = true
+        coerceInputValues = true
+    }.decodeFromString<ScratchProject>(projectFile.readText())
     val myList =
         ScratchList(
             "jens2",
@@ -114,7 +116,7 @@ fun main() {
 
     val proj = projectBuilder {
 
-        val myVar = getGlobalVariable("myVar")
+        getGlobalVariable("myVar")
         MyStage()
         MyTarget(myList)
         createSprite2()

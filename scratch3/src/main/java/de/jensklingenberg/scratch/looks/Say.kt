@@ -9,14 +9,15 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.common.ScriptBuilder
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scrako.common.createBlockRef
-import de.jensklingenberg.scrako.common.createLiteralMessage
+import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scrako.common.getScratchType
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 
@@ -35,7 +36,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
-                is StringBlock -> createLiteralMessage(content.value)
+                is StringBlock -> createMessage(1, ScratchType.STRING.value, content.value)
                 is ScratchVariable -> {
                     setValue(context.variables.find { it.name == content.name }!!, operatorUUID)
                 }
@@ -43,7 +44,18 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
                 is ScratchList -> setValue(content, operatorUUID)
 
                 else -> {
-                    createBlockRef(operatorUUID.toString())
+                    JsonArray(
+                        listOf(
+                            JsonPrimitive(ScratchType.BLOCKREF.value),
+                            JsonPrimitive(operatorUUID.toString()),
+                            JsonArray(
+                                listOf(
+                                    JsonPrimitive(ScratchType.STRING.value),
+                                    JsonPrimitive("Hello")
+                                )
+                            )
+                        )
+                    )
                 }
             }
         )
