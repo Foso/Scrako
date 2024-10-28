@@ -43,7 +43,7 @@ private class Menu_encoding(val encoding: String) : ObjectReporter {
         ) {
 
         visitors[identifier.toString()] = BlockSpec(
-            opcode = TurboOpCode.files_menu_encoding,
+            opcode = "files_menu_encoding",
             inputs = mapOf(
 
             ),

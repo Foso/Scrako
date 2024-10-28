@@ -8,7 +8,7 @@ private class Whenflagclicked( ) : Node {
     ) {
         
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.event_whenflagclicked,
+            opcode = "event_whenflagclicked",
             inputs = mapOf(
                 
             ),

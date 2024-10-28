@@ -1,5 +1,6 @@
 package me.jens
 
+import de.jensklingenberg.scrako.common.ProjectBuilder
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
 import de.jensklingenberg.scrako.common.Sound
@@ -91,7 +92,7 @@ fun main() {
                 .replace("INSERT_PARAMETER", blocks)
                 .replace("REPLACE_NAME", name)
                 .replace(
-                    "REPLACE_OPCODE", "OpCode." + u.opcode
+                    "REPLACE_OPCODE", "\"" + u.opcode+"\""
                 ).replace("REPLACE_FIELDS", newFields)
             File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + name).writeText(sec)
             //  }
@@ -114,13 +115,7 @@ fun main() {
     val proj = projectBuilder {
 
         val myVar = getGlobalVariable("myVar")
-        stageBuilder {
-            addSprite(backdropSprite)
-            scriptBuilder {
-                whenFlagClicked()
-               // goTo("100")
-            }
-        }
+        MyStage()
         MyTarget(myList)
         createSprite2()
     }
@@ -131,4 +126,14 @@ fun main() {
         "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/",
         "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
     )
+}
+
+private fun ProjectBuilder.MyStage() {
+    stageBuilder {
+        addSprite(backdropSprite)
+        scriptBuilder {
+            whenFlagClicked()
+            // goTo("100")
+        }
+    }
 }

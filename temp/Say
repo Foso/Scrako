@@ -8,7 +8,7 @@ private class Say(val block0 : ReporterBlock, ) : Node {
     ) {
         val block0Id = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.looks_say,
+            opcode = "looks_say",
             inputs = mapOf(
                 "MESSAGE" to setValue(block0, block0Id) 
             ),
