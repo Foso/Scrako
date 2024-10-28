@@ -8,4 +8,4 @@ private class NextBackdrop : BlockSpec(
     opcode = OpCode.looks_nextbackdrop,
 )
 
-fun ScriptBuilder.nextBackdrop() = addChild(NextBackdrop())
+fun ScriptBuilder.nextBackdrop() = addNode(NextBackdrop())

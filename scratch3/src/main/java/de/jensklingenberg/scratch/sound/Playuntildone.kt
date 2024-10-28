@@ -35,4 +35,4 @@ private class Playuntildone(val block0: ReporterBlock) : Node {
 }
 
 
-fun ScriptBuilder.playSoundUntilDone(s: Sound) = addChild(Playuntildone(SoundsMenu(s.name)))
+fun ScriptBuilder.playSoundUntilDone(s: Sound) = addNode(Playuntildone(SoundsMenu(s.name)))

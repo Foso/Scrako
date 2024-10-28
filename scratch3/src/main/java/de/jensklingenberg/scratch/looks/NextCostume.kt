@@ -8,4 +8,4 @@ private class NextCostume : BlockSpec(
     opcode = OpCode.looks_nextcostume,
 )
 
-fun ScriptBuilder.nextCostume() = addChild(NextCostume())
+fun ScriptBuilder.nextCostume() = addNode(NextCostume())

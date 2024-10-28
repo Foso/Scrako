@@ -1,17 +1,15 @@
 package me.jens
 
 import de.jensklingenberg.scrako.builder.ProjectBuilder
+import de.jensklingenberg.scrako.builder.addSprite
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
-import de.jensklingenberg.scrako.common.Sound
 import de.jensklingenberg.scrako.common.Sprite
-import de.jensklingenberg.scrako.builder.addSprite
-import de.jensklingenberg.scrako.common.basketBall
+import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scrako.common.getGlobalVariable
 import de.jensklingenberg.scrako.common.projectBuilder
 import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.stageBuilder
-import de.jensklingenberg.scratch.createStage
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.readList
 import de.jensklingenberg.scratch.writeProject
@@ -19,6 +17,9 @@ import kotlinx.serialization.json.Json
 import me.jens.targets.MyTarget
 import me.jens.targets.createSprite2
 import java.io.File
+import java.io.FileInputStream
+import java.io.InputStreamReader
+import java.util.zip.ZipInputStream
 
 val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A\\00\", align 1\n" +
         "\n" +
@@ -38,9 +39,10 @@ val sprite1 = Sprite(
         sound2
     )
 )
+
 val backdropSprite = Sprite(
     "Stage", listOf(
-        basketBall
+        backdrop
     ), listOf(
     )
 )
@@ -48,13 +50,48 @@ val backdropSprite = Sprite(
 
 val spriteArrow = Sprite("Arrow1", listOf(costume1), listOf())
 
-fun main() {
-    val projectFile = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/docs/project.json")
+private val json = Json {
+    ignoreUnknownKeys = true
+    coerceInputValues = true
+}
 
-    val tt = Json {
-        ignoreUnknownKeys = true
-        coerceInputValues = true
-    }.decodeFromString<ScratchProject>(projectFile.readText())
+fun main() {
+    var projectFile: String = ""
+
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/Project.sb3"
+
+    ZipInputStream(FileInputStream(sb3Path)).use { zis ->
+        var entry = zis.nextEntry
+
+        while (entry != null) {
+            if (entry.name == "project.json") {
+                val stringBuilder = StringBuilder()
+                InputStreamReader(zis).use { isr ->
+                    val buffer = CharArray(1024)
+                    var length: Int
+                    while (isr.read(buffer).also { length = it } != -1) {
+                        stringBuilder.appendRange(buffer, 0, length)
+                    }
+                }
+                projectFile = stringBuilder.toString()
+
+            }
+
+            //Zipentry to file
+            try {
+                zis.closeEntry()
+                entry = zis.nextEntry
+            } catch (e: Exception) {
+                //e.printStackTrace()
+                entry = null
+            } finally {
+
+            }
+
+        }
+    }
+
+    val tt = json.decodeFromString<ScratchProject>(projectFile)
     val myList =
         ScratchList(
             "jens2",
@@ -63,27 +100,31 @@ fun main() {
     val template =
         File("/Users/jens.klingenberg/Code/2024/LLVMPoet/docs/hey.txt").readText()
 
-    tt.targets.forEach {
-        it.blocks.forEach { (t, u) ->
-            println(u.opcode)
-            // if(u.opcode == "motion_movesteps"){
+    tt.targets.forEach { target ->
+        target.blocks.forEach { (t, block) ->
+            if (block.opcode == "procedures_call") {
+                println("ddd")
+            }
+            println(block.opcode)
+            // if(block.opcode == "motion_movesteps"){
 
             val newInputs =
-                u.inputs.entries.mapIndexed { index, entry -> "\"${entry.key}\" to setValue(block${index}, block${index}Id) " }
+                block.inputs.entries.mapIndexed { index, entry -> "\"${entry.key}\" to setValue(block${index}, block${index}Id) " }
                     .joinToString(",\n") { it }
-            val newFields = u.fields.entries.mapIndexed { index, entry ->
+            val newFields = block.fields.entries.mapIndexed { index, entry ->
                 "\"${entry.key}\" to listOf(${entry.key.lowercase()},null)"
             }
                 .joinToString("\n") { it }
-            val name = u.opcode.substringAfter("_").capitalize()
-            val effects = u.fields.map {
+            val name = block.opcode.substringAfter("_").capitalize()
+            val effects = block.fields.map {
                 "val ${it.key.lowercase()}: String"
             }.joinToString { it }
             val repl =
-                List(u.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID()" }.joinToString("\n") { it }
+                List(block.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID()" }.joinToString("\n") { it }
             val blocks =
-                (0..<u.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock," }.joinToString("\n") { it }
-            val wer = u.inputs.entries.mapIndexed { index, entry ->
+                (0..<block.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock," }
+                    .joinToString("\n") { it }
+            val wer = block.inputs.entries.mapIndexed { index, entry ->
                 "block${index}.visit(visitors, identifier.toString(), block${index}Id, null)"
             }.joinToString("\n") { it }
             val sec = template.replace("REPLACE_INPUT", newInputs)
@@ -94,25 +135,13 @@ fun main() {
                 .replace("INSERT_PARAMETER", blocks)
                 .replace("REPLACE_NAME", name)
                 .replace(
-                    "REPLACE_OPCODE", "\"" + u.opcode+"\""
+                    "REPLACE_OPCODE", "\"" + block.opcode + "\""
                 ).replace("REPLACE_FIELDS", newFields)
             File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + name).writeText(sec)
             //  }
         }
     }
-    val stageTarget = createStage(
-        listOf(myList), listOf(), listOf(
-            Sound(
-                name = "pop",
-                assetId = "83a9787d4cb6f3b7632b4ddfebf74367",
-                dataFormat = "wav",
-                format = "",
-                rate = 48000,
-                sampleCount = 1123,
-                md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
-            )
-        )
-    )
+
 
     val proj = projectBuilder {
 
@@ -128,6 +157,18 @@ fun main() {
         "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/",
         "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
     )
+
+    val processBuilder = ProcessBuilder("pkill", "-9", "TurboWarp")
+    processBuilder.inheritIO()
+    val process = processBuilder.start()
+    process.waitFor()
+
+
+    val processBuilder2 = ProcessBuilder("open", "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/test4.sb3")
+    processBuilder2.inheritIO()
+    val process2 = processBuilder2.start()
+    process2.waitFor()
+
 }
 
 private fun ProjectBuilder.MyStage() {

@@ -58,7 +58,17 @@ fun setValue(
     operatorUUID: UUID
 ) = when (reporterBlock) {
     is IntBlock -> {
-        createMessage(1, 4, reporterBlock.value.toString())
+        JsonArray(
+            listOf(
+                JsonPrimitive(1),
+                JsonArray(
+                    listOf(
+                        JsonPrimitive(4),
+                        JsonPrimitive(reporterBlock.value.toString())
+                    )
+                )
+            )
+        )
     }
 
     is ObjectReporter -> {
@@ -147,9 +157,10 @@ fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     return targetBuilder
 }
 
-fun ProjectBuilder.targetBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
+fun ProjectBuilder.targetBuilder(name: String,ff: TargetBuilder.() -> Unit): TargetBuilder {
     val targetBuilder = TargetBuilder()
     ff.invoke(targetBuilder)
+    targetBuilder.name = name
     targets.add(targetBuilder)
     return targetBuilder
 }
@@ -159,6 +170,22 @@ fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilde
     builder.invoke(scriptBuilder)
     scriptBuilders.add(scriptBuilder)
     return scriptBuilder
+}
+
+class FunctionBuilder{
+    val scriptBuilder = ScriptBuilder()
+}
+
+fun TargetBuilder.functionBuilder(builder: FunctionBuilder.() -> Unit): ScriptBuilder {
+    val functionBuilder = FunctionBuilder()
+    builder.invoke(functionBuilder)
+    scriptBuilders.add(functionBuilder.scriptBuilder)
+    return functionBuilder.scriptBuilder
+}
+
+fun FunctionBuilder.define(name: String, builder: ScriptBuilder.() -> Unit) {
+
+    builder.invoke(scriptBuilder)
 }
 
 

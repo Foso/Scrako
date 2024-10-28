@@ -9,7 +9,7 @@ import de.jensklingenberg.scratch.common.OpCode
 private class TurnLeft(private val reporterBlock: ReporterBlock) : Turn(OpCode.motion_turnleft, reporterBlock),
     MotionBlock
 
-fun ScriptBuilder.turnLeft(steps: ReporterBlock) = addChild(TurnLeft(steps))
+fun ScriptBuilder.turnLeft(steps: ReporterBlock) = addNode(TurnLeft(steps))
 
-fun ScriptBuilder.turnLeft(steps: Int) = addChild(TurnLeft(IntBlock(steps)))
+fun ScriptBuilder.turnLeft(steps: Int) = addNode(TurnLeft(IntBlock(steps)))
 

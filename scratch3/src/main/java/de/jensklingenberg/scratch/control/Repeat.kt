@@ -10,7 +10,8 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.createSubStack
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 private class Repeat(private val times: ReporterBlock, private vararg val childs: Node) :
@@ -32,7 +33,12 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
         )
 
         childs.firstOrNull()?.let {
-            inputs["SUBSTACK"] = createSubStack(childUUIDS.first().toString())
+            inputs["SUBSTACK"] = JsonArray(
+                listOf(
+                    JsonPrimitive(2),
+                    JsonPrimitive(childUUIDS.first().toString())
+                )
+            )
         }
 
         visitors[identifier.toString()] = BlockSpec(
@@ -70,4 +76,4 @@ fun ScriptBuilder.repeat(times: Int, childs: ScriptBuilder.() -> Unit) = repeat(
 fun ScriptBuilder.repeat(times: Double, childs: ScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
 
 fun ScriptBuilder.repeat(times: ReporterBlock, childs: ScriptBuilder.() -> Unit) =
-    addChild(Repeat(times, *ScriptBuilder().apply(childs).childs.toTypedArray()))
+    addNode(Repeat(times, *ScriptBuilder().apply(childs).childs.toTypedArray()))

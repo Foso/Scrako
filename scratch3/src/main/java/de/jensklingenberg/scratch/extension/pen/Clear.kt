@@ -22,4 +22,4 @@ private class EraseAll : Node {
     }
 }
 
-fun ScriptBuilder.eraseAll() = addChild(EraseAll())
+fun ScriptBuilder.eraseAll() = addNode(EraseAll())

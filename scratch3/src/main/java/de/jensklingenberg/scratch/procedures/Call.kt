@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Mutation
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.operator.GreaterThan
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -37,7 +36,7 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
         }
         val test = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.procedures_call,
+            opcode = "procedures_call",
             shadow = true,
 
             mutation = Mutation(
@@ -63,4 +62,4 @@ class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
     }
 }
 
-fun ScriptBuilder.call(name: String, arguments: List<Input>) = addChild(Call(name, arguments))
+fun ScriptBuilder.call(name: String, arguments: List<Input>) = addNode(Call(name, arguments))

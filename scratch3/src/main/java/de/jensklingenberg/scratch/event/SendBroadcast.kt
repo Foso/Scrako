@@ -26,4 +26,4 @@ internal fun createBroadcast(operatorId: Broadcast) = JsonArray(
     )
 )
 
-fun ScriptBuilder.sendBroadcast(broadcast: Broadcast) = addChild(SendBroadcast(broadcast))
+fun ScriptBuilder.sendBroadcast(broadcast: Broadcast) = addNode(SendBroadcast(broadcast))

@@ -31,4 +31,4 @@ class StopAllSounds : Node {
     }
 }
 
-fun ScriptBuilder.stopAllSounds() = addChild(StopAllSounds())
+fun ScriptBuilder.stopAllSounds() = addNode(StopAllSounds())

@@ -34,5 +34,5 @@ private class AddToList(private val list: ScratchList, private val block: Report
 }
 
 
-fun ScriptBuilder.addToList(list: ScratchList, block: ReporterBlock) = addChild(AddToList(list, block))
-fun ScriptBuilder.addToList(list: ScratchList, item: String) = addChild(AddToList(list, StringBlock(item)))
+fun ScriptBuilder.addToList(list: ScratchList, block: ReporterBlock) = addNode(AddToList(list, block))
+fun ScriptBuilder.addToList(list: ScratchList, item: String) = addNode(AddToList(list, StringBlock(item)))

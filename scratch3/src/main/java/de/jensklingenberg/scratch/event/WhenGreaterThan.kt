@@ -39,7 +39,7 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
 }
 
 fun ScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: ReporterBlock) =
-    addChild(WhenGreaterThan(option, value))
+    addNode(WhenGreaterThan(option, value))
 
 fun ScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: Double) =
-    addChild(WhenGreaterThan(option, DoubleBlock(value)))
+    addNode(WhenGreaterThan(option, DoubleBlock(value)))

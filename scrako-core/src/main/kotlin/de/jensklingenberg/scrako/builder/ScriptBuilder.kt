@@ -8,10 +8,17 @@ import de.jensklingenberg.scrako.common.ScratchVariable
 class ScriptBuilder {
 
     val childs = mutableListOf<Node>()
-    val variables = mutableSetOf<ScratchVariable>()
+   // internal val variables = mutableSetOf<ScratchVariable>()
+    val variableMap = mutableMapOf<String, ScratchVariable>()
     val lists = mutableSetOf<ScratchList>()
 
-    fun addChild(node: Node) {
+
+    fun addVariable(name: ScratchVariable) {
+        //variables.add(name)
+        variableMap[name.name] = ScratchVariable(name.name)
+    }
+
+    fun addNode(node: Node) {
         childs.add(node)
     }
 }

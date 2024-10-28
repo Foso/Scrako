@@ -51,6 +51,6 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
     }
 }
 
-fun ScriptBuilder.createCloneOf(spriteName: String) = addChild(CreateCloneOf(spriteName))
+fun ScriptBuilder.createCloneOf(spriteName: String) = addNode(CreateCloneOf(spriteName))
 
 fun ScriptBuilder.createCloneOf(sprite: Sprite) = createCloneOf(sprite.name)

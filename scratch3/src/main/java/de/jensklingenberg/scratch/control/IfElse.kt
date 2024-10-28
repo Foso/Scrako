@@ -8,7 +8,8 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.createSubStack
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 internal class IfElse(
@@ -34,9 +35,24 @@ internal class IfElse(
         visitors[name2] = BlockSpec(
             opcode = OpCode.control_if_else,
             inputs = mapOf(
-                "CONDITION" to createSubStack(operatorUUID.toString()),
-                "SUBSTACK" to createSubStack(leftUUIDs.first().toString()),
-                "SUBSTACK2" to createSubStack(rightUUIDs.first().toString())
+                "CONDITION" to JsonArray(
+                    listOf(
+                        JsonPrimitive(2),
+                        JsonPrimitive(operatorUUID.toString())
+                    )
+                ),
+                "SUBSTACK" to JsonArray(
+                    listOf(
+                        JsonPrimitive(2),
+                        JsonPrimitive(leftUUIDs.first().toString())
+                    )
+                ),
+                "SUBSTACK2" to JsonArray(
+                    listOf(
+                        JsonPrimitive(2),
+                        JsonPrimitive(rightUUIDs.first().toString())
+                    )
+                )
             )
         ).toBlock(newNext, parent)
         condition.visit(visitors, name2, operatorUUID, null, context)
@@ -76,7 +92,7 @@ fun ScriptBuilder.ifElse(
     operatorSpec: BooleanBlock,
     leftStack: ScriptBuilder.() -> Unit,
     rightStack: ScriptBuilder.() -> Unit,
-) = addChild(
+) = addNode(
     IfElse(
         operatorSpec,
         leftStack = ScriptBuilder().apply(leftStack).childs,

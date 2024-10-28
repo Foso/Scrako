@@ -45,10 +45,10 @@ private class InsertAt(
 }
 
 fun ScriptBuilder.insertAt(block: ReporterBlock, list: ScratchList, index: ReporterBlock) =
-    addChild(InsertAt(block, list, index))
+    addNode(InsertAt(block, list, index))
 
 fun ScriptBuilder.insertAt(item: String, list: ScratchList, index: ReporterBlock) =
-    addChild(InsertAt(StringBlock(item), list, index))
+    addNode(InsertAt(StringBlock(item), list, index))
 
 fun ScriptBuilder.insertAt(item: String, list: ScratchList, index: Int) =
-    addChild(InsertAt(StringBlock(item), list, IntBlock(index)))
+    addNode(InsertAt(StringBlock(item), list, IntBlock(index)))

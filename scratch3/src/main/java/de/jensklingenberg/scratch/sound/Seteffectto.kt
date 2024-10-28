@@ -40,4 +40,4 @@ private class Seteffectto(val block0: ReporterBlock, val effect: String) : Node 
 }
 
 fun ScriptBuilder.setEffectTo(effect: SoundEffect, block0: ReporterBlock) =
-    addChild(Seteffectto(block0, effect.name.lowercase()))
+    addNode(Seteffectto(block0, effect.name.lowercase()))

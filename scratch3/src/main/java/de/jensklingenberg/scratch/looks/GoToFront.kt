@@ -24,5 +24,5 @@ private class GoTo(private val value: String) : Node {
     }
 }
 
-fun ScriptBuilder.GoToFront() = addChild(GoTo("front"))
-fun ScriptBuilder.GoToBack() = addChild(GoTo("back"))
+fun ScriptBuilder.GoToFront() = addNode(GoTo("front"))
+fun ScriptBuilder.GoToBack() = addNode(GoTo("back"))

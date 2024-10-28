@@ -24,4 +24,4 @@ internal class DeleteThisClone : BlockSpec(
     }
 }
 
-fun ScriptBuilder.deleteThisClone() = addChild(DeleteThisClone())
+fun ScriptBuilder.deleteThisClone() = addNode(DeleteThisClone())

@@ -4,12 +4,12 @@ import de.jensklingenberg.scrako.builder.ScriptBuilder
 import java.util.UUID
 
 
-class ScratchVariable(val name: String) : ReporterBlock {
-    val id: UUID = UUID.randomUUID()
+class ScratchVariable(val name: String,val id: UUID = UUID.randomUUID()) : ReporterBlock {
+
 }
 
-fun ScriptBuilder.getVariable(name: String): ScratchVariable {
+fun ScriptBuilder.getOrCreateVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
-    variables.add(element)
+    addVariable(element)
     return element
 }

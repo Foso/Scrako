@@ -23,4 +23,4 @@ private class WhenIRecieve(val broadcast: Broadcast) : Node, Event, HatBlock{
     }
 }
 
-fun ScriptBuilder.whenIRecieve(broadcast: Broadcast) = addChild(WhenIRecieve(broadcast))
+fun ScriptBuilder.whenIRecieve(broadcast: Broadcast) = addNode(WhenIRecieve(broadcast))

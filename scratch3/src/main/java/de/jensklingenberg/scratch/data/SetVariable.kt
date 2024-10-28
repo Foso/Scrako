@@ -20,21 +20,21 @@ private class SetVariable(private val variableName: String, private val item: Re
         nextUUID: UUID?,
         context: Context,
     ) {
-        val variable = context.variables.find { it.name == variableName }!!
-        println(variable.id)
+        val variableId = context.variableMap[variableName]
+
         val itemUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_setvariableto,
             inputs = mapOf("VALUE" to setValue(item, itemUUID)),
-            fields = mapOf("VARIABLE" to listOf(variable.name, variable.id.toString()))
+            fields = mapOf("VARIABLE" to listOf(variableName, variableId?.toString()))
         ).toBlock(nextUUID, parent)
         item.visit(visitors, identifier.toString(), itemUUID, null, context)
     }
 }
 
 fun ScriptBuilder.setVariable(variable: ScratchVariable, item: ReporterBlock) =
-    addChild(SetVariable(variable.name, item))
+    addNode(SetVariable(variable.name, item))
 
 fun ScriptBuilder.setVariable(variable: ScratchVariable, item: String) =
-    addChild(SetVariable(variable.name, StringBlock(item)))
+    addNode(SetVariable(variable.name, StringBlock(item)))
 

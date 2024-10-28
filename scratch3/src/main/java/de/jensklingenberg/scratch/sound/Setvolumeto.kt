@@ -33,4 +33,4 @@ private class Setvolumeto(val block0: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.setVolumeTo(block0: ReporterBlock) = addChild(Setvolumeto(block0))
+fun ScriptBuilder.setVolumeTo(block0: ReporterBlock) = addNode(Setvolumeto(block0))

@@ -31,4 +31,4 @@ enum class RotationStyle(val spriteName: String) {
     DONT_ROTATE("don't rotate")
 }
 
-fun ScriptBuilder.setRotationStyle(style: RotationStyle) = addChild(SetRotationStyle(style))
+fun ScriptBuilder.setRotationStyle(style: RotationStyle) = addNode(SetRotationStyle(style))

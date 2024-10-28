@@ -31,8 +31,8 @@ private class PlaySound(val soundName: String) : Node {
     }
 }
 
-fun ScriptBuilder.playSound(s: String) = addChild(PlaySound(s))
-fun ScriptBuilder.playSound(s: Sound) = addChild(PlaySound(s.name))
+fun ScriptBuilder.playSound(s: String) = addNode(PlaySound(s))
+fun ScriptBuilder.playSound(s: Sound) = addNode(PlaySound(s.name))
 
 
 internal class SoundsMenu(private val soundName: String) : ReporterBlock {

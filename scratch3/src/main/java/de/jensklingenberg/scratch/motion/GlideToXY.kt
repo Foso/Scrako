@@ -58,7 +58,7 @@ private fun checkType(data: Any): Int {
 }
 
 fun ScriptBuilder.glideToXY(sec: ReporterBlock, toX: ReporterBlock, toY: ReporterBlock) =
-    addChild(GlideToXY(sec, toX, toY))
+    addNode(GlideToXY(sec, toX, toY))
 
 fun ScriptBuilder.glideToXY(sec: Double, toX: Double, toY: Double) =
-    addChild(GlideToXY(DoubleBlock(sec), DoubleBlock(toX), DoubleBlock(toY)))
+    addNode(GlideToXY(DoubleBlock(sec), DoubleBlock(toX), DoubleBlock(toY)))

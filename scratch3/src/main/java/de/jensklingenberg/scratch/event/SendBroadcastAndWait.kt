@@ -11,4 +11,4 @@ private class SendBroadcastAndWait(broadcast: Broadcast) : BlockSpec(
     inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast))
 ), Event
 
-fun ScriptBuilder.sendBroadcastAndWait(broadcast: Broadcast) = addChild(SendBroadcastAndWait(broadcast))
+fun ScriptBuilder.sendBroadcastAndWait(broadcast: Broadcast) = addNode(SendBroadcastAndWait(broadcast))

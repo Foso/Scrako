@@ -7,7 +7,8 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.createSubStack
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 internal class IfThen(
@@ -30,8 +31,18 @@ internal class IfThen(
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.control_if,
             inputs = mapOf(
-                "CONDITION" to createSubStack(operatorUUID.toString()),
-                "SUBSTACK" to createSubStack(leftUUIDs.firstOrNull().toString())
+                "CONDITION" to JsonArray(
+                    listOf(
+                        JsonPrimitive(2),
+                        JsonPrimitive(operatorUUID.toString())
+                    )
+                ),
+                "SUBSTACK" to JsonArray(
+                    listOf(
+                        JsonPrimitive(2),
+                        JsonPrimitive(leftUUIDs.firstOrNull().toString())
+                    )
+                )
             )
         ).toBlock(newNext, parent)
         condition.visit(visitors, identifier.toString(), operatorUUID, null, context)
@@ -57,5 +68,5 @@ internal class IfThen(
 fun ScriptBuilder.ifThen(
     block: BooleanBlock,
     leftStack: ScriptBuilder.() -> Unit
-) = addChild(IfThen(block, leftStack = ScriptBuilder().apply(leftStack).childs))
+) = addNode(IfThen(block, leftStack = ScriptBuilder().apply(leftStack).childs))
 

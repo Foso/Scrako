@@ -42,6 +42,6 @@ enum class Effect {
     GHOST
 }
 
-fun ScriptBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addChild(ChangeEffectBy(block, effectName))
+fun ScriptBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addNode(ChangeEffectBy(block, effectName))
 fun ScriptBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) =
-    addChild(ChangeEffectBy(block, effect.name.toLowerCase()))
+    addNode(ChangeEffectBy(block, effect.name.toLowerCase()))

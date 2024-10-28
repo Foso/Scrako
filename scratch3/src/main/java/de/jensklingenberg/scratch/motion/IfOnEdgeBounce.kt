@@ -8,4 +8,4 @@ private class IfOnEdgeBounce : BlockSpec(
     opcode = OpCode.motion_ifonedgebounce
 )
 
-fun ScriptBuilder.ifOnEdgeBounce() = addChild(IfOnEdgeBounce())
+fun ScriptBuilder.ifOnEdgeBounce() = addNode(IfOnEdgeBounce())

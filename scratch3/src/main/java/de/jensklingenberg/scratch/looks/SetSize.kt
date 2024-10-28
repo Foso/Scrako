@@ -31,5 +31,5 @@ private class SetSize(val block: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.setSize(block: ReporterBlock) = addChild(SetSize(block))
+fun ScriptBuilder.setSize(block: ReporterBlock) = addNode(SetSize(block))
 fun ScriptBuilder.setSize(block: Int): Unit = setSize(IntBlock(block))

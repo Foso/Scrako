@@ -73,5 +73,5 @@ private class CostumeMenu(private val value: String? = "costume1") : Node {
     }
 }
 
-fun ScriptBuilder.switchCostume(value: ReporterBlock) = addChild(SwitchCostume(value))
-fun ScriptBuilder.switchCostume(value: String) = addChild(SwitchCostume(StringBlock(value)))
+fun ScriptBuilder.switchCostume(value: ReporterBlock) = addNode(SwitchCostume(value))
+fun ScriptBuilder.switchCostume(value: String) = addNode(SwitchCostume(StringBlock(value)))

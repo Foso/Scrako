@@ -35,4 +35,4 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
     }
 }
 
-fun ScriptBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addChild(SetEffectTo(block, effectName))
+fun ScriptBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addNode(SetEffectTo(block, effectName))

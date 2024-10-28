@@ -26,4 +26,4 @@ private class ShowList(private val list: ScratchList) : Node, StackBlock {
     }
 }
 
-fun ScriptBuilder.showList(list: ScratchList) = addChild(ShowList(list))
+fun ScriptBuilder.showList(list: ScratchList) = addNode(ShowList(list))

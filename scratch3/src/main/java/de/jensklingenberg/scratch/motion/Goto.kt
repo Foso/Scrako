@@ -73,5 +73,5 @@ private class GotoMenu(val steps: String) : Node {
     }
 }
 
-fun ScriptBuilder.goTo(block: ReporterBlock) = addChild(Goto(block))
+fun ScriptBuilder.goTo(block: ReporterBlock) = addNode(Goto(block))
 fun ScriptBuilder.goTo(value: String) = goTo(StringBlock(value))

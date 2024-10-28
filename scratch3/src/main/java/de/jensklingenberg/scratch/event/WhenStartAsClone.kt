@@ -10,4 +10,4 @@ private class WhenStartAsClone : BlockSpec(
     opcode = OpCode.control_start_as_clone,
 ), Event, HatBlock
 
-fun ScriptBuilder.whenStartAsClone() = addChild(WhenStartAsClone())
+fun ScriptBuilder.whenStartAsClone() = addNode(WhenStartAsClone())

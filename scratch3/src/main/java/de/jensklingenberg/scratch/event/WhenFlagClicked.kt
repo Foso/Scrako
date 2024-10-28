@@ -12,7 +12,7 @@ private class WhenFlagClicked : BlockSpec(
 ), Event, HatBlock
 
 
-fun ScriptBuilder.whenFlagClicked() = addChild(WhenFlagClicked())
+fun ScriptBuilder.whenFlagClicked() = addNode(WhenFlagClicked())
 
 
 

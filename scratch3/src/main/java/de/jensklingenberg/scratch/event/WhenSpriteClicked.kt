@@ -10,4 +10,4 @@ private class WhenSpriteClicked : BlockSpec(
     opcode = OpCode.event_whenthisspriteclicked,
 ), Event, HatBlock
 
-fun ScriptBuilder.whenSpriteClicked() = addChild(WhenSpriteClicked())
+fun ScriptBuilder.whenSpriteClicked() = addNode(WhenSpriteClicked())

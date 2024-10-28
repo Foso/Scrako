@@ -29,7 +29,7 @@ private class Stop(private val option: StopOption) : Node {
     }
 }
 
-fun ScriptBuilder.stop(option: StopOption) = addChild(Stop(option))
+fun ScriptBuilder.stop(option: StopOption) = addNode(Stop(option))
 enum class StopOption(val s: String) {
     ALL("all"), OTHER("other scripts in sprite"), THIS("this script")
 }

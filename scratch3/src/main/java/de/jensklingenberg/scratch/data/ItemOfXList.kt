@@ -30,6 +30,6 @@ private class ItemOfXList(private val index: Int, private val list: ScratchList)
 }
 
 fun ScriptBuilder.itemOfXList(index: Int, list: ScratchList) =
-    addChild(ItemOfXList(index, list))
+    addNode(ItemOfXList(index, list))
 
 

@@ -37,4 +37,4 @@ private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock
     }
 }
 
-fun ScriptBuilder.distanceTo(destination: ReporterBlock) = addChild(DistanceTo(destination))
+fun ScriptBuilder.distanceTo(destination: ReporterBlock) = addNode(DistanceTo(destination))

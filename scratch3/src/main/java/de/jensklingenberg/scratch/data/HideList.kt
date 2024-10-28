@@ -26,4 +26,4 @@ private class HideList(private val list: ScratchList) : Node, StackBlock {
     }
 }
 
-fun ScriptBuilder.hideList(list: ScratchList) = addChild(HideList(list))
+fun ScriptBuilder.hideList(list: ScratchList) = addNode(HideList(list))

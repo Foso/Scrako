@@ -10,6 +10,7 @@ import de.jensklingenberg.scrako.common.createTarget
 class TargetBuilder {
    internal val scriptBuilders = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
+    var name: String = ""
 
     fun build(context: Context, isStage: Boolean): Target {
         val ww = scriptBuilders.map { it.childs }
@@ -20,18 +21,18 @@ class TargetBuilder {
             }
         }
 
-        val allVariabless = context.variables.toMutableSet()
+        val allVariabless = context.variableMap.toMutableMap()
         scriptBuilders.forEach {
-            it.variables.forEach { scriptVariable ->
-                if (allVariabless.none { scriptVariable.name == it.name }) {
-                    allVariabless.add(scriptVariable)
+            it.variableMap.values.forEach { scriptVariable ->
+                if (allVariabless.entries.none { scriptVariable.name == it.key }) {
+                   allVariabless[scriptVariable.name] = scriptVariable
                 }
             }
         }
 
-        val targetVariables = scriptBuilders.asSequence().map { it.variables }
+        val targetVariables = scriptBuilders.asSequence().map { it.variableMap.values }
             .flatten().toMutableSet().map { scriptVariable ->
-                if (context.variables.any {
+                if (context.variableMap.values.any {
                         scriptVariable.name == it.name
                     }) {
                     null
@@ -40,7 +41,7 @@ class TargetBuilder {
                 }
             }.filterNotNull().toSet()
 
-        val blocks = createBlocks23(ww, context.copy(variables = allVariabless))
+        val blocks = createBlocks23(ww, context.copy(variableMap = allVariabless))
 
         return createTarget(
             blocks,

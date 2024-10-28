@@ -1,11 +1,6 @@
 package de.jensklingenberg.scratch
 
-import de.jensklingenberg.scrako.common.Costume
-import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
-import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.common.Sound
-import de.jensklingenberg.scrako.common.Target
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -31,57 +26,6 @@ fun readList(name: String): List<String> {
     }
     return list
 }
-
-fun createStage(
-    lists: List<ScratchList>? = emptyList(),
-    variables: List<ScratchVariable>,
-    sounds: List<Sound>
-) = Target(
-    isStage = true,
-    name = "Stage",
-    variables = variables.associate {
-        it.id.toString() to JsonArray(
-            listOf(
-                JsonPrimitive(it.name),
-                JsonPrimitive("")
-            )
-        )
-    },
-    lists = lists?.associate {
-        it.id.toString() to JsonArray(
-            listOf(
-                JsonPrimitive(it.name),
-                JsonArray(it.contents.map { JsonPrimitive(it) })
-            )
-        )
-    } ?: emptyMap(),
-    broadcasts = emptyMap(),
-    blocks = emptyMap(),
-    comments = emptyMap(),
-    currentCostume = 0,
-    costumes = listOf(
-        Costume(
-            name = "backdrop1",
-            bitmapResolution = 1,
-            dataFormat = "svg",
-            assetId = "cd21514d0531fdffb22204e0ec5ed84a",
-            md5ext = "cd21514d0531fdffb22204e0ec5ed84a.svg",
-            rotationCenterX = 240.0,
-            rotationCenterY = 180.0
-        )
-    ),
-    sounds = sounds,
-    volume = 100,
-    layerOrder = 0,
-    visible = false,
-    x = 0,
-    y = 0,
-    size = 100,
-    direction = 90,
-    tempo = 60,
-    draggable = false,
-    rotationStyle = "all around"
-)
 
 fun copyFiles(inputPath: String, targetPath: String) {
     val soundFiles = File(inputPath + "sounds").listFiles()
@@ -112,6 +56,7 @@ fun writeProject(scratchProject: ScratchProject, inputPath: String, targetPath: 
 }
 
 fun zipFiles(files: List<File>, outputZipFile: File) {
+
     ZipOutputStream(FileOutputStream(outputZipFile)).use { zipOut ->
         files.forEach { file ->
             FileInputStream(file).use { fis ->
@@ -124,9 +69,3 @@ fun zipFiles(files: List<File>, outputZipFile: File) {
 }
 
 
-fun createSubStack(message: String) = JsonArray(
-    listOf(
-        JsonPrimitive(2),
-        JsonPrimitive(message)
-    )
-)

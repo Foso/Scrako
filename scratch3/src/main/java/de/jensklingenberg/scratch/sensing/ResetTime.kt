@@ -8,4 +8,4 @@ private class ResetTime : BlockSpec(
     opcode = OpCode.sensing_resettimer,
 )
 
-fun ScriptBuilder.resetTime() = addChild(ResetTime())
+fun ScriptBuilder.resetTime() = addNode(ResetTime())

@@ -30,6 +30,6 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
     }
 }
 
-fun ScriptBuilder.changeXby(value: ReporterBlock) = addChild(ChangeXby(value))
-fun ScriptBuilder.changeXby(value: Double) = addChild(ChangeXby(DoubleBlock(value)))
-fun ScriptBuilder.changeXby(value: Int) = addChild(ChangeXby(IntBlock(value)))
+fun ScriptBuilder.changeXby(value: ReporterBlock) = addNode(ChangeXby(value))
+fun ScriptBuilder.changeXby(value: Double) = addNode(ChangeXby(DoubleBlock(value)))
+fun ScriptBuilder.changeXby(value: Int) = addNode(ChangeXby(IntBlock(value)))

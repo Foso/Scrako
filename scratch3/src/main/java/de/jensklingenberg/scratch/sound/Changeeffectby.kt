@@ -34,4 +34,4 @@ private class Changeeffectby(val block0: ReporterBlock, val effect: String) : No
 }
 
 fun ScriptBuilder.changeEffectBy(effect: SoundEffect, block0: ReporterBlock) =
-    addChild(Changeeffectby(block0, effect.name.lowercase()))
+    addNode(Changeeffectby(block0, effect.name.lowercase()))

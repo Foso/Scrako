@@ -33,4 +33,4 @@ private class ChangeVolumeBy(val block0: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.changeVolumeBy(block0: ReporterBlock) = addChild(ChangeVolumeBy(block0))
+fun ScriptBuilder.changeVolumeBy(block0: ReporterBlock) = addNode(ChangeVolumeBy(block0))

@@ -9,7 +9,6 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 private class Wait(private val block: ReporterBlock) : Node {
@@ -23,7 +22,7 @@ private class Wait(private val block: ReporterBlock) : Node {
         ) {
         val uuid = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.ControlWait,
+            opcode = "control_wait",
             inputs = mapOf(
                 "DURATION" to setValue(block, uuid)
             )
@@ -32,7 +31,7 @@ private class Wait(private val block: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.wait(seconds: Double) = addChild(Wait(DoubleBlock(seconds)))
-fun ScriptBuilder.wait(seconds: Int) = addChild(Wait(IntBlock(seconds)))
-fun ScriptBuilder.wait(block: ReporterBlock) = addChild(Wait(block))
+fun ScriptBuilder.wait(seconds: Double) = addNode(Wait(DoubleBlock(seconds)))
+fun ScriptBuilder.wait(seconds: Int) = addNode(Wait(IntBlock(seconds)))
+fun ScriptBuilder.wait(block: ReporterBlock) = addNode(Wait(block))
 

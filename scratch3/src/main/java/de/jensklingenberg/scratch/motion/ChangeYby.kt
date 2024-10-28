@@ -31,4 +31,4 @@ private class ChangeYby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
     }
 }
 
-fun ScriptBuilder.changeYby(value: Int) = addChild(ChangeYby(IntBlock(value)))
+fun ScriptBuilder.changeYby(value: Int) = addNode(ChangeYby(IntBlock(value)))

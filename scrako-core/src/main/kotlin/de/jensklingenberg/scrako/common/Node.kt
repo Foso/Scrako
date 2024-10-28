@@ -3,7 +3,7 @@ package de.jensklingenberg.scrako.common
 import java.util.UUID
 
 
-data class Context(val variables: Set<ScratchVariable> = emptySet())
+data class Context(val variableMap: Map<String, ScratchVariable>)
 
 interface Node {
     fun visit(

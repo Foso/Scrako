@@ -74,5 +74,5 @@ private data class Think(private val content: LooksSayContent, private val secon
 }
 
 fun ScriptBuilder.think(message: String, seconds: Int? = null) =
-    addChild(Think(LooksSayContent.Literal(message), seconds))
+    addNode(Think(LooksSayContent.Literal(message), seconds))
 

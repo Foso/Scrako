@@ -8,8 +8,8 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.createSubStack
 import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock {
@@ -44,7 +44,12 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         val inputs: MutableMap<String, JsonArray> = mutableMapOf()
 
         childUUIDS.firstOrNull()?.let {
-            inputs["SUBSTACK"] = createSubStack(it.toString())
+            inputs["SUBSTACK"] = JsonArray(
+                listOf(
+                    JsonPrimitive(2),
+                    JsonPrimitive(it.toString())
+                )
+            )
         }
 
         visitors[identifier.toString()] = BlockSpec(

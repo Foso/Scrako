@@ -13,7 +13,6 @@ import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.createMessage
-import de.jensklingenberg.scrako.common.getScratchType
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
@@ -38,7 +37,7 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             "MESSAGE" to when (content) {
                 is StringBlock -> createMessage(1, ScratchType.STRING.value, content.value)
                 is ScratchVariable -> {
-                    setValue(context.variables.find { it.name == content.name }!!, operatorUUID)
+                    setValue(context.variableMap[content.name]!!, operatorUUID)
                 }
 
                 is ScratchList -> setValue(content, operatorUUID)
@@ -61,7 +60,17 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
         )
 
         if (seconds != null) {
-            inputMap["SECS"] = getScratchType(seconds.toString(), ScratchType.POSITIVE_NUMBER)
+            inputMap["SECS"] = JsonArray(
+                listOf(
+                    JsonPrimitive(1),
+                    JsonArray(
+                        listOf(
+                            JsonPrimitive(ScratchType.POSITIVE_NUMBER.value),
+                            JsonPrimitive(seconds.toString())
+                        )
+                    )
+                )
+            )
         }
 
         val opCode = when (seconds) {
@@ -93,6 +102,6 @@ sealed interface LooksSayContent {
 }
 
 
-fun ScriptBuilder.say(reporterBlock: ReporterBlock) = addChild(Say(reporterBlock))
+fun ScriptBuilder.say(reporterBlock: ReporterBlock) = addNode(Say(reporterBlock))
 fun ScriptBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
-fun ScriptBuilder.say(message: String, seconds: Int? = null) = addChild(Say(StringBlock(message), seconds))
+fun ScriptBuilder.say(message: String, seconds: Int? = null) = addNode(Say(StringBlock(message), seconds))

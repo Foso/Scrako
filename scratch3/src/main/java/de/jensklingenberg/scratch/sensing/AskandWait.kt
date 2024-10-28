@@ -63,4 +63,4 @@ private data class AskandWait(val content: LooksSayContent) : Node {
     }
 }
 
-fun ScriptBuilder.askAndWait(content: LooksSayContent) = addChild(AskandWait(content))
+fun ScriptBuilder.askAndWait(content: LooksSayContent) = addNode(AskandWait(content))

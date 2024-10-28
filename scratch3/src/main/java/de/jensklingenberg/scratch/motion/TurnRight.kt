@@ -8,6 +8,6 @@ import de.jensklingenberg.scratch.common.OpCode
 
 private class TurnRight(reporterBlock: ReporterBlock) : Turn(OpCode.motion_turnright, reporterBlock), MotionBlock
 
-fun ScriptBuilder.turnRight(block: ReporterBlock) = addChild(TurnRight(block))
+fun ScriptBuilder.turnRight(block: ReporterBlock) = addNode(TurnRight(block))
 
-fun ScriptBuilder.turnRight(steps: Int) = addChild(IntBlock(steps))
+fun ScriptBuilder.turnRight(steps: Int) = addNode(IntBlock(steps))

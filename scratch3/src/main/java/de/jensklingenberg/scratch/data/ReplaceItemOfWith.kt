@@ -44,8 +44,8 @@ private class ReplaceItemOfWith(
 }
 
 fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
-    addChild(ReplaceItemOfWith(index, list, replace))
+    addNode(ReplaceItemOfWith(index, list, replace))
 
 fun ScriptBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
-    addChild(ReplaceItemOfWith(IntBlock(index), list, StringBlock(replace)))
+    addNode(ReplaceItemOfWith(IntBlock(index), list, StringBlock(replace)))
 

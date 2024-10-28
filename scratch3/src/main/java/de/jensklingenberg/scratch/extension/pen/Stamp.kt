@@ -21,4 +21,4 @@ private class Stamp : Node {
     }
 }
 
-fun ScriptBuilder.stamp() = addChild(Stamp())
+fun ScriptBuilder.stamp() = addNode(Stamp())

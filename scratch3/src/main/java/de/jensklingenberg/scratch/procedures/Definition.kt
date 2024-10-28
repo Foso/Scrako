@@ -1,112 +1,58 @@
 package de.jensklingenberg.scratch.procedures
 
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.common.Mutation
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.control.Forever
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-class Definition(
-    private val prototypeName: String,
-    private val withoutRefresh: Boolean,
-    private val inputs: List<Input> = emptyList()
+internal class Definition(
+    private val prototype: Prototype,
+    private val childs: MutableList<Node>
 ) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: UUID,
         nextUUID: UUID?,
-        context: Context,
+        context: Context
+    ) {
+        val childUUIDS = childs.map { UUID.randomUUID() }
 
-        ) {
         val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.procedures_definition,
+            opcode = "procedures_definition",
             inputs = mapOf("custom_block" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(protoUUID.toString())))),
-        ).toBlock(nextUUID, parent)
+        ).toBlock(childUUIDS.first(), null)
 
-        Prototype(this.prototypeName, withoutRefresh, inputs).visit(
+        prototype.visit(
             visitors,
             identifier.toString(),
             protoUUID,
-            null, context,
+            null,
+            context
+        )
 
-            )
-    }
-}
+        childs.mapIndexed { childIndex, visitor ->
+            val nextchild = childIndex != childs.lastIndex
 
-private class Prototype(val name: String, private val withoutRefresh: Boolean, val inputs: List<Input>) : Node {
-    override fun visit(
-        visitors: MutableMap<String, Block>,
-        parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
-        context: Context,
-
-        ) {
-        val inputIds = inputs.map { it.id }
-        val arguments = inputs.map { it.argument }
-        val argIds = arguments.map { it.id }
-        arguments.forEachIndexed { index, argument ->
-            argument.visit(
+            val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
+            visitor.visit(
                 visitors,
-                identifier.toString(),
-                argIds[index],
-                argIds.getOrNull(index + 1), context,
+                parent = identifier.toString(),
+                childUUIDS[childIndex],
+                nextUUID,
+                context,
 
                 )
         }
 
-        val inputs = mutableMapOf<String, JsonArray>()
-        this.inputs.map { it.argument }.forEachIndexed { index, argument ->
-            inputs[inputIds[index].toString()] = when (argument) {
-                is ArgumentBoolean -> JsonArray(
-                    listOf(JsonPrimitive(1), JsonPrimitive(argIds[index].toString()))
-                )
-
-                is ArgumentString -> JsonArray(
-                    listOf(JsonPrimitive(1), JsonPrimitive(argIds[index].toString()))
-                )
-
-                else -> throw IllegalArgumentException("Unknown argument type")
-
-            }
-        }
-
-        val proccode = this.name + " " + arguments.joinToString(" ") {
-            when (it) {
-                is ArgumentBoolean -> "%b"
-                is ArgumentString -> "%s"
-                else -> "%n"
-            }
-        }
-        val argumentNames = arguments.joinToString(", ") {
-            "\"" + it.name + "\""
-        }
-
-        val argumentDefaults = arguments.filter { it.defaultValue.isNotBlank() }.joinToString(", ") {
-            "\"" + it.defaultValue + "\""
-        }
-
-
-        visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.procedures_prototype,
-            shadow = true,
-            inputs = inputs,
-            mutation = Mutation(
-                tagName = "mutation",
-                proccode = proccode,
-                warp = "$withoutRefresh",
-                argumentnames = "[$argumentNames]",
-                argumentids = "[${argIds.joinToString { "\"" + it.toString() + "\"" }}]",
-            )
-        ).toBlock(nextUUID, parent)
     }
 }
 
@@ -121,7 +67,7 @@ class ArgumentString(override val name: String, override val defaultValue: Strin
 
         ) {
         visitors[identifier.toString()] = BlockSpec(
-            opcode = OpCode.argument_reporter_string_number,
+            opcode = "argument_reporter_string_number",
             fields = mapOf("VALUE" to listOf(name, null))
         ).toBlock(null, null)
     }
@@ -137,6 +83,14 @@ interface Argument : ReporterBlock {
 data class Input(val argument: Argument) {
     val id: UUID = UUID.randomUUID()
 }
+
+sealed interface ArgumentType {
+    data object BOOLEAN : ArgumentType
+    data object STRING : ArgumentType
+}
+
+class Argument2(val name: String, type: ArgumentType)
+
 
 class ArgumentBoolean(override val name: String, override val defaultValue: String = "") : Argument {
     override val id: UUID = UUID.randomUUID()
@@ -158,7 +112,20 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
 
 fun ScriptBuilder.define(
     customBlockName: String,
+    arguments: List<Input> = emptyList(),
     withoutRefresh: Boolean = false,
-    arguments: List<Input> = emptyList()
-) =
-    addChild(Definition(customBlockName, withoutRefresh, arguments))
+    block: ScriptBuilder.() -> Unit
+) {
+
+    addNode(
+        Definition(
+            Prototype(customBlockName, withoutRefresh, arguments),
+            ScriptBuilder().apply(block).childs
+        )
+    )
+}
+
+
+fun ScriptBuilder.forever(block: ScriptBuilder.() -> Unit) {
+    childs.add(Forever(ScriptBuilder().apply(block).childs))
+}

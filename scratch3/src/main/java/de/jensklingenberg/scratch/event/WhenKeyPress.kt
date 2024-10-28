@@ -11,5 +11,5 @@ private class WhenKeyPress(key: Key) : BlockSpec(
     fields = mapOf("KEY_OPTION" to listOf(key.value, null))
 ), Event, HatBlock
 
-fun ScriptBuilder.whenKeyPress(key: Key) = addChild(WhenKeyPress(key))
+fun ScriptBuilder.whenKeyPress(key: Key) = addNode(WhenKeyPress(key))
 

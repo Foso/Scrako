@@ -27,5 +27,5 @@ private class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
     }
 }
 
-fun ScriptBuilder.deleteAllOf(list: ScratchList) = addChild(DeleteAllOf(list))
+fun ScriptBuilder.deleteAllOf(list: ScratchList) = addNode(DeleteAllOf(list))
 

@@ -33,7 +33,7 @@ private class PointTowards(private val target: String) : Node, MotionBlock {
     }
 }
 
-fun ScriptBuilder.pointTowards(target: String) = addChild(PointTowards(target))
+fun ScriptBuilder.pointTowards(target: String) = addNode(PointTowards(target))
 
 private class PointTowardsMenu(target: String) : BlockSpec(
     opcode = OpCode.motion_pointtowards_menu,

@@ -31,5 +31,5 @@ private class PointInDirection(val block: ReporterBlock) : Node, MotionBlock {
     }
 }
 
-fun ScriptBuilder.pointInDirection(block: ReporterBlock) = addChild(PointInDirection(block))
-fun ScriptBuilder.pointInDirection(degrees: Int) = addChild(PointInDirection(IntBlock(degrees)))
+fun ScriptBuilder.pointInDirection(block: ReporterBlock) = addNode(PointInDirection(block))
+fun ScriptBuilder.pointInDirection(degrees: Int) = addNode(PointInDirection(IntBlock(degrees)))

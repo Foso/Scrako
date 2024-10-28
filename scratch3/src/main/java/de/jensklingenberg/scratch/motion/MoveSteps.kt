@@ -32,8 +32,8 @@ private class Move(val block: ReporterBlock) : Node, MotionBlock {
     }
 }
 
-fun ScriptBuilder.move(steps: Int) = addChild(Move(IntBlock(steps)))
-fun ScriptBuilder.move(steps: Double) = addChild(Move(DoubleBlock(steps)))
-fun ScriptBuilder.move(steps: ReporterBlock) = addChild(Move(steps))
+fun ScriptBuilder.move(steps: Int) = addNode(Move(IntBlock(steps)))
+fun ScriptBuilder.move(steps: Double) = addNode(Move(DoubleBlock(steps)))
+fun ScriptBuilder.move(steps: ReporterBlock) = addNode(Move(steps))
 
 

@@ -24,4 +24,4 @@ private class ClearEffects : Node {
     }
 }
 
-fun ScriptBuilder.clearEffects() = addChild(ClearEffects())
+fun ScriptBuilder.clearEffects() = addNode(ClearEffects())
