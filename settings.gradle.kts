@@ -3,6 +3,6 @@ plugins {
 }
 rootProject.name = "LLVMPoet"
 include("example")
-include("scratchgen")
+include("scratch3")
 include("scrako-core")
 include("turbowarp")
