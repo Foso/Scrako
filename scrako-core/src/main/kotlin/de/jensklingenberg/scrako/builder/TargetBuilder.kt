@@ -18,7 +18,7 @@ class TargetBuilder {
         variableMap[name] = UUID.randomUUID()
     }
 
-    fun build(context: Context, isStage: Boolean): Target {
+    internal fun build(context: Context, isStage: Boolean): Target {
         val ww = scriptBuilders.map { it.childs }
 
         ww.flatten().forEach {
@@ -30,13 +30,14 @@ class TargetBuilder {
         val allVariabless = variableMap + context.variableMap
 
         val targetVariabes = variableMap.map {
-            if(context.variableMap.containsKey(it.key)){
+            if (context.variableMap.containsKey(it.key)) {
                 it.key to null
-            }else{
+            } else {
                 it.key to it.value
             }
-
-        }.toMap().filter { it.value != null }.map { it.key to it.value!! }.toMap()
+        }.toMap()
+            .filter { it.value != null }
+            .map { it.key to it.value!! }.toMap()
         val blocks = createBlocks23(ww, context.copy(variableMap = allVariabless))
 
         return createTarget(

@@ -2,8 +2,6 @@ package de.jensklingenberg.scratch
 
 import de.jensklingenberg.scrako.common.ScratchProject
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream

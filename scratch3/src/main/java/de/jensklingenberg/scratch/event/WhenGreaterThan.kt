@@ -1,5 +1,6 @@
 package de.jensklingenberg.scratch.event
 
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
@@ -7,7 +8,6 @@ import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.HatBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
@@ -25,7 +25,7 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-        ) {
+    ) {
         val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.event_whengreaterthan,

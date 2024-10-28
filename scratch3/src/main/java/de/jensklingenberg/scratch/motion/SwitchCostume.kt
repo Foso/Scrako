@@ -1,12 +1,12 @@
 package de.jensklingenberg.scratch.motion
 
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
@@ -21,7 +21,7 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-        ) {
+    ) {
         val menuId = UUID.randomUUID()
         val blockId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(

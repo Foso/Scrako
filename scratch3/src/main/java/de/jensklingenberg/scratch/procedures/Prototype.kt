@@ -16,7 +16,7 @@ internal class Prototype(val name: String, private val withoutRefresh: Boolean, 
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-        ) {
+    ) {
         val inputIds = inputs.map { it.id }
         val arguments = inputs.map { it.argument }
         val argIds = arguments.map { it.id }

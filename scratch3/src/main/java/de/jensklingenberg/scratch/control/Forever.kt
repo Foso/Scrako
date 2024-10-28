@@ -1,12 +1,12 @@
 package de.jensklingenberg.scratch.control
 
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.common.CapBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -20,7 +20,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         identifier: UUID,
         nextUUID: UUID?,
         context: Context,
-        ) {
+    ) {
 
         if (nextUUID != null) {
             throw IllegalArgumentException("Forever block can't have a next block")
