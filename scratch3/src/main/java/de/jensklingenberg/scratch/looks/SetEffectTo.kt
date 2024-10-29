@@ -14,13 +14,13 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val block1Id = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val block1Id = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.looks_seteffectto,
             inputs = mapOf(
                 "VALUE" to setValue(block, block1Id, context)
@@ -31,7 +31,7 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
                 )
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), block1Id, null, context)
+        block.visit(visitors, identifier, block1Id, null, context)
     }
 }
 

@@ -16,17 +16,17 @@ private class PointInDirection(val block: ReporterBlock) : Node, MotionBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val childId = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val childId = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_pointindirection,
             inputs = mapOf("DIRECTION" to setValue(block, childId, context))
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), childId, null, context)
+        block.visit(visitors, identifier, childId, null, context)
 
     }
 }

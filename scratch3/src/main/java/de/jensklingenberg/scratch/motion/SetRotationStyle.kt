@@ -7,18 +7,17 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scratch.common.OpCode
-import java.util.UUID
 
 private class SetRotationStyle(private val style: RotationStyle) : Node, MotionBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_setrotationstyle,
             fields = mapOf("STYLE" to listOf(style.spriteName, null))
         ).toBlock(nextUUID, parent)

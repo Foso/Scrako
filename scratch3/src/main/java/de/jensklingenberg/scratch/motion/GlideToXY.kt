@@ -19,16 +19,16 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val secID = UUID.randomUUID()
-        val toXID = UUID.randomUUID()
-        val toYID = UUID.randomUUID()
+        val secID = UUID.randomUUID().toString()
+        val toXID = UUID.randomUUID().toString()
+        val toYID = UUID.randomUUID().toString()
 
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_glidesecstoxy,
             inputs = mapOf(
                 "SECS" to setValue(sec, secID, context),
@@ -37,9 +37,9 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
             )
         ).toBlock(nextUUID, parent)
 
-        sec.visit(visitors, identifier.toString(), secID, null, context)
-        toX.visit(visitors, identifier.toString(), toXID, null, context)
-        toY.visit(visitors, identifier.toString(), toYID, null, context)
+        sec.visit(visitors, identifier, secID, null, context)
+        toX.visit(visitors, identifier, toXID, null, context)
+        toY.visit(visitors, identifier, toYID, null, context)
     }
 }
 

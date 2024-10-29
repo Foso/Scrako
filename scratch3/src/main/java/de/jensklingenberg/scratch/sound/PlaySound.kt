@@ -17,13 +17,13 @@ private class PlaySound(val soundName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val soundMenuId = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val soundMenuId = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.sound_play,
             inputs = mapOf("SOUND_MENU" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(soundMenuId.toString()))))
         ).toBlock(nextUUID, parent)
@@ -40,12 +40,12 @@ internal class SoundsMenu(private val soundName: String) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.sound_sounds_menu,
             fields = mapOf("SOUND_MENU" to listOf(soundName, null))
         ).toBlock(nextUUID, parent)

@@ -18,18 +18,18 @@ private class AddToList(private val list: ScratchList, private val block: Report
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val childId = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val childId = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_addtolist,
             inputs = mapOf("ITEM" to setValue(block, childId, context)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), childId, null, context)
+        block.visit(visitors, identifier, childId, null, context)
     }
 }
 

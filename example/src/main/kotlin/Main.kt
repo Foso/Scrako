@@ -6,11 +6,11 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.backdrop
+import de.jensklingenberg.scrako.common.basketBall
 import de.jensklingenberg.scrako.common.projectBuilder
 import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.stageBuilder
 import de.jensklingenberg.scratch.event.whenFlagClicked
-import de.jensklingenberg.scratch.readList
 import de.jensklingenberg.scratch.writeProject
 import kotlinx.serialization.json.Json
 import me.jens.targets.MyTarget
@@ -36,6 +36,13 @@ val backdropSprite = Sprite(
     )
 )
 
+val basketSprite = Sprite(
+    "Stage", listOf(
+        basketBall
+    ), listOf(
+    )
+)
+
 
 val spriteArrow = Sprite("Arrow1", listOf(costume1), listOf())
 
@@ -45,23 +52,27 @@ private val json = Json {
 }
 
 fun main() {
-    val myList =
-        importer()
+    importer()
 
 
     val proj = projectBuilder {
-      //  getOrCreateGlobalList("myList")
+        //  getOrCreateGlobalList("myList")
         //getGlobalVariable("myVar")
         MyStage()
-        MyTarget(myList)
+        MyTarget()
         //createSprite2()
     }
 
 
+    val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
+    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/"
+
+    val fileName = "test4.sb3"
     writeProject(
         proj.build(),
-        "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/",
-        "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
+        inputPath,
+        outputPath,
+        fileName
     )
 
     val processBuilder = ProcessBuilder("pkill", "-9", "TurboWarp")
@@ -70,16 +81,25 @@ fun main() {
     process.waitFor()
 
 
-    val processBuilder2 = ProcessBuilder("open", "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/test4.sb3")
+    val processBuilder2 = ProcessBuilder("open", "${outputPath}/$fileName", "-a", "TurboWarp")
     processBuilder2.inheritIO()
     val process2 = processBuilder2.start()
     process2.waitFor()
 }
 
-private fun importer(): ScratchList {
-    var projectFile: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/Project.sb3"
+fun readList(name: String): List<String> {
+    val list = mutableListOf<String>()
+    File(name).forEachLine {
+        list.add(it)
+    }
+    return list
+}
+
+private fun importer(): ScratchList {
+    var projectJson: String = ""
+
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/test4.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry
@@ -94,7 +114,7 @@ private fun importer(): ScratchList {
                         stringBuilder.appendRange(buffer, 0, length)
                     }
                 }
-                projectFile = stringBuilder.toString()
+                projectJson = stringBuilder.toString()
 
             }
 
@@ -112,7 +132,7 @@ private fun importer(): ScratchList {
         }
     }
 
-    val tt = json.decodeFromString<ScratchProject>(projectFile)
+    val tt = json.decodeFromString<ScratchProject>(projectJson)
     val myList =
         ScratchList(
             "jens2",
@@ -141,12 +161,14 @@ private fun importer(): ScratchList {
                 "val ${it.key.lowercase()}: String"
             }.joinToString { it }
             val repl =
-                List(block.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID()" }.joinToString("\n") { it }
+                List(block.inputs.entries.size) { index -> "val block${index}Id = UUID.randomUUID().toString()" }.joinToString(
+                    "\n"
+                ) { it }
             val blocks =
                 (0..<block.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock," }
                     .joinToString("\n") { it }
             val wer = block.inputs.entries.mapIndexed { index, entry ->
-                "block${index}.visit(visitors, identifier.toString(), block${index}Id, null)"
+                "block${index}.visit(visitors, identifier, block${index}Id, null)"
             }.joinToString("\n") { it }
             val sec = template.replace("REPLACE_INPUT", newInputs)
                 .replace("REPLACE_BLOCKO", repl)

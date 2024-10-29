@@ -23,14 +23,13 @@ private class InsertAt(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
-        context: Context,
-
-        ) {
-        val indexBlockId = UUID.randomUUID()
-        val dataBlockId = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        identifier: String,
+        nextUUID: String?,
+        context: Context
+    ) {
+        val indexBlockId = UUID.randomUUID().toString()
+        val dataBlockId = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_insertatlist,
             inputs = mapOf(
                 "INDEX" to setValue(index, indexBlockId, context),
@@ -38,9 +37,8 @@ private class InsertAt(
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        index.visit(visitors, identifier.toString(), indexBlockId, null, context)
-        block.visit(visitors, identifier.toString(), dataBlockId, null, context)
-
+        index.visit(visitors, identifier, indexBlockId, null, context)
+        block.visit(visitors, identifier, dataBlockId, null, context)
     }
 }
 

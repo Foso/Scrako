@@ -19,13 +19,13 @@ private data class Think(private val content: LooksSayContent, private val secon
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
 
-        val operatorUUID = UUID.randomUUID()
+        val operatorUUID = UUID.randomUUID().toString()
 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
@@ -59,12 +59,12 @@ private data class Think(private val content: LooksSayContent, private val secon
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent)
+        visitors[identifier] = spec.toBlock(nextUUID, parent)
 
         if (content is LooksSayContent.Reporter) {
             content.operatorSpec.visit(
                 visitors,
-                identifier.toString(),
+                identifier,
                 operatorUUID,
                 null, context,
 

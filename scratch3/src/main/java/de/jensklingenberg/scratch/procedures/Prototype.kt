@@ -9,70 +9,84 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-internal class Prototype(val name: String, private val withoutRefresh: Boolean, val inputs: List<Input>) : Node {
+
+internal class Prototype(
+    val customBlockName: String,
+    val withoutRefresh: Boolean = false,
+    val arguments: List<Argument2>
+) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
-        context: Context,
+        identifier: String,
+        nextUUID: String?,
+        context: Context
     ) {
-        val inputIds = inputs.map { it.id }
-        val arguments = inputs.map { it.argument }
-        val argIds = arguments.map { it.id }
-        arguments.forEachIndexed { index, argument ->
-            argument.visit(
-                visitors,
-                identifier.toString(),
-                argIds[index],
-                argIds.getOrNull(index + 1), context,
-
-                )
-        }
-
-        val inputs = mutableMapOf<String, JsonArray>()
-        this.inputs.map { it.argument }.forEachIndexed { index, argument ->
-            inputs[inputIds[index].toString()] = when (argument) {
-                is ArgumentBoolean -> JsonArray(
-                    listOf(JsonPrimitive(1), JsonPrimitive(argIds[index].toString()))
-                )
-
-                is ArgumentString -> JsonArray(
-                    listOf(JsonPrimitive(1), JsonPrimitive(argIds[index].toString()))
-                )
-
-                else -> throw IllegalArgumentException("Unknown argument type")
-
+        val blockIds = arguments.map { UUID.randomUUID().toString() }
+        val procodeArgs = arguments.joinToString {
+            when (it.type) {
+                ArgumentType.BOOLEAN -> "%b"
+                ArgumentType.NUMBER_OR_TEXT -> "%s"
+                // ArgumentType.NUMBER -> "%n"
             }
         }
 
-        val proccode = this.name + "" + arguments.joinToString(" ") {
-            when (it) {
-                is ArgumentBoolean -> "%b"
-                is ArgumentString -> "%s"
-                else -> "%n"
+        val inputMap = arguments.mapIndexed { index, argument ->
+
+            val uuid = context.functions.first { it.functionName == customBlockName && it.name == argument.name }.id
+            Pair(
+                uuid,
+                JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(blockIds[index])))
+            )
+        }.associate {
+            it.first to it.second
+        }
+
+        val argumentNames = arguments.joinToString {
+            when (it.type) {
+                ArgumentType.BOOLEAN -> "\"boolean\""
+                ArgumentType.NUMBER_OR_TEXT -> "\"number or text\""
+                // ArgumentType.NUMBER -> "%n"
             }
         }
-        val argumentNames = arguments.joinToString(", ") {
-            "\"" + it.name + "\""
-        }
 
-        val argumentDefaults = arguments.filter { it.defaultValue.isNotBlank() }.joinToString(", ") {
-            "\"" + it.defaultValue + "\""
-        }
-
-
-        visitors[identifier.toString()] = BlockSpec(
+        val argIds = context.functions.filter { it.functionName == customBlockName }.map { it.id }
+        visitors[identifier] = BlockSpec(
             opcode = "procedures_prototype",
-            shadow = true,
-            inputs = inputs,
+            inputs = inputMap,
+            fields = mapOf(),
             mutation = Mutation(
                 tagName = "mutation",
-                proccode = proccode,
+                proccode = customBlockName + " " + procodeArgs,
                 warp = "$withoutRefresh",
                 argumentnames = "[$argumentNames]",
-                argumentids = "[${argIds.joinToString { "\"" + it.toString() + "\"" }}]",
+                argumentids = "[${argIds.joinToString { "\"" + it + "\"" }}]",
             )
         ).toBlock(nextUUID, parent)
+
+        arguments.forEach {
+            when (it.type) {
+                ArgumentType.BOOLEAN -> {
+                    ArgumentBoolean(it.name).visit(
+                        visitors,
+                        identifier,
+                        blockIds[arguments.indexOf(it)],
+                        null,
+                        context
+                    )
+                }
+
+                ArgumentType.NUMBER_OR_TEXT -> {
+                    ArgumentString(it.name).visit(
+                        visitors,
+                        identifier,
+                        blockIds[arguments.indexOf(it)],
+                        null,
+                        context
+                    )
+                }
+            }
+        }
+
     }
 }

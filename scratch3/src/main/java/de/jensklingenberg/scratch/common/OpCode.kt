@@ -22,7 +22,6 @@ internal class OpCode(val value: String) {
         val sensing_keypressed = "sensing_keypressed"
         val data_hideList = "data_hidelist"
         val data_showlist = "data_showlist"
-        val data_listcontainsitem = "data_listcontainsitem"
         val data_insertatlist = "data_insertatlist"
         val operator_mod = "operator_mod"
         val operator_join = "operator_join"

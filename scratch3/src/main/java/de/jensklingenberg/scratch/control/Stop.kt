@@ -7,14 +7,13 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scratch.common.OpCode
-import java.util.UUID
 
 private class Stop(private val option: StopOption) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
@@ -22,7 +21,7 @@ private class Stop(private val option: StopOption) : Node {
         if (option == StopOption.ALL && nextUUID != null) {
             throw IllegalArgumentException("Stop block with All cannot have a next block")
         }
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.control_stop,
             fields = mapOf("STOP_OPTION" to listOf((option.s), null))
         ).toBlock(nextUUID, parent)

@@ -1,6 +1,7 @@
 package de.jensklingenberg.scrako.builder
 
 import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Costume
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.Sprite
@@ -9,13 +10,14 @@ import de.jensklingenberg.scrako.common.createBlocks23
 import de.jensklingenberg.scrako.common.createTarget
 import java.util.UUID
 
+class Argumenti(val name: String, val id: String, val functionName: String)
 class TargetBuilder {
     internal val scriptBuilders = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
     var name: String = ""
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
-
+    private val costumesList = mutableListOf<Costume>()
     fun addVariable(name: String) {
         variableMap[name] = UUID.randomUUID()
     }
@@ -25,6 +27,17 @@ class TargetBuilder {
     }
 
     internal fun build(context: Context, isStage: Boolean): Target {
+        val functionsMap = mutableListOf<Argumenti>()
+        scriptBuilders.forEach {
+            it.functionsMap.forEach { function ->
+                function.value.forEach { functionName ->
+                    functionsMap.add(Argumenti(functionName, UUID.randomUUID().toString(), function.key))
+                }
+
+            }
+
+        }
+
         val nodeListList = scriptBuilders.map { it.childs }
 
         nodeListList.flatten().forEach {
@@ -56,16 +69,30 @@ class TargetBuilder {
         }.toMap()
             .filter { it.value != null }
             .map { it.key to it.value!! }.toMap()
-        val blocks = createBlocks23(nodeListList, context.copy(variableMap = allVariables, lists = allLists))
+        val blocks = createBlocks23(
+            nodeListList,
+            Context(variableMap = allVariables, lists = allLists, functions = functionsMap)
+        )
 
         return createTarget(
             blocks,
             this.sprite!!,
+            name,
             emptyList(),
             targetLists,
-            targetVariables
+            targetVariables,
+            costumesList
         )
     }
+
+    fun addCostumeList(costume: Costume) {
+        costumesList.add(costume)
+    }
+
+}
+
+fun TargetBuilder.addCostume(costume: Costume) {
+    this.addCostumeList(costume)
 }
 
 fun TargetBuilder.addSprite(sprite: Sprite) {

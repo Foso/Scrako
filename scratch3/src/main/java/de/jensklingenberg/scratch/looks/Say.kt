@@ -25,19 +25,20 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
 
-        val operatorUUID = UUID.randomUUID()
+        val operatorUUID = UUID.randomUUID().toString()
 
         val inputMap = mutableMapOf(
             "MESSAGE" to when (content) {
                 is StringBlock -> createMessage(1, ScratchType.STRING.value, content.value)
                 is ScratchVariable -> {
-                    val id = context.variableMap[content.name] ?: throw IllegalArgumentException("Variable not found")
+                    val id = context.variableMap[content.name].toString()
+                        ?: throw IllegalArgumentException("Variable not found")
                     setValue(content, id, context)
                 }
 
@@ -82,11 +83,11 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             opcode = opCode,
             inputs = inputMap
         )
-        visitors[identifier.toString()] = spec.toBlock(nextUUID, parent)
+        visitors[identifier] = spec.toBlock(nextUUID, parent)
 
         content.visit(
             visitors,
-            identifier.toString(),
+            identifier,
             operatorUUID,
             null, context,
 

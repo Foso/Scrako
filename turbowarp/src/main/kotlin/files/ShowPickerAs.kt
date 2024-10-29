@@ -13,22 +13,22 @@ private class ShowPickerAs(val block0: ReporterBlock) : BooleanBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val block0Id = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
-            opcode = TurboOpCode.files_showPickerAs,
+        val block0Id = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
+            opcode = "files_showPickerAs",
             inputs = mapOf(
-                "as" to setValue(block0, block0Id,context)
+                "as" to setValue(block0, block0Id, context)
             ),
             fields = mapOf(
 
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, context)
+        block0.visit(visitors, identifier, block0Id, null, context)
     }
 }
 
@@ -36,13 +36,13 @@ private class Menu_encoding(val encoding: String) : ObjectReporter {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
 
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = "files_menu_encoding",
             inputs = mapOf(
 

@@ -1,7 +1,6 @@
 package de.jensklingenberg.scrako.common
 
 import kotlinx.serialization.json.JsonArray
-import java.util.UUID
 
 open class BlockSpec(
     val opcode: String,
@@ -14,9 +13,9 @@ open class BlockSpec(
 ) : Node {
 
     open var comment: Comment? = null
-    fun toBlock(next: UUID?, parent: String?, comment: String? = null) = Block(
+    fun toBlock(next: String?, parent: String?, comment: String? = null) = Block(
         opcode = opcode,
-        next = next?.toString(),
+        next = next,
         parent = parent,
         inputs = inputs,
         fields = fields,
@@ -31,15 +30,15 @@ open class BlockSpec(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context
     ) {
         if (this is HatBlock && parent != null) {
             throw IllegalStateException("HatBlock blocks can't have a parent")
         }
-        comment?.addBlock(identifier.toString())
-        visitors[identifier.toString()] =
+        comment?.addBlock(identifier)
+        visitors[identifier] =
             toBlock(nextUUID, parent, comment?.id)
     }
 

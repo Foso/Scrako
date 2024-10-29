@@ -6,7 +6,6 @@ import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CapBlock
 import de.jensklingenberg.scrako.common.Context
-import java.util.UUID
 
 internal class DeleteThisClone : BlockSpec(
     opcode = "control_delete_this_clone",
@@ -14,8 +13,8 @@ internal class DeleteThisClone : BlockSpec(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context
     ) {
         if (nextUUID != null) {

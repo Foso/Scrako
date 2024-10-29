@@ -16,18 +16,18 @@ private class ItemNumOfList(private val block0: ReporterBlock, private val list:
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val itemUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val itemUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_itemnumoflist,
             inputs = mapOf("ITEM" to setValue(block0, itemUUID, context)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), itemUUID, null, context)
+        block0.visit(visitors, identifier, itemUUID, null, context)
     }
 }
 

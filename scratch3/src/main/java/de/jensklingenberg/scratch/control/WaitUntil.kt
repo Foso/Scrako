@@ -13,18 +13,18 @@ private class ControlWaitUntil(private val condition: BooleanBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context
     ) {
-        val uuid = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val uuid = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = "control_wait_until",
             inputs = mapOf(
                 "CONDITION" to setValue(condition, uuid, context)
             )
         ).toBlock(nextUUID, parent)
-        condition.visit(visitors, identifier.toString(), uuid, null, context)
+        condition.visit(visitors, identifier, uuid, null, context)
     }
 }
 

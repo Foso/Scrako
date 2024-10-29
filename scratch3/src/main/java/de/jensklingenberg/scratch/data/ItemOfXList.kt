@@ -8,18 +8,17 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scratch.common.OpCode
-import java.util.UUID
 
 private class ItemOfXList(private val index: Int, private val list: ScratchList) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_itemoflist,
             inputs = mapOf(
                 "INDEX" to createMessage(1, 7, this.index.toString()),

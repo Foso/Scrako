@@ -1,4 +1,3 @@
-
 # ScraKo
 
 # Global variables

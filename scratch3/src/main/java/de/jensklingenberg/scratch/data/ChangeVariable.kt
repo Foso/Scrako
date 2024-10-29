@@ -17,18 +17,18 @@ private class ChangeVariable(private val block: ReporterBlock, private val varia
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
     ) {
         val variable = context.variableMap[variableName]
-        val itemUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val itemUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_changevariableby,
             inputs = mapOf("VALUE" to setValue(block, itemUUID, context)),
             fields = mapOf("VARIABLE" to listOf(variableName, variable?.toString()))
-        ).toBlock(nextUUID, identifier.toString())
-        block.visit(visitors, identifier.toString(), itemUUID, null, context)
+        ).toBlock(nextUUID, identifier)
+        block.visit(visitors, identifier, itemUUID, null, context)
     }
 }
 

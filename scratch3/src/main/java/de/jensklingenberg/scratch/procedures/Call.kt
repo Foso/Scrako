@@ -4,62 +4,51 @@ import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Mutation
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scratch.operator.GreaterThan
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.setValue
 import java.util.UUID
 
-class Call(val name: String, val inputs: List<Input> = emptyList()) : Node {
+private class Call(val functionName: String, val block0: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
-        context: Context,
+        identifier: String,
+        nextUUID: String?,
+        context: Context
+    ) {
+        val block0Id = UUID.randomUUID().toString()
+        val arguments = listOf(Argument2("mybool", ArgumentType.NUMBER_OR_TEXT))
 
-        ) {
-
-
-        val arguments = inputs.map { it.argument }
-        val proccode = this.name + " " + arguments.joinToString(" ") {
-            when (it) {
-                is ArgumentBoolean -> "%b"
-                is ArgumentString -> "%s"
-                else -> "%n"
+        val id = context.functions.first { it.functionName == functionName && it.name == "mybool" }.id
+        val procodeArgs = arguments.joinToString {
+            when (it.type) {
+                ArgumentType.BOOLEAN -> "%b"
+                ArgumentType.NUMBER_OR_TEXT -> "%s"
+                // ArgumentType.NUMBER -> "%n"
             }
         }
-        val argumentNames = arguments.joinToString(", ") {
-            "\"" + it.name + "\""
-        }
-        val test = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val argIds = context.functions.filter { it.functionName == functionName }.map { it.id }
+
+        val withoutRefresh = false
+        visitors[identifier] = BlockSpec(
             opcode = "procedures_call",
-            shadow = true,
-
-            mutation = Mutation(
-                tagName = "mutation", proccode = proccode, warp = "false", argumentnames = "[$argumentNames]",
-                argumentids = "[${inputs.map { it.id }.joinToString { "\"" + it.toString() + "\"" }}]",
+            inputs = mapOf(
+                id to setValue(block0, block0Id, context)
             ),
+            fields = mapOf(
 
-            inputs = inputs.associate {
-                it.id.toString() to JsonArray(
-                    listOf(JsonPrimitive(1), JsonPrimitive(test.toString()))
-                )
-            }
-        ).toBlock(nextUUID, parent)
-
-
-        GreaterThan(IntBlock(3), IntBlock(4)).visit(
-            visitors,
-            identifier.toString(),
-            test,
-            null, context,
-
+            ),
+            mutation = Mutation(
+                tagName = "mutation",
+                proccode = "$functionName $procodeArgs",
+                warp = "$withoutRefresh",
+                argumentids = "[${argIds.joinToString { "\"" + it + "\"" }}]",
             )
+        ).toBlock(nextUUID, parent)
+        block0.visit(visitors, identifier, block0Id, null, context)
     }
 }
 
-fun ScriptBuilder.call(name: String, arguments: List<Input>) = addNode(Call(name, arguments))
+fun ScriptBuilder.call(name: String, block0: ReporterBlock) = addNode(Call(name, block0))

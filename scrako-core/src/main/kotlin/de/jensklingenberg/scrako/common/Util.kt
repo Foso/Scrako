@@ -6,9 +6,9 @@ import de.jensklingenberg.scrako.builder.TargetBuilder
 import de.jensklingenberg.scrako.builder.addStage
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
-import java.util.UUID
 
 enum class ScratchType(val value: Int) {
+    OBJECT(1),
     BLOCKREF(3),
     NUMBER(4),
     POSITIVE_NUMBER(5),
@@ -20,7 +20,7 @@ enum class ScratchType(val value: Int) {
     BROADCAST(11),
     VARIABLE(12),
     LIST(13),
-    OBJECT(1)
+
 }
 
 fun createMessage(first: Int, second: Int, message: String): JsonArray {
@@ -55,7 +55,7 @@ fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
 
 fun setValue(
     reporterBlock: ReporterBlock,
-    operatorUUID: UUID,
+    operatorUUID: String,
     context: Context
 ) = when (reporterBlock) {
     is IntBlock -> {
@@ -64,7 +64,7 @@ fun setValue(
                 JsonPrimitive(1),
                 JsonArray(
                     listOf(
-                        JsonPrimitive(4),
+                        JsonPrimitive(ScratchType.NUMBER.value),
                         JsonPrimitive(reporterBlock.value.toString())
                     )
                 )
@@ -117,7 +117,7 @@ fun setValue(
     }
 
     is DoubleBlock -> {
-        createMessage(1, 10, reporterBlock.value.toString())
+        createMessage(1, ScratchType.STRING.value, reporterBlock.value.toString())
     }
 
     is StringBlock -> {
@@ -153,7 +153,7 @@ fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
 fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     val targetBuilder = TargetBuilder()
     ff.invoke(targetBuilder)
-
+    targetBuilder.name = "Stage"
     addStage(targetBuilder)
     return targetBuilder
 }
@@ -173,20 +173,11 @@ fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilde
     return scriptBuilder
 }
 
-class FunctionBuilder {
-    val scriptBuilder = ScriptBuilder()
-}
-
 fun TargetBuilder.functionBuilder(builder: FunctionBuilder.() -> Unit): ScriptBuilder {
     val functionBuilder = FunctionBuilder()
     builder.invoke(functionBuilder)
     scriptBuilders.add(functionBuilder.scriptBuilder)
     return functionBuilder.scriptBuilder
-}
-
-fun FunctionBuilder.define(name: String, builder: ScriptBuilder.() -> Unit) {
-
-    builder.invoke(scriptBuilder)
 }
 
 

@@ -11,7 +11,7 @@ fun createBlocks23(blockSpecs: List<List<Node>>, context: Context): Map<String, 
 private fun createBlocks2(blockSpecs: List<Node>, context: Context): Map<String, Block> {
     val blockMap = mutableMapOf<String, Block>()
 
-    val uuids = blockSpecs.map { UUID.randomUUID() }
+    val uuids = blockSpecs.map { UUID.randomUUID().toString() }
 
     blockSpecs.forEachIndexed { index, blockSpec ->
 
@@ -22,7 +22,7 @@ private fun createBlocks2(blockSpecs: List<Node>, context: Context): Map<String,
 
         val nextNode = if (index != blockSpecs.lastIndex) uuids[index + 1] else null
 
-        blockSpec.visit(blockMap, parent, uuids[index], nextNode, context)
+        blockSpec.visit(blockMap, parent, uuids[index].toString(), nextNode, context)
 
     }
 

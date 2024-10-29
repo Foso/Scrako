@@ -14,19 +14,19 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val destinationUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val destinationUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.sensing_touchingcolor,
             inputs = mapOf(
                 "COLOR" to setValue(color, destinationUUID, context)
             )
         ).toBlock(nextUUID, parent)
-        color.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        color.visit(visitors, identifier, destinationUUID, null, context)
     }
 }
 

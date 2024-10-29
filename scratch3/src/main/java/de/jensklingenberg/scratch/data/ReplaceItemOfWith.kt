@@ -23,14 +23,14 @@ private class ReplaceItemOfWith(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val indexUUID = UUID.randomUUID()
-        val replaceUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val indexUUID = UUID.randomUUID().toString()
+        val replaceUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_replaceitemoflist,
             inputs = mapOf(
                 "INDEX" to setValue(index, indexUUID, context),
@@ -38,8 +38,8 @@ private class ReplaceItemOfWith(
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
-        index.visit(visitors, identifier.toString(), indexUUID, null, context)
-        replace.visit(visitors, identifier.toString(), replaceUUID, null, context)
+        index.visit(visitors, identifier, indexUUID, null, context)
+        replace.visit(visitors, identifier, replaceUUID, null, context)
     }
 }
 

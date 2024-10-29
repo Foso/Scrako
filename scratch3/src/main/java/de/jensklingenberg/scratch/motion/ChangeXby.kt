@@ -16,18 +16,18 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context
     ) {
-        val operatorUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val operatorUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_changexby,
             inputs = mapOf(
                 "DX" to setValue(block, operatorUUID, context)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), operatorUUID, null, context)
+        block.visit(visitors, identifier, operatorUUID, null, context)
     }
 }
 

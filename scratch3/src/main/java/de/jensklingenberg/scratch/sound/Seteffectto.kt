@@ -20,13 +20,13 @@ private class Seteffectto(val block0: ReporterBlock, val effect: String) : Node 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val block0Id = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val block0Id = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = "sound_seteffectto",
             inputs = mapOf(
                 "VALUE" to setValue(block0, block0Id, context)
@@ -35,7 +35,7 @@ private class Seteffectto(val block0: ReporterBlock, val effect: String) : Node 
                 "EFFECT" to listOf(effect, null)
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, context)
+        block0.visit(visitors, identifier, block0Id, null, context)
     }
 }
 

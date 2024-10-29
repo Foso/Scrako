@@ -22,12 +22,13 @@ class ProjectBuilder {
     fun build(): ScratchProject {
 
         val newStage =
-            stage?.build(Context(globalVariableMap, lists), true)?.copy(isStage = true, visible = false, layerOrder = 0)
+            stage?.build(Context(globalVariableMap, lists, emptyList()), true)
+                ?.copy(isStage = true, visible = false, layerOrder = 0)
                 ?: defaultStage(
                     globalVariableMap
                 )
 
-        val targets = targets.map { it.build(Context(globalVariableMap, lists), false) }
+        val targets = targets.map { it.build(Context(globalVariableMap, lists, emptyList()), false) }
 
         return ScratchProject(
             targets = listOf(newStage) + targets

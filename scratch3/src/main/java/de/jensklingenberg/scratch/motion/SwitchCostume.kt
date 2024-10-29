@@ -18,13 +18,13 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
     ) {
-        val menuId = UUID.randomUUID()
-        val blockId = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val menuId = UUID.randomUUID().toString()
+        val blockId = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.looks_switchcostumeto,
             inputs = mapOf(
                 "COSTUME" to when (block) {
@@ -42,13 +42,13 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
 
         when (block) {
             is StringBlock -> {
-                CostumeMenu(block.value).visit(visitors, identifier.toString(), menuId, null, context)
+                CostumeMenu(block.value).visit(visitors, identifier, menuId, null, context)
 
             }
 
             else -> {
-                CostumeMenu().visit(visitors, identifier.toString(), menuId, null, context)
-                block.visit(visitors, identifier.toString(), menuId, null, context)
+                CostumeMenu().visit(visitors, identifier, menuId, null, context)
+                block.visit(visitors, identifier, menuId, null, context)
             }
         }
 
@@ -61,12 +61,12 @@ private class CostumeMenu(private val value: String? = "costume1") : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.looks_costume,
             fields = mapOf("COSTUME" to listOf(value, null)),
         ).toBlock(nextUUID, parent)

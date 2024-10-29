@@ -15,20 +15,20 @@ private class CreateCloneOf(private val spriteName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
         val uuid = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.control_create_clone_of,
             inputs = mapOf("CLONE_OPTION" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString()))))
         ).toBlock(nextUUID, parent)
         CreateCloneOfMenu(spriteName).visit(
             visitors,
-            identifier.toString(),
-            uuid,
+            identifier,
+            uuid.toString(),
             null,
             context,
         )
@@ -39,12 +39,12 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.control_create_clone_of_menu,
             fields = mapOf("CLONE_OPTION" to listOf(spriteName))
         ).toBlock(nextUUID, parent)

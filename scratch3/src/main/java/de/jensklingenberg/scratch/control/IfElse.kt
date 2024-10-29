@@ -21,16 +21,16 @@ internal class IfElse(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val name2 = identifier.toString()
+        val name2 = identifier
         val newNext = nextUUID
-        val operatorUUID = UUID.randomUUID()
-        val leftUUIDs = leftStack.map { UUID.randomUUID() }
-        val rightUUIDs = rightStack.map { UUID.randomUUID() }
+        val operatorUUID = UUID.randomUUID().toString()
+        val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
+        val rightUUIDs = rightStack.map { UUID.randomUUID().toString() }
 
         visitors[name2] = BlockSpec(
             opcode = OpCode.control_if_else,

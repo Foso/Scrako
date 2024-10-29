@@ -19,16 +19,16 @@ internal class IfThen(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
         val newNext = nextUUID
-        val operatorUUID = UUID.randomUUID()
-        val leftUUIDs = leftStack.map { UUID.randomUUID() }
+        val operatorUUID = UUID.randomUUID().toString()
+        val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
 
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.control_if,
             inputs = mapOf(
                 "CONDITION" to JsonArray(
@@ -45,7 +45,7 @@ internal class IfThen(
                 )
             )
         ).toBlock(newNext, parent)
-        condition.visit(visitors, identifier.toString(), operatorUUID, null, context)
+        condition.visit(visitors, identifier, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -54,7 +54,7 @@ internal class IfThen(
             val nextUUID = if (nextchild) leftUUIDs[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = identifier.toString(),
+                parent = identifier,
                 leftUUIDs[childIndex],
                 nextUUID, context,
 

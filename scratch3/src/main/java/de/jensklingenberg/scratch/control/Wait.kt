@@ -15,19 +15,19 @@ private class Wait(private val block: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val uuid = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val uuid = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = "control_wait",
             inputs = mapOf(
                 "DURATION" to setValue(block, uuid, context)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), uuid, null, context)
+        block.visit(visitors, identifier, uuid, null, context)
     }
 }
 

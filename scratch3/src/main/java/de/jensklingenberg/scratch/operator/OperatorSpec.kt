@@ -16,24 +16,24 @@ abstract class Operator(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val operatorUUID1 = operand1.associateWith { UUID.randomUUID() }
+        val operatorUUID1 = operand1.associateWith { UUID.randomUUID().toString() }
 
         val inputs = inputKeys.mapIndexed { index, key ->
             key to setValue(operand1[index], operatorUUID1[operand1[index]]!!, context)
         }.toMap()
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = opCode,
             inputs = inputs
         ).toBlock(nextUUID, parent)
         operatorUUID1.forEach { (t, u) ->
-            t.visit(visitors, identifier.toString(), u, null, context)
+            t.visit(visitors, identifier, u, null, context)
         }
-        // operand2?.visit(visitors, identifier.toString(), operatorUUID2, null, )
+        // operand2?.visit(visitors, identifier, operatorUUID2, null, )
     }
 
     operator fun plus(add: Add): Add {

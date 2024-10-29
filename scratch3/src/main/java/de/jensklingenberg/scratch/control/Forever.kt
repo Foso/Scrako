@@ -17,8 +17,8 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
     ) {
 
@@ -26,19 +26,18 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
             throw IllegalArgumentException("Forever block can't have a next block")
         }
 
-        val childUUIDS = childs.map { UUID.randomUUID() }
+        val childUUIDS = childs.map { UUID.randomUUID().toString() }
         childs.mapIndexed { childIndex, visitor ->
             val nextchild = childIndex != childs.lastIndex
 
             val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = identifier.toString(),
-                childUUIDS[childIndex],
+                parent = identifier,
+                childUUIDS[childIndex].toString(),
                 nextUUID,
-                context,
-
-                )
+                context
+            )
         }
 
         val inputs: MutableMap<String, JsonArray> = mutableMapOf()
@@ -52,7 +51,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
             )
         }
 
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.control_forever,
             inputs = inputs
         ).toBlock(null, parent)

@@ -22,18 +22,18 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
     ) {
-        val protoUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val protoUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.event_whengreaterthan,
             inputs = mapOf("VALUE" to setValue(value, protoUUID, context)),
             fields = mapOf("WHENGREATERTHANMENU" to listOf(option.option, null))
         ).toBlock(nextUUID, parent)
 
-        value.visit(visitors, identifier.toString(), protoUUID, null, context)
+        value.visit(visitors, identifier, protoUUID, null, context)
     }
 
 }

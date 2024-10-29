@@ -17,14 +17,6 @@ class Broadcast(val name: String) {
 }
 
 
-fun readList(name: String): List<String> {
-    val list = mutableListOf<String>()
-    File(name).forEachLine {
-        list.add(it)
-    }
-    return list
-}
-
 fun copyFiles(inputPath: String, targetPath: String) {
     val soundFiles = File(inputPath + "sounds").listFiles()
 
@@ -39,7 +31,7 @@ fun copyFiles(inputPath: String, targetPath: String) {
     }
 }
 
-fun writeProject(scratchProject: ScratchProject, inputPath: String, targetPath: String) {
+fun writeProject(scratchProject: ScratchProject, inputPath: String, targetPath: String, fileName: String) {
 
     copyFiles(inputPath, targetPath)
 
@@ -48,12 +40,12 @@ fun writeProject(scratchProject: ScratchProject, inputPath: String, targetPath: 
     File("$targetPath/project.json").writeText(text)
 
     val filesToZip = File(targetPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList() ?: emptyList()
-    val outputZipFile = File("$targetPath/test4.sb3")
+    val outputZipFile = File("$targetPath/$fileName")
     zipFiles(filesToZip, outputZipFile)
 
 }
 
-fun zipFiles(files: List<File>, outputZipFile: File) {
+private fun zipFiles(files: List<File>, outputZipFile: File) {
 
     ZipOutputStream(FileOutputStream(outputZipFile)).use { zipOut ->
         files.forEach { file ->

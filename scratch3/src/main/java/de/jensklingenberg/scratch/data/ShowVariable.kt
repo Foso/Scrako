@@ -6,21 +6,20 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScratchVariable
-import java.util.UUID
 
 private open class MyVariable(private val variable: String, val opCode: String) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
     ) {
         val varId = context.variableMap[variable]
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = opCode,
             fields = mapOf("VARIABLE" to listOf(variable, varId.toString()))
-        ).toBlock(nextUUID, identifier.toString())
+        ).toBlock(nextUUID, identifier)
     }
 }
 

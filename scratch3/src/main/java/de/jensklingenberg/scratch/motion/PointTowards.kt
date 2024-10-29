@@ -16,20 +16,20 @@ private class PointTowards(private val target: String) : Node, MotionBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val uuid = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val uuid = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_pointtowards,
             inputs = mapOf(
                 "TOWARDS" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString())))
             )
         ).toBlock(nextUUID, parent)
 
-        PointTowardsMenu(target).visit(visitors, identifier.toString(), uuid, null, context)
+        PointTowardsMenu(target).visit(visitors, identifier, uuid, null, context)
     }
 }
 

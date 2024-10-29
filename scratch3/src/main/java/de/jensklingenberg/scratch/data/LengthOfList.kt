@@ -7,18 +7,17 @@ import de.jensklingenberg.scrako.common.ListBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scratch.common.OpCode
-import java.util.UUID
 
 private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_lengthoflist,
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)

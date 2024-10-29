@@ -14,25 +14,25 @@ private class BitwiseRightShift(
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val block0Id = UUID.randomUUID()
-        val block1Id = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val block0Id = UUID.randomUUID().toString()
+        val block1Id = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = "Bitwise_bitwiseRightShift",
             inputs = mapOf(
-                "LEFT" to setValue(block0, block0Id,context),
-                "RIGHT" to setValue(block1, block1Id,context)
+                "LEFT" to setValue(block0, block0Id, context),
+                "RIGHT" to setValue(block1, block1Id, context)
             ),
             fields = mapOf(
 
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, context)
-        block1.visit(visitors, identifier.toString(), block1Id, null, context)
+        block0.visit(visitors, identifier, block0Id, null, context)
+        block1.visit(visitors, identifier, block1Id, null, context)
     }
 }
 

@@ -36,13 +36,15 @@ data class Target(
 internal fun createTarget(
     blocks: Map<String, Block>,
     sprite: Sprite,
+    name: String = sprite.name,
     comments: List<Comment> = emptyList(),
     lists: Map<String, ScratchList>,
-    variables: Map<String, UUID>
+    variables: Map<String, UUID>,
+    costumes: List<Costume>
 ): Target {
     val targe2 = Target(
         isStage = false,
-        name = sprite.name,
+        name = name,
         variables = variables.map {
             it.key to JsonArray(
                 listOf(

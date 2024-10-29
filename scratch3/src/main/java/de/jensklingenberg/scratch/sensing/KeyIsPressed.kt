@@ -14,19 +14,19 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val destinationUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val destinationUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.sensing_keypressed,
             inputs = mapOf(
                 "KEY_OPTION" to setValue(block, destinationUUID, context)
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        block.visit(visitors, identifier, destinationUUID, null, context)
     }
 }
 
@@ -38,18 +38,18 @@ private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val destinationUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val destinationUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.sensing_keyoptions,
             fields = mapOf(
                 "KEY_OPTION" to listOf(reporter.key.value, null)
             )
         ).toBlock(nextUUID, parent)
-        reporter.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        reporter.visit(visitors, identifier, destinationUUID, null, context)
     }
 }

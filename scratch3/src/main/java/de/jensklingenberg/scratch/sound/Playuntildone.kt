@@ -15,13 +15,13 @@ private class Playuntildone(val block0: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val block0Id = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val block0Id = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = sound_playuntildone,
             inputs = mapOf(
                 "SOUND_MENU" to setValue(block0, block0Id, context)
@@ -30,7 +30,7 @@ private class Playuntildone(val block0: ReporterBlock) : Node {
 
             )
         ).toBlock(nextUUID, parent)
-        block0.visit(visitors, identifier.toString(), block0Id, null, context)
+        block0.visit(visitors, identifier, block0Id, null, context)
     }
 }
 

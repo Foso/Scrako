@@ -16,19 +16,19 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val destinationUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val destinationUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.sensing_of,
             inputs = mapOf(
                 "OBJECT" to JsonArray(
                     listOf(
                         JsonPrimitive(ScratchType.OBJECT.value),
-                        JsonPrimitive(destinationUUID.toString()),
+                        JsonPrimitive(destinationUUID),
                     )
                 )
             ),
@@ -38,7 +38,7 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
                 )
             )
         ).toBlock(nextUUID, parent)
-        block.visit(visitors, identifier.toString(), destinationUUID, null, context)
+        block.visit(visitors, identifier, destinationUUID, null, context)
     }
 }
 
@@ -46,12 +46,12 @@ private class SensingOfMenu(val objectName: String) : BooleanBlock, SensingBlock
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.sensing_of_object_menu,
             fields = mapOf(
                 "OBJECT" to listOf(

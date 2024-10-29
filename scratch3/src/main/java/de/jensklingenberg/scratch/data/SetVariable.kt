@@ -16,19 +16,19 @@ private class SetVariable(private val variableName: String, private val item: Re
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
     ) {
         val variableId = context.variableMap[variableName]
 
-        val itemUUID = UUID.randomUUID()
-        visitors[identifier.toString()] = BlockSpec(
+        val itemUUID = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.data_setvariableto,
             inputs = mapOf("VALUE" to setValue(item, itemUUID, context)),
             fields = mapOf("VARIABLE" to listOf(variableName, variableId?.toString()))
         ).toBlock(nextUUID, parent)
-        item.visit(visitors, identifier.toString(), itemUUID, null, context)
+        item.visit(visitors, identifier, itemUUID, null, context)
     }
 }
 

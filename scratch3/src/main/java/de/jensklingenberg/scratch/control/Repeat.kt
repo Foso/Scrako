@@ -19,14 +19,14 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
-        identifier: UUID,
-        nextUUID: UUID?,
+        identifier: String,
+        nextUUID: String?,
         context: Context,
 
         ) {
-        val operatorUUID = UUID.randomUUID()
+        val operatorUUID = UUID.randomUUID().toString()
 
-        val childUUIDS = childs.map { UUID.randomUUID() }
+        val childUUIDS = childs.map { UUID.randomUUID().toString() }
 
         val inputs = mutableMapOf(
             "TIMES" to setValue(times, operatorUUID, context)
@@ -41,14 +41,14 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
             )
         }
 
-        visitors[identifier.toString()] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = OpCode.control_repeat,
             inputs = inputs
         ).toBlock(nextUUID, parent)
 
         times.visit(
             visitors,
-            identifier.toString(),
+            identifier,
             operatorUUID,
             null, context,
 
@@ -61,7 +61,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
             val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = identifier.toString(),
+                parent = identifier,
                 childUUIDS[childIndex],
                 nextUUID, context,
 
