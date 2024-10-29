@@ -23,7 +23,7 @@ internal sealed class Turn(val opcode: String, private val reporterBlock: Report
         visitors[identifier.toString()] = BlockSpec(
             opcode = opcode,
             inputs = mapOf(
-                "DEGREES" to setValue(reporterBlock, operatorUUID)
+                "DEGREES" to setValue(reporterBlock, operatorUUID, context)
             )
         ).toBlock(nextUUID, parent)
         reporterBlock.visit(visitors, identifier.toString(), operatorUUID, null, context)

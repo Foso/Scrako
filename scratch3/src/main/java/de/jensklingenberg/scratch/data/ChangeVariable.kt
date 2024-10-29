@@ -25,7 +25,7 @@ private class ChangeVariable(private val block: ReporterBlock, private val varia
         val itemUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_changevariableby,
-            inputs = mapOf("VALUE" to setValue(block, itemUUID)),
+            inputs = mapOf("VALUE" to setValue(block, itemUUID, context)),
             fields = mapOf("VARIABLE" to listOf(variableName, variable?.toString()))
         ).toBlock(nextUUID, identifier.toString())
         block.visit(visitors, identifier.toString(), itemUUID, null, context)

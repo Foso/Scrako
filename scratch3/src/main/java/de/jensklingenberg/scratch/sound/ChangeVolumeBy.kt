@@ -23,7 +23,7 @@ private class ChangeVolumeBy(val block0: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_changevolumeby,
             inputs = mapOf(
-                "VOLUME" to setValue(block0, block0Id)
+                "VOLUME" to setValue(block0, block0Id, context)
             ),
             fields = mapOf(
 

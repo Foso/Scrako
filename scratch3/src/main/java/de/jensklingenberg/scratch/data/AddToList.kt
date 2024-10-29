@@ -26,7 +26,7 @@ private class AddToList(private val list: ScratchList, private val block: Report
         val childId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_addtolist,
-            inputs = mapOf("ITEM" to setValue(block, childId)),
+            inputs = mapOf("ITEM" to setValue(block, childId, context)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), childId, null, context)

@@ -37,7 +37,7 @@ internal fun createTarget(
     blocks: Map<String, Block>,
     sprite: Sprite,
     comments: List<Comment> = emptyList(),
-    lists: Set<ScratchList>? = emptySet(),
+    lists: Map<String, ScratchList>,
     variables: Map<String, UUID>
 ): Target {
     val targe2 = Target(
@@ -51,14 +51,14 @@ internal fun createTarget(
                 )
             )
         }.toMap(),
-        lists = lists?.associate {
-            it.id.toString() to JsonArray(
+        lists = lists.map {
+            it.key to JsonArray(
                 listOf(
-                    JsonPrimitive(it.name),
-                    JsonArray(it.contents.map { JsonPrimitive(it) })
+                    JsonPrimitive(it.key),
+                    JsonArray(it.value.contents.map { JsonPrimitive(it) })
                 )
             )
-        } ?: emptyMap(),
+        }.toMap(),
         broadcasts = emptyMap(),
         blocks = blocks,
         comments = comments.associateBy { it.id },

@@ -23,7 +23,7 @@ private class Setvolumeto(val block0: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_setvolumeto,
             inputs = mapOf(
-                "VOLUME" to setValue(block0, block0Id)
+                "VOLUME" to setValue(block0, block0Id, context)
             ),
             fields = mapOf(
 

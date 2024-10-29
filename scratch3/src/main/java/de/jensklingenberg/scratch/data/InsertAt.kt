@@ -33,8 +33,8 @@ private class InsertAt(
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_insertatlist,
             inputs = mapOf(
-                "INDEX" to setValue(index, indexBlockId),
-                "ITEM" to setValue(block, dataBlockId)
+                "INDEX" to setValue(index, indexBlockId, context),
+                "ITEM" to setValue(block, dataBlockId, context)
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)

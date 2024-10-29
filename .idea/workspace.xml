@@ -4,8 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="fix variables">
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="Reformat">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/CreateSprite2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/CreateSprite2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/TargetBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/TargetBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Node.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Node.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchVariable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/createList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/getOrCreateList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/control/Repeat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/control/Repeat.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/control/Wait.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/control/Wait.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/control/WaitUntil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/control/WaitUntil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/AddToList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/AddToList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/InsertAt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/InsertAt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ItemNumOfList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ItemNumOfList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ListContains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ListContains.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ReplaceItemOfWith.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ReplaceItemOfWith.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/SetVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/SetVariable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/event/WhenGreaterThan.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/event/WhenGreaterThan.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/ChangeEffectBy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/ChangeEffectBy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Say.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Say.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/SetEffectTo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/SetEffectTo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/SetSize.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/SetSize.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/ChangeXby.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/ChangeXby.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/ChangeYby.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/ChangeYby.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/GlideToXY.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/GlideToXY.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Goto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Goto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/MoveSteps.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/MoveSteps.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointInDirection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointInDirection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Turn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Turn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/OperatorSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/OperatorSpec.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sensing/KeyIsPressed.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sensing/KeyIsPressed.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sensing/TouchingColor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sensing/TouchingColor.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/ChangeVolumeBy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/ChangeVolumeBy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Changeeffectby.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Changeeffectby.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Playuntildone.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Playuntildone.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Seteffectto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Seteffectto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Setvolumeto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/sound/Setvolumeto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turbowarp/src/main/kotlin/bitwise/BitwiseRightShift.kt" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/src/main/kotlin/bitwise/BitwiseRightShift.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turbowarp/src/main/kotlin/files/ShowPickerAs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/src/main/kotlin/files/ShowPickerAs.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,14 +203,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00007" summary="AddToList">
-      <option name="closed" value="true" />
-      <created>1729533195973</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1729533195973</updated>
     </task>
     <task id="LOCAL-00008" summary="think">
       <option name="closed" value="true" />
@@ -552,7 +588,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730146675522</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Reformat">
+      <option name="closed" value="true" />
+      <created>1730146939157</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1730146939157</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -578,7 +622,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="stop the sound2" />
     <MESSAGE value="private" />
     <MESSAGE value="mods" />
     <MESSAGE value="listContains" />
@@ -603,7 +646,8 @@
     <MESSAGE value="builder" />
     <MESSAGE value="context" />
     <MESSAGE value="fix variables" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix variables" />
+    <MESSAGE value="Reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -615,17 +659,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt</url>
-          <line>17</line>
+          <line>23</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/TargetBuilder.kt</url>
-          <line>39</line>
+          <line>58</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt</url>
-          <line>23</line>
+          <line>29</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
@@ -633,7 +677,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/TargetBuilder.kt</url>
-          <line>21</line>
+          <line>27</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
@@ -643,6 +687,26 @@
           <url>file://$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Say.kt</url>
           <line>40</line>
           <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt</url>
+          <line>42</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/TargetBuilder.kt</url>
+          <line>23</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/extension/pen/Clear.kt</url>
+          <line>18</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/AddToList.kt</url>
+          <line>26</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

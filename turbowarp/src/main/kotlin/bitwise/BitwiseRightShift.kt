@@ -24,8 +24,8 @@ private class BitwiseRightShift(
         visitors[identifier.toString()] = BlockSpec(
             opcode = "Bitwise_bitwiseRightShift",
             inputs = mapOf(
-                "LEFT" to setValue(block0, block0Id),
-                "RIGHT" to setValue(block1, block1Id)
+                "LEFT" to setValue(block0, block0Id,context),
+                "RIGHT" to setValue(block1, block1Id,context)
             ),
             fields = mapOf(
 

@@ -33,8 +33,8 @@ private class ReplaceItemOfWith(
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_replaceitemoflist,
             inputs = mapOf(
-                "INDEX" to setValue(index, indexUUID),
-                "ITEM" to setValue(replace, replaceUUID)
+                "INDEX" to setValue(index, indexUUID, context),
+                "ITEM" to setValue(replace, replaceUUID, context)
             ),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)

@@ -23,7 +23,7 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sensing_touchingcolor,
             inputs = mapOf(
-                "COLOR" to setValue(color, destinationUUID)
+                "COLOR" to setValue(color, destinationUUID, context)
             )
         ).toBlock(nextUUID, parent)
         color.visit(visitors, identifier.toString(), destinationUUID, null, context)

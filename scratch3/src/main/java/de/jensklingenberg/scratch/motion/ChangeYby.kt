@@ -24,7 +24,7 @@ private class ChangeYby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_changeyby,
             inputs = mapOf(
-                "DY" to setValue(block, operatorUUID)
+                "DY" to setValue(block, operatorUUID, context)
             )
         ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), operatorUUID, null, context)

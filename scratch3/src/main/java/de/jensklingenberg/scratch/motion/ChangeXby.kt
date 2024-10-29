@@ -24,7 +24,7 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_changexby,
             inputs = mapOf(
-                "DX" to setValue(block, operatorUUID)
+                "DX" to setValue(block, operatorUUID, context)
             )
         ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), operatorUUID, null, context)

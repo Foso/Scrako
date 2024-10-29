@@ -25,7 +25,7 @@ private class SetVariable(private val variableName: String, private val item: Re
         val itemUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_setvariableto,
-            inputs = mapOf("VALUE" to setValue(item, itemUUID)),
+            inputs = mapOf("VALUE" to setValue(item, itemUUID, context)),
             fields = mapOf("VARIABLE" to listOf(variableName, variableId?.toString()))
         ).toBlock(nextUUID, parent)
         item.visit(visitors, identifier.toString(), itemUUID, null, context)

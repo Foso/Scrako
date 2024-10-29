@@ -24,7 +24,7 @@ private class ItemNumOfList(private val block0: ReporterBlock, private val list:
         val itemUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.data_itemnumoflist,
-            inputs = mapOf("ITEM" to setValue(block0, itemUUID)),
+            inputs = mapOf("ITEM" to setValue(block0, itemUUID, context)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier.toString(), itemUUID, null, context)

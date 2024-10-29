@@ -29,7 +29,7 @@ private class Seteffectto(val block0: ReporterBlock, val effect: String) : Node 
         visitors[identifier.toString()] = BlockSpec(
             opcode = "sound_seteffectto",
             inputs = mapOf(
-                "VALUE" to setValue(block0, block0Id)
+                "VALUE" to setValue(block0, block0Id, context)
             ),
             fields = mapOf(
                 "EFFECT" to listOf(effect, null)

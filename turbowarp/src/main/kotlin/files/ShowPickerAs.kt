@@ -22,7 +22,7 @@ private class ShowPickerAs(val block0: ReporterBlock) : BooleanBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = TurboOpCode.files_showPickerAs,
             inputs = mapOf(
-                "as" to setValue(block0, block0Id)
+                "as" to setValue(block0, block0Id,context)
             ),
             fields = mapOf(
 

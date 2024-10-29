@@ -29,7 +29,7 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
         val protoUUID = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.event_whengreaterthan,
-            inputs = mapOf("VALUE" to setValue(value, protoUUID)),
+            inputs = mapOf("VALUE" to setValue(value, protoUUID, context)),
             fields = mapOf("WHENGREATERTHANMENU" to listOf(option.option, null))
         ).toBlock(nextUUID, parent)
 

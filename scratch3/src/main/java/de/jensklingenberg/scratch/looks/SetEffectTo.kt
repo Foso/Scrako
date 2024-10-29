@@ -23,7 +23,7 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.looks_seteffectto,
             inputs = mapOf(
-                "VALUE" to setValue(block, block1Id)
+                "VALUE" to setValue(block, block1Id, context)
             ),
             fields = mapOf(
                 "EFFECT" to listOf(

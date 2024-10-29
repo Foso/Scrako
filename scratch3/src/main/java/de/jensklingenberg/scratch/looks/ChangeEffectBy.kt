@@ -22,7 +22,7 @@ private class ChangeEffectBy(val block0: ReporterBlock, val effect: String) : No
         visitors[identifier.toString()] = BlockSpec(
             opcode = looks_changeeffectby,
             inputs = mapOf(
-                "CHANGE" to setValue(block0, block0Id)
+                "CHANGE" to setValue(block0, block0Id, context)
             ),
             fields = mapOf(
                 "EFFECT" to listOf(effect, null)

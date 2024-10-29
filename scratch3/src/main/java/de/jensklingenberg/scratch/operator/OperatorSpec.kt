@@ -24,7 +24,7 @@ abstract class Operator(
         val operatorUUID1 = operand1.associateWith { UUID.randomUUID() }
 
         val inputs = inputKeys.mapIndexed { index, key ->
-            key to setValue(operand1[index], operatorUUID1[operand1[index]]!!)
+            key to setValue(operand1[index], operatorUUID1[operand1[index]]!!, context)
         }.toMap()
         visitors[identifier.toString()] = BlockSpec(
             opcode = opCode,

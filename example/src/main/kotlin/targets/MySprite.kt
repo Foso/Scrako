@@ -3,12 +3,10 @@ package me.jens.targets
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addSprite
 import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.common.getOrCreateVariable
+import de.jensklingenberg.scrako.common.getOrCreateList
 import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.targetBuilder
 import de.jensklingenberg.scratch.Broadcast
-import de.jensklingenberg.scratch.control.forever
-import de.jensklingenberg.scratch.data.changeVariable
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.procedures.ArgumentBoolean
@@ -27,6 +25,8 @@ fun ProjectBuilder.MyTarget(jensList: ScratchList) {
     targetBuilder("Sprite1") {
         addSprite(sprite1)
 
+       getOrCreateList("jens")
+
         scriptBuilder {
             define("Hallo"){
                 say("Hallo")
@@ -40,10 +40,9 @@ fun ProjectBuilder.MyTarget(jensList: ScratchList) {
         }
 
         scriptBuilder {
-            val element = getOrCreateVariable("myVar")
+            //val element = getOrCreateVariable("myVar")
             whenFlagClicked()
-            changeVariable(element, 1.0)
-            say(element)
+
 
             //say(showPickerAs("text"))
         }

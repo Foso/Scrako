@@ -21,7 +21,7 @@ private class ControlWaitUntil(private val condition: BooleanBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = "control_wait_until",
             inputs = mapOf(
-                "CONDITION" to setValue(condition, uuid)
+                "CONDITION" to setValue(condition, uuid, context)
             )
         ).toBlock(nextUUID, parent)
         condition.visit(visitors, identifier.toString(), uuid, null, context)

@@ -53,7 +53,7 @@ data class Monitor(
     val opcode: String,
     val params: Map<String, String>,
     val spriteName: String?,
-    @Transient  val value: Double = 0.0,
+    @Transient val value: Double = 0.0,
     val width: Double,
     val height: Double,
     val x: Double,

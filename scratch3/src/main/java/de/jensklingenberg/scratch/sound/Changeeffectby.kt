@@ -23,7 +23,7 @@ private class Changeeffectby(val block0: ReporterBlock, val effect: String) : No
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sound_changeeffectby,
             inputs = mapOf(
-                "VALUE" to setValue(block0, block0Id)
+                "VALUE" to setValue(block0, block0Id, context)
             ),
             fields = mapOf(
                 "EFFECT" to listOf(effect, null)

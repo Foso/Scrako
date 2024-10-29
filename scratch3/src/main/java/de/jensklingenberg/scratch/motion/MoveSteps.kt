@@ -25,7 +25,7 @@ private class Move(val block: ReporterBlock) : Node, MotionBlock {
         val childId = UUID.randomUUID()
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_movesteps,
-            inputs = mapOf("STEPS" to setValue(block, childId))
+            inputs = mapOf("STEPS" to setValue(block, childId, context))
         ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), childId, null, context)
 

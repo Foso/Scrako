@@ -6,7 +6,6 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.backdrop
-import de.jensklingenberg.scrako.common.getGlobalVariable
 import de.jensklingenberg.scrako.common.projectBuilder
 import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.stageBuilder
@@ -15,21 +14,11 @@ import de.jensklingenberg.scratch.readList
 import de.jensklingenberg.scratch.writeProject
 import kotlinx.serialization.json.Json
 import me.jens.targets.MyTarget
-import me.jens.targets.createSprite2
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.util.zip.ZipInputStream
 
-val source = "@.str = private unnamed_addr constant [13 x i8] c\"hello world\\0A\\00\", align 1\n" +
-        "\n" +
-        "declare i32 @printf(i8*, ...)\n" +
-        "\n" +
-        "define i32 @main() {\n" +
-        "entry:\n" +
-        "  %0 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([13 x i8], [13 x i8]* @.str, i32 0, i32 0))\n" +
-        "  ret i32 0\n" +
-        "}"
 val sprite1 = Sprite(
     "Sprite1", listOf(
         costume1,
@@ -56,6 +45,38 @@ private val json = Json {
 }
 
 fun main() {
+    val myList =
+        importer()
+
+
+    val proj = projectBuilder {
+      //  getOrCreateGlobalList("myList")
+        //getGlobalVariable("myVar")
+        MyStage()
+        MyTarget(myList)
+        //createSprite2()
+    }
+
+
+    writeProject(
+        proj.build(),
+        "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/",
+        "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
+    )
+
+    val processBuilder = ProcessBuilder("pkill", "-9", "TurboWarp")
+    processBuilder.inheritIO()
+    val process = processBuilder.start()
+    process.waitFor()
+
+
+    val processBuilder2 = ProcessBuilder("open", "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/test4.sb3")
+    processBuilder2.inheritIO()
+    val process2 = processBuilder2.start()
+    process2.waitFor()
+}
+
+private fun importer(): ScratchList {
     var projectFile: String = ""
 
     val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/Project.sb3"
@@ -141,32 +162,7 @@ fun main() {
             //  }
         }
     }
-
-
-    val proj = projectBuilder {
-        getGlobalVariable("myVar")
-        MyStage()
-        MyTarget(myList)
-        createSprite2()
-    }
-
-
-    writeProject(
-        proj.build(),
-        "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/",
-        "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
-    )
-
-    val processBuilder = ProcessBuilder("pkill", "-9", "TurboWarp")
-    processBuilder.inheritIO()
-    val process = processBuilder.start()
-    process.waitFor()
-
-
-    val processBuilder2 = ProcessBuilder("open", "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/test4.sb3")
-    processBuilder2.inheritIO()
-    val process2 = processBuilder2.start()
-    process2.waitFor()
+    return myList
 }
 
 private fun ProjectBuilder.MyStage() {

@@ -55,7 +55,8 @@ fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
 
 fun setValue(
     reporterBlock: ReporterBlock,
-    operatorUUID: UUID
+    operatorUUID: UUID,
+    context: Context
 ) = when (reporterBlock) {
     is IntBlock -> {
         JsonArray(
@@ -88,7 +89,7 @@ fun setValue(
                     listOf(
                         JsonPrimitive(ScratchType.VARIABLE.value),
                         JsonPrimitive(reporterBlock.name),
-                        JsonPrimitive(reporterBlock.id.toString())
+                        JsonPrimitive(context.variableMap[reporterBlock.name].toString())
                     )
                 ),
                 JsonPrimitive(null)
@@ -157,7 +158,7 @@ fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     return targetBuilder
 }
 
-fun ProjectBuilder.targetBuilder(name: String,ff: TargetBuilder.() -> Unit): TargetBuilder {
+fun ProjectBuilder.targetBuilder(name: String, ff: TargetBuilder.() -> Unit): TargetBuilder {
     val targetBuilder = TargetBuilder()
     ff.invoke(targetBuilder)
     targetBuilder.name = name
@@ -172,7 +173,7 @@ fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilde
     return scriptBuilder
 }
 
-class FunctionBuilder{
+class FunctionBuilder {
     val scriptBuilder = ScriptBuilder()
 }
 
@@ -192,5 +193,11 @@ fun FunctionBuilder.define(name: String, builder: ScriptBuilder.() -> Unit) {
 fun ProjectBuilder.getGlobalVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
     addVariable(name)
+    return element
+}
+
+fun ProjectBuilder.getOrCreateGlobalList(name: String, contents: List<String> = emptyList()): ScratchList {
+    val element = ScratchList(name, contents)
+    addList(element)
     return element
 }

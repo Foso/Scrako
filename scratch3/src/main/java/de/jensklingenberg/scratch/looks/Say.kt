@@ -38,10 +38,10 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
                 is StringBlock -> createMessage(1, ScratchType.STRING.value, content.value)
                 is ScratchVariable -> {
                     val id = context.variableMap[content.name] ?: throw IllegalArgumentException("Variable not found")
-                    setValue(content, id)
+                    setValue(content, id, context)
                 }
 
-                is ScratchList -> setValue(content, operatorUUID)
+                is ScratchList -> setValue(content, operatorUUID, context)
 
                 else -> {
                     JsonArray(

@@ -31,9 +31,9 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.motion_glidesecstoxy,
             inputs = mapOf(
-                "SECS" to setValue(sec, secID),
-                "X" to setValue(toX, toXID),
-                "Y" to setValue(toY, toYID)
+                "SECS" to setValue(sec, secID, context),
+                "X" to setValue(toX, toXID, context),
+                "Y" to setValue(toY, toYID, context)
             )
         ).toBlock(nextUUID, parent)
 

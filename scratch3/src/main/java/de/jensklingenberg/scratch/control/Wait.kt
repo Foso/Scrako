@@ -24,7 +24,7 @@ private class Wait(private val block: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = "control_wait",
             inputs = mapOf(
-                "DURATION" to setValue(block, uuid)
+                "DURATION" to setValue(block, uuid, context)
             )
         ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), uuid, null, context)

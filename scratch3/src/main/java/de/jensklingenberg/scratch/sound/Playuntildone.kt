@@ -24,7 +24,7 @@ private class Playuntildone(val block0: ReporterBlock) : Node {
         visitors[identifier.toString()] = BlockSpec(
             opcode = sound_playuntildone,
             inputs = mapOf(
-                "SOUND_MENU" to setValue(block0, block0Id)
+                "SOUND_MENU" to setValue(block0, block0Id, context)
             ),
             fields = mapOf(
 

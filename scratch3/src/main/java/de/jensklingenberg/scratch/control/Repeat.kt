@@ -29,7 +29,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
         val childUUIDS = childs.map { UUID.randomUUID() }
 
         val inputs = mutableMapOf(
-            "TIMES" to setValue(times, operatorUUID)
+            "TIMES" to setValue(times, operatorUUID, context)
         )
 
         childs.firstOrNull()?.let {

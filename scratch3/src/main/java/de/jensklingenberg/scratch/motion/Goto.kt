@@ -32,7 +32,7 @@ private class Goto(private val block: ReporterBlock) : Node, MotionBlock {
                     }
 
                     else -> {
-                        setValue(block, uuid)
+                        setValue(block, uuid, context)
                     }
                 }
             )

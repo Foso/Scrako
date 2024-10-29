@@ -23,7 +23,7 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
         visitors[identifier.toString()] = BlockSpec(
             opcode = OpCode.sensing_keypressed,
             inputs = mapOf(
-                "KEY_OPTION" to setValue(block, destinationUUID)
+                "KEY_OPTION" to setValue(block, destinationUUID, context)
             )
         ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier.toString(), destinationUUID, null, context)
