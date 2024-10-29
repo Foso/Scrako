@@ -15,17 +15,13 @@ private class ShowPickerAs(val block0: ReporterBlock) : BooleanBlock {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = "files_showPickerAs",
             inputs = mapOf(
                 "as" to setValue(block0, block0Id, context)
-            ),
-            fields = mapOf(
-
             )
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier, block0Id, null, context)
@@ -44,9 +40,6 @@ private class Menu_encoding(val encoding: String) : ObjectReporter {
 
         visitors[identifier] = BlockSpec(
             opcode = "files_menu_encoding",
-            inputs = mapOf(
-
-            ),
             fields = mapOf(
                 "encoding" to listOf(encoding, null)
             )

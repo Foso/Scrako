@@ -3,10 +3,9 @@ package de.jensklingenberg.scratch.procedures
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.common.ReporterBlock
+import java.util.UUID
 
-class ArgumentBoolean(override val name: String, override val defaultValue: String = "") : Argument, ReporterBlock {
-
+class ArgumentString(override val name: String, override val defaultValue: String = "") : Argument {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -15,10 +14,10 @@ class ArgumentBoolean(override val name: String, override val defaultValue: Stri
         context: Context,
     ) {
         visitors[identifier] = BlockSpec(
-            opcode = "argument_reporter_boolean",
+            opcode = "argument_reporter_string_number",
             fields = mapOf("VALUE" to listOf(name, null))
         ).toBlock(null, parent)
     }
 }
 
-fun addArgumentBoolean(name: String, defaultValue: String = "") = ArgumentBoolean(name, defaultValue)
+fun addArgumentString(name: String, defaultValue: String = "") = ArgumentString(name, defaultValue)

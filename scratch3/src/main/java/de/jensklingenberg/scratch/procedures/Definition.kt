@@ -1,6 +1,8 @@
 package de.jensklingenberg.scratch.procedures
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.common.Argument2
+import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
@@ -46,58 +48,41 @@ internal class Definition(
                 parent = identifier,
                 childUUIDS[childIndex],
                 nextUUID,
-                context,
-
-                )
+                context
+            )
         }
 
-    }
-}
-
-class ArgumentString(override val name: String, override val defaultValue: String = "") : Argument {
-    override val id: UUID = UUID.randomUUID()
-    override fun visit(
-        visitors: MutableMap<String, Block>,
-        parent: String?,
-        identifier: String,
-        nextUUID: String?,
-        context: Context,
-    ) {
-        visitors[identifier] = BlockSpec(
-            opcode = "argument_reporter_string_number",
-            fields = mapOf("VALUE" to listOf("number or text", null))
-        ).toBlock(null, null)
     }
 }
 
 interface Argument : ReporterBlock {
     val name: String
     val defaultValue: String
-    val id: UUID
-
 }
 
 
-sealed interface ArgumentType {
-    data object BOOLEAN : ArgumentType
-    data object NUMBER_OR_TEXT : ArgumentType
-}
-
-class Argument2(val name: String, val type: ArgumentType)
-
+class DefinitionBuilder(val args: List<Argument2>) : ScriptBuilder()
 
 fun ScriptBuilder.define(
     customBlockName: String,
     arguments: List<Argument2> = emptyList(),
     withoutRefresh: Boolean = false,
-    builder: ScriptBuilder.() -> Unit
+    builder: DefinitionBuilder.() -> Unit
 ) {
-    functionsMap[customBlockName] = arguments.map { it.name }
+    functionsMap[customBlockName] = arguments
+
     addNode(
         Definition(
             Prototype(customBlockName, withoutRefresh, arguments),
-            ScriptBuilder().apply(builder).childs
+            DefinitionBuilder(arguments).apply(builder).childs
         )
     )
+}
+
+fun DefinitionBuilder.getArgs() = args.map {
+    when (it.type) {
+        ArgumentType.BOOLEAN -> addArgumentBoolean(it.name)
+        ArgumentType.NUMBER_OR_TEXT -> addArgumentString(it.name)
+    }
 }
 

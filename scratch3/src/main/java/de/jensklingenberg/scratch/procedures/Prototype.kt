@@ -1,5 +1,7 @@
 package de.jensklingenberg.scratch.procedures
 
+import de.jensklingenberg.scrako.common.Argument2
+import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
@@ -11,9 +13,9 @@ import java.util.UUID
 
 
 internal class Prototype(
-    val customBlockName: String,
-    val withoutRefresh: Boolean = false,
-    val arguments: List<Argument2>
+    private val customBlockName: String,
+    private val withoutRefresh: Boolean = false,
+    private val arguments: List<Argument2>
 ) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -27,7 +29,6 @@ internal class Prototype(
             when (it.type) {
                 ArgumentType.BOOLEAN -> "%b"
                 ArgumentType.NUMBER_OR_TEXT -> "%s"
-                // ArgumentType.NUMBER -> "%n"
             }
         }
 
@@ -43,21 +44,16 @@ internal class Prototype(
         }
 
         val argumentNames = arguments.joinToString {
-            when (it.type) {
-                ArgumentType.BOOLEAN -> "\"boolean\""
-                ArgumentType.NUMBER_OR_TEXT -> "\"number or text\""
-                // ArgumentType.NUMBER -> "%n"
-            }
+            "\""+it.name+"\""
         }
 
         val argIds = context.functions.filter { it.functionName == customBlockName }.map { it.id }
         visitors[identifier] = BlockSpec(
             opcode = "procedures_prototype",
             inputs = inputMap,
-            fields = mapOf(),
             mutation = Mutation(
                 tagName = "mutation",
-                proccode = customBlockName + " " + procodeArgs,
+                proccode = "$customBlockName $procodeArgs",
                 warp = "$withoutRefresh",
                 argumentnames = "[$argumentNames]",
                 argumentids = "[${argIds.joinToString { "\"" + it + "\"" }}]",
@@ -87,6 +83,5 @@ internal class Prototype(
                 }
             }
         }
-
     }
 }

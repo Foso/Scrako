@@ -1,5 +1,6 @@
 package de.jensklingenberg.scrako.builder
 
+import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Costume
 import de.jensklingenberg.scrako.common.MotionBlock
@@ -10,7 +11,7 @@ import de.jensklingenberg.scrako.common.createBlocks23
 import de.jensklingenberg.scrako.common.createTarget
 import java.util.UUID
 
-class Argumenti(val name: String, val id: String, val functionName: String)
+class Argumenti(val name: String, val id: String, val functionName: String, val type: ArgumentType)
 class TargetBuilder {
     internal val scriptBuilders = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
@@ -30,8 +31,8 @@ class TargetBuilder {
         val functionsMap = mutableListOf<Argumenti>()
         scriptBuilders.forEach {
             it.functionsMap.forEach { function ->
-                function.value.forEach { functionName ->
-                    functionsMap.add(Argumenti(functionName, UUID.randomUUID().toString(), function.key))
+                function.value.forEach { argument2 ->
+                    functionsMap.add(Argumenti(argument2.name, UUID.randomUUID().toString(), function.key, argument2.type))
                 }
 
             }

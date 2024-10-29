@@ -15,6 +15,7 @@ import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scratch.procedures.ArgumentBoolean
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -89,9 +90,9 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
             visitors,
             identifier,
             operatorUUID,
-            null, context,
-
-            )
+            null,
+            context
+        )
 
     }
 
