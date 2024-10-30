@@ -1,12 +1,12 @@
 package me.jens
 
 import de.jensklingenberg.scrako.builder.ProjectBuilder
+import de.jensklingenberg.scrako.builder.addCostume
 import de.jensklingenberg.scrako.builder.addSprite
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchProject
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.backdrop
-import de.jensklingenberg.scrako.common.basketBall
 import de.jensklingenberg.scrako.common.projectBuilder
 import de.jensklingenberg.scrako.common.scriptBuilder
 import de.jensklingenberg.scrako.common.stageBuilder
@@ -21,9 +21,6 @@ import java.util.zip.ZipInputStream
 
 val sprite1 = Sprite(
     "Sprite1", listOf(
-        costume1,
-        costum2
-    ), listOf(
         sound1,
         sound2
     )
@@ -31,20 +28,16 @@ val sprite1 = Sprite(
 
 val backdropSprite = Sprite(
     "Stage", listOf(
-        backdrop
-    ), listOf(
     )
 )
 
 val basketSprite = Sprite(
     "Stage", listOf(
-        basketBall
-    ), listOf(
     )
 )
 
 
-val spriteArrow = Sprite("Arrow1", listOf(costume1), listOf())
+val spriteArrow = Sprite("Arrow1", listOf())
 
 private val json = Json {
     ignoreUnknownKeys = true
@@ -52,7 +45,7 @@ private val json = Json {
 }
 
 fun main() {
-    //importer()
+    importer()
 
 
     val proj = projectBuilder {
@@ -65,7 +58,7 @@ fun main() {
 
 
     val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
-    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/src/main/resources/"
+    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/"
 
     val fileName = "test4.sb3"
     writeProject(
@@ -99,7 +92,7 @@ fun readList(name: String): List<String> {
 private fun importer(): ScratchList {
     var projectJson: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/test4.sb3"
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/mysnake.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry
@@ -150,7 +143,7 @@ private fun importer(): ScratchList {
             // if(block.opcode == "motion_movesteps"){
 
             val newInputs =
-                block.inputs.entries.mapIndexed { index, entry -> "\"${entry.key}\" to setValue(block${index}, block${index}Id) " }
+                block.inputs.entries.mapIndexed { index, entry -> "\"${entry.key}\" to setValue(block${index}, block${index}Id, context) " }
                     .joinToString(",\n") { it }
             val newFields = block.fields.entries.mapIndexed { index, entry ->
                 "\"${entry.key}\" to listOf(${entry.key.lowercase()},null)"
@@ -168,7 +161,7 @@ private fun importer(): ScratchList {
                 (0..<block.inputs.size).mapIndexed { _, i -> "val block${i} : ReporterBlock," }
                     .joinToString("\n") { it }
             val wer = block.inputs.entries.mapIndexed { index, entry ->
-                "block${index}.visit(visitors, identifier, block${index}Id, null)"
+                "block${index}.visit(visitors, identifier, block${index}Id, null, context)"
             }.joinToString("\n") { it }
             val sec = template.replace("REPLACE_INPUT", newInputs)
                 .replace("REPLACE_BLOCKO", repl)
@@ -190,6 +183,7 @@ private fun importer(): ScratchList {
 private fun ProjectBuilder.MyStage() {
     stageBuilder {
         addSprite(backdropSprite)
+        addCostume(backdrop)
         scriptBuilder {
             whenFlagClicked()
             // goTo("100")

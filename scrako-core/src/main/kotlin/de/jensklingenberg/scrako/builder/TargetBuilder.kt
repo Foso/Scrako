@@ -1,17 +1,16 @@
 package de.jensklingenberg.scrako.builder
 
-import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Costume
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ScratchList
+import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.Target
 import de.jensklingenberg.scrako.common.createBlocks23
 import de.jensklingenberg.scrako.common.createTarget
 import java.util.UUID
 
-class Argumenti(val name: String, val id: String, val functionName: String, val type: ArgumentType)
 class TargetBuilder {
     internal val scriptBuilders = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
@@ -32,7 +31,14 @@ class TargetBuilder {
         scriptBuilders.forEach {
             it.functionsMap.forEach { function ->
                 function.value.forEach { argument2 ->
-                    functionsMap.add(Argumenti(argument2.name, UUID.randomUUID().toString(), function.key, argument2.type))
+                    functionsMap.add(
+                        Argumenti(
+                            argument2.name,
+                            UUID.randomUUID().toString(),
+                            function.key,
+                            argument2.type
+                        )
+                    )
                 }
 
             }
@@ -72,7 +78,12 @@ class TargetBuilder {
             .map { it.key to it.value!! }.toMap()
         val blocks = createBlocks23(
             nodeListList,
-            Context(variableMap = allVariables, lists = allLists, functions = functionsMap)
+            Context(
+                variableMap = allVariables,
+                lists = allLists,
+                functions = functionsMap,
+                broadcasts1 = context.broadcasts1
+            )
         )
 
         return createTarget(
@@ -82,7 +93,8 @@ class TargetBuilder {
             emptyList(),
             targetLists,
             targetVariables,
-            costumesList
+            costumesList,
+            context.broadcasts1
         )
     }
 
@@ -98,4 +110,16 @@ fun TargetBuilder.addCostume(costume: Costume) {
 
 fun TargetBuilder.addSprite(sprite: Sprite) {
     this.sprite = sprite
+}
+
+fun TargetBuilder.getOrCreateList(name: String, contents: List<String> = emptyList()): ScratchList {
+    val element = ScratchList(name, contents)
+    addList(element)
+    return element
+}
+
+fun TargetBuilder.getOrCreateVariable(name: String): ScratchVariable {
+    val element = ScratchVariable(name)
+    addVariable(name)
+    return element
 }

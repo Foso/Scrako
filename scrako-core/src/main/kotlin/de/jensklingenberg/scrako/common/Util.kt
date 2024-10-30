@@ -1,5 +1,6 @@
 package de.jensklingenberg.scrako.common
 
+import de.jensklingenberg.scrako.builder.FunctionBuilder
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.builder.TargetBuilder

@@ -5,7 +5,6 @@ import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scratch.common.OpCode
 
 private class GoTo(private val value: String) : Node {
     override fun visit(
@@ -17,11 +16,11 @@ private class GoTo(private val value: String) : Node {
 
         ) {
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.looks_gotofrontback,
+            opcode = "looks_gotofrontback",
             fields = mapOf("FRONT_BACK" to listOf(value, null))
         ).toBlock(nextUUID, parent)
     }
 }
 
-fun ScriptBuilder.GoToFront() = addNode(GoTo("front"))
-fun ScriptBuilder.GoToBack() = addNode(GoTo("back"))
+fun ScriptBuilder.goToFront() = addNode(GoTo("front"))
+fun ScriptBuilder.goToBack() = addNode(GoTo("back"))

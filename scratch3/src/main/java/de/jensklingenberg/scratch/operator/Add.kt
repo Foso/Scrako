@@ -1,5 +1,6 @@
 package de.jensklingenberg.scratch.operator
 
+import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -29,3 +30,38 @@ fun add(operand1: String, operand2: String) = Add(StringBlock(operand1), StringB
 fun add(operand1: String, operand2: Double) = Add(StringBlock(operand1), DoubleBlock(operand2))
 fun add(operand1: String, operand2: Int) = Add(StringBlock(operand1), IntBlock(operand2))
 fun add(operand1: String, operand2: ReporterBlock) = Add(StringBlock(operand1), operand2)
+
+infix fun BooleanBlock.and(booleanBlock: BooleanBlock): BooleanBlock {
+    return And(this, booleanBlock)
+}
+
+infix fun BooleanBlock.or(booleanBlock: BooleanBlock): BooleanBlock {
+    return OperatorOr(this, booleanBlock)
+}
+
+infix fun ReporterBlock.eq(booleanBlock: ReporterBlock): BooleanBlock {
+    return OperatorEquals(this, booleanBlock)
+}
+
+operator fun BooleanBlock.not(): BooleanBlock {
+    return Not(this)
+}
+
+infix fun ReporterBlock.lt(reporterBlock: ReporterBlock): BooleanBlock {
+    return LessThan(this, reporterBlock)
+}
+
+infix fun ReporterBlock.gt(reporterBlock: ReporterBlock): BooleanBlock {
+    return GreaterThan(this, reporterBlock)
+}
+
+infix fun ReporterBlock.gt(reporterBlock: Int): BooleanBlock {
+    return GreaterThan(this, IntBlock(reporterBlock))
+}
+
+operator fun ReporterBlock.minus(booleanBlock: ReporterBlock): ReporterBlock {
+    return Subtract(this, booleanBlock)
+}
+
+
+

@@ -12,9 +12,7 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
 
-class Broadcast(val name: String) {
-    val id: UUID = UUID.randomUUID()
-}
+
 
 
 fun copyFiles(inputPath: String, targetPath: String) {

@@ -4,13 +4,12 @@ import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scratch.common.OpCode
 
 
 class Subtract(operand: ReporterBlock, operand2: ReporterBlock) : Operator(
     listOf(operand, operand2),
-    listOf("OPERAND1", "OPERAND2"),
-    OpCode.operator_subtract
+    listOf("NUM1", "NUM2"),
+    "operator_subtract"
 ), ReporterBlock
 
 

@@ -1,39 +1,38 @@
-package de.jensklingenberg.scratch.data
-
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
-private class Itemoflist(val block0 : ReporterBlock, val list: String) : ReporterBlock {
+private class Gotoxy(
+    val block0: ReporterBlock,
+    val block1: ReporterBlock,
+) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context) {
+        context: Context
+    ) {
         val block0Id = UUID.randomUUID().toString()
+        val block1Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = "data_itemoflist",
+            opcode = "motion_gotoxy",
             inputs = mapOf(
-                "INDEX" to setValue(block0, block0Id, context)
+                "X" to setValue(block0, block0Id, context),
+                "Y" to setValue(block1, block1Id, context)
             ),
             fields = mapOf(
-                "LIST" to listOf(list,null)
+
             )
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier, block0Id, null, context)
+        block1.visit(visitors, identifier, block1Id, null, context)
     }
 }
 
-fun itemOfXList(index: ReporterBlock, list: ScratchList): ReporterBlock =Itemoflist(index, list.name)
-
-
+fun ScriptBuilder.gotoxy(block0: ReporterBlock, block1: ReporterBlock) = addNode(Gotoxy(block0, block1))

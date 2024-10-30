@@ -22,7 +22,7 @@ fun lt(operand1: Int, operand2: String) = LessThan(IntBlock(operand1), StringBlo
 
 fun lt(operand1: ReporterBlock, operand2: Double) = LessThan(operand1, DoubleBlock(operand2))
 fun lt(operand1: ReporterBlock, operand2: Int) = LessThan(operand1, IntBlock(operand2))
-fun lt(operand1: ReporterBlock, operand2: ReporterBlock) = LessThan(operand1, operand2)
+fun lt(operand1: ReporterBlock, operand2: ReporterBlock): BooleanBlock = LessThan(operand1, operand2)
 fun lt(operand1: ReporterBlock, operand2: String) = LessThan(operand1, StringBlock(operand2))
 
 fun lt(operand1: String, operand2: String) = LessThan(StringBlock(operand1), StringBlock(operand2))

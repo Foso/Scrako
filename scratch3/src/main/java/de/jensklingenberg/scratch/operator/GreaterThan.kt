@@ -9,7 +9,7 @@ import de.jensklingenberg.scratch.common.OpCode
 
 class GreaterThan(operand1: ReporterBlock, operand2: ReporterBlock) : Operator(
     listOf(operand1, operand2), listOf("OPERAND1", "OPERAND2"), OpCode.operator_gt
-), ReporterBlock, BooleanBlock
+), BooleanBlock
 
 fun gt(operand1: Double, operand2: Double) = GreaterThan(DoubleBlock(operand1), DoubleBlock(operand2))
 fun gt(operand1: Double, operand2: Int) = GreaterThan(DoubleBlock(operand1), IntBlock(operand2))

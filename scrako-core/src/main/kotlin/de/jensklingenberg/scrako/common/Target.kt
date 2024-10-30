@@ -40,32 +40,33 @@ internal fun createTarget(
     comments: List<Comment> = emptyList(),
     lists: Map<String, ScratchList>,
     variables: Map<String, UUID>,
-    costumes: List<Costume>
+    costumes: List<Costume>,
+    broadcasts: Map<String, String>
 ): Target {
     val targe2 = Target(
         isStage = false,
         name = name,
         variables = variables.map {
-            it.key to JsonArray(
+            it.value.toString() to JsonArray(
                 listOf(
                     JsonPrimitive(it.key),
-                    JsonPrimitive(it.value.toString())
+                    JsonPrimitive(1)
                 )
             )
         }.toMap(),
         lists = lists.map {
-            it.key to JsonArray(
+            it.value.id.toString() to JsonArray(
                 listOf(
                     JsonPrimitive(it.key),
-                    JsonArray(it.value.contents.map { JsonPrimitive(it) })
+                    JsonArray(it.value.contents.map { JsonPrimitive(it.toInt()) })
                 )
             )
         }.toMap(),
-        broadcasts = emptyMap(),
+        broadcasts = broadcasts,
         blocks = blocks,
         comments = comments.associateBy { it.id },
         currentCostume = 0,
-        costumes = sprite.costumes,
+        costumes = costumes,
         sounds = sprite.sounds,
         volume = 100,
         layerOrder = 1,
@@ -80,7 +81,7 @@ internal fun createTarget(
     return targe2
 }
 
-internal fun defaultStage(variables: MutableMap<String, UUID> = mutableMapOf()): Target {
+internal fun defaultStage(variables: MutableMap<String, UUID> = mutableMapOf(), broadcasts: Map<String, String>): Target {
 
     return Target(
         isStage = true,
@@ -94,7 +95,7 @@ internal fun defaultStage(variables: MutableMap<String, UUID> = mutableMapOf()):
             )
         }.toMap(),
         lists = emptyMap(),
-        broadcasts = emptyMap(),
+        broadcasts = broadcasts,
         blocks = emptyMap(),
         comments = emptyMap(),
         currentCostume = 0,

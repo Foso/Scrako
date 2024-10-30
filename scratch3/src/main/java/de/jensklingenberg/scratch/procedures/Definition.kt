@@ -61,7 +61,7 @@ interface Argument : ReporterBlock {
 }
 
 
-class DefinitionBuilder(val args: List<Argument2>) : ScriptBuilder()
+class DefinitionBuilder(val functionName: String, val args: List<Argument2>) : ScriptBuilder()
 
 fun ScriptBuilder.define(
     customBlockName: String,
@@ -74,15 +74,16 @@ fun ScriptBuilder.define(
     addNode(
         Definition(
             Prototype(customBlockName, withoutRefresh, arguments),
-            DefinitionBuilder(arguments).apply(builder).childs
+            DefinitionBuilder(customBlockName, arguments).apply(builder).childs
         )
     )
 }
 
-fun DefinitionBuilder.getArgs() = args.map {
-    when (it.type) {
-        ArgumentType.BOOLEAN -> addArgumentBoolean(it.name)
-        ArgumentType.NUMBER_OR_TEXT -> addArgumentString(it.name)
-    }
-}
+fun DefinitionBuilder.getArgs() =
+    args.map {
+        when (it.type) {
+            ArgumentType.BOOLEAN -> addArgumentBoolean(it.name)
+            ArgumentType.NUMBER_OR_TEXT -> addArgumentString(it.name)
+        }
+    }.ifEmpty { throw IllegalStateException("No arguments defined for: $functionName") }
 

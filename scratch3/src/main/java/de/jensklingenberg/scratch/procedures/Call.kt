@@ -23,7 +23,11 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
         val arguments = context.functions.filter { it.functionName == functionName }
 
         val inputMap = arguments.mapIndexed { index, argumenti ->
-            argumenti.id to setValue(blockList[index], blockIds[index], context)
+            try {
+                argumenti.id to setValue(blockList[index], blockIds[index], context)
+            }catch (e: IndexOutOfBoundsException){
+                throw IllegalStateException("Function $functionName missing argument ${argumenti.name} of type ${argumenti.type}")
+            }
         }.toMap()
 
         val procodeArgs = arguments.joinToString {
@@ -51,4 +55,4 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
 }
 
 class Parameter(val name: String, val block0: ReporterBlock)
-fun ScriptBuilder.call(name: String, block0: List<ReporterBlock>) = addNode(Call(name, block0))
+fun ScriptBuilder.call(name: String, block0: List<ReporterBlock> = emptyList()) = addNode(Call(name, block0))

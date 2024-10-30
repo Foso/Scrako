@@ -2,8 +2,8 @@ package de.jensklingenberg.scratch.event
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.Event
-import de.jensklingenberg.scratch.Broadcast
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
