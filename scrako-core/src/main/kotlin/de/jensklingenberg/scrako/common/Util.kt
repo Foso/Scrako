@@ -77,7 +77,7 @@ fun setValue(
         JsonArray(
             listOf(
                 JsonPrimitive(ScratchType.OBJECT.value),
-                JsonPrimitive(operatorUUID.toString()),
+                JsonPrimitive(operatorUUID),
             )
         )
     }
@@ -133,7 +133,7 @@ fun setValue(
         JsonArray(
             listOf(
                 JsonPrimitive(ScratchType.BLOCKREF.value),
-                JsonPrimitive(operatorUUID.toString()),
+                JsonPrimitive(operatorUUID),
                 JsonArray(
                     listOf(
                         JsonPrimitive(ScratchType.STRING.value),

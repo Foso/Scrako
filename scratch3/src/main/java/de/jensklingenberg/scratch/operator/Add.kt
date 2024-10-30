@@ -35,9 +35,7 @@ infix fun BooleanBlock.and(booleanBlock: BooleanBlock): BooleanBlock {
     return And(this, booleanBlock)
 }
 
-infix fun BooleanBlock.or(booleanBlock: BooleanBlock): BooleanBlock {
-    return OperatorOr(this, booleanBlock)
-}
+
 
 infix fun ReporterBlock.eq(booleanBlock: ReporterBlock): BooleanBlock {
     return OperatorEquals(this, booleanBlock)
@@ -63,5 +61,18 @@ operator fun ReporterBlock.minus(booleanBlock: ReporterBlock): ReporterBlock {
     return Subtract(this, booleanBlock)
 }
 
+operator fun ReporterBlock.plus(intBlock: ReporterBlock): Add {
+    return Add(this, intBlock)
+}
 
+infix operator fun ReporterBlock.times(intBlock: ReporterBlock): Multiply {
+    return Multiply(this, intBlock)
+}
 
+operator fun ReporterBlock.div(width: ReporterBlock): Operator {
+    return Divide(this, width)
+}
+
+infix fun ReporterBlock.or(booleanBlock: ReporterBlock): BooleanBlock {
+    return OperatorOr(this, booleanBlock)
+}

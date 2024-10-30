@@ -72,7 +72,7 @@ fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
     return targetBuilder
 }
 
-fun ProjectBuilder.targetBuilder(name: String, ff: TargetBuilder.() -> Unit): TargetBuilder {
+fun ProjectBuilder.spriteBuilder(name: String, ff: TargetBuilder.() -> Unit): TargetBuilder {
     val targetBuilder = TargetBuilder()
     ff.invoke(targetBuilder)
     targetBuilder.name = name

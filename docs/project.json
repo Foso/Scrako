@@ -4,32 +4,19 @@
       "isStage": true,
       "name": "Stage",
       "variables": {
-        "85162f29-76e4-4a07-8588-c3dbdab2b4ec": [
-          "jens",
-          15
+        "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+          "my variable",
+          0
         ]
       },
       "lists": {},
       "broadcasts": {},
-      "blocks": {
-        "h": {
-          "opcode": "event_whenflagclicked",
-          "next": null,
-          "parent": null,
-          "inputs": {},
-          "fields": {},
-          "shadow": false,
-          "topLevel": true,
-          "x": 0,
-          "y": 0
-        }
-      },
+      "blocks": {},
       "comments": {},
       "currentCostume": 0,
       "costumes": [
         {
           "name": "backdrop1",
-          "bitmapResolution": 1,
           "dataFormat": "svg",
           "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
           "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
@@ -52,125 +39,31 @@
       "lists": {},
       "broadcasts": {},
       "blocks": {
-        "d": {
-          "opcode": "event_whenflagclicked",
-          "next": "e",
-          "parent": null,
-          "inputs": {},
-          "fields": {},
-          "shadow": false,
-          "topLevel": true,
-          "x": 208,
-          "y": 256
-        },
         "a": {
-          "opcode": "procedures_definition",
-          "next": "b",
-          "parent": null,
-          "inputs": {
-            "custom_block": [
-              1,
-              "c"
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": true,
-          "x": 44,
-          "y": 44
-        },
-        "c": {
-          "opcode": "procedures_prototype",
-          "next": null,
-          "parent": "a",
-          "inputs": {
-            "Y4O2*}9*{!8q|ffD@x)7": [
-              1,
-              "f"
-            ]
-          },
-          "fields": {},
-          "shadow": true,
-          "topLevel": false,
-          "mutation": {
-            "tagName": "mutation",
-            "children": [],
-            "proccode": "test %s",
-            "argumentids": "[\"Y4O2*}9*{!8q|ffD@x)7\"]",
-            "argumentnames": "[\"number or text\"]",
-            "argumentdefaults": "[\"\"]",
-            "warp": "false"
-          }
-        },
-        "f": {
-          "opcode": "argument_reporter_string_number",
-          "next": null,
-          "parent": "c",
-          "inputs": {},
-          "fields": {
-            "VALUE": [
-              "number or text",
-              null
-            ]
-          },
-          "shadow": true,
-          "topLevel": false
-        },
-        "e": {
           "opcode": "procedures_call",
           "next": null,
-          "parent": "d",
+          "parent": null,
           "inputs": {
-            "Y4O2*}9*{!8q|ffD@x)7": [
+            "arg0": [
               1,
               [
                 10,
-                "hallo"
+                "help"
               ]
             ]
           },
           "fields": {},
           "shadow": false,
-          "topLevel": false,
+          "topLevel": true,
+          "x": 193,
+          "y": 194,
           "mutation": {
             "tagName": "mutation",
             "children": [],
-            "proccode": "test %s",
-            "argumentids": "[\"Y4O2*}9*{!8q|ffD@x)7\"]",
+            "proccode": "​​log​​ %s",
+            "argumentids": "[\"arg0\"]",
             "warp": "false"
           }
-        },
-        "b": {
-          "opcode": "looks_say",
-          "next": null,
-          "parent": "a",
-          "inputs": {
-            "MESSAGE": [
-              3,
-              "g",
-              [
-                10,
-                "Hello!"
-              ]
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "g": {
-          "opcode": "argument_reporter_string_number",
-          "next": null,
-          "parent": "b",
-          "inputs": {},
-          "fields": {
-            "VALUE": [
-              "number or text",
-              null
-            ]
-          },
-          "shadow": false,
-          "topLevel": false
         }
       },
       "comments": {},
@@ -180,10 +73,10 @@
           "name": "costume1",
           "bitmapResolution": 1,
           "dataFormat": "svg",
-          "assetId": "bcf454acf82e4504149f7ffe07081dbc",
-          "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
-          "rotationCenterX": 48,
-          "rotationCenterY": 50
+          "assetId": "927d672925e7b99f7813735c484c6922",
+          "md5ext": "927d672925e7b99f7813735c484c6922.svg",
+          "rotationCenterX": 30.74937882782359,
+          "rotationCenterY": 58.864768144346826
         }
       ],
       "sounds": [],

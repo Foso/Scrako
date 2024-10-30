@@ -4,6 +4,7 @@ import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchVariable
@@ -34,6 +35,8 @@ private class SetVariable(private val variableName: String, private val item: Re
 
 fun ScriptBuilder.setVariable(variable: ScratchVariable, item: ReporterBlock) =
     addNode(SetVariable(variable.name, item))
+
+fun ScriptBuilder.setVariable(variable: ScratchVariable, newValue: Int) = addNode(SetVariable(variable.name, IntBlock(newValue)))
 
 fun ScriptBuilder.setVariable(variable: ScratchVariable, item: String) =
     addNode(SetVariable(variable.name, StringBlock(item)))

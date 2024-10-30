@@ -107,6 +107,10 @@ fun TargetBuilder.addCostume(costume: Costume) {
     this.addCostumeList(costume)
 }
 
+fun TargetBuilder.addCostumes(costume: List<Costume>) {
+    costume.forEach { addCostumeList(it) }
+}
+
 fun TargetBuilder.addSprite(sprite: Sprite) {
     this.sprite = sprite
 }

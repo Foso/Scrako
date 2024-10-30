@@ -3,12 +3,11 @@ package de.jensklingenberg.scratch.operator
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scratch.common.OpCode
 
 private class PickRandom(from: ReporterBlock, to: ReporterBlock) : Operator(
     listOf(from, to),
     listOf("FROM", "TO"),
-    OpCode.operator_random
+    "operator_random"
 ), ReporterBlock
 
 fun random(from: Double, to: Double): ReporterBlock = PickRandom(DoubleBlock(from), DoubleBlock(to))

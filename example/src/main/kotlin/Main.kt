@@ -46,7 +46,27 @@ private val json = Json {
     coerceInputValues = true
 }
 
+val arr = (1..24).toMutableList()
+
+fun get(y: Int, x: Int): Int {
+    val width = 6
+
+    return arr[y * width + x]
+
+}
+
+fun set(y: Int, x: Int, value: Int) {
+    val width = 6
+
+    arr[y * width + x] = value
+
+}
+
 fun main() {
+
+    println(get(1,0))
+    set(1,0,2)
+    println(get(1,0))
     importer()
     val test = 2 + IntBlock(2)
 
@@ -95,7 +115,7 @@ fun readList(name: String): List<String> {
 private fun importer(): ScratchList {
     var projectJson: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/mysnake.sb3"
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/pj2.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry

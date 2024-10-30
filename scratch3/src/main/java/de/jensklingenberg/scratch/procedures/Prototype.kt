@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch.procedures
 
-import de.jensklingenberg.scrako.common.Argument2
+import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
@@ -15,7 +15,7 @@ import java.util.UUID
 internal class Prototype(
     private val customBlockName: String,
     private val withoutRefresh: Boolean = false,
-    private val arguments: List<Argument2>
+    private val arguments: List<Argument>
 ) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,

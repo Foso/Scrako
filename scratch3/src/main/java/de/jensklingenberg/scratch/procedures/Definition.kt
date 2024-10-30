@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch.procedures
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.common.Argument2
+import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
@@ -61,11 +61,11 @@ interface Argument : ReporterBlock {
 }
 
 
-class DefinitionBuilder(val functionName: String, val args: List<Argument2>) : ScriptBuilder()
+class DefinitionBuilder(val functionName: String, val args: List<Argument>) : ScriptBuilder()
 
 fun ScriptBuilder.define(
     customBlockName: String,
-    arguments: List<Argument2> = emptyList(),
+    arguments: List<Argument> = emptyList(),
     withoutRefresh: Boolean = false,
     builder: DefinitionBuilder.() -> Unit
 ) {

@@ -1,15 +1,13 @@
-package de.jensklingenberg.scratch.event
+package debugger
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.common.Event
-import de.jensklingenberg.scrako.common.HatBlock
+import de.jensklingenberg.scrako.model.Mutation
 import de.jensklingenberg.scrako.common.Node
 
-private class WhenIRecieve(val broadcast: Broadcast) : Node, Event, HatBlock {
+private class Breakpoint : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -18,10 +16,17 @@ private class WhenIRecieve(val broadcast: Broadcast) : Node, Event, HatBlock {
         context: Context
     ) {
         visitors[identifier] = BlockSpec(
-            opcode = "event_whenbroadcastreceived",
-            fields = mapOf("BROADCAST_OPTION" to listOf(broadcast.name, broadcast.id.toString()))
+            opcode = "procedures_call",
+            inputs = emptyMap(),
+            mutation = Mutation(
+                tagName = "mutation",
+                proccode = "breakpoint",
+                warp = "false",
+                argumentids = "[]",
+            )
         ).toBlock(nextUUID, parent)
+
     }
 }
 
-fun ScriptBuilder.whenIReceiveBroadcast(broadcast: Broadcast) = addNode(WhenIRecieve(broadcast))
+fun ScriptBuilder.breakpoint() = addNode(Breakpoint())
