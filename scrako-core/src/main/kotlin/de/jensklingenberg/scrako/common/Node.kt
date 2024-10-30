@@ -1,5 +1,7 @@
 package de.jensklingenberg.scrako.common
 
+import de.jensklingenberg.scrako.model.Block
+
 
 interface Node {
     fun visit(

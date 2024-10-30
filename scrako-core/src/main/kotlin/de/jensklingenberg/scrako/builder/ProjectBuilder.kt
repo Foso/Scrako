@@ -3,7 +3,8 @@ package de.jensklingenberg.scrako.builder
 import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.common.ScratchProject
+import de.jensklingenberg.scrako.model.ScratchProject
+import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.defaultStage
 import java.util.UUID
 
@@ -54,4 +55,47 @@ fun ProjectBuilder.createBroadcast(s: String): Broadcast {
     val board = Broadcast(s)
     addBroadcast(board)
     return board
+}
+
+
+fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
+    val node = ProjectBuilder()
+    ff.invoke(node)
+    return node
+}
+
+fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
+    val targetBuilder = TargetBuilder()
+    ff.invoke(targetBuilder)
+    targetBuilder.name = "Stage"
+    addStage(targetBuilder)
+    return targetBuilder
+}
+
+fun ProjectBuilder.targetBuilder(name: String, ff: TargetBuilder.() -> Unit): TargetBuilder {
+    val targetBuilder = TargetBuilder()
+    ff.invoke(targetBuilder)
+    targetBuilder.name = name
+    targets.add(targetBuilder)
+    return targetBuilder
+}
+
+fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
+    val scriptBuilder = ScriptBuilder()
+    builder.invoke(scriptBuilder)
+    scriptBuilders.add(scriptBuilder)
+    return scriptBuilder
+}
+
+
+fun ProjectBuilder.getGlobalVariable(name: String): ScratchVariable {
+    val element = ScratchVariable(name)
+    addVariable(name)
+    return element
+}
+
+fun ProjectBuilder.getOrCreateGlobalList(name: String, contents: List<String> = emptyList()): ScratchList {
+    val element = ScratchList(name, contents)
+    addList(element)
+    return element
 }

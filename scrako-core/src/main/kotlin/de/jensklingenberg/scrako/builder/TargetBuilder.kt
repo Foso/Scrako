@@ -1,13 +1,12 @@
 package de.jensklingenberg.scrako.builder
 
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.common.Costume
+import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.Sprite
-import de.jensklingenberg.scrako.common.Target
-import de.jensklingenberg.scrako.common.createBlocks23
+import de.jensklingenberg.scrako.model.Target
 import de.jensklingenberg.scrako.common.createTarget
 import java.util.UUID
 

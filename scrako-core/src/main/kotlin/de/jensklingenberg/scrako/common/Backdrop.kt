@@ -1,5 +1,7 @@
 package de.jensklingenberg.scrako.common
 
+import de.jensklingenberg.scrako.model.Costume
+
 val backdrop = Costume(
     name = "backdrop1",
     bitmapResolution = 1,

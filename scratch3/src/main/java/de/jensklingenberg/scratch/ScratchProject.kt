@@ -1,13 +1,12 @@
 package de.jensklingenberg.scratch
 
-import de.jensklingenberg.scrako.common.ScratchProject
+import de.jensklingenberg.scrako.model.ScratchProject
 import kotlinx.serialization.json.Json
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
-import java.util.UUID
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 

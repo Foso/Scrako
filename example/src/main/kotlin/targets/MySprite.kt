@@ -8,14 +8,15 @@ import de.jensklingenberg.scrako.builder.addSprite
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.getOrCreateList
 import de.jensklingenberg.scrako.builder.getOrCreateVariable
+import de.jensklingenberg.scrako.builder.scriptBuilder
+import de.jensklingenberg.scrako.builder.targetBuilder
 import de.jensklingenberg.scrako.common.BooleanBlock
-import de.jensklingenberg.scrako.common.Costume
+import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scrako.common.scriptBuilder
-import de.jensklingenberg.scrako.common.targetBuilder
 import de.jensklingenberg.scratch.control.forever
 import de.jensklingenberg.scratch.control.ifThen
 import de.jensklingenberg.scratch.control.repeat
@@ -31,10 +32,12 @@ import de.jensklingenberg.scratch.event.whenIRecieve
 import de.jensklingenberg.scratch.extension.pen.eraseAll
 import de.jensklingenberg.scratch.extension.pen.stamp
 import de.jensklingenberg.scratch.looks.goToFront
+import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.motion.changeXby
 import de.jensklingenberg.scratch.motion.changeYby
 import de.jensklingenberg.scratch.motion.setx
 import de.jensklingenberg.scratch.motion.switchCostume
+import de.jensklingenberg.scratch.operator.Add
 import de.jensklingenberg.scratch.operator.Multiply
 import de.jensklingenberg.scratch.operator.and
 import de.jensklingenberg.scratch.operator.gt
@@ -69,7 +72,6 @@ val costume2n = Costume(
 
 
 fun ProjectBuilder.MyTarget() {
-
     val move = createBroadcast("move")
     val paint = createBroadcast("paint")
     val input = createBroadcast("input")
@@ -116,6 +118,7 @@ fun ProjectBuilder.MyTarget() {
         scriptBuilder {
 
             whenIRecieve(input)
+            say(2 + playerIndex)
             ifThen(
                 keyIsPressed(Key.RIGHT_ARROW) and (playerIndex lt lengthOfList(jens2))
             ) {
@@ -176,6 +179,7 @@ private fun TargetBuilder.definePaint(
     jens2: ScratchList
 ) {
     scriptBuilder {
+
         define(
             "pain",
             withoutRefresh = true
@@ -203,6 +207,16 @@ private fun TargetBuilder.definePaint(
     }
 }
 
+private operator fun ReporterBlock.plus(intBlock: ReporterBlock): Add {
+   return Add(this, intBlock)
+}
+
 private fun ScriptBuilder.hallo(stringBlock: BooleanBlock, stringBlock1: StringBlock) {
     call("Hallo", listOf(stringBlock, stringBlock1))
+}
+
+
+
+infix operator fun Int.plus(int: ReporterBlock): ReporterBlock {
+    return Add(IntBlock(this), int)
 }

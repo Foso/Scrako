@@ -1,9 +1,8 @@
 package de.jensklingenberg.scratch.procedures
 
-import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import java.util.UUID
 
 class ArgumentString(override val name: String, override val defaultValue: String = "") : Argument {
     override fun visit(

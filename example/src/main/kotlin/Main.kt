@@ -3,17 +3,19 @@ package me.jens
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostume
 import de.jensklingenberg.scrako.builder.addSprite
+import de.jensklingenberg.scrako.builder.projectBuilder
+import de.jensklingenberg.scrako.builder.scriptBuilder
+import de.jensklingenberg.scrako.builder.stageBuilder
+import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.common.ScratchProject
+import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.backdrop
-import de.jensklingenberg.scrako.common.projectBuilder
-import de.jensklingenberg.scrako.common.scriptBuilder
-import de.jensklingenberg.scrako.common.stageBuilder
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.writeProject
 import kotlinx.serialization.json.Json
 import me.jens.targets.MyTarget
+import me.jens.targets.plus
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -46,6 +48,7 @@ private val json = Json {
 
 fun main() {
     importer()
+    val test = 2 + IntBlock(2)
 
 
     val proj = projectBuilder {

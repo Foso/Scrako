@@ -2,10 +2,10 @@ package de.jensklingenberg.scratch.procedures
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.ArgumentType
-import de.jensklingenberg.scrako.common.Block
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.common.Mutation
+import de.jensklingenberg.scrako.model.Mutation
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue

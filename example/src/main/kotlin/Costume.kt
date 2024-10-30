@@ -1,7 +1,7 @@
 package me.jens
 
-import de.jensklingenberg.scrako.common.Costume
-import de.jensklingenberg.scrako.common.Sound
+import de.jensklingenberg.scrako.model.Costume
+import de.jensklingenberg.scrako.model.Sound
 
 
 val costume1 = Costume(

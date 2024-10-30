@@ -1,4 +1,4 @@
-package de.jensklingenberg.scrako.common
+package de.jensklingenberg.scrako.model
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
