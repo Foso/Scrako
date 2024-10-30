@@ -1,4 +1,4 @@
-package de.jensklingenberg.scratch
+package de.jensklingenberg.scrako.builder
 
 import de.jensklingenberg.scrako.model.ScratchProject
 import kotlinx.serialization.json.Json
@@ -9,9 +9,6 @@ import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
-
-
-
 
 
 fun copyFiles(inputPath: String, targetPath: String) {

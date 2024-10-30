@@ -1,12 +1,12 @@
 package files
 
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ObjectReporter
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
 private class ShowPickerAs(val block0: ReporterBlock) : BooleanBlock {
@@ -34,9 +34,8 @@ private class Menu_encoding(val encoding: String) : ObjectReporter {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
 
         visitors[identifier] = BlockSpec(
             opcode = "files_menu_encoding",

@@ -12,7 +12,7 @@ import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scratch.event.whenFlagClicked
-import de.jensklingenberg.scratch.writeProject
+import de.jensklingenberg.scrako.builder.writeProject
 import kotlinx.serialization.json.Json
 import me.jens.targets.MyTarget
 import me.jens.targets.plus
