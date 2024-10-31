@@ -1,9 +1,9 @@
 package de.jensklingenberg.scratch.procedures
 
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.model.Block
 
 class ArgumentBoolean(override val name: String, override val defaultValue: String = "") : Argument, ReporterBlock {
 

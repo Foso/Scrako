@@ -11,7 +11,6 @@ import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scratch.control.forever
 import de.jensklingenberg.scratch.control.ifThen

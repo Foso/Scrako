@@ -41,7 +41,7 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
         identifier: String,
         nextUUID: String?,
         context: Context,
-        ) {
+    ) {
         visitors[identifier] = BlockSpec(
             opcode = OpCode.control_create_clone_of_menu,
             fields = mapOf("CLONE_OPTION" to listOf(spriteName))

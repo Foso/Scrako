@@ -2,13 +2,13 @@ package de.jensklingenberg.scratch.procedures
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.ArgumentType
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.model.Mutation
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.Mutation
 import java.util.UUID
 
 private class Call(val functionName: String, val blockList: List<ReporterBlock>) : Node {
@@ -25,7 +25,7 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
         val inputMap = arguments.mapIndexed { index, argumenti ->
             try {
                 argumenti.id to setValue(blockList[index], blockIds[index], context)
-            }catch (e: IndexOutOfBoundsException){
+            } catch (e: IndexOutOfBoundsException) {
                 throw IllegalStateException("Function $functionName missing argument ${argumenti.name} of type ${argumenti.type}")
             }
         }.toMap()
@@ -55,4 +55,5 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
 }
 
 class Parameter(val name: String, val block0: ReporterBlock)
+
 fun ScriptBuilder.call(name: String, block0: List<ReporterBlock> = emptyList()) = addNode(Call(name, block0))

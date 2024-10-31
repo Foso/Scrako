@@ -1,11 +1,10 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scrako.model.Block
 
 class StopAllSounds : Node {
     override fun visit(
@@ -13,20 +12,12 @@ class StopAllSounds : Node {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
 
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sound_stopallsounds,
-            inputs = mapOf(
-
-            ),
-            fields = mapOf(
-
-            )
+            opcode = "sound_stopallsounds",
         ).toBlock(nextUUID, parent)
-
     }
 }
 

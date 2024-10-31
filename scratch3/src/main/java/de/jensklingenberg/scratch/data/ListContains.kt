@@ -1,12 +1,12 @@
 package de.jensklingenberg.scratch.data
 
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
 private class ListContains(private val list: ScratchList, private val block: ReporterBlock) : BooleanBlock {

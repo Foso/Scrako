@@ -6,7 +6,7 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
 
-private class Cleargraphiceffects( ) : Node {
+private class Cleargraphiceffects() : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -14,12 +14,12 @@ private class Cleargraphiceffects( ) : Node {
         nextUUID: String?,
         context: Context
     ) {
-        
+
         visitors[identifier] = BlockSpec(
             opcode = "looks_cleargraphiceffects",
         ).toBlock(nextUUID, parent)
-        
+
     }
 }
 
-fun ScriptBuilder.cleargraphiceffects( ) = addNode(Cleargraphiceffects( ))
+fun ScriptBuilder.cleargraphiceffects() = addNode(Cleargraphiceffects())

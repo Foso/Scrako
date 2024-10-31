@@ -41,7 +41,7 @@ data class Sound(
     val name: String,
     val assetId: String,
     val dataFormat: String,
-   @EncodeDefault val format: String?=null,
+    @EncodeDefault val format: String? = null,
     val rate: Int,
     val sampleCount: Int,
     val md5ext: String

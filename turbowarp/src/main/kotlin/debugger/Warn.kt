@@ -21,7 +21,7 @@ private class Warn(val block0: ReporterBlock) : ReporterBlock {
         visitors[identifier] = BlockSpec(
             opcode = "procedures_call",
             inputs = mapOf(
-                "arg0" to setValue(block0, block0Id, context) 
+                "arg0" to setValue(block0, block0Id, context)
             ),
             mutation = Mutation(
                 tagName = "mutation",

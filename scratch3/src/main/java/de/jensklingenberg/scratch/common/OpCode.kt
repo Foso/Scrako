@@ -7,7 +7,6 @@ internal class OpCode(val value: String) {
     companion object {
         val sound_changevolumeby = "sound_changevolumeby"
         val sound_changeeffectby = "sound_changeeffectby"
-        val sound_stopallsounds = "sound_stopallsounds"
         val sound_cleareffects = "sound_cleareffects"
         val looks_costume = "looks_costume"
         val looks_seteffectto = "looks_seteffectto"

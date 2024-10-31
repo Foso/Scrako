@@ -1,12 +1,12 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
@@ -17,8 +17,7 @@ private class Changeeffectby(val block0: ReporterBlock, val effect: String) : No
         identifier: String,
         nextUUID: String?,
         context: Context,
-
-        ) {
+    ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = OpCode.sound_changeeffectby,

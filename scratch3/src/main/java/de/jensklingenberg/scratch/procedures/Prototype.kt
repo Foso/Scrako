@@ -2,11 +2,11 @@ package de.jensklingenberg.scratch.procedures
 
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
-import de.jensklingenberg.scrako.model.Mutation
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.Mutation
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -44,7 +44,7 @@ internal class Prototype(
         }
 
         val argumentNames = arguments.joinToString {
-            "\""+it.name+"\""
+            "\"" + it.name + "\""
         }
 
         val argIds = context.functions.filter { it.functionName == customBlockName }.map { it.id }

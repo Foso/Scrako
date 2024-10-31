@@ -1,10 +1,10 @@
 package de.jensklingenberg.scratch.operator
 
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
 

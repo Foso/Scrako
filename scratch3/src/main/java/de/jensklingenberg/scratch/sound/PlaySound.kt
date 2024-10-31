@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Sound
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
@@ -20,8 +20,7 @@ private class PlaySound(val soundName: String) : Node {
         identifier: String,
         nextUUID: String?,
         context: Context,
-
-        ) {
+    ) {
         val soundMenuId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = OpCode.sound_play,

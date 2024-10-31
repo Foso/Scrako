@@ -16,9 +16,7 @@ import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scratch.event.Key
 import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch.event.whenKeyPress
-import de.jensklingenberg.scratch.looks.say
 import kotlinx.serialization.json.Json
-import looks_backdrops
 import me.jens.targets.MySprite1
 import switchbackdropto
 import java.io.File
@@ -33,7 +31,6 @@ private val json = Json {
 }
 
 
-
 fun main() {
 
     //importer()
@@ -43,7 +40,7 @@ fun main() {
         getGlobalVariable("myVar", true)
         val paint = createBroadcast("paint")
         val input = createBroadcast("input")
-        MySprite1(paint,input)
+        MySprite1(paint, input)
         Sprite2(paint)
         stageBuilder {
             addCostumes(listOf(backdrop))
@@ -82,7 +79,7 @@ fun main() {
 private fun ProjectBuilder.Sprite2(paint: Broadcast) {
     spriteBuilder("Sprite2") {
         addPosition(100.0, 150.0)
-        addCostumes(listOf(blockA,blockB,Blockc))
+        addCostumes(listOf(blockA, blockB, Blockc))
         scriptBuilder {
             whenIReceiveBroadcast(paint)
         }
@@ -146,7 +143,7 @@ private fun importer(): ScratchList {
     tt.targets.forEach { target ->
 
         target.costumes.forEach {
-            val text = "val ${it.name.replace("-","")} = Costume(\n" +
+            val text = "val ${it.name.replace("-", "")} = Costume(\n" +
                     "    name = \"${it.name}\",\n" +
                     "    bitmapResolution = ${it.bitmapResolution},\n" +
                     "    dataFormat = \"${it.dataFormat}\",\n" +
@@ -155,7 +152,7 @@ private fun importer(): ScratchList {
                     "    rotationCenterX = ${it.rotationCenterX},\n" +
                     "    rotationCenterY = ${it.rotationCenterY}\n" +
                     ")"
-            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + it.name+".kt").writeText(text)
+            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + it.name + ".kt").writeText(text)
         }
         target.blocks.forEach { (t, blockOr) ->
             val block = blockOr as? de.jensklingenberg.scrako.model.Block ?: return@forEach

@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch.motion
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -9,6 +8,7 @@ import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
@@ -18,7 +18,8 @@ private class PointInDirection(val block: ReporterBlock) : Node, MotionBlock {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context) {
+        context: Context
+    ) {
         val childId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_pointindirection,

@@ -1,12 +1,12 @@
 package de.jensklingenberg.scratch.sensing
 
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.Sprite
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -19,8 +19,7 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
         identifier: String,
         nextUUID: String?,
         context: Context,
-
-        ) {
+    ) {
         val destinationUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = OpCode.sensing_of,

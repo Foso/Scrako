@@ -61,7 +61,10 @@ internal fun createTarget(
     return targe2
 }
 
-internal fun defaultStage(variables: MutableMap<String, UUID> = mutableMapOf(), broadcasts: Map<String, String>): Target {
+internal fun defaultStage(
+    variables: MutableMap<String, UUID> = mutableMapOf(),
+    broadcasts: Map<String, String>
+): Target {
 
     return Target(
         isStage = true,
