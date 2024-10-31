@@ -2,10 +2,10 @@ package de.jensklingenberg.scratch.control
 
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch.common.OpCode
 
 private class Stop(private val option: StopOption) : Node {
@@ -14,9 +14,8 @@ private class Stop(private val option: StopOption) : Node {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
 
         if (option == StopOption.ALL && nextUUID != null) {
             throw IllegalArgumentException("Stop block with All cannot have a next block")

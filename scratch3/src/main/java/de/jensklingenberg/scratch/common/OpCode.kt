@@ -5,7 +5,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 internal class OpCode(val value: String) {
     companion object {
-        val sound_setvolumeto = "sound_setvolumeto"
         val sound_changevolumeby = "sound_changevolumeby"
         val sound_changeeffectby = "sound_changeeffectby"
         val sound_stopallsounds = "sound_stopallsounds"
@@ -61,7 +60,6 @@ internal class OpCode(val value: String) {
         val motion_changexby = "motion_changexby"
         val motion_changeyby = "motion_changeyby"
         val sensing_dayssince2000 = "sensing_dayssince2000"
-        val operator_letter_of = "operator_letter_of"
         val data_changevariableby = "data_changevariableby"
         val data_setvariableto = "data_setvariableto"
         val sound_volume = "sound_volume"

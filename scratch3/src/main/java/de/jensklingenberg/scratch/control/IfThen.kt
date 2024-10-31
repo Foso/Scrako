@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -21,9 +21,8 @@ internal class IfThen(
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val newNext = nextUUID
         val operatorUUID = UUID.randomUUID().toString()
         val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }

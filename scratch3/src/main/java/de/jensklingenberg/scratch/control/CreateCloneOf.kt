@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch.control
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.Sprite
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -17,9 +17,8 @@ private class CreateCloneOf(private val spriteName: String) : Node {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val uuid = UUID.randomUUID()
         visitors[identifier] = BlockSpec(
             opcode = OpCode.control_create_clone_of,
@@ -42,7 +41,6 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
         identifier: String,
         nextUUID: String?,
         context: Context,
-
         ) {
         visitors[identifier] = BlockSpec(
             opcode = OpCode.control_create_clone_of_menu,

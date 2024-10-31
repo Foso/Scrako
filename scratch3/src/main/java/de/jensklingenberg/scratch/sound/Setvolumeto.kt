@@ -1,13 +1,12 @@
 package de.jensklingenberg.scratch.sound
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
-import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scratch.common.OpCode
+import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
 private class Setvolumeto(val block0: ReporterBlock) : Node {
@@ -16,17 +15,13 @@ private class Setvolumeto(val block0: ReporterBlock) : Node {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sound_setvolumeto,
+            opcode = "sound_setvolumeto",
             inputs = mapOf(
                 "VOLUME" to setValue(block0, block0Id, context)
-            ),
-            fields = mapOf(
-
             )
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier, block0Id, null, context)
