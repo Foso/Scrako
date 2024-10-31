@@ -43,16 +43,19 @@ private class ReplaceItemOfWith(
     }
 }
 
-fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
+fun ScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
     addNode(ReplaceItemOfWith(index, list, replace))
 
-fun ScriptBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: String) =
+fun ScriptBuilder.replaceItemOfListWith(index: Int, list: ScratchList, replace: String) =
     addNode(ReplaceItemOfWith(IntBlock(index), list, StringBlock(replace)))
 
-fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: Int) =
+fun ScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: Int) =
     addNode(ReplaceItemOfWith(index, list, IntBlock(replace)))
 
-fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: String) =
+fun ScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: String) =
     addNode(ReplaceItemOfWith(index, list, StringBlock(replace)))
+
+
+
 
 

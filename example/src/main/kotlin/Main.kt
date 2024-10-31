@@ -1,81 +1,50 @@
 package me.jens
 
-import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostume
-import de.jensklingenberg.scrako.builder.addSprite
+import de.jensklingenberg.scrako.builder.createBroadcast
+import de.jensklingenberg.scrako.builder.getGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.scriptBuilder
-import de.jensklingenberg.scrako.builder.stageBuilder
-import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.builder.spriteBuilder
+import de.jensklingenberg.scrako.builder.writeProject
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.model.ScratchProject
-import de.jensklingenberg.scrako.common.Sprite
-import de.jensklingenberg.scrako.common.backdrop
-import de.jensklingenberg.scratch.event.whenFlagClicked
-import de.jensklingenberg.scrako.builder.writeProject
+import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
+import de.jensklingenberg.scratch.looks.say
 import kotlinx.serialization.json.Json
 import me.jens.targets.MySprite1
-import me.jens.targets.plus
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
 import java.util.zip.ZipInputStream
-
-val sprite1 = Sprite(
-    "Sprite1", listOf(
-        sound1,
-        sound2
-    )
-)
-
-val backdropSprite = Sprite(
-    "Stage", listOf(
-    )
-)
-
-val basketSprite = Sprite(
-    "Stage", listOf(
-    )
-)
-
-
-val spriteArrow = Sprite("Arrow1", listOf())
 
 private val json = Json {
     ignoreUnknownKeys = true
     coerceInputValues = true
 }
 
-val arr = (1..24).toMutableList()
-
-fun get(y: Int, x: Int): Int {
-    val width = 6
-
-    return arr[y * width + x]
-
-}
-
-fun set(y: Int, x: Int, value: Int) {
-    val width = 6
-
-    arr[y * width + x] = value
-
-}
 
 fun main() {
 
-    println(get(1,0))
-    set(1,0,2)
-    println(get(1,0))
     importer()
-    val test = 2 + IntBlock(2)
 
 
     val proj = projectBuilder {
         //  getOrCreateGlobalList("myList")
-        //getGlobalVariable("myVar")
-        MyStage()
-        MySprite1()
+
+        getGlobalVariable("myVar", true)
+        val paint = createBroadcast("paint")
+        val input = createBroadcast("input")
+        //MyStage()
+        MySprite1(paint,input)
+        spriteBuilder("Sprite2") {
+            addPosition(100, 150)
+            addCostume(costume1)
+            scriptBuilder {
+                whenIReceiveBroadcast(paint)
+                say("Hello")
+            }
+        }
         //createSprite2()
     }
 
@@ -159,11 +128,6 @@ private fun importer(): ScratchList {
 
     tt.targets.forEach { target ->
         target.blocks.forEach { (t, block) ->
-            if (block.opcode == "procedures_call") {
-                println("ddd")
-            }
-            println(block.opcode)
-            // if(block.opcode == "motion_movesteps"){
 
             val newInputs =
                 block.inputs.entries.mapIndexed { index, entry -> "\"${entry.key}\" to setValue(block${index}, block${index}Id, context) " }
@@ -203,13 +167,3 @@ private fun importer(): ScratchList {
     return myList
 }
 
-private fun ProjectBuilder.MyStage() {
-    stageBuilder {
-        addSprite(backdropSprite)
-        addCostume(backdrop)
-        scriptBuilder {
-            whenFlagClicked()
-            // goTo("100")
-        }
-    }
-}

@@ -3,6 +3,7 @@ package de.jensklingenberg.scrako.common
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Comment
 import de.jensklingenberg.scrako.model.Costume
+import de.jensklingenberg.scrako.model.Sound
 import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -11,13 +12,16 @@ import java.util.UUID
 
 internal fun createTarget(
     blocks: Map<String, Block>,
-    sprite: Sprite,
-    name: String = sprite.name,
+    name: String,
     comments: List<Comment> = emptyList(),
     lists: Map<String, ScratchList>,
     variables: Map<String, UUID>,
     costumes: List<Costume>,
-    broadcasts: Map<String, String>
+    broadcasts: Map<String, String>,
+    sounds: List<Sound>,
+    size: Int,
+    x: Int,
+    y: Int
 ): Target {
     val targe2 = Target(
         isStage = false,
@@ -41,15 +45,15 @@ internal fun createTarget(
         broadcasts = broadcasts,
         blocks = blocks,
         comments = comments.associateBy { it.id },
-        currentCostume = 0,
+        currentCostume = x,
         costumes = costumes,
-        sounds = sprite.sounds,
+        sounds = sounds,
         volume = 100,
         layerOrder = 1,
         visible = true,
-        x = 0,
-        y = 0,
-        size = sprite.size,
+        x = x,
+        y = y,
+        size = size,
         direction = 90,
         draggable = false,
         rotationStyle = "all around"
@@ -62,11 +66,12 @@ internal fun defaultStage(variables: MutableMap<String, UUID> = mutableMapOf(), 
     return Target(
         isStage = true,
         name = "Stage",
-        variables = variables.map { (key, value) ->
-            key to JsonArray(
+        variables = variables.map {
+            it.value.toString() to JsonArray(
                 listOf(
-                    JsonPrimitive(key),
-                    JsonPrimitive(value.toString())
+                    JsonPrimitive(it.key),
+                    JsonPrimitive(1),
+                    //JsonPrimitive(true)
                 )
             )
         }.toMap(),

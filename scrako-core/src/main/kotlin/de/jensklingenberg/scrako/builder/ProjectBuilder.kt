@@ -14,8 +14,9 @@ class ProjectBuilder {
     private var globalVariableMap = mutableMapOf<String, UUID>()
     private var lists = mutableMapOf<String, ScratchList>()
     private var broadcasts = mutableListOf<Broadcast>()
-    fun addVariable(name: String) {
-        globalVariableMap[name] = UUID.randomUUID()
+
+    fun addVariable(name: ScratchVariable) {
+        globalVariableMap[name.name] = UUID.randomUUID()
     }
 
     fun addList(list: ScratchList) {
@@ -44,7 +45,6 @@ class ProjectBuilder {
         broadcasts.add(board)
     }
 
-
 }
 
 fun ProjectBuilder.addStage(target: SpriteBuilder) {
@@ -64,17 +64,17 @@ fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
     return node
 }
 
-fun ProjectBuilder.stageBuilder(ff: SpriteBuilder.() -> Unit): SpriteBuilder {
+fun ProjectBuilder.stageBuilder(spriteBuilderScope: SpriteBuilder.() -> Unit): SpriteBuilder {
     val spriteBuilder = SpriteBuilder()
-    ff.invoke(spriteBuilder)
+    spriteBuilderScope.invoke(spriteBuilder)
     spriteBuilder.name = "Stage"
     addStage(spriteBuilder)
     return spriteBuilder
 }
 
-fun ProjectBuilder.spriteBuilder(name: String, ff: SpriteBuilder.() -> Unit): SpriteBuilder {
+fun ProjectBuilder.spriteBuilder(name: String, spriteBuilderScope: SpriteBuilder.() -> Unit): SpriteBuilder {
     val spriteBuilder = SpriteBuilder()
-    ff.invoke(spriteBuilder)
+    spriteBuilderScope.invoke(spriteBuilder)
     spriteBuilder.name = name
     targets.add(spriteBuilder)
     return spriteBuilder
@@ -88,9 +88,9 @@ fun SpriteBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilde
 }
 
 
-fun ProjectBuilder.getGlobalVariable(name: String): ScratchVariable {
-    val element = ScratchVariable(name)
-    addVariable(name)
+fun ProjectBuilder.getGlobalVariable(name: String, isCloud: Boolean = false): ScratchVariable {
+    val element = ScratchVariable(name, isCloud)
+    addVariable(element)
     return element
 }
 

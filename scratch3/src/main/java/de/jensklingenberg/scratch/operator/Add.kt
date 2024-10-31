@@ -72,11 +72,11 @@ infix fun ReporterBlock.or(booleanBlock: ReporterBlock): BooleanBlock {
     return OperatorOr(this, booleanBlock)
 }
 
-infix operator fun ReporterBlock.plus(i: Int): Add {
+infix operator fun ReporterBlock.plus(i: Int): ReporterBlock {
     return Add(this, IntBlock(i))
 }
 
-infix operator fun ReporterBlock.plus(i: ReporterBlock): Add {
+infix operator fun ReporterBlock.plus(i: ReporterBlock): ReporterBlock {
     return Add(this, i)
 }
 
@@ -86,4 +86,12 @@ infix operator fun ReporterBlock.minus(i: Int): ReporterBlock {
 
 infix fun ReporterBlock.times(i: Int): ReporterBlock {
     return Multiply(this, IntBlock(i))
+}
+
+infix fun Int.minus(intBlock: IntBlock): ReporterBlock {
+    return Subtract(IntBlock(this), intBlock)
+}
+
+infix operator fun Int.plus(int: ReporterBlock): ReporterBlock {
+    return Add(IntBlock(this), int)
 }

@@ -4,19 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="fix image">
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="snake array">
+      <change afterPath="$PROJECT_DIR$/docs/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/TargetBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/CapBlock.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/CapBlock.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchVariable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Sprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Sprite.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ReplaceItemOfWith.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ReplaceItemOfWith.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/Add.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/Add.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/OperatorSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/OperatorSpec.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turbowarp/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,14 +174,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00016" summary="DSL2">
-      <option name="closed" value="true" />
-      <created>1729629514961</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1729629514961</updated>
     </task>
     <task id="LOCAL-00017" summary="DSL3">
       <option name="closed" value="true" />
@@ -563,7 +559,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730360983986</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="snake array">
+      <option name="closed" value="true" />
+      <created>1730372394606</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1730372394606</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -589,7 +593,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="ChangeEffectBy" />
     <MESSAGE value="switchstomume" />
     <MESSAGE value="target" />
     <MESSAGE value="target2" />
@@ -614,7 +617,8 @@
     <MESSAGE value="extensions" />
     <MESSAGE value="debugger" />
     <MESSAGE value="fix image" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix image" />
+    <MESSAGE value="snake array" />
+    <option name="LAST_COMMIT_MESSAGE" value="snake array" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

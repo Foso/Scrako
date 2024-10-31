@@ -4,7 +4,6 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.common.createTarget
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Target
@@ -12,13 +11,23 @@ import java.util.UUID
 
 class SpriteBuilder {
     internal val scriptBuilders = mutableListOf<ScriptBuilder>()
-    var sprite: Sprite? = null
     var name: String = ""
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
     private val costumesList = mutableListOf<Costume>()
+    private var position = Pair(0, 0)
+    private var sounds = mutableListOf<String>()
+
+    fun addSounds(sound: List<String>) {
+        sounds.addAll(sound)
+    }
+
     fun addVariable(name: String) {
         variableMap[name] = UUID.randomUUID()
+    }
+
+    fun addPosition(y: Int, x: Int) {
+        position = Pair(y, x)
     }
 
     fun addList(list: ScratchList) {
@@ -86,14 +95,17 @@ class SpriteBuilder {
         )
 
         return createTarget(
-            blocks,
-            this.sprite!!,
-            name,
-            emptyList(),
-            targetLists,
-            targetVariables,
-            costumesList,
-            context.broadcasts1
+            blocks = blocks,
+            name = name,
+            comments = emptyList(),
+            lists = targetLists,
+            variables = targetVariables,
+            costumes = costumesList,
+            broadcasts = context.broadcasts1,
+            sounds = emptyList(),
+            size = 100,
+            x = position.second,
+            y = position.first
         )
     }
 
@@ -109,10 +121,6 @@ fun SpriteBuilder.addCostume(costume: Costume) {
 
 fun SpriteBuilder.addCostumes(costume: List<Costume>) {
     costume.forEach { addCostumeList(it) }
-}
-
-fun SpriteBuilder.addSprite(sprite: Sprite) {
-    this.sprite = sprite
 }
 
 fun SpriteBuilder.getOrCreateList(name: String, contents: List<String> = emptyList()): ScratchList {

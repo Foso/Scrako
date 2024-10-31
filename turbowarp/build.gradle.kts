@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation(project(":scratch3"))
+    implementation(project(":scrako-core"))
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
 }

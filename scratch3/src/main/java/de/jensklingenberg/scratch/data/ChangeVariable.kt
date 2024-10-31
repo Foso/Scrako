@@ -36,8 +36,8 @@ private class ChangeVariable(private val block: ReporterBlock, private val varia
 fun ScriptBuilder.changeVariableBy(variable: ScratchVariable, item: ReporterBlock) =
     addNode(ChangeVariable(item, variable.name))
 
-fun ScriptBuilder.changeVariableBy(variable: ScratchVariable, item: Int) =
-    addNode(ChangeVariable(IntBlock(item), variable.name))
+fun ScriptBuilder.changeVariableBy(variable: ScratchVariable, by: Int) =
+    addNode(ChangeVariable(IntBlock(by), variable.name))
 
 fun ScriptBuilder.changeVariableBy(variable: ScratchVariable, item: Double) =
     addNode(ChangeVariable(DoubleBlock(item), variable.name))

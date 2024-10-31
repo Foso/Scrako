@@ -1,13 +1,21 @@
-# ScraKo
+# Scrako
 
-# Global variables
+# All sprite variables
 
 ```kotlin
 projectBuilder {
-    getGlobalVariable("myVar")
-    MyStage()
-    MyTarget(myList)
-    createSprite2()
+    val myVar = getGlobalVariable("myVar")
+    ...
 }
 ```
 
+You can create a global variable in the scope of the projectBuilder
+
+# Single sprite variables
+
+```kotlin
+scriptBuilder {
+    val myVar = getGlobalVariable("myVar")
+    ...
+}
+```
