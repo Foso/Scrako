@@ -30,8 +30,10 @@ import de.jensklingenberg.scratch.event.whenKeyPress
 import de.jensklingenberg.scratch.extension.pen.eraseAll
 import de.jensklingenberg.scratch.extension.pen.stamp
 import de.jensklingenberg.scratch.looks.hide
+import de.jensklingenberg.scratch.motion.DragMode
 import de.jensklingenberg.scratch.motion.changeYby
 import de.jensklingenberg.scratch.motion.move
+import de.jensklingenberg.scratch.motion.setDragMode
 import de.jensklingenberg.scratch.motion.setx
 import de.jensklingenberg.scratch.motion.switchCostume
 import de.jensklingenberg.scratch.operator.div
@@ -108,6 +110,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
          */
         scriptBuilder {
             whenIReceiveBroadcast(paint)
+            setDragMode(DragMode.NOT_DRAG)
             call("paint1")
         }
 

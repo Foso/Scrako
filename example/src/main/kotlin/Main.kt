@@ -88,7 +88,7 @@ fun readList(name: String): List<String> {
 private fun importer(): ScratchList {
     var projectJson: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/test45.sb3"
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/Project67.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry
@@ -177,7 +177,8 @@ private fun importer(): ScratchList {
                 .replace(
                     "REPLACE_OPCODE", "\"" + block.opcode + "\""
                 ).replace("REPLACE_FIELDS", newFields)
-            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + name).writeText(sec)
+            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/wrapper/").mkdirs()
+            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/wrapper/" + name).writeText(sec)
             //  }
         }
     }
