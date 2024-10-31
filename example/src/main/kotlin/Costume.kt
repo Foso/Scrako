@@ -43,3 +43,32 @@ val sound2 = Sound(
     md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
 )
 
+val blockA = Costume(
+    name = "Block-a",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "ef3b01f6fc1ffa1270fbbf057f7ded42",
+    md5ext = "",
+    rotationCenterX = 28.0,
+    rotationCenterY = 38.0
+)
+
+val blockB = Costume(
+    name = "Block-b",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "1dc05fbaa37a6b41ffff459d0a776989",
+    md5ext = "",
+    rotationCenterX = 29.0,
+    rotationCenterY = 42.0
+)
+
+val Blockc = Costume(
+    name = "Block-c",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "43090c4b423c977041542ce12017fda0",
+    md5ext = "",
+    rotationCenterX = 35.0,
+    rotationCenterY = 43.0
+)

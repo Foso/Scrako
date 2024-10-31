@@ -115,10 +115,6 @@ class SpriteBuilder {
 
 }
 
-fun SpriteBuilder.addCostume(costume: Costume) {
-    this.addCostumeList(costume)
-}
-
 fun SpriteBuilder.addCostumes(costume: List<Costume>) {
     costume.forEach { addCostumeList(it) }
 }

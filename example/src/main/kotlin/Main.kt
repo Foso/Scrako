@@ -1,13 +1,16 @@
 package me.jens
 
-import de.jensklingenberg.scrako.builder.addCostume
+import de.jensklingenberg.scrako.builder.ProjectBuilder
+import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.getGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
 import de.jensklingenberg.scrako.builder.writeProject
+import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.ScratchList
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch.looks.say
@@ -24,28 +27,18 @@ private val json = Json {
 }
 
 
+
 fun main() {
 
     importer()
 
 
     val proj = projectBuilder {
-        //  getOrCreateGlobalList("myList")
-
         getGlobalVariable("myVar", true)
         val paint = createBroadcast("paint")
         val input = createBroadcast("input")
-        //MyStage()
         MySprite1(paint,input)
-        spriteBuilder("Sprite2") {
-            addPosition(100, 150)
-            addCostume(costume1)
-            scriptBuilder {
-                whenIReceiveBroadcast(paint)
-                say("Hello")
-            }
-        }
-        //createSprite2()
+        Sprite2(paint)
     }
 
 
@@ -72,6 +65,17 @@ fun main() {
     process2.waitFor()
 }
 
+private fun ProjectBuilder.Sprite2(paint: Broadcast) {
+    spriteBuilder("Sprite2") {
+        addPosition(100, 150)
+        addCostumes(listOf(blockA,blockB,Blockc))
+        scriptBuilder {
+            whenIReceiveBroadcast(paint)
+            say("Hello")
+        }
+    }
+}
+
 
 fun readList(name: String): List<String> {
     val list = mutableListOf<String>()
@@ -84,7 +88,7 @@ fun readList(name: String): List<String> {
 private fun importer(): ScratchList {
     var projectJson: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/pj2.sb3"
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/test45.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry
@@ -127,6 +131,19 @@ private fun importer(): ScratchList {
         File("/Users/jens.klingenberg/Code/2024/LLVMPoet/docs/hey.txt").readText()
 
     tt.targets.forEach { target ->
+
+        target.costumes.forEach {
+            val text = "val ${it.name.replace("-","")} = Costume(\n" +
+                    "    name = \"${it.name}\",\n" +
+                    "    bitmapResolution = ${it.bitmapResolution},\n" +
+                    "    dataFormat = \"${it.dataFormat}\",\n" +
+                    "    assetId = \"${it.assetId}\",\n" +
+                    "    md5ext = \"${it.md5ext}\",\n" +
+                    "    rotationCenterX = ${it.rotationCenterX},\n" +
+                    "    rotationCenterY = ${it.rotationCenterY}\n" +
+                    ")"
+            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + it.name+".kt").writeText(text)
+        }
         target.blocks.forEach { (t, block) ->
 
             val newInputs =

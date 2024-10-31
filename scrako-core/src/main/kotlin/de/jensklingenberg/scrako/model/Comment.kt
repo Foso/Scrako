@@ -30,7 +30,7 @@ data class Costume(
     val bitmapResolution: Int? = null,
     val dataFormat: String,
     val assetId: String,
-    val md5ext: String,
+    @Transient val md5ext: String = "",
     val rotationCenterX: Double,
     val rotationCenterY: Double
 )

@@ -4,23 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="snake array">
-      <change afterPath="$PROJECT_DIR$/docs/TODO.txt" afterDir="false" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="snake array2">
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0654cfcb6234406837336e90be7e419c.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0f920b99ac49421cf28e55c8d863bdc5.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1dc05fbaa37a6b41ffff459d0a776989.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1fb3db31500d6f7da662e825157920fa.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/240aacc04444cef3b2ef8cfaf0dae479.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2b3145ae89c32793c4fcea9a6bcc6075.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/43090c4b423c977041542ce12017fda0.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/579c90cbaf847e9adf4faf37f340b32d.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/67f8e80eabaec4883eb9c67c9527004a.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6c1b26611ec0483f601a648f59305aff.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6c5cf1fd0673f441b04e15e799685831.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/83c36d806dc92327b9e7049a565c6bff.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/83c7486b08e78d099b4e776aaa2783fe.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8580c990ac918577550165447f870542.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8bbbde09c13a06015e554ab36fa178c0.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/93426b2f313d1bdedff368d94fc989d6.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/989c76ae7f8c2e42ebeacdda961061ca.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9d0432c5575451e251990d89845f8d00.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9eba5dd44d65e1d421c40686fecde906.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a73f354dc045bbbc5a491d9367192a80.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c57d371b291d43675f46601518098572.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cd21514d0531fdffb22204e0ec5ed84a.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d02f77994789f528f0aaa7f211690151.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d88d750ce848d7dbeeca3f02249350e2.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d93a9fd4bfb5bc1e9790945fa756b748.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e13e79f106d32a3176dbcf5c1b35827d.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ef3b01f6fc1ffa1270fbbf057f7ded42.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f911b18605f59c75adf4d83e07811fd8.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Costume.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Costume.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/ScratchVariable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Sprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Sprite.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ChangeVariable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ReplaceItemOfWith.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ReplaceItemOfWith.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/Add.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/Add.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turbowarp/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test4.sb3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,14 +193,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00017" summary="DSL3">
-      <option name="closed" value="true" />
-      <created>1729633633205</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1729633633206</updated>
     </task>
     <task id="LOCAL-00018" summary="DSL3">
       <option name="closed" value="true" />
@@ -567,7 +578,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730372394606</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="snake array2">
+      <option name="closed" value="true" />
+      <created>1730398071466</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1730398071466</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -593,7 +612,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="switchstomume" />
     <MESSAGE value="target" />
     <MESSAGE value="target2" />
     <MESSAGE value="refomrat" />
@@ -618,7 +636,8 @@
     <MESSAGE value="debugger" />
     <MESSAGE value="fix image" />
     <MESSAGE value="snake array" />
-    <option name="LAST_COMMIT_MESSAGE" value="snake array" />
+    <MESSAGE value="snake array2" />
+    <option name="LAST_COMMIT_MESSAGE" value="snake array2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -657,6 +676,14 @@
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
           <line>57</line>
           <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
+          <line>132</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

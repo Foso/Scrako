@@ -162,8 +162,6 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
                 changeVariableBy(playerY, -1)
                 replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
             }
-
-
         }
 
         scriptBuilder {
