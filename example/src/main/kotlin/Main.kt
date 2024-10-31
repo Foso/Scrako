@@ -14,7 +14,7 @@ import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scrako.builder.writeProject
 import kotlinx.serialization.json.Json
-import me.jens.targets.MyTarget
+import me.jens.targets.MySprite1
 import me.jens.targets.plus
 import java.io.File
 import java.io.FileInputStream
@@ -75,7 +75,7 @@ fun main() {
         //  getOrCreateGlobalList("myList")
         //getGlobalVariable("myVar")
         MyStage()
-        MyTarget()
+        MySprite1()
         //createSprite2()
     }
 
@@ -97,7 +97,7 @@ fun main() {
     process.waitFor()
 
 
-    val processBuilder2 = ProcessBuilder("open", "${outputPath}/$fileName", "-a", "TurboWarp")
+    val processBuilder2 = ProcessBuilder("open", "${outputPath}/$fileName")
     processBuilder2.inheritIO()
     val process2 = processBuilder2.start()
     process2.waitFor()

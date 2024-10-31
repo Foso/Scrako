@@ -34,7 +34,7 @@ internal fun createTarget(
             it.value.id.toString() to JsonArray(
                 listOf(
                     JsonPrimitive(it.key),
-                    JsonArray(it.value.contents.map { JsonPrimitive(it) })
+                    JsonArray(it.value.contents.map { JsonPrimitive(it.toString()) })
                 )
             )
         }.toMap(),

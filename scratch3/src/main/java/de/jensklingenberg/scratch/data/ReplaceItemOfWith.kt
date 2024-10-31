@@ -52,4 +52,7 @@ fun ScriptBuilder.replaceItemOfWith(index: Int, list: ScratchList, replace: Stri
 fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: Int) =
     addNode(ReplaceItemOfWith(index, list, IntBlock(replace)))
 
+fun ScriptBuilder.replaceItemOfWith(index: ReporterBlock, list: ScratchList, replace: String) =
+    addNode(ReplaceItemOfWith(index, list, StringBlock(replace)))
+
 

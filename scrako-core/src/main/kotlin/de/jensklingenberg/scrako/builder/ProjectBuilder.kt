@@ -9,8 +9,8 @@ import de.jensklingenberg.scrako.model.ScratchProject
 import java.util.UUID
 
 class ProjectBuilder {
-    internal val targets = mutableListOf<TargetBuilder>()
-    internal var stage: TargetBuilder? = null
+    internal val targets = mutableListOf<SpriteBuilder>()
+    internal var stage: SpriteBuilder? = null
     private var globalVariableMap = mutableMapOf<String, UUID>()
     private var lists = mutableMapOf<String, ScratchList>()
     private var broadcasts = mutableListOf<Broadcast>()
@@ -47,7 +47,7 @@ class ProjectBuilder {
 
 }
 
-fun ProjectBuilder.addStage(target: TargetBuilder) {
+fun ProjectBuilder.addStage(target: SpriteBuilder) {
     stage = target
 }
 
@@ -64,23 +64,23 @@ fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
     return node
 }
 
-fun ProjectBuilder.stageBuilder(ff: TargetBuilder.() -> Unit): TargetBuilder {
-    val targetBuilder = TargetBuilder()
-    ff.invoke(targetBuilder)
-    targetBuilder.name = "Stage"
-    addStage(targetBuilder)
-    return targetBuilder
+fun ProjectBuilder.stageBuilder(ff: SpriteBuilder.() -> Unit): SpriteBuilder {
+    val spriteBuilder = SpriteBuilder()
+    ff.invoke(spriteBuilder)
+    spriteBuilder.name = "Stage"
+    addStage(spriteBuilder)
+    return spriteBuilder
 }
 
-fun ProjectBuilder.spriteBuilder(name: String, ff: TargetBuilder.() -> Unit): TargetBuilder {
-    val targetBuilder = TargetBuilder()
-    ff.invoke(targetBuilder)
-    targetBuilder.name = name
-    targets.add(targetBuilder)
-    return targetBuilder
+fun ProjectBuilder.spriteBuilder(name: String, ff: SpriteBuilder.() -> Unit): SpriteBuilder {
+    val spriteBuilder = SpriteBuilder()
+    ff.invoke(spriteBuilder)
+    spriteBuilder.name = name
+    targets.add(spriteBuilder)
+    return spriteBuilder
 }
 
-fun TargetBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
+fun SpriteBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
     val scriptBuilder = ScriptBuilder()
     builder.invoke(scriptBuilder)
     scriptBuilders.add(scriptBuilder)

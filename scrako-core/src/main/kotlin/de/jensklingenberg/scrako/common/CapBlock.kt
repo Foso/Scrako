@@ -9,3 +9,4 @@ interface CapBlock
 interface CBlock
 
 interface ReporterBlock : Node
+

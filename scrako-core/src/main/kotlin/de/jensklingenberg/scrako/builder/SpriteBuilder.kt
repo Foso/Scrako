@@ -10,7 +10,7 @@ import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Target
 import java.util.UUID
 
-class TargetBuilder {
+class SpriteBuilder {
     internal val scriptBuilders = mutableListOf<ScriptBuilder>()
     var sprite: Sprite? = null
     var name: String = ""
@@ -103,25 +103,25 @@ class TargetBuilder {
 
 }
 
-fun TargetBuilder.addCostume(costume: Costume) {
+fun SpriteBuilder.addCostume(costume: Costume) {
     this.addCostumeList(costume)
 }
 
-fun TargetBuilder.addCostumes(costume: List<Costume>) {
+fun SpriteBuilder.addCostumes(costume: List<Costume>) {
     costume.forEach { addCostumeList(it) }
 }
 
-fun TargetBuilder.addSprite(sprite: Sprite) {
+fun SpriteBuilder.addSprite(sprite: Sprite) {
     this.sprite = sprite
 }
 
-fun TargetBuilder.getOrCreateList(name: String, contents: List<String> = emptyList()): ScratchList {
+fun SpriteBuilder.getOrCreateList(name: String, contents: List<String> = emptyList()): ScratchList {
     val element = ScratchList(name, contents)
     addList(element)
     return element
 }
 
-fun TargetBuilder.getOrCreateVariable(name: String): ScratchVariable {
+fun SpriteBuilder.getOrCreateVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
     addVariable(name)
     return element

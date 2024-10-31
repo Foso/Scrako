@@ -36,7 +36,7 @@ abstract class Operator(
         // operand2?.visit(visitors, identifier, operatorUUID2, null, )
     }
 
-    operator fun plus(add: Add): Add {
+    infix operator fun plus(add: ReporterBlock): Add {
         return Add(this, add)
     }
 
