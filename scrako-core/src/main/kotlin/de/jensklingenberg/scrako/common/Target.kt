@@ -20,8 +20,8 @@ internal fun createTarget(
     broadcasts: Map<String, String>,
     sounds: List<Sound>,
     size: Int,
-    x: Int,
-    y: Int
+    x: Double,
+    y: Double
 ): Target {
     val targe2 = Target(
         isStage = false,
@@ -45,7 +45,7 @@ internal fun createTarget(
         broadcasts = broadcasts,
         blocks = blocks,
         comments = comments.associateBy { it.id },
-        currentCostume = x,
+        currentCostume = 0,
         costumes = costumes,
         sounds = sounds,
         volume = 100,
@@ -54,7 +54,7 @@ internal fun createTarget(
         x = x,
         y = y,
         size = size,
-        direction = 90,
+        direction = 90.0,
         draggable = false,
         rotationStyle = "all around"
     )
@@ -87,10 +87,10 @@ internal fun defaultStage(variables: MutableMap<String, UUID> = mutableMapOf(), 
         volume = 100,
         layerOrder = 0,
         visible = false,
-        x = 0,
-        y = 0,
+        x = 0.0,
+        y = 0.0,
         size = 100,
-        direction = 90,
+        direction = 90.0,
         tempo = 60,
         draggable = false,
         rotationStyle = "all around"

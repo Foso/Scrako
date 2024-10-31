@@ -11,6 +11,7 @@ import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scratch.control.forever
 import de.jensklingenberg.scratch.control.ifThen
@@ -29,14 +30,16 @@ import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch.event.whenKeyPress
 import de.jensklingenberg.scratch.extension.pen.eraseAll
 import de.jensklingenberg.scratch.extension.pen.stamp
+import de.jensklingenberg.scratch.looks.cleargraphiceffects
 import de.jensklingenberg.scratch.looks.hide
-import de.jensklingenberg.scratch.motion.DragMode
+import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.motion.changeYby
 import de.jensklingenberg.scratch.motion.move
-import de.jensklingenberg.scratch.motion.setDragMode
 import de.jensklingenberg.scratch.motion.setx
 import de.jensklingenberg.scratch.motion.switchCostume
+import de.jensklingenberg.scratch.operator.MathOptions.LN
 import de.jensklingenberg.scratch.operator.div
+import de.jensklingenberg.scratch.operator.mathop
 import de.jensklingenberg.scratch.operator.plus
 import de.jensklingenberg.scratch.operator.times
 import de.jensklingenberg.scratch.procedures.call
@@ -95,6 +98,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
          */
         scriptBuilder {
             whenFlagClicked()
+            cleargraphiceffects()
             replaceItemOfListWith(getIndexOf(0, 0), jens2, PlayerIconID)
             setVariable(playerX, 1)
             setVariable(playerY, 1)
@@ -110,7 +114,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
          */
         scriptBuilder {
             whenIReceiveBroadcast(paint)
-            setDragMode(DragMode.NOT_DRAG)
+            say(mathop(LN, IntBlock(4)))
             call("paint1")
         }
 

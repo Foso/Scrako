@@ -9,13 +9,13 @@ import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Target
 import java.util.UUID
 
-class SpriteBuilder {
+open class SpriteBuilder {
     internal val scriptBuilders = mutableListOf<ScriptBuilder>()
     var name: String = ""
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
     private val costumesList = mutableListOf<Costume>()
-    private var position = Pair(0, 0)
+    private var position = Pair(0.0, 0.0)
     private var sounds = mutableListOf<String>()
 
     fun addSounds(sound: List<String>) {
@@ -26,7 +26,7 @@ class SpriteBuilder {
         variableMap[name] = UUID.randomUUID()
     }
 
-    fun addPosition(y: Int, x: Int) {
+    fun addPosition(y: Double, x: Double) {
         position = Pair(y, x)
     }
 
@@ -130,3 +130,4 @@ fun SpriteBuilder.getOrCreateVariable(name: String): ScratchVariable {
     addVariable(name)
     return element
 }
+

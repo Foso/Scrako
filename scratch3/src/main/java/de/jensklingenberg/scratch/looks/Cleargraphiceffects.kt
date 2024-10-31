@@ -1,4 +1,4 @@
-package de.jensklingenberg.scratch.motion
+package de.jensklingenberg.scratch.looks
 
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
@@ -6,10 +6,7 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
 
-/**
- * https://en.scratch-wiki.info/wiki/Set_Drag_Mode_()_(block)
- */
-private class Setdragmode(val dragMode: String) : Node {
+private class Cleargraphiceffects( ) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -17,20 +14,12 @@ private class Setdragmode(val dragMode: String) : Node {
         nextUUID: String?,
         context: Context
     ) {
-
+        
         visitors[identifier] = BlockSpec(
-            opcode = "sensing_setdragmode",
-            fields = mapOf(
-                "DRAG_MODE" to listOf(dragMode, null)
-            )
+            opcode = "looks_cleargraphiceffects",
         ).toBlock(nextUUID, parent)
-
+        
     }
 }
 
-enum class DragMode(val value: String) {
-    DRAG("draggable"),
-    NOT_DRAG("not draggable")
-}
-
-fun ScriptBuilder.setDragMode(drag_mode: DragMode) = addNode(Setdragmode(drag_mode.value))
+fun ScriptBuilder.cleargraphiceffects( ) = addNode(Cleargraphiceffects( ))

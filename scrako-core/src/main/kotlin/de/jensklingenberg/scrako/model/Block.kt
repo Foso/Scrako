@@ -23,7 +23,7 @@ data class Block(
 data class Mutation(
     val tagName: String,
     @EncodeDefault val children: List<String> = emptyList(),
-    val proccode: String,
+    @EncodeDefault val proccode: String = "",
     @EncodeDefault val argumentids: String = "[]",
     @EncodeDefault val argumentnames: String = "[]",
     @EncodeDefault val argumentdefaults: String = "[]",

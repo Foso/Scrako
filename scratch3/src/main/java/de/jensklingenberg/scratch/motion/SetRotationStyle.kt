@@ -6,7 +6,6 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scratch.common.OpCode
 
 private class SetRotationStyle(private val style: RotationStyle) : Node, MotionBlock {
     override fun visit(
@@ -14,11 +13,9 @@ private class SetRotationStyle(private val style: RotationStyle) : Node, MotionB
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.motion_setrotationstyle,
+            opcode = "motion_setrotationstyle",
             fields = mapOf("STYLE" to listOf(style.spriteName, null))
         ).toBlock(nextUUID, parent)
     }

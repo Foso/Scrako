@@ -7,15 +7,20 @@ import de.jensklingenberg.scrako.builder.getGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
+import de.jensklingenberg.scrako.builder.stageBuilder
 import de.jensklingenberg.scrako.builder.writeProject
 import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scrako.model.ScratchProject
+import de.jensklingenberg.scratch.event.Key
 import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
+import de.jensklingenberg.scratch.event.whenKeyPress
 import de.jensklingenberg.scratch.looks.say
 import kotlinx.serialization.json.Json
+import looks_backdrops
 import me.jens.targets.MySprite1
+import switchbackdropto
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -24,13 +29,14 @@ import java.util.zip.ZipInputStream
 private val json = Json {
     ignoreUnknownKeys = true
     coerceInputValues = true
+    explicitNulls = false
 }
 
 
 
 fun main() {
 
-    importer()
+    //importer()
 
 
     val proj = projectBuilder {
@@ -39,6 +45,14 @@ fun main() {
         val input = createBroadcast("input")
         MySprite1(paint,input)
         Sprite2(paint)
+        stageBuilder {
+            addCostumes(listOf(backdrop))
+
+            scriptBuilder {
+                whenKeyPress(Key.D)
+                switchbackdropto("backdrop1")
+            }
+        }
     }
 
 
@@ -67,11 +81,10 @@ fun main() {
 
 private fun ProjectBuilder.Sprite2(paint: Broadcast) {
     spriteBuilder("Sprite2") {
-        addPosition(100, 150)
+        addPosition(100.0, 150.0)
         addCostumes(listOf(blockA,blockB,Blockc))
         scriptBuilder {
             whenIReceiveBroadcast(paint)
-            say("Hello")
         }
     }
 }
@@ -88,7 +101,7 @@ fun readList(name: String): List<String> {
 private fun importer(): ScratchList {
     var projectJson: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/Project67.sb3"
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/test4.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry
@@ -144,8 +157,8 @@ private fun importer(): ScratchList {
                     ")"
             File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + it.name+".kt").writeText(text)
         }
-        target.blocks.forEach { (t, block) ->
-
+        target.blocks.forEach { (t, blockOr) ->
+            val block = blockOr as? de.jensklingenberg.scrako.model.Block ?: return@forEach
             val newInputs =
                 block.inputs.entries.mapIndexed { index, entry -> "\"${entry.key}\" to setValue(block${index}, block${index}Id, context) " }
                     .joinToString(",\n") { it }

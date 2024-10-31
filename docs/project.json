@@ -3,20 +3,78 @@
     {
       "isStage": true,
       "name": "Stage",
-      "variables": {
-        "`jEk@4|i[#Fk?(8x)AV.-my variable": [
-          "my variable",
-          0
-        ]
-      },
+      "variables": {},
       "lists": {},
-      "broadcasts": {},
-      "blocks": {},
+      "broadcasts": {
+        "bea06709-eea6-46aa-ab1f-4c60dfbbf1d2": "paint",
+        "b5cfa736-0bb2-4972-9a48-cf9fd1629848": "input"
+      },
+      "blocks": {
+        "v": {
+          "opcode": "event_whenkeypressed",
+          "next": "w",
+          "parent": null,
+          "inputs": {},
+          "fields": {
+            "KEY_OPTION": [
+              "d",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 71,
+          "y": 236
+        },
+        "as": {
+          "opcode": "looks_backdrops",
+          "next": null,
+          "parent": "v",
+          "inputs": {},
+          "fields": {
+            "BACKDROP": [
+              "backdrop1",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "w": {
+          "opcode": "looks_switchbackdropto",
+          "next": null,
+          "parent": "v",
+          "inputs": {
+            "BACKDROP": [
+              1,
+              ")"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        ")": {
+          "opcode": "looks_backdrops",
+          "next": null,
+          "parent": "w",
+          "inputs": {},
+          "fields": {
+            "BACKDROP": [
+              "backdrop1",
+              null
+            ]
+          },
+          "shadow": true,
+          "topLevel": false
+        }
+      },
       "comments": {},
       "currentCostume": 0,
       "costumes": [
         {
           "name": "backdrop1",
+          "bitmapResolution": 1,
           "dataFormat": "svg",
           "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
           "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
@@ -35,28 +93,276 @@
     {
       "isStage": false,
       "name": "Sprite1",
-      "variables": {},
-      "lists": {},
-      "broadcasts": {},
+      "variables": {
+        "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1": [
+          "playerX",
+          1
+        ],
+        "abd55a92-aedd-4e76-97a7-48abde72097f": [
+          "playerY",
+          1
+        ],
+        "16fb95e6-a8da-47bb-b826-d91d12c4a311": [
+          "width",
+          1
+        ],
+        "41fb8aff-8407-45a2-aea0-1e931e4c82dc": [
+          "paint_yy",
+          1
+        ],
+        "e57e9681-2c76-46cf-a4ce-4fdd7ca3776c": [
+          "paint_xx",
+          1
+        ]
+      },
+      "lists": {
+        "21072acd-3c61-4638-bdea-5f50efedd456": [
+          "jens2",
+          [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ]
+      },
+      "broadcasts": {
+        "bea06709-eea6-46aa-ab1f-4c60dfbbf1d2": "paint",
+        "b5cfa736-0bb2-4972-9a48-cf9fd1629848": "input"
+      },
       "blocks": {
-        "a": {
-          "opcode": "procedures_call",
-          "next": null,
+        "*": {
+          "opcode": "event_whenflagclicked",
+          "next": "d",
           "parent": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "d": {
+          "opcode": "data_replaceitemoflist",
+          "next": "x",
+          "parent": "*",
           "inputs": {
-            "arg0": [
+            "INDEX": [
+              3,
+              "y",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
               1,
               [
                 10,
-                "help"
+                "2"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "y": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "d",
+          "inputs": {
+            "NUM1": [
+              3,
+              "+",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
               ]
             ]
           },
           "fields": {},
           "shadow": false,
-          "topLevel": true,
-          "x": 193,
-          "y": 194,
+          "topLevel": false
+        },
+        "+": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "y",
+          "inputs": {
+            "NUM1": [
+              1,
+              [
+                4,
+                "0"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "x": {
+          "opcode": "data_setvariableto",
+          "next": "z",
+          "parent": "d",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "playerX",
+              "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "z": {
+          "opcode": "data_setvariableto",
+          "next": "A",
+          "parent": "x",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "playerY",
+              "abd55a92-aedd-4e76-97a7-48abde72097f"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "A": {
+          "opcode": "procedures_call",
+          "next": "B",
+          "parent": "z",
+          "inputs": {
+            "arg0": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false,
           "mutation": {
             "tagName": "mutation",
             "children": [],
@@ -64,6 +370,1757 @@
             "argumentids": "[\"arg0\"]",
             "warp": "false"
           }
+        },
+        "B": {
+          "opcode": "control_forever",
+          "next": null,
+          "parent": "A",
+          "inputs": {
+            "SUBSTACK": [
+              2,
+              "C"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "C": {
+          "opcode": "event_broadcast",
+          "next": ",",
+          "parent": "B",
+          "inputs": {
+            "BROADCAST_INPUT": [
+              1,
+              [
+                11,
+                "paint",
+                "bea06709-eea6-46aa-ab1f-4c60dfbbf1d2"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        ",": {
+          "opcode": "event_broadcast",
+          "next": null,
+          "parent": "C",
+          "inputs": {
+            "BROADCAST_INPUT": [
+              1,
+              [
+                11,
+                "input",
+                "b5cfa736-0bb2-4972-9a48-cf9fd1629848"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "-": {
+          "opcode": "event_whenbroadcastreceived",
+          "next": "D",
+          "parent": null,
+          "inputs": {},
+          "fields": {
+            "BROADCAST_OPTION": [
+              "paint",
+              "bea06709-eea6-46aa-ab1f-4c60dfbbf1d2"
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "D": {
+          "opcode": "sensing_setdragmode",
+          "next": ".",
+          "parent": "-",
+          "inputs": {},
+          "fields": {
+            "DRAG_MODE": [
+              "not draggable",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        ".": {
+          "opcode": "procedures_call",
+          "next": null,
+          "parent": "D",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false,
+          "mutation": {
+            "tagName": "mutation",
+            "children": [],
+            "proccode": "paint1 ",
+            "argumentids": "[]",
+            "warp": "false"
+          }
+        },
+        "E": {
+          "opcode": "procedures_definition",
+          "next": "F",
+          "parent": null,
+          "inputs": {
+            "custom_block": [
+              2,
+              "/"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "/": {
+          "opcode": "procedures_prototype",
+          "next": null,
+          "parent": "E",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false,
+          "mutation": {
+            "tagName": "mutation",
+            "children": [],
+            "proccode": "paint1 ",
+            "argumentids": "[]",
+            "argumentnames": "[]",
+            "argumentdefaults": "[]",
+            "warp": "true"
+          }
+        },
+        "F": {
+          "opcode": "looks_hide",
+          "next": "G",
+          "parent": "E",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "G": {
+          "opcode": "data_setvariableto",
+          "next": "H",
+          "parent": "F",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "width",
+              "16fb95e6-a8da-47bb-b826-d91d12c4a311"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "H": {
+          "opcode": "data_setvariableto",
+          "next": "I",
+          "parent": "G",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "0"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "paint_yy",
+              "41fb8aff-8407-45a2-aea0-1e931e4c82dc"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "I": {
+          "opcode": "pen_clear",
+          "next": "J",
+          "parent": "H",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "J": {
+          "opcode": "motion_gotoxy",
+          "next": "e",
+          "parent": "I",
+          "inputs": {
+            "X": [
+              1,
+              [
+                4,
+                "-230"
+              ]
+            ],
+            "Y": [
+              1,
+              [
+                4,
+                "120"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "e": {
+          "opcode": "control_repeat",
+          "next": null,
+          "parent": "J",
+          "inputs": {
+            "TIMES": [
+              3,
+              "K",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "SUBSTACK": [
+              2,
+              "L"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "K": {
+          "opcode": "operator_divide",
+          "next": null,
+          "parent": "e",
+          "inputs": {
+            "NUM1": [
+              3,
+              ":",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              2,
+              [
+                12,
+                "width",
+                "16fb95e6-a8da-47bb-b826-d91d12c4a311"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        ":": {
+          "opcode": "data_lengthoflist",
+          "next": null,
+          "parent": "K",
+          "inputs": {},
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "L": {
+          "opcode": "motion_setx",
+          "next": "M",
+          "parent": "e",
+          "inputs": {
+            "X": [
+              1,
+              [
+                4,
+                "-230"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "M": {
+          "opcode": "data_setvariableto",
+          "next": "f",
+          "parent": "L",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "0"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "paint_xx",
+              "e57e9681-2c76-46cf-a4ce-4fdd7ca3776c"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "f": {
+          "opcode": "control_repeat",
+          "next": "N",
+          "parent": "M",
+          "inputs": {
+            "TIMES": [
+              2,
+              [
+                12,
+                "width",
+                "16fb95e6-a8da-47bb-b826-d91d12c4a311"
+              ]
+            ],
+            "SUBSTACK": [
+              2,
+              "g"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "g": {
+          "opcode": "looks_switchcostumeto",
+          "next": "O",
+          "parent": "f",
+          "inputs": {
+            "COSTUME": [
+              2,
+              "P"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "P": {
+          "opcode": "data_itemoflist",
+          "next": null,
+          "parent": "g",
+          "inputs": {
+            "INDEX": [
+              3,
+              "h",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "h": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "P",
+          "inputs": {
+            "NUM1": [
+              3,
+              ";",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "=",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        ";": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "h",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "paint_yy",
+                "41fb8aff-8407-45a2-aea0-1e931e4c82dc"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "=": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "h",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "paint_xx",
+                "e57e9681-2c76-46cf-a4ce-4fdd7ca3776c"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "O": {
+          "opcode": "motion_movesteps",
+          "next": "Q",
+          "parent": "g",
+          "inputs": {
+            "STEPS": [
+              1,
+              [
+                4,
+                "40"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "Q": {
+          "opcode": "pen_stamp",
+          "next": "?",
+          "parent": "O",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "?": {
+          "opcode": "data_changevariableby",
+          "next": null,
+          "parent": "Q",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "paint_xx",
+              "e57e9681-2c76-46cf-a4ce-4fdd7ca3776c"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "N": {
+          "opcode": "data_changevariableby",
+          "next": "@",
+          "parent": "f",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "paint_yy",
+              "41fb8aff-8407-45a2-aea0-1e931e4c82dc"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "@": {
+          "opcode": "motion_changeyby",
+          "next": null,
+          "parent": "N",
+          "inputs": {
+            "DY": [
+              1,
+              [
+                4,
+                "-40"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "[": {
+          "opcode": "event_whenbroadcastreceived",
+          "next": "a",
+          "parent": null,
+          "inputs": {},
+          "fields": {
+            "BROADCAST_OPTION": [
+              "input",
+              "b5cfa736-0bb2-4972-9a48-cf9fd1629848"
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "a": {
+          "opcode": "control_if",
+          "next": "b",
+          "parent": "[",
+          "inputs": {
+            "CONDITION": [
+              2,
+              "R"
+            ],
+            "SUBSTACK": [
+              2,
+              "i"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "R": {
+          "opcode": "sensing_keypressed",
+          "next": null,
+          "parent": "a",
+          "inputs": {
+            "KEY_OPTION": [
+              3,
+              "]",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "]": {
+          "opcode": "sensing_keyoptions",
+          "next": null,
+          "parent": "R",
+          "inputs": {},
+          "fields": {
+            "KEY_OPTION": [
+              "right arrow",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "i": {
+          "opcode": "data_replaceitemoflist",
+          "next": "S",
+          "parent": "a",
+          "inputs": {
+            "INDEX": [
+              3,
+              "j",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "j": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "i",
+          "inputs": {
+            "NUM1": [
+              3,
+              "^",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "_",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "^": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "j",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "_": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "j",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "S": {
+          "opcode": "data_changevariableby",
+          "next": "T",
+          "parent": "i",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "playerX",
+              "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "T": {
+          "opcode": "data_replaceitemoflist",
+          "next": null,
+          "parent": "S",
+          "inputs": {
+            "INDEX": [
+              3,
+              "k",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "2"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "k": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "T",
+          "inputs": {
+            "NUM1": [
+              3,
+              "`",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "{",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "`": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "k",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "{": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "k",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "b": {
+          "opcode": "control_if",
+          "next": "c",
+          "parent": "a",
+          "inputs": {
+            "CONDITION": [
+              2,
+              "U"
+            ],
+            "SUBSTACK": [
+              2,
+              "l"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "U": {
+          "opcode": "sensing_keypressed",
+          "next": null,
+          "parent": "b",
+          "inputs": {
+            "KEY_OPTION": [
+              3,
+              "|",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "|": {
+          "opcode": "sensing_keyoptions",
+          "next": null,
+          "parent": "U",
+          "inputs": {},
+          "fields": {
+            "KEY_OPTION": [
+              "left arrow",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "l": {
+          "opcode": "data_replaceitemoflist",
+          "next": "V",
+          "parent": "b",
+          "inputs": {
+            "INDEX": [
+              3,
+              "m",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "m": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "l",
+          "inputs": {
+            "NUM1": [
+              3,
+              "}",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "~",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "}": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "m",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "~": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "m",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "V": {
+          "opcode": "data_changevariableby",
+          "next": "W",
+          "parent": "l",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "-1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "playerX",
+              "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "W": {
+          "opcode": "data_replaceitemoflist",
+          "next": null,
+          "parent": "V",
+          "inputs": {
+            "INDEX": [
+              3,
+              "n",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "2"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "n": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "W",
+          "inputs": {
+            "NUM1": [
+              3,
+              "aa",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "ab",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "aa": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "n",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ab": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "n",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "c": {
+          "opcode": "control_if",
+          "next": "o",
+          "parent": "b",
+          "inputs": {
+            "CONDITION": [
+              2,
+              "X"
+            ],
+            "SUBSTACK": [
+              2,
+              "p"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "X": {
+          "opcode": "sensing_keypressed",
+          "next": null,
+          "parent": "c",
+          "inputs": {
+            "KEY_OPTION": [
+              3,
+              "ac",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ac": {
+          "opcode": "sensing_keyoptions",
+          "next": null,
+          "parent": "X",
+          "inputs": {},
+          "fields": {
+            "KEY_OPTION": [
+              "down arrow",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "p": {
+          "opcode": "data_replaceitemoflist",
+          "next": "Y",
+          "parent": "c",
+          "inputs": {
+            "INDEX": [
+              3,
+              "q",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "q": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "p",
+          "inputs": {
+            "NUM1": [
+              3,
+              "ad",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "ae",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ad": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "q",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ae": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "q",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "Y": {
+          "opcode": "data_changevariableby",
+          "next": "Z",
+          "parent": "p",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "playerY",
+              "abd55a92-aedd-4e76-97a7-48abde72097f"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "Z": {
+          "opcode": "data_replaceitemoflist",
+          "next": null,
+          "parent": "Y",
+          "inputs": {
+            "INDEX": [
+              3,
+              "r",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "2"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "r": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "Z",
+          "inputs": {
+            "NUM1": [
+              3,
+              "af",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "ag",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "af": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "r",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ag": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "r",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "o": {
+          "opcode": "control_if",
+          "next": null,
+          "parent": "c",
+          "inputs": {
+            "CONDITION": [
+              2,
+              "!"
+            ],
+            "SUBSTACK": [
+              2,
+              "s"
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "!": {
+          "opcode": "sensing_keypressed",
+          "next": null,
+          "parent": "o",
+          "inputs": {
+            "KEY_OPTION": [
+              3,
+              "ah",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ah": {
+          "opcode": "sensing_keyoptions",
+          "next": null,
+          "parent": "!",
+          "inputs": {},
+          "fields": {
+            "KEY_OPTION": [
+              "up arrow",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "s": {
+          "opcode": "data_replaceitemoflist",
+          "next": "#",
+          "parent": "o",
+          "inputs": {
+            "INDEX": [
+              3,
+              "t",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "1"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "t": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "s",
+          "inputs": {
+            "NUM1": [
+              3,
+              "ai",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "aj",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ai": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "t",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "aj": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "t",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "#": {
+          "opcode": "data_changevariableby",
+          "next": "%",
+          "parent": "s",
+          "inputs": {
+            "VALUE": [
+              1,
+              [
+                4,
+                "-1"
+              ]
+            ]
+          },
+          "fields": {
+            "VARIABLE": [
+              "playerY",
+              "abd55a92-aedd-4e76-97a7-48abde72097f"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "%": {
+          "opcode": "data_replaceitemoflist",
+          "next": null,
+          "parent": "#",
+          "inputs": {
+            "INDEX": [
+              3,
+              "u",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "ITEM": [
+              1,
+              [
+                10,
+                "2"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "u": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "%",
+          "inputs": {
+            "NUM1": [
+              3,
+              "ak",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "al",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ak": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "u",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerY",
+                "abd55a92-aedd-4e76-97a7-48abde72097f"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "al": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "u",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "playerX",
+                "e4c5ab2f-57db-4379-8aa8-3b18637bd2b1"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "am": {
+          "opcode": "event_whenkeypressed",
+          "next": "an",
+          "parent": null,
+          "inputs": {},
+          "fields": {
+            "KEY_OPTION": [
+              "d",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "an": {
+          "opcode": "data_showlist",
+          "next": null,
+          "parent": "am",
+          "inputs": {},
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "ao": {
+          "opcode": "event_whenkeypressed",
+          "next": "ap",
+          "parent": null,
+          "inputs": {},
+          "fields": {
+            "KEY_OPTION": [
+              "e",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "ap": {
+          "opcode": "data_hidelist",
+          "next": null,
+          "parent": "ao",
+          "inputs": {},
+          "fields": {
+            "LIST": [
+              "jens2",
+              "21072acd-3c61-4638-bdea-5f50efedd456"
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
         }
       },
       "comments": {},
@@ -71,12 +2128,21 @@
       "costumes": [
         {
           "name": "costume1",
-          "bitmapResolution": 1,
-          "dataFormat": "svg",
-          "assetId": "927d672925e7b99f7813735c484c6922",
-          "md5ext": "927d672925e7b99f7813735c484c6922.svg",
-          "rotationCenterX": 30.74937882782359,
-          "rotationCenterY": 58.864768144346826
+          "bitmapResolution": 2,
+          "dataFormat": "png",
+          "assetId": "e4a6106fe45d48f3e4bd5b7529e6fb48",
+          "md5ext": "e4a6106fe45d48f3e4bd5b7529e6fb48.png",
+          "rotationCenterX": 31,
+          "rotationCenterY": 26
+        },
+        {
+          "name": "costume2",
+          "bitmapResolution": 2,
+          "dataFormat": "png",
+          "assetId": "0eabdcd3cdfeea01bb6ff8d3ad5fe301",
+          "md5ext": "0eabdcd3cdfeea01bb6ff8d3ad5fe301.png",
+          "rotationCenterX": 31,
+          "rotationCenterY": 26
         }
       ],
       "sounds": [],
@@ -89,10 +2155,112 @@
       "direction": 90,
       "draggable": false,
       "rotationStyle": "all around"
+    },
+    {
+      "isStage": false,
+      "name": "Sprite2",
+      "variables": {},
+      "lists": {},
+      "broadcasts": {
+        "bea06709-eea6-46aa-ab1f-4c60dfbbf1d2": "paint",
+        "b5cfa736-0bb2-4972-9a48-cf9fd1629848": "input"
+      },
+      "blocks": {
+        "aq": {
+          "opcode": "event_whenbroadcastreceived",
+          "next": "(",
+          "parent": null,
+          "inputs": {},
+          "fields": {
+            "BROADCAST_OPTION": [
+              "paint",
+              "bea06709-eea6-46aa-ab1f-4c60dfbbf1d2"
+            ]
+          },
+          "shadow": false,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "(": {
+          "opcode": "looks_say",
+          "next": "ar",
+          "parent": "aq",
+          "inputs": {
+            "MESSAGE": [
+              1,
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "ar": {
+          "opcode": "looks_backdrops",
+          "next": null,
+          "parent": "(",
+          "inputs": {},
+          "fields": {
+            "BACKDROP": [
+              "backdrop",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        }
+      },
+      "comments": {},
+      "currentCostume": 0,
+      "costumes": [
+        {
+          "name": "Block-a",
+          "bitmapResolution": 1,
+          "dataFormat": "svg",
+          "assetId": "ef3b01f6fc1ffa1270fbbf057f7ded42",
+          "md5ext": "ef3b01f6fc1ffa1270fbbf057f7ded42.svg",
+          "rotationCenterX": 28,
+          "rotationCenterY": 38
+        },
+        {
+          "name": "Block-b",
+          "bitmapResolution": 1,
+          "dataFormat": "svg",
+          "assetId": "1dc05fbaa37a6b41ffff459d0a776989",
+          "md5ext": "1dc05fbaa37a6b41ffff459d0a776989.svg",
+          "rotationCenterX": 29,
+          "rotationCenterY": 42
+        },
+        {
+          "name": "Block-c",
+          "bitmapResolution": 1,
+          "dataFormat": "svg",
+          "assetId": "43090c4b423c977041542ce12017fda0",
+          "md5ext": "43090c4b423c977041542ce12017fda0.svg",
+          "rotationCenterX": 35,
+          "rotationCenterY": 43
+        }
+      ],
+      "sounds": [],
+      "volume": 100,
+      "layerOrder": 2,
+      "visible": true,
+      "x": 150,
+      "y": 100,
+      "size": 100,
+      "direction": 90,
+      "draggable": false,
+      "rotationStyle": "all around"
     }
   ],
   "monitors": [],
-  "extensions": [],
+  "extensions": [
+    "pen"
+  ],
   "meta": {
     "semver": "3.0.0",
     "vm": "0.2.0",

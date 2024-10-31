@@ -1,5 +1,6 @@
 package de.jensklingenberg.scrako.model
 
+import kotlinx.serialization.EncodeDefault
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import java.util.UUID
@@ -40,7 +41,7 @@ data class Sound(
     val name: String,
     val assetId: String,
     val dataFormat: String,
-    val format: String,
+   @EncodeDefault val format: String?=null,
     val rate: Int,
     val sampleCount: Int,
     val md5ext: String

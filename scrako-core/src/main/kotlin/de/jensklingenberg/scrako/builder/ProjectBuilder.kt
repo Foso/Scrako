@@ -80,8 +80,8 @@ fun ProjectBuilder.spriteBuilder(name: String, spriteBuilderScope: SpriteBuilder
     return spriteBuilder
 }
 
-fun SpriteBuilder.scriptBuilder(builder: ScriptBuilder.() -> Unit): ScriptBuilder {
-    val scriptBuilder = ScriptBuilder()
+fun SpriteBuilder.scriptBuilder(builder: StageScriptBuilder.() -> Unit): ScriptBuilder {
+    val scriptBuilder = StageScriptBuilder()
     builder.invoke(scriptBuilder)
     scriptBuilders.add(scriptBuilder)
     return scriptBuilder

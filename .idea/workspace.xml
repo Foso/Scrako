@@ -4,10 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="snake array3">
-      <change afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setdragmode.kt" afterDir="false" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="Setdragmode">
+      <change afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Cleargraphiceffects.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/Mathop.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/project.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Block.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Block.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Target.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/common/OpCode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/common/OpCode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/IfOnEdgeBounce.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/IfOnEdgeBounce.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/MoveSteps.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/MoveSteps.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointInDirection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointInDirection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointTowards.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointTowards.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/SetRotationStyle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/SetRotationStyle.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setdragmode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setdragmode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setx.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setx.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +106,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/sprites",
+    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/scratch3/src/main/java/de/jensklingenberg/scratch/looks",
     "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "inlay.hints"
   },
   "keyToStringList": {
@@ -100,18 +121,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks" />
+      <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion" />
       <recent name="$PROJECT_DIR$/example/src/main/resources/sprites" />
       <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/debugger" />
       <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/files" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/debugger" />
       <recent name="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder" />
       <recent name="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model" />
-      <recent name="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common" />
-      <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/bitwise" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="de.jensklingenberg.scratch.sensing" />
@@ -161,14 +182,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00019" summary="switch">
-      <option name="closed" value="true" />
-      <created>1729686210992</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1729686210992</updated>
     </task>
     <task id="LOCAL-00020" summary="reporterblock">
       <option name="closed" value="true" />
@@ -554,7 +567,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730400309345</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Setdragmode">
+      <option name="closed" value="true" />
+      <created>1730401949390</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1730401949390</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -580,7 +601,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="target2" />
     <MESSAGE value="refomrat" />
     <MESSAGE value="hat" />
     <MESSAGE value="turbowap test" />
@@ -605,7 +625,8 @@
     <MESSAGE value="snake array" />
     <MESSAGE value="snake array2" />
     <MESSAGE value="snake array3" />
-    <option name="LAST_COMMIT_MESSAGE" value="snake array3" />
+    <MESSAGE value="Setdragmode" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setdragmode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -647,11 +668,21 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
-          <line>134</line>
+          <line>147</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
+          <line>136</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
+          <line>160</line>
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

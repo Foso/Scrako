@@ -23,9 +23,6 @@ private class Setx(val block0 : ReporterBlock, ) : Node {
             opcode = "motion_setx",
             inputs = mapOf(
                 "X" to setValue(block0, block0Id, context) 
-            ),
-            fields = mapOf(
-                
             )
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier, block0Id, null, context)

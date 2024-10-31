@@ -18,9 +18,7 @@ private class PointInDirection(val block: ReporterBlock) : Node, MotionBlock {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         val childId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_pointindirection,

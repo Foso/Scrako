@@ -15,3 +15,5 @@ open class ScriptBuilder {
         childs.add(node)
     }
 }
+
+class StageScriptBuilder : ScriptBuilder()
