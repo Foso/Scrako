@@ -28,12 +28,12 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
             opcode = OpCode.looks_switchcostumeto,
             inputs = mapOf(
                 "COSTUME" to when (block) {
-                    is StringBlock -> JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(menuId.toString())))
+                    is StringBlock -> JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(menuId)))
                     else -> JsonArray(
                         listOf(
                             JsonPrimitive(3),
-                            JsonPrimitive(menuId.toString()),
-                            JsonPrimitive(blockId.toString())
+                            JsonPrimitive(menuId),
+                            JsonPrimitive(blockId)
                         )
                     )
                 }
@@ -63,9 +63,7 @@ private class CostumeMenu(private val value: String? = "costume1") : Node {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         visitors[identifier] = BlockSpec(
             opcode = OpCode.looks_costume,
             fields = mapOf("COSTUME" to listOf(value, null)),

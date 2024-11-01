@@ -28,19 +28,14 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
     }
 }
 
-
-fun keyIsPressed(key: Key): BooleanBlock = KeyIsPressed(KeyOptions(KeyReporter(key)))
-fun keyIsPressed(block: ReporterBlock): BooleanBlock = KeyIsPressed(block)
-
 private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val destinationUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = "sensing_keyoptions",
@@ -51,3 +46,6 @@ private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
         reporter.visit(visitors, identifier, destinationUUID, null, context)
     }
 }
+
+fun keyIsPressed(key: Key): BooleanBlock = KeyIsPressed(KeyOptions(KeyReporter(key)))
+fun keyIsPressed(block: ReporterBlock): BooleanBlock = KeyIsPressed(block)
