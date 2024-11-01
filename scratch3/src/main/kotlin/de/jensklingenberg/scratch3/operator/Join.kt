@@ -1,0 +1,7 @@
+package de.jensklingenberg.scratch3.operator
+
+import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scratch3.common.OpCode
+
+class Join(operand1: ReporterBlock, operand2: ReporterBlock) :
+    Operator(listOf(operand1, operand2), listOf("STRING1", "STRING2"), OpCode.operator_join)

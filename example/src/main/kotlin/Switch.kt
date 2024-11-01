@@ -1,9 +1,9 @@
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scratch.control.ifElse
-import de.jensklingenberg.scratch.control.ifThen
-import de.jensklingenberg.scratch.operator.OperatorEquals
+import de.jensklingenberg.scratch3.control.ifElse
+import de.jensklingenberg.scratch3.control.ifThen
+import de.jensklingenberg.scratch3.operator.OperatorEquals
 
 
 fun ScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =

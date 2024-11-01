@@ -1,0 +1,14 @@
+package de.jensklingenberg.scratch3.looks
+
+import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scratch3.common.OpCode
+
+private class Hide : BlockSpec(
+    opcode = OpCode.looks_hide,
+)
+
+fun ScriptBuilder.hide() = addNode(Hide())
+
+
+
