@@ -23,7 +23,7 @@ scriptBuilder {
 # Hello World
 
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/Foso/scrako/master/docs/hello.png"  />
+  <img src ="https://raw.githubusercontent.com/Foso/Scrako/master/docs/hello.png"  />
 </p>
 ```kotlin
 scriptBuilder {
