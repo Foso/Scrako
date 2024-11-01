@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode.Companion.looks_changeeffectby
 import java.util.UUID
 
 private class ChangeEffectBy(val block0: ReporterBlock, val effect: String) : Node {
@@ -20,7 +19,7 @@ private class ChangeEffectBy(val block0: ReporterBlock, val effect: String) : No
     ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = looks_changeeffectby,
+            opcode = "looks_changeeffectby",
             inputs = mapOf(
                 "CHANGE" to setValue(block0, block0Id, context)
             ),

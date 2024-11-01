@@ -31,5 +31,3 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
 
 fun touchingColor(color: String): BooleanBlock = TouchingColor(ColorBlock(color))
 fun touchingColor(color: ReporterBlock): BooleanBlock = TouchingColor(color)
-
-
