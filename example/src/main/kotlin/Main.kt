@@ -12,7 +12,9 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scratch3.event.Key
+import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.event.whenKeyPress
+import de.jensklingenberg.scratch3.looks.say
 import kotlinx.serialization.json.Json
 import me.jens.imports.BroadcastImport
 import me.jens.imports.CallImport
@@ -53,8 +55,8 @@ fun main() {
             addCostumes(listOf(backdrop))
 
             scriptBuilder {
-                whenKeyPress(Key.D)
-                switchbackdropto("backdrop1")
+                whenFlagClicked()
+                say("Hello!")
             }
         }
     }

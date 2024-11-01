@@ -19,3 +19,14 @@ scriptBuilder {
     ...
 }
 ```
+
+# Hello World
+
+```kotlin
+scriptBuilder {
+    whenFlagClicked()
+    say("Hello!")
+}
+```
+
+
