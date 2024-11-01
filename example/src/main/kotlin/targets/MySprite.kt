@@ -1,7 +1,6 @@
 package me.jens.targets
 
 import _tile15
-import changeSizeBy
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.getOrCreateList
@@ -33,17 +32,13 @@ import de.jensklingenberg.scratch.extension.pen.eraseAll
 import de.jensklingenberg.scratch.extension.pen.stamp
 import de.jensklingenberg.scratch.looks.cleargraphiceffects
 import de.jensklingenberg.scratch.looks.hide
-import de.jensklingenberg.scratch.looks.say
 import de.jensklingenberg.scratch.motion.changeYby
 import de.jensklingenberg.scratch.motion.move
-import de.jensklingenberg.scratch.motion.setx
+import de.jensklingenberg.scratch.motion.setX
 import de.jensklingenberg.scratch.motion.switchCostume
-import de.jensklingenberg.scratch.operator.MathOptions.ABS
-import de.jensklingenberg.scratch.operator.MathOptions.LN
 import de.jensklingenberg.scratch.operator.div
 import de.jensklingenberg.scratch.operator.gt
 import de.jensklingenberg.scratch.operator.lt
-import de.jensklingenberg.scratch.operator.mathop
 import de.jensklingenberg.scratch.operator.minus
 import de.jensklingenberg.scratch.operator.plus
 import de.jensklingenberg.scratch.operator.times
@@ -131,7 +126,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
                 eraseAll()
                 gotoxy(X_START, Y_START)
                 repeat(lengthOfList(jens2) / width) {
-                    setx(X_START)
+                    setX(X_START)
                     setVariable(xx, 0)
                     repeat(width) {
                         switchCostume(itemOffArray(yy, xx, jens2))

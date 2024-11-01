@@ -10,7 +10,7 @@ import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
-private class Setx(val block0: ReporterBlock) : Node {
+private class SetY(val block0: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -29,5 +29,5 @@ private class Setx(val block0: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.setX(value: Int) = addNode(Setx(IntBlock(value)))
-fun ScriptBuilder.setX(block: ReporterBlock) = addNode(Setx(block))
+fun ScriptBuilder.setY(value: Int) = addNode(SetY(IntBlock(value)))
+fun ScriptBuilder.setY(block: ReporterBlock) = addNode(SetY(block))
