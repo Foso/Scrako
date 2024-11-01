@@ -26,9 +26,6 @@ private class BitwiseRightShift(
             inputs = mapOf(
                 "LEFT" to setValue(block0, block0Id, context),
                 "RIGHT" to setValue(block1, block1Id, context)
-            ),
-            fields = mapOf(
-
             )
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier, block0Id, null, context)

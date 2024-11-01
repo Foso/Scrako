@@ -33,7 +33,6 @@ abstract class Operator(
         operatorUUID1.forEach { (t, u) ->
             t.visit(visitors, identifier, u, null, context)
         }
-        // operand2?.visit(visitors, identifier, operatorUUID2, null, )
     }
 
     infix operator fun plus(add: ReporterBlock): Add {

@@ -64,7 +64,7 @@ infix operator fun ReporterBlock.times(intBlock: ReporterBlock): Multiply {
     return Multiply(this, intBlock)
 }
 
-operator fun ReporterBlock.div(width: ReporterBlock): Operator {
+infix operator fun ReporterBlock.div(width: ReporterBlock): Operator {
     return Divide(this, width)
 }
 

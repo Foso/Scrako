@@ -54,6 +54,4 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
     }
 }
 
-class Parameter(val name: String, val block0: ReporterBlock)
-
 fun ScriptBuilder.call(name: String, block0: List<ReporterBlock> = emptyList()) = addNode(Call(name, block0))

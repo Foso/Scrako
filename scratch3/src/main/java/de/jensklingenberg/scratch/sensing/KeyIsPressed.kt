@@ -6,7 +6,6 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch.common.OpCode
 import de.jensklingenberg.scratch.event.Key
 import java.util.UUID
 
@@ -20,7 +19,7 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
     ) {
         val destinationUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sensing_keypressed,
+            opcode = "sensing_keypressed",
             inputs = mapOf(
                 "KEY_OPTION" to setValue(block, destinationUUID, context)
             )
@@ -44,7 +43,7 @@ private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
         ) {
         val destinationUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sensing_keyoptions,
+            opcode = "sensing_keyoptions",
             fields = mapOf(
                 "KEY_OPTION" to listOf(reporter.key.value, null)
             )

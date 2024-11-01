@@ -7,11 +7,9 @@ import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch.common.OpCode
-import de.jensklingenberg.scratch.operator.Operator
 import java.util.UUID
 
 private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY: ReporterBlock) : Node, MotionBlock {
@@ -43,19 +41,6 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
     }
 }
 
-
-private fun checkType(data: Any): Int {
-
-    return when (data) {
-        is Operator -> {
-            ScratchType.BLOCKREF.value
-        }
-
-        else -> {
-            ScratchType.STRING.value
-        }
-    }
-}
 
 fun ScriptBuilder.glideToXY(sec: ReporterBlock, toX: ReporterBlock, toY: ReporterBlock) =
     addNode(GlideToXY(sec, toX, toY))

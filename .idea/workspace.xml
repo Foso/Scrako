@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="Setdragmode">
-      <change afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Cleargraphiceffects.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/operator/Mathop.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/project.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScriptBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Block.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Block.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Target.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/common/OpCode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/common/OpCode.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/IfOnEdgeBounce.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/IfOnEdgeBounce.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/MoveSteps.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/MoveSteps.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointInDirection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointInDirection.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointTowards.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/PointTowards.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/SetRotationStyle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/SetRotationStyle.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setdragmode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setdragmode.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setx.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion/Setx.kt" afterDir="false" />
-    </list>
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="reform" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,30 +160,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00020" summary="reporterblock">
-      <option name="closed" value="true" />
-      <created>1729705367299</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1729705367299</updated>
-    </task>
-    <task id="LOCAL-00021" summary="more">
-      <option name="closed" value="true" />
-      <created>1729710046045</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1729710046045</updated>
-    </task>
-    <task id="LOCAL-00022" summary="operator not">
-      <option name="closed" value="true" />
-      <created>1729715029918</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1729715029918</updated>
     </task>
     <task id="LOCAL-00023" summary="switch case">
       <option name="closed" value="true" />
@@ -575,7 +529,31 @@
       <option name="project" value="LOCAL" />
       <updated>1730401949390</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="MathOptions">
+      <option name="closed" value="true" />
+      <created>1730410235137</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1730410235137</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Setvolumeto">
+      <option name="closed" value="true" />
+      <created>1730410516568</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1730410516568</updated>
+    </task>
+    <task id="LOCAL-00071" summary="reform">
+      <option name="closed" value="true" />
+      <created>1730410682188</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1730410682188</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -601,9 +579,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="refomrat" />
-    <MESSAGE value="hat" />
-    <MESSAGE value="turbowap test" />
     <MESSAGE value="core module" />
     <MESSAGE value="fixx" />
     <MESSAGE value="new" />
@@ -626,7 +601,10 @@
     <MESSAGE value="snake array2" />
     <MESSAGE value="snake array3" />
     <MESSAGE value="Setdragmode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setdragmode" />
+    <MESSAGE value="MathOptions" />
+    <MESSAGE value="Setvolumeto" />
+    <MESSAGE value="reform" />
+    <option name="LAST_COMMIT_MESSAGE" value="reform" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -668,7 +646,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
-          <line>147</line>
+          <line>144</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
@@ -676,12 +654,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
-          <line>136</line>
+          <line>133</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
-          <line>160</line>
+          <line>157</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>

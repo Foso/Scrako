@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch.common.OpCode
 
 private class HideList(private val list: ScratchList) : Node, StackBlock {
     override fun visit(
@@ -15,11 +14,10 @@ private class HideList(private val list: ScratchList) : Node, StackBlock {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.data_hideList,
+            opcode = "data_hidelist",
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
     }

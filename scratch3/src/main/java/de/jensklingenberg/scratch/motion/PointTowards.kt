@@ -24,7 +24,7 @@ private class PointTowards(private val target: String) : Node, MotionBlock {
         visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_pointtowards,
             inputs = mapOf(
-                "TOWARDS" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString())))
+                "TOWARDS" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid)))
             )
         ).toBlock(nextUUID, parent)
 
@@ -35,6 +35,6 @@ private class PointTowards(private val target: String) : Node, MotionBlock {
 fun ScriptBuilder.pointTowards(target: String) = addNode(PointTowards(target))
 
 private class PointTowardsMenu(target: String) : BlockSpec(
-    opcode = OpCode.motion_pointtowards_menu,
+    opcode = "motion_pointtowards_menu",
     fields = mapOf("TOWARDS" to listOf(target, null))
 )

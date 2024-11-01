@@ -36,9 +36,13 @@ import de.jensklingenberg.scratch.motion.changeYby
 import de.jensklingenberg.scratch.motion.move
 import de.jensklingenberg.scratch.motion.setx
 import de.jensklingenberg.scratch.motion.switchCostume
+import de.jensklingenberg.scratch.operator.MathOptions.ABS
 import de.jensklingenberg.scratch.operator.MathOptions.LN
 import de.jensklingenberg.scratch.operator.div
+import de.jensklingenberg.scratch.operator.gt
+import de.jensklingenberg.scratch.operator.lt
 import de.jensklingenberg.scratch.operator.mathop
+import de.jensklingenberg.scratch.operator.minus
 import de.jensklingenberg.scratch.operator.plus
 import de.jensklingenberg.scratch.operator.times
 import de.jensklingenberg.scratch.procedures.call
@@ -71,6 +75,7 @@ val costume2n = Costume(
 const val PlayerIconID = "2"
 const val BackgroundIconId = "1"
 const val array_width = 11
+const val array_height = 8
 const val DEBUG = true
 
 
@@ -113,7 +118,6 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
          */
         scriptBuilder {
             whenIReceiveBroadcast(paint)
-            say(mathop(LN, IntBlock(4)))
             call("paint1")
         }
 
@@ -145,28 +149,39 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
         scriptBuilder {
             whenIReceiveBroadcast(input)
             ifThen(keyIsPressed(Key.RIGHT_ARROW)) {
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
-                changeVariableBy(playerX, 1)
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                ifThen(playerX lt (width minus 1)) {
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
+                    changeVariableBy(playerX, 1)
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                    log(playerX)
+                }
+
             }
 
             ifThen(keyIsPressed(Key.LEFT_ARROW)) {
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
-                changeVariableBy(playerX, -1)
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                ifThen(playerX gt IntBlock(0)) {
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
+                    changeVariableBy(playerX, -1)
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                }
             }
 
             ifThen(keyIsPressed(Key.DOWN_ARROW)) {
+                ifThen(playerY lt IntBlock(array_height-1)) {
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
+                    changeVariableBy(playerY, 1)
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                }
 
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
-                changeVariableBy(playerY, 1)
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+
             }
 
             ifThen(keyIsPressed(Key.UP_ARROW)) {
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
-                changeVariableBy(playerY, -1)
-                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                ifThen(playerY gt IntBlock(0)) {
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
+                    changeVariableBy(playerY, -1)
+                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                }
             }
         }
 

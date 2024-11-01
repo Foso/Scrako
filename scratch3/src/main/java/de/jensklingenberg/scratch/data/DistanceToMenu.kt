@@ -12,9 +12,7 @@ class DistanceToMenu(private val destination: String) : ReporterBlock {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         visitors[identifier] = BlockSpec(
             opcode = OpCode.sensing_distancetomenu,
             fields = mapOf("DISTANCETOMENU" to listOf(destination, null))

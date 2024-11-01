@@ -33,4 +33,4 @@ enum class DragMode(val value: String) {
     NOT_DRAG("not draggable")
 }
 
-fun ScriptBuilder.setDragMode(drag_mode: DragMode) = addNode(Setdragmode(drag_mode.value))
+fun ScriptBuilder.setDragMode(dragMode: DragMode) = addNode(Setdragmode(dragMode.value))

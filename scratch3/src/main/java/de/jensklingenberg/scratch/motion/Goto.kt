@@ -26,15 +26,7 @@ private class Goto(private val block: ReporterBlock) : Node, MotionBlock {
         visitors[identifier] = BlockSpec(
             opcode = OpCode.motion_goto,
             inputs = mapOf(
-                "TO" to when (block) {
-                    is StringBlock -> {
-                        JsonArray(listOf(JsonPrimitive(1), JsonPrimitive((uuid))))
-                    }
-
-                    else -> {
-                        setValue(block, uuid, context)
-                    }
-                }
+                "TO" to setValue(block, uuid, context)
             )
         ).toBlock(nextUUID, parent)
 

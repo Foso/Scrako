@@ -15,9 +15,7 @@ internal sealed class Turn(val opcode: String, private val reporterBlock: Report
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         val operatorUUID = UUID.randomUUID().toString()
 
         visitors[identifier] = BlockSpec(
