@@ -4,7 +4,610 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="reform" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="imports">
+      <change afterPath="$PROJECT_DIR$/example/src/main/kotlin/CostumesTiles.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0024fce6ba3f096fdd2ef9cf6c9dacc0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/005597f0bbdd7dcc8d05718ce399447c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/01187ab36560b6ffee5f71f72b69202a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/01a0a79a05cf3ad6f4e91c8dc61c6044.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0212675e5df890c2802b1405d7dcfa72.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/02259b4369a5335b08403a989819cd06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0263f844d4a060c321e2ce155d58c400.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/02957211928a5696c0a22838f97c7741.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/02bbe90fa0d026238c199106730b4ccb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/03b82cf056afe244fe05032335019367.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/03da9f9945da36a26017cdd0f6bc51fa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/03f989b5f0f064805d3d4f4ded689009.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/051e11f145f285b45146d7d4232f8149.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/059c08cab3e237a8d48f9eb59e4d713f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/05c6c3c9bc08d33a755c9fe7cc06380c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0611668fa4b1bb03f8b640a8459ce449.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/06a3caf1afaded5bd40f30e1df292a9a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/08a4281bed1742205203d7e1bc2e0842.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/09276df8818a4cc950127aa4ed9e6c67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/098f0151aec172010baae9d76f31443b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/09f5d07ac6e48438315b1231a824a06f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0a506573d3a9a82a626f7a9310fb140a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0a970daf1f29098f8534255e287fa192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0af5197604ecbe082bbe2120e90ac59f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0afed200f8dd46460b8d71ff8055a6e2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0b124f456ff8b5eb48e3d4ef80dab824.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0b268926a898d7a0a7f6bbf4b3737505.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0b7605605bcf33f6c882b98e1b347fb1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0b885f951da3a9a6875da46d4d4fa22a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0d32925f57d196bb357203e27e740c36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0df7d2f0d5cd30c57e62019595fa5c62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0e1fdac2a17ae72de63b9f895e6c32f8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0e3383647d31ae31261483ec317822f9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0e55c8bbcf80dbd3097bfff2942190e9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0e9ae2b7ef4936eb94cf72339071d341.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0faaaa731bad8bf7b1783bae7c3b251e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/0feda96f9044ef2b7a3d869db4a18af3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1184eb3b313185a31daae4c949d2ef40.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/12440467228dcf5aa352d7b1ba094bad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/12a2e342a317e2f75553bcb410b9889e.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/12ac5201cf1d89c3d72be81d66f6b19c.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/12ff051e41d483eef10a45637edef5d6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/13a3b2d74e6921732014882b3b10767c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/143d4e7201734c08e8e720955136b054.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/14cff50d6e5065157b43fc3af8a0c0d0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/14e53ee56997d3712acde4f794a8dd71.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/151ca8c5813e821f6b6feff505a5b6a2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1599c56e7f2a0cb46491ff23cb29f221.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/15d0bd9ab99da0e914fcf8faa0c27e61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/163a9276a75b6cdb1571aa00e533600b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/165eb4abfe4ddcca352bbb168b2a0c10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/167de0c51750370981f17041af35d4bd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/18ccd8adb28ba881a520b568d980967f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1906485788023f6930cf732552dd7da9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/190824e464a33ca6cb56d534802bc412.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/19348bdb557a5a2d8d41ac938790eb7d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1a178f66fb19570cd407eb8a0b0cd6aa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1a46e60be97649e980a4f89ad1c56753.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1acf4b2136c81adcfbeeaae2b4f06fc9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1b15d832bcb4fd044fa7c55f6df93620.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1b30260c229202d5eee872b9626a6a8b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1b95ccfb0b18135ee80ef94d13b8cc79.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1c184e0f05637589f88482321ff683b6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1c3c95410e6db25fc12440c9d34c62b2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1c68723f30e1d2ae97d8377e503f0e33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1cb452590555a73a3a185392e2684128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1cc2623546ecc6c5620f85022af16d19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1ce43eb2c3a6383bf7287a6b6d9a561f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1e161041f7b23a1ddccd489f62abc11c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1e911b56d498c3193da027c66ba6fdf9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1f177c74cffcb33bd5fc276156ad7b76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1f805abfee66e6c5d07be880a0bc0ded.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/1fd8115cd83c9105efddb34864e4dddd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/20048d357b49331a45f786d91b00021a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/200ef193060eff514a827ea9a960d9af.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/20d0501da8479449393d96ccbe090e9a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/20e22c53452c4570da01de8a4f342678.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2117c83b398a7d198fcd247759210474.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/213f405d41f544767798926969ab8d09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/21be2b965c1776f813d080eda5311b06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2293a1da9a3d0980686f3948c7d1c2a1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/22fdb75204fa752d6caf92a9d6422e3a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/230fcdb1b9ff9ccf372cce7932935e37.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2323f8d7846520f1b953147cc9322576.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/268faa9fb9996af1a7e3283f1c10f028.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2698b0bf8ea1b774b2f30824efa05fd9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2698d1d1d27132a64d10556ec02b71b2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/26c84746ec8570d13de9fe29e4cd1b46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/26dae6c053e6dab3d58e5ea7b4f218e8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/280f18a6dc1cbc5886508cd70d4aba18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/281da6b4f5bf7f2c1459fcaebfb79502.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/287a9ba9063e8811b03ffc58ab15cc4f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/288e54b059e18f0c465d259662164852.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/289517c035f0cfe512addcdbf36bcc32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/28b9ed19e335fde3abc3b36a5168ffa5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2a7dc288f104169b7616e31420ea032d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2adcc4762616d151c4bffc8a92a87f13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2b138d2958e4f805e18386b25966881c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2b882a91834dc6aad379da4e5f32891b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2b8b7c57aa1cd9eb7c1e530437d9233e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2c3e13ec0f810411a4a0053ee844f5dd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2cb951baafedc1ba0c0274082019c8d0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2dc078914c30d654ad30239caca0a1e5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2dcb421e848d37b351e962588300b261.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2e2514e8f2f9eef66c50be2de8197b4c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2e461729fdb8b144ccb94dfc335758a4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2e50878a82b2b89517ac5e07a278d1b7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/2f3c111165e87b2404069a3f34f9c141.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/301b28c345793753d05ccf207f1c72b3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/301b4b00b5258edbd126c379777f877c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/30908f446106bfff19894548f2e93d50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/30bb44c7361b097b5df1527e678037b9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/30cfbd3a7e86ac1f23252f3c85f13972.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/310045ea0500ed1739943c485def12d5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/313028a73463e2f0ce016b180561509d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/31499ebe74fa95ec2175f0b00656950e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3178fef2487eac0cc48cf0c5c4a64c17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3339a2953a3bf62bb80e54ff575dbced.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/336c0af7e46ee671ce4401c82c8b7cf1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/33b1c955f82ac9556a969be87010b729.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/355cffe05da16a0d02472d2127ad150d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/356e376d5119163da26051d1efa0c46b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/35ec40f5b40f4619ee9c0b9375b23a8b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/360b14917460a201974878cb6d5b4a9e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/362deb88cf9323bf9ffd153939e52b90.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3641bd98ac8e2af3feb7be0152baff41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/36aa4d2fd36a6e695aa8a79b60548805.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/36dd5cf05a343fb6b52e724e8574751d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3745a031023cab5b5ed0c752037296b8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/375654fc06f5cf3cb98ab4fac70cbc10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/385e1be3b89bcda2495a8195a327fcec.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/38b6313420814e4b5810b10082283782.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/390cd71bb48bc12b227fad831d339fb3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3ab1b35810d05ef12d9fb4d4e13c1393.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3abb2a0a56c44dbd82348fbcf2bc65d7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3ac0e53aadfdacdd199496dc2c840e33.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3ad83c95f8d6f89a2f2b5237197128b2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3b5c2252ef5305193722c68560c6e882.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3b65c0a3ec094b4c1829f7b9ecdd5632.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3bbaeda7a8f5c8b6d135c6d7b8171915.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3bc2d7e28539b95d2b5b04923fd066f1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3c7724a5238ff172b44bf2e9616a90bf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3c9ec958590c0157a5d0a7b44abef2ac.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3cf441be152f442328da759d40954847.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3d94691ce9499686d8b6792c126f26c7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3df09425e870d3779b02464dd9a8fa24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3e08049941ad8435af6124d3763ef98c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3e5bf7f126527ba9d67f93ea9e32cfd7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3ed94d238a917aa8d763d771908f9ff5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3f3f3a7d8506dfa44e3df97f4130840a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/3f9cb4addf5fa32b11418f58971945b6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/40e391ebbbdaee29b3ea868fabc04078.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/41805be25d341df67ad1d9d1500cbc26.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/41f5598f86844ccc756a40ef721b5576.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4202ffa259848b7501ffffda6619698a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/42cf411530904cc2c3fc7179a454d403.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/43e14e1ca0779c9bf574caddce91a155.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4559ce4087c626747521f2f9d983a975.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/45eac1820958ffdeb2c378bde6f3319a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/461f0ee503f4abc0a49c50f33cc5e242.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/46556208d2a8a8858b1ef5c23c6c05d0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4707d18e377fe85655b421fe5c281e0b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/477082dc51acb00562e6b5bbac107cfa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/47b067a507c06e56ad4bd7a8ea0f31b1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/47f92f152b2407dec6aecb6043f60367.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/481177ec88f079fb23861fcafd911e2a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/482577dda10c22674434929653a32d84.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4838b4c31a864ac2a6f773c81121d41f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/486a3bc7413dcd2b0253e7da55e0acc3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4908e7276a2cb6068799e5ad1932c709.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/49cf07e2f3b107b7a7945d01e9841f50.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4a6471b588f477a66fc2eed1f653dbf2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4a83f1b43deda307c78ccc37855a63b2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4bed5474e6b2e9c99c3f6521ab3df912.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4bf66f1981b6ca65229d09dc2224e414.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4c6d08e942bc6a0a5a7fb501a8710632.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4c7f89346d48a3d77b0d0fd2b2968038.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4cd0755ef032cf53ab4fac9006c04bdf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4d2cf8d4c7380d677be35328762a0e09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4ddf72869780fe222e11befe418397ca.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4e2ec40fbe2e5126544a29d45b2e071b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4e4a5d01c4124862753733b6821b80fb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4e745f75f370a6ff0b2b904c877a3f8d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4eb913ca07666cbdeb4ff2bdab2c801b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4f00265a1c806bceeef5b730dd4adaae.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4f218fa60a0bb291b20f837f439fc365.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/4f2b5b004b1ec1d2cd79f5ad49854b55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/506562f80638c64150a39cb4fc962ea1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/508e75d13e0fff139833e7efb541f0bb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5109fed400e9cdc31e38fa055f466219.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/51ac955cb54478cbe6bc2627fd2e050b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/527d90ee0c789cedb755e912cc3f9be5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/52c5664bcadb7526d16eb29d3466a4bf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/536e2c4e3cfa166fcb0bb4fa1efa4be3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/538e6e30099f320713bc3e6ecec5c6f9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/551496f43c666ce043f28de91761d30d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/555eed5150410b781a4e92328be4dbbc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/55f046016ab922e52ab0f3f7e33921b6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/56383655e301b9fe5c39a9a328ba3818.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/56a94e5f826ba8cec72a0c335c4b8fdf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/57c25b0b2916af01e1e5b60c26d624e5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/57c510bec060e404ecb52e8b744b2e04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5804e9173b459b88d0bf07caaabd8853.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5817bda798ae37791497bf82614d977c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/58661a2ba86405420505db9c77a22459.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5912437a2510061d36c66be5f350beac.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5937c33f0bbabf078718066b3eae5949.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5a10f1589069b4555dd8c7589726e356.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5a2402029c1ecc180ecf3c57b8f63f48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5c2479798993d57a1bd1fdcea395c7fb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5cf1175653a54b439432426093b2fe7e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5d1b3f4ba3fdaa14db38008249d2a3e9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5d2bc41da0bae94a8bb7e6b4beb2c0e8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5d3cd2c4e942ed400382690fbbcb6d19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5d5a622039ac451ffccb1dd80aac0c1e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5dc9ffa03bab6b3979f74886efcdcdff.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/5feeb79d42f1b9c53980b5ad69d0ff4d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/60047d4b8edcdf08e8ba5342ba64456f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/609de86df359178112332b9003562580.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/60ff700ff3a10aa0524c1b70fe10bfee.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/611bfe4791eddd4244d1f06f334da23d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/619c95fb44db362677721c59faab0ea8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/61fdba56e1622c87fd49f095e46e4632.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/621df43944d36b0b76b7c6063f330fc7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/627c68d8435648345dd3b96a3540ce3e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6280db93366900ca6492c0a1424ebeef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/631ee1ed6efad6b0b4bd58f723235e65.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/63b9e31f989cf074b1468ed9ed6ade07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/646978db143fd6940048e897f7e03dfc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/64efb9b3ec44e1d0bfafb6bcac04ee93.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/65f845f3305d6bbcc843bf81a72a357d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/660c50ce16e1f7d7b4c73634e5595b30.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/667313f07b4e06a2dd7464ed4c588785.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/66a40fcdf325238dd13bf31088b13bac.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/67820a0a6df5df4c8976cdd1e80a755f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6790166109099f64cc01bd4dd5fe640b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/67a606b739405910c0ce262d8dffd311.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6813723a7d6e3c07885e346e32b5ac5d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/68a14ce3c9e4d050513291e858f88541.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/691b289b42ae521df2e63619e800d426.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6a08200c475b466cf09e534c65c5268f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6a2f7637e4176f20a38ff783dde2b22c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6aaa23ae9ac47c1bfbbf2a31c29d0a7a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6af004c281d66a4658e5265314c32a32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6b31934f265a4b8a9e53231dfff6fad7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6b5040b9304b59c2df55f754c266a640.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6b5a1bc0f6ed12f2fb7f2ae01a2bf287.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6c21e132f5f5452bae3aeb94bab9ba59.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6cdd18c6d29dffa83b4962525a35eef2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6d262b3bbe25465a18460d5d467190be.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6d3a17c0ea7d62ecaffa51a22a18fd5d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6d98ff50fb5a821702ef27d9ba2dc6c6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6da3672c9845e8bbe650fe69e93f8c46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6e1887b3838b5e48424b30f8e7271cd8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6e5b750b64a90357fdac3b3e50f91186.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6eb7e6dda7458b1c9001ef76685a2797.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6ece4cae9fc0378aeae19166e76649f8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6ef5e3946b235af82dadd63b8d53ac57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6f3528fdda13db1dc1f94d1913176309.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/6f8a956931e6c8bc83c82827279be461.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/702720e144637925fbb8227026478f14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/705c8559a7694df429231c2024570887.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/70940beccbd367563d845248122fb1bb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/70b8faf5c2d20ae5e3af936f7a0fe000.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/70fc971b76aecab9bdf8f4b678396757.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/71e5b8c7a1c67cf5e3ff74c71a05312c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/71efe74d2239fb5aeb40736bc634aace.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/723b2494955fea719b08c452191f6528.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/725455684ba83338dd1d77b0538b76c2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/72666c3e1ba93da828f4627aeed10cb1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/73621cb8369e13a10b66bd385a4b4c41.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7376268a72d446347e5bde105098ba81.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/73c919d5dfa80f1cfa9683c8083795e0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/73d400d6679b9eb10fe21f4b0f47904b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/75fb2281169343a92db748cf40aa65c4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/764aff964d69b8887cd9e10786a3cbfc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/767dc1e88a28c241bbe8c0ccc93101ef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/76b99f344173707a84e86daf4ce4dd64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/76df0c9f5ba1f98ccc4cffed8f8d344d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7737948375f5db470de7185656e1ffbb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/77c1ee564dab4b9a6458c3fbbc7d2b67.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7812fda1ffa8016c079311a08b1f24bc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/78471964210ac5b687718b831e5395bb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/795c9587bba76f8861ddb11419ffc9fa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/79fa38800802670364857913286b668c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7a8b14e3253eb5a640909d323019cc1a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7b22369a6e44edd78ee0d1555971ab49.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7b29d99023d663fd1a60bb32dfff1ada.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7c0431f6e0ca6e9bda976857a94b1b82.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7c8355ddca7f2da8e9b0b33fb0a77d03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7c958f7f9049c5aba762899f7773e11d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7c9f912d91e52e8fe16446127c0df2e2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7cc42eb669ce8a20b58eda4f17e63c88.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7d09ae35869f85e30dec484fe8cbf62c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7d46365c4512f3c8ccac3bb27e11a932.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7da994570209e34ad9795ffa70737e32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7e42be0d62be630ace36e41fb3a09cc4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7eb7d4e126dcf47cff89983b2164d484.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7f315d2e2bc9735d6ad2e4717c796304.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/7fe7ec5a5492debe7506719494d4b3e5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/802e2f03a7527075853831cf2189e8e2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/80b0b3b7ed53015c472f4e33312cb58e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8155fa488628c9a562dace050c28a8e0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/818397bdf925e76b4d529e5ca90f3785.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/81864cfeab26893686032ec89e8d9db7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/818a46c608f05fdd0ce5e800017f1abf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/81956c221cf2998c58f30b3f43061dee.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/829982d7ed341bbde6650718085faacb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/82b2845bd3c259e63d7415bff82847e3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/837915f3c09be2441202655488ffd762.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/849249a9f90a5b06d9da08715dc83505.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/84bb269d24904a0891595d32d82d0ae2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8591507c52bc8968a71ebee2c3ac09eb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/86b0f553704eedacd950da4680131f62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/87171216f999ab98a915a00f3ee50116.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/872b9c7d5ff252648a95eb1f4422e91c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/88128f0dbd6470b7e8876be2e4e8ff9d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/882efae053a1c6cff0fd4c037f06ac21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8863adf14c8519ace67900d0e5ef9a57.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/89d20f857263bb2bc41ead4647162e00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8a58746ba18f17916796d32ad26b79fb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8b2ad2c35715acd7b0f1fb447cf9b8e6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8bad486f1233a97c85e1be34edfa3b48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8bb5a9a4dc15ecf650caed2189a44cf8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8bcb41bb5d43c1d75c1f6eb512563d28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8ccf78a7e87e528e199b5c8101ac2307.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8cec31ba749b2e3ee88ddddf7d278e20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8d2f7cd03dc7e400f5526b683188db4a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8d38029105a9bccf754a51f4217ea9bc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8d7f61d23beb7705b7a6b0adeca4d276.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8d837ec7434ccbd5411e1d406abb1459.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8e374e4ee01d0df6db7e8cfe98b216d2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/8fa7c9edcbb6c306883bc8ae928915fd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/91255dabaeb20d47c184b81e780dcecd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/919c3768eef4305d3277088ccbbbe9b0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/91e8c39eebb65b8b79b6859e7f434f63.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/928653eee7c38028ebc4e842fca49b29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/92a844d81c0f6183c1f9770afc68ea74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/92b12b31f02d968816f3e9b61d4503c6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/92d49d7f19e64adb2192ce0030494458.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/92d8499d8afa731905f0929e6a26cd31.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/92f4497287bc34ebf051fee769e763e3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/92fe696086816370640e973b436f2456.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/934552d0a434fb076880cb46db6543f7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/93bc45908705a4274e4ffc488b0959ef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/945fc27415c0a87ffd0686c3e824202d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/949ca9efdd3e587e27136e41ed21e67e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/95098f594aeb016abaf9ad2e82d6f680.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/96035440a0d7ae66c3051e79deb330ff.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/969c282f53c6348767cf223c30d80204.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/96a5f1fe66c4b1763a920a97efd327b0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/96fd09d6e2109d7a320282fdaac5168c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/989a585e6fae11fa2eaa1909fe7f68b8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/99502552a85cd582109dc48083260b3c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9a2d50b77f2fbeb741644c2f8b44ef1b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9ab20962cc5d6a53f459016764060299.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9af7b1bbaa1f28298585b1688bc053a5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9afc4e06d71a16ce6800924c600d6a4a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9bec5b48e89e5220731be94c0049b292.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9c1f5bab8983d0ba13f9fd9e44b3dd52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9ca4b7585afd4579d7df0aa05c07eb34.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9ca8cd682b96b6fbba7a4eccd113d511.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9d89224aed765c4d169e738fe5d420bc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9da9f0a921b37bdffed1115673b7da68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9e65a9390139de9b5add4a75588de690.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9e8cbfb5db2b4cab4f17ca7ad74b9cc0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9eb3b70dc75f3a2457263585f73088a9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/9ed50f0d333846cc48567e8242fe0a89.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a005d801df2f2daaca4295c2f6cfd8fd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a0240d1511813a392d03b1f1fe2b8e29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a036c816b91d86b179d351dd2a840e28.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a040c4ef4d5ae85240700cb2192fee3a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a054ac40c2e6aef0a08055e9f6def7c9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a05e36988d1da4484861a45d6266e56e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a077fc598721f31eac4d1754c03ef534.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a12fa6c361e07103a422a446dfa25dcf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a174daea67505184b1703d8d81f0619e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a1d7680dde9edf4c558d7a37d390cfe2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a1df8a1d1a73686f9be1dcd77bb7ebd0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a2cfe7e2f15dee6fa7ca73fbaf7ac2e4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a46f39741ea3e7926edefa28dc5f70c7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a49e5a16ed990924db8ef61e86a6abd0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a4fc9c3d8fc1da7a5f1926438b5f19b4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a514c10627235250ee35b58a54f0a00d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a55c2baa1b382b210fd4f6dcfb90f34f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a562cb324a511219cc25dbb81eec97e1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a651a6f11efa0a81a40615bf673d51ad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a6c1b4f988cd7fbe3d1da269276832a9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a779680d792134fb580aa5bfecfac9bd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a7d6e25e88a80df3faeed09617f0884d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a7ef5b726e65444517711d42feceb426.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a83ea4886a8b5962e4dc6969b617968d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a8419ce1aaecfe433cb8311ae8985018.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a8cf064c9e9dce45c8e5bf883a56ae11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a925b0ef01f527eb4a734b922dbaba36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a9412a2b657a5726f3873253e7d3e643.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/a9570d03389386402efb66a40ee592b1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/aa623e02b64bf62a4e70a188f7df984b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/aa9ae9b505fb3b04459ebe7fcffed50a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/abef7c27f4b58887479de96c260d4912.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ad07ad8bb269faf8cf7ea51dffbcb363.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/adda021e9eaeabb932afa9448ae0e7b6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ae616ffca087ead8508b29adc6098548.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ae78a14d0bc52c49733fbe012e2383e2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/aec4adb4158d1b8259875778aeccd3e5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/aeeade2b671fbc7b01148aa50e3d3ec5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/af73235ffc49491fc9ac8af6291d09eb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/af8a6d6aff69aa52ade90034d99488a4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b00f7523f4e853ff6da0bf7f430ce70a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b11e769ab7d5a66d9caeba82c0fe0809.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b12f91b9905c5e87c64c7d12f4a84448.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b14ab93c1d8ce7c10392edb0c1d7aedd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b1b346217a42cc00d9c68c1f55bb9caa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b1ba670718f2fe0b555cb59c963d2fe1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b1bb60706978c545769fe10138ce3bae.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b29041fc1d1bee1941f934524a33e8c9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b33fe75dc93d15d130df5d94c1315ab0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b41640f1e9e69eab423d4182fd17150c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b44657d5122d5daa7b1c266bd327a237.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b4d04118e088f8241b9401dd2930f1c7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b4d77479141c35d2f27fd49e78b4ae76.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b5fd68ee8abfe7bd9700299e509350fa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b6fb4dda3b89388bc31513be9ace5aa4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b7b0518a750fc963f14679d4e558dc6c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b8235d5466243a72ecfd96db49453ce1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b8dc92ed3e13c38e31f5cdd260c7ff5f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b9219b70b91f05f582a028ee222f89be.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b9959fcfd540944be00c492d5433297c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/b9d837b53af00179d224071f90b251af.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ba5833fc171a1787a5f279e8dddd06bd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bb0e929c800e0773e9546f0770e0c2b0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bc1fd49a51aed56ec1cb09b83b6db7c1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bc69b424fc7db93ffe64fb9ebf1102d2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bd001993ca065c773e95bd763903a556.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bd454532204843973c6cae6e277e9846.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bd4d7abfd8f5d4f2dde889aef96c64a0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bdbfde4220587e1208ef8ca0bc68b73a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bed2cd36c5ae0c006f270581b9c38d8e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bf2fbf6065f1c6464e5066b47e311cd5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bfa4c89777bb51b07be8bde033dc04d0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/bff9a1c2fc0135ace205e77cc93ffa6d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c073c009d2412c5f57260a4142592962.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c07a857e83049fe4568a9cff21bee159.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c08e3252339dba3171748b6e76a893bc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c169640cb90a9f42bff47799a2cfda15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c1c6682b5e7ad23a34d18b05180c8d7e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c25db439f4cf19dcb7482a91936a0006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c36323d5daea4171ad894e2d420708f1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c446646a95cd43c36d25583fdaea3dbc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c45be434a05080d17378ff7b0ce719a3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c46b9a4b3cd93e934d8900cca40da74f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c495151aa169954cedb256915fee8b5e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c5630f5eb8cb524c0ab4a61da3ad8890.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c58faa42bfddf199a1aa1828a26c14ab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c5c9f3e3250fd7c4882700d9ee5ea737.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c6b08958ddd7d2840ee45c29fb252e14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c6b52977eeb2797920ca44f436c92c19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c6badb72c9ab1a0f40b1d4830a9c4a36.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c775322ed2a47e89690b6e54580f1761.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c7cbbb0b7a9aa7bac9d8edc5f69efd43.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c7d2803626ec778618ae2131a8cab73b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c7e498e9f6d3575be6a9e2e57bac0bed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c7efb17a0b6720f3936aeccc95621b7b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c860d7a52b8ecd8946effd2fdcab2575.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c8664db25a7f082133417433ba71f94c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c8e66bc1e2b749ba56c5770042896a55.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c8ff80a76b4d881dee6b476587f20a19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c920fa32e593bed558ed81d7aa01a8ed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/c99373a5d7880c0400069cfa3c54826b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ca0b729c0be323111fe942f509783dc9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ca848bc26dd6b1254fa8c37826f48406.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cab63e261ebd67f57c6464d24b20496e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cac562d8965edabf8a5a6bd6fbe1d99f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cc5a01116c5e14e52138f9b9bc87b284.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ccd81d95962f39845d62c36320e1c506.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cd9867c8c4db22c21c548e9118d37d6e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ce27792becee1c13048868d7004242fe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cef89af9b60eb360f3967f18eeba9883.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cf6161e41b242740af79b0975d9d9006.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/cfc8d2a357d02619e1d6d45ef212b291.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d03ff0ff5eeb78f786c5d4af8fc9f1db.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d0607b26918c1894d30c41cd374f8d8b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d0aa4c1c6ecf3d69a8d5a7957460df9a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d10b00b9f8d01c91f4c7ede0ee530ee1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d113945a33ba14e50a55963101b68c5b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d21a71ee38274ebfd013c1423e9fe5ac.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d332771e9b48611b90bfd0bc3aeae2db.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d3498d91f3aa33ab66c705ca7ca27f94.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d358d03dcec28edb6a867c263f1d508a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d37c09e683f2bd8b52c8f7d2db4684ae.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d39b0c06c80601cba2e369385d62a56c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d3e1ebe0881e5bd7727e8fba0793dc54.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d3f6f5fc7a28738a51bf83b46a6e0611.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d422ff7315414501b0e2e319e257e422.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d4803ffd5d03a686cb6ab4644af09892.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d57397f923b3b6cb118ebff3f13930f2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d631a9aa197cdfbf3b84aa638765332c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d64b2fb798b05e8ba7cd2d8e85be02fe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d6640b490ada1f22d5517cb9f20c3bd8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d6b5f1aea727936e33e463b062d17b9b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d6bc6466f421001bd2b8408058c4a380.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d7362d38ceacd3b8f4b532cbd787f14c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d746006aac43bf5a46662fea2ff048ad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d750be56511cee2417ef51a181edacae.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d78b46480691781c6896be50d59dfd22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d7e6e85a4a572ee2dda082194c2e4f42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d7ead032e19c77aab183fa900c706059.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d7fa10bfbf14ad1b6a2000afc9fd9234.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d8d2f3c0d8b885379eccdc6f8faff3f6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d9118f8ef913bc28d10d7ab275c4a011.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d917aadd135cfec433e5b3bf4c4105d4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d955eaf1b84604eb8e9f870637c831f0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d9765ff6f78a01033682e064460de9d7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/d9e64f46df04c062175e66670add59e2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/da8cdb935f6780d122f28ec904888d69.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/daf74d88e184c3ece63b6db3928b8d2f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/db91f07680f2c10c82be45ed45206324.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/dbd61854a54a55ca679ddad3ec2710ce.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/de74125ded33fa3ca872e0936e635b61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/deb562349699947944c13315f6b69617.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/df35e5314bfae2f53cfc7d545c5978b8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/df7c3577add2e40b103fa8ed12eee644.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e08a98a83ae088e1600b3c252e80ec92.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e13a64670b2b3687b3ef2fac9a42d90b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e1fa541e619e019e1ba5c1915e50c5db.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e21484acbb20fc2bf6a6cd713fc1d56d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e237c7dd3c86643a43e7c1ad211f9c02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e27201540b3c4e837380a31d40629731.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e297ec1b9b02f659f2f5dfa51675e211.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e38eadd4c863a551d45a9f73e618affd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e3b5fa3f1ec94dd25526c15a212374ec.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e3c46db10e97d37a1caa2f75a9b080b1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e40aea541352f22bfc0a76cd51431599.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e4147f4406bbc71c03c6f50319f99ad2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e437623045e01c119e678a62303337f4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e43f06e139a1e0b13307913183cf14be.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e458f283739a17c01b00a432ca9e7983.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e47085da7f854529e8613c5f7f3cee86.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e4774a494247a07b59bb095cd89318da.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e4ae6d3e1dbdfbbec0994c2f844c32bf.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e4bb27f1cbe9d05e187ff26e206d0ee6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e6824daf4bdcaffe766c29f61d14ea0e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e70afe0a4c205bf69be9707338f20df3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e85f92f0ebc4ac294345bc78ccfacc60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e884d703765fc9113c7045a738c746ab.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e994c92a4aab6d13b11797b457d12214.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/e9b408246601c48552e81b2df340e350.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ea22b0233b74948b32698e5d474f74cc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ea371f01228ac638f4d0bcbece040401.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/eab6f739fba234952dfc0d82a550b7e8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/eabfcd2bae6417e86f1014229b9aed98.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/eb332cd547cceab8073689a84179ea08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ecbc358cdc96c7932c8f59b561cf21d4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ee0caff223d506822fa5c24857893397.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ee301d51415785191f3d31633991e5c1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ee8d63704320e65d4b46197715b41a6c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f0829323954b37171657ecd9227fbed2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f0dc4db2f293f42fc1857d1877229a90.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f172141bc2df82b66ff81e118e818391.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f18ed399118f9f96d8727022d8e218ff.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f29447c4ff1871f6a670df9db0b82fe7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f2a8d66a0a94606e13a322d379982c93.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f354dc14205a7be47f6f71057e759c6d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f37584714c66e3e7e53c10f7ac911c09.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f3c06ed5190d0b8c9f3a0fe9f3e8dd4f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f3d5709dc9bb745bbef04db450231b82.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f4599804082c36dc182f2e6bfde2cad0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f4e2468ca91759affc8114984201ffc1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f5df34cb891bac3a45a360feda551282.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f6a5efa5ced21f80cfefcaca605627a3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f6c1b10f3e62c43855ec3d21bb47b8e6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f72a0e27be0865f3789b26dcad647a9c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f75eeaf58b3a03b8e78342836cf8d9ac.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f8a5d5bb3f6a2edd3a96528b0c18a03e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f8c2c7122ab65e327df29f6ac705347e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f93dad492c654f8279a08cd231b2d541.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/f9f0dc4f0e1a72e712570df3f32063b7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fa0daf9b5e893ced0093cd2568dc3eca.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fa4a815152d907783b88fbe3de9ead7e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fa7a3016bbdb6cbd8cebce7ae2352a95.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fac3f0301d2bba7eb4cf2f9d5c068f62.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fae67fbc26241e1e0e71ba40079da999.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fb35504ed064d38d23d462d17cc740df.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fb75a6254b645adaee536087c0ae5914.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fbdab7f280112c02ec9b62464e6c98c2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fbe60ddd330558117b4207cd0086b37c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fc37877739c9fc142eaee503ea6b31cd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fd07cd8014d7f1946fdccdd38d3ec682.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fd2b7aaf35ece634fdc2e21705ff29a6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/fe9952ece7b4ac4f3f774b7fce685f1d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ff312b0dd345551a56e8bed2f50c08b6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/ff41679b4db64c5e39632c646de08d51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/project.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/MySprite.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/SpriteBuilder.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Target.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Hide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Hide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Show.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Show.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +687,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/scratch3/src/main/java/de/jensklingenberg/scratch/looks",
+    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/kotlin",
     "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -99,11 +702,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/example/src/main/kotlin" />
+      <recent name="$PROJECT_DIR$/example/src/main/resources/sprites" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion" />
-      <recent name="$PROJECT_DIR$/example/src/main/resources/sprites" />
       <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/debugger" />
-      <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/files" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks" />
@@ -117,11 +720,11 @@
       <recent name="de.jensklingenberg.scratch.looks" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="imports" />
+      <recent name="" />
       <recent name="de.jensklingenberg.scrako.model" />
       <recent name="de.jensklingenberg.scrako.common" />
       <recent name="de.jensklingenberg.scrako.builder" />
-      <recent name="de.jensklingenberg.scratch.procedures" />
-      <recent name="de.jensklingenberg.scratch" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="scratch.motion" />
@@ -160,22 +763,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00023" summary="switch case">
-      <option name="closed" value="true" />
-      <created>1729717825441</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1729717825441</updated>
-    </task>
-    <task id="LOCAL-00024" summary="stop the sound">
-      <option name="closed" value="true" />
-      <created>1729719119732</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1729719119732</updated>
     </task>
     <task id="LOCAL-00025" summary="stop the sound">
       <option name="closed" value="true" />
@@ -553,7 +1140,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730410682188</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="spark">
+      <option name="closed" value="true" />
+      <created>1730448724466</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1730448724466</updated>
+    </task>
+    <task id="LOCAL-00073" summary="imports">
+      <option name="closed" value="true" />
+      <created>1730485797051</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1730485797051</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -579,8 +1182,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="core module" />
-    <MESSAGE value="fixx" />
     <MESSAGE value="new" />
     <MESSAGE value="no context" />
     <MESSAGE value="variable" />
@@ -604,7 +1205,9 @@
     <MESSAGE value="MathOptions" />
     <MESSAGE value="Setvolumeto" />
     <MESSAGE value="reform" />
-    <option name="LAST_COMMIT_MESSAGE" value="reform" />
+    <MESSAGE value="spark" />
+    <MESSAGE value="imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="imports" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -630,37 +1233,35 @@
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/event/WhenIRecieve.kt</url>
-          <line>22</line>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ReplaceItemOfWith.kt</url>
-          <line>32</line>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Util.kt</url>
-          <line>57</line>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
-          <line>144</line>
+          <url>file://$PROJECT_DIR$/example/src/main/kotlin/imports/ImportNode.kt</url>
+          <line>30</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
-          <option name="timeStamp" value="87" />
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/example/src/main/kotlin/imports/ImportNode.kt</url>
+          <line>34</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/example/src/main/kotlin/imports/BroadcastImport.kt</url>
+          <line>15</line>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
-          <line>133</line>
-          <option name="timeStamp" value="89" />
+          <line>191</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/example/src/main/kotlin/Main.kt</url>
-          <line>157</line>
-          <option name="timeStamp" value="90" />
+          <line>175</line>
+          <option name="timeStamp" value="107" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

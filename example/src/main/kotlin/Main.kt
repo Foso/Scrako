@@ -14,8 +14,11 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scratch.event.Key
+import de.jensklingenberg.scratch.event.whenFlagClicked
 import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch.event.whenKeyPress
+import de.jensklingenberg.scratch.looks.hide
+import de.jensklingenberg.scratch.looks.show
 import kotlinx.serialization.json.Json
 import me.jens.imports.BroadcastImport
 import me.jens.imports.CallImport
@@ -93,22 +96,28 @@ private fun ProjectBuilder.Sprite2(paint: Broadcast) {
         scriptBuilder {
             whenIReceiveBroadcast(paint)
         }
+
+        scriptBuilder {
+            whenFlagClicked()
+            hide()
+        }
+
+        scriptBuilder {
+            whenKeyPress(Key.A)
+            show()
+        }
     }
 }
 
 
 fun readList(name: String): List<String> {
-    val list = mutableListOf<String>()
-    File(name).forEachLine {
-        list.add(it)
-    }
-    return list
+    return File(name).readLines()
 }
 
 private fun importer(): ScratchList {
     var projectJson: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/test4.sb3"
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/Scratch RPG Assets.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry
@@ -163,8 +172,8 @@ private fun importer(): ScratchList {
 
     tt.targets.forEach { target ->
 
-        target.costumes.forEach {
-            val text = "val ${it.name.replace("-", "")} = Costume(\n" +
+      val test =  target.costumes.joinToString("\n") {
+          "val _${it.name.replace("-", "").replace("^","").replace(">","")} = Costume(\n" +
                     "    name = \"${it.name}\",\n" +
                     "    bitmapResolution = ${it.bitmapResolution},\n" +
                     "    dataFormat = \"${it.dataFormat}\",\n" +
@@ -173,8 +182,10 @@ private fun importer(): ScratchList {
                     "    rotationCenterX = ${it.rotationCenterX},\n" +
                     "    rotationCenterY = ${it.rotationCenterY}\n" +
                     ")"
-            File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + it.name + ".kt").writeText(text)
+
         }
+
+        File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/Costumes${target.name}.kt").writeText(test)
         val builder = StringBuilder()
 
         target.blocks.filter { it.value.topLevel }.forEach { (id, block) ->

@@ -19,9 +19,11 @@ internal fun createTarget(
     costumes: List<Costume>,
     broadcasts: Map<String, String>,
     sounds: List<Sound>,
-    size: Int,
+    size: Double,
     x: Double,
-    y: Double
+    y: Double,
+    visible: Boolean,
+    direction: Double
 ): Target {
     val targe2 = Target(
         isStage = false,
@@ -50,11 +52,11 @@ internal fun createTarget(
         sounds = sounds,
         volume = 100,
         layerOrder = 1,
-        visible = true,
+        visible = visible,
         x = x,
         y = y,
         size = size,
-        direction = 90.0,
+        direction = direction,
         draggable = false,
         rotationStyle = "all around"
     )
@@ -92,7 +94,7 @@ internal fun defaultStage(
         visible = false,
         x = 0.0,
         y = 0.0,
-        size = 100,
+        size = 100.0,
         direction = 90.0,
         tempo = 60,
         draggable = false,

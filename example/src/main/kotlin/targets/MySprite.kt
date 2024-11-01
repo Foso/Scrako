@@ -1,5 +1,6 @@
 package me.jens.targets
 
+import _tile15
 import changeSizeBy
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
@@ -82,11 +83,11 @@ const val DEBUG = true
 
 fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
 
-    val X_START = -230
-    val Y_START = 120
+    val X_START = -240
+    val Y_START = 150
     val MOVE_DISTANCE = 40
     spriteBuilder("Sprite1") {
-        addCostumes(listOf(costume1n, costume2n))
+        addCostumes(listOf(_tile15, costume2n))
 
         val jens2 = getOrCreateList(
             "jens2",

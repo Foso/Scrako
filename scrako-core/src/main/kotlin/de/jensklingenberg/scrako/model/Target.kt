@@ -20,7 +20,7 @@ data class Target(
     val visible: Boolean? = null,
     val x: Double? = null,
     val y: Double? = null,
-    val size: Int? = null,
+    val size: Double? = null,
     val direction: Double? = null,
     val draggable: Boolean? = null,
     val rotationStyle: String? = null,

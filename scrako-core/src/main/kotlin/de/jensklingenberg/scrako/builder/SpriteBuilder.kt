@@ -103,9 +103,11 @@ open class SpriteBuilder {
             costumes = costumesList,
             broadcasts = context.broadcasts1,
             sounds = emptyList(),
-            size = 100,
+            size = 100.0,
             x = position.second,
-            y = position.first
+            y = position.first,
+            visible = true,
+            direction = 90.0
         )
     }
 
