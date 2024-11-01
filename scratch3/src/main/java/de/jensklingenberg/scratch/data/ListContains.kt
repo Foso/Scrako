@@ -27,4 +27,4 @@ private class ListContains(private val list: ScratchList, private val block: Rep
     }
 }
 
-fun listContains(list: ScratchList, block: ReporterBlock): BooleanBlock = ListContains(list, block)
+fun listContainsItem(list: ScratchList, block: ReporterBlock): BooleanBlock = ListContains(list, block)

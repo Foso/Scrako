@@ -49,9 +49,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
             visitors,
             identifier,
             operatorUUID,
-            null, context,
-
-            )
+            null, context,)
 
         childs.mapIndexed { childIndex, visitor ->
             val nextchild =

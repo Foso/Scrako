@@ -1,8 +1,8 @@
-package de.jensklingenberg.scratch.control
-
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
+import de.jensklingenberg.scratch.control.ifElse
+import de.jensklingenberg.scratch.control.ifThen
 import de.jensklingenberg.scratch.operator.OperatorEquals
 
 

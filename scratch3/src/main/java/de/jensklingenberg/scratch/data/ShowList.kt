@@ -14,9 +14,8 @@ private class ShowList(private val list: ScratchList) : Node, StackBlock {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         visitors[identifier] = BlockSpec(
             opcode = "data_showlist",
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))

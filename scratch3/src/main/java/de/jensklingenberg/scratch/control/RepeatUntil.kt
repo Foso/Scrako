@@ -33,7 +33,7 @@ internal class RepeatUntil(
                 "CONDITION" to JsonArray(
                     listOf(
                         JsonPrimitive(2),
-                        JsonPrimitive(operatorUUID.toString())
+                        JsonPrimitive(operatorUUID)
                     )
                 ),
                 "SUBSTACK" to JsonArray(

@@ -33,7 +33,7 @@ internal class IfThen(
                 "CONDITION" to JsonArray(
                     listOf(
                         JsonPrimitive(2),
-                        JsonPrimitive(operatorUUID.toString())
+                        JsonPrimitive(operatorUUID)
                     )
                 ),
                 "SUBSTACK" to JsonArray(
@@ -56,10 +56,8 @@ internal class IfThen(
                 parent = identifier,
                 leftUUIDs[childIndex],
                 nextUUID, context,
-
                 )
         }
-
     }
 }
 

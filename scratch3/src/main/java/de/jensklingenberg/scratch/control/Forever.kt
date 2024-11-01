@@ -29,12 +29,12 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         childs.mapIndexed { childIndex, visitor ->
             val nextchild = childIndex != childs.lastIndex
 
-            val nextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
+            val childNextUUID = if (nextchild) childUUIDS[childIndex + 1] else null
             visitor.visit(
                 visitors,
                 parent = identifier,
-                childUUIDS[childIndex].toString(),
-                nextUUID,
+                childUUIDS[childIndex],
+                childNextUUID,
                 context
             )
         }
@@ -45,7 +45,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
             inputs["SUBSTACK"] = JsonArray(
                 listOf(
                     JsonPrimitive(2),
-                    JsonPrimitive(it.toString())
+                    JsonPrimitive(it)
                 )
             )
         }
@@ -58,6 +58,4 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
     }
 }
 
-fun ScriptBuilder.forever(block: ScriptBuilder.() -> Unit) {
-    childs.add(Forever(ScriptBuilder().apply(block).childs))
-}
+fun ScriptBuilder.forever(block: ScriptBuilder.() -> Unit) = addNode(Forever(ScriptBuilder().apply(block).childs))

@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="imports">
-      <change afterPath="$PROJECT_DIR$/example/src/main/kotlin/targets/Sprite2.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Thinkforsecs.kt" afterDir="false" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="Deleteoflist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Think.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks/Think.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turbowarp/src/main/kotlin/bitwise/BitwiseRightShift.kt" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/src/main/kotlin/bitwise/BitwiseRightShift.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ListContains.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data/ListContains.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +87,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/scratch3/src/main/java/de/jensklingenberg/scratch/looks",
+    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/scratch3/src/main/java/de/jensklingenberg/scratch/data",
     "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -106,11 +102,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/data" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/looks" />
       <recent name="$PROJECT_DIR$/example/src/main/kotlin" />
       <recent name="$PROJECT_DIR$/example/src/main/resources/sprites" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion" />
-      <recent name="$PROJECT_DIR$/turbowarp/src/main/kotlin/debugger" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/example/src/main/kotlin/targets" />
@@ -167,22 +163,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00026" summary="stop the sound2">
-      <option name="closed" value="true" />
-      <created>1729760097023</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1729760097023</updated>
-    </task>
-    <task id="LOCAL-00027" summary="private">
-      <option name="closed" value="true" />
-      <created>1729780674229</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1729780674229</updated>
     </task>
     <task id="LOCAL-00028" summary="mods">
       <option name="closed" value="true" />
@@ -560,7 +540,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730487543576</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="think">
+      <option name="closed" value="true" />
+      <created>1730488557862</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1730488557862</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Deleteoflist">
+      <option name="closed" value="true" />
+      <created>1730488866777</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1730488866777</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -586,8 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="new" />
-    <MESSAGE value="no context" />
     <MESSAGE value="variable" />
     <MESSAGE value="reformat" />
     <MESSAGE value="variables" />
@@ -611,7 +605,9 @@
     <MESSAGE value="reform" />
     <MESSAGE value="spark" />
     <MESSAGE value="imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="imports" />
+    <MESSAGE value="think" />
+    <MESSAGE value="Deleteoflist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleteoflist" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

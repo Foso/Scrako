@@ -23,9 +23,7 @@ internal class IfElse(
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         val name2 = identifier
         val newNext = nextUUID
         val operatorUUID = UUID.randomUUID().toString()

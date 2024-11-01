@@ -24,9 +24,8 @@ private class ReplaceItemOfWith(
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val indexUUID = UUID.randomUUID().toString()
         val replaceUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
