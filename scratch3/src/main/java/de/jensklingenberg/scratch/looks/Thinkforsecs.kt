@@ -1,29 +1,38 @@
-package bitwise
+package de.jensklingenberg.scratch.looks
 
+import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
-private class BitwiseRightShift(
+/**
+ * https://en.scratch-wiki.info/wiki/Think_()_(block)
+ */
+private class Thinkforsecs(
     val block0: ReporterBlock,
     val block1: ReporterBlock,
-) : ReporterBlock {
+) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context) {
+        context: Context
+    ) {
         val block0Id = UUID.randomUUID().toString()
         val block1Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = "Bitwise_bitwiseRightShift",
+            opcode = "looks_thinkforsecs",
             inputs = mapOf(
-                "LEFT" to setValue(block0, block0Id, context),
-                "RIGHT" to setValue(block1, block1Id, context)
+                "MESSAGE" to setValue(block0, block0Id, context),
+                "SECS" to setValue(block1, block1Id, context)
+            ),
+            fields = mapOf(
+
             )
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier, block0Id, null, context)
@@ -31,4 +40,4 @@ private class BitwiseRightShift(
     }
 }
 
-fun bitwiseRightShift(block0: ReporterBlock, block1: ReporterBlock): ReporterBlock = BitwiseRightShift(block0, block1)
+fun ScriptBuilder.thinkforsecs(block0: ReporterBlock, block1: ReporterBlock) = addNode(Thinkforsecs(block0, block1))

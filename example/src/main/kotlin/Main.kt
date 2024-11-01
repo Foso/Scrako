@@ -1,24 +1,18 @@
 package me.jens
 
-import de.jensklingenberg.scrako.builder.ProjectBuilder
+import targets.Sprite2
 import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.getGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.scriptBuilder
-import de.jensklingenberg.scrako.builder.spriteBuilder
 import de.jensklingenberg.scrako.builder.stageBuilder
 import de.jensklingenberg.scrako.builder.writeProject
-import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scratch.event.Key
-import de.jensklingenberg.scratch.event.whenFlagClicked
-import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch.event.whenKeyPress
-import de.jensklingenberg.scratch.looks.hide
-import de.jensklingenberg.scratch.looks.show
 import kotlinx.serialization.json.Json
 import me.jens.imports.BroadcastImport
 import me.jens.imports.CallImport
@@ -89,26 +83,6 @@ fun main() {
     process2.waitFor()
 }
 
-private fun ProjectBuilder.Sprite2(paint: Broadcast) {
-    spriteBuilder("Sprite2") {
-        addPosition(100.0, 150.0)
-        addCostumes(listOf(blockA, blockB, Blockc))
-        scriptBuilder {
-            whenIReceiveBroadcast(paint)
-        }
-
-        scriptBuilder {
-            whenFlagClicked()
-            hide()
-        }
-
-        scriptBuilder {
-            whenKeyPress(Key.A)
-            show()
-        }
-    }
-}
-
 
 fun readList(name: String): List<String> {
     return File(name).readLines()
@@ -117,7 +91,7 @@ fun readList(name: String): List<String> {
 private fun importer(): ScratchList {
     var projectJson: String = ""
 
-    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/Scratch RPG Assets.sb3"
+    val sb3Path = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/test4.sb3"
 
     ZipInputStream(FileInputStream(sb3Path)).use { zis ->
         var entry = zis.nextEntry
