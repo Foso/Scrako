@@ -1,5 +1,6 @@
 package me.jens.targets
 
+import changeSizeBy
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.getOrCreateList
@@ -89,7 +90,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
 
         val jens2 = getOrCreateList(
             "jens2",
-            (0..84).map { "1" }
+            (0..88).map { "1" }
         )
         val playerX = getOrCreateVariable("playerX")
         val playerY = getOrCreateVariable("playerY")
@@ -168,6 +169,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
 
             ifThen(keyIsPressed(Key.DOWN_ARROW)) {
                 ifThen(playerY lt IntBlock(array_height-1)) {
+                    log(playerY)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerY, 1)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)

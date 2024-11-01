@@ -12,7 +12,6 @@ import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch.common.OpCode
 import java.util.UUID
 
 private class ReplaceItemOfWith(
@@ -31,7 +30,7 @@ private class ReplaceItemOfWith(
         val indexUUID = UUID.randomUUID().toString()
         val replaceUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.data_replaceitemoflist,
+            opcode = "data_replaceitemoflist",
             inputs = mapOf(
                 "INDEX" to setValue(index, indexUUID, context),
                 "ITEM" to setValue(replace, replaceUUID, context)

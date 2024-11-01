@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.common.CapBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -52,7 +51,7 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         }
 
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.control_forever,
+            opcode = "control_forever",
             inputs = inputs
         ).toBlock(null, parent)
 

@@ -17,6 +17,16 @@ import de.jensklingenberg.scratch.event.Key
 import de.jensklingenberg.scratch.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch.event.whenKeyPress
 import kotlinx.serialization.json.Json
+import me.jens.imports.BroadcastImport
+import me.jens.imports.CallImport
+import me.jens.imports.ClearGrahpiceffects
+import me.jens.imports.ForeverImport
+import me.jens.imports.ImportNode
+import me.jens.imports.ReplaceItemImport
+import me.jens.imports.SetVariableImport
+import me.jens.imports.ShowListImport
+import me.jens.imports.WhenFlag
+import me.jens.imports.WhenKey
 import me.jens.targets.MySprite1
 import switchbackdropto
 import java.io.File
@@ -33,7 +43,7 @@ private val json = Json {
 
 fun main() {
 
-    //importer()
+    importer()
 
 
     val proj = projectBuilder {
@@ -130,9 +140,20 @@ private fun importer(): ScratchList {
 
         }
     }
+    val myList = mutableListOf<ImportNode>()
+    val whenFlag = WhenFlag()
+    myList.add(whenFlag)
+    myList.add(ClearGrahpiceffects())
+    myList.add(ReplaceItemImport())
+    myList.add(ShowListImport())
+    myList.add(SetVariableImport())
+    myList.add(CallImport())
+    myList.add(BroadcastImport())
+    myList.add(WhenKey())
+    myList.add(ForeverImport())
 
     val tt = json.decodeFromString<ScratchProject>(projectJson)
-    val myList =
+    val jensList =
         ScratchList(
             "jens2",
             readList("/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/lists/jens.txt")
@@ -154,7 +175,15 @@ private fun importer(): ScratchList {
                     ")"
             File("/Users/jens.klingenberg/Code/2024/LLVMPoet/temp/" + it.name + ".kt").writeText(text)
         }
+        val builder = StringBuilder()
+
+        target.blocks.filter { it.value.topLevel }.forEach { (id, block) ->
+            myList.find { it.opCode == block.opcode }?.visit(builder, tt, block, myList, id)
+        }
+
         target.blocks.forEach { (t, blockOr) ->
+
+           // myList.find { it.opCode == blockOr.opcode }?.visit(builder, tt, blockOr, myList, t)
             val block = blockOr as? de.jensklingenberg.scrako.model.Block ?: return@forEach
             val newInputs =
                 block.inputs.entries.mapIndexed { index, entry -> "\"${entry.key}\" to setValue(block${index}, block${index}Id, context) " }
@@ -191,7 +220,10 @@ private fun importer(): ScratchList {
             File("/Users/jens.klingenberg/Code/2024/LLVMPoet/wrapper/" + name).writeText(sec)
             //  }
         }
+
+        println(builder)
+        println("-------------------------------------------------")
     }
-    return myList
+    return jensList
 }
 
