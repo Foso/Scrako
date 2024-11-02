@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.looks
 
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -103,6 +103,6 @@ sealed interface LooksSayContent {
 }
 
 
-fun ScriptBuilder.say(reporterBlock: ReporterBlock) = addNode(Say(reporterBlock))
-fun ScriptBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
-fun ScriptBuilder.say(message: String, seconds: Int? = null) = addNode(Say(StringBlock(message), seconds))
+fun CommonScriptBuilder.say(reporterBlock: ReporterBlock) = addNode(Say(reporterBlock))
+fun CommonScriptBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
+fun CommonScriptBuilder.say(message: String, seconds: Int? = null) = addNode(Say(StringBlock(message), seconds))

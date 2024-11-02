@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.sound
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -39,5 +39,5 @@ private class Seteffectto(val block0: ReporterBlock, val effect: String) : Node 
     }
 }
 
-fun ScriptBuilder.setEffectTo(effect: SoundEffect, block0: ReporterBlock) =
+fun CommonScriptBuilder.setEffectTo(effect: SoundEffect, block0: ReporterBlock) =
     addNode(Seteffectto(block0, effect.name.lowercase()))

@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.looks
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -22,5 +22,5 @@ private class GoTo(private val value: String) : Node {
     }
 }
 
-fun ScriptBuilder.goToFront() = addNode(GoTo("front"))
-fun ScriptBuilder.goToBack() = addNode(GoTo("back"))
+fun CommonScriptBuilder.goToFront() = addNode(GoTo("front"))
+fun CommonScriptBuilder.goToBack() = addNode(GoTo("back"))

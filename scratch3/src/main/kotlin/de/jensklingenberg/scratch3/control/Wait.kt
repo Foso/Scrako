@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.control
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
@@ -31,7 +31,7 @@ private class Wait(private val block: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.wait(seconds: Double) = addNode(Wait(DoubleBlock(seconds)))
-fun ScriptBuilder.wait(seconds: Int) = addNode(Wait(IntBlock(seconds)))
-fun ScriptBuilder.wait(block: ReporterBlock) = addNode(Wait(block))
+fun CommonScriptBuilder.wait(seconds: Double) = addNode(Wait(DoubleBlock(seconds)))
+fun CommonScriptBuilder.wait(seconds: Int) = addNode(Wait(IntBlock(seconds)))
+fun CommonScriptBuilder.wait(block: ReporterBlock) = addNode(Wait(block))
 

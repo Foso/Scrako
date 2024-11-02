@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.data
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -23,4 +23,4 @@ private class HideList(private val list: ScratchList) : Node, StackBlock {
     }
 }
 
-fun ScriptBuilder.hideList(list: ScratchList) = addNode(HideList(list))
+fun CommonScriptBuilder.hideList(list: ScratchList) = addNode(HideList(list))

@@ -1,4 +1,4 @@
-package me.jens
+package de.jensklingenberg
 
 import de.jensklingenberg.example.sprites.Sprite2
 import de.jensklingenberg.scrako.builder.createBroadcast
@@ -7,8 +7,8 @@ import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.writeProject
 import kotlinx.serialization.json.Json
 import de.jensklingenberg.example.sprites.MySprite1
-import me.jens.de.jensklingenberg.example.imports.importer
-import me.jens.de.jensklingenberg.example.sprites.MyStageBuilder
+import de.jensklingenberg.de.jensklingenberg.example.imports.importer
+import de.jensklingenberg.de.jensklingenberg.example.sprites.MyStageBuilder
 import java.io.File
 
 val json = Json {
@@ -24,7 +24,7 @@ fun main() {
 
 
     val proj = projectBuilder {
-        //getGlobalVariable("myVar", true)
+        val myGlobalVar = getGlobalVariable("myGlobalVar", true)
         val paint = createBroadcast("paint")
         MySprite1(paint)
         Sprite2(paint)

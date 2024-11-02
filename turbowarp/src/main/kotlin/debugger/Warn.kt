@@ -1,6 +1,6 @@
 package debugger
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -34,4 +34,4 @@ private class Warn(val block0: ReporterBlock) : ReporterBlock {
     }
 }
 
-fun ScriptBuilder.warn(block0: ReporterBlock) = addNode(Warn(block0))
+fun CommonScriptBuilder.warn(block0: ReporterBlock) = addNode(Warn(block0))

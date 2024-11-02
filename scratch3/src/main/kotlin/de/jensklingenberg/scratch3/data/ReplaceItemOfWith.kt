@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.data
 
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -41,16 +41,16 @@ private class ReplaceItemOfWith(
     }
 }
 
-fun ScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
+fun CommonScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: ReporterBlock) =
     addNode(ReplaceItemOfWith(index, list, replace))
 
-fun ScriptBuilder.replaceItemOfListWith(index: Int, list: ScratchList, replace: String) =
+fun CommonScriptBuilder.replaceItemOfListWith(index: Int, list: ScratchList, replace: String) =
     addNode(ReplaceItemOfWith(IntBlock(index), list, StringBlock(replace)))
 
-fun ScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: Int) =
+fun CommonScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: Int) =
     addNode(ReplaceItemOfWith(index, list, IntBlock(replace)))
 
-fun ScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: String) =
+fun CommonScriptBuilder.replaceItemOfListWith(index: ReporterBlock, list: ScratchList, replace: String) =
     addNode(ReplaceItemOfWith(index, list, StringBlock(replace)))
 
 

@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.control
 
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -27,7 +27,7 @@ private class Stop(private val option: StopOption) : Node {
     }
 }
 
-fun ScriptBuilder.stop(option: StopOption) = addNode(Stop(option))
+fun CommonScriptBuilder.stop(option: StopOption) = addNode(Stop(option))
 enum class StopOption(val s: String) {
     ALL("all"), OTHER("other scripts in sprite"), THIS("this script")
 }

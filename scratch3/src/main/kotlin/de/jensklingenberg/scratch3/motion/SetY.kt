@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.motion
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -29,5 +29,5 @@ private class SetY(val block0: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.setY(value: Int) = addNode(SetY(IntBlock(value)))
-fun ScriptBuilder.setY(block: ReporterBlock) = addNode(SetY(block))
+fun CommonScriptBuilder.setY(value: Int) = addNode(SetY(IntBlock(value)))
+fun CommonScriptBuilder.setY(block: ReporterBlock) = addNode(SetY(block))

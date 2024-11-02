@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.motion
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.MotionBlock
@@ -61,5 +61,5 @@ private class GotoMenu(val steps: String) : Node {
     }
 }
 
-fun ScriptBuilder.goTo(block: ReporterBlock) = addNode(Goto(block))
-fun ScriptBuilder.goTo(value: String) = goTo(StringBlock(value))
+fun CommonScriptBuilder.goTo(block: ReporterBlock) = addNode(Goto(block))
+fun CommonScriptBuilder.goTo(value: String) = goTo(StringBlock(value))

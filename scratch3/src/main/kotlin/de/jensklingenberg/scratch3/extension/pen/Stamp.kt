@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.extension.pen
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -20,4 +20,4 @@ private class Stamp : Node {
     }
 }
 
-fun ScriptBuilder.stamp() = addNode(Stamp())
+fun CommonScriptBuilder.stamp() = addNode(Stamp())

@@ -5,12 +5,13 @@ import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.createTarget
+import de.jensklingenberg.scrako.model.Backdrop
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Target
 import java.util.UUID
 
-open class SpriteBuilder {
-    internal val scriptBuilders = mutableListOf<ScriptBuilder>()
+open class CommonSpriteBuilder {
+    internal val commonScriptBuilders = mutableListOf<CommonScriptBuilder>()
     var name: String = ""
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
@@ -36,7 +37,7 @@ open class SpriteBuilder {
 
     internal fun build(context: Context, isStage: Boolean): Target {
         val functionsMap = mutableListOf<Argumenti>()
-        scriptBuilders.forEach {
+        commonScriptBuilders.forEach {
             it.functionsMap.forEach { function ->
                 function.value.forEach { argument2 ->
                     functionsMap.add(
@@ -53,7 +54,7 @@ open class SpriteBuilder {
 
         }
 
-        val nodeListList = scriptBuilders.map { it.childs }
+        val nodeListList = commonScriptBuilders.map { it.childs }
 
         nodeListList.flatten().forEach {
             if (isStage && it is MotionBlock) {
@@ -90,7 +91,7 @@ open class SpriteBuilder {
                 variableMap = allVariables,
                 lists = allLists,
                 functions = functionsMap,
-                broadcasts1 = context.broadcasts1
+                broadcastMap = context.broadcastMap
             )
         )
 
@@ -101,13 +102,14 @@ open class SpriteBuilder {
             lists = targetLists,
             variables = targetVariables,
             costumes = costumesList,
-            broadcasts = context.broadcasts1,
+            broadcasts = context.broadcastMap,
             sounds = emptyList(),
             size = 100.0,
             x = position.second,
             y = position.first,
             visible = true,
-            direction = 90.0
+            direction = 90.0,
+            isStage = isStage
         )
     }
 
@@ -117,17 +119,24 @@ open class SpriteBuilder {
 
 }
 
+class StageSpriteBuilder : CommonSpriteBuilder()
+class SpriteBuilder : CommonSpriteBuilder()
+
 fun SpriteBuilder.addCostumes(costume: List<Costume>) {
     costume.forEach { addCostumeList(it) }
 }
 
-fun SpriteBuilder.getOrCreateList(name: String, contents: List<String> = emptyList()): ScratchList {
+fun StageSpriteBuilder.addBackdrop(costume: List<Backdrop>) {
+    costume.forEach { addCostumeList(it) }
+}
+
+fun CommonSpriteBuilder.getOrCreateList(name: String, contents: List<String> = emptyList()): ScratchList {
     val element = ScratchList(name, contents)
     addList(element)
     return element
 }
 
-fun SpriteBuilder.getOrCreateVariable(name: String): ScratchVariable {
+fun CommonSpriteBuilder.getOrCreateVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
     addVariable(name)
     return element

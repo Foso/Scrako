@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.event
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.Context
@@ -20,7 +20,7 @@ private class WhenIRecieve(val broadcast: Broadcast) : Node, Event, HatBlock {
         if (parent != null) {
             throw IllegalStateException(this::class.simpleName + " blocks can't have a parent")
         }
-        val broadcastId = context.broadcasts1[broadcast.name] ?: "Cant find broadcast"
+        val broadcastId = context.broadcastMap[broadcast.name] ?: "Cant find broadcast"
         visitors[identifier] = BlockSpec(
             opcode = "event_whenbroadcastreceived",
             fields = mapOf("BROADCAST_OPTION" to listOf(broadcast.name, broadcastId))
@@ -28,4 +28,4 @@ private class WhenIRecieve(val broadcast: Broadcast) : Node, Event, HatBlock {
     }
 }
 
-fun ScriptBuilder.whenIReceiveBroadcast(broadcast: Broadcast) = addNode(WhenIRecieve(broadcast))
+fun CommonScriptBuilder.whenIReceiveBroadcast(broadcast: Broadcast) = addNode(WhenIRecieve(broadcast))

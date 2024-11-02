@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.control
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
@@ -68,8 +68,8 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
     }
 }
 
-fun ScriptBuilder.repeat(times: Int, childs: ScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
-fun ScriptBuilder.repeat(times: Double, childs: ScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
+fun CommonScriptBuilder.repeat(times: Int, childs: CommonScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
+fun CommonScriptBuilder.repeat(times: Double, childs: CommonScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
 
-fun ScriptBuilder.repeat(times: ReporterBlock, childs: ScriptBuilder.() -> Unit) =
-    addNode(Repeat(times, *ScriptBuilder().apply(childs).childs.toTypedArray()))
+fun <T: CommonScriptBuilder> T.repeat(times: ReporterBlock, childs: CommonScriptBuilder.() -> Unit) =
+    addNode(Repeat(times, *CommonScriptBuilder().apply(childs).childs.toTypedArray()))

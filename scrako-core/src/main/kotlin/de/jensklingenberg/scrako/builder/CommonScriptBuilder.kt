@@ -7,7 +7,7 @@ import de.jensklingenberg.scrako.common.Node
 annotation class ScriptDsl
 
 @ScriptDsl
-open class ScriptBuilder {
+open class CommonScriptBuilder {
 
     val childs = mutableListOf<Node>()
     val functionsMap = mutableMapOf<String, List<Argument>>()
@@ -16,4 +16,5 @@ open class ScriptBuilder {
     }
 }
 
-class StageScriptBuilder : ScriptBuilder()
+class SpriteScriptBuilder : CommonScriptBuilder()
+class StageScriptBuilder : CommonScriptBuilder()

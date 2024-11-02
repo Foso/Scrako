@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.data
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
@@ -33,11 +33,11 @@ private class ChangeVariable(private val block: ReporterBlock, private val varia
 }
 
 
-fun ScriptBuilder.changeVariableBy(variable: ScratchVariable, item: ReporterBlock) =
+fun CommonScriptBuilder.changeVariableBy(variable: ScratchVariable, item: ReporterBlock) =
     addNode(ChangeVariable(item, variable.name))
 
-fun ScriptBuilder.changeVariableBy(variable: ScratchVariable, by: Int) =
+fun CommonScriptBuilder.changeVariableBy(variable: ScratchVariable, by: Int) =
     addNode(ChangeVariable(IntBlock(by), variable.name))
 
-fun ScriptBuilder.changeVariableBy(variable: ScratchVariable, item: Double) =
+fun CommonScriptBuilder.changeVariableBy(variable: ScratchVariable, item: Double) =
     addNode(ChangeVariable(DoubleBlock(item), variable.name))

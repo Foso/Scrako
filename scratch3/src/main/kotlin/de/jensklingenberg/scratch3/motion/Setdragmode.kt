@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.motion
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -33,4 +33,4 @@ enum class DragMode(val value: String) {
     NOT_DRAG("not draggable")
 }
 
-fun ScriptBuilder.setDragMode(dragMode: DragMode) = addNode(Setdragmode(dragMode.value))
+fun CommonScriptBuilder.setDragMode(dragMode: DragMode) = addNode(Setdragmode(dragMode.value))

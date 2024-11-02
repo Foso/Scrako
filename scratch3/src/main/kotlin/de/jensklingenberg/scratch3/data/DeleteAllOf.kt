@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.data
 
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ListBlock
@@ -26,5 +26,5 @@ private class DeleteAllOf(private val list: ScratchList) : Node, ListBlock {
     }
 }
 
-fun ScriptBuilder.deleteAllOf(list: ScratchList) = addNode(DeleteAllOf(list))
+fun CommonScriptBuilder.deleteAllOf(list: ScratchList) = addNode(DeleteAllOf(list))
 

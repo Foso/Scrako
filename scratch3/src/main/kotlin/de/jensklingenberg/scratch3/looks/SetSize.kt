@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.looks
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -30,5 +30,5 @@ private class SetSize(val block: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.setSize(block: ReporterBlock) = addNode(SetSize(block))
-fun ScriptBuilder.setSize(block: Int): Unit = setSize(IntBlock(block))
+fun CommonScriptBuilder.setSize(block: ReporterBlock) = addNode(SetSize(block))
+fun CommonScriptBuilder.setSize(block: Int): Unit = setSize(IntBlock(block))

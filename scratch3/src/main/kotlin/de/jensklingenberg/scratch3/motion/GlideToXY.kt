@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.motion
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
@@ -42,8 +42,8 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
 }
 
 
-fun ScriptBuilder.glideToXY(sec: ReporterBlock, toX: ReporterBlock, toY: ReporterBlock) =
+fun CommonScriptBuilder.glideToXY(sec: ReporterBlock, toX: ReporterBlock, toY: ReporterBlock) =
     addNode(GlideToXY(sec, toX, toY))
 
-fun ScriptBuilder.glideToXY(sec: Double, toX: Double, toY: Double) =
+fun CommonScriptBuilder.glideToXY(sec: Double, toX: Double, toY: Double) =
     addNode(GlideToXY(DoubleBlock(sec), DoubleBlock(toX), DoubleBlock(toY)))

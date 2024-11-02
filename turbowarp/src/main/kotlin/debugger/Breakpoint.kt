@@ -1,6 +1,6 @@
 package debugger
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -29,4 +29,4 @@ private class Breakpoint : Node {
     }
 }
 
-fun ScriptBuilder.breakpoint() = addNode(Breakpoint())
+fun CommonScriptBuilder.breakpoint() = addNode(Breakpoint())

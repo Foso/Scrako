@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.event
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.Context
@@ -19,7 +19,7 @@ private class SendBroadcast(val broadcast: Broadcast) : Node, Event {
         nextUUID: String?,
         context: Context
     ) {
-        val entry = context.broadcasts1[broadcast.name] ?: "Cant find broadcast"
+        val entry = context.broadcastMap[broadcast.name] ?: "Cant find broadcast"
         visitors[identifier] = BlockSpec(
             opcode = "event_broadcast",
             inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast.name, entry))
@@ -40,4 +40,4 @@ internal fun createBroadcast(name: String, id: String) = JsonArray(
     )
 )
 
-fun ScriptBuilder.sendBroadcast(broadcast: Broadcast) = addNode(SendBroadcast(broadcast))
+fun CommonScriptBuilder.sendBroadcast(broadcast: Broadcast) = addNode(SendBroadcast(broadcast))

@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.sound
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -29,4 +29,4 @@ private class ChangeVolumeBy(val block0: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.changeVolumeBy(block0: ReporterBlock) = addNode(ChangeVolumeBy(block0))
+fun CommonScriptBuilder.changeVolumeBy(block0: ReporterBlock) = addNode(ChangeVolumeBy(block0))

@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.data
 
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -33,5 +33,5 @@ private class AddToList(private val list: ScratchList, private val block: Report
 }
 
 
-fun ScriptBuilder.addToList(list: ScratchList, block: ReporterBlock) = addNode(AddToList(list, block))
-fun ScriptBuilder.addToList(list: ScratchList, item: String) = addNode(AddToList(list, StringBlock(item)))
+fun CommonScriptBuilder.addToList(list: ScratchList, block: ReporterBlock) = addNode(AddToList(list, block))
+fun CommonScriptBuilder.addToList(list: ScratchList, item: String) = addNode(AddToList(list, StringBlock(item)))

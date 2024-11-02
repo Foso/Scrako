@@ -1,4 +1,4 @@
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -29,4 +29,4 @@ private class Deleteoflist(val block0: ReporterBlock, val list: String) : Node {
     }
 }
 
-fun ScriptBuilder.deleteItemOfList(block0: ReporterBlock, list: String) = addNode(Deleteoflist(block0, list))
+fun CommonScriptBuilder.deleteItemOfList(block0: ReporterBlock, list: String) = addNode(Deleteoflist(block0, list))

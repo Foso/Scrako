@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.looks
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -22,4 +22,4 @@ private class Cleargraphiceffects() : Node {
     }
 }
 
-fun ScriptBuilder.cleargraphiceffects() = addNode(Cleargraphiceffects())
+fun CommonScriptBuilder.cleargraphiceffects() = addNode(Cleargraphiceffects())

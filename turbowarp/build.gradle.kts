@@ -2,9 +2,10 @@ plugins {
     id("java")
     kotlin("jvm")
     kotlin("plugin.serialization") version "2.0.21"
+    id("com.vanniktech.maven.publish")
 }
 
-group = "me.jens"
+group = "de.jensklingenberg"
 version = "1.0-SNAPSHOT"
 
 repositories {

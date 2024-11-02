@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.control
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.common.CapBlock
@@ -58,4 +58,4 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
     }
 }
 
-fun ScriptBuilder.forever(block: ScriptBuilder.() -> Unit) = addNode(Forever(ScriptBuilder().apply(block).childs))
+fun CommonScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(CommonScriptBuilder().apply(block).childs))

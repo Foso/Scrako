@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.procedures
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.BlockSpec
@@ -61,25 +61,25 @@ interface Argument : ReporterBlock {
 }
 
 
-class DefinitionBuilder(val functionName: String, val args: List<Argument>) : ScriptBuilder()
+class DefinitionBuilderCommon(val functionName: String, val args: List<Argument>) : CommonScriptBuilder()
 
-fun ScriptBuilder.define(
+fun CommonScriptBuilder.define(
     customBlockName: String,
     arguments: List<Argument> = emptyList(),
     withoutRefresh: Boolean = false,
-    builder: DefinitionBuilder.() -> Unit
+    builder: DefinitionBuilderCommon.() -> Unit
 ) {
     functionsMap[customBlockName] = arguments
 
     addNode(
         Definition(
             Prototype(customBlockName, withoutRefresh, arguments),
-            DefinitionBuilder(customBlockName, arguments).apply(builder).childs
+            DefinitionBuilderCommon(customBlockName, arguments).apply(builder).childs
         )
     )
 }
 
-fun DefinitionBuilder.getArgs() =
+fun DefinitionBuilderCommon.getArgs() =
     args.map {
         when (it.type) {
             ArgumentType.BOOLEAN -> addArgumentBoolean(it.name)

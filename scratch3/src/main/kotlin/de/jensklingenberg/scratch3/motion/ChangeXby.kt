@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.motion
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
@@ -31,6 +31,6 @@ private class ChangeXby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
     }
 }
 
-fun ScriptBuilder.changeXby(value: ReporterBlock) = addNode(ChangeXby(value))
-fun ScriptBuilder.changeXby(value: Double) = addNode(ChangeXby(DoubleBlock(value)))
-fun ScriptBuilder.changeXby(value: Int) = addNode(ChangeXby(IntBlock(value)))
+fun CommonScriptBuilder.changeXby(value: ReporterBlock) = addNode(ChangeXby(value))
+fun CommonScriptBuilder.changeXby(value: Double) = addNode(ChangeXby(DoubleBlock(value)))
+fun CommonScriptBuilder.changeXby(value: Int) = addNode(ChangeXby(IntBlock(value)))

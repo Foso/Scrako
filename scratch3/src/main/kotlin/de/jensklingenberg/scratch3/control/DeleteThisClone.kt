@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.control
 
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CapBlock
 import de.jensklingenberg.scrako.common.Context
@@ -24,4 +24,4 @@ internal class DeleteThisClone : BlockSpec(
     }
 }
 
-fun ScriptBuilder.deleteThisClone() = addNode(DeleteThisClone())
+fun CommonScriptBuilder.deleteThisClone() = addNode(DeleteThisClone())

@@ -1,4 +1,4 @@
-package me.jens.imports
+package de.jensklingenberg.imports
 
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject

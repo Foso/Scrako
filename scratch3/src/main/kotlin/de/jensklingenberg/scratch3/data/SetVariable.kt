@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.data
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -32,12 +32,12 @@ private class SetVariable(private val variableName: String, private val item: Re
     }
 }
 
-fun ScriptBuilder.setVariable(variable: ScratchVariable, item: ReporterBlock) =
+fun CommonScriptBuilder.setVariable(variable: ScratchVariable, item: ReporterBlock) =
     addNode(SetVariable(variable.name, item))
 
-fun ScriptBuilder.setVariable(variable: ScratchVariable, newValue: Int) =
+fun CommonScriptBuilder.setVariable(variable: ScratchVariable, newValue: Int) =
     addNode(SetVariable(variable.name, IntBlock(newValue)))
 
-fun ScriptBuilder.setVariable(variable: ScratchVariable, item: String) =
+fun CommonScriptBuilder.setVariable(variable: ScratchVariable, item: String) =
     addNode(SetVariable(variable.name, StringBlock(item)))
 

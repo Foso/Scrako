@@ -34,7 +34,6 @@ infix fun BooleanBlock.and(booleanBlock: BooleanBlock): BooleanBlock {
     return And(this, booleanBlock)
 }
 
-
 infix fun ReporterBlock.eq(booleanBlock: ReporterBlock): BooleanBlock {
     return OperatorEquals(this, booleanBlock)
 }
@@ -71,7 +70,7 @@ infix fun ReporterBlock.or(booleanBlock: ReporterBlock): BooleanBlock {
     return OperatorOr(this, booleanBlock)
 }
 
-infix operator fun ReporterBlock.plus(i: Int): ReporterBlock {
+infix fun ReporterBlock.plus(i: Int): ReporterBlock {
     return Add(this, IntBlock(i))
 }
 
@@ -79,7 +78,7 @@ infix operator fun ReporterBlock.plus(i: ReporterBlock): ReporterBlock {
     return Add(this, i)
 }
 
-infix operator fun ReporterBlock.minus(i: Int): ReporterBlock {
+infix fun ReporterBlock.minus(i: Int): ReporterBlock {
     return Subtract(this, IntBlock(i))
 }
 
@@ -91,6 +90,6 @@ infix fun Int.minus(intBlock: IntBlock): ReporterBlock {
     return Subtract(IntBlock(this), intBlock)
 }
 
-infix operator fun Int.plus(int: ReporterBlock): ReporterBlock {
+infix fun Int.plus(int: ReporterBlock): ReporterBlock {
     return Add(IntBlock(this), int)
 }

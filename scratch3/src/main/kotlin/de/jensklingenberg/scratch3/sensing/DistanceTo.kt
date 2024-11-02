@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.sensing
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -35,4 +35,4 @@ private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock
     }
 }
 
-fun ScriptBuilder.distanceTo(destination: ReporterBlock) = addNode(DistanceTo(destination))
+fun CommonScriptBuilder.distanceTo(destination: ReporterBlock) = addNode(DistanceTo(destination))

@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.sound
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -28,4 +28,4 @@ private class Setvolumeto(val block0: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.setVolumeTo(block0: ReporterBlock) = addNode(Setvolumeto(block0))
+fun CommonScriptBuilder.setVolumeTo(block0: ReporterBlock) = addNode(Setvolumeto(block0))

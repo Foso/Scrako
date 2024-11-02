@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.sound
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -29,4 +29,4 @@ private class Playuntildone(val block0: ReporterBlock) : Node {
     }
 }
 
-fun ScriptBuilder.playSoundUntilDone(s: Sound) = addNode(Playuntildone(SoundsMenu(s.name)))
+fun CommonScriptBuilder.playSoundUntilDone(s: Sound) = addNode(Playuntildone(SoundsMenu(s.name)))

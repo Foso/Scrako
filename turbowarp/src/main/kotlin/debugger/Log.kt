@@ -1,6 +1,6 @@
 package debugger
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -35,8 +35,8 @@ private class Log(val block0: ReporterBlock) : ReporterBlock {
     }
 }
 
-fun ScriptBuilder.log(block0: ReporterBlock) = addNode(Log(block0))
+fun CommonScriptBuilder.log(block0: ReporterBlock) = addNode(Log(block0))
 
-fun ScriptBuilder.log(block0: String) {
+fun CommonScriptBuilder.log(block0: String) {
     log(StringBlock(block0))
 }

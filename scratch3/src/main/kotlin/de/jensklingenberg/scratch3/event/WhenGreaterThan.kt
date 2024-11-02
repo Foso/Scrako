@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.event
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.DoubleBlock
@@ -38,8 +38,8 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
 
 }
 
-fun ScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: ReporterBlock) =
+fun CommonScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: ReporterBlock) =
     addNode(WhenGreaterThan(option, value))
 
-fun ScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: Double) =
+fun CommonScriptBuilder.whenGreaterThan(option: GreaterThanOption, value: Double) =
     addNode(WhenGreaterThan(option, DoubleBlock(value)))

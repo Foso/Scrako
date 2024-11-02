@@ -24,6 +24,7 @@ data class Comment(
     }
 }
 
+typealias Backdrop = Costume
 
 @Serializable
 data class Costume(

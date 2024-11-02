@@ -1,6 +1,6 @@
 package de.jensklingenberg.example.ext
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
@@ -9,10 +9,10 @@ import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.operator.OperatorEquals
 
 
-fun ScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =
+fun CommonScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =
     switch(StringBlock(block), operatorSpec)
 
-fun ScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
+fun CommonScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
     val test = Switch().apply(operatorSpec)
 
     if (test.mutableList.size == 1) {
@@ -31,10 +31,10 @@ fun ScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) 
         })
     }
 }
-fun Switch.case(block: Int, leftStack: ScriptBuilder.() -> Unit) = addChild(Case(IntBlock(block), leftStack))
+fun Switch.case(block: Int, leftStack: CommonScriptBuilder.() -> Unit) = addChild(Case(IntBlock(block), leftStack))
 
-fun Switch.case(block: ReporterBlock, leftStack: ScriptBuilder.() -> Unit) = addChild(Case(block, leftStack))
-fun Switch.case(operatorSpec: String, leftStack: ScriptBuilder.() -> Unit) =
+fun Switch.case(block: ReporterBlock, leftStack: CommonScriptBuilder.() -> Unit) = addChild(Case(block, leftStack))
+fun Switch.case(operatorSpec: String, leftStack: CommonScriptBuilder.() -> Unit) =
     addChild(Case(StringBlock(operatorSpec), leftStack))
 
 class Switch {
@@ -45,4 +45,4 @@ class Switch {
     }
 }
 
-data class Case(val operatorSpec: ReporterBlock, val leftStack: ScriptBuilder.() -> Unit)
+data class Case(val operatorSpec: ReporterBlock, val leftStack: CommonScriptBuilder.() -> Unit)

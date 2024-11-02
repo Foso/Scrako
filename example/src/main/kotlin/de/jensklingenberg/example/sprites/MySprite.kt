@@ -35,7 +35,6 @@ import de.jensklingenberg.scratch3.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch3.event.whenKeyPress
 import de.jensklingenberg.scratch3.extension.pen.eraseAll
 import de.jensklingenberg.scratch3.extension.pen.stamp
-import de.jensklingenberg.scratch3.looks.cleargraphiceffects
 import de.jensklingenberg.scratch3.looks.hide
 import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
@@ -66,7 +65,6 @@ const val MOVE_DISTANCE = 40
 fun ProjectBuilder.MySprite1(paint: Broadcast) {
     val input = createBroadcast("input")
 
-
     spriteBuilder("Sprite123") {
         val jens2 = getOrCreateList(
             "jens2",
@@ -78,18 +76,17 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
         val playerX = getOrCreateVariable("playerX")
         val playerY = getOrCreateVariable("playerY")
         val width = getOrCreateVariable("width")
-        val yy = getOrCreateVariable("paint_yy")
-        val xx = getOrCreateVariable("paint_xx")
 
         /**
          * Start
          */
         scriptBuilder {
             whenFlagClicked()
+            hide()
             replaceItemOfListWith(getIndexOf(0, 0), jens2, PlayerIconID)
             setVariable(playerX, 1)
             setVariable(playerY, 1)
-            log(playerX)
+            //log(playerX)
             forever {
                 sendBroadcast(paint)
                 sendBroadcast(input)
@@ -105,22 +102,25 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
         }
 
         scriptBuilder {
+            val paintY = getOrCreateVariable("paint_yy")
+            val paintX = getOrCreateVariable("paint_xx")
+
             define("paint1", withoutRefresh = true) {
                 hide()
                 setVariable(width, array_width)
-                setVariable(yy, 0)
+                setVariable(paintY, 0)
                 eraseAll()
                 gotoxy(X_START, Y_START)
                 repeat(lengthOfList(jens2) / width) {
                     setX(X_START)
-                    setVariable(xx, 0)
+                    setVariable(paintX, 0)
                     repeat(width) {
-                        switchCostume(itemOffArray(yy, xx, jens2))
+                        switchCostume(itemOffArray(paintY, paintX, jens2))
                         move(MOVE_DISTANCE)
                         stamp()
-                        changeVariableBy(xx, 1)
+                        changeVariableBy(paintX, 1)
                     }
-                    changeVariableBy(yy, 1)
+                    changeVariableBy(paintY, 1)
                     changeYby(-MOVE_DISTANCE)
                 }
             }
@@ -135,8 +135,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerX, 1)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
-                    log(playerX)
-
+                    //log(playerX)
             }
 
             ifThen(keyIsPressed(LEFT_ARROW)) {
@@ -149,7 +148,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
 
             ifThen(keyIsPressed(DOWN_ARROW)) {
                 ifThen(playerY lt IntBlock(array_height -1)) {
-                    log(playerY)
+                    //log(playerY)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerY, 1)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)

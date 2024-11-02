@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.data
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -25,8 +25,8 @@ private open class MyVariable(private val variable: String, val opCode: String) 
 
 private class ShowVariable(variable: ScratchVariable) : MyVariable(variable.name, "data_showvariable")
 
-fun ScriptBuilder.hideVariable(variable: ScratchVariable) = addNode(HideVariable(variable))
+fun CommonScriptBuilder.hideVariable(variable: ScratchVariable) = addNode(HideVariable(variable))
 
 private class HideVariable(variable: ScratchVariable) : MyVariable(variable.name, "data_hidevariable")
 
-fun ScriptBuilder.showVariable(variable: ScratchVariable) = addNode(ShowVariable(variable))
+fun CommonScriptBuilder.showVariable(variable: ScratchVariable) = addNode(ShowVariable(variable))

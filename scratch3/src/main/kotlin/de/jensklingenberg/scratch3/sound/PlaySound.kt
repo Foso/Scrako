@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.sound
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -30,8 +30,8 @@ private class PlaySound(val soundName: String) : Node {
     }
 }
 
-fun ScriptBuilder.playSound(s: String) = addNode(PlaySound(s))
-fun ScriptBuilder.playSound(s: Sound) = addNode(PlaySound(s.name))
+fun CommonScriptBuilder.playSound(s: String) = addNode(PlaySound(s))
+fun CommonScriptBuilder.playSound(s: Sound) = addNode(PlaySound(s.name))
 
 
 internal class SoundsMenu(private val soundName: String) : ReporterBlock {

@@ -23,10 +23,11 @@ internal fun createTarget(
     x: Double,
     y: Double,
     visible: Boolean,
-    direction: Double
+    direction: Double,
+    isStage: Boolean
 ): Target {
     val targe2 = Target(
-        isStage = false,
+        isStage = isStage,
         name = name,
         variables = variables.map {
             it.value.toString() to JsonArray(
@@ -57,7 +58,7 @@ internal fun createTarget(
         y = y,
         size = size,
         direction = direction,
-        draggable = false,
+        draggable = isStage,
         rotationStyle = "all around"
     )
     return targe2

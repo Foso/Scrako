@@ -1,4 +1,4 @@
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -33,5 +33,5 @@ private class Gotoxy(
     }
 }
 
-fun ScriptBuilder.gotoxy(block0: ReporterBlock, block1: ReporterBlock) = addNode(Gotoxy(block0, block1))
-fun ScriptBuilder.gotoxy(x: Int, y: Int) = addNode(Gotoxy(IntBlock(x), IntBlock(y)))
+fun CommonScriptBuilder.gotoxy(block0: ReporterBlock, block1: ReporterBlock) = addNode(Gotoxy(block0, block1))
+fun CommonScriptBuilder.gotoxy(x: Int, y: Int) = addNode(Gotoxy(IntBlock(x), IntBlock(y)))

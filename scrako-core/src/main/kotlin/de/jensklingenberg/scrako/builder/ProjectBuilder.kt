@@ -10,8 +10,8 @@ import de.jensklingenberg.scrako.model.ScratchProject
 import java.util.UUID
 
 class ProjectBuilder {
-    internal val targets = mutableListOf<SpriteBuilder>()
-    internal var stage: SpriteBuilder? = null
+    internal val targets = mutableListOf<CommonSpriteBuilder>()
+    internal var stage: CommonSpriteBuilder? = null
     private var globalVariableMap = mutableMapOf<String, UUID>()
     private var lists = mutableMapOf<String, ScratchList>()
     private var broadcasts = mutableListOf<Broadcast>()
@@ -57,12 +57,12 @@ class ProjectBuilder {
 
 }
 
-fun ProjectBuilder.addStage(target: SpriteBuilder) {
+fun ProjectBuilder.addStage(target: CommonSpriteBuilder) {
     stage = target
 }
 
-fun ProjectBuilder.createBroadcast(s: String): Broadcast {
-    val board = Broadcast(s)
+fun ProjectBuilder.createBroadcast(name: String): Broadcast {
+    val board = Broadcast(name)
     addBroadcast(board)
     return board
 }
@@ -74,27 +74,34 @@ fun projectBuilder(projectBuilderScope: ProjectBuilder.() -> Unit): ProjectBuild
     return node
 }
 
-fun ProjectBuilder.stageBuilder(spriteBuilderScope: SpriteBuilder.() -> Unit): SpriteBuilder {
-    val spriteBuilder = SpriteBuilder()
+fun ProjectBuilder.stageBuilder(spriteBuilderScope: StageSpriteBuilder.() -> Unit): CommonSpriteBuilder {
+    val spriteBuilder = StageSpriteBuilder()
     spriteBuilderScope.invoke(spriteBuilder)
     spriteBuilder.name = "Stage"
     addStage(spriteBuilder)
     return spriteBuilder
 }
 
-fun ProjectBuilder.spriteBuilder(name: String, spriteBuilderScope: SpriteBuilder.() -> Unit): SpriteBuilder {
-    val spriteBuilder = SpriteBuilder()
-    spriteBuilderScope.invoke(spriteBuilder)
-    spriteBuilder.name = name
-    targets.add(spriteBuilder)
-    return spriteBuilder
+fun ProjectBuilder.spriteBuilder(name: String, commonSpriteBuilderScope: SpriteBuilder.() -> Unit): CommonSpriteBuilder {
+    val commonSpriteBuilder = SpriteBuilder()
+    commonSpriteBuilderScope.invoke(commonSpriteBuilder)
+    commonSpriteBuilder.name = name
+    targets.add(commonSpriteBuilder)
+    return commonSpriteBuilder
 }
 
-fun SpriteBuilder.scriptBuilder(builder: StageScriptBuilder.() -> Unit): ScriptBuilder {
-    val scriptBuilder = StageScriptBuilder()
-    builder.invoke(scriptBuilder)
-    scriptBuilders.add(scriptBuilder)
-    return scriptBuilder
+fun SpriteBuilder.scriptBuilder(builder: SpriteScriptBuilder.() -> Unit): CommonScriptBuilder {
+    val spriteScriptBuilder = SpriteScriptBuilder()
+    builder.invoke(spriteScriptBuilder)
+    commonScriptBuilders.add(spriteScriptBuilder)
+    return spriteScriptBuilder
+}
+
+fun StageSpriteBuilder.scriptBuilder(builder: StageScriptBuilder.() -> Unit): CommonScriptBuilder {
+    val spriteScriptBuilder = StageScriptBuilder()
+    builder.invoke(spriteScriptBuilder)
+    commonScriptBuilders.add(spriteScriptBuilder)
+    return spriteScriptBuilder
 }
 
 

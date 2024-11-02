@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.looks
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -41,6 +41,6 @@ enum class Effect {
     GHOST
 }
 
-fun ScriptBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addNode(ChangeEffectBy(block, effectName))
-fun ScriptBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) =
+fun CommonScriptBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addNode(ChangeEffectBy(block, effectName))
+fun CommonScriptBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) =
     addNode(ChangeEffectBy(block, effect.name.toLowerCase()))

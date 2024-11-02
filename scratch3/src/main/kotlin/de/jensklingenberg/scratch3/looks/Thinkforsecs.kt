@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.looks
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -40,4 +40,4 @@ private class Thinkforsecs(
     }
 }
 
-fun ScriptBuilder.thinkforsecs(block0: ReporterBlock, block1: ReporterBlock) = addNode(Thinkforsecs(block0, block1))
+fun CommonScriptBuilder.thinkforsecs(block0: ReporterBlock, block1: ReporterBlock) = addNode(Thinkforsecs(block0, block1))

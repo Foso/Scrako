@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.data
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -42,11 +42,11 @@ private class InsertAt(
     }
 }
 
-fun ScriptBuilder.insertAt(block: ReporterBlock, list: ScratchList, index: ReporterBlock) =
+fun CommonScriptBuilder.insertAt(block: ReporterBlock, list: ScratchList, index: ReporterBlock) =
     addNode(InsertAt(block, list, index))
 
-fun ScriptBuilder.insertAt(item: String, list: ScratchList, index: ReporterBlock) =
+fun CommonScriptBuilder.insertAt(item: String, list: ScratchList, index: ReporterBlock) =
     addNode(InsertAt(StringBlock(item), list, index))
 
-fun ScriptBuilder.insertAt(item: String, list: ScratchList, index: Int) =
+fun CommonScriptBuilder.insertAt(item: String, list: ScratchList, index: Int) =
     addNode(InsertAt(StringBlock(item), list, IntBlock(index)))

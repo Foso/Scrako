@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.procedures
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
@@ -54,4 +54,4 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
     }
 }
 
-fun ScriptBuilder.call(name: String, block0: List<ReporterBlock> = emptyList()) = addNode(Call(name, block0))
+fun CommonScriptBuilder.call(name: String, block0: List<ReporterBlock> = emptyList()) = addNode(Call(name, block0))

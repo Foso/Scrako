@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.control
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
@@ -49,6 +49,6 @@ private class CreateCloneOfMenu(private val spriteName: String) : Node {
     }
 }
 
-fun ScriptBuilder.createCloneOf(spriteName: String) = addNode(CreateCloneOf(spriteName))
+fun CommonScriptBuilder.createCloneOf(spriteName: String) = addNode(CreateCloneOf(spriteName))
 
-fun ScriptBuilder.createCloneOf(sprite: Sprite) = createCloneOf(sprite.name)
+fun CommonScriptBuilder.createCloneOf(sprite: Sprite) = createCloneOf(sprite.name)

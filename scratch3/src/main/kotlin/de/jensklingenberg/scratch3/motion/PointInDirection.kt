@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.motion
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.IntBlock
@@ -30,5 +30,5 @@ private class PointInDirection(val block: ReporterBlock) : Node, MotionBlock {
     }
 }
 
-fun ScriptBuilder.pointInDirection(block: ReporterBlock) = addNode(PointInDirection(block))
-fun ScriptBuilder.pointInDirection(degrees: Int) = addNode(PointInDirection(IntBlock(degrees)))
+fun CommonScriptBuilder.pointInDirection(block: ReporterBlock) = addNode(PointInDirection(block))
+fun CommonScriptBuilder.pointInDirection(degrees: Int) = addNode(PointInDirection(IntBlock(degrees)))

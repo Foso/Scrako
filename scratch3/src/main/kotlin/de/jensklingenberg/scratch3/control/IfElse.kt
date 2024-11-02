@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.control
 
 
-import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Context
@@ -85,14 +85,14 @@ internal class IfElse(
     }
 }
 
-fun ScriptBuilder.ifElse(
+fun CommonScriptBuilder.ifElse(
     operatorSpec: BooleanBlock,
-    leftStack: ScriptBuilder.() -> Unit,
-    rightStack: ScriptBuilder.() -> Unit,
+    leftStack: CommonScriptBuilder.() -> Unit,
+    rightStack: CommonScriptBuilder.() -> Unit,
 ) = addNode(
     IfElse(
         operatorSpec,
-        leftStack = ScriptBuilder().apply(leftStack).childs,
-        rightStack = ScriptBuilder().apply(rightStack).childs
+        leftStack = CommonScriptBuilder().apply(leftStack).childs,
+        rightStack = CommonScriptBuilder().apply(rightStack).childs
     )
 )
