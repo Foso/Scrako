@@ -14,7 +14,6 @@ import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -76,8 +75,8 @@ private data class Say(private val content: ReporterBlock, private val seconds: 
         }
 
         val opCode = when (seconds) {
-            null -> OpCode.LooksSay
-            else -> OpCode.looks_sayforsecs
+            null -> "looks_say"
+            else -> "looks_sayforsecs"
         }
         val spec = BlockSpec(
             opcode = opCode,

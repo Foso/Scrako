@@ -1,8 +1,10 @@
-package me.jens.targets
+package de.jensklingenberg.example.sprites
 
-import _tile15
+import de.jensklingenberg.example.costumes._tile15
+import de.jensklingenberg.example.costumes.costume2n
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
+import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.getOrCreateList
 import de.jensklingenberg.scrako.builder.getOrCreateVariable
 import de.jensklingenberg.scrako.builder.scriptBuilder
@@ -12,7 +14,6 @@ import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scratch3.control.forever
 import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.control.repeat
@@ -24,6 +25,10 @@ import de.jensklingenberg.scratch3.data.replaceItemOfListWith
 import de.jensklingenberg.scratch3.data.setVariable
 import de.jensklingenberg.scratch3.data.showList
 import de.jensklingenberg.scratch3.event.Key
+import de.jensklingenberg.scratch3.event.Key.DOWN_ARROW
+import de.jensklingenberg.scratch3.event.Key.LEFT_ARROW
+import de.jensklingenberg.scratch3.event.Key.RIGHT_ARROW
+import de.jensklingenberg.scratch3.event.Key.UP_ARROW
 import de.jensklingenberg.scratch3.event.sendBroadcast
 import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.event.whenIReceiveBroadcast
@@ -36,6 +41,7 @@ import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
 import de.jensklingenberg.scratch3.motion.setX
 import de.jensklingenberg.scratch3.motion.switchCostume
+import de.jensklingenberg.scratch3.operator.and
 import de.jensklingenberg.scratch3.operator.div
 import de.jensklingenberg.scratch3.operator.gt
 import de.jensklingenberg.scratch3.operator.lt
@@ -48,46 +54,27 @@ import de.jensklingenberg.scratch3.sensing.keyIsPressed
 import debugger.log
 import gotoxy
 
-
-val costume1n = Costume(
-    name = "costume1",
-    bitmapResolution = 2,
-    dataFormat = "png",
-    assetId = "e4a6106fe45d48f3e4bd5b7529e6fb48",
-    md5ext = "e4a6106fe45d48f3e4bd5b7529e6fb48.png",
-    rotationCenterX = 31.0,
-    rotationCenterY = 26.0
-)
-
-val costume2n = Costume(
-    name = "costume2",
-    bitmapResolution = 2,
-    dataFormat = "png",
-    assetId = "0eabdcd3cdfeea01bb6ff8d3ad5fe301",
-    md5ext = "0eabdcd3cdfeea01bb6ff8d3ad5fe301.png",
-    rotationCenterX = 31.0,
-    rotationCenterY = 26.0
-)
-
 const val PlayerIconID = "2"
 const val BackgroundIconId = "1"
 const val array_width = 11
 const val array_height = 8
 const val DEBUG = true
+const val X_START = -240
+const val Y_START = 150
+const val MOVE_DISTANCE = 40
+
+fun ProjectBuilder.MySprite1(paint: Broadcast) {
+    val input = createBroadcast("input")
 
 
-fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
-
-    val X_START = -240
-    val Y_START = 150
-    val MOVE_DISTANCE = 40
     spriteBuilder("Sprite123") {
-        addCostumes(listOf(_tile15, costume2n))
-
         val jens2 = getOrCreateList(
             "jens2",
             (0..88).map { "1" }
         )
+
+        addCostumes(listOf(_tile15, costume2n))
+
         val playerX = getOrCreateVariable("playerX")
         val playerY = getOrCreateVariable("playerY")
         val width = getOrCreateVariable("width")
@@ -99,7 +86,6 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
          */
         scriptBuilder {
             whenFlagClicked()
-            cleargraphiceffects()
             replaceItemOfListWith(getIndexOf(0, 0), jens2, PlayerIconID)
             setVariable(playerX, 1)
             setVariable(playerY, 1)
@@ -145,16 +131,15 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
          */
         scriptBuilder {
             whenIReceiveBroadcast(input)
-            ifThen(keyIsPressed(Key.RIGHT_ARROW)) {
-                ifThen(playerX lt (width minus 1)) {
+            ifThen(keyIsPressed(RIGHT_ARROW) and (playerX lt (width minus 1))) {
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerX, 1)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
                     log(playerX)
-                }
+
             }
 
-            ifThen(keyIsPressed(Key.LEFT_ARROW)) {
+            ifThen(keyIsPressed(LEFT_ARROW)) {
                 ifThen(playerX gt IntBlock(0)) {
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerX, -1)
@@ -162,8 +147,8 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
                 }
             }
 
-            ifThen(keyIsPressed(Key.DOWN_ARROW)) {
-                ifThen(playerY lt IntBlock(array_height-1)) {
+            ifThen(keyIsPressed(DOWN_ARROW)) {
+                ifThen(playerY lt IntBlock(array_height -1)) {
                     log(playerY)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerY, 1)
@@ -171,7 +156,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
                 }
             }
 
-            ifThen(keyIsPressed(Key.UP_ARROW)) {
+            ifThen(keyIsPressed(UP_ARROW)) {
                 ifThen(playerY gt IntBlock(0)) {
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerY, -1)

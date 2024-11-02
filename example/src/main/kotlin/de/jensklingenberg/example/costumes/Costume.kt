@@ -1,4 +1,4 @@
-package me.jens
+package de.jensklingenberg.example.costumes
 
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Sound
@@ -71,4 +71,24 @@ val Blockc = Costume(
     md5ext = "",
     rotationCenterX = 35.0,
     rotationCenterY = 43.0
+)
+
+val costume1n = Costume(
+    name = "costume1",
+    bitmapResolution = 2,
+    dataFormat = "png",
+    assetId = "e4a6106fe45d48f3e4bd5b7529e6fb48",
+    md5ext = "e4a6106fe45d48f3e4bd5b7529e6fb48.png",
+    rotationCenterX = 31.0,
+    rotationCenterY = 26.0
+)
+
+val costume2n = Costume(
+    name = "costume2",
+    bitmapResolution = 2,
+    dataFormat = "png",
+    assetId = "0eabdcd3cdfeea01bb6ff8d3ad5fe301",
+    md5ext = "0eabdcd3cdfeea01bb6ff8d3ad5fe301.png",
+    rotationCenterX = 31.0,
+    rotationCenterY = 26.0
 )

@@ -45,7 +45,7 @@ internal class SoundsMenu(private val soundName: String) : ReporterBlock {
 
         ) {
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sound_sounds_menu,
+            opcode = "sound_sounds_menu",
             fields = mapOf("SOUND_MENU" to listOf(soundName, null))
         ).toBlock(nextUUID, parent)
     }

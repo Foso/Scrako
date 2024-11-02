@@ -1,3 +1,5 @@
+package de.jensklingenberg.example.costumes
+
 import de.jensklingenberg.scrako.model.Costume
 
 val _BIG = Costume(

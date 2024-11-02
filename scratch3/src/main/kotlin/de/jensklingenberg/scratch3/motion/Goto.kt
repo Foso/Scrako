@@ -9,7 +9,6 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class Goto(private val block: ReporterBlock) : Node, MotionBlock {
@@ -22,7 +21,7 @@ private class Goto(private val block: ReporterBlock) : Node, MotionBlock {
     ) {
         val uuid = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.motion_goto,
+            opcode = "motion_goto",
             inputs = mapOf(
                 "TO" to setValue(block, uuid, context)
             )
@@ -55,7 +54,7 @@ private class GotoMenu(val steps: String) : Node {
         context: Context
     ) {
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.motion_goto_menu,
+            opcode = "motion_goto_menu",
             fields = mapOf("TO" to listOf(steps, null))
         ).toBlock(nextUUID, parent)
 

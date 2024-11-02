@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Event
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 
@@ -22,7 +21,7 @@ private class SendBroadcast(val broadcast: Broadcast) : Node, Event {
     ) {
         val entry = context.broadcasts1[broadcast.name] ?: "Cant find broadcast"
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.event_broadcast,
+            opcode = "event_broadcast",
             inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast.name, entry))
         ).toBlock(nextUUID, parent)
     }

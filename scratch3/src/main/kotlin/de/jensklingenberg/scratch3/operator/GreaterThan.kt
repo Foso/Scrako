@@ -5,10 +5,9 @@ import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scratch3.common.OpCode
 
 class GreaterThan(operand1: ReporterBlock, operand2: ReporterBlock) : Operator(
-    listOf(operand1, operand2), listOf("OPERAND1", "OPERAND2"), OpCode.operator_gt
+    listOf(operand1, operand2), listOf("OPERAND1", "OPERAND2"), "operator_gt"
 ), BooleanBlock
 
 fun gt(operand1: Double, operand2: Double) = GreaterThan(DoubleBlock(operand1), DoubleBlock(operand2))

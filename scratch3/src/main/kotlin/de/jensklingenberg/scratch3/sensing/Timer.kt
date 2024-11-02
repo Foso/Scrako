@@ -6,27 +6,27 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scratch3.common.OpCode
 
 object Timer : BlockSpec(
-    opcode = OpCode.sensing_timer,
+    opcode = "sensing_timer",
 ), ReporterBlock
 
 object Loudness : BlockSpec(
-    opcode = OpCode.sensing_loudness,
+    opcode = "sensing_loudness",
 ), ReporterBlock
 
 object Username : BlockSpec(
-    opcode = OpCode.sensing_username,
+    opcode = "sensing_username",
 ), ReporterBlock
 
 object MouseDown : BlockSpec(
-    opcode = OpCode.sensing_mousedown,
+    opcode = "sensing_mousedown",
 ), BooleanBlock
 
 object MouseX : BlockSpec(
-    opcode = OpCode.sensing_mousex,
+    opcode = "sensing_mousex",
 ), ReporterBlock
 
 object MouseY : BlockSpec(
-    opcode = OpCode.sensing_mousey,
+    opcode = "sensing_mousey",
 ), ReporterBlock
 
 object Volume : BlockSpec(

@@ -9,13 +9,12 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 private class Repeat(private val times: ReporterBlock, private vararg val childs: Node) :
-    BlockSpec(OpCode.control_repeat) {
+    BlockSpec("control_repeat") {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -41,7 +40,7 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
         }
 
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.control_repeat,
+            opcode = "control_repeat",
             inputs = inputs
         ).toBlock(nextUUID, parent)
 

@@ -11,7 +11,6 @@ import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class AddToList(private val list: ScratchList, private val block: ReporterBlock) : Node, StackBlock {
@@ -25,7 +24,7 @@ private class AddToList(private val list: ScratchList, private val block: Report
         ) {
         val childId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.data_addtolist,
+            opcode = "data_addtolist",
             inputs = mapOf("ITEM" to setValue(block, childId, context)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)

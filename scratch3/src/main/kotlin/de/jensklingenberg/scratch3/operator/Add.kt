@@ -5,10 +5,9 @@ import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scratch3.common.OpCode
 
 class Add(operand1: ReporterBlock, operand2: ReporterBlock) :
-    Operator(listOf(operand1, operand2), listOf("NUM1", "NUM2"), OpCode.operator_add), ReporterBlock
+    Operator(listOf(operand1, operand2), listOf("NUM1", "NUM2"), "operator_add"), ReporterBlock
 
 
 fun add(operand1: Double, operand2: Double) = Add(DoubleBlock(operand1), DoubleBlock(operand2))

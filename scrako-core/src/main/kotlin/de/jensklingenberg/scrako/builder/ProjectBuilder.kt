@@ -5,6 +5,7 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.defaultStage
+import de.jensklingenberg.scrako.model.Meta
 import de.jensklingenberg.scrako.model.ScratchProject
 import java.util.UUID
 
@@ -14,9 +15,18 @@ class ProjectBuilder {
     private var globalVariableMap = mutableMapOf<String, UUID>()
     private var lists = mutableMapOf<String, ScratchList>()
     private var broadcasts = mutableListOf<Broadcast>()
+    private var meta = Meta(
+        semver = "3.0.0",
+        vm = "0.2.0",
+        agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
+    )
 
     fun addVariable(name: ScratchVariable) {
         globalVariableMap[name.name] = UUID.randomUUID()
+    }
+
+    fun addMeta(meta: Meta) {
+        this.meta = meta
     }
 
     fun addList(list: ScratchList) {
@@ -37,7 +47,7 @@ class ProjectBuilder {
         val targets = targets.map { it.build(Context(globalVariableMap, lists, emptyList(), broadcasts1), false) }
 
         return ScratchProject(
-            targets = listOf(newStage) + targets
+            targets = listOf(newStage) + targets, meta = meta
         )
     }
 

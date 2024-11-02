@@ -8,7 +8,6 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import de.jensklingenberg.scratch3.looks.LooksSayContent
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -46,7 +45,7 @@ private data class AskandWait(val content: LooksSayContent) : Node {
         )
 
         val spec = BlockSpec(
-            opcode = OpCode.sensing_askandwait,
+            opcode = "sensing_askandwait",
             inputs = inputMap
         )
         visitors[identifier] = spec.toBlock(nextUUID, parent)

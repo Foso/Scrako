@@ -1,4 +1,7 @@
+package de.jensklingenberg.example.ext
+
 import de.jensklingenberg.scrako.builder.ScriptBuilder
+import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch3.control.ifElse
@@ -28,6 +31,7 @@ fun ScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) 
         })
     }
 }
+fun Switch.case(block: Int, leftStack: ScriptBuilder.() -> Unit) = addChild(Case(IntBlock(block), leftStack))
 
 fun Switch.case(block: ReporterBlock, leftStack: ScriptBuilder.() -> Unit) = addChild(Case(block, leftStack))
 fun Switch.case(operatorSpec: String, leftStack: ScriptBuilder.() -> Unit) =

@@ -8,7 +8,6 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Sound
-import de.jensklingenberg.scratch3.common.OpCode.Companion.sound_playuntildone
 import java.util.UUID
 
 private class Playuntildone(val block0: ReporterBlock) : Node {
@@ -21,7 +20,7 @@ private class Playuntildone(val block0: ReporterBlock) : Node {
     ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = sound_playuntildone,
+            opcode = "sound_playuntildone",
             inputs = mapOf(
                 "SOUND_MENU" to setValue(block0, block0Id, context)
             )

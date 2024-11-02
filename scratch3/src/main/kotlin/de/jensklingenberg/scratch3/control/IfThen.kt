@@ -6,7 +6,6 @@ import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -28,7 +27,7 @@ internal class IfThen(
         val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
 
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.control_if,
+            opcode = "control_if",
             inputs = mapOf(
                 "CONDITION" to JsonArray(
                     listOf(
