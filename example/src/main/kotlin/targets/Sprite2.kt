@@ -11,6 +11,7 @@ import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch3.event.whenKeyPress
 import de.jensklingenberg.scratch3.looks.hide
+import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.looks.show
 import me.jens.Blockc
 import me.jens.blockA
@@ -28,9 +29,7 @@ fun ProjectBuilder.Sprite2(paint: Broadcast) {
 
         scriptBuilder {
             whenFlagClicked()
-            hide()
-            think(StringBlock("Hello"))
-            thinkforsecs(StringBlock("Hello"), StringBlock("2"))
+            //say("Hello!")
         }
 
         scriptBuilder {

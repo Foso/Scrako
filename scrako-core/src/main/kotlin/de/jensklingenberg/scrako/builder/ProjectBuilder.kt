@@ -25,7 +25,7 @@ class ProjectBuilder {
 
     fun build(): ScratchProject {
 
-        val broadcasts1 = broadcasts.associate { it.id.toString() to it.name }
+        val broadcasts1 = broadcasts.associate { it.name to UUID.randomUUID().toString() }
         val newStage =
             stage?.build(Context(globalVariableMap, lists, emptyList(), broadcasts1), true)
                 ?.copy(isStage = true, visible = false, layerOrder = 0)
@@ -58,9 +58,9 @@ fun ProjectBuilder.createBroadcast(s: String): Broadcast {
 }
 
 
-fun projectBuilder(ff: ProjectBuilder.() -> Unit): ProjectBuilder {
+fun projectBuilder(projectBuilderScope: ProjectBuilder.() -> Unit): ProjectBuilder {
     val node = ProjectBuilder()
-    ff.invoke(node)
+    projectBuilderScope.invoke(node)
     return node
 }
 

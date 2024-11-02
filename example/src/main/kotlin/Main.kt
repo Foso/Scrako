@@ -11,9 +11,7 @@ import de.jensklingenberg.scrako.builder.writeProject
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scrako.model.ScratchProject
-import de.jensklingenberg.scratch3.event.Key
 import de.jensklingenberg.scratch3.event.whenFlagClicked
-import de.jensklingenberg.scratch3.event.whenKeyPress
 import de.jensklingenberg.scratch3.looks.say
 import kotlinx.serialization.json.Json
 import me.jens.imports.BroadcastImport
@@ -27,7 +25,7 @@ import me.jens.imports.ShowListImport
 import me.jens.imports.WhenFlag
 import me.jens.imports.WhenKey
 import me.jens.targets.MySprite1
-import switchbackdropto
+import targets.Sprite2
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader

@@ -81,7 +81,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
     val X_START = -240
     val Y_START = 150
     val MOVE_DISTANCE = 40
-    spriteBuilder("Sprite1") {
+    spriteBuilder("Sprite123") {
         addCostumes(listOf(_tile15, costume2n))
 
         val jens2 = getOrCreateList(
@@ -152,7 +152,6 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
                     log(playerX)
                 }
-
             }
 
             ifThen(keyIsPressed(Key.LEFT_ARROW)) {
@@ -170,8 +169,6 @@ fun ProjectBuilder.MySprite1(paint: Broadcast, input: Broadcast) {
                     changeVariableBy(playerY, 1)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
                 }
-
-
             }
 
             ifThen(keyIsPressed(Key.UP_ARROW)) {

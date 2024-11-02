@@ -3,12 +3,28 @@ package de.jensklingenberg.scratch3.event
 import de.jensklingenberg.scrako.builder.ScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Broadcast
+import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Event
+import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch3.common.OpCode
 
-private class SendBroadcastAndWait(broadcast: Broadcast) : BlockSpec(
-    opcode = OpCode.event_broadcastandwait,
-    inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast))
-), Event
+
+private class SendBroadcastAndWait(val broadcast: Broadcast) : Node, Event {
+
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        parent: String?,
+        identifier: String,
+        nextUUID: String?,
+        context: Context
+    ) {
+        val broadcastId = context.broadcasts1[broadcast.name] ?: "Cant find broadcast"
+        visitors[identifier] = BlockSpec(
+            opcode = OpCode.event_broadcastandwait,
+            inputs = mapOf("BROADCAST_INPUT" to createBroadcast(broadcast.name, broadcastId))
+        ).toBlock(nextUUID, parent)
+    }
+}
 
 fun ScriptBuilder.sendBroadcastAndWait(broadcast: Broadcast) = addNode(SendBroadcastAndWait(broadcast))

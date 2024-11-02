@@ -20,9 +20,10 @@ private class WhenIRecieve(val broadcast: Broadcast) : Node, Event, HatBlock {
         if (parent != null) {
             throw IllegalStateException(this::class.simpleName + " blocks can't have a parent")
         }
+        val broadcastId = context.broadcasts1[broadcast.name] ?: "Cant find broadcast"
         visitors[identifier] = BlockSpec(
             opcode = "event_whenbroadcastreceived",
-            fields = mapOf("BROADCAST_OPTION" to listOf(broadcast.name, broadcast.id.toString()))
+            fields = mapOf("BROADCAST_OPTION" to listOf(broadcast.name, broadcastId))
         ).toBlock(nextUUID, parent)
     }
 }
