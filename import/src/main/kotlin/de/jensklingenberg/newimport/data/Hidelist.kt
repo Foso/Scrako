@@ -1,13 +1,12 @@
-package de.jensklingenberg.example.import.looks
+package de.jensklingenberg.newimport.data
 
 import de.jensklingenberg.example.imports.ImportNode
-import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class SwitchcostumetoImport : ImportNode {
-    override val opCode: String = "looks_switchcostumeto"
+public class HidelistImport : ImportNode {
+    override val opCode: String = "data_hidelist"
 
     override fun visit(
         builder: StringBuilder,
@@ -17,7 +16,9 @@ public class SwitchcostumetoImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("switchCostume(")
-        handle(builder, target, myList, project, blockOr.inputs["COSTUME"]?.get(1))
+        builder.append("hideList(")
+        builder.append(blockOr.fields["LIST"]?.get(0))
+        builder.append(")")
+
     }
 }

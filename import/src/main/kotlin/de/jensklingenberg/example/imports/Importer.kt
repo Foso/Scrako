@@ -13,6 +13,7 @@ import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.asTypeName
 import control.IfImport
 import control.If_elseImport
+import de.jensklingenberg.example.imports.data.ChangevariablebyImport
 import de.jensklingenberg.example.import.pen.StampImport
 import de.jensklingenberg.newimport.control.RepeatImport
 import de.jensklingenberg.example.imports.operator.MultiplyImport
@@ -51,6 +52,12 @@ import de.jensklingenberg.newimport.operator.DivideImport
 import de.jensklingenberg.newimport.operator.LtImport
 import de.jensklingenberg.newimport.operator.SubtractImport
 import de.jensklingenberg.newimport.sensing.KeyoptionsImport
+import de.jensklingenberg.example.import.looks.SwitchcostumetoImport
+import de.jensklingenberg.newimport.data.HidelistImport
+import de.jensklingenberg.newimport.data.ItemoflistImport
+import de.jensklingenberg.newimport.motion.ChangeXbyImport
+import de.jensklingenberg.newimport.motion.ChangeybyImport
+import motion.GotoxyImport
 import operator.EqualsImport
 import operator.GtImport
 import pen.ClearImport
@@ -108,6 +115,13 @@ fun importer(sb3Path: String) {
     myList.add(WhenBroadcastReceived())
     myList.add(ClearImport())
     myList.add(MovestepsImport())
+    myList.add(GotoxyImport())
+    myList.add(ChangeybyImport())
+    myList.add(ChangeXbyImport())
+    myList.add(ChangevariablebyImport())
+    myList.add(HidelistImport())
+    myList.add(SwitchcostumetoImport())
+    myList.add(ItemoflistImport())
     myList.add(StampImport())
     myList.add(RepeatImport())
     //looks

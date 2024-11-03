@@ -8,16 +8,9 @@ import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.common.ScratchType
-import de.jensklingenberg.scrako.common.ScratchVariable
-import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scrako.common.createMessage
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 

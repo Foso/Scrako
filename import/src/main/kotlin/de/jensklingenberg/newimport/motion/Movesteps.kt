@@ -11,14 +11,14 @@ public class MovestepsImport : ImportNode {
 
     override fun visit(
         builder: StringBuilder,
-        scratchProject: ScratchProject,
+        project: ScratchProject,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
-        id: String,
+        blockId: String,
     ) {
         builder.append("move(")
-        handle(builder, target, myList, scratchProject, block.inputs["STEPS"]?.get(1))
+        handle(builder, target, myList, project, blockOr.inputs["STEPS"]?.get(1))
         builder.append(")\n")
     }
 }
