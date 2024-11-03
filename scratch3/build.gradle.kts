@@ -16,11 +16,12 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     api(project(":scrako-core"))
+    testImplementation(libs.junit)
+    implementation(libs.mockk)
+    implementation(libs.mockito.kotlin)
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
+
 kotlin {
     jvmToolchain(21)
 }

@@ -25,6 +25,7 @@ import de.jensklingenberg.scratch3.looks.hide
 import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.operator.GreaterThan
 import de.jensklingenberg.scratch3.operator.OperatorEquals
+import de.jensklingenberg.scratch3.operator.plus
 import de.jensklingenberg.scratch3.sensing.Answer
 
 fun ProjectBuilder.Sprite2(paint: Broadcast) {
@@ -36,7 +37,7 @@ fun ProjectBuilder.Sprite2(paint: Broadcast) {
         scriptBuilder {
             whenFlagClicked()
             hide()
-            repeat(test){
+            repeat(test plus 1){
                 say("Hello")
             }
         }

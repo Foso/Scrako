@@ -29,16 +29,16 @@ public class RepeatImport : ImportNode {
         when (firstTimesId) {
             "3" -> {
 
-                val firstTimesId = (block.inputs["TIMES"]?.get(1) as JsonArray)
-                val blockRefType = firstTimesId.jsonArray.get(0).jsonPrimitive.contentOrNull
+                val firstTimesId = (block.inputs["TIMES"]?.get(1) as JsonPrimitive)
+                val blockRefType = firstTimesId.jsonPrimitive.contentOrNull
 
-                when(blockRefType){
-                    "12"->{
+                when (blockRefType) {
+                    "12" -> {
                         val timesId = (firstTimesId.jsonArray.get(1) as JsonPrimitive).contentOrNull
-                        builder.append(timesId?.replace("null",""))
+                        builder.append(timesId?.replace("null", ""))
                     }
-                    else->{
-                        println("Not implemented")
+
+                    else -> {
                         val timesId = (block.inputs["TIMES"]?.get(1) as JsonPrimitive).contentOrNull
 
                         val timesBlock = target.blocks[timesId]
@@ -50,6 +50,7 @@ public class RepeatImport : ImportNode {
 
                 builder.append(") {\n")
             }
+
             "1" -> {
                 val timesId = ((block.inputs["TIMES"]?.get(1) as JsonArray).jsonArray).get(1)
                 builder.append(timesId)
@@ -59,10 +60,10 @@ public class RepeatImport : ImportNode {
 
         val substackId = (block.inputs["SUBSTACK"]?.get(0) as JsonPrimitive).contentOrNull
 
-        when(substackId){
-            "2"->{
+        when (substackId) {
+            "2" -> {
                 target.blocks.filter { it.value.parent == id }.forEach { childBlock ->
-                    if(!childBlock.value.opcode.startsWith("operator_")){
+                    if (!childBlock.value.opcode.startsWith("operator_")) {
                         extracted(childBlock.key, target, myList, builder, scratchProject)
                     }
                 }
@@ -75,7 +76,7 @@ public class RepeatImport : ImportNode {
 
     private fun handle(jsonArray: JsonArray?) {
         val timesId = (jsonArray?.get(0) as JsonPrimitive).contentOrNull
-        if(timesId == "3"){
+        if (timesId == "3") {
             println("3")
         }
     }

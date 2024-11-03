@@ -32,3 +32,11 @@ object MouseY : BlockSpec(
 object Volume : BlockSpec(
     opcode = OpCode.sound_volume,
 ), ReporterBlock
+
+object Answer : BlockSpec(
+    opcode = "sensing_answer",
+), ReporterBlock
+
+object DaysSince2000 : BlockSpec(
+    opcode = OpCode.sensing_dayssince2000,
+), ReporterBlock

@@ -32,6 +32,7 @@ import looks.NextbackdropImport
 import looks.SayImport
 import looks.ShowImport
 import looks.SwitchbackdroptoImport
+import operator.AddImport
 import operator.DivideImport
 import operator.EqualsImport
 import operator.GtImport
@@ -95,6 +96,7 @@ fun importer() {
     myList.add(EqualsImport())
     myList.add(DivideImport())
     myList.add(GtImport())
+    myList.add(AddImport())
 
     //control
     myList.add(IfImport())

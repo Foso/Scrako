@@ -19,90 +19,25 @@ import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 
-private data class Say(private val content: ReporterBlock, private val seconds: Int? = null) : Node, StackBlock {
-
+private class Say(
+    public val message: ReporterBlock,
+) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
         context: Context,
-
-        ) {
-
-        val operatorUUID = UUID.randomUUID().toString()
-
-        val inputMap = mutableMapOf(
-            "MESSAGE" to when (content) {
-                is StringBlock -> createMessage(1, ScratchType.STRING.value, content.value)
-                is ScratchVariable -> {
-                    val id = context.variableMap[content.name].toString()
-                        ?: throw IllegalArgumentException("Variable not found")
-                    setValue(content, id, context)
-                }
-
-                is ScratchList -> setValue(content, operatorUUID, context)
-
-                else -> {
-                    JsonArray(
-                        listOf(
-                            JsonPrimitive(ScratchType.BLOCKREF.value),
-                            JsonPrimitive(operatorUUID.toString()),
-                            JsonArray(
-                                listOf(
-                                    JsonPrimitive(ScratchType.STRING.value),
-                                    JsonPrimitive("Hello")
-                                )
-                            )
-                        )
-                    )
-                }
-            }
-        )
-
-        if (seconds != null) {
-            inputMap["SECS"] = JsonArray(
-                listOf(
-                    JsonPrimitive(1),
-                    JsonArray(
-                        listOf(
-                            JsonPrimitive(ScratchType.POSITIVE_NUMBER.value),
-                            JsonPrimitive(seconds.toString())
-                        )
-                    )
-                )
-            )
-        }
-
-        val opCode = when (seconds) {
-            null -> "looks_say"
-            else -> "looks_sayforsecs"
-        }
-        val spec = BlockSpec(
-            opcode = opCode,
-            inputs = inputMap
-        )
-        visitors[identifier] = spec.toBlock(nextUUID, parent)
-
-        content.visit(
-            visitors,
-            identifier,
-            operatorUUID,
-            null,
-            context
-        )
-
+    ) {
+        val messageId = UUID.randomUUID().toString()
+        visitors[identifier] = BlockSpec(
+            opcode = "looks_say",
+            inputs = mapOf("MESSAGE" to setValue(message, messageId, context) ),
+            fields = mapOf()
+        ).toBlock(nextUUID, identifier)
+        message.visit(visitors, identifier, messageId, null, context)
     }
-
-
-}
-
-sealed interface LooksSayContent {
-    class Literal(val message: String) : LooksSayContent
-    class Reporter(val operatorSpec: ReporterBlock) : LooksSayContent
 }
 
 
-fun CommonScriptBuilder.say(reporterBlock: ReporterBlock) = addNode(Say(reporterBlock))
-fun CommonScriptBuilder.say(message: Double, seconds: Int? = null) = say(message.toString(), seconds)
-fun CommonScriptBuilder.say(message: String, seconds: Int? = null) = addNode(Say(StringBlock(message), seconds))
+fun CommonScriptBuilder.say(message: String) = addNode(Say(StringBlock(message)))

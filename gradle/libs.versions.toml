@@ -2,5 +2,14 @@
 groupId = "de.jensklingenberg.scrako"
 vannikMavenPublish = "0.28.0"
 coreVersion = "0.8.3"
+junit = "4.13.2"
+mockk = "1.13.13"
+mockito-kotlin = "4.1.0"
+
+[libraries]
+junit = { module = "junit:junit", version.ref = "junit" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
 [plugins]
 mavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "vannikMavenPublish" }
