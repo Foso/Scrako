@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.writeProject
 import kotlinx.serialization.json.Json
 import de.jensklingenberg.example.sprites.MySprite1
-import de.jensklingenberg.example.imports.importer
 import java.io.File
 
 val json = Json {
@@ -18,9 +17,6 @@ val json = Json {
 
 
 fun main() {
-
-    importer()
-
 
     val proj = projectBuilder {
         val myGlobalVar = createGlobalVariable("myGlobalVar", true)

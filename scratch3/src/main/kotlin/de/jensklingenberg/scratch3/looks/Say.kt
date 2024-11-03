@@ -4,6 +4,8 @@ package de.jensklingenberg.scratch3.looks
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.DoubleBlock
+import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
@@ -39,5 +41,7 @@ private class Say(
     }
 }
 
-
+fun CommonScriptBuilder.say(block: ReporterBlock) = addNode(Say(block))
 fun CommonScriptBuilder.say(message: String) = addNode(Say(StringBlock(message)))
+fun CommonScriptBuilder.say(message: Int) = addNode(Say(IntBlock(message)))
+fun CommonScriptBuilder.say(message: Double) = addNode(Say(DoubleBlock(message)))

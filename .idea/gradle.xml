@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/example" />
+            <option value="$PROJECT_DIR$/import" />
             <option value="$PROJECT_DIR$/scrako-core" />
             <option value="$PROJECT_DIR$/scratch3" />
             <option value="$PROJECT_DIR$/turbowarp" />

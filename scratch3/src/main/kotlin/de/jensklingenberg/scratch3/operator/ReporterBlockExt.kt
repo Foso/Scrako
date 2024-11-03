@@ -64,3 +64,15 @@ infix fun Int.minus(intBlock: IntBlock): ReporterBlock {
 infix fun Int.plus(int: ReporterBlock): ReporterBlock {
     return Add(IntBlock(this), int)
 }
+
+infix fun ReporterBlock.div(i: Int): Operator {
+    return Divide(this, IntBlock(i))
+}
+
+infix fun Int.gt(i: Int): BooleanBlock {
+    return GreaterThan(IntBlock(this), IntBlock(i))
+}
+
+infix fun Int.eq(i: Int): BooleanBlock {
+    return OperatorEquals(IntBlock(this), IntBlock(i))
+}
