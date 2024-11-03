@@ -1,8 +1,10 @@
-package de.jensklingenberg.de.jensklingenberg.example.imports
+package de.jensklingenberg.example.imports
 
 import de.jensklingenberg.imports.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
+import de.jensklingenberg.scrako.model.Target
+import kotlinx.serialization.json.JsonArray
 
 class BroadcastImport : ImportNode {
     override val opCode: String = "event_broadcast"
@@ -10,11 +12,13 @@ class BroadcastImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         project: ScratchProject,
+        target: Target,
         blockOr: Block,
-        myList: MutableList<ImportNode>,
-        t: String
+        myList: List<ImportNode>,
+        blockId: String
     ) {
-        builder.append("broadcast(${blockOr.fields["BROADCAST_OPTION"]?.get(0)})\n")
+        val broadcastName = (blockOr.inputs["BROADCAST_INPUT"]?.get(1) as JsonArray)[1].toString()
+        builder.append("broadcast(${broadcastName})\n")
     }
 
 }

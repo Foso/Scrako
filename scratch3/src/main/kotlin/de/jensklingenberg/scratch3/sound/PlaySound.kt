@@ -12,7 +12,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-private class PlaySound(val soundName: String) : Node {
+private class PlaySound(val block: ReporterBlock) : Node {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -24,15 +24,11 @@ private class PlaySound(val soundName: String) : Node {
         val soundMenuId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = OpCode.sound_play,
-            inputs = mapOf("SOUND_MENU" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(soundMenuId.toString()))))
+            inputs = mapOf("SOUND_MENU" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(soundMenuId))))
         ).toBlock(nextUUID, parent)
-        SoundsMenu(soundName).visit(visitors, soundMenuId.toString(), soundMenuId, null, context)
+       block.visit(visitors, soundMenuId, soundMenuId, null, context)
     }
 }
-
-fun CommonScriptBuilder.playSound(s: String) = addNode(PlaySound(s))
-fun CommonScriptBuilder.playSound(s: Sound) = addNode(PlaySound(s.name))
-
 
 internal class SoundsMenu(private val soundName: String) : ReporterBlock {
 
@@ -51,3 +47,5 @@ internal class SoundsMenu(private val soundName: String) : ReporterBlock {
     }
 }
 
+fun CommonScriptBuilder.playSound(s: String) = addNode(PlaySound(SoundsMenu(s)))
+fun CommonScriptBuilder.playSound(s: Sound) = addNode(PlaySound(SoundsMenu(s.name)))

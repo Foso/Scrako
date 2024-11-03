@@ -111,7 +111,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
                 setVariable(paintY, 0)
                 eraseAll()
                 gotoxy(X_START, Y_START)
-                repeat(lengthOfList(jens2) / width) {
+                repeat(lengthOfList(jens2) div width) {
                     setX(X_START)
                     setVariable(paintX, 0)
                     repeat(width) {

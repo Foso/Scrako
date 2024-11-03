@@ -20,12 +20,12 @@ private fun createBlocks2(blockSpecs: List<Node>, context: Context): Map<String,
 
         val parent = when {
             index == 0 -> null
-            else -> uuids[index - 1].toString()
+            else -> uuids[index - 1]
         }
 
         val nextNode = if (index != blockSpecs.lastIndex) uuids[index + 1] else null
 
-        blockSpec.visit(blockMap, parent, uuids[index].toString(), nextNode, context)
+        blockSpec.visit(blockMap, parent, uuids[index], nextNode, context)
 
     }
 

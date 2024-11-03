@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
@@ -20,7 +19,7 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
     ) {
         val destinationUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sensing_touchingcolor,
+            opcode = "sensing_touchingcolor",
             inputs = mapOf(
                 "COLOR" to setValue(color, destinationUUID, context)
             )

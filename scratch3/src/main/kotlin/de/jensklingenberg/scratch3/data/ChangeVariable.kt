@@ -10,7 +10,6 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class ChangeVariable(private val block: ReporterBlock, private val variableName: String) : Node {
@@ -24,7 +23,7 @@ private class ChangeVariable(private val block: ReporterBlock, private val varia
         val variable = context.variableMap[variableName]
         val itemUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.data_changevariableby,
+            opcode = "data_changevariableby",
             inputs = mapOf("VALUE" to setValue(block, itemUUID, context)),
             fields = mapOf("VARIABLE" to listOf(variableName, variable?.toString()))
         ).toBlock(nextUUID, identifier)

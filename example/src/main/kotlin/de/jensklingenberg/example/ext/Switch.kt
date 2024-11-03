@@ -9,10 +9,10 @@ import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.operator.OperatorEquals
 
 
-fun CommonScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =
+fun <T: CommonScriptBuilder> T.switch(block: String, operatorSpec: Switch.() -> Unit) =
     switch(StringBlock(block), operatorSpec)
 
-fun CommonScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
+fun <T: CommonScriptBuilder> T.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
     val test = Switch().apply(operatorSpec)
 
     if (test.mutableList.size == 1) {

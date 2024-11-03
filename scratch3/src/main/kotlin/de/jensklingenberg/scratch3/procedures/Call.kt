@@ -54,4 +54,4 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
     }
 }
 
-fun CommonScriptBuilder.call(name: String, block0: List<ReporterBlock> = emptyList()) = addNode(Call(name, block0))
+fun CommonScriptBuilder.call(name: String, block0: List<ReporterBlock> = emptyList(),) = addNode(Call(name, block0))

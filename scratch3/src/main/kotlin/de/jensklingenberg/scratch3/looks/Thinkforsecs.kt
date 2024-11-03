@@ -40,4 +40,4 @@ private class Thinkforsecs(
     }
 }
 
-fun CommonScriptBuilder.thinkforsecs(block0: ReporterBlock, block1: ReporterBlock) = addNode(Thinkforsecs(block0, block1))
+fun CommonScriptBuilder.thinkForSecs(block0: ReporterBlock, block1: ReporterBlock) = addNode(Thinkforsecs(block0, block1))

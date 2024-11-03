@@ -1,4 +1,4 @@
-package de.jensklingenberg.de.jensklingenberg.example.sprites
+package de.jensklingenberg.example.sprites
 
 import BackdropOptions.PREVIOUS
 import de.jensklingenberg.scrako.builder.ProjectBuilder
@@ -19,7 +19,6 @@ fun ProjectBuilder.MyStageBuilder() {
 
         scriptBuilder {
             whenFlagClicked()
-            say("Hello!")
             nextBackdrop()
             switchBackdropTo(PREVIOUS)
         }

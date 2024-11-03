@@ -3,7 +3,6 @@ plugins {
     kotlin("plugin.serialization") version "2.0.21"
 }
 
-group = "de.jensklingenberg"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -16,6 +15,8 @@ dependencies {
     implementation(project(":scratch3"))
     implementation(project(":scrako-core"))
     implementation(project(":turbowarp"))
+    //kotlinpoet
+    implementation("com.squareup:kotlinpoet:1.18.1")
 
 }
 

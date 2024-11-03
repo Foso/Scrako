@@ -18,9 +18,7 @@ abstract class Operator(
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         val operatorUUID1 = operand1.associateWith { UUID.randomUUID().toString() }
 
         val inputs = inputKeys.mapIndexed { index, key ->
@@ -34,22 +32,4 @@ abstract class Operator(
             t.visit(visitors, identifier, u, null, context)
         }
     }
-
-    infix operator fun plus(add: ReporterBlock): Add {
-        return Add(this, add)
-    }
-
-    operator fun times(add: Add): Multiply {
-        return Multiply(this, add)
-    }
-
-    operator fun div(add: Add): Divide {
-        return Divide(this, add)
-    }
-
-    operator fun minus(add: Add): Subtract {
-        return Subtract(this, add)
-    }
 }
-
-

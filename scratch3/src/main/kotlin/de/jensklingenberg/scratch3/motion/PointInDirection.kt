@@ -9,7 +9,6 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class PointInDirection(val block: ReporterBlock) : Node, MotionBlock {
@@ -22,7 +21,7 @@ private class PointInDirection(val block: ReporterBlock) : Node, MotionBlock {
     ) {
         val childId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.motion_pointindirection,
+            opcode = "motion_pointindirection",
             inputs = mapOf("DIRECTION" to setValue(block, childId, context))
         ).toBlock(nextUUID, parent)
         block.visit(visitors, identifier, childId, null, context)
