@@ -66,7 +66,8 @@ internal fun createTarget(
 
 internal fun defaultStage(
     variables: MutableMap<String, UUID> = mutableMapOf(),
-    broadcasts: Map<String, String>
+    broadcasts: Map<String, String>,
+    lists: Map<String, ScratchList>,
 ): Target {
 
     return Target(
@@ -81,7 +82,14 @@ internal fun defaultStage(
                 )
             )
         }.toMap(),
-        lists = emptyMap(),
+        lists = lists.map {
+            it.value.id.toString() to JsonArray(
+                listOf(
+                    JsonPrimitive(it.key),
+                    JsonArray(it.value.contents.map { JsonPrimitive(it.toString()) })
+                )
+            )
+        }.toMap(),
         broadcasts = broadcasts,
         blocks = emptyMap(),
         comments = emptyMap(),

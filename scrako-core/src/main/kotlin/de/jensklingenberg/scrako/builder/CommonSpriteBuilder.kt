@@ -63,7 +63,7 @@ open class CommonSpriteBuilder {
         }
 
         val allVariables = variableMap + context.variableMap
-        var allLists = listMap
+        var allLists = listMap+ context.lists
 
 
         val targetVariables = variableMap.map {
@@ -77,7 +77,7 @@ open class CommonSpriteBuilder {
             .map { it.key to it.value!! }.toMap()
 
         val targetLists = listMap.map {
-            if (context.variableMap.containsKey(it.key)) {
+            if (context.lists.containsKey(it.key)) {
                 it.key to null
             } else {
                 it.key to it.value
@@ -136,7 +136,7 @@ fun CommonSpriteBuilder.getOrCreateList(name: String, contents: List<String> = e
     return element
 }
 
-fun CommonSpriteBuilder.getOrCreateVariable(name: String): ScratchVariable {
+fun CommonSpriteBuilder.addSpriteVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
     addVariable(name)
     return element

@@ -6,7 +6,7 @@ import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.getOrCreateList
-import de.jensklingenberg.scrako.builder.getOrCreateVariable
+import de.jensklingenberg.scrako.builder.addSpriteVariable
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
 import de.jensklingenberg.scrako.common.Broadcast
@@ -50,7 +50,6 @@ import de.jensklingenberg.scratch3.operator.times
 import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
 import de.jensklingenberg.scratch3.sensing.keyIsPressed
-import debugger.log
 import gotoxy
 
 const val PlayerIconID = "2"
@@ -73,9 +72,9 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
 
         addCostumes(listOf(_tile15, costume2n))
 
-        val playerX = getOrCreateVariable("playerX")
-        val playerY = getOrCreateVariable("playerY")
-        val width = getOrCreateVariable("width")
+        val playerX = addSpriteVariable("playerX")
+        val playerY = addSpriteVariable("playerY")
+        val width = addSpriteVariable("width")
 
         /**
          * Start
@@ -102,8 +101,8 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
         }
 
         scriptBuilder {
-            val paintY = getOrCreateVariable("paint_yy")
-            val paintX = getOrCreateVariable("paint_xx")
+            val paintY = addSpriteVariable("paint_yy")
+            val paintX = addSpriteVariable("paint_xx")
 
             define("paint1", withoutRefresh = true) {
                 hide()

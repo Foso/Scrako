@@ -41,7 +41,8 @@ class ProjectBuilder {
                 ?.copy(isStage = true, visible = false, layerOrder = 0)
                 ?: defaultStage(
                     globalVariableMap,
-                    broadcasts1
+                    broadcasts1,
+                    lists
                 )
 
         val targets = targets.map { it.build(Context(globalVariableMap, lists, emptyList(), broadcasts1), false) }
@@ -82,7 +83,10 @@ fun ProjectBuilder.stageBuilder(spriteBuilderScope: StageSpriteBuilder.() -> Uni
     return spriteBuilder
 }
 
-fun ProjectBuilder.spriteBuilder(name: String, commonSpriteBuilderScope: SpriteBuilder.() -> Unit): CommonSpriteBuilder {
+fun ProjectBuilder.spriteBuilder(
+    name: String,
+    commonSpriteBuilderScope: SpriteBuilder.() -> Unit
+): CommonSpriteBuilder {
     val commonSpriteBuilder = SpriteBuilder()
     commonSpriteBuilderScope.invoke(commonSpriteBuilder)
     commonSpriteBuilder.name = name

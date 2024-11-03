@@ -3,10 +3,6 @@ package de.jensklingenberg.scrako.builder
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.Node
 
-@DslMarker
-annotation class ScriptDsl
-
-@ScriptDsl
 open class CommonScriptBuilder {
 
     val childs = mutableListOf<Node>()
