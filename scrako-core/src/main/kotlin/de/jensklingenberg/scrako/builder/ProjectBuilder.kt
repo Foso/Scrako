@@ -109,13 +109,13 @@ fun StageSpriteBuilder.scriptBuilder(builder: StageScriptBuilder.() -> Unit): Co
 }
 
 
-fun ProjectBuilder.getGlobalVariable(name: String, isCloud: Boolean = false): ScratchVariable {
+fun ProjectBuilder.createGlobalVariable(name: String, isCloud: Boolean = false): ScratchVariable {
     val element = ScratchVariable(name, isCloud)
     addVariable(element)
     return element
 }
 
-fun ProjectBuilder.getOrCreateGlobalList(name: String, contents: List<String> = emptyList()): ScratchList {
+fun ProjectBuilder.createGlobalList(name: String, contents: List<String> = emptyList()): ScratchList {
     val element = ScratchList(name, contents)
     addList(element)
     return element

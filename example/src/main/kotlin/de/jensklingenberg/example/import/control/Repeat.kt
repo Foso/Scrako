@@ -28,14 +28,14 @@ public class RepeatImport : ImportNode {
 
         when (firstTimesId) {
             "3" -> {
-
+    return
                 val firstTimesId = (block.inputs["TIMES"]?.get(1) as JsonPrimitive)
                 val blockRefType = firstTimesId.jsonPrimitive.contentOrNull
 
                 when (blockRefType) {
                     "12" -> {
-                        val timesId = (firstTimesId.jsonArray.get(1) as JsonPrimitive).contentOrNull
-                        builder.append(timesId?.replace("null", ""))
+                      //  val timesId = (firstTimesId.jsonArray.get(1) as JsonPrimitive).contentOrNull
+                      //  builder.append(timesId?.replace("null", ""))
                     }
 
                     else -> {

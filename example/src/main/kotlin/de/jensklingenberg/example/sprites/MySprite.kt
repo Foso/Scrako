@@ -5,8 +5,8 @@ import de.jensklingenberg.example.costumes.costume2n
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createBroadcast
-import de.jensklingenberg.scrako.builder.getOrCreateList
-import de.jensklingenberg.scrako.builder.addSpriteVariable
+import de.jensklingenberg.scrako.builder.createList
+import de.jensklingenberg.scrako.builder.createVariable
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
 import de.jensklingenberg.scrako.common.Broadcast
@@ -50,6 +50,7 @@ import de.jensklingenberg.scratch3.operator.times
 import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
 import de.jensklingenberg.scratch3.sensing.keyIsPressed
+import debugger.log
 import gotoxy
 
 const val PlayerIconID = "2"
@@ -65,22 +66,24 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
     val input = createBroadcast("input")
 
     spriteBuilder("Sprite123") {
-        val jens2 = getOrCreateList(
+
+        val jens2 = createList(
             "jens2",
             (0..88).map { "1" }
         )
 
         addCostumes(listOf(_tile15, costume2n))
 
-        val playerX = addSpriteVariable("playerX")
-        val playerY = addSpriteVariable("playerY")
-        val width = addSpriteVariable("width")
+        val playerX = createVariable("playerX")
+        val playerY = createVariable("playerY")
+        val width = createVariable("width")
 
         /**
          * Start
          */
         scriptBuilder {
             whenFlagClicked()
+            log(playerY)
             hide()
             replaceItemOfListWith(getIndexOf(0, 0), jens2, PlayerIconID)
             setVariable(playerX, 1)
@@ -101,8 +104,8 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
         }
 
         scriptBuilder {
-            val paintY = addSpriteVariable("paint_yy")
-            val paintX = addSpriteVariable("paint_xx")
+            val paintY = createVariable("paint_yy")
+            val paintX = createVariable("paint_xx")
 
             define("paint1", withoutRefresh = true) {
                 hide()

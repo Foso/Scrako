@@ -144,7 +144,10 @@ fun importer() {
         val reporterBlock = ClassName("de.jensklingenberg.scrako.common", "ReporterBlock")
 
         target.blocks.forEach { (_, blockOr) ->
-            val name = blockOr.opcode.substringAfter("_").capitalize()
+            var name = blockOr.opcode.substringAfter("_").capitalize()
+            if (name == "Call") {
+                name = blockOr.mutation?.proccode?.substringBefore(" ")?.capitalize() ?: name
+            }
             val packageName = blockOr.opcode.substringBefore("_")
             val className = ClassName(packageName, name)
 
@@ -184,6 +187,20 @@ fun importer() {
                 "${entry.key.lowercase()}.visit(visitors, identifier, ${entry.key.lowercase()}Id, null, context)"
             }.joinToString("\n") { it }
 
+            val mutation = if (blockOr.mutation != null) {
+                """mutation = Mutation(
+                tagName = "${blockOr.mutation?.tagName}",
+                children = listOf(),
+                proccode = "",
+                argumentids = "${blockOr.mutation?.argumentids}",
+                argumentnames = "[]",
+                argumentdefaults = "[]",
+                warp = "false"
+            ),"""
+            } else {
+                ""
+            }
+
             val visitFunSpec = FunSpec.builder("visit")
                 .addModifiers(KModifier.OVERRIDE)
                 .addParameter(
@@ -200,7 +217,8 @@ fun importer() {
         visitors[identifier] = BlockSpec(
             opcode = "${blockOr.opcode}",
             inputs = mapOf($newInputs),
-            fields = mapOf($newFields)
+            fields = mapOf($newFields),
+            $mutation
         ).toBlock(nextUUID, identifier)
         $wer
     """.trimIndent()

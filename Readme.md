@@ -15,10 +15,40 @@ You can create a global variable in the scope of the projectBuilder
 
 ```kotlin
 scriptBuilder {
-    val myVar = getOrCreateVariable("myVar")
+    val myVar = createVariable("myVar")
     ...
 }
 ```
+
+# Broadcasts
+
+```kotlin
+projectBuilder {
+    val paint = createBroadcast("paint")
+    ...
+}
+```
+
+# All sprite lists
+
+```kotlin
+projectBuilder {
+    val myVar = createGlobalList("myVar")
+    ...
+}
+```
+
+You can create a global variable in the scope of the projectBuilder
+
+# Single sprite lists
+
+```kotlin
+scriptBuilder {
+    val myVar = createList("myVar")
+    ...
+}
+```
+
 
 # Hello World
 
@@ -32,6 +62,8 @@ scriptBuilder {
     say("Hello!")
 }
 ```
+
+# Costumes
 
 
 # Development tips

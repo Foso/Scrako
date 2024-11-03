@@ -1,7 +1,7 @@
 package de.jensklingenberg
 
-import de.jensklingenberg.scrako.builder.getGlobalVariable
-import de.jensklingenberg.scrako.builder.addSpriteVariable
+import de.jensklingenberg.scrako.builder.createGlobalVariable
+import de.jensklingenberg.scrako.builder.createVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
@@ -13,10 +13,10 @@ class VariablesTest {
     @Test
     fun testGlobalVariables() {
         val builder = projectBuilder {
-            val globalVar = getGlobalVariable("globalVar")
+            val globalVar = createGlobalVariable("globalVar")
 
             spriteBuilder("Sprite1") {
-                val localVar = addSpriteVariable("globalVar")
+                val localVar = createVariable("globalVar")
                 scriptBuilder {
 
                 }
@@ -33,7 +33,7 @@ class VariablesTest {
         val builder = projectBuilder {
 
             spriteBuilder("Sprite1") {
-                val localVar = addSpriteVariable("localVar")
+                val localVar = createVariable("localVar")
             }
         }
 

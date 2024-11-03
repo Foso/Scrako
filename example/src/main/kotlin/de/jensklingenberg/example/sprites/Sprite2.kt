@@ -12,7 +12,7 @@ import de.jensklingenberg.scratch3.looks.show
 import de.jensklingenberg.example.costumes.Blockc
 import de.jensklingenberg.example.costumes.blockA
 import de.jensklingenberg.example.costumes.blockB
-import de.jensklingenberg.scrako.builder.addSpriteVariable
+import de.jensklingenberg.scrako.builder.createVariable
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scratch3.control.ifThen
@@ -27,7 +27,7 @@ fun ProjectBuilder.Sprite2(paint: Broadcast) {
     spriteBuilder("Sprite2") {
         addPosition(100.0, 150.0)
         addCostumes(listOf(blockA, blockB, Blockc))
-        val test = addSpriteVariable("test")
+        val test = createVariable("test")
 
         scriptBuilder {
             whenFlagClicked()

@@ -1,7 +1,7 @@
 package de.jensklingenberg
 
-import de.jensklingenberg.scrako.builder.getOrCreateGlobalList
-import de.jensklingenberg.scrako.builder.getOrCreateList
+import de.jensklingenberg.scrako.builder.createGlobalList
+import de.jensklingenberg.scrako.builder.createList
 import de.jensklingenberg.scrako.builder.projectBuilder
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
@@ -13,10 +13,10 @@ class ListTest {
     @Test
     fun testGlobalList() {
         val builder = projectBuilder {
-            val globalVar = getOrCreateGlobalList("globalVar")
+            val globalVar = createGlobalList("globalVar")
 
             spriteBuilder("Sprite1") {
-                val localVar = getOrCreateList("globalVar")
+                val localVar = createList("globalVar")
                 scriptBuilder {
 
                 }
@@ -33,7 +33,7 @@ class ListTest {
         val builder = projectBuilder {
 
             spriteBuilder("Sprite1") {
-                val localVar = getOrCreateList("localVar")
+                val localVar = createList("localVar")
             }
         }
 

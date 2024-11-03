@@ -130,13 +130,13 @@ fun StageSpriteBuilder.addBackdrop(costume: List<Backdrop>) {
     costume.forEach { addCostumeList(it) }
 }
 
-fun CommonSpriteBuilder.getOrCreateList(name: String, contents: List<String> = emptyList()): ScratchList {
+fun CommonSpriteBuilder.createList(name: String, contents: List<String> = emptyList()): ScratchList {
     val element = ScratchList(name, contents)
     addList(element)
     return element
 }
 
-fun CommonSpriteBuilder.addSpriteVariable(name: String): ScratchVariable {
+fun CommonSpriteBuilder.createVariable(name: String): ScratchVariable {
     val element = ScratchVariable(name)
     addVariable(name)
     return element

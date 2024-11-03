@@ -9,10 +9,10 @@ import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.operator.OperatorEquals
 
 
-fun <T: CommonScriptBuilder> T.switch(block: String, operatorSpec: Switch.() -> Unit) =
+fun CommonScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =
     switch(StringBlock(block), operatorSpec)
 
-fun <T: CommonScriptBuilder> T.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
+fun CommonScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
     val test = Switch().apply(operatorSpec)
 
     if (test.mutableList.size == 1) {
@@ -37,7 +37,7 @@ fun Switch.case(block: ReporterBlock, leftStack: CommonScriptBuilder.() -> Unit)
 fun Switch.case(operatorSpec: String, leftStack: CommonScriptBuilder.() -> Unit) =
     addChild(Case(StringBlock(operatorSpec), leftStack))
 
-class Switch {
+class Switch internal constructor(){
     val mutableList = mutableListOf<Case>()
 
     fun addChild(whenFlagClicked: Case) {
