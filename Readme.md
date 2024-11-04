@@ -65,6 +65,12 @@ scriptBuilder {
 
 # Costumes
 
+# Costum blocks
+## Define custom block
+## Call custom block
+
+# Operators
+
 
 # Development tips
 Scrako is only building the project file. 
@@ -87,3 +93,6 @@ val process = processBuilder.start()
 process.waitFor()
 }
 ```
+
+
+# sounds

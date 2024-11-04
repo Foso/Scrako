@@ -23,7 +23,7 @@ open class CommonSpriteBuilder {
         sounds.addAll(sound)
     }
 
-    fun addVariable(name: String) {
+    internal fun addVariable(name: String) {
         variableMap[name] = UUID.randomUUID()
     }
 
@@ -31,7 +31,7 @@ open class CommonSpriteBuilder {
         position = Pair(y, x)
     }
 
-    fun addList(list: ScratchList) {
+   internal fun addList(list: ScratchList) {
         listMap[list.name] = list
     }
 
@@ -109,11 +109,12 @@ open class CommonSpriteBuilder {
             y = position.first,
             visible = true,
             direction = 90.0,
-            isStage = isStage
+            isStage = isStage,
+            layerOrder = 1
         )
     }
 
-    fun addCostumeList(costume: Costume) {
+    internal fun addCostumeList(costume: Costume) {
         costumesList.add(costume)
     }
 

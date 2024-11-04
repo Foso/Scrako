@@ -11,7 +11,7 @@ import java.util.UUID
 
 class ProjectBuilder {
     internal val targets = mutableListOf<CommonSpriteBuilder>()
-    internal var stage: CommonSpriteBuilder? = null
+    internal var stage: StageSpriteBuilder? = null
     private var globalVariableMap = mutableMapOf<String, UUID>()
     private var lists = mutableMapOf<String, ScratchList>()
     private var broadcasts = mutableListOf<Broadcast>()
@@ -58,7 +58,7 @@ class ProjectBuilder {
 
 }
 
-fun ProjectBuilder.addStage(target: CommonSpriteBuilder) {
+fun ProjectBuilder.addStage(target: StageSpriteBuilder) {
     stage = target
 }
 

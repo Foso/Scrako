@@ -24,7 +24,8 @@ internal fun createTarget(
     y: Double,
     visible: Boolean,
     direction: Double,
-    isStage: Boolean
+    isStage: Boolean,
+    layerOrder: Int
 ): Target {
     val targe2 = Target(
         isStage = isStage,
@@ -33,7 +34,7 @@ internal fun createTarget(
             it.value.toString() to JsonArray(
                 listOf(
                     JsonPrimitive(it.key),
-                    JsonPrimitive(1)
+                    JsonPrimitive(layerOrder)
                 )
             )
         }.toMap(),
@@ -52,7 +53,7 @@ internal fun createTarget(
         costumes = costumes,
         sounds = sounds,
         volume = 100,
-        layerOrder = 1,
+        layerOrder = layerOrder,
         visible = visible,
         x = x,
         y = y,
@@ -70,7 +71,7 @@ internal fun defaultStage(
     lists: Map<String, ScratchList>,
 ): Target {
 
-    return Target(
+    Target(
         isStage = true,
         name = "Stage",
         variables = variables.map {
@@ -78,7 +79,6 @@ internal fun defaultStage(
                 listOf(
                     JsonPrimitive(it.key),
                     JsonPrimitive(1),
-                    //JsonPrimitive(true)
                 )
             )
         }.toMap(),
@@ -109,4 +109,26 @@ internal fun defaultStage(
         draggable = false,
         rotationStyle = "all around"
     )
+
+   return createTarget(
+        emptyMap(),
+        "Stage",
+        emptyList(),
+        lists,
+        variables,
+        listOf(
+            backdrop
+        ),
+        broadcasts,
+        emptyList(),
+        100.0,
+        0.0,
+        0.0,
+        false,
+        90.0,
+        true,
+        0
+    )
+
+
 }
