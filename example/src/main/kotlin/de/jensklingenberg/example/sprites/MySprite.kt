@@ -36,6 +36,7 @@ import de.jensklingenberg.scratch3.event.whenKeyPress
 import de.jensklingenberg.scratch3.extension.pen.eraseAll
 import de.jensklingenberg.scratch3.extension.pen.stamp
 import de.jensklingenberg.scratch3.looks.hide
+import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
 import de.jensklingenberg.scratch3.motion.setX
@@ -43,6 +44,7 @@ import de.jensklingenberg.scratch3.motion.switchCostume
 import de.jensklingenberg.scratch3.operator.and
 import de.jensklingenberg.scratch3.operator.div
 import de.jensklingenberg.scratch3.operator.gt
+import de.jensklingenberg.scratch3.operator.lengthOf
 import de.jensklingenberg.scratch3.operator.lt
 import de.jensklingenberg.scratch3.operator.minus
 import de.jensklingenberg.scratch3.operator.plus
@@ -83,6 +85,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
          */
         scriptBuilder {
             whenFlagClicked()
+            say(lengthOf("Jens"))
             log(playerY)
             hide()
             replaceItemOfListWith(getIndexOf(0, 0), jens2, PlayerIconID)

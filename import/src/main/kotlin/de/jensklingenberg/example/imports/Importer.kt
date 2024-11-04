@@ -53,8 +53,10 @@ import de.jensklingenberg.newimport.operator.LtImport
 import de.jensklingenberg.newimport.operator.SubtractImport
 import de.jensklingenberg.newimport.sensing.KeyoptionsImport
 import de.jensklingenberg.example.import.looks.SwitchcostumetoImport
+import de.jensklingenberg.newimport.argument.ArgStringNumber
 import de.jensklingenberg.newimport.data.HidelistImport
 import de.jensklingenberg.newimport.data.ItemoflistImport
+import de.jensklingenberg.newimport.data.LengthofWordImport
 import de.jensklingenberg.newimport.motion.ChangeXbyImport
 import de.jensklingenberg.newimport.motion.ChangeybyImport
 import motion.GotoxyImport
@@ -142,6 +144,7 @@ fun importer(sb3Path: String) {
     myList.add(LtImport())
     myList.add(GtImport())
     myList.add(AddImport())
+    myList.add(ArgStringNumber())
     myList.add(AndImport())
 
     //control
@@ -150,6 +153,7 @@ fun importer(sb3Path: String) {
     myList.add(ClearGrahpiceffects())
     myList.add(ReplaceItemImport())
     myList.add(LengthoflistImport())
+    myList.add(LengthofWordImport())
     myList.add(MultiplyImport())
     myList.add(SubtractImport())
 
@@ -166,13 +170,15 @@ fun importer(sb3Path: String) {
     val scratchProject = json.decodeFromString<ScratchProject>(projectJson)
 
     val wrapperFolder = "/Users/jens.klingenberg/Code/2024/LLVMPoet/wrapper/"
-    val builder = StringBuilder()
 
-    scratchProject.targets.forEach { target ->
+
+    scratchProject.targets.forEachIndexed { index, target ->
+        val builder = StringBuilder()
         builder.append("spriteBuilder(\"${target.name}\"){\n")
         println("Sprite" + target.name)
+        val colorName = target.name + "Costume" + index
         val test = target.costumes.joinToString("\n") {
-            "val _${it.name.replace("-", "").replace("^", "").replace(">", "")} = Costume(\n" +
+            "val _${colorName.replace("^", "").replace(">", "")} = Costume(\n" +
                     "    name = \"${it.name}\",\n" +
                     "    bitmapResolution = ${it.bitmapResolution},\n" +
                     "    dataFormat = \"${it.dataFormat}\",\n" +
@@ -193,14 +199,21 @@ fun importer(sb3Path: String) {
             builder.append("}\n\n")
         }
 
+        File("${wrapperFolder}${target.name}.kt").writeText(builder.toString())
+//return@forEachIndexed
 
         val nodeClassName = ClassName("de.jensklingenberg.scrako.common", "Node")
         val reporterBlock = ClassName("de.jensklingenberg.scrako.common", "ReporterBlock")
 
         target.blocks.forEach { (_, blockOr) ->
+
             var name = blockOr.opcode.substringAfter("_").capitalize()
             if (name == "Call") {
                 name = blockOr.mutation?.proccode?.substringBefore(" ")?.capitalize() ?: name
+            }
+
+            if(name == "Prototype"){
+                return@forEach
             }
             val packageName = blockOr.opcode.substringBefore("_")
             val className = ClassName(packageName, name)
@@ -307,14 +320,19 @@ fun importer(sb3Path: String) {
 
             var nodeClass = builder.build()
 
-            val source = FileSpec
-                .builder(className)
-                .addImport("java.util", "UUID")
-                .addImport("de.jensklingenberg.scrako.common", "BlockSpec")
-                .addImport("de.jensklingenberg.scrako.common", "setValue")
-                .addType(nodeClass)
-                .addFunction(extFunSpec)
-                .build().toString()
+            val source = try {
+                FileSpec
+                    .builder(className)
+                    .addImport("java.util", "UUID")
+                    .addImport("de.jensklingenberg.scrako.common", "BlockSpec")
+                    .addImport("de.jensklingenberg.scrako.common", "setValue")
+                    .addType(nodeClass)
+                    .addFunction(extFunSpec)
+                    .build().toString()
+            }catch (e:Exception){
+                println("Error: $e")
+                ""
+            }
 
             File(wrapperFolder + "$packageName/").mkdirs()
             File(wrapperFolder + "$packageName/" + name + ".kt").writeText(source)
@@ -370,7 +388,7 @@ fun importer(sb3Path: String) {
 
         builder.append("}\n\n")
     }
-    println(builder)
+    //println(builder)
 }
 
 fun extracted(

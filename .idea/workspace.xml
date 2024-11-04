@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="importer6">
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="importer7">
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/argument/AddImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data/Lengthofword.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/operator/Length.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/project.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/import/operator/Gt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/import/operator/Gt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/imports/Importer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/imports/Importer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/operator/Add.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/operator/Add.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,47 +92,47 @@
     <option name="autoscrollFromSource" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build LLVMPoet.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LLVMPoet:scrako-core [publishToMavenLocal].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LLVMPoet:scratch3 [publishToMavenLocal].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ListTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ListTest.testGlobalList.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ListTest.testGlobalVariables.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.SayTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SayTest.testSay (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SayTest.testSay.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.VariablesTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.VariablesTest.testGlobalVariables.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.VariablesTest.testLocalVariables.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.Import.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.MainKt (1).executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.MainKt (2).executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.MainKt.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jens.klingenberg/Code/2024/LLVMPoet/import/src/main/kotlin/de/jensklingenberg/newimport/motion&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build LLVMPoet.executor": "Run",
+    "Gradle.LLVMPoet:scrako-core [publishToMavenLocal].executor": "Run",
+    "Gradle.LLVMPoet:scratch3 [publishToMavenLocal].executor": "Run",
+    "Gradle.ListTest.executor": "Run",
+    "Gradle.ListTest.testGlobalList.executor": "Run",
+    "Gradle.ListTest.testGlobalVariables.executor": "Debug",
+    "Gradle.SayTest.executor": "Run",
+    "Gradle.SayTest.testSay (1).executor": "Run",
+    "Gradle.SayTest.testSay.executor": "Run",
+    "Gradle.VariablesTest.executor": "Run",
+    "Gradle.VariablesTest.testGlobalVariables.executor": "Run",
+    "Gradle.VariablesTest.testLocalVariables.executor": "Run",
+    "Kotlin.Import.executor": "Run",
+    "Kotlin.MainKt (1).executor": "Run",
+    "Kotlin.MainKt (2).executor": "Run",
+    "Kotlin.MainKt.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/operator",
+    "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;/Users/jens.klingenberg/.gradle&quot;
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "/Users/jens.klingenberg/.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/operator" />
+      <recent name="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data" />
       <recent name="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example" />
-      <recent name="$PROJECT_DIR$/gradle" />
-      <recent name="$PROJECT_DIR$/scratch3/src/main/java/de/jensklingenberg/scratch/motion" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data" />
@@ -209,6 +213,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainKt (2)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.newimport.MainKt" />
+      <module name="Scrako.import.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.de.jensklingenberg.MainKt" />
       <module name="Scrako.example.main" />
@@ -241,15 +252,16 @@
       <item itemvalue="Gradle.ListTest" />
       <item itemvalue="Kotlin.MainKt (1)" />
       <item itemvalue="Kotlin.Import" />
+      <item itemvalue="Kotlin.MainKt (2)" />
       <item itemvalue="Kotlin.MainKt" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.MainKt (1)" />
+        <item itemvalue="Kotlin.MainKt (2)" />
+        <item itemvalue="Kotlin.Import" />
         <item itemvalue="Kotlin.MainKt" />
         <item itemvalue="Kotlin.Import" />
-        <item itemvalue="Kotlin.Import" />
-        <item itemvalue="Gradle.ListTest" />
       </list>
     </recent_temporary>
   </component>
@@ -261,14 +273,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00044" summary="no context">
-      <option name="closed" value="true" />
-      <created>1730057445248</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1730057445248</updated>
     </task>
     <task id="LOCAL-00045" summary="variable">
       <option name="closed" value="true" />
@@ -654,7 +658,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730669444814</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="importer7">
+      <option name="closed" value="true" />
+      <created>1730738823641</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1730738823641</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -680,7 +692,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="snake array" />
     <MESSAGE value="snake array2" />
     <MESSAGE value="snake array3" />
     <MESSAGE value="Setdragmode" />
@@ -705,7 +716,8 @@
     <MESSAGE value="testing3" />
     <MESSAGE value="importer5" />
     <MESSAGE value="importer6" />
-    <option name="LAST_COMMIT_MESSAGE" value="importer6" />
+    <MESSAGE value="importer7" />
+    <option name="LAST_COMMIT_MESSAGE" value="importer7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -846,6 +858,41 @@
           <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data/Hidelist.kt</url>
           <line>21</line>
           <option name="timeStamp" value="270" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/imports/Importer.kt</url>
+          <line>322</line>
+          <option name="timeStamp" value="271" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/imports/Importer.kt</url>
+          <line>209</line>
+          <option name="timeStamp" value="272" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/imports/Importer.kt</url>
+          <line>232</line>
+          <option name="timeStamp" value="273" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/imports/Importer.kt</url>
+          <line>332</line>
+          <option name="timeStamp" value="274" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/example/imports/Importer.kt</url>
+          <line>235</line>
+          <option name="timeStamp" value="275" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/argument/AddImport.kt</url>
+          <line>21</line>
+          <option name="timeStamp" value="279" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data/Lengthofword.kt</url>
+          <line>18</line>
+          <option name="timeStamp" value="280" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
