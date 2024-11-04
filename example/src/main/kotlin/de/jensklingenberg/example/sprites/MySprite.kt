@@ -41,11 +41,13 @@ import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
 import de.jensklingenberg.scratch3.motion.setX
 import de.jensklingenberg.scratch3.motion.switchCostume
+import de.jensklingenberg.scratch3.operator.MathOptions
 import de.jensklingenberg.scratch3.operator.and
 import de.jensklingenberg.scratch3.operator.div
 import de.jensklingenberg.scratch3.operator.gt
 import de.jensklingenberg.scratch3.operator.lengthOf
 import de.jensklingenberg.scratch3.operator.lt
+import de.jensklingenberg.scratch3.operator.mathop
 import de.jensklingenberg.scratch3.operator.minus
 import de.jensklingenberg.scratch3.operator.plus
 import de.jensklingenberg.scratch3.operator.times
@@ -85,6 +87,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
          */
         scriptBuilder {
             whenFlagClicked()
+            say(mathop(MathOptions.FLOOR, 10))
             say(lengthOf("Jens"))
             log(playerY)
             hide()
@@ -144,7 +147,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             }
 
             ifThen(keyIsPressed(LEFT_ARROW)) {
-                ifThen(playerX gt IntBlock(0)) {
+                ifThen(playerX gt 0) {
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerX, -1)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)

@@ -1,4 +1,4 @@
-package `operator`
+package de.jensklingenberg.newimport.operator
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.example.newimport.handle
@@ -6,11 +6,9 @@ import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 import java.lang.StringBuilder
-import kotlin.String
-import kotlin.collections.List
 
-public class AndImport : ImportNode {
-  override val opCode: String = "operator_and"
+public class ModImport : ImportNode {
+  override val opCode: String = "operator_mod"
 
   override fun visit(
       builder: StringBuilder,
@@ -18,15 +16,12 @@ public class AndImport : ImportNode {
       target: Target,
       blockOr: Block,
       myList: List<ImportNode>,
-      id: String,
+      blockId: String,
   ) {
-      builder.append("(")
-      handle(builder, target, myList, project, blockOr.inputs["OPERAND1"]?.get(1))
-      builder.append(" and ")
-      handle(builder, target, myList, project, blockOr.inputs["OPERAND2"]?.get(1))
-      builder.append(")")
+    builder.append("(")
+      handle(builder, target, myList, project, blockOr.inputs["NUM1"]?.get(1))
+    builder.append(" mod ")
+      handle(builder, target, myList, project, blockOr.inputs["NUM2"]?.get(1))
+    builder.append(")")
   }
 }
-
-
-

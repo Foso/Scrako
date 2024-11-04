@@ -37,6 +37,10 @@ infix fun ReporterBlock.div(width: ReporterBlock): Operator {
     return Divide(this, width)
 }
 
+infix fun ReporterBlock.mod(width: ReporterBlock): Operator {
+    return Mod(this, width)
+}
+
 infix fun ReporterBlock.or(booleanBlock: ReporterBlock): BooleanBlock {
     return OperatorOr(this, booleanBlock)
 }

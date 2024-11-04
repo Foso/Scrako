@@ -1,16 +1,15 @@
 package de.jensklingenberg.newimport.control
 
-import de.jensklingenberg.newimport.extracted
-import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
+import de.jensklingenberg.newimport.extracted
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonPrimitive
 
-public class RepeatImport : ImportNode {
-    override val opCode: String = "control_repeat"
+public class RepeatUntilImport : ImportNode {
+    override val opCode: String = "control_repeat_until"
 
     override fun visit(
         builder: StringBuilder,
@@ -20,13 +19,18 @@ public class RepeatImport : ImportNode {
         myList: List<ImportNode>,
         id: String,
     ) {
-        builder.append("repeat(")
+        builder.append("repeatUntil(")
 
-        handle(builder, target, myList, project, blockOr.inputs["TIMES"]?.get(1))
+        val conditionBlockId = blockOr.inputs["CONDITION"]?.get(1)?.jsonPrimitive?.contentOrNull
+        val conditionBlock = target.blocks[conditionBlockId]
 
+        conditionBlock?.let {
+            extracted(conditionBlockId!!, target, myList, builder, project)
+        }
         builder.append("){\n")
+
         val substackId = blockOr.inputs["SUBSTACK"]?.get(1)?.jsonPrimitive?.contentOrNull
-        val substackBlock = target.blocks[substackId]
+        var substackBlock = target.blocks[substackId]
 
         substackBlock?.let {
             extracted(substackId!!, target, myList, builder, project)
@@ -37,7 +41,3 @@ public class RepeatImport : ImportNode {
     }
 
 }
-
-
-
-

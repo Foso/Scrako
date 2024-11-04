@@ -1,7 +1,6 @@
 package de.jensklingenberg.newimport.argument
 
-import de.jensklingenberg.example.imports.ImportNode
-import de.jensklingenberg.example.newimport.handle
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target

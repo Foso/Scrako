@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.control
 
-import de.jensklingenberg.example.imports.extracted
-import de.jensklingenberg.example.imports.ImportNode
+import de.jensklingenberg.newimport.extracted
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target

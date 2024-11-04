@@ -1,6 +1,5 @@
 package de.jensklingenberg.newimport
 
-import de.jensklingenberg.example.imports.ImportNode
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
@@ -24,7 +23,7 @@ class CallImport : ImportNode {
                 builder.append(")\n")
             }
 
-            else -> builder.append("call(${blockOr.mutation?.proccode})\n")
+            else -> builder.append("call(\"${blockOr.mutation?.proccode?.substringBefore("%")?.trimEnd()}\")\n")
         }
 
     }

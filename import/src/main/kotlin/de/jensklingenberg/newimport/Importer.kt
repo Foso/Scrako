@@ -1,4 +1,4 @@
-package de.jensklingenberg.example.imports
+package de.jensklingenberg.newimport
 
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
@@ -11,14 +11,12 @@ import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.asTypeName
-import control.IfImport
-import control.If_elseImport
-import de.jensklingenberg.example.imports.data.ChangevariablebyImport
-import de.jensklingenberg.example.import.pen.StampImport
+import de.jensklingenberg.newimport.control.IfImport
+import de.jensklingenberg.newimport.control.If_elseImport
+import de.jensklingenberg.newimport.data.ChangevariablebyImport
+import de.jensklingenberg.newimport.pen.StampImport
 import de.jensklingenberg.newimport.control.RepeatImport
-import de.jensklingenberg.example.imports.operator.MultiplyImport
-import de.jensklingenberg.newimport.CallImport
-import de.jensklingenberg.newimport.DefaultImporter
+import de.jensklingenberg.newimport.operator.MultiplyImport
 import de.jensklingenberg.example.newimport.SayImport
 import de.jensklingenberg.newimport.control.ForeverImport
 import de.jensklingenberg.newimport.data.LengthoflistImport
@@ -52,18 +50,28 @@ import de.jensklingenberg.newimport.operator.DivideImport
 import de.jensklingenberg.newimport.operator.LtImport
 import de.jensklingenberg.newimport.operator.SubtractImport
 import de.jensklingenberg.newimport.sensing.KeyoptionsImport
-import de.jensklingenberg.example.import.looks.SwitchcostumetoImport
+import de.jensklingenberg.newimport.looks.SwitchcostumetoImport
 import de.jensklingenberg.newimport.argument.ArgStringNumber
+import de.jensklingenberg.newimport.control.RepeatUntilImport
+import de.jensklingenberg.newimport.data.AddToList
+import de.jensklingenberg.newimport.data.DeleteAllOfImport
 import de.jensklingenberg.newimport.data.HidelistImport
 import de.jensklingenberg.newimport.data.ItemoflistImport
-import de.jensklingenberg.newimport.data.LengthofWordImport
+import de.jensklingenberg.newimport.looks.SetSizeImport
+import de.jensklingenberg.newimport.operator.LengthofWordImport
 import de.jensklingenberg.newimport.motion.ChangeXbyImport
 import de.jensklingenberg.newimport.motion.ChangeybyImport
+import de.jensklingenberg.newimport.operator.JoinImport
+import de.jensklingenberg.newimport.operator.MathOpImport
+import de.jensklingenberg.newimport.operator.NotImport
 import motion.GotoxyImport
+import de.jensklingenberg.newimport.pen.ClearImport
+import de.jensklingenberg.newimport.pen.PenUpImport
+import de.jensklingenberg.newimport.operator.ModImport
+import de.jensklingenberg.newimport.operator.OrImport
+import de.jensklingenberg.newimport.procedures.DefinitionImport
 import operator.EqualsImport
 import operator.GtImport
-import pen.ClearImport
-import procedures.DefinitionImport
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -124,8 +132,13 @@ fun importer(sb3Path: String) {
     myList.add(HidelistImport())
     myList.add(SwitchcostumetoImport())
     myList.add(ItemoflistImport())
+
+
+    //Pen
     myList.add(StampImport())
-    myList.add(RepeatImport())
+    myList.add(PenUpImport())
+
+
     //looks
     myList.add(NextbackdropImport())
     myList.add(SwitchbackdroptoImport())
@@ -141,23 +154,39 @@ fun importer(sb3Path: String) {
     //operator
     myList.add(EqualsImport())
     myList.add(DivideImport())
+    myList.add(MathOpImport())
     myList.add(LtImport())
+    myList.add(JoinImport())
     myList.add(GtImport())
     myList.add(AddImport())
+    myList.add(ModImport())
     myList.add(ArgStringNumber())
     myList.add(AndImport())
-
-    //control
-    myList.add(IfImport())
-
-    myList.add(ClearGrahpiceffects())
-    myList.add(ReplaceItemImport())
-    myList.add(LengthoflistImport())
+    myList.add(OrImport())
     myList.add(LengthofWordImport())
     myList.add(MultiplyImport())
     myList.add(SubtractImport())
+    myList.add(NotImport())
 
+    //looks
+    myList.add(SetSizeImport())
+
+    //control
+    myList.add(IfImport())
+    myList.add(RepeatImport())
+    myList.add(RepeatUntilImport())
+    myList.add(ForeverImport())
+
+    myList.add(ClearGrahpiceffects())
+    myList.add(ReplaceItemImport())
+
+    //data
+    myList.add(LengthoflistImport())
     myList.add(ShowListImport())
+    myList.add(DeleteAllOfImport())
+    myList.add(AddToList())
+
+
     myList.add(SetVariableImport())
     myList.add(CallImport())
 
@@ -165,12 +194,10 @@ fun importer(sb3Path: String) {
     myList.add(AnswerImport())
     myList.add(KeyoptionsImport())
     myList.add(BroadcastImport())
-    myList.add(ForeverImport())
     myList.add(DefaultImporter())
     val scratchProject = json.decodeFromString<ScratchProject>(projectJson)
 
     val wrapperFolder = "/Users/jens.klingenberg/Code/2024/LLVMPoet/wrapper/"
-
 
     scratchProject.targets.forEachIndexed { index, target ->
         val builder = StringBuilder()
@@ -199,8 +226,9 @@ fun importer(sb3Path: String) {
             builder.append("}\n\n")
         }
 
+        builder.append("}}\n\n")
         File("${wrapperFolder}${target.name}.kt").writeText(builder.toString())
-//return@forEachIndexed
+return@forEachIndexed
 
         val nodeClassName = ClassName("de.jensklingenberg.scrako.common", "Node")
         val reporterBlock = ClassName("de.jensklingenberg.scrako.common", "ReporterBlock")

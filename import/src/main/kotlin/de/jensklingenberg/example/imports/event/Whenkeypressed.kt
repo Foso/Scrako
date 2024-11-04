@@ -1,6 +1,6 @@
-package `data`
+package de.jensklingenberg.newimport.event
 
-import de.jensklingenberg.example.imports.ImportNode
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
@@ -8,8 +8,8 @@ import java.lang.StringBuilder
 import kotlin.String
 import kotlin.collections.List
 
-public class ShowlistImport : ImportNode {
-  override val opCode: String = "data_showlist"
+public class WhenkeypressedImport : ImportNode {
+  override val opCode: String = "event_whenkeypressed"
 
   override fun visit(
       builder: StringBuilder,
@@ -19,6 +19,6 @@ public class ShowlistImport : ImportNode {
       myList: List<ImportNode>,
       id: String,
   ) {
-    builder.append("showlist()\n")
+    builder.append("whenkeypressed()\n")
   }
 }

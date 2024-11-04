@@ -4,3 +4,5 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 
 class Mod(operand1: ReporterBlock, operand2: ReporterBlock) :
     Operator(listOf(operand1, operand2), listOf("NUM1", "NUM2"), "operator_mod")
+
+

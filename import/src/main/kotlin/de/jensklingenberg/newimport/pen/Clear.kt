@@ -1,6 +1,6 @@
-package pen
+package de.jensklingenberg.newimport.pen
 
-import de.jensklingenberg.example.imports.ImportNode
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
@@ -13,12 +13,15 @@ public class ClearImport : ImportNode {
 
   override fun visit(
       builder: StringBuilder,
-      scratchProject: ScratchProject,
+      project: ScratchProject,
       target: Target,
-      block: Block,
+      blockOr: Block,
       myList: List<ImportNode>,
-      id: String,
+      blockId: String,
   ) {
-    builder.append("clear()\n")
+    builder.append("eraseAll()\n")
   }
 }
+
+
+

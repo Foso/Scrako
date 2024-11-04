@@ -1,13 +1,13 @@
-package de.jensklingenberg.example.import.looks
+package de.jensklingenberg.newimport.looks
 
-import de.jensklingenberg.example.imports.ImportNode
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class SwitchcostumetoImport : ImportNode {
-    override val opCode: String = "looks_switchcostumeto"
+class SetSizeImport : ImportNode {
+    override val opCode: String = "looks_setsizeto"
 
     override fun visit(
         builder: StringBuilder,
@@ -15,9 +15,12 @@ public class SwitchcostumetoImport : ImportNode {
         target: Target,
         blockOr: Block,
         myList: List<ImportNode>,
-        blockId: String,
+        blockId: String
     ) {
-        builder.append("switchCostume(")
-        handle(builder, target, myList, project, blockOr.inputs["COSTUME"]?.get(1))
+        builder.append("setSize(")
+        handle(builder, target, myList, project, blockOr.inputs["SIZE"]?.get(1))
+        builder.append(")\n")
+
     }
+
 }

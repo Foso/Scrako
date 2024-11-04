@@ -1,4 +1,4 @@
-package de.jensklingenberg.newimport.motion
+package de.jensklingenberg.newimport.operator
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.example.newimport.handle
@@ -6,8 +6,8 @@ import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class MovestepsImport : ImportNode {
-    override val opCode: String = "motion_movesteps"
+public class MathOpImport : ImportNode {
+    override val opCode: String = "operator_mathop"
 
     override fun visit(
         builder: StringBuilder,
@@ -17,8 +17,11 @@ public class MovestepsImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("move(")
-        handle(builder, target, myList, project, blockOr.inputs["STEPS"]?.get(1))
-        builder.append(")\n")
+        builder.append("mathop(")
+        builder.append(blockOr.fields["OPERATOR"]?.get(0)?.uppercase())
+        builder.append(",")
+        handle(builder, target, myList, project, blockOr.inputs["NUM"]?.get(1))
+
+        builder.append(")")
     }
 }

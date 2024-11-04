@@ -20,7 +20,7 @@ fun CommonScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> 
             test.mutableList.first().leftStack(this)
         }
     } else {
-        ifElse(OperatorEquals(block, test.mutableList.first().operatorSpec), {
+        ifElse(OperatorEquals(block, test.mutableList.first().operatorSpec), leftStack = {
             test.mutableList.first().leftStack(this)
         }, {
             switch(block) {

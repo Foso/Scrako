@@ -1,13 +1,13 @@
-package de.jensklingenberg.example.imports.data
+package de.jensklingenberg.newimport.data
 
-import de.jensklingenberg.example.imports.ImportNode
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class ChangevariablebyImport : ImportNode {
-    override val opCode: String = "data_changevariableby"
+public class AddToList : ImportNode {
+    override val opCode: String = "data_addtolist"
 
     override fun visit(
         builder: StringBuilder,
@@ -17,9 +17,12 @@ public class ChangevariablebyImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        val variable = blockOr.fields["VARIABLE"]?.get(0)
-        builder.append("changeVariableBy($variable,")
-        handle(builder, target, myList, project, blockOr.inputs["VALUE"]?.get(1))
+        builder.append("addToList(")
+        handle(builder, target, myList, project, blockOr.inputs["ITEM"]?.get(1))
+builder.append(",")
+        builder.append(blockOr.fields["LIST"]?.get(0))
+
+
         builder.append(")\n")
     }
 }

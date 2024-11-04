@@ -1,7 +1,7 @@
 package de.jensklingenberg.example.newimport
 
-import de.jensklingenberg.example.imports.extracted
-import de.jensklingenberg.example.imports.ImportNode
+import de.jensklingenberg.newimport.extracted
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject

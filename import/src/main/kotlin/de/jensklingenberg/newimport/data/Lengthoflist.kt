@@ -1,6 +1,6 @@
 package de.jensklingenberg.newimport.data
 
-import de.jensklingenberg.example.imports.ImportNode
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
@@ -21,3 +21,4 @@ public class LengthoflistImport : ImportNode {
         builder.append(")")
     }
 }
+
