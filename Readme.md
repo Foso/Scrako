@@ -57,9 +57,13 @@ scriptBuilder {
 </p>
 
 ```kotlin
-scriptBuilder {
-    whenFlagClicked()
-    say("Hello!")
+projectBuilder {
+    spriteBuilder("foo"){
+        scriptBuilder {
+            whenFlagClicked()
+            say("Hello!")
+        }
+    }
 }
 ```
 
