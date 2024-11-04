@@ -1,5 +1,22 @@
 # Scrako
 
+# Hello World
+
+<p align="center">
+  <img src ="https://raw.githubusercontent.com/Foso/Scrako/master/docs/hello.png"  />
+</p>
+
+```kotlin
+projectBuilder {
+    spriteBuilder("foo"){
+        scriptBuilder {
+            whenFlagClicked()
+            say("Hello!")
+        }
+    }
+}
+```
+
 # All sprite variables
 
 ```kotlin
@@ -50,22 +67,7 @@ scriptBuilder {
 ```
 
 
-# Hello World
 
-<p align="center">
-  <img src ="https://raw.githubusercontent.com/Foso/Scrako/master/docs/hello.png"  />
-</p>
-
-```kotlin
-projectBuilder {
-    spriteBuilder("foo"){
-        scriptBuilder {
-            whenFlagClicked()
-            say("Hello!")
-        }
-    }
-}
-```
 
 # Costumes
 
