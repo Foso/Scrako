@@ -12,9 +12,7 @@ private class GoTo(private val value: String) : Node {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         visitors[identifier] = BlockSpec(
             opcode = "looks_gotofrontback",
             fields = mapOf("FRONT_BACK" to listOf(value, null))

@@ -1,12 +1,13 @@
-package de.jensklingenberg.newimport.sensing
+package de.jensklingenberg.newimport.data
 
+import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-class AnswerImport : ImportNode {
-    override val opCode: String = "sensing_answer"
+class AskAndWaitImport : ImportNode {
+    override val opCode: String = "sensing_askandwait"
 
     override fun visit(
         builder: StringBuilder,
@@ -16,10 +17,8 @@ class AnswerImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String
     ) {
-        builder.append("Answer()")
+        builder.append("ask(")
+        handle(builder, target, myList, project, blockOr.inputs["QUESTION"]?.get(1))
+        builder.append(")\n")
     }
 }
-
-
-
-

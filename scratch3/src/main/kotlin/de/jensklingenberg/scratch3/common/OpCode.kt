@@ -36,7 +36,6 @@ internal class OpCode(val value: String) {
         val sensing_distanceto = "sensing_distanceto"
         val sensing_distancetomenu = "sensing_distancetomenu"
         val data_lengthoflist = "data_lengthoflist"
-        val control_stop: String = "control_stop"
         val data_deletealloflist = "data_deletealloflist"
     }
 }

@@ -15,3 +15,5 @@ private class ColorIsTouchingColor(color: String, color2: String) : BlockSpec(
 
 
 fun colorIsTouchingColor(color: String, color2: String): BooleanBlock = ColorIsTouchingColor(color, color2)
+
+

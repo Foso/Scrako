@@ -6,7 +6,6 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 
 private class Stop(private val option: StopOption) : Node {
     override fun visit(
@@ -21,7 +20,7 @@ private class Stop(private val option: StopOption) : Node {
             throw IllegalArgumentException("Stop block with All cannot have a next block")
         }
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.control_stop,
+            opcode = "control_stop",
             fields = mapOf("STOP_OPTION" to listOf((option.s), null))
         ).toBlock(nextUUID, parent)
     }

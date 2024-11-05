@@ -1,12 +1,12 @@
-package de.jensklingenberg.newimport.sensing
+package de.jensklingenberg.newimport.data
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-class AnswerImport : ImportNode {
-    override val opCode: String = "sensing_answer"
+class GoToImport : ImportNode {
+    override val opCode: String = "looks_gotofrontback"
 
     override fun visit(
         builder: StringBuilder,
@@ -16,10 +16,8 @@ class AnswerImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String
     ) {
-        builder.append("Answer()")
+        builder.append("goTo")
+      builder.append( blockOr.fields["FRONT_BACK"]?.get(0)?.capitalize())
+        builder.append("()\n")
     }
 }
-
-
-
-

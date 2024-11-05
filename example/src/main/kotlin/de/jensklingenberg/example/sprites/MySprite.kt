@@ -36,6 +36,7 @@ import de.jensklingenberg.scratch3.event.whenKeyPress
 import de.jensklingenberg.scratch3.extension.pen.eraseAll
 import de.jensklingenberg.scratch3.extension.pen.setPenSizeTo
 import de.jensklingenberg.scratch3.extension.pen.stamp
+import de.jensklingenberg.scratch3.looks.ask
 import de.jensklingenberg.scratch3.looks.costumeNumber
 import de.jensklingenberg.scratch3.looks.hide
 import de.jensklingenberg.scratch3.looks.say
@@ -90,7 +91,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
         scriptBuilder {
             whenFlagClicked()
             setPenSizeTo(IntBlock(10))
-
+            ask("Hallo")
             say(lengthOf("Jens2"))
             log(playerY)
             hide()

@@ -14,7 +14,7 @@ import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
 
-private class Say(
+private class Ask(
     public val message: ReporterBlock,
 ) : Node {
     override fun visit(
@@ -26,17 +26,17 @@ private class Say(
     ) {
         val messageId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = "looks_say",
-            inputs = mapOf("MESSAGE" to setValue(message, messageId, context) ),
+            opcode = "sensing_askandwait",
+            inputs = mapOf("QUESTION" to setValue(message, messageId, context) ),
             fields = mapOf()
         ).toBlock(nextUUID, identifier)
         message.visit(visitors, identifier, messageId, null, context)
     }
 }
 
-fun CommonScriptBuilder.say(block: ReporterBlock) = addNode(Say(block))
-fun CommonScriptBuilder.say(message: String) = addNode(Say(StringBlock(message)))
-fun CommonScriptBuilder.say(message: Int) = addNode(Say(IntBlock(message)))
-fun CommonScriptBuilder.say(message: Double) = addNode(Say(DoubleBlock(message)))
+fun CommonScriptBuilder.ask(block: ReporterBlock) = addNode(Ask(block))
+fun CommonScriptBuilder.ask(message: String) = addNode(Ask(StringBlock(message)))
+fun CommonScriptBuilder.ask(message: Int) = addNode(Ask(IntBlock(message)))
+fun CommonScriptBuilder.ask(message: Double) = addNode(Ask(DoubleBlock(message)))
 
 

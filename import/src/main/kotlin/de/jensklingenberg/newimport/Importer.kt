@@ -18,16 +18,20 @@ import de.jensklingenberg.newimport.control.IfImport
 import de.jensklingenberg.newimport.control.If_elseImport
 import de.jensklingenberg.newimport.control.RepeatImport
 import de.jensklingenberg.newimport.control.RepeatUntilImport
+import de.jensklingenberg.newimport.control.WaitUntilImport
 import de.jensklingenberg.newimport.data.AddToList
+import de.jensklingenberg.newimport.data.AskAndWaitImport
 import de.jensklingenberg.newimport.data.ChangevariablebyImport
 import de.jensklingenberg.newimport.data.DaySinceImport
 import de.jensklingenberg.newimport.data.DeleteAllOfImport
+import de.jensklingenberg.newimport.data.GoToImport
 import de.jensklingenberg.newimport.data.HidelistImport
 import de.jensklingenberg.newimport.data.ItemoflistImport
 import de.jensklingenberg.newimport.data.LengthoflistImport
 import de.jensklingenberg.newimport.data.ReplaceItemImport
 import de.jensklingenberg.newimport.data.SetVariableImport
 import de.jensklingenberg.newimport.data.ShowListImport
+import de.jensklingenberg.newimport.data.StopImport
 import de.jensklingenberg.newimport.event.BroadcastAndWaitImport
 import de.jensklingenberg.newimport.event.BroadcastImport
 import de.jensklingenberg.newimport.event.WhenBroadcastReceived
@@ -86,6 +90,7 @@ import de.jensklingenberg.newimport.pen.SetPenSizeImport
 import de.jensklingenberg.newimport.operator.EqualsImport
 import de.jensklingenberg.newimport.operator.RandomImport
 import de.jensklingenberg.newimport.pen.PenDownImport
+import de.jensklingenberg.newimport.sensing.MouseDownImport
 import operator.GtImport
 import java.io.File
 import java.io.FileInputStream
@@ -199,12 +204,15 @@ fun importer(sb3Path: String) {
     //looks
     myList.add(SetSizeImport())
     myList.add(SetEffectToImport())
+    myList.add(GoToImport())
 
     //control
     myList.add(IfImport())
     myList.add(RepeatImport())
     myList.add(RepeatUntilImport())
     myList.add(ForeverImport())
+    myList.add(WaitUntilImport())
+    myList.add(StopImport())
 
     myList.add(ClearGrahpiceffects())
     myList.add(ReplaceItemImport())
@@ -222,12 +230,16 @@ fun importer(sb3Path: String) {
     myList.add(CallImport())
 
     myList.add(KeypressedImport())
-    myList.add(AnswerImport())
+
     myList.add(KeyoptionsImport())
 
 
     //sensing
     myList.add(DaySinceImport())
+    myList.add(AnswerImport())
+    myList.add(MouseDownImport())
+    myList.add(AskAndWaitImport())
+
     //event
     myList.add(BroadcastImport())
     myList.add(BroadcastAndWaitImport())
