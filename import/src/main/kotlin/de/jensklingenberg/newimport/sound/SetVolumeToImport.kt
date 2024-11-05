@@ -3,7 +3,6 @@ package de.jensklingenberg.newimport.sound
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
 class SetVolumeToImport : ImportNode {
@@ -11,14 +10,13 @@ class SetVolumeToImport : ImportNode {
 
     override fun visit(
         builder: StringBuilder,
-        project: ScratchProject,
         target: Target,
         blockOr: Block,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("setVolumeTo(")
-        handle(builder, target, myList, project, blockOr.inputs["VOLUME"]?.get(1))
+        handle(builder, target, myList, blockOr.inputs["VOLUME"]?.get(1))
         builder.append(")\n")
     }
 }
@@ -30,14 +28,13 @@ class ChangeVolumeByImport : ImportNode {
 
     override fun visit(
         builder: StringBuilder,
-        project: ScratchProject,
         target: Target,
         blockOr: Block,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("changeVolumeBy(")
-        handle(builder, target, myList, project, blockOr.inputs["VOLUME"]?.get(1))
+        handle(builder, target, myList, blockOr.inputs["VOLUME"]?.get(1))
         builder.append(")\n")
     }
 }

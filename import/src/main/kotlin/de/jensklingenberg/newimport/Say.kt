@@ -1,29 +1,27 @@
 package de.jensklingenberg.example.newimport
 
-import de.jensklingenberg.newimport.extracted
 import de.jensklingenberg.newimport.ImportNode
+import de.jensklingenberg.newimport.extracted
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonPrimitive
 
-public class SayImport : ImportNode {
+class SayImport : ImportNode {
     override val opCode: String = "looks_say"
 
     override fun visit(
         builder: StringBuilder,
-        project: ScratchProject,
         target: Target,
         blockOr: Block,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("say(")
-        handle(builder, target, myList, project, blockOr.inputs["MESSAGE"]?.get(1))
+        handle(builder, target, myList, blockOr.inputs["MESSAGE"]?.get(1))
         builder.append(")\n")
     }
 
@@ -34,7 +32,6 @@ fun handle(
     builder: StringBuilder,
     target: Target,
     myList: List<ImportNode>,
-    project: ScratchProject,
     jsonElement: JsonElement?
 ) {
     when (val id = jsonElement) {
@@ -53,7 +50,7 @@ fun handle(
             val timeBlock = target.blocks[timeBlockId]
 
             timeBlock?.let {
-                extracted(timeBlockId, target, myList, builder, project)
+                extracted(timeBlockId, target, myList, builder)
             }
         }
 

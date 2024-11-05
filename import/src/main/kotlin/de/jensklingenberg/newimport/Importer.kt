@@ -14,6 +14,8 @@ import com.squareup.kotlinpoet.asTypeName
 import de.jensklingenberg.example.newimport.SayImport
 import de.jensklingenberg.newimport.argument.ArgBoolean
 import de.jensklingenberg.newimport.argument.ArgStringNumber
+import de.jensklingenberg.newimport.control.CreateCloneOfImport
+import de.jensklingenberg.newimport.control.CreateCloneOfMenuImport
 import de.jensklingenberg.newimport.control.DeleteThisCloneImport
 import de.jensklingenberg.newimport.control.ForeverImport
 import de.jensklingenberg.newimport.control.IfImport
@@ -21,23 +23,19 @@ import de.jensklingenberg.newimport.control.If_elseImport
 import de.jensklingenberg.newimport.control.RepeatImport
 import de.jensklingenberg.newimport.control.RepeatUntilImport
 import de.jensklingenberg.newimport.control.StartAsCloneImport
-import de.jensklingenberg.newimport.sensing.TouchingObjectImport
+import de.jensklingenberg.newimport.control.StopImport
 import de.jensklingenberg.newimport.control.WaitImport
 import de.jensklingenberg.newimport.control.WaitUntilImport
 import de.jensklingenberg.newimport.data.AddToList
-import de.jensklingenberg.newimport.sensing.AskAndWaitImport
 import de.jensklingenberg.newimport.data.ChangevariablebyImport
-import de.jensklingenberg.newimport.sensing.DaySinceImport
 import de.jensklingenberg.newimport.data.DeleteAllOfImport
-import de.jensklingenberg.newimport.motion.DirectionImport
-import de.jensklingenberg.newimport.looks.GoToImport
+import de.jensklingenberg.newimport.data.HideVariableImport
 import de.jensklingenberg.newimport.data.HidelistImport
 import de.jensklingenberg.newimport.data.ItemoflistImport
 import de.jensklingenberg.newimport.data.LengthoflistImport
 import de.jensklingenberg.newimport.data.ReplaceItemImport
 import de.jensklingenberg.newimport.data.SetVariableImport
 import de.jensklingenberg.newimport.data.ShowListImport
-import de.jensklingenberg.newimport.control.StopImport
 import de.jensklingenberg.newimport.event.BroadcastAndWaitImport
 import de.jensklingenberg.newimport.event.BroadcastImport
 import de.jensklingenberg.newimport.event.WhenBroadcastReceived
@@ -45,38 +43,70 @@ import de.jensklingenberg.newimport.event.WhenFlag
 import de.jensklingenberg.newimport.event.WhenKey
 import de.jensklingenberg.newimport.looks.ChangeEffectBy
 import de.jensklingenberg.newimport.looks.ClearGrahpiceffects
+import de.jensklingenberg.newimport.looks.CostumNumberNameImport
 import de.jensklingenberg.newimport.looks.CostumeImport
+import de.jensklingenberg.newimport.looks.GoToImport
 import de.jensklingenberg.newimport.looks.ItemNumOfListImport
-import de.jensklingenberg.newimport.sound.PlaySoundImport
 import de.jensklingenberg.newimport.looks.SetEffectToImport
 import de.jensklingenberg.newimport.looks.SetSizeImport
+import de.jensklingenberg.newimport.looks.SizeImport
 import de.jensklingenberg.newimport.looks.SwitchcostumetoImport
 import de.jensklingenberg.newimport.motion.ChangeXbyImport
 import de.jensklingenberg.newimport.motion.ChangeybyImport
+import de.jensklingenberg.newimport.motion.DirectionImport
 import de.jensklingenberg.newimport.motion.GlideSecsToXYImport
+import de.jensklingenberg.newimport.motion.GotoxyImport
 import de.jensklingenberg.newimport.motion.MovestepsImport
 import de.jensklingenberg.newimport.motion.PointInDirectionImport
 import de.jensklingenberg.newimport.motion.SetxImport
 import de.jensklingenberg.newimport.motion.SetyImport
+import de.jensklingenberg.newimport.motion.TurnLeftImport
+import de.jensklingenberg.newimport.motion.TurnRightImport
+import de.jensklingenberg.newimport.motion.XPostionImport
+import de.jensklingenberg.newimport.motion.YPostionImport
+import de.jensklingenberg.newimport.operator.AddImport
+import de.jensklingenberg.newimport.operator.AndImport
 import de.jensklingenberg.newimport.operator.DivideImport
+import de.jensklingenberg.newimport.operator.EqualsImport
 import de.jensklingenberg.newimport.operator.JoinImport
 import de.jensklingenberg.newimport.operator.LengthofWordImport
+import de.jensklingenberg.newimport.operator.LetterOfImport
 import de.jensklingenberg.newimport.operator.LtImport
 import de.jensklingenberg.newimport.operator.MathOpImport
 import de.jensklingenberg.newimport.operator.ModImport
 import de.jensklingenberg.newimport.operator.MultiplyImport
 import de.jensklingenberg.newimport.operator.NotImport
 import de.jensklingenberg.newimport.operator.OrImport
+import de.jensklingenberg.newimport.operator.RandomImport
+import de.jensklingenberg.newimport.operator.RoundImport
 import de.jensklingenberg.newimport.operator.SubtractImport
 import de.jensklingenberg.newimport.pen.ClearImport
+import de.jensklingenberg.newimport.pen.PenDownImport
 import de.jensklingenberg.newimport.pen.PenUpImport
 import de.jensklingenberg.newimport.pen.SetPenColorToColor
+import de.jensklingenberg.newimport.pen.SetPenSizeImport
 import de.jensklingenberg.newimport.pen.StampImport
 import de.jensklingenberg.newimport.procedures.DefinitionImport
 import de.jensklingenberg.newimport.procedures.PrototypeImport
 import de.jensklingenberg.newimport.sensing.AnswerImport
+import de.jensklingenberg.newimport.sensing.AskAndWaitImport
+import de.jensklingenberg.newimport.sensing.ChangeSizeByImport
+import de.jensklingenberg.newimport.sensing.DaySinceImport
+import de.jensklingenberg.newimport.sensing.GoForwardBackwardLayersImport
 import de.jensklingenberg.newimport.sensing.KeyoptionsImport
 import de.jensklingenberg.newimport.sensing.KeypressedImport
+import de.jensklingenberg.newimport.sensing.MouseDownImport
+import de.jensklingenberg.newimport.sensing.MouseXImport
+import de.jensklingenberg.newimport.sensing.MouseYImport
+import de.jensklingenberg.newimport.sensing.NextCostumeImport
+import de.jensklingenberg.newimport.sensing.TouchingObjectImport
+import de.jensklingenberg.newimport.sound.ChangeSoundEffectByImport
+import de.jensklingenberg.newimport.sound.ChangeVolumeByImport
+import de.jensklingenberg.newimport.sound.PlaySoundImport
+import de.jensklingenberg.newimport.sound.SetVolumeToImport
+import de.jensklingenberg.newimport.sound.SoundPlayUntilDoneImport
+import de.jensklingenberg.newimport.sound.SoundSoundsMenuImport
+import de.jensklingenberg.newimport.sound.StopAllSoundsImport
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
@@ -87,40 +117,11 @@ import looks.HideImport
 import looks.NextbackdropImport
 import looks.ShowImport
 import looks.SwitchbackdroptoImport
-import de.jensklingenberg.newimport.motion.GotoxyImport
-import de.jensklingenberg.newimport.sound.SoundPlayUntilDoneImport
-import de.jensklingenberg.newimport.sound.SoundSoundsMenuImport
-import de.jensklingenberg.newimport.motion.XPostionImport
-import de.jensklingenberg.newimport.motion.YPostionImport
-import de.jensklingenberg.newimport.operator.AddImport
-import de.jensklingenberg.newimport.operator.AndImport
-import de.jensklingenberg.newimport.looks.CostumNumberNameImport
-import de.jensklingenberg.newimport.operator.LetterOfImport
-import de.jensklingenberg.newimport.operator.RoundImport
-import de.jensklingenberg.newimport.pen.SetPenSizeImport
-import de.jensklingenberg.newimport.operator.EqualsImport
-import de.jensklingenberg.newimport.operator.RandomImport
-import de.jensklingenberg.newimport.pen.PenDownImport
-import de.jensklingenberg.newimport.sensing.ChangeSizeByImport
-import de.jensklingenberg.newimport.control.CreateCloneOfImport
-import de.jensklingenberg.newimport.control.CreateCloneOfMenuImport
-import de.jensklingenberg.newimport.sensing.GoForwardBackwardLayersImport
-import de.jensklingenberg.newimport.sensing.MouseDownImport
-import de.jensklingenberg.newimport.sensing.MouseXImport
-import de.jensklingenberg.newimport.sensing.MouseYImport
-import de.jensklingenberg.newimport.sensing.NextCostumeImport
-import de.jensklingenberg.newimport.data.HideVariableImport
-import de.jensklingenberg.newimport.looks.SizeImport
-import de.jensklingenberg.newimport.sound.ChangeSoundEffectByImport
-import de.jensklingenberg.newimport.sound.ChangeVolumeByImport
-import de.jensklingenberg.newimport.sound.SetVolumeToImport
-import de.jensklingenberg.newimport.sound.StopAllSoundsImport
-import de.jensklingenberg.newimport.motion.TurnLeftImport
-import de.jensklingenberg.newimport.motion.TurnRightImport
 import operator.GtImport
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
+import java.util.Locale
 import java.util.zip.ZipInputStream
 
 
@@ -311,7 +312,8 @@ fun importer(sb3Path: String) {
         val builder = StringBuilder()
         builder.append("fun ProjectBuilder.addSprite${index}(){\n")
         builder.append("        addCostumes(listOf(")
-        builder.append(target.costumes.mapIndexed { index, costume -> target.name + "Costume" + index }.joinToString(", ") { it })
+        builder.append(target.costumes.mapIndexed { index, costume -> target.name + "Costume" + index }
+            .joinToString(", ") { it })
         builder.append("))\n")
         builder.append("spriteBuilder(\"${target.name}\"){\n")
         println("Sprite" + target.name)
@@ -335,7 +337,7 @@ fun importer(sb3Path: String) {
 
         target.blocks.filter { it.value.topLevel }.forEach { (topLevelId, topLevelBlock) ->
             builder.append("scriptBuilder{\n")
-            extracted(topLevelId, target, myList, builder, scratchProject)
+            extracted(topLevelId, target, myList, builder)
             builder.append("}\n\n")
         }
 
@@ -348,9 +350,12 @@ fun importer(sb3Path: String) {
 
         target.blocks.forEach { (_, blockOr) ->
 
-            var name = blockOr.opcode.substringAfter("_").capitalize()
+            var name = blockOr.opcode.substringAfter("_")
+                .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
             if (name == "Call") {
-                name = blockOr.mutation?.proccode?.substringBefore(" ")?.capitalize() ?: name
+                name = blockOr.mutation?.proccode?.substringBefore(" ")
+                    ?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+                    ?: name
             }
 
             if (name == "Prototype") {
@@ -486,7 +491,7 @@ fun importer(sb3Path: String) {
                 if (it.value[0].toString() == "3") {
                     val id = it.value[1] as? JsonPrimitive
                     val tt = id?.contentOrNull?.let { target.blocks[it]?.fields?.get(key) }
-                    callInput = "\\\"" + tt?.get(0) + "\\\"" ?: ""
+                    callInput = "\\\"" + tt?.get(0) + "\\\""
                 }
             }
 
@@ -510,7 +515,7 @@ fun importer(sb3Path: String) {
                             List::class.asTypeName().parameterizedBy(ImportNode::class.asTypeName())
                         )
                         .addParameter("id", String::class.asTypeName())
-                        .addParameter("target", de.jensklingenberg.scrako.model.Target::class.asTypeName())
+                        .addParameter("target", Target::class.asTypeName())
                         .addCode("builder.append(\"$claClas($callInput)\\n\")")
                         .build()
                 )
@@ -536,14 +541,13 @@ fun extracted(
     topLevelId: String,
     target: Target,
     myList: List<ImportNode>,
-    builder: StringBuilder,
-    scratchProject: ScratchProject
+    builder: StringBuilder
 ) {
     val mut = mutableMapOf<String, Block>()
     var foundId = topLevelId
     var hasNext = target.blocks[topLevelId]?.next?.isNotEmpty() ?: false
 
-    if(hasNext == false){
+    if (hasNext == false) {
         mut[topLevelId] = target.blocks[topLevelId]!!
     }
 
@@ -561,15 +565,14 @@ fun extracted(
 
     target.blocks.forEach { (t, u) ->
         if (t == foundId) {
-          //  mut[t] = u
-          //  foundId = u.next ?: ""
+            //  mut[t] = u
+            //  foundId = u.next ?: ""
         }
     }
 
     mut.forEach { (id, block) ->
         myList.find { it.opCodeSupported(block.opcode) }?.visit(
             builder,
-            scratchProject,
             target,
             block,
             myList,

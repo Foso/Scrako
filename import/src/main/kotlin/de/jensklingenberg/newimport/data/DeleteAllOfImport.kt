@@ -2,15 +2,13 @@ package de.jensklingenberg.newimport.data
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class DeleteAllOfImport : ImportNode {
+class DeleteAllOfImport : ImportNode {
     override val opCode: String = "data_deletealloflist"
 
     override fun visit(
         builder: StringBuilder,
-        scratchProject: ScratchProject,
         target: Target,
         blockOr: Block,
         myList: List<ImportNode>,
