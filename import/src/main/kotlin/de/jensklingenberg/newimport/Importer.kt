@@ -12,39 +12,48 @@ import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.asTypeName
 import de.jensklingenberg.example.newimport.SayImport
+import de.jensklingenberg.newimport.argument.ArgBoolean
 import de.jensklingenberg.newimport.argument.ArgStringNumber
+import de.jensklingenberg.newimport.control.DeleteThisCloneImport
 import de.jensklingenberg.newimport.control.ForeverImport
 import de.jensklingenberg.newimport.control.IfImport
 import de.jensklingenberg.newimport.control.If_elseImport
 import de.jensklingenberg.newimport.control.RepeatImport
 import de.jensklingenberg.newimport.control.RepeatUntilImport
+import de.jensklingenberg.newimport.control.StartAsCloneImport
+import de.jensklingenberg.newimport.sensing.TouchingObjectImport
+import de.jensklingenberg.newimport.control.WaitImport
 import de.jensklingenberg.newimport.control.WaitUntilImport
 import de.jensklingenberg.newimport.data.AddToList
-import de.jensklingenberg.newimport.data.AskAndWaitImport
+import de.jensklingenberg.newimport.sensing.AskAndWaitImport
 import de.jensklingenberg.newimport.data.ChangevariablebyImport
-import de.jensklingenberg.newimport.data.DaySinceImport
+import de.jensklingenberg.newimport.sensing.DaySinceImport
 import de.jensklingenberg.newimport.data.DeleteAllOfImport
-import de.jensklingenberg.newimport.data.GoToImport
+import de.jensklingenberg.newimport.motion.DirectionImport
+import de.jensklingenberg.newimport.looks.GoToImport
 import de.jensklingenberg.newimport.data.HidelistImport
 import de.jensklingenberg.newimport.data.ItemoflistImport
 import de.jensklingenberg.newimport.data.LengthoflistImport
 import de.jensklingenberg.newimport.data.ReplaceItemImport
 import de.jensklingenberg.newimport.data.SetVariableImport
 import de.jensklingenberg.newimport.data.ShowListImport
-import de.jensklingenberg.newimport.data.StopImport
+import de.jensklingenberg.newimport.control.StopImport
 import de.jensklingenberg.newimport.event.BroadcastAndWaitImport
 import de.jensklingenberg.newimport.event.BroadcastImport
 import de.jensklingenberg.newimport.event.WhenBroadcastReceived
 import de.jensklingenberg.newimport.event.WhenFlag
 import de.jensklingenberg.newimport.event.WhenKey
+import de.jensklingenberg.newimport.looks.ChangeEffectBy
 import de.jensklingenberg.newimport.looks.ClearGrahpiceffects
 import de.jensklingenberg.newimport.looks.CostumeImport
 import de.jensklingenberg.newimport.looks.ItemNumOfListImport
+import de.jensklingenberg.newimport.sound.PlaySoundImport
 import de.jensklingenberg.newimport.looks.SetEffectToImport
 import de.jensklingenberg.newimport.looks.SetSizeImport
 import de.jensklingenberg.newimport.looks.SwitchcostumetoImport
 import de.jensklingenberg.newimport.motion.ChangeXbyImport
 import de.jensklingenberg.newimport.motion.ChangeybyImport
+import de.jensklingenberg.newimport.motion.GlideSecsToXYImport
 import de.jensklingenberg.newimport.motion.MovestepsImport
 import de.jensklingenberg.newimport.motion.PointInDirectionImport
 import de.jensklingenberg.newimport.motion.SetxImport
@@ -79,18 +88,35 @@ import looks.NextbackdropImport
 import looks.ShowImport
 import looks.SwitchbackdroptoImport
 import de.jensklingenberg.newimport.motion.GotoxyImport
+import de.jensklingenberg.newimport.sound.SoundPlayUntilDoneImport
+import de.jensklingenberg.newimport.sound.SoundSoundsMenuImport
 import de.jensklingenberg.newimport.motion.XPostionImport
 import de.jensklingenberg.newimport.motion.YPostionImport
 import de.jensklingenberg.newimport.operator.AddImport
 import de.jensklingenberg.newimport.operator.AndImport
-import de.jensklingenberg.newimport.operator.CostumNumberNameImport
+import de.jensklingenberg.newimport.looks.CostumNumberNameImport
 import de.jensklingenberg.newimport.operator.LetterOfImport
 import de.jensklingenberg.newimport.operator.RoundImport
 import de.jensklingenberg.newimport.pen.SetPenSizeImport
 import de.jensklingenberg.newimport.operator.EqualsImport
 import de.jensklingenberg.newimport.operator.RandomImport
 import de.jensklingenberg.newimport.pen.PenDownImport
+import de.jensklingenberg.newimport.sensing.ChangeSizeByImport
+import de.jensklingenberg.newimport.control.CreateCloneOfImport
+import de.jensklingenberg.newimport.control.CreateCloneOfMenuImport
+import de.jensklingenberg.newimport.sensing.GoForwardBackwardLayersImport
 import de.jensklingenberg.newimport.sensing.MouseDownImport
+import de.jensklingenberg.newimport.sensing.MouseXImport
+import de.jensklingenberg.newimport.sensing.MouseYImport
+import de.jensklingenberg.newimport.sensing.NextCostumeImport
+import de.jensklingenberg.newimport.data.HideVariableImport
+import de.jensklingenberg.newimport.looks.SizeImport
+import de.jensklingenberg.newimport.sound.ChangeSoundEffectByImport
+import de.jensklingenberg.newimport.sound.ChangeVolumeByImport
+import de.jensklingenberg.newimport.sound.SetVolumeToImport
+import de.jensklingenberg.newimport.sound.StopAllSoundsImport
+import de.jensklingenberg.newimport.motion.TurnLeftImport
+import de.jensklingenberg.newimport.motion.TurnRightImport
 import operator.GtImport
 import java.io.File
 import java.io.FileInputStream
@@ -149,6 +175,8 @@ fun importer(sb3Path: String) {
     myList.add(YPostionImport())
     myList.add(ChangeybyImport())
     myList.add(ChangeXbyImport())
+    myList.add(SoundSoundsMenuImport())
+    myList.add(GlideSecsToXYImport())
     myList.add(ChangevariablebyImport())
     myList.add(HidelistImport())
 
@@ -158,6 +186,10 @@ fun importer(sb3Path: String) {
 
     //motion
     myList.add(PointInDirectionImport())
+    myList.add(TurnRightImport())
+    myList.add(TurnLeftImport())
+    myList.add(DirectionImport())
+
 
     //Pen
     myList.add(StampImport())
@@ -191,7 +223,7 @@ fun importer(sb3Path: String) {
     myList.add(AddImport())
     myList.add(RandomImport())
     myList.add(ModImport())
-    myList.add(ArgStringNumber())
+
     myList.add(AndImport())
     myList.add(OrImport())
     myList.add(LengthofWordImport())
@@ -205,14 +237,38 @@ fun importer(sb3Path: String) {
     myList.add(SetSizeImport())
     myList.add(SetEffectToImport())
     myList.add(GoToImport())
+    myList.add(ChangeEffectBy())
+    myList.add(ChangeSizeByImport())
+    myList.add(NextCostumeImport())
+    myList.add(MouseXImport())
+    myList.add(MouseYImport())
+    myList.add(GoForwardBackwardLayersImport())
+
+    //sound
+    myList.add(PlaySoundImport())
+    myList.add(SoundPlayUntilDoneImport())
+    myList.add(SetVolumeToImport())
+    myList.add(ChangeVolumeByImport())
+    myList.add(ChangeSoundEffectByImport())
+    myList.add(StopAllSoundsImport())
+
+    //data
+    myList.add(HideVariableImport())
+
+    myList.add(SizeImport())
 
     //control
     myList.add(IfImport())
     myList.add(RepeatImport())
+    myList.add(DeleteThisCloneImport())
+    myList.add(StartAsCloneImport())
     myList.add(RepeatUntilImport())
     myList.add(ForeverImport())
     myList.add(WaitUntilImport())
+    myList.add(WaitImport())
     myList.add(StopImport())
+    myList.add(CreateCloneOfImport())
+    myList.add(CreateCloneOfMenuImport())
 
     myList.add(ClearGrahpiceffects())
     myList.add(ReplaceItemImport())
@@ -225,7 +281,8 @@ fun importer(sb3Path: String) {
     myList.add(DeleteAllOfImport())
     myList.add(AddToList())
 
-
+    myList.add(ArgStringNumber())
+    myList.add(ArgBoolean())
     myList.add(SetVariableImport())
     myList.add(CallImport())
 
@@ -239,6 +296,7 @@ fun importer(sb3Path: String) {
     myList.add(AnswerImport())
     myList.add(MouseDownImport())
     myList.add(AskAndWaitImport())
+    myList.add(TouchingObjectImport())
 
     //event
     myList.add(BroadcastImport())
@@ -251,11 +309,15 @@ fun importer(sb3Path: String) {
 
     scratchProject.targets.forEachIndexed { index, target ->
         val builder = StringBuilder()
+        builder.append("fun ProjectBuilder.addSprite${index}(){\n")
+        builder.append("        addCostumes(listOf(")
+        builder.append(target.costumes.mapIndexed { index, costume -> target.name + "Costume" + index }.joinToString(", ") { it })
+        builder.append("))\n")
         builder.append("spriteBuilder(\"${target.name}\"){\n")
         println("Sprite" + target.name)
         val colorName = target.name + "Costume"
         val test = target.costumes.mapIndexed { index, costume ->
-            "val _${(colorName + index).replace("^", "").replace(">", "")} = Costume(\n" +
+            "val ${(colorName + index).replace("^", "").replace(">", "")} = Costume(\n" +
                     "    name = \"${costume.name}\",\n" +
                     "    bitmapResolution = ${costume.bitmapResolution},\n" +
                     "    dataFormat = \"${costume.dataFormat}\",\n" +
@@ -267,8 +329,8 @@ fun importer(sb3Path: String) {
         }.joinToString("\n") {
             it
         }
-
-        File("${wrapperFolder}Costumes${target.name}.kt").writeText(test)
+        File("${wrapperFolder}/costumes/").mkdirs()
+        File("${wrapperFolder}/costumes/Costumes${target.name}.kt").writeText(test)
 
 
         target.blocks.filter { it.value.topLevel }.forEach { (topLevelId, topLevelBlock) ->
@@ -277,7 +339,7 @@ fun importer(sb3Path: String) {
             builder.append("}\n\n")
         }
 
-        builder.append("}\n\n")
+        builder.append("}\n}\n")
         File("${wrapperFolder}${target.name}.kt").writeText(builder.toString())
         return@forEachIndexed
 

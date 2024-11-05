@@ -1,13 +1,12 @@
-package de.jensklingenberg.newimport.motion
+package de.jensklingenberg.newimport.sound
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class ChangeXbyImport : ImportNode {
-    override val opCode: String = "motion_changexby"
+class SoundSoundsMenuImport : ImportNode {
+    override val opCode: String = "sound_sounds_menu"
 
     override fun visit(
         builder: StringBuilder,
@@ -17,13 +16,8 @@ public class ChangeXbyImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("changeXby(")
-        handle(builder, target, myList, project, blockOr.inputs["DX"]?.get(1))
-        builder.append(")\n")
+
+       builder.append(blockOr.fields["SOUND_MENU"]?.get(0))
+
     }
 }
-
-//sound_sounds_menu
-
-//sound_playuntildone
-

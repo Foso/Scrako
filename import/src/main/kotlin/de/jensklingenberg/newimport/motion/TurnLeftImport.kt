@@ -1,24 +1,24 @@
 package de.jensklingenberg.newimport.motion
 
-import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.example.newimport.handle
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class SetyImport : ImportNode {
-    override val opCode: String = "motion_sety"
+class TurnLeftImport : ImportNode {
+    override val opCode: String = "motion_turnleft"
 
     override fun visit(
         builder: StringBuilder,
-        scratchProject: ScratchProject,
+        project: ScratchProject,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
-        id: String,
+        blockId: String,
     ) {
-        builder.append("setY(")
-        handle(builder, target, myList, scratchProject, block.inputs["Y"]?.get(1))
+        builder.append("turnLeft(")
+        handle(builder, target, myList, project, blockOr.inputs["DEGREES"]?.get(1))
         builder.append(")\n")
     }
 }

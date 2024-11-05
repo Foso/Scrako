@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class Changeeffectby(val block0: ReporterBlock, val effect: String) : Node {
@@ -20,7 +19,7 @@ private class Changeeffectby(val block0: ReporterBlock, val effect: String) : No
     ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sound_changeeffectby,
+            opcode = "sound_changeeffectby",
             inputs = mapOf(
                 "VALUE" to setValue(block0, block0Id, context)
             ),
@@ -32,5 +31,5 @@ private class Changeeffectby(val block0: ReporterBlock, val effect: String) : No
     }
 }
 
-fun CommonScriptBuilder.changeEffectBy(effect: SoundEffect, block0: ReporterBlock) =
+fun CommonScriptBuilder.changeSoundEffectBy(effect: SoundEffect, block0: ReporterBlock) =
     addNode(Changeeffectby(block0, effect.name.lowercase()))

@@ -21,3 +21,18 @@ public class ArgStringNumber : ImportNode {
 
   }
 }
+
+class ArgBoolean : ImportNode {
+  override val opCode: String = "argument_reporter_boolean"
+
+  override fun visit(
+    builder: StringBuilder,
+    project: ScratchProject,
+    target: Target,
+    blockOr: Block,
+    myList: List<ImportNode>,
+    blockId: String,
+  ) {
+    builder.append(blockOr.fields["VALUE"]?.get(0))
+  }
+}

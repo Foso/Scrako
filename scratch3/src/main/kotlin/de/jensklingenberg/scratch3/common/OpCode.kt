@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 internal class OpCode(val value: String) {
     companion object {
         val sound_changevolumeby = "sound_changevolumeby"
-        val sound_changeeffectby = "sound_changeeffectby"
         val sound_cleareffects = "sound_cleareffects"
         val looks_seteffectto = "looks_seteffectto"
         val sensing_of_object_menu = "sensing_of_object_menu"

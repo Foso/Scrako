@@ -1,4 +1,4 @@
-package de.jensklingenberg.scratch3.looks
+package de.jensklingenberg.scratch3.sensing
 
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder

@@ -1,6 +1,7 @@
-package de.jensklingenberg.newimport.operator
+package de.jensklingenberg.newimport.looks
 
 import de.jensklingenberg.newimport.ImportNode
+import de.jensklingenberg.newimport.operator.LooksBlock
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 

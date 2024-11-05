@@ -1,12 +1,12 @@
-package de.jensklingenberg.newimport.data
+package de.jensklingenberg.newimport.control
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-class DaySinceImport : ImportNode {
-    override val opCode: String = "sensing_dayssince2000"
+class CreateCloneOfMenuImport : ImportNode {
+    override val opCode: String = "control_create_clone_of_menu"
 
     override fun visit(
         builder: StringBuilder,
@@ -14,8 +14,11 @@ class DaySinceImport : ImportNode {
         target: Target,
         blockOr: Block,
         myList: List<ImportNode>,
-        blockId: String
+        id: String,
     ) {
-        builder.append("daysSince2000()")
+        builder.append("createCloneOfMenu(")
+        builder.append(blockOr.fields["CLONE_OPTION"]?.get(0))
+        builder.append(")\n")
     }
+
 }

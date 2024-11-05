@@ -6,23 +6,19 @@ import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 
-public class SetEffectToImport : ImportNode {
-    override val opCode: String = "looks_seteffectto"
+class SizeImport : ImportNode {
+    override val opCode: String = "looks_size"
 
     override fun visit(
         builder: StringBuilder,
-        scratchProject: ScratchProject,
+        project: ScratchProject,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
-        id: String,
+        blockId: String,
     ) {
-        builder.append("setEffectTo(")
-        handle(builder, target, myList, scratchProject, block.inputs["VALUE"]?.get(1))
-        builder.append(",")
-        builder.append(block.fields["EFFECT"]?.get(0))
+        builder.append("setSize(")
+        handle(builder, target, myList, project, blockOr.inputs["SIZE"]?.get(1))
         builder.append(")\n")
     }
 }
-
-
