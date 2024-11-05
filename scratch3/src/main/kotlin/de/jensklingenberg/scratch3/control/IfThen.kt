@@ -3,8 +3,10 @@ package de.jensklingenberg.scratch3.control
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.CBlock
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -13,7 +15,7 @@ import java.util.UUID
 internal class IfThen(
     private val condition: BooleanBlock,
     private val leftStack: List<Node>
-) : Node {
+) : Node, CBlock {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -22,19 +24,13 @@ internal class IfThen(
         nextUUID: String?,
         context: Context
     ) {
-        val newNext = nextUUID
         val operatorUUID = UUID.randomUUID().toString()
         val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
 
         visitors[identifier] = BlockSpec(
             opcode = "control_if",
             inputs = mapOf(
-                "CONDITION" to JsonArray(
-                    listOf(
-                        JsonPrimitive(2),
-                        JsonPrimitive(operatorUUID)
-                    )
-                ),
+                "CONDITION" to setValue(condition, operatorUUID, context),
                 "SUBSTACK" to JsonArray(
                     listOf(
                         JsonPrimitive(2),
@@ -42,7 +38,7 @@ internal class IfThen(
                     )
                 )
             )
-        ).toBlock(newNext, parent)
+        ).toBlock(nextUUID, parent)
         condition.visit(visitors, identifier, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->

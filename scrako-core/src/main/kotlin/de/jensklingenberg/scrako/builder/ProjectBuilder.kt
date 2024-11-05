@@ -1,7 +1,6 @@
 package de.jensklingenberg.scrako.builder
 
 import de.jensklingenberg.scrako.common.Broadcast
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.defaultStage

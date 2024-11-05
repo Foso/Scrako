@@ -3,8 +3,9 @@ package de.jensklingenberg.scratch3.control
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch3.common.OpCode
 import kotlinx.serialization.json.JsonArray
@@ -30,12 +31,7 @@ internal class RepeatUntil(
         visitors[identifier] = BlockSpec(
             opcode = OpCode.control_repeat_until,
             inputs = mapOf(
-                "CONDITION" to JsonArray(
-                    listOf(
-                        JsonPrimitive(2),
-                        JsonPrimitive(operatorUUID)
-                    )
-                ),
+                "CONDITION" to setValue(condition, operatorUUID, context),
                 "SUBSTACK" to JsonArray(
                     listOf(
                         JsonPrimitive(2),

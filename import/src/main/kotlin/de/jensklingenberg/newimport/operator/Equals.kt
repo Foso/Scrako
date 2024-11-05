@@ -1,4 +1,4 @@
-package `operator`
+package de.jensklingenberg.newimport.operator
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block

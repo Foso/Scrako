@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch3.sensing
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scratch3.common.OpCode

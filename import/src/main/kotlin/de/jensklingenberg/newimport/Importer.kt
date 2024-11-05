@@ -11,27 +11,58 @@ import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.asTypeName
+import de.jensklingenberg.example.newimport.SayImport
+import de.jensklingenberg.newimport.argument.ArgStringNumber
+import de.jensklingenberg.newimport.control.ForeverImport
 import de.jensklingenberg.newimport.control.IfImport
 import de.jensklingenberg.newimport.control.If_elseImport
-import de.jensklingenberg.newimport.data.ChangevariablebyImport
-import de.jensklingenberg.newimport.pen.StampImport
 import de.jensklingenberg.newimport.control.RepeatImport
-import de.jensklingenberg.newimport.operator.MultiplyImport
-import de.jensklingenberg.example.newimport.SayImport
-import de.jensklingenberg.newimport.control.ForeverImport
+import de.jensklingenberg.newimport.control.RepeatUntilImport
+import de.jensklingenberg.newimport.data.AddToList
+import de.jensklingenberg.newimport.data.ChangevariablebyImport
+import de.jensklingenberg.newimport.data.DaySinceImport
+import de.jensklingenberg.newimport.data.DeleteAllOfImport
+import de.jensklingenberg.newimport.data.HidelistImport
+import de.jensklingenberg.newimport.data.ItemoflistImport
 import de.jensklingenberg.newimport.data.LengthoflistImport
 import de.jensklingenberg.newimport.data.ReplaceItemImport
 import de.jensklingenberg.newimport.data.SetVariableImport
 import de.jensklingenberg.newimport.data.ShowListImport
+import de.jensklingenberg.newimport.event.BroadcastAndWaitImport
 import de.jensklingenberg.newimport.event.BroadcastImport
 import de.jensklingenberg.newimport.event.WhenBroadcastReceived
 import de.jensklingenberg.newimport.event.WhenFlag
 import de.jensklingenberg.newimport.event.WhenKey
 import de.jensklingenberg.newimport.looks.ClearGrahpiceffects
+import de.jensklingenberg.newimport.looks.CostumeImport
+import de.jensklingenberg.newimport.looks.ItemNumOfListImport
+import de.jensklingenberg.newimport.looks.SetEffectToImport
+import de.jensklingenberg.newimport.looks.SetSizeImport
+import de.jensklingenberg.newimport.looks.SwitchcostumetoImport
+import de.jensklingenberg.newimport.motion.ChangeXbyImport
+import de.jensklingenberg.newimport.motion.ChangeybyImport
+import de.jensklingenberg.newimport.motion.MovestepsImport
+import de.jensklingenberg.newimport.motion.PointInDirectionImport
 import de.jensklingenberg.newimport.motion.SetxImport
 import de.jensklingenberg.newimport.motion.SetyImport
+import de.jensklingenberg.newimport.operator.DivideImport
+import de.jensklingenberg.newimport.operator.JoinImport
+import de.jensklingenberg.newimport.operator.LengthofWordImport
+import de.jensklingenberg.newimport.operator.LtImport
+import de.jensklingenberg.newimport.operator.MathOpImport
+import de.jensklingenberg.newimport.operator.ModImport
+import de.jensklingenberg.newimport.operator.MultiplyImport
+import de.jensklingenberg.newimport.operator.NotImport
+import de.jensklingenberg.newimport.operator.OrImport
+import de.jensklingenberg.newimport.operator.SubtractImport
+import de.jensklingenberg.newimport.pen.ClearImport
+import de.jensklingenberg.newimport.pen.PenUpImport
+import de.jensklingenberg.newimport.pen.SetPenColorToColor
+import de.jensklingenberg.newimport.pen.StampImport
+import de.jensklingenberg.newimport.procedures.DefinitionImport
 import de.jensklingenberg.newimport.procedures.PrototypeImport
 import de.jensklingenberg.newimport.sensing.AnswerImport
+import de.jensklingenberg.newimport.sensing.KeyoptionsImport
 import de.jensklingenberg.newimport.sensing.KeypressedImport
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.ScratchProject
@@ -43,34 +74,18 @@ import looks.HideImport
 import looks.NextbackdropImport
 import looks.ShowImport
 import looks.SwitchbackdroptoImport
-import de.jensklingenberg.newimport.motion.MovestepsImport
-import operator.AddImport
-import operator.AndImport
-import de.jensklingenberg.newimport.operator.DivideImport
-import de.jensklingenberg.newimport.operator.LtImport
-import de.jensklingenberg.newimport.operator.SubtractImport
-import de.jensklingenberg.newimport.sensing.KeyoptionsImport
-import de.jensklingenberg.newimport.looks.SwitchcostumetoImport
-import de.jensklingenberg.newimport.argument.ArgStringNumber
-import de.jensklingenberg.newimport.control.RepeatUntilImport
-import de.jensklingenberg.newimport.data.AddToList
-import de.jensklingenberg.newimport.data.DeleteAllOfImport
-import de.jensklingenberg.newimport.data.HidelistImport
-import de.jensklingenberg.newimport.data.ItemoflistImport
-import de.jensklingenberg.newimport.looks.SetSizeImport
-import de.jensklingenberg.newimport.operator.LengthofWordImport
-import de.jensklingenberg.newimport.motion.ChangeXbyImport
-import de.jensklingenberg.newimport.motion.ChangeybyImport
-import de.jensklingenberg.newimport.operator.JoinImport
-import de.jensklingenberg.newimport.operator.MathOpImport
-import de.jensklingenberg.newimport.operator.NotImport
-import motion.GotoxyImport
-import de.jensklingenberg.newimport.pen.ClearImport
-import de.jensklingenberg.newimport.pen.PenUpImport
-import de.jensklingenberg.newimport.operator.ModImport
-import de.jensklingenberg.newimport.operator.OrImport
-import de.jensklingenberg.newimport.procedures.DefinitionImport
-import operator.EqualsImport
+import de.jensklingenberg.newimport.motion.GotoxyImport
+import de.jensklingenberg.newimport.motion.XPostionImport
+import de.jensklingenberg.newimport.motion.YPostionImport
+import de.jensklingenberg.newimport.operator.AddImport
+import de.jensklingenberg.newimport.operator.AndImport
+import de.jensklingenberg.newimport.operator.CostumNumberNameImport
+import de.jensklingenberg.newimport.operator.LetterOfImport
+import de.jensklingenberg.newimport.operator.RoundImport
+import de.jensklingenberg.newimport.pen.SetPenSizeImport
+import de.jensklingenberg.newimport.operator.EqualsImport
+import de.jensklingenberg.newimport.operator.RandomImport
+import de.jensklingenberg.newimport.pen.PenDownImport
 import operator.GtImport
 import java.io.File
 import java.io.FileInputStream
@@ -123,20 +138,29 @@ fun importer(sb3Path: String) {
     myList.add(WhenFlag())
     myList.add(WhenKey())
     myList.add(WhenBroadcastReceived())
-    myList.add(ClearImport())
     myList.add(MovestepsImport())
     myList.add(GotoxyImport())
+    myList.add(XPostionImport())
+    myList.add(YPostionImport())
     myList.add(ChangeybyImport())
     myList.add(ChangeXbyImport())
     myList.add(ChangevariablebyImport())
     myList.add(HidelistImport())
+
+    myList.add(CostumeImport())
     myList.add(SwitchcostumetoImport())
     myList.add(ItemoflistImport())
 
+    //motion
+    myList.add(PointInDirectionImport())
 
     //Pen
     myList.add(StampImport())
+    myList.add(SetPenColorToColor())
     myList.add(PenUpImport())
+    myList.add(PenDownImport())
+    myList.add(SetPenSizeImport())
+    myList.add(ClearImport())
 
 
     //looks
@@ -150,6 +174,7 @@ fun importer(sb3Path: String) {
     myList.add(PrototypeImport())
     myList.add(ShowImport())
     myList.add(If_elseImport())
+    myList.add(CostumNumberNameImport())
 
     //operator
     myList.add(EqualsImport())
@@ -159,6 +184,7 @@ fun importer(sb3Path: String) {
     myList.add(JoinImport())
     myList.add(GtImport())
     myList.add(AddImport())
+    myList.add(RandomImport())
     myList.add(ModImport())
     myList.add(ArgStringNumber())
     myList.add(AndImport())
@@ -167,9 +193,12 @@ fun importer(sb3Path: String) {
     myList.add(MultiplyImport())
     myList.add(SubtractImport())
     myList.add(NotImport())
+    myList.add(LetterOfImport())
+    myList.add(RoundImport())
 
     //looks
     myList.add(SetSizeImport())
+    myList.add(SetEffectToImport())
 
     //control
     myList.add(IfImport())
@@ -179,6 +208,8 @@ fun importer(sb3Path: String) {
 
     myList.add(ClearGrahpiceffects())
     myList.add(ReplaceItemImport())
+
+    myList.add(ItemNumOfListImport())
 
     //data
     myList.add(LengthoflistImport())
@@ -193,7 +224,14 @@ fun importer(sb3Path: String) {
     myList.add(KeypressedImport())
     myList.add(AnswerImport())
     myList.add(KeyoptionsImport())
+
+
+    //sensing
+    myList.add(DaySinceImport())
+    //event
     myList.add(BroadcastImport())
+    myList.add(BroadcastAndWaitImport())
+
     myList.add(DefaultImporter())
     val scratchProject = json.decodeFromString<ScratchProject>(projectJson)
 
@@ -203,32 +241,33 @@ fun importer(sb3Path: String) {
         val builder = StringBuilder()
         builder.append("spriteBuilder(\"${target.name}\"){\n")
         println("Sprite" + target.name)
-        val colorName = target.name + "Costume" + index
-        val test = target.costumes.joinToString("\n") {
-            "val _${colorName.replace("^", "").replace(">", "")} = Costume(\n" +
-                    "    name = \"${it.name}\",\n" +
-                    "    bitmapResolution = ${it.bitmapResolution},\n" +
-                    "    dataFormat = \"${it.dataFormat}\",\n" +
-                    "    assetId = \"${it.assetId}\",\n" +
-                    "    md5ext = \"${it.md5ext}\",\n" +
-                    "    rotationCenterX = ${it.rotationCenterX},\n" +
-                    "    rotationCenterY = ${it.rotationCenterY}\n" +
+        val colorName = target.name + "Costume"
+        val test = target.costumes.mapIndexed { index, costume ->
+            "val _${(colorName + index).replace("^", "").replace(">", "")} = Costume(\n" +
+                    "    name = \"${costume.name}\",\n" +
+                    "    bitmapResolution = ${costume.bitmapResolution},\n" +
+                    "    dataFormat = \"${costume.dataFormat}\",\n" +
+                    "    assetId = \"${costume.assetId}\",\n" +
+                    "    md5ext = \"${costume.md5ext}\",\n" +
+                    "    rotationCenterX = ${costume.rotationCenterX},\n" +
+                    "    rotationCenterY = ${costume.rotationCenterY}\n" +
                     ")"
-
+        }.joinToString("\n") {
+            it
         }
 
         File("${wrapperFolder}Costumes${target.name}.kt").writeText(test)
 
 
-        target.blocks.filter { it.value.topLevel }.forEach { topLevelId, topLevelBlock ->
+        target.blocks.filter { it.value.topLevel }.forEach { (topLevelId, topLevelBlock) ->
             builder.append("scriptBuilder{\n")
             extracted(topLevelId, target, myList, builder, scratchProject)
             builder.append("}\n\n")
         }
 
-        builder.append("}}\n\n")
+        builder.append("}\n\n")
         File("${wrapperFolder}${target.name}.kt").writeText(builder.toString())
-return@forEachIndexed
+        return@forEachIndexed
 
         val nodeClassName = ClassName("de.jensklingenberg.scrako.common", "Node")
         val reporterBlock = ClassName("de.jensklingenberg.scrako.common", "ReporterBlock")
@@ -240,7 +279,7 @@ return@forEachIndexed
                 name = blockOr.mutation?.proccode?.substringBefore(" ")?.capitalize() ?: name
             }
 
-            if(name == "Prototype"){
+            if (name == "Prototype") {
                 return@forEach
             }
             val packageName = blockOr.opcode.substringBefore("_")
@@ -357,7 +396,7 @@ return@forEachIndexed
                     .addType(nodeClass)
                     .addFunction(extFunSpec)
                     .build().toString()
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 println("Error: $e")
                 ""
             }
@@ -428,10 +467,28 @@ fun extracted(
 ) {
     val mut = mutableMapOf<String, Block>()
     var foundId = topLevelId
+    var hasNext = target.blocks[topLevelId]?.next?.isNotEmpty() ?: false
+
+    if(hasNext == false){
+        mut[topLevelId] = target.blocks[topLevelId]!!
+    }
+
+    while (hasNext) {
+        val myBlock = target.blocks[foundId]
+        if (myBlock != null) {
+            mut[foundId] = myBlock
+            foundId = myBlock.next ?: ""
+            hasNext = foundId.isNotEmpty()
+        } else {
+            hasNext = false
+        }
+    }
+
+
     target.blocks.forEach { (t, u) ->
         if (t == foundId) {
-            mut[t] = u
-            foundId = u.next ?: ""
+          //  mut[t] = u
+          //  foundId = u.next ?: ""
         }
     }
 

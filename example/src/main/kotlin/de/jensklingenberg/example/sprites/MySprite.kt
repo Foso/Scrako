@@ -34,7 +34,9 @@ import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch3.event.whenKeyPress
 import de.jensklingenberg.scratch3.extension.pen.eraseAll
+import de.jensklingenberg.scratch3.extension.pen.setPenSizeTo
 import de.jensklingenberg.scratch3.extension.pen.stamp
+import de.jensklingenberg.scratch3.looks.costumeNumber
 import de.jensklingenberg.scratch3.looks.hide
 import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.motion.changeYby
@@ -87,8 +89,9 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
          */
         scriptBuilder {
             whenFlagClicked()
-            say(mathop(MathOptions.FLOOR, 10))
-            say(lengthOf("Jens"))
+            setPenSizeTo(IntBlock(10))
+
+            say(lengthOf("Jens2"))
             log(playerY)
             hide()
             replaceItemOfListWith(getIndexOf(0, 0), jens2, PlayerIconID)

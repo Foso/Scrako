@@ -22,3 +22,8 @@ public class StampImport : ImportNode {
     builder.append("stamp()\n")
   }
 }
+
+
+
+
+

@@ -1,4 +1,4 @@
-package `data`
+package de.jensklingenberg.newimport.data
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block

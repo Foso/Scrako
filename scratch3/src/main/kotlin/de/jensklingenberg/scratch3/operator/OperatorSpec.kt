@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.operator
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
@@ -18,7 +18,8 @@ abstract class Operator(
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context) {
+        context: Context
+    ) {
         val operatorUUID1 = operand1.associateWith { UUID.randomUUID().toString() }
 
         val inputs = inputKeys.mapIndexed { index, key ->

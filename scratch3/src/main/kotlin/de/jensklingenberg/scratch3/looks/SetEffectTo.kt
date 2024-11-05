@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch3.looks
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
@@ -36,3 +36,5 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
 }
 
 fun CommonScriptBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addNode(SetEffectTo(block, effectName))
+fun CommonScriptBuilder.setEffectTo(effect: Effect, block: ReporterBlock) =
+    addNode(SetEffectTo(block, effect.name.toLowerCase()))

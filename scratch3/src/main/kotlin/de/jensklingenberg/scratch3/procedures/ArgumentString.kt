@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.procedures
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.model.Block
 
 class ArgumentString(override val name: String, override val defaultValue: String = "") : Argument {

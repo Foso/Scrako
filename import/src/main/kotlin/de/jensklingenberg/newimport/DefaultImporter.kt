@@ -21,6 +21,7 @@ class DefaultImporter : ImportNode {
         blockId: String
     ) {
         builder.append("default: ${blockOr.opcode}\n")
+        println("default: ${blockOr.opcode}\n")
     }
 
 }

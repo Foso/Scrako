@@ -1,6 +1,5 @@
 package de.jensklingenberg.scrako.builder
 
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable

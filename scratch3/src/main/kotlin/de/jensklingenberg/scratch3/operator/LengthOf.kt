@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.operator
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.setValue
@@ -14,11 +14,11 @@ private class LengthOf(
   public val string: ReporterBlock,
 ) : ReporterBlock {
   override fun visit(
-    visitors: MutableMap<String, Block>,
-    parent: String?,
-    identifier: String,
-    nextUUID: String?,
-    context: Context,
+      visitors: MutableMap<String, Block>,
+      parent: String?,
+      identifier: String,
+      nextUUID: String?,
+      context: Context,
   ) {
     val stringId = UUID.randomUUID().toString()
     visitors[identifier] = BlockSpec(

@@ -1,14 +1,13 @@
 package de.jensklingenberg.scratch3.data
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class ItemNumOfList(private val block0: ReporterBlock, private val list: ScratchList) : Node,
@@ -23,7 +22,7 @@ private class ItemNumOfList(private val block0: ReporterBlock, private val list:
         ) {
         val itemUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.data_itemnumoflist,
+            opcode = "data_itemnumoflist",
             inputs = mapOf("ITEM" to setValue(block0, itemUUID, context)),
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)

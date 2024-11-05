@@ -1,6 +1,6 @@
-package de.jensklingenberg.scrako.common
+package de.jensklingenberg.scrako.builder
 
-import de.jensklingenberg.scrako.builder.Argumenti
+import de.jensklingenberg.scrako.common.ScratchList
 import java.util.UUID
 
 data class Context(

@@ -1,7 +1,7 @@
 package de.jensklingenberg.scratch3.motion
 
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -15,7 +15,8 @@ internal sealed class Turn(val opcode: String, private val reporterBlock: Report
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context) {
+        context: Context
+    ) {
         val operatorUUID = UUID.randomUUID().toString()
 
         visitors[identifier] = BlockSpec(

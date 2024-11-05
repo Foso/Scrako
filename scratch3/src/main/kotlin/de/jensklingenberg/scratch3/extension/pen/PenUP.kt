@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch3.extension.pen
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
 
@@ -21,3 +21,5 @@ private class PenUp : Node {
 }
 
 fun CommonScriptBuilder.penUp() = addNode(PenUp())
+
+

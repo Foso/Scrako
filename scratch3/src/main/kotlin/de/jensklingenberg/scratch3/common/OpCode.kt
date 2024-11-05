@@ -8,7 +8,6 @@ internal class OpCode(val value: String) {
         val sound_changevolumeby = "sound_changevolumeby"
         val sound_changeeffectby = "sound_changeeffectby"
         val sound_cleareffects = "sound_cleareffects"
-        val looks_costume = "looks_costume"
         val looks_seteffectto = "looks_seteffectto"
         val sensing_of_object_menu = "sensing_of_object_menu"
         val sensing_of = "sensing_of"
@@ -26,9 +25,7 @@ internal class OpCode(val value: String) {
         val motion_pointtowards = "motion_pointtowards"
         val motion_turnright = "motion_turnright"
         val motion_turnleft = "motion_turnleft"
-        val control_create_clone_of = "control_create_clone_of"
         val control_create_clone_of_menu = "control_create_clone_of_menu"
-        val looks_switchcostumeto = "looks_switchcostumeto"
         val motion_changexby = "motion_changexby"
         val motion_changeyby = "motion_changeyby"
         val sensing_dayssince2000 = "sensing_dayssince2000"
@@ -41,6 +38,5 @@ internal class OpCode(val value: String) {
         val data_lengthoflist = "data_lengthoflist"
         val control_stop: String = "control_stop"
         val data_deletealloflist = "data_deletealloflist"
-        val data_itemnumoflist = "data_itemnumoflist"
     }
 }

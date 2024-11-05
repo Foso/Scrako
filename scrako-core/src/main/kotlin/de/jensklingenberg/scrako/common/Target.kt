@@ -71,45 +71,6 @@ internal fun defaultStage(
     lists: Map<String, ScratchList>,
 ): Target {
 
-    Target(
-        isStage = true,
-        name = "Stage",
-        variables = variables.map {
-            it.value.toString() to JsonArray(
-                listOf(
-                    JsonPrimitive(it.key),
-                    JsonPrimitive(1),
-                )
-            )
-        }.toMap(),
-        lists = lists.map {
-            it.value.id.toString() to JsonArray(
-                listOf(
-                    JsonPrimitive(it.key),
-                    JsonArray(it.value.contents.map { JsonPrimitive(it.toString()) })
-                )
-            )
-        }.toMap(),
-        broadcasts = broadcasts,
-        blocks = emptyMap(),
-        comments = emptyMap(),
-        currentCostume = 0,
-        costumes = listOf(
-            backdrop
-        ),
-        sounds = emptyList(),
-        volume = 100,
-        layerOrder = 0,
-        visible = false,
-        x = 0.0,
-        y = 0.0,
-        size = 100.0,
-        direction = 90.0,
-        tempo = 60,
-        draggable = false,
-        rotationStyle = "all around"
-    )
-
    return createTarget(
         emptyMap(),
         "Stage",

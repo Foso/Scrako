@@ -1,4 +1,4 @@
-package `operator`
+package de.jensklingenberg.newimport.operator
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
@@ -30,3 +30,22 @@ public class AddImport : ImportNode {
 
 
 
+
+public class RandomImport : ImportNode {
+  override val opCode: String = "operator_random"
+
+  override fun visit(
+    builder: StringBuilder,
+    project: ScratchProject,
+    target: Target,
+    blockOr: Block,
+    myList: List<ImportNode>,
+    blockId: String,
+  ) {
+    builder.append("random(")
+    handle(builder, target, myList, project, blockOr.inputs["FROM"]?.get(1))
+    builder.append(",")
+    handle(builder, target, myList, project, blockOr.inputs["TO"]?.get(1))
+    builder.append(")")
+  }
+}

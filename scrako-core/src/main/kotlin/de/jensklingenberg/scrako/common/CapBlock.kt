@@ -6,6 +6,9 @@ package de.jensklingenberg.scrako.common
  */
 interface CapBlock
 
+/**
+ *
+ */
 interface CBlock
 
 interface ReporterBlock : Node

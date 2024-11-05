@@ -18,7 +18,6 @@ public class ArgStringNumber : ImportNode {
     blockId: String,
   ) {
     builder.append("\""+blockOr.fields["VALUE"]?.get(0)+"\"")
-    builder.append("(")
 
   }
 }

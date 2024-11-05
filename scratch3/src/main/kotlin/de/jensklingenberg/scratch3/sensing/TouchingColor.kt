@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch3.sensing
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.ColorBlock
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block

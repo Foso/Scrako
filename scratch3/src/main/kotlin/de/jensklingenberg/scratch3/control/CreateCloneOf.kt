@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch3.control
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.model.Block
@@ -21,7 +21,7 @@ private class CreateCloneOf(private val spriteName: String) : Node {
     ) {
         val uuid = UUID.randomUUID()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.control_create_clone_of,
+            opcode = "control_create_clone_of",
             inputs = mapOf("CLONE_OPTION" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid.toString()))))
         ).toBlock(nextUUID, parent)
         CreateCloneOfMenu(spriteName).visit(

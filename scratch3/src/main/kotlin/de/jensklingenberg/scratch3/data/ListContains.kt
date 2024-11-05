@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch3.data
 
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.setValue

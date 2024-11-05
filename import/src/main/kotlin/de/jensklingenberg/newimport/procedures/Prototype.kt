@@ -17,7 +17,6 @@ public class PrototypeImport : ImportNode {
         blockId: String,
     ) {
 
-        "".format()
         val split = blockOr.mutation?.proccode?.split("%")
         builder.append("\""+blockOr.mutation?.proccode?.substringBefore(" %")+"\"")
         if (blockOr.mutation?.warp == "true") {

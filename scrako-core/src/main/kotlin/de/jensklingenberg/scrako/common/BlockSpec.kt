@@ -1,5 +1,6 @@
 package de.jensklingenberg.scrako.common
 
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Comment
 import de.jensklingenberg.scrako.model.Mutation

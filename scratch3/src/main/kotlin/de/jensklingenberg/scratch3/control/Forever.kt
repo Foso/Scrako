@@ -4,7 +4,7 @@ import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.common.CapBlock
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
 import kotlinx.serialization.json.JsonArray

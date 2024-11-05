@@ -23,7 +23,15 @@ class CallImport : ImportNode {
                 builder.append(")\n")
             }
 
-            else -> builder.append("call(\"${blockOr.mutation?.proccode?.substringBefore("%")?.trimEnd()}\")\n")
+            else -> {
+                builder.append("call(\"${blockOr.mutation?.proccode?.substringBefore("%")?.trimEnd()}\"")
+                //handle(builder, target, myList, project, blockOr.inputs["arg0"]?.get(1))
+                builder.append(", listOf(")
+                blockOr.inputs.forEach { (t, u) ->
+                    handle(builder, target, myList, project, u.get(1))
+                }
+                builder.append("))\n")
+            }
         }
 
     }

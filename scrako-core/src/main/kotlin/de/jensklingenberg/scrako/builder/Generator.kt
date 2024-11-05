@@ -1,6 +1,5 @@
 package de.jensklingenberg.scrako.builder
 
-import de.jensklingenberg.scrako.common.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
 import java.util.UUID

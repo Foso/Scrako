@@ -3,7 +3,7 @@ package de.jensklingenberg.scratch3.procedures
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Mutation

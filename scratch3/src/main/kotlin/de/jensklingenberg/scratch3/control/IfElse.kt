@@ -4,8 +4,10 @@ package de.jensklingenberg.scratch3.control
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.common.CBlock
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -15,29 +17,24 @@ internal class IfElse(
     private val condition: BooleanBlock,
     private val leftStack: List<Node>,
     private val rightStack: List<Node>
-) : Node {
+) : Node, CBlock {
 
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context) {
-        val name2 = identifier
+        context: Context
+    ) {
         val newNext = nextUUID
         val operatorUUID = UUID.randomUUID().toString()
         val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
         val rightUUIDs = rightStack.map { UUID.randomUUID().toString() }
 
-        visitors[name2] = BlockSpec(
+        visitors[identifier] = BlockSpec(
             opcode = "control_if_else",
             inputs = mapOf(
-                "CONDITION" to JsonArray(
-                    listOf(
-                        JsonPrimitive(2),
-                        JsonPrimitive(operatorUUID.toString())
-                    )
-                ),
+                "CONDITION" to setValue(condition, operatorUUID, context),
                 "SUBSTACK" to JsonArray(
                     listOf(
                         JsonPrimitive(2),
@@ -52,7 +49,7 @@ internal class IfElse(
                 )
             )
         ).toBlock(newNext, parent)
-        condition.visit(visitors, name2, operatorUUID, null, context)
+        condition.visit(visitors, identifier, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -61,7 +58,7 @@ internal class IfElse(
             val nextUUID = if (nextchild) leftUUIDs[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = name2,
+                parent = identifier,
                 leftUUIDs[childIndex],
                 nextUUID, context,
 
@@ -75,7 +72,7 @@ internal class IfElse(
             val nextUUID = if (nextchild) rightUUIDs[childIndex + 1] else null
             visitor.visit(
                 visitors,
-                parent = name2,
+                parent = identifier,
                 rightUUIDs[childIndex],
                 nextUUID, context,
 

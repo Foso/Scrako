@@ -1,5 +1,6 @@
 package de.jensklingenberg.scrako.common
 
+import de.jensklingenberg.scrako.builder.Context
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 

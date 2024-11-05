@@ -2,7 +2,7 @@ package de.jensklingenberg.scratch3.motion
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.Context
+import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
