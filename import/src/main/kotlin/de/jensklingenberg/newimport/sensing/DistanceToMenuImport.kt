@@ -1,11 +1,11 @@
-package de.jensklingenberg.newimport.event
+package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class WhenBroadcastReceived : ImportNode {
-    override val opCode: String = "event_whenbroadcastreceived"
+class DistanceToMenuImport : ImportNode {
+    override val opCode: String = "sensing_distancetomenu"
 
     override fun visit(
         builder: StringBuilder,
@@ -14,7 +14,8 @@ class WhenBroadcastReceived : ImportNode {
         myList: List<ImportNode>,
         blockId: String
     ) {
-        val broadcast = blockOr.fields["BROADCAST_OPTION"]?.get(0)
-        builder.append("whenIReceiveBroadcast(${broadcast})\n")
+        builder.append("distanceToMenu(")
+        builder.append(blockOr.fields["DISTANCETOMENU"]?.get(0))
+        builder.append(")\n")
     }
 }

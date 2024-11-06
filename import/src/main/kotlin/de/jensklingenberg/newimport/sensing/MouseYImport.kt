@@ -1,19 +1,20 @@
-package de.jensklingenberg.newimport.event
+package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class WhenkeypressedImport : ImportNode {
-    override val opCode: String = "event_whenkeypressed"
+class MouseYImport : ImportNode {
+    override val opCode: String = "sensing_mousey"
 
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
         id: String,
     ) {
-        builder.append("whenkeypressed()\n")
+        builder.append("mouseY()\n")
     }
+
 }

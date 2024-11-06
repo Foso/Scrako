@@ -30,7 +30,7 @@ object MouseY : BlockSpec(
 ), ReporterBlock
 
 object Volume : BlockSpec(
-    opcode = OpCode.sound_volume,
+    opcode = "sound_volume",
 ), ReporterBlock
 
 object Answer : BlockSpec(

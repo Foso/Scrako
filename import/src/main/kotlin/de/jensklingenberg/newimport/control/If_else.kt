@@ -7,7 +7,7 @@ import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonPrimitive
 
-class If_elseImport : ImportNode {
+class IfElseImport : ImportNode {
     override val opCode: String = "control_if_else"
 
     override fun visit(

@@ -7,7 +7,6 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -29,7 +28,7 @@ internal class RepeatUntil(
         val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
 
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.control_repeat_until,
+            opcode = "control_repeat_until",
             inputs = mapOf(
                 "CONDITION" to setValue(condition, operatorUUID, context),
                 "SUBSTACK" to JsonArray(

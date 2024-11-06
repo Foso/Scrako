@@ -19,7 +19,7 @@ import de.jensklingenberg.newimport.control.CreateCloneOfMenuImport
 import de.jensklingenberg.newimport.control.DeleteThisCloneImport
 import de.jensklingenberg.newimport.control.ForeverImport
 import de.jensklingenberg.newimport.control.IfImport
-import de.jensklingenberg.newimport.control.If_elseImport
+import de.jensklingenberg.newimport.control.IfElseImport
 import de.jensklingenberg.newimport.control.RepeatImport
 import de.jensklingenberg.newimport.control.RepeatUntilImport
 import de.jensklingenberg.newimport.control.StartAsCloneImport
@@ -38,9 +38,13 @@ import de.jensklingenberg.newimport.data.SetVariableImport
 import de.jensklingenberg.newimport.data.ShowListImport
 import de.jensklingenberg.newimport.event.BroadcastAndWaitImport
 import de.jensklingenberg.newimport.event.BroadcastImport
-import de.jensklingenberg.newimport.event.WhenBroadcastReceived
+import de.jensklingenberg.newimport.event.WhenBackdropSwitchesToImport
+import de.jensklingenberg.newimport.event.WhenBroadcastReceivedImport
 import de.jensklingenberg.newimport.event.WhenFlag
+import de.jensklingenberg.newimport.event.WhenGreaterThanImport
 import de.jensklingenberg.newimport.event.WhenKey
+import de.jensklingenberg.newimport.event.WhenStageClickedImport
+import de.jensklingenberg.newimport.event.WhenThisSpriteClicked
 import de.jensklingenberg.newimport.looks.ChangeEffectBy
 import de.jensklingenberg.newimport.looks.ClearGrahpiceffectsImport
 import de.jensklingenberg.newimport.looks.CostumNumberNameImport
@@ -125,6 +129,21 @@ import de.jensklingenberg.newimport.sensing.SwitchBackdropAndWaitImport
 import looks.NextbackdropImport
 import looks.ShowImport
 import de.jensklingenberg.newimport.looks.SwitchbackdroptoImport
+import de.jensklingenberg.newimport.sensing.BackdropNumberNameImport
+import de.jensklingenberg.newimport.sensing.ColorIsTouchingColorImport
+import de.jensklingenberg.newimport.sensing.CurrentImport
+import de.jensklingenberg.newimport.sensing.DistanceToImport
+import de.jensklingenberg.newimport.sensing.DistanceToMenuImport
+import de.jensklingenberg.newimport.sensing.LoudnessImport
+import de.jensklingenberg.newimport.sensing.OfImport
+import de.jensklingenberg.newimport.sensing.OfObjectMenuImport
+import de.jensklingenberg.newimport.sensing.ResetTimerImport
+import de.jensklingenberg.newimport.sensing.SetDragModeImport
+import de.jensklingenberg.newimport.sensing.TimerImport
+import de.jensklingenberg.newimport.sensing.TouchingColorImport
+import de.jensklingenberg.newimport.sound.ClearEffectsImport
+import de.jensklingenberg.newimport.sound.SoundSetEffectToImport
+import de.jensklingenberg.newimport.sound.VolumeImport
 import operator.GtImport
 import java.io.File
 import java.io.FileInputStream
@@ -177,7 +196,11 @@ fun importer(sb3Path: String) {
     //event
     myList.add(WhenFlag())
     myList.add(WhenKey())
-    myList.add(WhenBroadcastReceived())
+    myList.add(WhenThisSpriteClicked())
+    myList.add(WhenStageClickedImport())
+    myList.add(WhenBackdropSwitchesToImport())
+    myList.add(WhenGreaterThanImport())
+    myList.add(WhenBroadcastReceivedImport())
     myList.add(MovestepsImport())
     myList.add(GotoxyImport())
     myList.add(GlideToImport())
@@ -223,7 +246,7 @@ fun importer(sb3Path: String) {
     myList.add(SetyImport())
     myList.add(PrototypeImport())
     myList.add(ShowImport())
-    myList.add(If_elseImport())
+    myList.add(IfElseImport())
     myList.add(CostumNumberNameImport())
 
     //operator
@@ -259,14 +282,18 @@ fun importer(sb3Path: String) {
     myList.add(MouseXImport())
     myList.add(MouseYImport())
     myList.add(GoForwardBackwardLayersImport())
+    myList.add(BackdropNumberNameImport())
 
     //sound
     myList.add(PlaySoundImport())
+    myList.add(SoundSetEffectToImport())
     myList.add(SoundPlayUntilDoneImport())
     myList.add(SetVolumeToImport())
+    myList.add(VolumeImport())
     myList.add(ChangeVolumeByImport())
     myList.add(ChangeSoundEffectByImport())
     myList.add(StopAllSoundsImport())
+    myList.add(ClearEffectsImport())
 
     //data
     myList.add(HideVariableImport())
@@ -310,9 +337,20 @@ fun importer(sb3Path: String) {
     //sensing
     myList.add(DaySinceImport())
     myList.add(AnswerImport())
+    myList.add(LoudnessImport())
+    myList.add(TimerImport())
+    myList.add(ResetTimerImport())
+    myList.add(OfImport())
+    myList.add(OfObjectMenuImport())
+    myList.add(CurrentImport())
     myList.add(MouseDownImport())
     myList.add(AskAndWaitImport())
     myList.add(TouchingObjectImport())
+    myList.add(TouchingColorImport())
+    myList.add(ColorIsTouchingColorImport())
+    myList.add(DistanceToImport())
+    myList.add(SetDragModeImport())
+    myList.add(DistanceToMenuImport())
 
     //event
     myList.add(BroadcastImport())

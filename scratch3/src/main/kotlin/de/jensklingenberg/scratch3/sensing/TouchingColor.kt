@@ -30,3 +30,24 @@ private class TouchingColor(private val color: ReporterBlock) : BooleanBlock {
 
 fun touchingColor(color: String): BooleanBlock = TouchingColor(ColorBlock(color))
 fun touchingColor(color: ReporterBlock): BooleanBlock = TouchingColor(color)
+
+
+
+//sensing_touchingobject
+
+class TouchingObject(val s: String) : BooleanBlock {
+    override fun visit(
+        visitors: MutableMap<String, Block>,
+        parent: String?,
+        identifier: String,
+        nextUUID: String?,
+        context: Context
+    ) {
+        visitors[identifier] = BlockSpec(
+            opcode = "sensing_touchingobject",
+            fields = mapOf("TOUCHINGOBJECTMENU" to listOf(s, null))
+        ).toBlock(nextUUID, parent)
+    }
+}
+
+fun touchingObject(s: String): BooleanBlock = TouchingObject(s)

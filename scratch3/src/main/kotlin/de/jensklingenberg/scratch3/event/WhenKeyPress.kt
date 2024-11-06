@@ -12,3 +12,11 @@ private class WhenKeyPress(key: Key) : BlockSpec(
 
 fun CommonScriptBuilder.whenKeyPress(key: Key) = addNode(WhenKeyPress(key))
 
+//event_whenbackdropswitchesto
+
+private class WhenBackdropSwitchesTo(backdrop: String) : BlockSpec(
+    opcode = "event_whenbackdropswitchesto",
+    fields = mapOf("BACKDROP" to listOf(backdrop, null))
+), Event, HatBlock
+
+fun CommonScriptBuilder.whenBackdropSwitchesTo(backdrop: String) = addNode(WhenBackdropSwitchesTo(backdrop))

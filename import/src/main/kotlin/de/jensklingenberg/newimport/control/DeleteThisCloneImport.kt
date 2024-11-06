@@ -19,6 +19,3 @@ class DeleteThisCloneImport : ImportNode {
 
 }
 
-
-//sensing_touchingobject
-

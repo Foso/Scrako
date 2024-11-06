@@ -5,8 +5,8 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class SoundPlayUntilDoneImport : ImportNode {
-    override val opCode: String = "sound_playuntildone"
+class SoundSetEffectToImport : ImportNode {
+    override val opCode: String = "sound_seteffectto"
 
     override fun visit(
         builder: StringBuilder,
@@ -15,9 +15,10 @@ class SoundPlayUntilDoneImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("playUntilDone(")
-        handle(builder, target, myList, blockOr.inputs["SOUND_MENU"]?.get(1))
+        builder.append("setEffectTo(")
+        builder.append(blockOr.fields["EFFECT"]?.get(0))
+        builder.append(", ")
+        handle(builder, target, myList, blockOr.inputs["VALUE"]?.get(1))
         builder.append(")\n")
     }
 }
-

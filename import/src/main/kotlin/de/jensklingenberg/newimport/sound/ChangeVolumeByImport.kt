@@ -5,8 +5,8 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class SetVolumeToImport : ImportNode {
-    override val opCode: String = "sound_setvolumeto"
+class ChangeVolumeByImport : ImportNode {
+    override val opCode: String = "sound_changevolumeby"
 
     override fun visit(
         builder: StringBuilder,
@@ -15,25 +15,8 @@ class SetVolumeToImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("setVolumeTo(")
+        builder.append("changeVolumeBy(")
         handle(builder, target, myList, blockOr.inputs["VOLUME"]?.get(1))
         builder.append(")\n")
-    }
-}
-
-
-//sound_volume
-
-class VolumeImport : ImportNode {
-    override val opCode: String = "sound_volume"
-
-    override fun visit(
-        builder: StringBuilder,
-        target: Target,
-        blockOr: Block,
-        myList: List<ImportNode>,
-        blockId: String,
-    ) {
-        builder.append("Volume")
     }
 }

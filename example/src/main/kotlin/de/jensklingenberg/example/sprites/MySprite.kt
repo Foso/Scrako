@@ -11,6 +11,7 @@ import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
 import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.common.MousePointer
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
@@ -18,7 +19,9 @@ import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch3.control.forever
 import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.control.repeat
+import de.jensklingenberg.scratch3.data.CurrentMenu
 import de.jensklingenberg.scratch3.data.changeVariableBy
+import de.jensklingenberg.scratch3.data.current
 import de.jensklingenberg.scratch3.data.hideList
 import de.jensklingenberg.scratch3.data.itemOfXList
 import de.jensklingenberg.scratch3.data.lengthOfList
@@ -60,6 +63,8 @@ import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
 import de.jensklingenberg.scratch3.sensing.ask
 import de.jensklingenberg.scratch3.sensing.keyIsPressed
+import de.jensklingenberg.scratch3.sensing.touchingObject
+import de.jensklingenberg.scratch3.sound.clearEffects
 import debugger.log
 import gotoxy
 
@@ -96,6 +101,8 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             pointTowards("mouse-pointer")
             thinkForSecs(StringBlock("Hallo"), IntBlock(2))
             setPenSizeTo(IntBlock(10))
+            say(current(CurrentMenu.YEAR))
+            clearEffects()
             goForwardLayers(IntBlock(1))
             setRotationStyle(RotationStyle.ALL_AROUND)
             ask("Hallo")

@@ -7,7 +7,7 @@ import de.jensklingenberg.scrako.common.HatBlock
 
 
 private class WhenFlagClicked : BlockSpec(
-    opcode = ("event_whenflagclicked"),
+    opcode = "event_whenflagclicked",
 ), Event, HatBlock
 
 
@@ -15,4 +15,10 @@ fun CommonScriptBuilder.whenFlagClicked() = addNode(WhenFlagClicked())
 
 
 
+
+//event_whenstageclicked
+
+private class WhenStageClicked : BlockSpec(
+    opcode = "event_whenstageclicked",
+), Event, HatBlock
 

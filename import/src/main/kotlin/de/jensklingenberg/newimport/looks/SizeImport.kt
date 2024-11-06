@@ -15,8 +15,6 @@ class SizeImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("setSize(")
-        handle(builder, target, myList, blockOr.inputs["SIZE"]?.get(1))
-        builder.append(")\n")
+        builder.append("Size")
     }
 }
