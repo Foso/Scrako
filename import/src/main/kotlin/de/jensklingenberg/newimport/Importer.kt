@@ -42,11 +42,12 @@ import de.jensklingenberg.newimport.event.WhenBroadcastReceived
 import de.jensklingenberg.newimport.event.WhenFlag
 import de.jensklingenberg.newimport.event.WhenKey
 import de.jensklingenberg.newimport.looks.ChangeEffectBy
-import de.jensklingenberg.newimport.looks.ClearGrahpiceffects
+import de.jensklingenberg.newimport.looks.ClearGrahpiceffectsImport
 import de.jensklingenberg.newimport.looks.CostumNumberNameImport
 import de.jensklingenberg.newimport.looks.CostumeImport
 import de.jensklingenberg.newimport.looks.GoToImport
 import de.jensklingenberg.newimport.looks.ItemNumOfListImport
+import de.jensklingenberg.newimport.looks.SayForSecsImport
 import de.jensklingenberg.newimport.looks.SetEffectToImport
 import de.jensklingenberg.newimport.looks.SetSizeImport
 import de.jensklingenberg.newimport.looks.SizeImport
@@ -55,9 +56,14 @@ import de.jensklingenberg.newimport.motion.ChangeXbyImport
 import de.jensklingenberg.newimport.motion.ChangeybyImport
 import de.jensklingenberg.newimport.motion.DirectionImport
 import de.jensklingenberg.newimport.motion.GlideSecsToXYImport
+import de.jensklingenberg.newimport.motion.GlideToImport
+import de.jensklingenberg.newimport.motion.GlideToMenuImport
 import de.jensklingenberg.newimport.motion.GotoxyImport
 import de.jensklingenberg.newimport.motion.MovestepsImport
 import de.jensklingenberg.newimport.motion.PointInDirectionImport
+import de.jensklingenberg.newimport.motion.PointTowardsImport
+import de.jensklingenberg.newimport.motion.PointTowardsMenuImport
+import de.jensklingenberg.newimport.motion.SetRotationStyleImport
 import de.jensklingenberg.newimport.motion.SetxImport
 import de.jensklingenberg.newimport.motion.SetyImport
 import de.jensklingenberg.newimport.motion.TurnLeftImport
@@ -113,10 +119,12 @@ import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
-import looks.HideImport
+import de.jensklingenberg.newimport.looks.HideImport
+import de.jensklingenberg.newimport.looks.ThinkForSecsImport
+import de.jensklingenberg.newimport.sensing.SwitchBackdropAndWaitImport
 import looks.NextbackdropImport
 import looks.ShowImport
-import looks.SwitchbackdroptoImport
+import de.jensklingenberg.newimport.looks.SwitchbackdroptoImport
 import operator.GtImport
 import java.io.File
 import java.io.FileInputStream
@@ -172,6 +180,9 @@ fun importer(sb3Path: String) {
     myList.add(WhenBroadcastReceived())
     myList.add(MovestepsImport())
     myList.add(GotoxyImport())
+    myList.add(GlideToImport())
+    myList.add(GlideToMenuImport())
+    myList.add(SetRotationStyleImport())
     myList.add(XPostionImport())
     myList.add(YPostionImport())
     myList.add(ChangeybyImport())
@@ -190,7 +201,8 @@ fun importer(sb3Path: String) {
     myList.add(TurnRightImport())
     myList.add(TurnLeftImport())
     myList.add(DirectionImport())
-
+    myList.add(PointTowardsImport())
+    myList.add(PointTowardsMenuImport())
 
     //Pen
     myList.add(StampImport())
@@ -237,10 +249,13 @@ fun importer(sb3Path: String) {
     //looks
     myList.add(SetSizeImport())
     myList.add(SetEffectToImport())
+    myList.add(ThinkForSecsImport())
     myList.add(GoToImport())
     myList.add(ChangeEffectBy())
+    myList.add(SayForSecsImport())
     myList.add(ChangeSizeByImport())
     myList.add(NextCostumeImport())
+    myList.add(SwitchBackdropAndWaitImport())
     myList.add(MouseXImport())
     myList.add(MouseYImport())
     myList.add(GoForwardBackwardLayersImport())
@@ -271,7 +286,7 @@ fun importer(sb3Path: String) {
     myList.add(CreateCloneOfImport())
     myList.add(CreateCloneOfMenuImport())
 
-    myList.add(ClearGrahpiceffects())
+    myList.add(ClearGrahpiceffectsImport())
     myList.add(ReplaceItemImport())
 
     myList.add(ItemNumOfListImport())
@@ -332,6 +347,8 @@ fun importer(sb3Path: String) {
             it
         }
         File("${wrapperFolder}/costumes/").mkdirs()
+        File("${wrapperFolder}/src/").mkdirs()
+
         File("${wrapperFolder}/costumes/Costumes${target.name}.kt").writeText(test)
 
 
@@ -342,7 +359,7 @@ fun importer(sb3Path: String) {
         }
 
         builder.append("}\n}\n")
-        File("${wrapperFolder}${target.name}.kt").writeText(builder.toString())
+        File("${wrapperFolder}/src/${target.name}.kt").writeText(builder.toString())
         return@forEachIndexed
 
         val nodeClassName = ClassName("de.jensklingenberg.scrako.common", "Node")

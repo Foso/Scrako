@@ -9,7 +9,6 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
 import java.util.UUID
 
 private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY: ReporterBlock) : Node, MotionBlock {
@@ -27,7 +26,7 @@ private class GlideToXY(val sec: ReporterBlock, val toX: ReporterBlock, val toY:
         val toYID = UUID.randomUUID().toString()
 
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.motion_glidesecstoxy,
+            opcode = "motion_glidesecstoxy",
             inputs = mapOf(
                 "SECS" to setValue(sec, secID, context),
                 "X" to setValue(toX, toXID, context),

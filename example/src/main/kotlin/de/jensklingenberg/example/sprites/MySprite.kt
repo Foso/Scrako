@@ -14,6 +14,7 @@ import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch3.control.forever
 import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.control.repeat
@@ -36,11 +37,15 @@ import de.jensklingenberg.scratch3.event.whenKeyPress
 import de.jensklingenberg.scratch3.extension.pen.eraseAll
 import de.jensklingenberg.scratch3.extension.pen.setPenSizeTo
 import de.jensklingenberg.scratch3.extension.pen.stamp
-import de.jensklingenberg.scratch3.sensing.ask
+import de.jensklingenberg.scratch3.looks.goForwardLayers
 import de.jensklingenberg.scratch3.looks.hide
 import de.jensklingenberg.scratch3.looks.say
+import de.jensklingenberg.scratch3.looks.thinkForSecs
+import de.jensklingenberg.scratch3.motion.RotationStyle
 import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
+import de.jensklingenberg.scratch3.motion.pointTowards
+import de.jensklingenberg.scratch3.motion.setRotationStyle
 import de.jensklingenberg.scratch3.motion.setX
 import de.jensklingenberg.scratch3.motion.switchCostume
 import de.jensklingenberg.scratch3.operator.and
@@ -53,6 +58,7 @@ import de.jensklingenberg.scratch3.operator.plus
 import de.jensklingenberg.scratch3.operator.times
 import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
+import de.jensklingenberg.scratch3.sensing.ask
 import de.jensklingenberg.scratch3.sensing.keyIsPressed
 import debugger.log
 import gotoxy
@@ -87,7 +93,11 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
          */
         scriptBuilder {
             whenFlagClicked()
+            pointTowards("mouse-pointer")
+            thinkForSecs(StringBlock("Hallo"), IntBlock(2))
             setPenSizeTo(IntBlock(10))
+            goForwardLayers(IntBlock(1))
+            setRotationStyle(RotationStyle.ALL_AROUND)
             ask("Hallo")
             say(lengthOf("Jens2"))
             log(playerY)
@@ -141,10 +151,10 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
         scriptBuilder {
             whenIReceiveBroadcast(input)
             ifThen(keyIsPressed(RIGHT_ARROW) and (playerX lt (width minus 1))) {
-                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
-                    changeVariableBy(playerX, 1)
-                    replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
-                    //log(playerX)
+                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
+                changeVariableBy(playerX, 1)
+                replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, PlayerIconID)
+                //log(playerX)
             }
 
             ifThen(keyIsPressed(LEFT_ARROW)) {
@@ -156,7 +166,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             }
 
             ifThen(keyIsPressed(DOWN_ARROW)) {
-                ifThen(playerY lt IntBlock(array_height -1)) {
+                ifThen(playerY lt IntBlock(array_height - 1)) {
                     //log(playerY)
                     replaceItemOfListWith(getIndexOf(playerY, playerX), jens2, BackgroundIconId)
                     changeVariableBy(playerY, 1)

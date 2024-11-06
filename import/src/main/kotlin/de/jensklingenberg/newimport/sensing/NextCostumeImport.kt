@@ -4,8 +4,8 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class TouchingObjectImport : ImportNode {
-    override val opCode: String = "sensing_touchingobject"
+class NextCostumeImport : ImportNode {
+    override val opCode: String = "looks_nextcostume"
 
     override fun visit(
         builder: StringBuilder,
@@ -14,28 +14,25 @@ class TouchingObjectImport : ImportNode {
         myList: List<ImportNode>,
         id: String,
     ) {
-        builder.append("touchingObject(")
-        builder.append(blockOr.fields["TOUCHINGOBJECTMENU"]?.get(0))
+        builder.append("nextCostume()\n")
+    }
+
+}
+
+//looks_switchbackdroptoandwait
+class SwitchBackdropAndWaitImport : ImportNode {
+    override val opCode: String = "looks_switchbackdroptoandwait"
+
+    override fun visit(
+        builder: StringBuilder,
+        target: Target,
+        blockOr: Block,
+        myList: List<ImportNode>,
+        id: String,
+    ) {
+        builder.append("switchBackdropAndWait(")
+        builder.append(blockOr.fields["BACKDROP"]?.get(0))
         builder.append(")\n")
     }
 
 }
-
-
-//sensing_mousex
-
-class MouseYImport : ImportNode {
-    override val opCode: String = "sensing_mousey"
-
-    override fun visit(
-        builder: StringBuilder,
-        target: Target,
-        blockOr: Block,
-        myList: List<ImportNode>,
-        id: String,
-    ) {
-        builder.append("mouseY()\n")
-    }
-
-}
-

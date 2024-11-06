@@ -5,24 +5,20 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class ChangeEffectBy : ImportNode {
-    override val opCode: String = "looks_changeeffectby"
+class ThinkForSecsImport : ImportNode {
+    override val opCode: String = "looks_thinkforsecs"
 
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        block: Block,
         myList: List<ImportNode>,
-        blockId: String,
+        id: String,
     ) {
-        builder.append("changeEffectBy(")
-        handle(builder, target, myList, blockOr.inputs["CHANGE"]?.get(1))
+        builder.append("thinkForSecs(")
+        handle(builder, target, myList, block.inputs["MESSAGE"]?.get(1))
         builder.append(",")
-        builder.append(blockOr.fields["EFFECT"]?.get(0))
+        handle(builder, target, myList, block.inputs["SECS"]?.get(1))
         builder.append(")\n")
     }
 }
-
-
-//looks_sayforsecs
-

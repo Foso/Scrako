@@ -14,8 +14,9 @@ import de.jensklingenberg.scrako.model.Block
 import java.util.UUID
 
 
-private class Say(
+private class SayForSecs(
     public val message: ReporterBlock,
+    public val secs: ReporterBlock
 ) : Node {
     override fun visit(
         visitors: MutableMap<String, Block>,
@@ -25,16 +26,21 @@ private class Say(
         context: Context,
     ) {
         val messageId = UUID.randomUUID().toString()
+        val secsId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = "looks_say",
-            inputs = mapOf("MESSAGE" to setValue(message, messageId, context) ),
+            opcode = "looks_sayforsecs",
+            inputs = mapOf("MESSAGE" to setValue(message, messageId, context),
+                "SECS" to setValue(secs, secsId, context)),
             fields = mapOf()
         ).toBlock(nextUUID, identifier)
         message.visit(visitors, identifier, messageId, null, context)
+        secs.visit(visitors, identifier, secsId, null, context)
     }
 }
 
-fun CommonScriptBuilder.say(block: ReporterBlock) = addNode(Say(block))
-fun CommonScriptBuilder.say(message: String) = addNode(Say(StringBlock(message)))
-fun CommonScriptBuilder.say(message: Int) = addNode(Say(IntBlock(message)))
-fun CommonScriptBuilder.say(message: Double) = addNode(Say(DoubleBlock(message)))
+fun CommonScriptBuilder.sayForSecs(block: ReporterBlock, secs: ReporterBlock) = addNode(SayForSecs(block,secs))
+fun CommonScriptBuilder.sayForSecs(message: String, secs: ReporterBlock) = addNode(SayForSecs(StringBlock(message),secs))
+fun CommonScriptBuilder.sayForSecs(message: Int, secs: ReporterBlock) = addNode(SayForSecs(IntBlock(message),secs))
+fun CommonScriptBuilder.sayForSecs(message: Double, secs: ReporterBlock) = addNode(SayForSecs(DoubleBlock(message),secs))
+
+

@@ -1,4 +1,4 @@
-package looks
+package de.jensklingenberg.newimport.looks
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block

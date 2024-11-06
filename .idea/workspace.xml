@@ -4,27 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="Ask">
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/control/DeleteThisCloneImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/control/StartAsCloneImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/control/WaitImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data/HideVariableImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/ChangeEffectBy.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/PlaySoundImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion/GlideSecsToXYImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/CreateCloneOfImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/CreateCloneOfMenuImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/TouchingObjectImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sound/SetVolumeToImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sound/SoundPlayUntilDoneImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sound/SoundSoundsMenuImport.kt" afterDir="false" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="reformat">
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/SayForSecsImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/ThinkForSecsImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion/GlideToImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion/GlideToMenuImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/ChangeSizeByImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/GoForwardBackwardLayersImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/MouseXImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/NextCostumeImport.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/SayForSecs.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/GlideTo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/project.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/project.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Importer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Importer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/control/Repeat.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/control/Repeat.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/control/WaitUntilImport.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/control/WaitUntilImport.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/ChangeEffectBy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/ChangeEffectBy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/ClearGrahpiceffects.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/ClearGrahpiceffectsImport.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/Hide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/Hide.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/SetEffectToImport.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/SetEffectToImport.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion/Changexby.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion/Changexby.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/Ask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/sensing/Ask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/Switchbackdropto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks/Switchbackdropto.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/TouchingObjectImport.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/TouchingObjectImport.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sound/PlaySoundImport.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sound/PlaySoundImport.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/common/OpCode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/common/OpCode.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/Hide.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/Hide.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/NextCostume.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/NextCostume.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/Say.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/Say.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/Thinkforsecs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/Thinkforsecs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/ChangeXby.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/ChangeXby.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/GlideToXY.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/GlideToXY.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,10 +149,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks" />
+      <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion" />
       <recent name="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/extension/pen" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/operator" />
-      <recent name="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/sensing" />
@@ -161,11 +170,11 @@
       <recent name="de.jensklingenberg.scratch.looks" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
-      <recent name="de.jensklingenberg.newimport.sound" />
-      <recent name="de.jensklingenberg.newimport.data" />
-      <recent name="de.jensklingenberg.newimport.motion" />
       <recent name="de.jensklingenberg.newimport.sensing" />
+      <recent name="de.jensklingenberg.newimport.looks" />
+      <recent name="de.jensklingenberg.newimport.motion" />
       <recent name="de.jensklingenberg.newimport.control" />
+      <recent name="de.jensklingenberg.newimport.sound" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="de.jensklingenberg.scratch3.looks" />
@@ -286,22 +295,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00049" summary="variables">
-      <option name="closed" value="true" />
-      <created>1730067094776</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1730067094776</updated>
-    </task>
-    <task id="LOCAL-00050" summary="&quot;MotionBlock for Stage not allowed&quot;">
-      <option name="closed" value="true" />
-      <created>1730070039332</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1730070039333</updated>
     </task>
     <task id="LOCAL-00051" summary="&quot;MotionBlock for Stage not allowed&quot;">
       <option name="closed" value="true" />
@@ -679,7 +672,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730840462018</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="importer10">
+      <option name="closed" value="true" />
+      <created>1730844268641</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1730844268641</updated>
+    </task>
+    <task id="LOCAL-00099" summary="reformat">
+      <option name="closed" value="true" />
+      <created>1730844543148</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1730844543148</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -705,13 +714,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Setvolumeto" />
     <MESSAGE value="reform" />
     <MESSAGE value="spark" />
     <MESSAGE value="imports" />
     <MESSAGE value="think" />
     <MESSAGE value="Deleteoflist" />
-    <MESSAGE value="reformat" />
     <MESSAGE value="Setx" />
     <MESSAGE value="kotlin" />
     <MESSAGE value="scratch3" />
@@ -730,7 +737,9 @@
     <MESSAGE value="importer8" />
     <MESSAGE value="importer9" />
     <MESSAGE value="Ask" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ask" />
+    <MESSAGE value="importer10" />
+    <MESSAGE value="reformat" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -839,22 +848,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/operator/Divide.kt</url>
-          <line>26</line>
+          <line>24</line>
           <option name="timeStamp" value="220" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data/ShowListImport.kt</url>
-          <line>17</line>
+          <line>15</line>
           <option name="timeStamp" value="264" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/data/Hidelist.kt</url>
-          <line>21</line>
+          <line>19</line>
           <option name="timeStamp" value="270" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Importer.kt</url>
-          <line>451</line>
+          <line>495</line>
           <option name="timeStamp" value="274" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -869,7 +878,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt</url>
-          <line>89</line>
+          <line>97</line>
           <option name="timeStamp" value="348" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -879,18 +888,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Say.kt</url>
-          <line>60</line>
+          <line>57</line>
           <option name="timeStamp" value="367" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Importer.kt</url>
-          <line>542</line>
+          <line>585</line>
           <option name="timeStamp" value="374" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/TouchingObjectImport.kt</url>
-          <line>39</line>
-          <option name="timeStamp" value="395" />
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/NextCostumeImport.kt</url>
+          <line>32</line>
+          <option name="timeStamp" value="402" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/sensing/GoForwardBackwardLayersImport.kt</url>
+          <line>17</line>
+          <option name="timeStamp" value="403" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

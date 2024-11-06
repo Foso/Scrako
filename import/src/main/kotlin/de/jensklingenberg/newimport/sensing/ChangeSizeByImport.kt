@@ -1,24 +1,22 @@
-package de.jensklingenberg.newimport.looks
+package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class ClearGrahpiceffects : ImportNode {
-    override val opCode: String = "looks_cleargraphiceffects"
+class ChangeSizeByImport : ImportNode {
+    override val opCode: String = "looks_changesizeby"
 
     override fun visit(
         builder: StringBuilder,
         target: Target,
         blockOr: Block,
         myList: List<ImportNode>,
-        blockId: String
+        id: String,
     ) {
-        builder.append("cleargraphiceffects()\n")
-
+        builder.append("changeSizeBy(")
+        builder.append(blockOr.inputs["CHANGE"]?.get(1))
+        builder.append(")\n")
     }
 
 }
-
-
-

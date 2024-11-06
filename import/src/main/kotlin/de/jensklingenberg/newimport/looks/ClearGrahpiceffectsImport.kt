@@ -4,16 +4,21 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class SwitchbackdroptoImport : ImportNode {
-    override val opCode: String = "looks_switchbackdropto"
+class ClearGrahpiceffectsImport : ImportNode {
+    override val opCode: String = "looks_cleargraphiceffects"
 
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
-        id: String,
+        blockId: String
     ) {
-        builder.append("switchbackdropto()\n")
+        builder.append("cleargraphiceffects()\n")
+
     }
+
 }
+
+
+

@@ -1,19 +1,20 @@
-package de.jensklingenberg.newimport.looks
+package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class SwitchbackdroptoImport : ImportNode {
-    override val opCode: String = "looks_switchbackdropto"
+class MouseXImport : ImportNode {
+    override val opCode: String = "sensing_mousex"
 
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
         id: String,
     ) {
-        builder.append("switchbackdropto()\n")
+        builder.append("mouseX()\n")
     }
+
 }
