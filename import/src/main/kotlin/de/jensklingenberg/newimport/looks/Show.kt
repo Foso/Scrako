@@ -10,9 +10,9 @@ class ShowImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
-        id: String,
+        blockId: String,
     ) {
         builder.append("show()\n")
     }

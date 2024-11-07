@@ -23,17 +23,3 @@ class PlaySoundImport : ImportNode {
 
 //sound_cleareffects
 
-class ClearEffectsImport : ImportNode {
-    override val opCode: String = "sound_cleareffects"
-
-    override fun visit(
-        builder: StringBuilder,
-        target: Target,
-        blockOr: Block,
-        myList: List<ImportNode>,
-        blockId: String,
-    ) {
-        builder.append("clearEffects()\n")
-    }
-}
-

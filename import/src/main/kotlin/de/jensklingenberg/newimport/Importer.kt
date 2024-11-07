@@ -142,9 +142,10 @@ import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
-import looks.NextbackdropImport
+import de.jensklingenberg.newimport.looks.NextbackdropImport
 import looks.ShowImport
-import operator.GtImport
+import de.jensklingenberg.newimport.operator.GtImport
+import de.jensklingenberg.newimport.procedures.CallImport
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader

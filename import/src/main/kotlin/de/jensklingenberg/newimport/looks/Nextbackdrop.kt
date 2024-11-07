@@ -1,4 +1,4 @@
-package looks
+package de.jensklingenberg.newimport.looks
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
@@ -10,9 +10,9 @@ class NextbackdropImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
-        id: String,
+        blockId: String,
     ) {
         builder.append("nextbackdrop()\n")
     }

@@ -1,20 +1,19 @@
-package de.jensklingenberg.newimport.looks
+package de.jensklingenberg.newimport.sound
 
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class BackdropsImport : ImportNode {
-    override val opCode: String = "looks_backdrops"
+class VolumeImport : ImportNode {
+    override val opCode: String = "sound_volume"
 
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockOr: Block,
         myList: List<ImportNode>,
-        id: String,
+        blockId: String,
     ) {
-        builder.append("backdrops()\n")
+        builder.append("Volume")
     }
 }
-

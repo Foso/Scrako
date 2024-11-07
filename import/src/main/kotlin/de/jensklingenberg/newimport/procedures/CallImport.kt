@@ -1,6 +1,7 @@
-package de.jensklingenberg.newimport
+package de.jensklingenberg.newimport.procedures
 
 import de.jensklingenberg.example.newimport.handle
+import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 

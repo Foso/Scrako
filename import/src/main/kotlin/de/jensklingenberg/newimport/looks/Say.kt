@@ -24,8 +24,6 @@ class SayImport : ImportNode {
         handle(builder, target, myList, blockOr.inputs["MESSAGE"]?.get(1))
         builder.append(")\n")
     }
-
-
 }
 
 fun handle(

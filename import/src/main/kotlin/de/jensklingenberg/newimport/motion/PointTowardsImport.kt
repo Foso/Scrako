@@ -5,8 +5,8 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class GlideToImport : ImportNode {
-    override val opCode: String = "motion_glideto"
+class PointTowardsImport : ImportNode {
+    override val opCode: String = "motion_pointtowards"
 
     override fun visit(
         builder: StringBuilder,
@@ -15,16 +15,8 @@ class GlideToImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("glideTo(")
-        handle(builder, target, myList, block.inputs["SECS"]?.get(1))
-        builder.append(",")
-        handle(builder, target, myList, block.inputs["TO"]?.get(1))
+        builder.append("pointTowards(")
+        handle(builder, target, myList, block.inputs["TOWARDS"]?.get(1))
         builder.append(")\n")
     }
 }
-
-
-//motion_pointtowards
-
-//motion_pointtowards_menu
-
