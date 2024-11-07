@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.data
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class DeleteAllOfImport : ImportNode {
@@ -10,12 +10,12 @@ class DeleteAllOfImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("deleteAllOf(")
-        builder.append(blockOr.fields["LIST"]?.get(0))
+        builder.append(blockFullOr.fields["LIST"]?.get(0))
         builder.append(")\n")
     }
 }

@@ -5,13 +5,13 @@ import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CapBlock
 import de.jensklingenberg.scrako.builder.Context
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 
 internal class DeleteThisClone : BlockSpec(
     opcode = "control_delete_this_clone",
 ), CapBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,

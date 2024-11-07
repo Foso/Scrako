@@ -23,11 +23,14 @@ import de.jensklingenberg.scratch3.data.CurrentMenu
 import de.jensklingenberg.scratch3.data.changeVariableBy
 import de.jensklingenberg.scratch3.data.current
 import de.jensklingenberg.scratch3.data.hideList
+import de.jensklingenberg.scratch3.data.insertAt
 import de.jensklingenberg.scratch3.data.itemOfXList
 import de.jensklingenberg.scratch3.data.lengthOfList
+import de.jensklingenberg.scratch3.data.listContainsItem
 import de.jensklingenberg.scratch3.data.replaceItemOfListWith
 import de.jensklingenberg.scratch3.data.setVariable
 import de.jensklingenberg.scratch3.data.showList
+import de.jensklingenberg.scratch3.data.showVariable
 import de.jensklingenberg.scratch3.event.Key
 import de.jensklingenberg.scratch3.event.Key.DOWN_ARROW
 import de.jensklingenberg.scratch3.event.Key.LEFT_ARROW
@@ -52,6 +55,7 @@ import de.jensklingenberg.scratch3.motion.setRotationStyle
 import de.jensklingenberg.scratch3.motion.setX
 import de.jensklingenberg.scratch3.motion.switchCostume
 import de.jensklingenberg.scratch3.operator.and
+import de.jensklingenberg.scratch3.operator.contains
 import de.jensklingenberg.scratch3.operator.div
 import de.jensklingenberg.scratch3.operator.gt
 import de.jensklingenberg.scratch3.operator.lengthOf
@@ -66,6 +70,7 @@ import de.jensklingenberg.scratch3.sensing.keyIsPressed
 import de.jensklingenberg.scratch3.sensing.touchingObject
 import de.jensklingenberg.scratch3.sound.clearEffects
 import debugger.log
+import deleteItemOfList
 import gotoxy
 
 const val PlayerIconID = "2"
@@ -101,7 +106,10 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             pointTowards("mouse-pointer")
             thinkForSecs(StringBlock("Hallo"), IntBlock(2))
             setPenSizeTo(IntBlock(10))
-            say(current(CurrentMenu.YEAR))
+            showVariable(playerX)
+            say(listContainsItem( jens2,StringBlock("1")))
+            insertAt("1", jens2, IntBlock(0))
+            say(contains("hallo","h"))
             clearEffects()
             goForwardLayers(IntBlock(1))
             setRotationStyle(RotationStyle.ALL_AROUND)

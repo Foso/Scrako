@@ -6,15 +6,14 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.Sprite
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 private class SensingOf(val block: ReporterBlock, val propertyName: String) : BooleanBlock, SensingBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -22,7 +21,7 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
     ) {
         val destinationUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sensing_of,
+            opcode = "sensing_of",
             inputs = mapOf(
                 "OBJECT" to JsonArray(
                     listOf(
@@ -43,7 +42,7 @@ private class SensingOf(val block: ReporterBlock, val propertyName: String) : Bo
 
 private class SensingOfMenu(val objectName: String) : BooleanBlock, SensingBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -51,7 +50,7 @@ private class SensingOfMenu(val objectName: String) : BooleanBlock, SensingBlock
 
         ) {
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sensing_of_object_menu,
+            opcode = "sensing_of_object_menu",
             fields = mapOf(
                 "OBJECT" to listOf(
                     objectName, null

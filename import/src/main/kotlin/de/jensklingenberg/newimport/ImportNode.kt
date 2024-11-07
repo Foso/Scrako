@@ -1,6 +1,6 @@
 package de.jensklingenberg.newimport
 
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 interface ImportNode {
@@ -13,7 +13,7 @@ interface ImportNode {
     fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     )

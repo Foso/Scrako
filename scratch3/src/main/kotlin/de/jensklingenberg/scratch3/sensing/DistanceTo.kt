@@ -4,8 +4,7 @@ import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -13,7 +12,7 @@ import java.util.UUID
 //Unfishinished
 private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -21,7 +20,7 @@ private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock
     ) {
         val destinationUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sensing_distanceto,
+            opcode = "sensing_distanceto",
             inputs = mapOf(
                 "DISTANCETOMENU" to JsonArray(
                     listOf(

@@ -29,13 +29,17 @@ import de.jensklingenberg.newimport.control.WaitUntilImport
 import de.jensklingenberg.newimport.data.AddToList
 import de.jensklingenberg.newimport.data.ChangevariablebyImport
 import de.jensklingenberg.newimport.data.DeleteAllOfImport
+import de.jensklingenberg.newimport.data.DeleteOfList
 import de.jensklingenberg.newimport.data.HideVariableImport
 import de.jensklingenberg.newimport.data.HidelistImport
+import de.jensklingenberg.newimport.data.InsertAt
 import de.jensklingenberg.newimport.data.ItemoflistImport
 import de.jensklingenberg.newimport.data.LengthoflistImport
+import de.jensklingenberg.newimport.data.ListContainsImport
 import de.jensklingenberg.newimport.data.ReplaceItemImport
 import de.jensklingenberg.newimport.data.SetVariableImport
 import de.jensklingenberg.newimport.data.ShowListImport
+import de.jensklingenberg.newimport.data.ShowVariable
 import de.jensklingenberg.newimport.event.BroadcastAndWaitImport
 import de.jensklingenberg.newimport.event.BroadcastImport
 import de.jensklingenberg.newimport.event.WhenBackdropSwitchesToImport
@@ -136,16 +140,18 @@ import de.jensklingenberg.newimport.sound.SoundSetEffectToImport
 import de.jensklingenberg.newimport.sound.SoundSoundsMenuImport
 import de.jensklingenberg.newimport.sound.StopAllSoundsImport
 import de.jensklingenberg.newimport.sound.VolumeImport
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import de.jensklingenberg.newimport.looks.NextbackdropImport
+import de.jensklingenberg.newimport.operator.ContainsImport
 import looks.ShowImport
 import de.jensklingenberg.newimport.operator.GtImport
 import de.jensklingenberg.newimport.procedures.CallImport
+import de.jensklingenberg.newimport.sensing.UsernameImport
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -253,6 +259,7 @@ fun importer(sb3Path: String) {
     //operator
     myList.add(EqualsImport())
     myList.add(DivideImport())
+    myList.add(ContainsImport())
     myList.add(MathOpImport())
     myList.add(LtImport())
     myList.add(JoinImport())
@@ -324,6 +331,10 @@ fun importer(sb3Path: String) {
     myList.add(ShowListImport())
     myList.add(DeleteAllOfImport())
     myList.add(AddToList())
+    myList.add(ListContainsImport())
+    myList.add(InsertAt())
+    myList.add(DeleteOfList())
+    myList.add(ShowVariable())
 
     myList.add(ArgStringNumber())
     myList.add(ArgBoolean())
@@ -344,6 +355,7 @@ fun importer(sb3Path: String) {
     myList.add(OfImport())
     myList.add(OfObjectMenuImport())
     myList.add(CurrentImport())
+    myList.add(UsernameImport())
     myList.add(MouseDownImport())
     myList.add(AskAndWaitImport())
     myList.add(TouchingObjectImport())
@@ -476,7 +488,7 @@ fun importer(sb3Path: String) {
                 .addModifiers(KModifier.OVERRIDE)
                 .addParameter(
                     "visitors",
-                    MUTABLE_MAP.parameterizedBy(String::class.asTypeName(), Block::class.asTypeName())
+                    MUTABLE_MAP.parameterizedBy(String::class.asTypeName(), BlockFull::class.asTypeName())
                 )
                 .addParameter("parent", String::class.asClassName().copy(nullable = true))
                 .addParameter("identifier", String::class.asClassName())
@@ -565,7 +577,7 @@ fun importer(sb3Path: String) {
                         .addModifiers(KModifier.OVERRIDE)
                         .addParameter("builder", StringBuilder::class.asTypeName())
                         .addParameter("scratchProject", ScratchProject::class.asTypeName())
-                        .addParameter("block", Block::class.asTypeName())
+                        .addParameter("block", BlockFull::class.asTypeName())
                         .addParameter(
                             "myList",
                             List::class.asTypeName().parameterizedBy(ImportNode::class.asTypeName())
@@ -599,7 +611,7 @@ fun extracted(
     myList: List<ImportNode>,
     builder: StringBuilder
 ) {
-    val mut = mutableMapOf<String, Block>()
+    val mut = mutableMapOf<String, BlockFull>()
     var foundId = topLevelId
     var hasNext = target.blocks[topLevelId]?.next?.isNotEmpty() ?: false
 

@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class TouchingObjectImport : ImportNode {
@@ -11,12 +11,12 @@ class TouchingObjectImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("touchingObject(")
-        handle(builder, target, myList, blockOr.inputs["TOUCHINGOBJECTMENU"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["TOUCHINGOBJECTMENU"]?.get(1))
         builder.append(")\n")
     }
 }
@@ -29,12 +29,12 @@ class TouchingColorImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("touchingColor(")
-        handle(builder, target, myList, blockOr.inputs["COLOR"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["COLOR"]?.get(1))
         builder.append(")\n")
     }
 }
@@ -48,14 +48,14 @@ class ColorIsTouchingColorImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("colorIsTouchingColor(")
-        handle(builder, target, myList, blockOr.inputs["COLOR"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["COLOR"]?.get(1))
         builder.append(",")
-        handle(builder, target, myList, blockOr.inputs["COLOR2"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["COLOR2"]?.get(1))
         builder.append(")\n")
     }
 }
@@ -68,12 +68,12 @@ class DistanceToImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("distanceTo(")
-        handle(builder, target, myList, blockOr.inputs["DISTANCETOMENU"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["DISTANCETOMENU"]?.get(1))
         builder.append(")\n")
     }
 }
@@ -87,12 +87,12 @@ class SetDragModeImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("setDragMode(")
-        builder.append(blockOr.fields["DRAG_MODE"]?.get(0))
+        builder.append(blockFullOr.fields["DRAG_MODE"]?.get(0))
         builder.append(")\n")
     }
 }

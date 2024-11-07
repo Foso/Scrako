@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.looks
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class SwitchcostumetoImport : ImportNode {
@@ -11,12 +11,12 @@ class SwitchcostumetoImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("switchCostume(")
-        handle(builder, target, myList, blockOr.inputs["COSTUME"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["COSTUME"]?.get(1))
         builder.append(")\n")
     }
 }

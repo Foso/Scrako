@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.event
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class WhenFlag : ImportNode {
@@ -10,7 +10,7 @@ class WhenFlag : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {

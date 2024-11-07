@@ -6,13 +6,12 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 private class SetEffectTo(val block: ReporterBlock, val effectName: String) : Node {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -21,7 +20,7 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
         ) {
         val block1Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.looks_seteffectto,
+            opcode = "looks_seteffectto",
             inputs = mapOf(
                 "VALUE" to setValue(block, block1Id, context)
             ),

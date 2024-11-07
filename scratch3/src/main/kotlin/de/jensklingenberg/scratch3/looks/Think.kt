@@ -7,7 +7,7 @@ import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 /**
@@ -15,7 +15,7 @@ import java.util.UUID
  */
 private class Think(val block0 : ReporterBlock, ) : Node, StackBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,

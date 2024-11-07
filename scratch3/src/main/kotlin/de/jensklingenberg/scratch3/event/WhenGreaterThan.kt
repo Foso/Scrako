@@ -8,8 +8,7 @@ import de.jensklingenberg.scrako.common.HatBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 enum class GreaterThanOption(val option: String) {
@@ -20,7 +19,7 @@ enum class GreaterThanOption(val option: String) {
 private class WhenGreaterThan(private val option: GreaterThanOption, val value: ReporterBlock) : Node, HatBlock {
 
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -28,7 +27,7 @@ private class WhenGreaterThan(private val option: GreaterThanOption, val value: 
     ) {
         val protoUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.event_whengreaterthan,
+            opcode = "event_whengreaterthan",
             inputs = mapOf("VALUE" to setValue(value, protoUUID, context)),
             fields = mapOf("WHENGREATERTHANMENU" to listOf(option.option, null))
         ).toBlock(nextUUID, parent)

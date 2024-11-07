@@ -1,17 +1,17 @@
 package de.jensklingenberg.scrako.builder
 
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 
-fun createBlocks23(blockSpecs: List<List<Node>>, context: Context): Map<String, Block> {
+fun createBlocks23(blockSpecs: List<List<Node>>, context: Context): Map<String, BlockFull> {
     return blockSpecs.map { createBlocks2(it, context) }.flatMap { it.toList() }.toMap()
 }
 
 
-private fun createBlocks2(blockSpecs: List<Node>, context: Context): Map<String, Block> {
-    val blockMap = mutableMapOf<String, Block>()
+private fun createBlocks2(blockSpecs: List<Node>, context: Context): Map<String, BlockFull> {
+    val blockFullMap = mutableMapOf<String, BlockFull>()
 
     val uuids = blockSpecs.map { UUID.randomUUID().toString() }
 
@@ -24,9 +24,9 @@ private fun createBlocks2(blockSpecs: List<Node>, context: Context): Map<String,
 
         val nextNode = if (index != blockSpecs.lastIndex) uuids[index + 1] else null
 
-        blockSpec.visit(blockMap, parent, uuids[index], nextNode, context)
+        blockSpec.visit(blockFullMap, parent, uuids[index], nextNode, context)
 
     }
 
-    return blockMap
+    return blockFullMap
 }

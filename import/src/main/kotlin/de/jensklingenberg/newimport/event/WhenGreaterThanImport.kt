@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.event
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class WhenGreaterThanImport : ImportNode {
@@ -11,14 +11,14 @@ class WhenGreaterThanImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("whenGreaterThan(")
-        builder.append(blockOr.fields["WHENGREATERTHANMENU"]?.get(0))
+        builder.append(blockFullOr.fields["WHENGREATERTHANMENU"]?.get(0))
         builder.append(", ")
-        handle(builder, target, myList, blockOr.inputs["VALUE"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["VALUE"]?.get(1))
         builder.append(")\n")
     }
 }

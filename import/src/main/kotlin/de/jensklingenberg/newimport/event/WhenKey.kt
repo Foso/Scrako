@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.event
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class WhenKey : ImportNode {
@@ -10,10 +10,10 @@ class WhenKey : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
-        builder.append("whenKeyPressed(Key.${blockOr.fields["KEY_OPTION"]?.get(0)})\n")
+        builder.append("whenKeyPressed(Key.${blockFullOr.fields["KEY_OPTION"]?.get(0)})\n")
     }
 }

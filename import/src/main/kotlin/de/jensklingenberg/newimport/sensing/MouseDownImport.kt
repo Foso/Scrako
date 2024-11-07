@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class MouseDownImport : ImportNode {
@@ -10,7 +10,7 @@ class MouseDownImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {

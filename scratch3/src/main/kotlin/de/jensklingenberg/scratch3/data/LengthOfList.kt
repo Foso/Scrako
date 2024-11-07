@@ -5,12 +5,11 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ListBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 
 private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -18,7 +17,7 @@ private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListB
 
         ) {
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.data_lengthoflist,
+            opcode = "data_lengthoflist",
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
         ).toBlock(nextUUID, parent)
     }

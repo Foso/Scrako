@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.pen
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class StampImport : ImportNode {
@@ -10,7 +10,7 @@ class StampImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockFull: BlockFull,
         myList: List<ImportNode>,
         id: String,
     ) {

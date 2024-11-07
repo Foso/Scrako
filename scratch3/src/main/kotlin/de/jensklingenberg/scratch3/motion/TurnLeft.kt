@@ -4,9 +4,8 @@ import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scratch3.common.OpCode
 
-private class TurnLeft(private val reporterBlock: ReporterBlock) : Turn(OpCode.motion_turnleft, reporterBlock),
+private class TurnLeft(private val reporterBlock: ReporterBlock) : Turn("motion_turnleft", reporterBlock),
     MotionBlock
 
 fun CommonScriptBuilder.turnLeft(steps: ReporterBlock) = addNode(TurnLeft(steps))

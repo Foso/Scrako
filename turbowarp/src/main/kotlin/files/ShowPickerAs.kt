@@ -6,12 +6,12 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ObjectReporter
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 private class ShowPickerAs(val block0: ReporterBlock) : BooleanBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -30,7 +30,7 @@ private class ShowPickerAs(val block0: ReporterBlock) : BooleanBlock {
 
 private class Menu_encoding(val encoding: String) : ObjectReporter {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,

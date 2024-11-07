@@ -30,6 +30,6 @@ fun add(operand1: String, operand2: Double) = Add(StringBlock(operand1), DoubleB
 fun add(operand1: String, operand2: Int) = Add(StringBlock(operand1), IntBlock(operand2))
 fun add(operand1: String, operand2: ReporterBlock) = Add(StringBlock(operand1), operand2)
 
-infix fun BooleanBlock.and(booleanBlock: BooleanBlock): BooleanBlock {
+infix fun ReporterBlock.and(booleanBlock: ReporterBlock): BooleanBlock {
     return And(this, booleanBlock)
 }

@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.argument
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 
@@ -11,11 +11,11 @@ class ArgStringNumber : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("\"" + blockOr.fields["VALUE"]?.get(0) + "\"")
+        builder.append("\"" + blockFullOr.fields["VALUE"]?.get(0) + "\"")
 
     }
 }
@@ -26,10 +26,10 @@ class ArgBoolean : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append(blockOr.fields["VALUE"]?.get(0))
+        builder.append(blockFullOr.fields["VALUE"]?.get(0))
     }
 }

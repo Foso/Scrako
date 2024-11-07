@@ -1,6 +1,6 @@
 package de.jensklingenberg.scrako.common
 
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Comment
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Sound
@@ -11,7 +11,7 @@ import java.util.UUID
 
 
 internal fun createTarget(
-    blocks: Map<String, Block>,
+    blocks: Map<String, BlockFull>,
     name: String,
     comments: List<Comment> = emptyList(),
     lists: Map<String, ScratchList>,

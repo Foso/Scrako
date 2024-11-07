@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.motion
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class GlideToImport : ImportNode {
@@ -11,14 +11,14 @@ class GlideToImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        block: Block,
+        blockFull: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("glideTo(")
-        handle(builder, target, myList, block.inputs["SECS"]?.get(1))
+        handle(builder, target, myList, blockFull.inputs["SECS"]?.get(1))
         builder.append(",")
-        handle(builder, target, myList, block.inputs["TO"]?.get(1))
+        handle(builder, target, myList, blockFull.inputs["TO"]?.get(1))
         builder.append(")\n")
     }
 }

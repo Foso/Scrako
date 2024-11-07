@@ -10,8 +10,7 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.StackBlock
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 private class InsertAt(
@@ -21,7 +20,7 @@ private class InsertAt(
 ) : Node,
     StackBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -30,7 +29,7 @@ private class InsertAt(
         val indexBlockId = UUID.randomUUID().toString()
         val dataBlockId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.data_insertatlist,
+            opcode = "data_insertatlist",
             inputs = mapOf(
                 "INDEX" to setValue(index, indexBlockId, context),
                 "ITEM" to setValue(block, dataBlockId, context)

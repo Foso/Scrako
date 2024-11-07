@@ -3,13 +3,14 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
+import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 private class Deleteoflist(val block0: ReporterBlock, val list: String) : Node {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -30,3 +31,4 @@ private class Deleteoflist(val block0: ReporterBlock, val list: String) : Node {
 }
 
 fun CommonScriptBuilder.deleteItemOfList(block0: ReporterBlock, list: String) = addNode(Deleteoflist(block0, list))
+fun CommonScriptBuilder.deleteItemOfList(block0: ReporterBlock, list: ScratchList) = addNode(Deleteoflist(block0, list.name))

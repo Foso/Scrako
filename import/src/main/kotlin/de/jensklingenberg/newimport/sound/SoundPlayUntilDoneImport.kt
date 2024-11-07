@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.sound
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class SoundPlayUntilDoneImport : ImportNode {
@@ -11,12 +11,12 @@ class SoundPlayUntilDoneImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("playUntilDone(")
-        handle(builder, target, myList, blockOr.inputs["SOUND_MENU"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["SOUND_MENU"]?.get(1))
         builder.append(")\n")
     }
 }

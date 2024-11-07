@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class AnswerImport : ImportNode {
@@ -11,7 +11,7 @@ class AnswerImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
@@ -28,7 +28,7 @@ class LoudnessImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
@@ -44,7 +44,7 @@ class TimerImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
@@ -61,7 +61,7 @@ class ResetTimerImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
@@ -77,14 +77,14 @@ class OfImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("of(")
-        builder.append(blockOr.fields["PROPERTY"]?.get(0))
+        builder.append(blockFullOr.fields["PROPERTY"]?.get(0))
         builder.append(",")
-        handle(builder, target, myList, blockOr.inputs["OBJECT"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["OBJECT"]?.get(1))
         builder.append(")")
     }
 }
@@ -97,12 +97,12 @@ class OfObjectMenuImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
 
-        builder.append(blockOr.fields["OBJECT"]?.get(0))
+        builder.append(blockFullOr.fields["OBJECT"]?.get(0))
 
     }
 }
@@ -115,12 +115,29 @@ class CurrentImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("current(")
-        builder.append(blockOr.fields["CURRENTMENU"]?.get(0))
+        builder.append(blockFullOr.fields["CURRENTMENU"]?.get(0))
         builder.append(")")
+    }
+}
+
+
+//sensing_username
+
+class UsernameImport : ImportNode {
+    override val opCode: String = "sensing_username"
+
+    override fun visit(
+        builder: StringBuilder,
+        target: Target,
+        blockFullOr: BlockFull,
+        myList: List<ImportNode>,
+        blockId: String
+    ) {
+        builder.append("Username")
     }
 }

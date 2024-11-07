@@ -7,13 +7,12 @@ import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 private class ChangeYby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -22,7 +21,7 @@ private class ChangeYby(val block: ReporterBlock) : ReporterBlock, MotionBlock {
         ) {
         val operatorUUID = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.motion_changeyby,
+            opcode = "motion_changeyby",
             inputs = mapOf(
                 "DY" to setValue(block, operatorUUID, context)
             )

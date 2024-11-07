@@ -7,15 +7,14 @@ import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
-import de.jensklingenberg.scrako.model.Block
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonPrimitive
+import de.jensklingenberg.scrako.common.setValue
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBlock {
 
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -26,16 +25,7 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
         visitors[identifier] = BlockSpec(
             opcode = "looks_switchcostumeto",
             inputs = mapOf(
-                "COSTUME" to when (block) {
-                    is StringBlock -> JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(menuId)))
-                    else -> JsonArray(
-                        listOf(
-                            JsonPrimitive(3),
-                            JsonPrimitive(menuId),
-                            JsonPrimitive(blockId)
-                        )
-                    )
-                }
+                "COSTUME" to setValue(block, blockId, context),
             ),
         ).toBlock(nextUUID, parent)
 
@@ -46,7 +36,6 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
             }
 
             else -> {
-                CostumeMenu().visit(visitors, identifier, menuId, null, context)
                 block.visit(visitors, identifier, menuId, null, context)
             }
         }
@@ -55,10 +44,10 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
 }
 
 
-private class CostumeMenu(private val value: String? = "costume1") : ReporterBlock {
+private class CostumeMenu(private val value: String) : ReporterBlock {
 
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,

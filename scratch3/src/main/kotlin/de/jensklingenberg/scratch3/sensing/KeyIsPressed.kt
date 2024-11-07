@@ -5,13 +5,13 @@ import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scratch3.event.Key
 import java.util.UUID
 
 private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -30,7 +30,7 @@ private class KeyIsPressed(val block: ReporterBlock) : BooleanBlock {
 
 private class KeyOptions(val reporter: KeyReporter) : ReporterBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,

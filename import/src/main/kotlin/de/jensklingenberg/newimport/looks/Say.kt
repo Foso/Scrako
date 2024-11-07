@@ -3,7 +3,7 @@ package de.jensklingenberg.example.newimport
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.newimport.extracted
 import de.jensklingenberg.scrako.common.ScratchType
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
@@ -16,12 +16,12 @@ class SayImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String,
     ) {
         builder.append("say(")
-        handle(builder, target, myList, blockOr.inputs["MESSAGE"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["MESSAGE"]?.get(1))
         builder.append(")\n")
     }
 }

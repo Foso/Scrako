@@ -1,7 +1,7 @@
 package de.jensklingenberg.newimport.event
 
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class WhenBroadcastReceivedImport : ImportNode {
@@ -10,11 +10,11 @@ class WhenBroadcastReceivedImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
-        val broadcast = blockOr.fields["BROADCAST_OPTION"]?.get(0)
+        val broadcast = blockFullOr.fields["BROADCAST_OPTION"]?.get(0)
         builder.append("whenIReceiveBroadcast(${broadcast})\n")
     }
 }

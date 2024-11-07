@@ -6,13 +6,13 @@ import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Event
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 
 
 private class SendBroadcastAndWait(val broadcast: Broadcast) : Node, Event {
 
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,

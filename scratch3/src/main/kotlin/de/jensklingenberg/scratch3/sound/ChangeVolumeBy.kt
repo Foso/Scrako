@@ -6,13 +6,12 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
 private class ChangeVolumeBy(val block0: ReporterBlock) : Node {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -20,7 +19,7 @@ private class ChangeVolumeBy(val block0: ReporterBlock) : Node {
     ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.sound_changevolumeby,
+            opcode = "sound_changevolumeby",
             inputs = mapOf(
                 "VOLUME" to setValue(block0, block0Id, context)
             ),

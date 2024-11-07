@@ -3,11 +3,11 @@ package de.jensklingenberg.scratch3.data
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 
 class DistanceToMenu(private val destination: String) : ReporterBlock {
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -20,31 +20,4 @@ class DistanceToMenu(private val destination: String) : ReporterBlock {
     }
 }
 
-//sensing_current
 
-class Current(val s: String) : ReporterBlock {
-    override fun visit(
-        visitors: MutableMap<String, Block>,
-        parent: String?,
-        identifier: String,
-        nextUUID: String?,
-        context: Context
-    ) {
-        visitors[identifier] = BlockSpec(
-            opcode = "sensing_current",
-            fields = mapOf("CURRENTMENU" to listOf(s, null))
-        ).toBlock(nextUUID, parent)
-    }
-}
-
-enum class CurrentMenu(val value: String) {
-    YEAR("YEAR"),
-    MONTH("MONTH"),
-    DATE("DATE"),
-    DAYOFWEEK("DAYOFWEEK"),
-    HOUR("HOUR"),
-    MINUTE("MINUTE"),
-    SECOND("SECOND")
-}
-
-fun current(s: CurrentMenu): ReporterBlock = Current(s.value.lowercase())

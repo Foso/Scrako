@@ -1,7 +1,7 @@
 package de.jensklingenberg.scrako.common
 
 import de.jensklingenberg.scrako.builder.Context
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Comment
 import de.jensklingenberg.scrako.model.Mutation
 import kotlinx.serialization.json.JsonArray
@@ -17,7 +17,7 @@ open class BlockSpec(
 ) : Node {
 
     open var comment: Comment? = null
-    fun toBlock(next: String?, parent: String?, comment: String? = null) = Block(
+    fun toBlock(next: String?, parent: String?, comment: String? = null) = BlockFull(
         opcode = opcode,
         next = next,
         parent = parent,
@@ -32,7 +32,7 @@ open class BlockSpec(
     )
 
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,

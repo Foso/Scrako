@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.data
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class SetVariableImport : ImportNode {
@@ -11,13 +11,13 @@ class SetVariableImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         blockId: String
     ) {
         builder.append("setVariableTo(")
-        builder.append("${blockOr.fields["VARIABLE"]?.get(0)},")
-        handle(builder, target, myList, blockOr.inputs["VALUE"]?.get(1))
+        builder.append("${blockFullOr.fields["VARIABLE"]?.get(0)},")
+        handle(builder, target, myList, blockFullOr.inputs["VALUE"]?.get(1))
         builder.append(")\n")
     }
 }

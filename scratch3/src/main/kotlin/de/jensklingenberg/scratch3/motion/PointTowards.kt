@@ -5,8 +5,7 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
-import de.jensklingenberg.scrako.model.Block
-import de.jensklingenberg.scratch3.common.OpCode
+import de.jensklingenberg.scrako.model.BlockFull
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
@@ -14,7 +13,7 @@ import java.util.UUID
 private class PointTowards(private val target: String) : Node, MotionBlock {
 
     override fun visit(
-        visitors: MutableMap<String, Block>,
+        visitors: MutableMap<String, BlockFull>,
         parent: String?,
         identifier: String,
         nextUUID: String?,
@@ -22,7 +21,7 @@ private class PointTowards(private val target: String) : Node, MotionBlock {
     ) {
         val uuid = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = OpCode.motion_pointtowards,
+            opcode = "motion_pointtowards",
             inputs = mapOf(
                 "TOWARDS" to JsonArray(listOf(JsonPrimitive(1), JsonPrimitive(uuid)))
             )

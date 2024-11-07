@@ -10,7 +10,7 @@ data class Target(
     val variables: Map<String, JsonArray>,
     val lists: Map<String, JsonArray>,
     val broadcasts: Map<String, String>,
-    val blocks: Map<String, Block>,
+    val blocks: Map<String, BlockFull>,
     val comments: Map<String, Comment>,
     val currentCostume: Int,
     val costumes: List<Costume>,

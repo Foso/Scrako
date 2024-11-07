@@ -2,7 +2,7 @@ package de.jensklingenberg.newimport.sensing
 
 import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
-import de.jensklingenberg.scrako.model.Block
+import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class GoForwardBackwardLayersImport : ImportNode {
@@ -11,14 +11,14 @@ class GoForwardBackwardLayersImport : ImportNode {
     override fun visit(
         builder: StringBuilder,
         target: Target,
-        blockOr: Block,
+        blockFullOr: BlockFull,
         myList: List<ImportNode>,
         id: String,
     ) {
         builder.append("go")
-        builder.append(blockOr.fields["FORWARDBACKWARD"]?.get(0)?.capitalize())
+        builder.append(blockFullOr.fields["FORWARDBACKWARD"]?.get(0)?.capitalize())
         builder.append("Layers(")
-        handle(builder, target, myList, blockOr.inputs["NUM"]?.get(1))
+        handle(builder, target, myList, blockFullOr.inputs["NUM"]?.get(1))
         builder.append(")\n")
     }
 
