@@ -1,6 +1,5 @@
 package de.jensklingenberg.newimport.looks
 
-import de.jensklingenberg.example.newimport.handle
 import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target

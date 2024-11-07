@@ -4,8 +4,8 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.Block
 import de.jensklingenberg.scrako.model.Target
 
-class WhenKey : ImportNode {
-    override val opCode: String = "event_whenkeypressed"
+class WhenThisSpriteClicked : ImportNode {
+    override val opCode: String = "event_whenthisspriteclicked"
 
     override fun visit(
         builder: StringBuilder,
@@ -14,6 +14,6 @@ class WhenKey : ImportNode {
         myList: List<ImportNode>,
         blockId: String
     ) {
-        builder.append("whenKeyPressed(Key.${blockOr.fields["KEY_OPTION"]?.get(0)})\n")
+        builder.append("whenThisSpriteClicked()\n")
     }
 }

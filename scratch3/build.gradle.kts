@@ -23,6 +23,7 @@ dependencies {
 
 
 kotlin {
+    explicitApiWarning()
     jvmToolchain(21)
 }
 

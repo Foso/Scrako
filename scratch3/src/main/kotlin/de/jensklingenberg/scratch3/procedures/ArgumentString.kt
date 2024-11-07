@@ -4,7 +4,7 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.model.Block
 
-class ArgumentString(override val name: String, override val defaultValue: String = "") : Argument {
+internal class ArgumentString(override val name: String, override val defaultValue: String = "") : Argument {
     override fun visit(
         visitors: MutableMap<String, Block>,
         parent: String?,
@@ -19,4 +19,4 @@ class ArgumentString(override val name: String, override val defaultValue: Strin
     }
 }
 
-fun addArgumentString(name: String, defaultValue: String = "") = ArgumentString(name, defaultValue)
+internal fun addArgumentString(name: String, defaultValue: String = "") = ArgumentString(name, defaultValue)

@@ -92,7 +92,7 @@ class SetDragModeImport : ImportNode {
         blockId: String
     ) {
         builder.append("setDragMode(")
-       builder.append(blockOr.fields["DRAG_MODE"]?.get(0))
+        builder.append(blockOr.fields["DRAG_MODE"]?.get(0))
         builder.append(")\n")
     }
 }
