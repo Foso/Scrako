@@ -22,10 +22,12 @@ import de.jensklingenberg.newimport.control.IfElseImport
 import de.jensklingenberg.newimport.control.IfImport
 import de.jensklingenberg.newimport.control.RepeatImport
 import de.jensklingenberg.newimport.control.RepeatUntilImport
+import de.jensklingenberg.newimport.control.SensingTouchingObjectMenuImport
 import de.jensklingenberg.newimport.control.StartAsCloneImport
 import de.jensklingenberg.newimport.control.StopImport
 import de.jensklingenberg.newimport.control.WaitImport
 import de.jensklingenberg.newimport.control.WaitUntilImport
+import de.jensklingenberg.newimport.control.WhileImport
 import de.jensklingenberg.newimport.data.AddToList
 import de.jensklingenberg.newimport.data.ChangevariablebyImport
 import de.jensklingenberg.newimport.data.DeleteAllOfImport
@@ -150,8 +152,10 @@ import de.jensklingenberg.newimport.looks.NextbackdropImport
 import de.jensklingenberg.newimport.operator.ContainsImport
 import looks.ShowImport
 import de.jensklingenberg.newimport.operator.GtImport
+import de.jensklingenberg.newimport.pen.PenSetPenColorParamToImport
 import de.jensklingenberg.newimport.procedures.CallImport
 import de.jensklingenberg.newimport.sensing.UsernameImport
+import de.jensklingenberg.scrako.model.ScratchProject2
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -239,6 +243,7 @@ fun importer(sb3Path: String) {
     myList.add(SetPenColorToColor())
     myList.add(PenUpImport())
     myList.add(PenDownImport())
+    myList.add(PenSetPenColorParamToImport())
     myList.add(SetPenSizeImport())
     myList.add(ClearImport())
 
@@ -320,6 +325,8 @@ fun importer(sb3Path: String) {
     myList.add(StopImport())
     myList.add(CreateCloneOfImport())
     myList.add(CreateCloneOfMenuImport())
+    myList.add(WhileImport())
+    myList.add(SensingTouchingObjectMenuImport())
 
     myList.add(ClearGrahpiceffectsImport())
     myList.add(ReplaceItemImport())
@@ -370,7 +377,11 @@ fun importer(sb3Path: String) {
     myList.add(BroadcastAndWaitImport())
 
     myList.add(DefaultImporter())
-    val scratchProject = json.decodeFromString<ScratchProject>(projectJson)
+
+    val cleaned = projectJson
+    val scratchProject2 = json.decodeFromString<ScratchProject>(cleaned)
+
+    val scratchProject = scratchProject2//json.decodeFromString<ScratchProject>(cleaned)
 
     val wrapperFolder = "/Users/jens.klingenberg/Code/2024/LLVMPoet/wrapper/"
 
@@ -403,10 +414,13 @@ fun importer(sb3Path: String) {
         File("${wrapperFolder}/costumes/Costumes${target.name}.kt").writeText(test)
 
 
-        target.blocks.filter { it.value.topLevel }.forEach { (topLevelId, topLevelBlock) ->
-            builder.append("scriptBuilder{\n")
-            extracted(topLevelId, target, myList, builder)
-            builder.append("}\n\n")
+        target.blocks.forEach { (topLevelId, topLevelBlock) ->
+            if (topLevelBlock is BlockFull && topLevelBlock.topLevel) {
+                builder.append("scriptBuilder{\n")
+                extracted(topLevelId, target, myList, builder)
+                builder.append("}\n\n")
+            }
+
         }
 
         builder.append("}\n}\n")
@@ -416,8 +430,8 @@ fun importer(sb3Path: String) {
         val nodeClassName = ClassName("de.jensklingenberg.scrako.common", "Node")
         val reporterBlock = ClassName("de.jensklingenberg.scrako.common", "ReporterBlock")
 
-        target.blocks.forEach { (_, blockOr) ->
-
+        target.blocks.forEach { (_, block) ->
+            val blockOr = block as BlockFull
             var name = blockOr.opcode.substringAfter("_")
                 .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
             if (name == "Call") {
@@ -558,8 +572,8 @@ fun importer(sb3Path: String) {
                 val key = it.key
                 if (it.value[0].toString() == "3") {
                     val id = it.value[1] as? JsonPrimitive
-                    val tt = id?.contentOrNull?.let { target.blocks[it]?.fields?.get(key) }
-                    callInput = "\\\"" + tt?.get(0) + "\\\""
+                    //val tt = id?.contentOrNull?.let { target.blocks[it]?.fields?.get(key) }
+                    //  callInput = "\\\"" + tt?.get(0) + "\\\""
                 }
             }
 
@@ -611,16 +625,20 @@ fun extracted(
     myList: List<ImportNode>,
     builder: StringBuilder
 ) {
+    //Convert Map<String, Block> to Map<String, BlockFull>
+    val blocks = target.blocks.mapValues { (_, value) ->
+        value as? BlockFull
+    }
     val mut = mutableMapOf<String, BlockFull>()
     var foundId = topLevelId
-    var hasNext = target.blocks[topLevelId]?.next?.isNotEmpty() ?: false
+    var hasNext = blocks[topLevelId]?.next?.isNotEmpty() ?: false
 
     if (hasNext == false) {
-        mut[topLevelId] = target.blocks[topLevelId]!!
+        mut[topLevelId] = blocks[topLevelId]!!
     }
 
     while (hasNext) {
-        val myBlock = target.blocks[foundId]
+        val myBlock = blocks[foundId]
         if (myBlock != null) {
             mut[foundId] = myBlock
             foundId = myBlock.next ?: ""
@@ -630,13 +648,6 @@ fun extracted(
         }
     }
 
-
-    target.blocks.forEach { (t, u) ->
-        if (t == foundId) {
-            //  mut[t] = u
-            //  foundId = u.next ?: ""
-        }
-    }
 
     mut.forEach { (id, block) ->
         myList.find { it.opCodeSupported(block.opcode) }?.visit(

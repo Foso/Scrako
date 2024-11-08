@@ -4,8 +4,8 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
-class StartAsCloneImport : ImportNode {
-    override val opCode: String = "control_start_as_clone"
+class SensingTouchingObjectMenuImport : ImportNode {
+    override val opCode: String = "sensing_touchingobjectmenu"
 
     override fun visit(
         builder: StringBuilder,
@@ -14,6 +14,6 @@ class StartAsCloneImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("startAsClone()\n")
+        builder.append(blockFullOr.fields["TOUCHINGOBJECTMENU"]?.get(0))
     }
 }

@@ -38,6 +38,3 @@ class IfImport : ImportNode {
     }
 }
 
-
-
-

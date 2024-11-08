@@ -4,7 +4,7 @@
       "isStage": true,
       "name": "Stage",
       "variables": {
-        "7d32cf75-116e-44c5-b2f2-6fbdc868ad58": [
+        "b4bada09-c373-4e8f-9173-266e7c1556b5": [
           "myGlobalVar",
           0
         ]
@@ -35,75 +35,276 @@
     },
     {
       "isStage": false,
-      "name": "Sprite2",
+      "name": "Sprite123",
       "variables": {
-        "4c54597f-ee50-4acf-9b08-627986f108d0": [
-          "test",
+        "58923340-1027-44d6-bd88-b2c7bcf329df": [
+          "playerX",
           1
         ],
-        "75de33ef-6d97-44ce-9f86-dbb506bddff1": [
-          "test2",
+        "b46d102e-c651-4266-95e2-d416c05a9fce": [
+          "playerY",
+          1
+        ],
+        "cdc78d0c-268e-4064-974d-b915cdabe249": [
+          "width",
+          1
+        ],
+        "1446040e-dd73-454e-97a8-69abb05fe6f9": [
+          "paint_yy",
+          1
+        ],
+        "b18be457-194b-4700-bd69-413f40fcfe49": [
+          "paint_xx",
           1
         ]
       },
-      "lists": {},
+      "lists": {
+        "bc156563-9e3e-4fb9-a723-596abf0ff937": [
+          "jens2",
+          [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ]
+      },
       "broadcasts": {
-        "paint": "83f59f06-3e94-4854-8762-935f2b73196c",
-        "input": "50a18585-8b24-4de4-adcb-574732206dd6"
+        "paint": "766361a3-753b-4c89-b35e-b5e42b07c0f6",
+        "input": "31aa69d0-a184-417c-ad44-6b61d1f1e722"
       },
       "blocks": {
-        "a": [
+        "b": {
+          "opcode": "data_itemoflist",
+          "next": null,
+          "parent": "e",
+          "inputs": {
+            "INDEX": [
+              3,
+              "a",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {
+            "LIST": [
+              "jens2",
+              null
+            ]
+          },
+          "shadow": false,
+          "topLevel": false
+        },
+        "a": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "b",
+          "inputs": {
+            "NUM1": [
+              3,
+              "c",
+              [
+                10,
+                "Hello"
+              ]
+            ],
+            "NUM2": [
+              3,
+              "d",
+              [
+                10,
+                "Hello"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "c": {
+          "opcode": "operator_multiply",
+          "next": null,
+          "parent": "a",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "nullpaint_yy",
+                "1446040e-dd73-454e-97a8-69abb05fe6f9"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "11"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "d": {
+          "opcode": "operator_add",
+          "next": null,
+          "parent": "a",
+          "inputs": {
+            "NUM1": [
+              2,
+              [
+                12,
+                "nullpaint_xx",
+                "b18be457-194b-4700-bd69-413f40fcfe49"
+              ]
+            ],
+            "NUM2": [
+              1,
+              [
+                4,
+                "1"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "f": [
           12,
-          "test",
-          "4c54597f-ee50-4acf-9b08-627986f108d0",
-          219,
-          228
+          "paint_xx",
+          "b18be457-194b-4700-bd69-413f40fcfe49",
+          326,
+          313
         ],
-        "b": [
-          12,
-          "test2",
-          "75de33ef-6d97-44ce-9f86-dbb506bddff1",
-          234,
-          320
-        ]
+        "g": {
+          "opcode": "event_whenflagclicked",
+          "next": null,
+          "parent": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 147,
+          "y": 389
+        }
       },
       "comments": {},
       "currentCostume": 0,
       "costumes": [
         {
-          "name": "Block-a",
-          "bitmapResolution": 1,
-          "dataFormat": "svg",
-          "assetId": "2de566f685a0b5a8d9553a4718a9963d",
-          "md5ext": "2de566f685a0b5a8d9553a4718a9963d.svg",
-          "rotationCenterX": 28,
-          "rotationCenterY": 38
+          "name": "tile15",
+          "bitmapResolution": 2,
+          "dataFormat": "png",
+          "assetId": "5109fed400e9cdc31e38fa055f466219",
+          "md5ext": "5109fed400e9cdc31e38fa055f466219.png",
+          "rotationCenterX": 16,
+          "rotationCenterY": 16
         },
         {
-          "name": "Block-b",
-          "bitmapResolution": 1,
-          "dataFormat": "svg",
-          "assetId": "b15d3e1d23eba4a23c0cd11039e89172",
-          "md5ext": "b15d3e1d23eba4a23c0cd11039e89172.svg",
-          "rotationCenterX": 29,
-          "rotationCenterY": 42
-        },
-        {
-          "name": "Block-c",
-          "bitmapResolution": 1,
-          "dataFormat": "svg",
-          "assetId": "54933fb32478e9689cf592a2dccfba0e",
-          "md5ext": "54933fb32478e9689cf592a2dccfba0e.svg",
-          "rotationCenterX": 35,
-          "rotationCenterY": 43
+          "name": "costume2",
+          "bitmapResolution": 2,
+          "dataFormat": "png",
+          "assetId": "0eabdcd3cdfeea01bb6ff8d3ad5fe301",
+          "md5ext": "0eabdcd3cdfeea01bb6ff8d3ad5fe301.png",
+          "rotationCenterX": 31,
+          "rotationCenterY": 26
         }
       ],
       "sounds": [],
       "volume": 100,
       "layerOrder": 1,
       "visible": true,
-      "x": 150,
-      "y": 100,
+      "x": 0,
+      "y": 0,
       "size": 100,
       "direction": 90,
       "draggable": false,

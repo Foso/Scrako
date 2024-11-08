@@ -1,2 +1,4 @@
 //Cloud variables
 //Comments
+//Assets
+//Sounds

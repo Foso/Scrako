@@ -1,6 +1,7 @@
 package de.jensklingenberg.scrako.model
 
 import kotlinx.serialization.EncodeDefault
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 import java.util.UUID
@@ -27,12 +28,12 @@ data class Comment(
 typealias Backdrop = Costume
 
 @Serializable
-data class Costume(
+data class Costume @OptIn(ExperimentalSerializationApi::class) constructor(
     val name: String,
     val bitmapResolution: Int? = null,
     val dataFormat: String,
     val assetId: String,
-    @Transient val md5ext: String = "",
+    @EncodeDefault  val md5ext: String = "$assetId.$dataFormat",
     val rotationCenterX: Double,
     val rotationCenterY: Double
 )

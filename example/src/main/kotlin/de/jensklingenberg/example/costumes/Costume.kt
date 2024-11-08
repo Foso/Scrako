@@ -48,7 +48,6 @@ val blockA = Costume(
     bitmapResolution = 1,
     dataFormat = "svg",
     assetId = "ef3b01f6fc1ffa1270fbbf057f7ded42",
-    md5ext = "",
     rotationCenterX = 28.0,
     rotationCenterY = 38.0
 )
@@ -58,7 +57,7 @@ val blockB = Costume(
     bitmapResolution = 1,
     dataFormat = "svg",
     assetId = "1dc05fbaa37a6b41ffff459d0a776989",
-    md5ext = "",
+    
     rotationCenterX = 29.0,
     rotationCenterY = 42.0
 )
@@ -68,7 +67,7 @@ val Blockc = Costume(
     bitmapResolution = 1,
     dataFormat = "svg",
     assetId = "43090c4b423c977041542ce12017fda0",
-    md5ext = "",
+    
     rotationCenterX = 35.0,
     rotationCenterY = 43.0
 )
