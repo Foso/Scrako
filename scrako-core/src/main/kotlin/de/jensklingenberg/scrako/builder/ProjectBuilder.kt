@@ -6,6 +6,8 @@ import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.defaultStage
 import de.jensklingenberg.scrako.model.Meta
 import de.jensklingenberg.scrako.model.ScratchProject
+import kotlinx.serialization.json.Json
+import java.io.File
 import java.util.UUID
 
 class ProjectBuilder {
@@ -32,19 +34,21 @@ class ProjectBuilder {
         lists[list.name] = list
     }
 
-    fun build(): ScratchProject {
+    fun build(inputPath: String): ScratchProject {
 
         val broadcasts1 = broadcasts.associate { it.name to UUID.randomUUID().toString() }
+        val context = Context(globalVariableMap, lists, emptyList(), broadcasts1, inputPath)
         val newStage =
-            stage?.build(Context(globalVariableMap, lists, emptyList(), broadcasts1), true)
+            stage?.build(context, true)
                 ?.copy(isStage = true, visible = false, layerOrder = 0)
                 ?: defaultStage(
                     globalVariableMap,
                     broadcasts1,
-                    lists
+                    lists,
+                    context
                 )
 
-        val targets = targets.map { it.build(Context(globalVariableMap, lists, emptyList(), broadcasts1), false) }
+        val targets = targets.map { it.build(context, false) }
 
         return ScratchProject(
             targets = listOf(newStage) + targets, meta = meta
@@ -53,6 +57,20 @@ class ProjectBuilder {
 
     internal fun addBroadcast(board: Broadcast) {
         broadcasts.add(board)
+    }
+
+    fun writeProject( inputPath: String, targetPath: String, fileName: String) {
+        val project = build(inputPath)
+        copyFiles(inputPath, targetPath, project.targets.map { it.costumes }.flatten() )
+
+        val text = Json.encodeToString(ScratchProject.serializer(), build(inputPath))
+
+        File("$targetPath/project.json").writeText(text)
+
+        val filesToZip = File(targetPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList() ?: emptyList()
+        val outputZipFile = File("$targetPath/$fileName")
+        zipFiles(filesToZip, outputZipFile)
+
     }
 
 }

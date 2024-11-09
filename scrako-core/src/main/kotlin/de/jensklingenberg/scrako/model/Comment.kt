@@ -25,7 +25,7 @@ data class Comment(
     }
 }
 
-typealias Backdrop = Costume
+typealias Backdrop = Costume2
 
 @Serializable
 data class Costume @OptIn(ExperimentalSerializationApi::class) constructor(
@@ -33,10 +33,22 @@ data class Costume @OptIn(ExperimentalSerializationApi::class) constructor(
     val bitmapResolution: Int? = null,
     val dataFormat: String,
     val assetId: String,
-    @EncodeDefault  val md5ext: String = "$assetId.$dataFormat",
+    val rotationCenterX: Double,
+    val rotationCenterY: Double,
+    @EncodeDefault val md5ext: String = "$assetId.$dataFormat",
+    @Transient val isCustom : Boolean = false
+)
+
+
+data class Costume2(
+    val name: String,
+    val bitmapResolution: Int? = null,
+    val dataFormat: String? = null,
+    val assetId: String?=null,
     val rotationCenterX: Double,
     val rotationCenterY: Double
 )
+
 
 @Serializable
 data class Sound(

@@ -1,5 +1,7 @@
 package de.jensklingenberg.scrako.common
 
+import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.getFileMD5
 import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Comment
 import de.jensklingenberg.scrako.model.Costume
@@ -7,6 +9,7 @@ import de.jensklingenberg.scrako.model.Sound
 import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
+import java.io.File
 import java.util.UUID
 
 
@@ -69,7 +72,10 @@ internal fun defaultStage(
     variables: MutableMap<String, UUID> = mutableMapOf(),
     broadcasts: Map<String, String>,
     lists: Map<String, ScratchList>,
+    context: Context,
 ): Target {
+
+
 
    return createTarget(
         emptyMap(),
@@ -78,7 +84,14 @@ internal fun defaultStage(
         lists,
         variables,
         listOf(
-            backdrop
+            Costume(
+                name = backdrop.name,
+                bitmapResolution = backdrop.bitmapResolution,
+                dataFormat = backdrop.dataFormat!!,
+                assetId = backdrop.assetId!!,
+                rotationCenterX = backdrop.rotationCenterX,
+                rotationCenterY = backdrop.rotationCenterY
+            )
         ),
         broadcasts,
         emptyList(),

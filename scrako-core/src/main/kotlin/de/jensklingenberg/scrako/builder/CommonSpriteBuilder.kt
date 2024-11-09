@@ -6,7 +6,9 @@ import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.createTarget
 import de.jensklingenberg.scrako.model.Backdrop
 import de.jensklingenberg.scrako.model.Costume
+import de.jensklingenberg.scrako.model.Costume2
 import de.jensklingenberg.scrako.model.Target
+import java.io.File
 import java.util.UUID
 
 open class CommonSpriteBuilder {
@@ -14,7 +16,7 @@ open class CommonSpriteBuilder {
     var name: String = ""
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
-    private val costumesList = mutableListOf<Costume>()
+    private val costumesList = mutableListOf<Costume2>()
     private var position = Pair(0.0, 0.0)
     private var sounds = mutableListOf<String>()
 
@@ -90,9 +92,22 @@ open class CommonSpriteBuilder {
                 variableMap = allVariables,
                 lists = allLists,
                 functions = functionsMap,
-                broadcastMap = context.broadcastMap
+                broadcastMap = context.broadcastMap,
+                inputPath = context.inputPath
             )
         )
+
+        val costumesList = costumesList.map {
+            Costume(
+                name = it.name,
+                bitmapResolution = it.bitmapResolution,
+                dataFormat = it.dataFormat!!,
+                assetId = it.assetId ?: getFileMD5(File(context.inputPath+"/sprites/${it.name}.${it.dataFormat}")),
+                rotationCenterX = it.rotationCenterX,
+                rotationCenterY = it.rotationCenterY,
+                isCustom = it.assetId == null
+            )
+        }
 
         return createTarget(
             blocks = blocks,
@@ -113,7 +128,7 @@ open class CommonSpriteBuilder {
         )
     }
 
-    internal fun addCostumeList(costume: Costume) {
+    internal fun addCostumeList(costume: Costume2) {
         costumesList.add(costume)
     }
 
@@ -122,7 +137,7 @@ open class CommonSpriteBuilder {
 class StageSpriteBuilder : CommonSpriteBuilder()
 class SpriteBuilder : CommonSpriteBuilder()
 
-fun SpriteBuilder.addCostumes(costume: List<Costume>) {
+fun SpriteBuilder.addCostumes(costume: List<Costume2>) {
     costume.forEach { addCostumeList(it) }
 }
 

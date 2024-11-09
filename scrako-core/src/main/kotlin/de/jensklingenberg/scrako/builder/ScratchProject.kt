@@ -1,5 +1,6 @@
 package de.jensklingenberg.scrako.builder
 
+import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.ScratchProject
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -7,27 +8,42 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
+import java.security.MessageDigest
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
 
-fun copyFiles(inputPath: String, targetPath: String) {
+internal fun copyFiles(inputPath: String, targetPath: String, costumes: List<Costume>) {
     val soundFiles = File(inputPath + "sounds").listFiles()
 
     soundFiles?.forEach {
         Files.copy(it.toPath(), File("$targetPath/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
     }
 
-    val spriteFiles = File(inputPath + "sprites").listFiles()
+    costumes.forEach {
+        val fileName = if(it.isCustom) it.name else it.assetId
+        val fil = File(inputPath+"sprites/${fileName}.${it.dataFormat}")
 
-    spriteFiles?.forEach {
-        Files.copy(it.toPath(), File("$targetPath/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+        Files.copy(fil.toPath(), File(targetPath+"/${it.assetId}.${it.dataFormat}").toPath(), StandardCopyOption.REPLACE_EXISTING)
     }
+}
+
+internal fun getFileMD5(file: File): String {
+    val buffer = ByteArray(1024)
+    val md = MessageDigest.getInstance("MD5")
+    FileInputStream(file).use { fis ->
+        var bytesRead: Int
+        while (fis.read(buffer).also { bytesRead = it } != -1) {
+            md.update(buffer, 0, bytesRead)
+        }
+    }
+    val md5Bytes = md.digest()
+    return md5Bytes.joinToString("") { "%02x".format(it) }
 }
 
 fun writeProject(scratchProject: ScratchProject, inputPath: String, targetPath: String, fileName: String) {
 
-    copyFiles(inputPath, targetPath)
+    copyFiles(inputPath, targetPath, emptyList())
 
     val text = Json.encodeToString(ScratchProject.serializer(), scratchProject)
 
@@ -39,7 +55,7 @@ fun writeProject(scratchProject: ScratchProject, inputPath: String, targetPath: 
 
 }
 
-private fun zipFiles(files: List<File>, outputZipFile: File) {
+internal fun zipFiles(files: List<File>, outputZipFile: File) {
 
     ZipOutputStream(FileOutputStream(outputZipFile)).use { zipOut ->
         files.forEach { file ->

@@ -7,5 +7,6 @@ data class Context(
     val variableMap: Map<String, UUID>,
     val lists: Map<String, ScratchList>,
     val functions: List<Argumenti>,
-    val broadcastMap: Map<String, String>
+    val broadcastMap: Map<String, String>,
+    val inputPath: String,
 )

@@ -58,6 +58,7 @@ import de.jensklingenberg.newimport.looks.CostumeImport
 import de.jensklingenberg.newimport.looks.GoToImport
 import de.jensklingenberg.newimport.looks.HideImport
 import de.jensklingenberg.newimport.looks.ItemNumOfListImport
+import de.jensklingenberg.newimport.looks.NextbackdropImport
 import de.jensklingenberg.newimport.looks.SayForSecsImport
 import de.jensklingenberg.newimport.looks.SetEffectToImport
 import de.jensklingenberg.newimport.looks.SetSizeImport
@@ -85,8 +86,10 @@ import de.jensklingenberg.newimport.motion.XPostionImport
 import de.jensklingenberg.newimport.motion.YPostionImport
 import de.jensklingenberg.newimport.operator.AddImport
 import de.jensklingenberg.newimport.operator.AndImport
+import de.jensklingenberg.newimport.operator.ContainsImport
 import de.jensklingenberg.newimport.operator.DivideImport
 import de.jensklingenberg.newimport.operator.EqualsImport
+import de.jensklingenberg.newimport.operator.GtImport
 import de.jensklingenberg.newimport.operator.JoinImport
 import de.jensklingenberg.newimport.operator.LengthofWordImport
 import de.jensklingenberg.newimport.operator.LetterOfImport
@@ -100,11 +103,15 @@ import de.jensklingenberg.newimport.operator.RandomImport
 import de.jensklingenberg.newimport.operator.RoundImport
 import de.jensklingenberg.newimport.operator.SubtractImport
 import de.jensklingenberg.newimport.pen.ClearImport
+import de.jensklingenberg.newimport.pen.PenChangePenColorParamByImport
 import de.jensklingenberg.newimport.pen.PenDownImport
+import de.jensklingenberg.newimport.pen.PenMenuColorParamImport
+import de.jensklingenberg.newimport.pen.PenSetPenColorParamToImport
 import de.jensklingenberg.newimport.pen.PenUpImport
 import de.jensklingenberg.newimport.pen.SetPenColorToColor
 import de.jensklingenberg.newimport.pen.SetPenSizeImport
 import de.jensklingenberg.newimport.pen.StampImport
+import de.jensklingenberg.newimport.procedures.CallImport
 import de.jensklingenberg.newimport.procedures.DefinitionImport
 import de.jensklingenberg.newimport.procedures.PrototypeImport
 import de.jensklingenberg.newimport.sensing.AnswerImport
@@ -132,6 +139,7 @@ import de.jensklingenberg.newimport.sensing.SwitchBackdropAndWaitImport
 import de.jensklingenberg.newimport.sensing.TimerImport
 import de.jensklingenberg.newimport.sensing.TouchingColorImport
 import de.jensklingenberg.newimport.sensing.TouchingObjectImport
+import de.jensklingenberg.newimport.sensing.UsernameImport
 import de.jensklingenberg.newimport.sound.ChangeSoundEffectByImport
 import de.jensklingenberg.newimport.sound.ChangeVolumeByImport
 import de.jensklingenberg.newimport.sound.ClearEffectsImport
@@ -147,15 +155,7 @@ import de.jensklingenberg.scrako.model.ScratchProject
 import de.jensklingenberg.scrako.model.Target
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.contentOrNull
-import de.jensklingenberg.newimport.looks.NextbackdropImport
-import de.jensklingenberg.newimport.operator.ContainsImport
 import looks.ShowImport
-import de.jensklingenberg.newimport.operator.GtImport
-import de.jensklingenberg.newimport.pen.PenSetPenColorParamToImport
-import de.jensklingenberg.newimport.procedures.CallImport
-import de.jensklingenberg.newimport.sensing.UsernameImport
-import de.jensklingenberg.scrako.model.ScratchProject2
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStreamReader
@@ -244,6 +244,8 @@ fun importer(sb3Path: String) {
     myList.add(PenUpImport())
     myList.add(PenDownImport())
     myList.add(PenSetPenColorParamToImport())
+    myList.add(PenMenuColorParamImport())
+    myList.add(PenChangePenColorParamByImport())
     myList.add(SetPenSizeImport())
     myList.add(ClearImport())
 

@@ -1,6 +1,7 @@
 package de.jensklingenberg.example.costumes
 
 import de.jensklingenberg.scrako.model.Costume
+import de.jensklingenberg.scrako.model.Costume2
 import de.jensklingenberg.scrako.model.Sound
 
 
@@ -43,7 +44,7 @@ val sound2 = Sound(
     md5ext = "83a9787d4cb6f3b7632b4ddfebf74367.wav"
 )
 
-val blockA = Costume(
+val blockA = Costume2(
     name = "Block-a",
     bitmapResolution = 1,
     dataFormat = "svg",
@@ -52,22 +53,20 @@ val blockA = Costume(
     rotationCenterY = 38.0
 )
 
-val blockB = Costume(
+val blockB = Costume2(
     name = "Block-b",
     bitmapResolution = 1,
     dataFormat = "svg",
     assetId = "1dc05fbaa37a6b41ffff459d0a776989",
-    
     rotationCenterX = 29.0,
     rotationCenterY = 42.0
 )
 
-val Blockc = Costume(
+val Blockc = Costume2(
     name = "Block-c",
     bitmapResolution = 1,
     dataFormat = "svg",
     assetId = "43090c4b423c977041542ce12017fda0",
-    
     rotationCenterX = 35.0,
     rotationCenterY = 43.0
 )
@@ -82,12 +81,11 @@ val costume1n = Costume(
     rotationCenterY = 26.0
 )
 
-val costume2n = Costume(
+val costume2n = Costume2(
     name = "costume2",
     bitmapResolution = 2,
     dataFormat = "png",
     assetId = "0eabdcd3cdfeea01bb6ff8d3ad5fe301",
-    md5ext = "0eabdcd3cdfeea01bb6ff8d3ad5fe301.png",
     rotationCenterX = 31.0,
     rotationCenterY = 26.0
 )

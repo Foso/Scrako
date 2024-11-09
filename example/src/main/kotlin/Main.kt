@@ -18,25 +18,23 @@ val json = Json {
 
 fun main() {
 
+    val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
+    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/"
+
+    val fileName = "test4.sb3"
+
     val proj = projectBuilder {
         val myGlobalVar = createGlobalVariable("myGlobalVar", true)
         val paint = createBroadcast("paint")
         MySprite1(paint)
         Sprite2(paint)
         //MyStageBuilder()
+        writeProject(
+            inputPath,
+            outputPath,
+            fileName
+        )
     }
-
-
-    val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
-    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/"
-
-    val fileName = "test4.sb3"
-    writeProject(
-        proj.build(),
-        inputPath,
-        outputPath,
-        fileName
-    )
 
     killTurboWarp()
 

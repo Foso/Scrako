@@ -4,8 +4,8 @@ import de.jensklingenberg.newimport.ImportNode
 import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
-class PenDownImport : ImportNode {
-    override val opCode: String = "pen_penDown"
+class PenMenuColorParamImport : ImportNode {
+    override val opCode: String = "pen_menu_colorParam"
 
     override fun visit(
         builder: StringBuilder,
@@ -14,13 +14,8 @@ class PenDownImport : ImportNode {
         myList: List<ImportNode>,
         blockId: String,
     ) {
-        builder.append("penDown()\n")
+        builder.append("penMenuColorParam(")
+        builder.append(blockFullOr.fields["colorParam"]?.get(0))
+        builder.append(")\n")
     }
 }
-
-//pen_setPenColorParamTo
-
-
-//pen_menu_colorParam
-
-

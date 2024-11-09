@@ -1,6 +1,7 @@
 package de.jensklingenberg.example.costumes
 
 import de.jensklingenberg.scrako.model.Costume
+import de.jensklingenberg.scrako.model.Costume2
 
 val _BIG = Costume(
     name = "BIG",
@@ -2495,11 +2496,10 @@ val _tile14 = Costume(
     rotationCenterX = 16.0,
     rotationCenterY = 16.0
 )
-val _tile15 = Costume(
+val _tile15 = Costume2(
     name = "tile15",
     bitmapResolution = 2,
     dataFormat = "png",
-    assetId = "5109fed400e9cdc31e38fa055f466219",
     rotationCenterX = 16.0,
     rotationCenterY = 16.0
 )
