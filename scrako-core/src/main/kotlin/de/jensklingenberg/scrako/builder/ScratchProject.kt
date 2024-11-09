@@ -22,9 +22,13 @@ internal fun copyFiles(inputPath: String, targetPath: String, costumes: List<Cos
 
     costumes.forEach {
         val fileName = if(it.isCustom) it.name else it.assetId
-        val fil = File(inputPath+"sprites/${fileName}.${it.dataFormat}")
+        try {
+            val fil = File(inputPath+"sprites/${fileName}.${it.dataFormat}")
 
-        Files.copy(fil.toPath(), File(targetPath+"/${it.assetId}.${it.dataFormat}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+            Files.copy(fil.toPath(), File(targetPath+"/${it.assetId}.${it.dataFormat}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 package de.jensklingenberg.example.sprites
 
 import de.jensklingenberg.example.costumes._tile15
-import de.jensklingenberg.example.costumes.costume2n
+
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createBroadcast
@@ -11,17 +11,15 @@ import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
 import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.IntBlock
-import de.jensklingenberg.scrako.common.MousePointer
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.StringBlock
+import de.jensklingenberg.scratch3.common.costume2
 import de.jensklingenberg.scratch3.control.forever
 import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.control.repeat
-import de.jensklingenberg.scratch3.data.CurrentMenu
 import de.jensklingenberg.scratch3.data.changeVariableBy
-import de.jensklingenberg.scratch3.data.current
 import de.jensklingenberg.scratch3.data.hideList
 import de.jensklingenberg.scratch3.data.insertAt
 import de.jensklingenberg.scratch3.data.itemOfXList
@@ -67,10 +65,8 @@ import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
 import de.jensklingenberg.scratch3.sensing.ask
 import de.jensklingenberg.scratch3.sensing.keyIsPressed
-import de.jensklingenberg.scratch3.sensing.touchingObject
 import de.jensklingenberg.scratch3.sound.clearEffects
 import debugger.log
-import deleteItemOfList
 import gotoxy
 
 const val PlayerIconID = "2"
@@ -92,7 +88,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             (0..88).map { "1" }
         )
 
-        addCostumes(listOf(_tile15, costume2n))
+        addCostumes(listOf(_tile15, costume2))
 
         val playerX = createVariable("playerX")
         val playerY = createVariable("playerY")

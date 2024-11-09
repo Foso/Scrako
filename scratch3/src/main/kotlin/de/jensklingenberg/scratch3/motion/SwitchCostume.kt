@@ -6,9 +6,12 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.StringBlock
+import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
+import de.jensklingenberg.scrako.model.Costume2
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
 private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBlock {
@@ -21,24 +24,25 @@ private class SwitchCostume(private val block: ReporterBlock) : Node, MotionBloc
         context: Context,
     ) {
         val menuId = UUID.randomUUID().toString()
-        val blockId = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = "looks_switchcostumeto",
             inputs = mapOf(
-                "COSTUME" to setValue(block, blockId, context),
-            ),
+                "COSTUME" to when (block) {
+                    is CostumeMenu -> {
+                        JsonArray(
+                            listOf(
+                                JsonPrimitive(1),
+                                JsonPrimitive(menuId),
+                            )
+                        )
+                    }
+
+                    else -> setValue(block, menuId, context)
+                }
+            )
         ).toBlock(nextUUID, parent)
 
-        when (block) {
-            is StringBlock -> {
-                CostumeMenu(block.value).visit(visitors, identifier, menuId, null, context)
-
-            }
-
-            else -> {
-                block.visit(visitors, identifier, menuId, null, context)
-            }
-        }
+        block.visit(visitors, identifier, menuId, null, context)
 
     }
 }
@@ -62,3 +66,4 @@ private class CostumeMenu(private val value: String) : ReporterBlock {
 
 fun CommonScriptBuilder.switchCostume(block: ReporterBlock) = addNode(SwitchCostume(block))
 fun CommonScriptBuilder.switchCostume(value: String) = addNode(SwitchCostume(CostumeMenu(value)))
+fun CommonScriptBuilder.switchCostume(value: Costume2) = addNode(SwitchCostume(CostumeMenu(value.name)))

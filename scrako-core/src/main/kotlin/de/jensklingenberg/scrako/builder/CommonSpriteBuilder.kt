@@ -93,7 +93,7 @@ open class CommonSpriteBuilder {
                 lists = allLists,
                 functions = functionsMap,
                 broadcastMap = context.broadcastMap,
-                inputPath = context.inputPath
+                inputPath = context.inputPath,
             )
         )
 

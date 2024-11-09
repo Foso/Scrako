@@ -8,8 +8,8 @@ val backdrop = Costume2(
     bitmapResolution = 1,
     dataFormat = "svg",
     assetId = "cd21514d0531fdffb22204e0ec5ed84a",
-    rotationCenterX = 240.0,
-    rotationCenterY = 180.0
+    rotationCenterX = 240,
+    rotationCenterY = 180
 )
 
 val basketBall = Costume(
@@ -18,6 +18,6 @@ val basketBall = Costume(
     dataFormat = "svg",
     assetId = "ae21eac3d1814aee1d37ae82ea287816",
     md5ext = "ae21eac3d1814aee1d37ae82ea287816.svg",
-    rotationCenterX = 249.0,
-    rotationCenterY = 186.0
+    rotationCenterX = 249,
+    rotationCenterY = 186
 )

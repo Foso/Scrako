@@ -1,12 +1,10 @@
 package de.jensklingenberg
 
-import de.jensklingenberg.example.sprites.Sprite2
+import de.jensklingenberg.example.sprites.MySprite1
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.createGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
-import de.jensklingenberg.scrako.builder.writeProject
 import kotlinx.serialization.json.Json
-import de.jensklingenberg.example.sprites.MySprite1
 import java.io.File
 
 val json = Json {
@@ -19,7 +17,7 @@ val json = Json {
 fun main() {
 
     val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
-    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/"
+    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/"
 
     val fileName = "test4.sb3"
 
@@ -27,7 +25,6 @@ fun main() {
         val myGlobalVar = createGlobalVariable("myGlobalVar", true)
         val paint = createBroadcast("paint")
         MySprite1(paint)
-        Sprite2(paint)
         //MyStageBuilder()
         writeProject(
             inputPath,

@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/scrako-core" />
             <option value="$PROJECT_DIR$/scratch3" />
             <option value="$PROJECT_DIR$/turbowarp" />
+            <option value="$PROJECT_DIR$/wordle" />
           </set>
         </option>
       </GradleProjectSettings>

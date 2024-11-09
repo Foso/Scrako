@@ -4,24 +4,55 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="BlockFullOr">
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/pen/PenChangePenColorParamByImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/pen/PenMenuColorParamImport.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/pen/PenSetPenColorParamToImport.kt" afterDir="false" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="costume2">
+      <change afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/common/Costumes.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/kotlin/Wordle.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/lists/jens.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sounds/83a9787d4cb6f3b7632b4ddfebf74367.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sounds/83c36d806dc92327b9e7049a565c6bff.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/83a9787d4cb6f3b7632b4ddfebf74367.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/83c36d806dc92327b9e7049a565c6bff.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterA.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterB.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterC.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterD.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterE.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterF.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterG.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterH.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterI.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterJ.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterK.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterL.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterM.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterN.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterO.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterP.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterQ.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterR.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterS.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterT.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterU.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterV.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterW.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterX.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterY.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wordle/src/main/resources/sprites/letterZ.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/Example.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/costumes/Costume.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/costumes/Costume.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/costumes/CostumesTiles.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/costumes/CostumesTiles.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/resources/sprites/5109fed400e9cdc31e38fa055f466219.png" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/resources/sprites/tile15.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Importer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Importer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/pen/PenDownImport.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/pen/PenDownImport.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/Import.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/Context.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/Context.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScratchProject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScratchProject.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Backdrop.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Backdrop.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/Target.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/model/Comment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/SwitchCostume.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/SwitchCostume.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/operator/Join.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/operator/Join.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +94,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Interface" />
-        <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -114,14 +145,18 @@
     "Gradle.VariablesTest.executor": "Run",
     "Gradle.VariablesTest.testGlobalVariables.executor": "Run",
     "Gradle.VariablesTest.testLocalVariables.executor": "Run",
+    "Kotlin.ExampleKt.executor": "Run",
     "Kotlin.Import.executor": "Run",
+    "Kotlin.ImportKt.executor": "Debug",
     "Kotlin.MainKt (1).executor": "Run",
     "Kotlin.MainKt (2).executor": "Run",
+    "Kotlin.MainKt (3).executor": "Run",
     "Kotlin.MainKt.executor": "Run",
+    "Kotlin.WordleKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks",
+    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/sprites",
     "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -136,11 +171,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/wordle/src/main/resources/sprites" />
+      <recent name="$PROJECT_DIR$/wordle" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion" />
-      <recent name="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/motion" />
-      <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/extension/pen" />
-      <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/operator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/import/src/main/kotlin/de/jensklingenberg/newimport/looks" />
@@ -175,30 +210,13 @@
       <recent name="scratch.event" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.MainKt (1)">
-    <configuration name="ListTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":scrako-core:test" />
-            <option value="--tests" />
-            <option value="&quot;de.jensklingenberg.ListTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
+  <component name="RunManager" selected="Kotlin.WordleKt">
+    <configuration name="ExampleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.ExampleKt" />
+      <module name="Scrako.example.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Import" type="JetRunConfigurationType" temporary="true">
       <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.de.jensklingenberg.MainKt" />
@@ -208,24 +226,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ImportKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.newimport.ImportKt" />
+      <module name="Scrako.import.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Import" type="JetRunConfigurationType" temporary="true">
       <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.newimport.MainKt" />
       <module name="Scrako.import.main" />
       <shortenClasspath name="NONE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.MainKt" />
-      <module name="Scrako.example.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainKt (2)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.newimport.MainKt" />
-      <module name="Scrako.import.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -241,6 +252,20 @@
     <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.newimport.MainKt" />
       <module name="Scrako.example.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WordleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.WordleKt" />
+      <module name="Scrako.example.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WordleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.WordleKt" />
+      <module name="Scrako.wordle.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -259,18 +284,18 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Gradle.ListTest" />
-      <item itemvalue="Kotlin.MainKt (1)" />
+      <item itemvalue="Kotlin.ExampleKt" />
+      <item itemvalue="Kotlin.WordleKt" />
       <item itemvalue="Kotlin.Import" />
-      <item itemvalue="Kotlin.MainKt (2)" />
+      <item itemvalue="Kotlin.ImportKt" />
       <item itemvalue="Kotlin.MainKt" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Kotlin.MainKt (1)" />
-        <item itemvalue="Kotlin.MainKt (2)" />
-        <item itemvalue="Kotlin.Import" />
-        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Kotlin.WordleKt" />
+        <item itemvalue="Kotlin.ImportKt" />
+        <item itemvalue="Kotlin.ExampleKt" />
+        <item itemvalue="Kotlin.WordleKt" />
         <item itemvalue="Kotlin.Import" />
       </list>
     </recent_temporary>
@@ -283,14 +308,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Reformat varraibles">
-      <option name="closed" value="true" />
-      <created>1730183727925</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1730183727925</updated>
     </task>
     <task id="LOCAL-00058" summary="function call">
       <option name="closed" value="true" />
@@ -676,7 +693,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731083068175</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="costume2">
+      <option name="closed" value="true" />
+      <created>1731181420605</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1731181420605</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -702,7 +727,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Setx" />
     <MESSAGE value="kotlin" />
     <MESSAGE value="scratch3" />
     <MESSAGE value="hello" />
@@ -727,7 +751,8 @@
     <MESSAGE value="Reforamt" />
     <MESSAGE value="BlockFull" />
     <MESSAGE value="BlockFullOr" />
-    <option name="LAST_COMMIT_MESSAGE" value="BlockFullOr" />
+    <MESSAGE value="costume2" />
+    <option name="LAST_COMMIT_MESSAGE" value="costume2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -739,12 +764,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScratchProject.kt</url>
-          <line>42</line>
+          <line>46</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScratchProject.kt</url>
-          <line>48</line>
+          <line>52</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -888,11 +913,6 @@
           <option name="timeStamp" value="447" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ScratchProject.kt</url>
-          <line>26</line>
-          <option name="timeStamp" value="448" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt</url>
           <line>100</line>
           <option name="timeStamp" value="449" />
@@ -901,6 +921,25 @@
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt</url>
           <line>111</line>
           <option name="timeStamp" value="450" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/SwitchCostume.kt</url>
+          <line>59</line>
+          <option name="timeStamp" value="456" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/motion/SwitchCostume.kt</url>
+          <line>29</line>
+          <option name="timeStamp" value="457" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/wordle/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt</url>
+          <line>250</line>
+          <properties method="MySprite1">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="453" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

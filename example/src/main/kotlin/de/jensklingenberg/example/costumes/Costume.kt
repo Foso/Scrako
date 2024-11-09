@@ -5,15 +5,7 @@ import de.jensklingenberg.scrako.model.Costume2
 import de.jensklingenberg.scrako.model.Sound
 
 
-val costume1 = Costume(
-    name = "costume1",
-    bitmapResolution = 1,
-    dataFormat = "svg",
-    assetId = "bcf454acf82e4504149f7ffe07081dbc",
-    md5ext = "bcf454acf82e4504149f7ffe07081dbc.svg",
-    rotationCenterX = 48.0,
-    rotationCenterY = 50.0
-)
+
 
 val costum2 = Costume(
     name = "costume2",
@@ -77,15 +69,6 @@ val costume1n = Costume(
     dataFormat = "png",
     assetId = "e4a6106fe45d48f3e4bd5b7529e6fb48",
     md5ext = "e4a6106fe45d48f3e4bd5b7529e6fb48.png",
-    rotationCenterX = 31.0,
-    rotationCenterY = 26.0
-)
-
-val costume2n = Costume2(
-    name = "costume2",
-    bitmapResolution = 2,
-    dataFormat = "png",
-    assetId = "0eabdcd3cdfeea01bb6ff8d3ad5fe301",
     rotationCenterX = 31.0,
     rotationCenterY = 26.0
 )
