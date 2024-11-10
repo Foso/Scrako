@@ -33,8 +33,8 @@ data class Costume @OptIn(ExperimentalSerializationApi::class) constructor(
     val bitmapResolution: Int? = null,
     val dataFormat: String,
     val assetId: String,
-    val rotationCenterX: Int,
-    val rotationCenterY: Int,
+    val rotationCenterX: Double,
+    val rotationCenterY: Double,
     @EncodeDefault val md5ext: String = "$assetId.$dataFormat",
     @Transient val isCustom : Boolean = false
 )
@@ -45,8 +45,8 @@ data class Costume2(
     val bitmapResolution: Int? = null,
     val dataFormat: String? = null,
     val assetId: String?=null,
-    val rotationCenterX: Int,
-    val rotationCenterY: Int
+    val rotationCenterX: Double,
+    val rotationCenterY: Double
 )
 
 

@@ -11,3 +11,5 @@ class OperatorContains(operand1: ReporterBlock, operand2: ReporterBlock) :
 fun contains(word: ReporterBlock, contains: String) = OperatorContains(word, StringBlock(contains))
 
 fun contains(word: String, contains: String) = OperatorContains(StringBlock(word), StringBlock(contains))
+
+fun contains(word: ReporterBlock, contains: ReporterBlock) = OperatorContains(word, contains)
