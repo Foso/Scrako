@@ -7,20 +7,23 @@ import de.jensklingenberg.scrako.common.createTarget
 import de.jensklingenberg.scrako.model.Backdrop
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Costume2
+import de.jensklingenberg.scrako.model.Sound
+import de.jensklingenberg.scrako.model.Sound2
 import de.jensklingenberg.scrako.model.Target
 import java.io.File
 import java.util.UUID
 
+
 open class CommonSpriteBuilder {
     internal val commonScriptBuilders = mutableListOf<CommonScriptBuilder>()
-    var name: String = ""
+    internal var name: String = ""
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
     private val costumesList = mutableListOf<Costume2>()
-    private var position = Pair(0.0, 0.0)
-    private var sounds = mutableListOf<String>()
+    private var sounds = mutableListOf<Sound2>()
+    var config: Config = Config()
 
-    fun addSounds(sound: List<String>) {
+    fun addSounds(sound: List<Sound2>) {
         sounds.addAll(sound)
     }
 
@@ -28,15 +31,14 @@ open class CommonSpriteBuilder {
         variableMap[name] = UUID.randomUUID()
     }
 
-    fun addPosition(y: Double, x: Double) {
-        position = Pair(y, x)
-    }
-
-   internal fun addList(list: ScratchList) {
+    internal fun addList(list: ScratchList) {
         listMap[list.name] = list
     }
 
     internal fun build(context: Context, isStage: Boolean): Target {
+        if (costumesList.isEmpty()) {
+            throw IllegalArgumentException("You need to add at least one costume for $name")
+        }
         val functionsMap = mutableListOf<Argumenti>()
         commonScriptBuilders.forEach {
             it.functionsMap.forEach { function ->
@@ -64,8 +66,7 @@ open class CommonSpriteBuilder {
         }
 
         val allVariables = variableMap + context.variableMap
-        var allLists = listMap+ context.lists
-
+        var allLists = listMap + context.lists
 
         val targetVariables = variableMap.map {
             if (context.variableMap.containsKey(it.key)) {
@@ -101,10 +102,22 @@ open class CommonSpriteBuilder {
             Costume(
                 name = it.name,
                 bitmapResolution = it.bitmapResolution,
-                dataFormat = it.dataFormat!!,
-                assetId = it.assetId ?: getFileMD5(File(context.inputPath+"/sprites/${it.name}.${it.dataFormat}")),
+                dataFormat = it.dataFormat,
+                assetId = it.assetId ?: getFileMD5(File(context.inputPath + "/sprites/${it.name}.${it.dataFormat}")),
                 rotationCenterX = it.rotationCenterX,
                 rotationCenterY = it.rotationCenterY,
+                isCustom = it.assetId == null
+            )
+        }
+
+        val soundsList = sounds.map {
+            Sound(
+                name = it.name,
+                assetId = it.assetId ?: getFileMD5(File(context.inputPath + "/sprites/${it.name}.${it.dataFormat}")),
+                dataFormat = it.dataFormat,
+                format = it.format,
+                rate = it.rate,
+                sampleCount = it.sampleCount,
                 isCustom = it.assetId == null
             )
         }
@@ -117,14 +130,14 @@ open class CommonSpriteBuilder {
             variables = targetVariables,
             costumes = costumesList,
             broadcasts = context.broadcastMap,
-            sounds = emptyList(),
-            size = 100.0,
-            x = position.second,
-            y = position.first,
-            visible = true,
-            direction = 90.0,
+            sounds = soundsList,
+            size = config.size,
+            x = config.posX,
+            y = config.posY,
+            visible = if (isStage) false else config.visible,
+            direction = config.direction,
             isStage = isStage,
-            layerOrder = 1
+            layerOrder = if (isStage) 0 else 1
         )
     }
 

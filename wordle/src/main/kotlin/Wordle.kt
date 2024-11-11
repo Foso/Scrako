@@ -1,31 +1,11 @@
 package de.jensklingenberg
 
+import de.jensklingenberg.de.jensklingenberg.example.sprites.Stage
 import de.jensklingenberg.example.sprites.MySprite1
-import de.jensklingenberg.scrako.builder.addBackdrop
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.createGlobalList
 import de.jensklingenberg.scrako.builder.createGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
-import de.jensklingenberg.scrako.builder.scriptBuilder
-import de.jensklingenberg.scrako.builder.stageBuilder
-import de.jensklingenberg.scrako.common.backdrop
-import de.jensklingenberg.scratch3.control.repeat
-import de.jensklingenberg.scratch3.data.addToList
-import de.jensklingenberg.scratch3.data.setVariable
-import de.jensklingenberg.scratch3.event.sendBroadcast
-import de.jensklingenberg.scratch3.event.whenFlagClicked
-import de.jensklingenberg.scratch3.extension.pen.eraseAll
-import de.jensklingenberg.scratch3.looks.hide
-import de.jensklingenberg.scratch3.sensing.Answer
-import de.jensklingenberg.scratch3.sensing.ask
-import kotlinx.serialization.json.Json
-import java.io.File
-
-val json = Json {
-    ignoreUnknownKeys = true
-    coerceInputValues = true
-    explicitNulls = false
-}
 
 
 fun main() {
@@ -40,31 +20,16 @@ fun main() {
         val broadcast = createBroadcast("paint")
         val insertWords =
             createGlobalList("INSERTWORDS")
-        stageBuilder {
-            addBackdrop(listOf(backdrop))
-            /**
-             * Start
-             */
-            scriptBuilder {
-                whenFlagClicked()
-                hide()
-                eraseAll()
-                setVariable(searchWord, "HOUND")
-                repeat(5) {
-                    ask("What is the word")
-                    sendBroadcast(broadcast)
-                    addToList(insertWords, Answer)
-                }
-            }
-        }
+        Stage(searchWord, broadcast, insertWords)
         MySprite1(broadcast, searchWord, insertWords)
-
-        writeProject(
-            inputPath,
-            outputPath,
-            fileName
-        )
     }
+
+    proj.writeProject(
+        inputPath,
+        outputPath,
+        fileName,
+        true
+    )
 
     killTurboWarp()
 
@@ -84,9 +49,3 @@ private fun killTurboWarp() {
     val process = processBuilder.start()
     process.waitFor()
 }
-
-
-fun readList(name: String): List<String> {
-    return File(name).readLines()
-}
-

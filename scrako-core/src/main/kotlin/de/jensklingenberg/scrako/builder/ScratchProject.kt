@@ -2,6 +2,7 @@ package de.jensklingenberg.scrako.builder
 
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.ScratchProject
+import de.jensklingenberg.scrako.model.Sound
 import kotlinx.serialization.json.Json
 import java.io.File
 import java.io.FileInputStream
@@ -13,20 +14,34 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 
 
-internal fun copyFiles(inputPath: String, targetPath: String, costumes: List<Costume>) {
-    val soundFiles = File(inputPath + "sounds").listFiles()
+internal fun copyFiles(inputPath: String, targetPath: String, costumes: List<Costume>, sounds : List<Sound> = emptyList()) {
 
-    soundFiles?.forEach {
-        Files.copy(it.toPath(), File("$targetPath/${it.name}").toPath(), StandardCopyOption.REPLACE_EXISTING)
+    sounds.forEach {
+        val fileName = if (it.isCustom) it.name else it.assetId
+        try {
+            val fil = File(inputPath + "sprites/${fileName}.${it.dataFormat}")
+
+            Files.copy(
+                fil.toPath(),
+                File(targetPath + "/${it.assetId}.${it.dataFormat}").toPath(),
+                StandardCopyOption.REPLACE_EXISTING
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     costumes.forEach {
-        val fileName = if(it.isCustom) it.name else it.assetId
+        val fileName = if (it.isCustom) it.name else it.assetId
         try {
-            val fil = File(inputPath+"sprites/${fileName}.${it.dataFormat}")
+            val fil = File(inputPath + "sprites/${fileName}.${it.dataFormat}")
 
-            Files.copy(fil.toPath(), File(targetPath+"/${it.assetId}.${it.dataFormat}").toPath(), StandardCopyOption.REPLACE_EXISTING)
-        }catch (e: Exception){
+            Files.copy(
+                fil.toPath(),
+                File(targetPath + "/${it.assetId}.${it.dataFormat}").toPath(),
+                StandardCopyOption.REPLACE_EXISTING
+            )
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }

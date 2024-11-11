@@ -46,9 +46,10 @@ object ListItemSerializer : JsonTransformingSerializer<BlockList>(
 object ProjectSerializer : JsonContentPolymorphicSerializer<Block>(Block::class) {
     override fun selectDeserializer(element: JsonElement): KSerializer<out Block> {
         return when {
-           element is JsonObject && element.jsonObject.contains("opcode") -> {
+            element is JsonObject && element.jsonObject.contains("opcode") -> {
                 BlockFull.serializer()
             }
+
             else -> {
                 ListItemSerializer
             }

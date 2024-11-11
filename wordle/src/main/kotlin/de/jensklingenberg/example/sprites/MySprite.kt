@@ -36,15 +36,22 @@ import de.jensklingenberg.de.jensklingenberg.example.sprites.letterW
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterX
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterY
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterZ
+import de.jensklingenberg.scrako.builder.Config
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createVariable
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
+import de.jensklingenberg.scrako.common.Argument
+import de.jensklingenberg.scrako.common.ArgumentType
+import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Broadcast
+import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.StringBlock
+import de.jensklingenberg.scrako.model.Sound2
+import de.jensklingenberg.scratch3.common.cat
 import de.jensklingenberg.scratch3.control.ifElse
 import de.jensklingenberg.scratch3.control.repeat
 import de.jensklingenberg.scratch3.data.changeVariableBy
@@ -54,6 +61,7 @@ import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch3.extension.pen.stamp
 import de.jensklingenberg.scratch3.looks.hide
+import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.looks.show
 import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
@@ -66,18 +74,18 @@ import de.jensklingenberg.scratch3.operator.lengthOf
 import de.jensklingenberg.scratch3.operator.letterOf
 import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
+import de.jensklingenberg.scratch3.procedures.getArgs
 import gotoxy
 
-const val PlayerIconID = "2"
-const val BackgroundIconId = "1"
-const val array_width = 11
-const val array_height = 8
-const val DEBUG = true
-const val X_START = -240
-const val Y_START = 150
-const val MOVE_DISTANCE = 40
 
-
+val sound1 = Sound2(
+    name = "Meow",
+    assetId = "83c36d806dc92327b9e7049a565c6bff",
+    dataFormat = "wav",
+    format = "",
+    rate = 48000,
+    sampleCount = 40681
+)
 
 
 fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, insertWords: ScratchList) {
@@ -86,9 +94,11 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
     val MOVE_DISTANCE = 40
 
     spriteBuilder("Sprite123") {
-
+        config = Config(visible = true, posX = X_START.toDouble())
+        addSounds(listOf(sound1))
         addCostumes(
             listOf(
+                cat,
                 letterA,
                 letterB,
                 letterC,
@@ -136,9 +146,21 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
         scriptBuilder {
             whenIReceiveBroadcast(broadcast)
             call("paint")
+            define("foo", withoutRefresh = true, arguments = listOf(Argument("bar", ArgumentType.NUMBER_OR_TEXT),
+                Argument("baz", ArgumentType.BOOLEAN)
+            )) {
+                val (bar, baz) = getArgs()
+                say(bar)
+                say(baz)
+            }
+        }
+        scriptBuilder {
+            whenFlagClicked()
+            call("foo", listOf(StringBlock("Hello"), StringBlock("World") eq "true" ))
         }
 
         scriptBuilder {
+
             define("paint", withoutRefresh = true) {
 
                 val currentIndex = createVariable("currentIndex")
@@ -183,4 +205,8 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
     }
 
 
+}
+
+private infix fun ReporterBlock.eq(s: String): BooleanBlock {
+    return eq(StringBlock(s))
 }

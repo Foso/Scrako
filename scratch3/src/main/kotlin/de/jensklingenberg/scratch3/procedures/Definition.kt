@@ -61,25 +61,25 @@ interface Argument : ReporterBlock {
 }
 
 
-class DefinitionBuilderCommon(val functionName: String, val args: List<Argument>) : CommonScriptBuilder()
+class DefinitionScriptBuilder(val functionName: String, val args: List<Argument>) : CommonScriptBuilder()
 
 fun CommonScriptBuilder.define(
     customBlockName: String,
     arguments: List<Argument> = emptyList(),
     withoutRefresh: Boolean = false,
-    builder: DefinitionBuilderCommon.() -> Unit
+    builder: DefinitionScriptBuilder.() -> Unit
 ) {
     functionsMap[customBlockName] = arguments
 
     addNode(
         Definition(
             Prototype(customBlockName, withoutRefresh, arguments),
-            DefinitionBuilderCommon(customBlockName, arguments).apply(builder).childs
+            DefinitionScriptBuilder(customBlockName, arguments).apply(builder).childs
         )
     )
 }
 
-fun DefinitionBuilderCommon.getArgs() =
+fun DefinitionScriptBuilder.getArgs() =
     args.map {
         when (it.type) {
             ArgumentType.BOOLEAN -> addArgumentBoolean(it.name)

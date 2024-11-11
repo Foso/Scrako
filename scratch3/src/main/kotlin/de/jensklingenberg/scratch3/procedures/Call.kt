@@ -9,6 +9,7 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Mutation
+import de.jensklingenberg.scratch3.operator.Operator
 import java.util.UUID
 
 private class Call(val functionName: String, val blockList: List<ReporterBlock>) : Node {
@@ -23,6 +24,10 @@ private class Call(val functionName: String, val blockList: List<ReporterBlock>)
         val arguments = context.functions.filter { it.functionName == functionName }
 
         val inputMap = arguments.mapIndexed { index, argumenti ->
+            if(argumenti.type == ArgumentType.BOOLEAN && blockList[index] !is Operator) {
+                throw IllegalStateException("Function $functionName argument ${argumenti.name} must be a Operator")
+            }
+
             try {
                 argumenti.id to setValue(blockList[index], blockIds[index], context)
             } catch (e: IndexOutOfBoundsException) {

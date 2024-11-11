@@ -36,16 +36,14 @@ class ProjectBuilder {
 
     fun build(inputPath: String): ScratchProject {
 
-        val broadcasts1 = broadcasts.associate { it.name to UUID.randomUUID().toString() }
-        val context = Context(globalVariableMap, lists, emptyList(), broadcasts1, inputPath)
+        val broadcastMap = broadcasts.associate { it.name to UUID.randomUUID().toString() }
+        val context = Context(globalVariableMap, lists, emptyList(), broadcastMap, inputPath)
         val newStage =
             stage?.build(context, true)
-                ?.copy(isStage = true, visible = false, layerOrder = 0)
                 ?: defaultStage(
                     globalVariableMap,
-                    broadcasts1,
-                    lists,
-                    context
+                    broadcastMap,
+                    lists
                 )
 
         val targets = targets.map { it.build(context, false) }
@@ -59,9 +57,9 @@ class ProjectBuilder {
         broadcasts.add(board)
     }
 
-    fun writeProject( inputPath: String, targetPath: String, fileName: String) {
+    fun writeProject(inputPath: String, targetPath: String, fileName: String, keepSources: Boolean = false) {
         val project = build(inputPath)
-        copyFiles(inputPath, targetPath, project.targets.map { it.costumes }.flatten() )
+        copyFiles(inputPath, targetPath, project.targets.map { it.costumes }.flatten(), project.targets.map { it.sounds }.flatten())
 
         val text = Json.encodeToString(ScratchProject.serializer(), build(inputPath))
 
@@ -70,13 +68,13 @@ class ProjectBuilder {
         val filesToZip = File(targetPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList() ?: emptyList()
         val outputZipFile = File("$targetPath/$fileName")
         zipFiles(filesToZip, outputZipFile)
-
+        if (!keepSources) {
+            File(targetPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList()?.forEach {
+                it.deleteRecursively()
+            }
+        }
     }
 
-}
-
-fun ProjectBuilder.addStage(target: StageSpriteBuilder) {
-    stage = target
 }
 
 fun ProjectBuilder.createBroadcast(name: String): Broadcast {
@@ -96,7 +94,7 @@ fun ProjectBuilder.stageBuilder(spriteBuilderScope: StageSpriteBuilder.() -> Uni
     val spriteBuilder = StageSpriteBuilder()
     spriteBuilderScope.invoke(spriteBuilder)
     spriteBuilder.name = "Stage"
-    addStage(spriteBuilder)
+    stage = spriteBuilder
     return spriteBuilder
 }
 

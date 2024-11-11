@@ -36,19 +36,28 @@ data class Costume @OptIn(ExperimentalSerializationApi::class) constructor(
     val rotationCenterX: Double,
     val rotationCenterY: Double,
     @EncodeDefault val md5ext: String = "$assetId.$dataFormat",
-    @Transient val isCustom : Boolean = false
+    @Transient val isCustom: Boolean = false
 )
 
 
 data class Costume2(
     val name: String,
     val bitmapResolution: Int? = null,
-    val dataFormat: String? = null,
-    val assetId: String?=null,
+    val dataFormat: String,
+    val assetId: String? = null,
     val rotationCenterX: Double,
     val rotationCenterY: Double
 )
 
+
+data class Sound2(
+    val name: String,
+    val dataFormat: String,
+    val assetId: String? = null,
+    val format: String? = null,
+    val rate: Int,
+    val sampleCount: Int,
+)
 
 @Serializable
 data class Sound(
@@ -58,7 +67,8 @@ data class Sound(
     @EncodeDefault val format: String? = null,
     val rate: Int,
     val sampleCount: Int,
-    val md5ext: String
+    @EncodeDefault val md5ext: String = "$assetId.$dataFormat",
+    @Transient val isCustom: Boolean = false
 )
 
 @Serializable

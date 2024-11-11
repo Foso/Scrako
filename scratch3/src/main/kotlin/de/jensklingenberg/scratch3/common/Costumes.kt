@@ -20,3 +20,12 @@ val cat = Costume2(
     rotationCenterX = 48.0,
     rotationCenterY = 50.0
 )
+
+val apple = Costume2(
+    name = "apple",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    assetId = "3826a4091a33e4d26f87a2fac7cf796b",
+    rotationCenterX = 48.0,
+    rotationCenterY = 50.0
+)

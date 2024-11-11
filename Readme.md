@@ -71,9 +71,35 @@ scriptBuilder {
 
 # Costumes
 
-# Costum blocks
+# Custom blocks
 ## Define custom block
+    
+```kotlin
+define("foo", 
+withoutRefresh = true, 
+arguments = listOf(Argument("bar", ArgumentType.NUMBER_OR_TEXT), Argument("baz", ArgumentType.BOOLEAN))) {
+// your code here
+}
+```
+
+## Get arguments
+
+```kotlin
+define("foo", 
+withoutRefresh = true, 
+arguments = listOf(Argument("bar", ArgumentType.NUMBER_OR_TEXT), Argument("baz", ArgumentType.BOOLEAN))) {
+val (bar, baz) = getArgs()
+say(bar)
+say(baz)
+}
+```
+Use destructuring to get the arguments from getArgs()
+
 ## Call custom block
+
+```kotlin
+call("foo", listOf(StringBlock("Hello"), StringBlock("World") eq "true" ))
+```
 
 # Operators
 

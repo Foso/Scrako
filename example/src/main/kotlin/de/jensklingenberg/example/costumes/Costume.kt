@@ -3,8 +3,7 @@ package de.jensklingenberg.example.costumes
 import de.jensklingenberg.scrako.model.Costume
 import de.jensklingenberg.scrako.model.Costume2
 import de.jensklingenberg.scrako.model.Sound
-
-
+import de.jensklingenberg.scrako.model.Sound2
 
 
 val costum2 = Costume(
@@ -16,15 +15,7 @@ val costum2 = Costume(
     rotationCenterX = 46.0,
     rotationCenterY = 53.0
 )
-val sound1 = Sound(
-    name = "Meow",
-    assetId = "83c36d806dc92327b9e7049a565c6bff",
-    dataFormat = "wav",
-    format = "",
-    rate = 48000,
-    sampleCount = 40681,
-    md5ext = "83c36d806dc92327b9e7049a565c6bff.wav"
-)
+
 
 val sound2 = Sound(
     name = "Test",

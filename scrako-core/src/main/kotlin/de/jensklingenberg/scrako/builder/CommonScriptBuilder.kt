@@ -12,5 +12,8 @@ open class CommonScriptBuilder {
     }
 }
 
-class SpriteScriptBuilder : CommonScriptBuilder()
+interface HasMotion
+
+class SpriteScriptBuilder : CommonScriptBuilder(), HasMotion
 class StageScriptBuilder : CommonScriptBuilder()
+
