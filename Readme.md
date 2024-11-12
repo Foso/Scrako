@@ -79,6 +79,10 @@ arguments = listOf(Argument("bar", ArgumentType.NUMBER_OR_TEXT), Argument("baz",
 
 ## Get arguments
 
+<p align="center">
+  <img src ="https://raw.githubusercontent.com/Foso/Scrako/master/docs/img.png"  />
+</p>
+
 ```kotlin
 define("foo", 
 withoutRefresh = true, 
