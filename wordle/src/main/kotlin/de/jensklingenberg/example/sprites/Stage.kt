@@ -15,10 +15,12 @@ import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scratch3.control.repeat
 import de.jensklingenberg.scratch3.data.addToList
 import de.jensklingenberg.scratch3.data.itemOfXList
+import de.jensklingenberg.scratch3.data.length
 import de.jensklingenberg.scratch3.data.setVariable
 import de.jensklingenberg.scratch3.event.sendBroadcast
 import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.extension.pen.eraseAll
+import de.jensklingenberg.scratch3.operator.random
 import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
 import de.jensklingenberg.scratch3.sensing.Answer
@@ -50,7 +52,7 @@ fun ProjectBuilder.Stage(
             whenFlagClicked()
             eraseAll()
 
-            setVariable(searchWord, itemOfXList(IntBlock(2), wordList))
+            setVariable(searchWord, itemOfXList(random(1,wordList.length()), wordList))
             log(searchWord)
             repeat(5) {
                 ask("What is the word")

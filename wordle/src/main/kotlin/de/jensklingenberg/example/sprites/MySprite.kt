@@ -31,7 +31,9 @@ import de.jensklingenberg.de.jensklingenberg.example.sprites.letterP
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterQ
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterR
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterS
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterSGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterT
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterTGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterU
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterUBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterUGreen
@@ -96,6 +98,7 @@ fun ProjectBuilder.MySprite1(
 
         config = Config(
            // posX = X_START.toDouble(),
+            sounds = listOf(meow),
             costumes = listOf(
                 letterA,
                 letterB,
@@ -136,11 +139,11 @@ fun ProjectBuilder.MySprite1(
                 letterOGreen,
                 letterUGreen,
                 letterNGreen,
-                letterDGreen
+                letterDGreen,
+                letterTGreen,
+                letterSGreen
             )
         )
-
-        addSounds(listOf(meow))
 
 
         scriptBuilder {

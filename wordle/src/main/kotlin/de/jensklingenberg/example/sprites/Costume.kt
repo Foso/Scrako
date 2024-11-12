@@ -259,6 +259,8 @@ val letterDBlue = Costume2(
     rotationCenterX = 6.7899971008301065,
     rotationCenterY = 15.75
 )
+
+
 val letterAGreen = Costume2(
     name = "letterAGreen",
     bitmapResolution = 1,
@@ -298,13 +300,7 @@ val letterOGreen = Costume2(
     rotationCenterY = 15.75
 )
 
-val letterUGreen = Costume2(
-    name = "letterUGreen",
-    bitmapResolution = 1,
-    dataFormat = "svg",
-    rotationCenterX = 6.7899971008301065,
-    rotationCenterY = 15.75
-)
+
 
 val letterNGreen = Costume2(
     name = "letterNGreen",
@@ -316,6 +312,31 @@ val letterNGreen = Costume2(
 
 val letterDGreen = Costume2(
     name = "letterDGreen",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    rotationCenterX = 6.7899971008301065,
+    rotationCenterY = 15.75
+)
+
+val letterSGreen = Costume2(
+    name = "letterSGreen",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    rotationCenterX = 6.7899971008301065,
+    rotationCenterY = 15.75
+)
+
+
+val letterTGreen = Costume2(
+    name = "letterTGreen",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    rotationCenterX = 6.7899971008301065,
+    rotationCenterY = 15.75
+)
+
+val letterUGreen = Costume2(
+    name = "letterUGreen",
     bitmapResolution = 1,
     dataFormat = "svg",
     rotationCenterX = 6.7899971008301065,

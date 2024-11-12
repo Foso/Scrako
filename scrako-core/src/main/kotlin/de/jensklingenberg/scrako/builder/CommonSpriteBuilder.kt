@@ -21,12 +21,7 @@ open class CommonSpriteBuilder(open val name: String) {
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
     private val costumesList = mutableListOf<Costume2>()
-    private var sounds = mutableListOf<Sound2>()
     var config: Config = Config()
-
-    fun addSounds(sound: List<Sound2>) {
-        sounds.addAll(sound)
-    }
 
     internal fun addVariable(name: String) {
         variableMap[name] = UUID.randomUUID()
@@ -37,9 +32,6 @@ open class CommonSpriteBuilder(open val name: String) {
     }
 
     internal fun build(context: Context, isStage: Boolean): Target {
-        if (costumesList.isEmpty()) {
-           // throw IllegalArgumentException("You need to add at least one costume for $name")
-        }
         val functionsMap = mutableListOf<Argumenti>()
         commonScriptBuilders.forEach {
             it.functionsMap.forEach { function ->
@@ -115,7 +107,7 @@ open class CommonSpriteBuilder(open val name: String) {
             )
         }
 
-        val soundsList = sounds.map {
+        val soundsList = config.sounds.map {
             Sound(
                 name = it.name,
                 assetId = it.assetId ?: getFileMD5(File(context.inputPath + "/sprites/${it.name}.${it.dataFormat}")),
