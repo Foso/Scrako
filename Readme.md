@@ -112,7 +112,7 @@ call("foo", listOf(StringBlock("Hello"), StringBlock("World") eq "true" ))
 # Development tips
 Scrako is only building the project file. 
 I use TurboWarp Desktop to run the project.
-
+https://desktop.turbowarp.org/
 This my setup for Mac but there should be similar commands for Windows and Linux.
 
 ```kotlin
