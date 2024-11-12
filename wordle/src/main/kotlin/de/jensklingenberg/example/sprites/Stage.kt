@@ -2,6 +2,7 @@ package de.jensklingenberg.de.jensklingenberg.example.sprites
 
 import de.jensklingenberg.scrako.builder.Config
 import de.jensklingenberg.scrako.builder.ProjectBuilder
+import de.jensklingenberg.scrako.builder.createList
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.stageBuilder
 import de.jensklingenberg.scrako.common.Argument
@@ -28,7 +29,7 @@ fun ProjectBuilder.Stage(
     searchWord: ScratchVariable,
     broadcast: Broadcast,
     insertWords: ScratchList,
-    wordList: ScratchList
+    sayAnswerBroadcast: Broadcast
 ) {
     stageBuilder {
         config = Config(costumes = listOf(backdrop))
@@ -36,6 +37,15 @@ fun ProjectBuilder.Stage(
         /**
          * Start
          */
+
+        val germanWords = listOf(
+            "Apfel", "BANANE", "Birne", "Blume", "Brot",
+            "Buch", "Eiche", "Ente", "Fuchs", "Haus",
+            "Hund", "Kater", "Katze", "Maus", "Pferd",
+            "Rose", "Sonne", "Stuhl", "Tisch", "Vogel"
+        )
+        val wordList =
+            createList("WORDLIST", germanWords)
         scriptBuilder {
             whenFlagClicked()
             eraseAll()
@@ -46,7 +56,9 @@ fun ProjectBuilder.Stage(
                 ask("What is the word")
                 call("uppercase", listOf(Answer))
                 sendBroadcast(broadcast)
+
             }
+            sendBroadcast(sayAnswerBroadcast)
         }
 
         scriptBuilder {

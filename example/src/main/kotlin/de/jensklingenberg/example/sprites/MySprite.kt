@@ -20,11 +20,11 @@ import de.jensklingenberg.scratch3.control.forever
 import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.control.repeat
 import de.jensklingenberg.scratch3.data.changeVariableBy
+import de.jensklingenberg.scratch3.data.contains
 import de.jensklingenberg.scratch3.data.hideList
 import de.jensklingenberg.scratch3.data.insertAt
 import de.jensklingenberg.scratch3.data.itemOfXList
-import de.jensklingenberg.scratch3.data.lengthOfList
-import de.jensklingenberg.scratch3.data.listContainsItem
+import de.jensklingenberg.scratch3.data.lengthOf
 import de.jensklingenberg.scratch3.data.replaceItemOfListWith
 import de.jensklingenberg.scratch3.data.setVariable
 import de.jensklingenberg.scratch3.data.showList
@@ -102,7 +102,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             thinkForSecs(StringBlock("Hallo"), IntBlock(2))
             setPenSizeTo(IntBlock(10))
             showVariable(playerX)
-            say(listContainsItem( jens2,StringBlock("1")))
+            say(jens2.contains(StringBlock("1")))
             insertAt("1", jens2, IntBlock(0))
             say(contains("hallo","h"))
             clearEffects()
@@ -127,7 +127,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
          */
         scriptBuilder {
             whenIReceiveBroadcast(paint)
-            call("paint1")
+            call("paint12")
         }
 
         scriptBuilder {
@@ -140,7 +140,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
                 setVariable(paintY, 0)
                 eraseAll()
                 goToxy(X_START, Y_START)
-                repeat(lengthOfList(jens2) div width) {
+                repeat(lengthOf(jens2) div width) {
                     setX(X_START)
                     setVariable(paintX, 0)
                     repeat(width) {

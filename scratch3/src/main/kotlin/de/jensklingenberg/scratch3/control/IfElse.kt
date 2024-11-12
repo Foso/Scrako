@@ -95,12 +95,12 @@ fun StageScriptBuilder.ifElse(
 )
 
 fun SpriteScriptBuilder.ifElse(
-    operatorSpec: BooleanBlock,
+    condition: BooleanBlock,
     leftStack: SpriteScriptBuilder.() -> Unit,
     rightStack: SpriteScriptBuilder.() -> Unit,
 ) = addNode(
     IfElse(
-        operatorSpec,
+        condition,
         leftStack = SpriteScriptBuilder().apply(leftStack).childs,
         rightStack = SpriteScriptBuilder().apply(rightStack).childs
     )

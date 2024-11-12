@@ -13,9 +13,7 @@ private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListB
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context) {
         visitors[identifier] = BlockSpec(
             opcode = "data_lengthoflist",
             fields = mapOf("LIST" to listOf(list.name, list.id.toString()))
@@ -23,4 +21,8 @@ private class LengthOfList(private val list: ScratchList) : ReporterBlock, ListB
     }
 }
 
-fun lengthOfList(list: ScratchList): ReporterBlock = LengthOfList(list)
+/**
+ * https://en.scratch-wiki.info/wiki/Length_of_()_(List_block)
+ */
+fun lengthOf(list: ScratchList): ReporterBlock = LengthOfList(list)
+fun ScratchList.length(): ReporterBlock = LengthOfList(this)

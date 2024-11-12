@@ -31,5 +31,6 @@ private class Itemoflist(val block0: ReporterBlock, val list: String) : Reporter
 }
 
 fun itemOfXList(index: ReporterBlock, list: ScratchList): ReporterBlock = Itemoflist(index, list.name)
+fun ScratchList.item(index: ReporterBlock): ReporterBlock = itemOfXList(index, this)
 
 

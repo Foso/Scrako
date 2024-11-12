@@ -1,6 +1,7 @@
 package de.jensklingenberg.example.sprites
 
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterA
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterABlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterAGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterB
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterBGreen
@@ -49,43 +50,52 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch3.common.meow
-import de.jensklingenberg.scratch3.control.deleteThisClone
 import de.jensklingenberg.scratch3.control.ifElse
 import de.jensklingenberg.scratch3.control.repeat
 import de.jensklingenberg.scratch3.data.changeVariableBy
-import de.jensklingenberg.scratch3.data.itemOfXList
+import de.jensklingenberg.scratch3.data.item
+import de.jensklingenberg.scratch3.data.length
 import de.jensklingenberg.scratch3.data.setVariable
 import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.event.whenIReceiveBroadcast
+import de.jensklingenberg.scratch3.extension.pen.eraseAll
 import de.jensklingenberg.scratch3.extension.pen.stamp
 import de.jensklingenberg.scratch3.looks.hide
 import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.looks.show
+import de.jensklingenberg.scratch3.looks.switchCostume
 import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
 import de.jensklingenberg.scratch3.motion.setX
-import de.jensklingenberg.scratch3.looks.switchCostume
 import de.jensklingenberg.scratch3.operator.contains
 import de.jensklingenberg.scratch3.operator.eq
 import de.jensklingenberg.scratch3.operator.join
+import de.jensklingenberg.scratch3.operator.length
 import de.jensklingenberg.scratch3.operator.lengthOf
-import de.jensklingenberg.scratch3.operator.letterOf
+import de.jensklingenberg.scratch3.operator.letter
 import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
+import debugger.breakpoint
+import debugger.log
 import goToxy
 
 
-fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, insertWords: ScratchList) {
-    val X_START = -240
+fun ProjectBuilder.MySprite1(
+    broadcast: Broadcast,
+    secretWord: ScratchVariable,
+    insertWords: ScratchList,
+    sayAnswerBroadcast: Broadcast
+) {
+    val X_START = -230
     val Y_START = 130
     val MOVE_DISTANCE = 40
 
     spriteBuilder("Sprite123") {
-        val currentIndex = createVariable("currentIndex")
-        val innerIndex = createVariable("INNERINDEX")
+        val rowIndex = createVariable("rowIndex")
+        val columnIndex = createVariable("columnIndex")
 
         config = Config(
-            posX = X_START.toDouble(),
+           // posX = X_START.toDouble(),
             costumes = listOf(
                 letterA,
                 letterB,
@@ -113,6 +123,7 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
                 letterX,
                 letterY,
                 letterZ,
+                letterABlue,
                 letterHBlue,
                 letterOBlue,
                 letterUBlue,
@@ -138,46 +149,76 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
         }
 
         scriptBuilder {
+            whenIReceiveBroadcast(sayAnswerBroadcast)
+            show()
+            say(secretWord)
+        }
+
+        scriptBuilder {
             whenIReceiveBroadcast(broadcast)
             call("paint")
         }
 
         scriptBuilder {
 
+            define("paint2", withoutRefresh = true) {
+                show()
+                eraseAll()
+                goToxy(X_START, Y_START)
+                repeat(insertWords.length()){
+                    stamp()
+                    //changeXby(MOVE_DISTANCE)
+                    changeYby(-MOVE_DISTANCE)
+                }
+                hide()
+            }
+        }
+
+        scriptBuilder {
+            //return@scriptBuilder
             define("paint", withoutRefresh = true) {
                 show()
-                say("Painting")
-                setVariable(currentIndex, 1)
+                log("Paint was called")
+                log(insertWords.length())
+                setVariable(rowIndex, 1)
                 goToxy(X_START, Y_START)
                 repeat(lengthOf(insertWords)) {
-                    setVariable(innerIndex, 1)
+                    setVariable(columnIndex, 1)
                     setX(X_START)
-                    val guessedWord = itemOfXList(currentIndex, insertWords)
-                    repeat(lengthOf(guessedWord)) {
+                    val guessedWord = insertWords.item(rowIndex)//itemOfXList(rowIndex, insertWords)
+                    repeat(guessedWord.length()) {
 
-                        val letterOfGuessedWord = letterOf(innerIndex, guessedWord)
-                        val letterOfSearchedWord = letterOf(innerIndex, searchWord)
+                        val letterOfGuessedWord = guessedWord.letter(columnIndex)//letterOf(innerIndex, guessedWord)
+                        val letterOfSearchedWord = secretWord.letter(columnIndex)//letterOf(columnIndex, searchWord)
 
                         val block = join(StringBlock("letter"), letterOfGuessedWord)
 
                         ifElse(letterOfSearchedWord eq letterOfGuessedWord, leftStack = {
+                            log("Letter is equal")
+                            log(letterOfGuessedWord)
                             switchCostume(join(block, StringBlock("Green")))
                         }, rightStack = {
-                            ifElse(contains(searchWord, letterOfGuessedWord), leftStack = {
+                            ifElse(contains(secretWord, letterOfGuessedWord), leftStack = {
+                                log("Letter is in word")
+                                log(letterOfGuessedWord)
                                 switchCostume(join(block, StringBlock("Blue")))
                             }, rightStack = {
+                                log("Letter is not in word")
+                                log(letterOfGuessedWord)
                                 switchCostume(block)
                             })
                         })
 
                         move(MOVE_DISTANCE)
+                        breakpoint()
                         stamp()
-                        changeVariableBy(innerIndex, 1)
+                        changeVariableBy(columnIndex, 1)
                     }
 
                     changeYby(-MOVE_DISTANCE)
-                    changeVariableBy(currentIndex, 1)
+                    changeVariableBy(rowIndex, 1)
                 }
+                hide()
             }
         }
     }

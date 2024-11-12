@@ -32,3 +32,5 @@ private class ItemNumOfList(private val block0: ReporterBlock, private val list:
 
 fun itemNumOfList(item: ReporterBlock, list: ScratchList): ReporterBlock = ItemNumOfList(item, list)
 fun itemNumOfList(item: Int, list: ScratchList): ReporterBlock = ItemNumOfList(IntBlock(item), list)
+fun ScratchList.indexOf(item: ReporterBlock): ReporterBlock = ItemNumOfList(item, this)
+fun ScratchList.indexOf(item: Int): ReporterBlock = ItemNumOfList(IntBlock(item), this)

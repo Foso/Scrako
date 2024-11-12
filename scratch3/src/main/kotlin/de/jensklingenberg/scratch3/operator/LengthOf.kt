@@ -11,7 +11,7 @@ import kotlin.String
 import kotlin.collections.MutableMap
 
 private class LengthOf(
-  public val string: ReporterBlock,
+  val string: ReporterBlock,
 ) : ReporterBlock {
   override fun visit(
       visitors: MutableMap<String, BlockFull>,
@@ -33,3 +33,4 @@ private class LengthOf(
 
 public fun lengthOf(string: ReporterBlock): ReporterBlock= LengthOf(string)
 public fun lengthOf(string: String): ReporterBlock= LengthOf(StringBlock(string))
+fun ReporterBlock.length(): ReporterBlock = lengthOf(this)

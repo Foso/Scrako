@@ -37,19 +37,6 @@ fun createMessage(first: Int, second: Int, message: String): JsonArray {
     )
 }
 
-
-fun getScratchType(message: String = "1", scratchType: ScratchType) = JsonArray(
-    listOf(
-        JsonPrimitive(1),
-        JsonArray(
-            listOf(
-                JsonPrimitive(scratchType.value),
-                JsonPrimitive(message)
-            )
-        )
-    )
-)
-
 fun setValue(
     reporterBlock: ReporterBlock,
     operatorUUID: String,
@@ -120,10 +107,6 @@ fun setValue(
     is StringBlock -> {
         createMessage(1, ScratchType.STRING.value, reporterBlock.value)
     }
-
-    //is And -> {
-    //     createCondition(operatorUUID.toString())
-    //  }
 
     else -> {
         JsonArray(

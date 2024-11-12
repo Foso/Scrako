@@ -7,7 +7,7 @@ import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
 
 class Add(operand1: ReporterBlock, operand2: ReporterBlock) :
-    Operator(listOf(operand1, operand2), listOf("NUM1", "NUM2"), "operator_add"), ReporterBlock
+    Operator(listOf(operand1, operand2), listOf("NUM1", "NUM2"), "operator_add")
 
 
 fun add(operand1: Double, operand2: Double) = Add(DoubleBlock(operand1), DoubleBlock(operand2))

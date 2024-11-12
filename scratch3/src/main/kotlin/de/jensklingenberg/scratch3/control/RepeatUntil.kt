@@ -1,11 +1,11 @@
 package de.jensklingenberg.scratch3.control
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
-import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.builder.StageScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
@@ -23,9 +23,8 @@ internal class RepeatUntil(
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val operatorUUID = UUID.randomUUID().toString()
         val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
 

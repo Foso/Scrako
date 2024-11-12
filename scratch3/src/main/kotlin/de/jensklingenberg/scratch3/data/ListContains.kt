@@ -28,3 +28,4 @@ private class ListContains(private val list: ScratchList, private val block: Rep
 }
 
 fun listContainsItem(list: ScratchList, block: ReporterBlock): BooleanBlock = ListContains(list, block)
+fun ScratchList.contains(block: ReporterBlock): BooleanBlock = ListContains(this, block)

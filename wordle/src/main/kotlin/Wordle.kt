@@ -18,18 +18,11 @@ fun main() {
     val proj = projectBuilder {
         val searchWord = createGlobalVariable("searchWord")
         val broadcast = createBroadcast("paint")
-        val germanWords = listOf(
-            "Apfel", "BANANE", "Birne", "Blume", "Brot",
-            "Buch", "Eiche", "Ente", "Fuchs", "Haus",
-            "Hund", "Kater", "Katze", "Maus", "Pferd",
-            "Rose", "Sonne", "Stuhl", "Tisch", "Vogel"
-        )
-        val wordList =
-            createGlobalList("WORDLIST", germanWords)
+        val sayAnswerBroadcast = createBroadcast("sayAnswer")
         val insertedWords =
             createGlobalList("INSERTWORDS")
-        Stage(searchWord, broadcast, insertedWords, wordList)
-        MySprite1(broadcast, searchWord, insertedWords)
+        Stage(searchWord, broadcast, insertedWords,sayAnswerBroadcast)
+        MySprite1(broadcast, searchWord, insertedWords,sayAnswerBroadcast)
     }
 
     proj.writeProject(

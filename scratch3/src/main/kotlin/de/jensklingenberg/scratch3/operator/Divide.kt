@@ -9,7 +9,7 @@ class Divide(operand1: ReporterBlock, operand2: ReporterBlock) : Operator(
     listOf(operand1, operand2),
     listOf("NUM1", "NUM2"),
     "operator_divide"
-), ReporterBlock
+)
 
 
 fun div(operand1: Double, operand2: Double) = Divide(DoubleBlock(operand1), DoubleBlock(operand2))

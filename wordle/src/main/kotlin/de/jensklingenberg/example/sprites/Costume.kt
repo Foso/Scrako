@@ -212,6 +212,14 @@ val letterZ = Costume2(
     rotationCenterY = 15.75
 )
 
+val letterABlue = Costume2(
+    name = "letterABlue",
+    bitmapResolution = 1,
+    dataFormat = "svg",
+    rotationCenterX = 6.7899971008301065,
+    rotationCenterY = 15.75
+)
+
 val letterHBlue = Costume2(
     name = "letterHBlue",
     bitmapResolution = 1,

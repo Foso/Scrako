@@ -9,7 +9,6 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import java.util.UUID
 
-//Unfishinished
 private class DistanceTo(private val destination: ReporterBlock) : ReporterBlock {
     override fun visit(
         visitors: MutableMap<String, BlockFull>,
