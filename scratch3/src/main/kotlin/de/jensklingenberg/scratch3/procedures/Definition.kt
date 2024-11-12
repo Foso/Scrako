@@ -1,10 +1,11 @@
 package de.jensklingenberg.scratch3.procedures
 
-import de.jensklingenberg.scrako.builder.CommonScriptBuilder
+import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
+import de.jensklingenberg.scrako.builder.StageScriptBuilder
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.BlockSpec
-import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.model.BlockFull
@@ -61,29 +62,46 @@ interface Argument : ReporterBlock {
 }
 
 
-class DefinitionScriptBuilder(val functionName: String, val args: List<Argument>) : CommonScriptBuilder()
+class DefinitionArgs(private val functionName: String, private val args2: List<Argument>) {
 
-fun CommonScriptBuilder.define(
+    fun getArgs() =
+        args2.map {
+            when (it.type) {
+                ArgumentType.BOOLEAN -> addArgumentBoolean(it.name)
+                ArgumentType.NUMBER_OR_TEXT -> addArgumentString(it.name)
+            }
+        }.ifEmpty { throw IllegalStateException("No arguments defined for: $functionName") }
+
+}
+
+fun SpriteScriptBuilder.define(
     customBlockName: String,
     arguments: List<Argument> = emptyList(),
     withoutRefresh: Boolean = false,
-    builder: DefinitionScriptBuilder.() -> Unit
+    builder: SpriteScriptBuilder.(DefinitionArgs) -> Unit
 ) {
     functionsMap[customBlockName] = arguments
-
+    val def = DefinitionArgs(customBlockName, arguments)
     addNode(
         Definition(
             Prototype(customBlockName, withoutRefresh, arguments),
-            DefinitionScriptBuilder(customBlockName, arguments).apply(builder).childs
+            SpriteScriptBuilder().apply { builder(def) }.childs
         )
     )
 }
 
-fun DefinitionScriptBuilder.getArgs() =
-    args.map {
-        when (it.type) {
-            ArgumentType.BOOLEAN -> addArgumentBoolean(it.name)
-            ArgumentType.NUMBER_OR_TEXT -> addArgumentString(it.name)
-        }
-    }.ifEmpty { throw IllegalStateException("No arguments defined for: $functionName") }
-
+fun StageScriptBuilder.define(
+    customBlockName: String,
+    arguments: List<Argument> = emptyList(),
+    withoutRefresh: Boolean = false,
+    builder: StageScriptBuilder.(DefinitionArgs) -> Unit
+) {
+    functionsMap[customBlockName] = arguments
+    val def = DefinitionArgs(customBlockName, arguments)
+    addNode(
+        Definition(
+            Prototype(customBlockName, withoutRefresh, arguments),
+            StageScriptBuilder().apply { builder(def) }.childs
+        )
+    )
+}

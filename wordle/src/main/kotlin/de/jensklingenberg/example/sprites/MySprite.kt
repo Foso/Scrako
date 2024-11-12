@@ -58,6 +58,7 @@ import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.event.whenIReceiveBroadcast
 import de.jensklingenberg.scratch3.extension.pen.stamp
 import de.jensklingenberg.scratch3.looks.hide
+import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.looks.show
 import de.jensklingenberg.scratch3.motion.changeYby
 import de.jensklingenberg.scratch3.motion.move
@@ -144,6 +145,7 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
 
             define("paint", withoutRefresh = true) {
                 show()
+                say("Painting")
                 setVariable(currentIndex, 1)
                 goToxy(X_START, Y_START)
                 repeat(lengthOf(insertWords)) {

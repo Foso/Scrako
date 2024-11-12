@@ -3,6 +3,8 @@ package de.jensklingenberg.scratch3.control
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
+import de.jensklingenberg.scrako.builder.StageScriptBuilder
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
@@ -68,8 +70,15 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
     }
 }
 
-fun CommonScriptBuilder.repeat(times: Int, childs: CommonScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
-fun CommonScriptBuilder.repeat(times: Double, childs: CommonScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
+fun StageScriptBuilder.repeat(times: Int, childs: StageScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
+fun StageScriptBuilder.repeat(times: Double, childs: StageScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
 
-fun <T: CommonScriptBuilder> T.repeat(times: ReporterBlock, childs: CommonScriptBuilder.() -> Unit) =
-    addNode(Repeat(times, *CommonScriptBuilder().apply(childs).childs.toTypedArray()))
+fun StageScriptBuilder.repeat(times: ReporterBlock, childs: StageScriptBuilder.() -> Unit) =
+    addNode(Repeat(times, *StageScriptBuilder().apply(childs).childs.toTypedArray()))
+
+
+fun SpriteScriptBuilder.repeat(times: Int, childs: SpriteScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
+fun SpriteScriptBuilder.repeat(times: Double, childs: SpriteScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
+
+fun <T: SpriteScriptBuilder> T.repeat(times: ReporterBlock, childs: SpriteScriptBuilder.() -> Unit) =
+    addNode(Repeat(times, *SpriteScriptBuilder().apply(childs).childs.toTypedArray()))

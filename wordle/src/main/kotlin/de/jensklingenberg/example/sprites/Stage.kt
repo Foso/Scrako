@@ -18,12 +18,8 @@ import de.jensklingenberg.scratch3.data.setVariable
 import de.jensklingenberg.scratch3.event.sendBroadcast
 import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.extension.pen.eraseAll
-import de.jensklingenberg.scratch3.looks.hide
-import de.jensklingenberg.scratch3.looks.say
-import de.jensklingenberg.scratch3.operator.join
 import de.jensklingenberg.scratch3.procedures.call
 import de.jensklingenberg.scratch3.procedures.define
-import de.jensklingenberg.scratch3.procedures.getArgs
 import de.jensklingenberg.scratch3.sensing.Answer
 import de.jensklingenberg.scratch3.sensing.ask
 import debugger.log
@@ -51,13 +47,11 @@ fun ProjectBuilder.Stage(
                 call("uppercase", listOf(Answer))
                 sendBroadcast(broadcast)
             }
-            
-
         }
 
         scriptBuilder {
             define("uppercase", arguments = listOf(Argument("word", ArgumentType.NUMBER_OR_TEXT))) {
-                val (word) = getArgs()
+                val (word) = it.getArgs()
                 addToList(insertWords, word)
             }
         }
