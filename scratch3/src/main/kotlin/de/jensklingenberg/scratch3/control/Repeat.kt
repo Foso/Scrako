@@ -1,10 +1,9 @@
 package de.jensklingenberg.scratch3.control
 
-import de.jensklingenberg.scrako.builder.CommonScriptBuilder
-import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.builder.StageScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
@@ -50,7 +49,9 @@ private class Repeat(private val times: ReporterBlock, private vararg val childs
             visitors,
             identifier,
             operatorUUID,
-            null, context,)
+            null,
+            context,
+        )
 
         childs.mapIndexed { childIndex, visitor ->
             val nextchild =
@@ -78,7 +79,8 @@ fun StageScriptBuilder.repeat(times: ReporterBlock, childs: StageScriptBuilder.(
 
 
 fun SpriteScriptBuilder.repeat(times: Int, childs: SpriteScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
-fun SpriteScriptBuilder.repeat(times: Double, childs: SpriteScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
+fun SpriteScriptBuilder.repeat(times: Double, childs: SpriteScriptBuilder.() -> Unit) =
+    repeat(DoubleBlock(times), childs)
 
-fun <T: SpriteScriptBuilder> T.repeat(times: ReporterBlock, childs: SpriteScriptBuilder.() -> Unit) =
+fun <T : SpriteScriptBuilder> T.repeat(times: ReporterBlock, childs: SpriteScriptBuilder.() -> Unit) =
     addNode(Repeat(times, *SpriteScriptBuilder().apply(childs).childs.toTypedArray()))

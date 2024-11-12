@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch3.looks
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -63,6 +64,6 @@ private class CostumeMenu(private val value: String) : ReporterBlock {
     }
 }
 
-fun CommonScriptBuilder.switchCostume(block: ReporterBlock) = addNode(SwitchCostume(block))
-fun CommonScriptBuilder.switchCostume(value: String) = addNode(SwitchCostume(CostumeMenu(value)))
-fun CommonScriptBuilder.switchCostume(value: Costume2) = addNode(SwitchCostume(CostumeMenu(value.name)))
+fun SpriteScriptBuilder.switchCostume(block: ReporterBlock) = addNode(SwitchCostume(block))
+fun SpriteScriptBuilder.switchCostume(value: String) = addNode(SwitchCostume(CostumeMenu(value)))
+fun SpriteScriptBuilder.switchCostume(value: Costume2) = addNode(SwitchCostume(CostumeMenu(value.name)))

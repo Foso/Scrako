@@ -30,5 +30,5 @@ private class SwitchBackdropAndWait(val block0: ReporterBlock) : Node {
 }
 
 
-fun CommonScriptBuilder.switchBackdropAndWait(block0: BackdropOptions) = addNode(SwitchBackdropAndWait(looks_backdrops(block0.s)))
-fun CommonScriptBuilder.switchBackdropAndWait(block0: String) = addNode(SwitchBackdropAndWait(looks_backdrops(block0)))
+fun StageScriptBuilder.switchBackdropAndWait(block0: BackdropOptions) = addNode(SwitchBackdropAndWait(looks_backdrops(block0.s)))
+fun StageScriptBuilder.switchBackdropAndWait(block0: String) = addNode(SwitchBackdropAndWait(looks_backdrops(block0)))

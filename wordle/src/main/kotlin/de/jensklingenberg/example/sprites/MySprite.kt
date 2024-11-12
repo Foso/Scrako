@@ -49,6 +49,7 @@ import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scratch3.common.meow
+import de.jensklingenberg.scratch3.control.deleteThisClone
 import de.jensklingenberg.scratch3.control.ifElse
 import de.jensklingenberg.scratch3.control.repeat
 import de.jensklingenberg.scratch3.data.changeVariableBy

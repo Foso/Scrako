@@ -3,8 +3,8 @@ package de.jensklingenberg.example.sprites
 import de.jensklingenberg.example.costumes.Blockc
 import de.jensklingenberg.example.costumes.blockA
 import de.jensklingenberg.example.costumes.blockB
+import de.jensklingenberg.scrako.builder.Config
 import de.jensklingenberg.scrako.builder.ProjectBuilder
-import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createVariable
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
@@ -26,8 +26,9 @@ import debugger.log
 
 fun ProjectBuilder.Sprite2(paint: Broadcast) {
     spriteBuilder("Sprite2") {
-        addPosition(100.0, 150.0)
-        addCostumes(listOf(blockA, blockB, Blockc))
+        config= Config(costumes = listOf(blockA, blockB, Blockc))
+        //addPosition(100.0, 150.0)
+
         val test = createVariable("test")
         val test2 = createVariable("test2")
         scriptBuilder {

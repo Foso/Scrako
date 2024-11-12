@@ -15,10 +15,3 @@ fun CommonScriptBuilder.whenFlagClicked() = addNode(WhenFlagClicked())
 
 
 
-
-//event_whenstageclicked
-
-private class WhenStageClicked : BlockSpec(
-    opcode = "event_whenstageclicked",
-), Event, HatBlock
-

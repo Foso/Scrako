@@ -5,6 +5,8 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.common.CapBlock
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
+import de.jensklingenberg.scrako.builder.StageScriptBuilder
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.BlockFull
 import kotlinx.serialization.json.JsonArray
@@ -20,10 +22,6 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
         nextUUID: String?,
         context: Context,
     ) {
-
-        if (nextUUID != null) {
-            throw IllegalArgumentException("Forever block can't have a next block")
-        }
 
         val childUUIDS = childs.map { UUID.randomUUID().toString() }
         childs.mapIndexed { childIndex, visitor ->
@@ -58,4 +56,6 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
     }
 }
 
-fun CommonScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(CommonScriptBuilder().apply(block).childs))
+fun StageScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(StageScriptBuilder().apply(block).childs))
+fun SpriteScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(SpriteScriptBuilder().apply(block).childs))
+

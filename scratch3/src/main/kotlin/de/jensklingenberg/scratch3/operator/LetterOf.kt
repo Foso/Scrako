@@ -8,4 +8,5 @@ private class LetterOf(operand1: ReporterBlock, operand2: ReporterBlock) : Opera
     "operator_letter_of"
 ), ReporterBlock
 
+//https://en.scratch-wiki.info/wiki/Letter_()_of_()_(block)
 fun letterOf(letter: ReporterBlock, word: ReporterBlock) : Operator = LetterOf(letter, word)

@@ -1,6 +1,6 @@
 package de.jensklingenberg.scratch3.event
 
-import de.jensklingenberg.scrako.builder.CommonScriptBuilder
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Event
 import de.jensklingenberg.scrako.common.HatBlock
@@ -9,4 +9,4 @@ private class WhenSpriteClicked : BlockSpec(
     opcode = "event_whenthisspriteclicked",
 ), Event, HatBlock
 
-fun CommonScriptBuilder.whenSpriteClicked() = addNode(WhenSpriteClicked())
+fun SpriteScriptBuilder.whenSpriteClicked() = addNode(WhenSpriteClicked())

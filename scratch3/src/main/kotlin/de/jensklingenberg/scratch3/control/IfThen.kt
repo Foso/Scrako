@@ -5,6 +5,8 @@ import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.CBlock
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
+import de.jensklingenberg.scrako.builder.StageScriptBuilder
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
@@ -57,8 +59,13 @@ internal class IfThen(
 }
 
 
-fun CommonScriptBuilder.ifThen(
+fun StageScriptBuilder.ifThen(
     block: BooleanBlock,
     leftStack: CommonScriptBuilder.() -> Unit
-) = addNode(IfThen(block, leftStack = CommonScriptBuilder().apply(leftStack).childs))
+) = addNode(IfThen(block, leftStack = StageScriptBuilder().apply(leftStack).childs))
+
+fun SpriteScriptBuilder.ifThen(
+    block: BooleanBlock,
+    leftStack: CommonScriptBuilder.() -> Unit
+) = addNode(IfThen(block, leftStack = SpriteScriptBuilder().apply(leftStack).childs))
 

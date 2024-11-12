@@ -1,7 +1,6 @@
 package de.jensklingenberg.scratch3.control
 
 
-import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.CBlock
@@ -28,7 +27,6 @@ internal class IfElse(
         nextUUID: String?,
         context: Context
     ) {
-        val newNext = nextUUID
         val operatorUUID = UUID.randomUUID().toString()
         val leftUUIDs = leftStack.map { UUID.randomUUID().toString() }
         val rightUUIDs = rightStack.map { UUID.randomUUID().toString() }
@@ -50,7 +48,7 @@ internal class IfElse(
                     )
                 )
             )
-        ).toBlock(newNext, parent)
+        ).toBlock(nextUUID, parent)
         condition.visit(visitors, identifier, operatorUUID, null, context)
 
         leftStack.mapIndexed { childIndex, visitor ->

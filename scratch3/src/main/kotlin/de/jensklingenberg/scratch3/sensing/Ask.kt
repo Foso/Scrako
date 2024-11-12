@@ -15,7 +15,7 @@ import java.util.UUID
 
 
 private class Ask(
-    public val message: ReporterBlock,
+    val message: ReporterBlock,
 ) : Node {
     override fun visit(
         visitors: MutableMap<String, BlockFull>,
