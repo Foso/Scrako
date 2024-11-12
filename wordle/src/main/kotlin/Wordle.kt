@@ -6,9 +6,25 @@ import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.createGlobalList
 import de.jensklingenberg.scrako.builder.createGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
+import java.io.File
 
 
 fun main() {
+//xml:space="preserve" fill="#000000"
+
+    val files =File("/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/sprites").listFiles()
+
+    files.forEach {
+        val content = it.readText()
+        val newContent = content.replace("xml:space=\"preserve\" fill=\"#000000\"","xml:space=\"preserve\" fill=\"#00FF00\"")
+        File(it.parent + "/"+it.nameWithoutExtension+"Green."+it.extension).writeText(newContent)
+    }
+
+    files.forEach {
+        val content = it.readText()
+        val newContent = content.replace("xml:space=\"preserve\" fill=\"#000000\"","xml:space=\"preserve\" fill=\"#0000FF\"")
+        File(it.parent + "/"+it.nameWithoutExtension+"Blue."+it.extension).writeText(newContent)
+    }
 
     val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
     val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/"
