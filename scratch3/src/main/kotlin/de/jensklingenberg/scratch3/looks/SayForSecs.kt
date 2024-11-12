@@ -1,9 +1,8 @@
 package de.jensklingenberg.scratch3.looks
 
-
-import de.jensklingenberg.scrako.builder.CommonScriptBuilder
-import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
@@ -15,8 +14,8 @@ import java.util.UUID
 
 
 private class SayForSecs(
-    public val message: ReporterBlock,
-    public val secs: ReporterBlock
+    val message: ReporterBlock,
+    val secs: ReporterBlock
 ) : Node {
     override fun visit(
         visitors: MutableMap<String, BlockFull>,
@@ -38,9 +37,9 @@ private class SayForSecs(
     }
 }
 
-fun CommonScriptBuilder.sayForSecs(block: ReporterBlock, secs: ReporterBlock) = addNode(SayForSecs(block,secs))
-fun CommonScriptBuilder.sayForSecs(message: String, secs: ReporterBlock) = addNode(SayForSecs(StringBlock(message),secs))
-fun CommonScriptBuilder.sayForSecs(message: Int, secs: ReporterBlock) = addNode(SayForSecs(IntBlock(message),secs))
-fun CommonScriptBuilder.sayForSecs(message: Double, secs: ReporterBlock) = addNode(SayForSecs(DoubleBlock(message),secs))
+fun SpriteScriptBuilder.sayForSecs(block: ReporterBlock, secs: ReporterBlock) = addNode(SayForSecs(block,secs))
+fun SpriteScriptBuilder.sayForSecs(message: String, secs: ReporterBlock) = addNode(SayForSecs(StringBlock(message),secs))
+fun SpriteScriptBuilder.sayForSecs(message: Int, secs: ReporterBlock) = addNode(SayForSecs(IntBlock(message),secs))
+fun SpriteScriptBuilder.sayForSecs(message: Double, secs: ReporterBlock) = addNode(SayForSecs(DoubleBlock(message),secs))
 
 

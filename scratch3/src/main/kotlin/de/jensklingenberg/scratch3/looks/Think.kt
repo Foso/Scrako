@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch3.looks
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StackBlock
@@ -35,4 +36,4 @@ private class Think(val block0 : ReporterBlock, ) : Node, StackBlock {
     }
 }
 
-fun CommonScriptBuilder.think(block0: ReporterBlock) = addNode(Think(block0))
+fun SpriteScriptBuilder.think(block0: ReporterBlock) = addNode(Think(block0))

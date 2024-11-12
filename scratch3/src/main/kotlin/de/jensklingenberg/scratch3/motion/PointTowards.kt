@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch3.motion
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.BlockFull
@@ -31,7 +32,7 @@ private class PointTowards(private val target: String) : Node, MotionBlock {
     }
 }
 
-fun CommonScriptBuilder.pointTowards(target: String) = addNode(PointTowards(target))
+fun SpriteScriptBuilder.pointTowards(target: String) = addNode(PointTowards(target))
 
 private class PointTowardsMenu(target: String) : BlockSpec(
     opcode = "motion_pointtowards_menu",

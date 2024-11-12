@@ -2,6 +2,7 @@ package de.jensklingenberg.scratch3.looks
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -9,7 +10,7 @@ import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
 import java.util.UUID
 
-class GoForwardBackwardLayers(private val value: String, val numbBlock: ReporterBlock) : Node {
+private class GoForwardBackwardLayers(private val value: String, val numbBlock: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, BlockFull>,
         parent: String?,
@@ -27,5 +28,6 @@ class GoForwardBackwardLayers(private val value: String, val numbBlock: Reporter
     }
 }
 
-fun CommonScriptBuilder.goForwardLayers(value: ReporterBlock) = addNode(GoForwardBackwardLayers("forward", value))
-fun CommonScriptBuilder.goBackwardLayers(value: ReporterBlock) = addNode(GoForwardBackwardLayers("backward", value))
+//https://en.scratch-wiki.info/wiki/Go_()_()_Layers_(block)
+fun SpriteScriptBuilder.goForwardLayers(value: ReporterBlock) = addNode(GoForwardBackwardLayers("forward", value))
+fun SpriteScriptBuilder.goBackwardLayers(value: ReporterBlock) = addNode(GoForwardBackwardLayers("backward", value))

@@ -1,6 +1,7 @@
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
@@ -26,4 +27,4 @@ private class Changesizeby(val block0 : ReporterBlock, ) : Node {
     }
 }
 
-fun CommonScriptBuilder.changeSizeBy(block0 : ReporterBlock, ) = addNode(Changesizeby(block0))
+fun SpriteScriptBuilder.changeSizeBy(block0 : ReporterBlock) = addNode(Changesizeby(block0))

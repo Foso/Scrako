@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch3.motion
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
@@ -37,6 +38,6 @@ private class GlideTo(val sec: ReporterBlock, val toX: ReporterBlock) : Node, Mo
     }
 }
 
-
-fun CommonScriptBuilder.glideTo(sec: ReporterBlock, toX: ReporterBlock) =
+//https://en.scratch-wiki.info/wiki/Glide_()_Secs_to_()_(block)
+fun SpriteScriptBuilder.glideTo(sec: ReporterBlock, toX: ReporterBlock) =
     addNode(GlideTo(sec, toX))

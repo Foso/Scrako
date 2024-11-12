@@ -1,9 +1,11 @@
 package de.jensklingenberg.de.jensklingenberg.example.sprites
 
+import de.jensklingenberg.scrako.builder.Config
 import de.jensklingenberg.scrako.builder.ProjectBuilder
-import de.jensklingenberg.scrako.builder.addBackdrop
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.stageBuilder
+import de.jensklingenberg.scrako.common.Argument
+import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.Broadcast
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ScratchList
@@ -19,6 +21,9 @@ import de.jensklingenberg.scratch3.extension.pen.eraseAll
 import de.jensklingenberg.scratch3.looks.hide
 import de.jensklingenberg.scratch3.looks.say
 import de.jensklingenberg.scratch3.operator.join
+import de.jensklingenberg.scratch3.procedures.call
+import de.jensklingenberg.scratch3.procedures.define
+import de.jensklingenberg.scratch3.procedures.getArgs
 import de.jensklingenberg.scratch3.sensing.Answer
 import de.jensklingenberg.scratch3.sensing.ask
 import debugger.log
@@ -30,26 +35,31 @@ fun ProjectBuilder.Stage(
     wordList: ScratchList
 ) {
     stageBuilder {
+        config = Config(costumes = listOf(backdrop))
 
-        addBackdrop(listOf(backdrop))
         /**
          * Start
          */
         scriptBuilder {
             whenFlagClicked()
-            hide()
             eraseAll()
+
             setVariable(searchWord, itemOfXList(IntBlock(2), wordList))
             log(searchWord)
             repeat(5) {
                 ask("What is the word")
+                call("uppercase", listOf(Answer))
                 sendBroadcast(broadcast)
-                addToList(insertWords, Answer)
             }
+            
 
-            say(join("The word is: ", searchWord))
+        }
 
-
+        scriptBuilder {
+            define("uppercase", arguments = listOf(Argument("word", ArgumentType.NUMBER_OR_TEXT))) {
+                val (word) = getArgs()
+                addToList(insertWords, word)
+            }
         }
     }
 }

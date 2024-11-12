@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch3.motion
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.MotionBlock
@@ -31,8 +32,8 @@ private class Move(val block: ReporterBlock) : Node, MotionBlock {
     }
 }
 
-fun CommonScriptBuilder.move(steps: Int) = addNode(Move(IntBlock(steps)))
-fun CommonScriptBuilder.move(steps: Double) = addNode(Move(DoubleBlock(steps)))
-fun CommonScriptBuilder.move(steps: ReporterBlock) = addNode(Move(steps))
+fun SpriteScriptBuilder.move(steps: Int) = addNode(Move(IntBlock(steps)))
+fun SpriteScriptBuilder.move(steps: Double) = addNode(Move(DoubleBlock(steps)))
+fun SpriteScriptBuilder.move(steps: ReporterBlock) = addNode(Move(steps))
 
 

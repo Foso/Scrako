@@ -1,8 +1,8 @@
 package de.jensklingenberg.scratch3.looks
 
-import de.jensklingenberg.scrako.builder.CommonScriptBuilder
-import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
@@ -40,4 +40,4 @@ private class Thinkforsecs(
     }
 }
 
-fun CommonScriptBuilder.thinkForSecs(messageBlock: ReporterBlock, secsBlock: ReporterBlock) = addNode(Thinkforsecs(messageBlock, secsBlock))
+fun SpriteScriptBuilder.thinkForSecs(messageBlock: ReporterBlock, secsBlock: ReporterBlock) = addNode(Thinkforsecs(messageBlock, secsBlock))

@@ -1,9 +1,9 @@
 package de.jensklingenberg.example.sprites
 
 import de.jensklingenberg.example.costumes._tile15
+import de.jensklingenberg.scrako.builder.Config
 
 import de.jensklingenberg.scrako.builder.ProjectBuilder
-import de.jensklingenberg.scrako.builder.addCostumes
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.createList
 import de.jensklingenberg.scrako.builder.createVariable
@@ -51,7 +51,7 @@ import de.jensklingenberg.scratch3.motion.move
 import de.jensklingenberg.scratch3.motion.pointTowards
 import de.jensklingenberg.scratch3.motion.setRotationStyle
 import de.jensklingenberg.scratch3.motion.setX
-import de.jensklingenberg.scratch3.motion.switchCostume
+import de.jensklingenberg.scratch3.looks.switchCostume
 import de.jensklingenberg.scratch3.operator.and
 import de.jensklingenberg.scratch3.operator.contains
 import de.jensklingenberg.scratch3.operator.div
@@ -67,7 +67,7 @@ import de.jensklingenberg.scratch3.sensing.ask
 import de.jensklingenberg.scratch3.sensing.keyIsPressed
 import de.jensklingenberg.scratch3.sound.clearEffects
 import debugger.log
-import gotoxy
+import goToxy
 
 const val PlayerIconID = "2"
 const val BackgroundIconId = "1"
@@ -87,8 +87,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             "jens2",
             (0..88).map { "1" }
         )
-
-        addCostumes(listOf(_tile15, costume2))
+        config = Config(costumes = listOf(_tile15, costume2))
 
         val playerX = createVariable("playerX")
         val playerY = createVariable("playerY")
@@ -140,7 +139,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
                 setVariable(width, array_width)
                 setVariable(paintY, 0)
                 eraseAll()
-                gotoxy(X_START, Y_START)
+                goToxy(X_START, Y_START)
                 repeat(lengthOfList(jens2) div width) {
                     setX(X_START)
                     setVariable(paintX, 0)

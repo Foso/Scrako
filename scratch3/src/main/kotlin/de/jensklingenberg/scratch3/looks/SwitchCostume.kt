@@ -1,4 +1,4 @@
-package de.jensklingenberg.scratch3.motion
+package de.jensklingenberg.scratch3.looks
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
@@ -6,7 +6,6 @@ import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
-import de.jensklingenberg.scrako.common.ScratchType
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Costume2

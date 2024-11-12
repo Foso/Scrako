@@ -19,7 +19,7 @@ fun main() {
         val searchWord = createGlobalVariable("searchWord")
         val broadcast = createBroadcast("paint")
         val germanWords = listOf(
-            "Apfel", "Banane", "Birne", "Blume", "Brot",
+            "Apfel", "BANANE", "Birne", "Blume", "Brot",
             "Buch", "Eiche", "Ente", "Fuchs", "Haus",
             "Hund", "Kater", "Katze", "Maus", "Pferd",
             "Rose", "Sonne", "Stuhl", "Tisch", "Vogel"

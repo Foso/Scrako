@@ -2,6 +2,8 @@ package de.jensklingenberg.scrako.builder
 
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.Node
+import de.jensklingenberg.scrako.common.SpriteBlock
+import de.jensklingenberg.scrako.common.StageBlock
 
 open class CommonScriptBuilder {
 

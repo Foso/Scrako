@@ -1,17 +1,18 @@
-package de.jensklingenberg.scratch3.motion
+package de.jensklingenberg.scratch3.looks
 
+import BackdropOptions
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
-import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
-import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
-import de.jensklingenberg.scrako.common.IntBlock
+import de.jensklingenberg.scrako.builder.StageScriptBuilder
+import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
+import looks_backdrops
 import java.util.UUID
 
-private class SetY(val block0: ReporterBlock) : Node {
+private class SwitchBackdropAndWait(val block0: ReporterBlock) : Node {
     override fun visit(
         visitors: MutableMap<String, BlockFull>,
         parent: String?,
@@ -21,14 +22,13 @@ private class SetY(val block0: ReporterBlock) : Node {
     ) {
         val block0Id = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
-            opcode = "motion_setx",
-            inputs = mapOf(
-                "X" to setValue(block0, block0Id, context)
-            )
+            opcode = "looks_switchbackdroptoandwait",
+            inputs = mapOf("BACKDROP" to setValue(block0, block0Id, context))
         ).toBlock(nextUUID, parent)
         block0.visit(visitors, identifier, block0Id, null, context)
     }
 }
 
-fun SpriteScriptBuilder.setY(value: Int) = addNode(SetY(IntBlock(value)))
-fun SpriteScriptBuilder.setY(block: ReporterBlock) = addNode(SetY(block))
+
+fun CommonScriptBuilder.switchBackdropAndWait(block0: BackdropOptions) = addNode(SwitchBackdropAndWait(looks_backdrops(block0.s)))
+fun CommonScriptBuilder.switchBackdropAndWait(block0: String) = addNode(SwitchBackdropAndWait(looks_backdrops(block0)))

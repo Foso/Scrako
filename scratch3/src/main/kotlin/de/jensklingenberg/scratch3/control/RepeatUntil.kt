@@ -4,6 +4,8 @@ import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
+import de.jensklingenberg.scrako.builder.StageScriptBuilder
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.setValue
 import de.jensklingenberg.scrako.model.BlockFull
@@ -58,7 +60,12 @@ internal class RepeatUntil(
     }
 }
 
-fun CommonScriptBuilder.repeatUntil(
+fun StageScriptBuilder.repeatUntil(
     block: BooleanBlock,
     leftStack: CommonScriptBuilder.() -> Unit
-) = addNode(RepeatUntil(block, leftStack = CommonScriptBuilder().apply(leftStack).childs))
+) = addNode(RepeatUntil(block, leftStack = StageScriptBuilder().apply(leftStack).childs))
+
+fun SpriteScriptBuilder.repeatUntil(
+    block: BooleanBlock,
+    leftStack: CommonScriptBuilder.() -> Unit
+) = addNode(RepeatUntil(block, leftStack = SpriteScriptBuilder().apply(leftStack).childs))

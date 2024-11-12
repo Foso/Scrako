@@ -3,6 +3,7 @@ package de.jensklingenberg.scrako.builder
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
+import de.jensklingenberg.scrako.common.backdrop
 import de.jensklingenberg.scrako.common.createTarget
 import de.jensklingenberg.scrako.model.Backdrop
 import de.jensklingenberg.scrako.model.Costume
@@ -14,9 +15,9 @@ import java.io.File
 import java.util.UUID
 
 
-open class CommonSpriteBuilder {
+open class CommonSpriteBuilder(open val name: String) {
     internal val commonScriptBuilders = mutableListOf<CommonScriptBuilder>()
-    internal var name: String = ""
+
     private val variableMap = mutableMapOf<String, UUID>()
     private val listMap = mutableMapOf<String, ScratchList>()
     private val costumesList = mutableListOf<Costume2>()
@@ -37,7 +38,7 @@ open class CommonSpriteBuilder {
 
     internal fun build(context: Context, isStage: Boolean): Target {
         if (costumesList.isEmpty()) {
-            throw IllegalArgumentException("You need to add at least one costume for $name")
+           // throw IllegalArgumentException("You need to add at least one costume for $name")
         }
         val functionsMap = mutableListOf<Argumenti>()
         commonScriptBuilders.forEach {
@@ -102,7 +103,7 @@ open class CommonSpriteBuilder {
             )
         )
 
-        val costumesList = costumesList.map {
+        val costumesList = config.costumes.ifEmpty { listOf(backdrop) }.map {
             Costume(
                 name = it.name,
                 bitmapResolution = it.bitmapResolution,
@@ -151,12 +152,10 @@ open class CommonSpriteBuilder {
 
 }
 
-class StageSpriteBuilder : CommonSpriteBuilder()
-class SpriteBuilder : CommonSpriteBuilder()
+class StageSpriteBuilder : CommonSpriteBuilder("Stage")
+class SpriteBuilder(override val name: String) : CommonSpriteBuilder(name)
 
-fun SpriteBuilder.addCostumes(costume: List<Costume2>) {
-    costume.forEach { addCostumeList(it) }
-}
+
 
 fun StageSpriteBuilder.addBackdrop(costume: List<Backdrop>) {
     costume.forEach { addCostumeList(it) }

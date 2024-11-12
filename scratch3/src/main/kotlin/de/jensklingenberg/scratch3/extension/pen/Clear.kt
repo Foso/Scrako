@@ -20,4 +20,5 @@ private class EraseAll : Node {
     }
 }
 
+//https://en.scratch-wiki.info/wiki/Erase_All_(block)
 fun CommonScriptBuilder.eraseAll() = addNode(EraseAll())

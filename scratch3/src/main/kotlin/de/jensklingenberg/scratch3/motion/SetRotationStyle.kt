@@ -3,6 +3,7 @@ package de.jensklingenberg.scratch3.motion
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
 import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.MotionBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.model.BlockFull
@@ -28,4 +29,4 @@ enum class RotationStyle(val spriteName: String) {
     DONT_ROTATE("don't rotate")
 }
 
-fun CommonScriptBuilder.setRotationStyle(style: RotationStyle) = addNode(SetRotationStyle(style))
+fun SpriteScriptBuilder.setRotationStyle(style: RotationStyle) = addNode(SetRotationStyle(style))

@@ -91,21 +91,19 @@ fun projectBuilder(projectBuilderScope: ProjectBuilder.() -> Unit): ProjectBuild
     return node
 }
 
-fun ProjectBuilder.stageBuilder(spriteBuilderScope: StageSpriteBuilder.() -> Unit): CommonSpriteBuilder {
-    val spriteBuilder = StageSpriteBuilder()
-    spriteBuilderScope.invoke(spriteBuilder)
-    spriteBuilder.name = "Stage"
-    stage = spriteBuilder
-    return spriteBuilder
+fun ProjectBuilder.stageBuilder(spriteBuilderScope: StageSpriteBuilder.() -> Unit): StageSpriteBuilder {
+    val stageSpriteBuilder = StageSpriteBuilder()
+    spriteBuilderScope.invoke(stageSpriteBuilder)
+    stage = stageSpriteBuilder
+    return stageSpriteBuilder
 }
 
 fun ProjectBuilder.spriteBuilder(
     name: String,
-    commonSpriteBuilderScope: SpriteBuilder.() -> Unit
+    spriteBuilderScope: SpriteBuilder.() -> Unit
 ): CommonSpriteBuilder {
-    val commonSpriteBuilder = SpriteBuilder()
-    commonSpriteBuilderScope.invoke(commonSpriteBuilder)
-    commonSpriteBuilder.name = name
+    val commonSpriteBuilder = SpriteBuilder(name)
+    spriteBuilderScope.invoke(commonSpriteBuilder)
     targets.add(commonSpriteBuilder)
     return commonSpriteBuilder
 }
