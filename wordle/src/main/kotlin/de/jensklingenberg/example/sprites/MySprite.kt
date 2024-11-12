@@ -4,23 +4,33 @@ import de.jensklingenberg.de.jensklingenberg.example.sprites.letterA
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterABlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterAGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterB
+import de.jensklingenberg.de.jensklingenberg.example.sprites.*
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterBGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterC
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterCBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterD
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterDBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterDGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterE
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterEBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterEGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterF
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterFBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterG
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterGBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterH
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterHBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterHGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterI
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterIBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterJ
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterJBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterK
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterKBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterL
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterLBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterM
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterMBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterN
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterNBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterNGreen
@@ -28,20 +38,29 @@ import de.jensklingenberg.de.jensklingenberg.example.sprites.letterO
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterOBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterOGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterP
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterPBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterQ
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterR
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterRBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterS
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterSBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterSGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterT
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterTBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterTGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterU
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterUBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterUGreen
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterV
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterVBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterW
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterWBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterX
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterXBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterY
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterYBlue
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterZ
+import de.jensklingenberg.de.jensklingenberg.example.sprites.letterZBlue
 import de.jensklingenberg.scrako.builder.Config
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.createVariable
@@ -98,50 +117,88 @@ fun ProjectBuilder.MySprite1(
 
         config = Config(
            // posX = X_START.toDouble(),
-            sounds = listOf(meow),
-            costumes = listOf(
+            sounds = setOf(meow),
+            costumes = setOf(
                 letterA,
-                letterB,
-                letterC,
-                letterD,
-                letterE,
-                letterF,
-                letterG,
-                letterH,
-                letterI,
-                letterJ,
-                letterK,
-                letterL,
-                letterM,
-                letterN,
-                letterO,
-                letterP,
-                letterQ,
-                letterR,
-                letterS,
-                letterT,
-                letterU,
-                letterV,
-                letterW,
-                letterX,
-                letterY,
-                letterZ,
                 letterABlue,
-                letterHBlue,
-                letterOBlue,
-                letterUBlue,
-                letterNBlue,
-                letterDBlue,
                 letterAGreen,
+                letterB,
+                letterBBlue,
                 letterBGreen,
-                letterEGreen,
-                letterHGreen,
-                letterOGreen,
-                letterUGreen,
-                letterNGreen,
+                letterC,
+                letterCBlue,
+                letterCGreen,
+                letterD,
+                letterDBlue,
                 letterDGreen,
+                letterE,
+                letterEBlue,
+                letterEGreen,
+                letterF,
+                letterFBlue,
+                letterFGreen,
+                letterG,
+                letterGBlue,
+                letterGGreen,
+                letterH,
+                letterHBlue,
+                letterHGreen,
+                letterI,
+                letterIBlue,
+                letterIGreen,
+                letterJ,
+                letterJBlue,
+                letterJGreen,
+                letterK,
+                letterKBlue,
+                letterKGreen,
+                letterL,
+                letterLBlue,
+                letterLGreen,
+                letterM,
+                letterMBlue,
+                letterMGreen,
+                letterN,
+                letterNBlue,
+                letterNBlue,
+                letterNGreen,
+                letterO,
+                letterOBlue,
+                letterOBlue,
+                letterOGreen,
+                letterP,
+                letterPBlue,
+                letterPGreen,
+                letterQ,
+                letterQGreen,
+                letterR,
+                letterRBlue,
+                letterRGreen,
+                letterS,
+                letterSBlue,
+                letterSGreen,
+                letterT,
+                letterTBlue,
                 letterTGreen,
-                letterSGreen
+                letterU,
+                letterUBlue,
+                letterUBlue,
+                letterUGreen,
+                letterV,
+                letterVBlue,
+                letterVGreen,
+                letterW,
+                letterWBlue,
+                letterWGreen,
+                letterX,
+                letterXBlue,
+                letterXGreen,
+                letterY,
+                letterYBlue,
+                letterYGreen,
+                letterZ,
+                letterZBlue,
+                letterZGreen,
             )
         )
 
