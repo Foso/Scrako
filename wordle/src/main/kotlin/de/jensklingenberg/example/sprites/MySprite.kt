@@ -39,6 +39,7 @@ import de.jensklingenberg.de.jensklingenberg.example.sprites.letterZ
 import de.jensklingenberg.scrako.builder.Config
 import de.jensklingenberg.scrako.builder.ProjectBuilder
 import de.jensklingenberg.scrako.builder.addCostumes
+import de.jensklingenberg.scrako.builder.createList
 import de.jensklingenberg.scrako.builder.createVariable
 import de.jensklingenberg.scrako.builder.scriptBuilder
 import de.jensklingenberg.scrako.builder.spriteBuilder
@@ -52,6 +53,7 @@ import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.StringBlock
 import de.jensklingenberg.scrako.model.Sound2
 import de.jensklingenberg.scratch3.common.cat
+import de.jensklingenberg.scratch3.common.meow
 import de.jensklingenberg.scratch3.control.ifElse
 import de.jensklingenberg.scratch3.control.repeat
 import de.jensklingenberg.scratch3.data.changeVariableBy
@@ -78,14 +80,6 @@ import de.jensklingenberg.scratch3.procedures.getArgs
 import gotoxy
 
 
-val sound1 = Sound2(
-    name = "Meow",
-    assetId = "83c36d806dc92327b9e7049a565c6bff",
-    dataFormat = "wav",
-    format = "",
-    rate = 48000,
-    sampleCount = 40681
-)
 
 
 fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, insertWords: ScratchList) {
@@ -95,7 +89,8 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
 
     spriteBuilder("Sprite123") {
         config = Config(visible = true, posX = X_START.toDouble())
-        addSounds(listOf(sound1))
+
+        addSounds(listOf(meow))
         addCostumes(
             listOf(
                 cat,
@@ -146,18 +141,9 @@ fun ProjectBuilder.MySprite1(broadcast: Broadcast, searchWord: ScratchVariable, 
         scriptBuilder {
             whenIReceiveBroadcast(broadcast)
             call("paint")
-            define("foo", withoutRefresh = true, arguments = listOf(Argument("bar", ArgumentType.NUMBER_OR_TEXT),
-                Argument("baz", ArgumentType.BOOLEAN)
-            )) {
-                val (bar, baz) = getArgs()
-                say(bar)
-                say(baz)
-            }
+
         }
-        scriptBuilder {
-            whenFlagClicked()
-            call("foo", listOf(StringBlock("Hello"), StringBlock("World") eq "true" ))
-        }
+
 
         scriptBuilder {
 

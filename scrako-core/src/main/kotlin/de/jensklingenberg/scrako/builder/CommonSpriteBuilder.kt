@@ -66,7 +66,7 @@ open class CommonSpriteBuilder {
         }
 
         val allVariables = variableMap + context.variableMap
-        var allLists = listMap + context.lists
+        val allLists = listMap + context.lists
 
         val targetVariables = variableMap.map {
             if (context.variableMap.containsKey(it.key)) {
@@ -78,15 +78,19 @@ open class CommonSpriteBuilder {
             .filter { it.value != null }
             .map { it.key to it.value!! }.toMap()
 
-        val targetLists = listMap.map {
-            if (context.lists.containsKey(it.key)) {
-                it.key to null
-            } else {
-                it.key to it.value
-            }
-        }.toMap()
-            .filter { it.value != null }
-            .map { it.key to it.value!! }.toMap()
+        val targetLists = when(isStage) {
+            true -> allLists
+            false -> listMap.map {
+                if (context.lists.containsKey(it.key)) {
+                    it.key to null
+                } else {
+                    it.key to it.value
+                }
+            }.toMap()
+                .filter { it.value != null }
+                .map { it.key to it.value!! }
+                .toMap()
+        }
         val blocks = createBlocks23(
             nodeListList,
             Context(

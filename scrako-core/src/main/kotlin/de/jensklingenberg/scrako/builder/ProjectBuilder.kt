@@ -14,7 +14,7 @@ class ProjectBuilder {
     internal val targets = mutableListOf<CommonSpriteBuilder>()
     internal var stage: StageSpriteBuilder? = null
     private var globalVariableMap = mutableMapOf<String, UUID>()
-    private var lists = mutableMapOf<String, ScratchList>()
+    private var globalListMap = mutableMapOf<String, ScratchList>()
     private var broadcasts = mutableListOf<Broadcast>()
     private var meta = Meta(
         semver = "3.0.0",
@@ -31,19 +31,19 @@ class ProjectBuilder {
     }
 
     fun addList(list: ScratchList) {
-        lists[list.name] = list
+        globalListMap[list.name] = list
     }
 
     fun build(inputPath: String): ScratchProject {
 
         val broadcastMap = broadcasts.associate { it.name to UUID.randomUUID().toString() }
-        val context = Context(globalVariableMap, lists, emptyList(), broadcastMap, inputPath)
+        val context = Context(globalVariableMap, globalListMap, emptyList(), broadcastMap, inputPath)
         val newStage =
             stage?.build(context, true)
                 ?: defaultStage(
                     globalVariableMap,
                     broadcastMap,
-                    lists
+                    globalListMap
                 )
 
         val targets = targets.map { it.build(context, false) }
@@ -57,19 +57,20 @@ class ProjectBuilder {
         broadcasts.add(board)
     }
 
-    fun writeProject(inputPath: String, targetPath: String, fileName: String, keepSources: Boolean = false) {
+    fun writeProject(inputPath: String, outputPath: String, fileName: String, keepSources: Boolean = false) {
         val project = build(inputPath)
-        copyFiles(inputPath, targetPath, project.targets.map { it.costumes }.flatten(), project.targets.map { it.sounds }.flatten())
+        File(outputPath).mkdirs()
+        copyFiles(inputPath, outputPath, project.targets.map { it.costumes }.flatten(), project.targets.map { it.sounds }.flatten())
 
         val text = Json.encodeToString(ScratchProject.serializer(), build(inputPath))
 
-        File("$targetPath/project.json").writeText(text)
+        File("$outputPath/project.json").writeText(text)
 
-        val filesToZip = File(targetPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList() ?: emptyList()
-        val outputZipFile = File("$targetPath/$fileName")
+        val filesToZip = File(outputPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList() ?: emptyList()
+        val outputZipFile = File("$outputPath/$fileName")
         zipFiles(filesToZip, outputZipFile)
         if (!keepSources) {
-            File(targetPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList()?.forEach {
+            File(outputPath).listFiles()?.filter { !it.path.endsWith("sb3") }?.toList()?.forEach {
                 it.deleteRecursively()
             }
         }

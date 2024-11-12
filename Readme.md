@@ -66,11 +66,6 @@ scriptBuilder {
 }
 ```
 
-
-
-
-# Costumes
-
 # Custom blocks
 ## Define custom block
     
@@ -103,6 +98,12 @@ call("foo", listOf(StringBlock("Hello"), StringBlock("World") eq "true" ))
 
 # Operators
 
+# Assets
+
+## Sounds
+
+## Costumes
+
 
 # Development tips
 Scrako is only building the project file. 
@@ -126,5 +127,7 @@ process.waitFor()
 }
 ```
 
+# Dependencies
 
-# sounds
+* scratch3 - Contains all blocks from Scratch 3.0 + pen extensions
+* turbo-warp - Contains scratch3 + some turbo-warp blocks

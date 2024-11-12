@@ -85,7 +85,7 @@ fun setValue(
                 JsonArray(
                     listOf(
                         JsonPrimitive(ScratchType.VARIABLE.value),
-                        JsonPrimitive("☁ ".takeIf { reporterBlock.isCloud } + reporterBlock.name),
+                        JsonPrimitive(("☁ ".takeIf { reporterBlock.isCloud } ?: "") + reporterBlock.name),
                         JsonPrimitive(context.variableMap[reporterBlock.name].toString())
                     )
                 ),
