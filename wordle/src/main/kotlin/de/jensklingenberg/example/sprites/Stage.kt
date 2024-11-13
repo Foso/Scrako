@@ -34,7 +34,7 @@ fun ProjectBuilder.Stage(
     sayAnswerBroadcast: Broadcast
 ) {
     stageBuilder {
-        config = Config(costumes = setOf(backdrop))
+        config = Config(costumes = setOf(backdrop), visible = false)
 
         /**
          * Start

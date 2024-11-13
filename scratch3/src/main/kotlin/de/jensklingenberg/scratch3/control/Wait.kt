@@ -1,8 +1,8 @@
 package de.jensklingenberg.scratch3.control
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
-import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.builder.Context
+import de.jensklingenberg.scrako.common.BlockSpec
 import de.jensklingenberg.scrako.common.DoubleBlock
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.Node
@@ -17,9 +17,8 @@ private class Wait(private val block: ReporterBlock) : Node {
         parent: String?,
         identifier: String,
         nextUUID: String?,
-        context: Context,
-
-        ) {
+        context: Context
+    ) {
         val uuid = UUID.randomUUID().toString()
         visitors[identifier] = BlockSpec(
             opcode = "control_wait",

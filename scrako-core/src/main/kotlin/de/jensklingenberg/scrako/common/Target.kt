@@ -25,9 +25,11 @@ internal fun createTarget(
     visible: Boolean,
     direction: Double,
     isStage: Boolean,
-    layerOrder: Int
+    layerOrder: Int,
+    rotationStyle: String,
+    volume: Int
 ): Target {
-    val targe2 = Target(
+    return Target(
         isStage = isStage,
         name = name,
         variables = variables.map {
@@ -52,7 +54,7 @@ internal fun createTarget(
         currentCostume = 0,
         costumes = costumes,
         sounds = sounds,
-        volume = 100,
+        volume = volume,
         layerOrder = layerOrder,
         visible = visible,
         x = x,
@@ -60,9 +62,8 @@ internal fun createTarget(
         size = size,
         direction = direction,
         draggable = isStage,
-        rotationStyle = "all around"
+        rotationStyle = rotationStyle
     )
-    return targe2
 }
 
 internal fun defaultStage(
@@ -95,6 +96,8 @@ internal fun defaultStage(
         false,
         90.0,
         true,
-        0
+        0,
+        "all around",
+        100
     )
 }

@@ -56,6 +56,6 @@ internal class Forever(private val childs: List<Node>) : Node, CapBlock, CBlock 
     }
 }
 
-fun StageScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(StageScriptBuilder().apply(block).childs))
-fun SpriteScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(SpriteScriptBuilder().apply(block).childs))
+fun StageScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(StageScriptBuilder().apply(block).getNodes()))
+fun SpriteScriptBuilder.forever(block: CommonScriptBuilder.() -> Unit) = addNode(Forever(SpriteScriptBuilder().apply(block).getNodes()))
 

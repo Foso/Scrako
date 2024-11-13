@@ -89,8 +89,8 @@ fun StageScriptBuilder.ifElse(
 ) = addNode(
     IfElse(
         operatorSpec,
-        leftStack = StageScriptBuilder().apply(leftStack).childs,
-        rightStack = StageScriptBuilder().apply(rightStack).childs
+        leftStack = StageScriptBuilder().apply(leftStack).getNodes(),
+        rightStack = StageScriptBuilder().apply(rightStack).getNodes()
     )
 )
 
@@ -101,8 +101,8 @@ fun SpriteScriptBuilder.ifElse(
 ) = addNode(
     IfElse(
         condition,
-        leftStack = SpriteScriptBuilder().apply(leftStack).childs,
-        rightStack = SpriteScriptBuilder().apply(rightStack).childs
+        leftStack = SpriteScriptBuilder().apply(leftStack).getNodes(),
+        rightStack = SpriteScriptBuilder().apply(rightStack).getNodes()
     )
 )
 

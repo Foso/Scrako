@@ -15,7 +15,7 @@ import java.util.UUID
 
 internal class Definition(
     private val prototype: Prototype,
-    private val childs: MutableList<Node>
+    private val childs: List<Node>
 ) : Node {
     override fun visit(
         visitors: MutableMap<String, BlockFull>,
@@ -85,7 +85,7 @@ fun SpriteScriptBuilder.define(
     addNode(
         Definition(
             Prototype(customBlockName, withoutRefresh, arguments),
-            SpriteScriptBuilder().apply { builder(def) }.childs
+            SpriteScriptBuilder().apply { builder(def) }.getNodes()
         )
     )
 }
@@ -101,7 +101,7 @@ fun StageScriptBuilder.define(
     addNode(
         Definition(
             Prototype(customBlockName, withoutRefresh, arguments),
-            StageScriptBuilder().apply { builder(def) }.childs
+            StageScriptBuilder().apply { builder(def) }.getNodes()
         )
     )
 }

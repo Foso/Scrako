@@ -75,7 +75,7 @@ fun StageScriptBuilder.repeat(times: Int, childs: StageScriptBuilder.() -> Unit)
 fun StageScriptBuilder.repeat(times: Double, childs: StageScriptBuilder.() -> Unit) = repeat(DoubleBlock(times), childs)
 
 fun StageScriptBuilder.repeat(times: ReporterBlock, childs: StageScriptBuilder.() -> Unit) =
-    addNode(Repeat(times, *StageScriptBuilder().apply(childs).childs.toTypedArray()))
+    addNode(Repeat(times, *StageScriptBuilder().apply(childs).getNodes().toTypedArray()))
 
 
 fun SpriteScriptBuilder.repeat(times: Int, childs: SpriteScriptBuilder.() -> Unit) = repeat(IntBlock(times), childs)
@@ -83,4 +83,4 @@ fun SpriteScriptBuilder.repeat(times: Double, childs: SpriteScriptBuilder.() -> 
     repeat(DoubleBlock(times), childs)
 
 fun <T : SpriteScriptBuilder> T.repeat(times: ReporterBlock, childs: SpriteScriptBuilder.() -> Unit) =
-    addNode(Repeat(times, *SpriteScriptBuilder().apply(childs).childs.toTypedArray()))
+    addNode(Repeat(times, *SpriteScriptBuilder().apply(childs).getNodes().toTypedArray()))

@@ -116,7 +116,6 @@ fun ProjectBuilder.MySprite1(
         val columnIndex = createVariable("columnIndex")
 
         config = Config(
-           // posX = X_START.toDouble(),
             sounds = setOf(meow),
             costumes = setOf(
                 letterA,
@@ -220,26 +219,8 @@ fun ProjectBuilder.MySprite1(
         }
 
         scriptBuilder {
-
-            define("paint2", withoutRefresh = true) {
-                show()
-                eraseAll()
-                goToxy(X_START, Y_START)
-                repeat(insertWords.length()){
-                    stamp()
-                    //changeXby(MOVE_DISTANCE)
-                    changeYby(-MOVE_DISTANCE)
-                }
-                hide()
-            }
-        }
-
-        scriptBuilder {
-            //return@scriptBuilder
             define("paint", withoutRefresh = true) {
                 show()
-                log("Paint was called")
-                log(insertWords.length())
                 setVariable(rowIndex, 1)
                 goToxy(X_START, Y_START)
                 repeat(lengthOf(insertWords)) {
@@ -254,17 +235,11 @@ fun ProjectBuilder.MySprite1(
                         val block = join(StringBlock("letter"), letterOfGuessedWord)
 
                         ifElse(letterOfSearchedWord eq letterOfGuessedWord, leftStack = {
-                            log("Letter is equal")
-                            log(letterOfGuessedWord)
                             switchCostume(join(block, StringBlock("Green")))
                         }, rightStack = {
                             ifElse(contains(secretWord, letterOfGuessedWord), leftStack = {
-                                log("Letter is in word")
-                                log(letterOfGuessedWord)
                                 switchCostume(join(block, StringBlock("Blue")))
                             }, rightStack = {
-                                log("Letter is not in word")
-                                log(letterOfGuessedWord)
                                 switchCostume(block)
                             })
                         })

@@ -7,7 +7,11 @@ import de.jensklingenberg.scrako.common.Node
 
 open class CommonScriptBuilder {
 
-    val childs = mutableListOf<Node>()
+    private val childs = mutableListOf<Node>()
+
+    fun getNodes(): List<Node> {
+        return childs
+    }
     val functionsMap = mutableMapOf<String, List<Argument>>()
     fun addNode(node: Node) {
         if (childs.isNotEmpty() && childs.last() is CapBlock) {

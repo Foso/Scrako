@@ -52,19 +52,17 @@ internal class RepeatUntil(
                 parent = identifier,
                 leftUUIDs[childIndex],
                 nextUUID, context,
-
                 )
         }
-
     }
 }
 
 fun StageScriptBuilder.repeatUntil(
     block: BooleanBlock,
-    leftStack: CommonScriptBuilder.() -> Unit
-) = addNode(RepeatUntil(block, leftStack = StageScriptBuilder().apply(leftStack).childs))
+    leftStack: StageScriptBuilder.() -> Unit
+) = addNode(RepeatUntil(block, leftStack = StageScriptBuilder().apply(leftStack).getNodes()))
 
 fun SpriteScriptBuilder.repeatUntil(
     block: BooleanBlock,
-    leftStack: CommonScriptBuilder.() -> Unit
-) = addNode(RepeatUntil(block, leftStack = SpriteScriptBuilder().apply(leftStack).childs))
+    leftStack: SpriteScriptBuilder.() -> Unit
+) = addNode(RepeatUntil(block, leftStack = SpriteScriptBuilder().apply(leftStack).getNodes()))

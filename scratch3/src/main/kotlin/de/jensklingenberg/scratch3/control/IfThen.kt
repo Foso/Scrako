@@ -62,10 +62,10 @@ internal class IfThen(
 fun StageScriptBuilder.ifThen(
     block: BooleanBlock,
     leftStack: CommonScriptBuilder.() -> Unit
-) = addNode(IfThen(block, leftStack = StageScriptBuilder().apply(leftStack).childs))
+) = addNode(IfThen(block, leftStack = StageScriptBuilder().apply(leftStack).getNodes()))
 
 fun SpriteScriptBuilder.ifThen(
     block: BooleanBlock,
     leftStack: CommonScriptBuilder.() -> Unit
-) = addNode(IfThen(block, leftStack = SpriteScriptBuilder().apply(leftStack).childs))
+) = addNode(IfThen(block, leftStack = SpriteScriptBuilder().apply(leftStack).getNodes()))
 

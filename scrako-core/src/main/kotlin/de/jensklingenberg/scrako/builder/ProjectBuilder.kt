@@ -46,7 +46,9 @@ class ProjectBuilder {
                     globalListMap
                 )
 
-        val targets = targets.map { it.build(context, false) }
+        val targets = targets.mapIndexed { index, commonSpriteBuilder ->
+            commonSpriteBuilder.build(context.copy(layer = index + 1), false)
+        }
 
         return ScratchProject(
             targets = listOf(newStage) + targets, meta = meta
@@ -60,7 +62,12 @@ class ProjectBuilder {
     fun writeProject(inputPath: String, outputPath: String, fileName: String, keepSources: Boolean = false) {
         val project = build(inputPath)
         File(outputPath).mkdirs()
-        copyFiles(inputPath, outputPath, project.targets.map { it.costumes }.flatten(), project.targets.map { it.sounds }.flatten())
+        copyFiles(
+            inputPath,
+            outputPath,
+            project.targets.map { it.costumes }.flatten(),
+            project.targets.map { it.sounds }.flatten()
+        )
 
         val text = Json.encodeToString(ScratchProject.serializer(), build(inputPath))
 
@@ -91,9 +98,9 @@ fun projectBuilder(projectBuilderScope: ProjectBuilder.() -> Unit): ProjectBuild
     return node
 }
 
-fun ProjectBuilder.stageBuilder(spriteBuilderScope: StageSpriteBuilder.() -> Unit): StageSpriteBuilder {
+fun ProjectBuilder.stageBuilder(stageBuilderScope: StageSpriteBuilder.() -> Unit): StageSpriteBuilder {
     val stageSpriteBuilder = StageSpriteBuilder()
-    spriteBuilderScope.invoke(stageSpriteBuilder)
+    stageBuilderScope.invoke(stageSpriteBuilder)
     stage = stageSpriteBuilder
     return stageSpriteBuilder
 }
@@ -108,19 +115,8 @@ fun ProjectBuilder.spriteBuilder(
     return commonSpriteBuilder
 }
 
-fun SpriteBuilder.scriptBuilder(builder: SpriteScriptBuilder.() -> Unit): CommonScriptBuilder {
-    val spriteScriptBuilder = SpriteScriptBuilder()
-    builder.invoke(spriteScriptBuilder)
-    commonScriptBuilders.add(spriteScriptBuilder)
-    return spriteScriptBuilder
-}
 
-fun StageSpriteBuilder.scriptBuilder(builder: StageScriptBuilder.() -> Unit): CommonScriptBuilder {
-    val spriteScriptBuilder = StageScriptBuilder()
-    builder.invoke(spriteScriptBuilder)
-    commonScriptBuilders.add(spriteScriptBuilder)
-    return spriteScriptBuilder
-}
+
 
 
 fun ProjectBuilder.createGlobalVariable(name: String, isCloud: Boolean = false): ScratchVariable {
