@@ -26,7 +26,7 @@ import debugger.log
 
 fun ProjectBuilder.Sprite2(paint: Broadcast) {
     spriteBuilder("Sprite2") {
-        config= Config(costumes = listOf(blockA, blockB, Blockc))
+        config= Config(costumes = setOf(blockA, blockB, Blockc))
         //addPosition(100.0, 150.0)
 
         val test = createVariable("test")

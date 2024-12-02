@@ -1,5 +1,4 @@
 plugins {
-    id("java")
     kotlin("jvm")
     kotlin("plugin.serialization") version "2.0.21"
     id("com.vanniktech.maven.publish")
@@ -45,7 +44,7 @@ publishing {
 
             pom {
                 name.set(project.name)
-                description.set("Kotlin wrapper for johnny-five")
+                description.set("Scrako core library")
                 url.set("https://github.com/Foso/Scrako")
 
                 licenses {

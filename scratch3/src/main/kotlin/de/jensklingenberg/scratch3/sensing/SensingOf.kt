@@ -5,6 +5,7 @@ import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.builder.Context
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.ScratchType
+import de.jensklingenberg.scrako.common.SensingBlock
 import de.jensklingenberg.scrako.common.Sprite
 import de.jensklingenberg.scrako.model.BlockFull
 import kotlinx.serialization.json.JsonArray

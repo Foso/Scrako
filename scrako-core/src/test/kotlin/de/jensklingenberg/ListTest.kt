@@ -23,7 +23,7 @@ class ListTest {
             }
         }
 
-        val project = builder.build()
+        val project = builder.build("")
         assertEquals(0, project.targets.find { it.name == "Sprite1" }?.lists?.size)
         assertEquals(1, project.targets.find { it.name == "Stage" }?.lists?.size)
     }
@@ -37,7 +37,7 @@ class ListTest {
             }
         }
 
-        val project = builder.build()
+        val project = builder.build("")
         assertEquals(1, project.targets.find { it.name == "Sprite1" }?.lists?.size)
         assertEquals(0, project.targets.find { it.name == "Stage" }?.lists?.size)
     }

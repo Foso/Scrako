@@ -87,7 +87,7 @@ fun ProjectBuilder.MySprite1(paint: Broadcast) {
             "jens2",
             (0..88).map { "1" }
         )
-        config = Config(costumes = listOf(_tile15, costume2))
+        config = Config(costumes = setOf(_tile15, costume2))
 
         val playerX = createVariable("playerX")
         val playerY = createVariable("playerY")

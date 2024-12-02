@@ -115,10 +115,6 @@ fun ProjectBuilder.spriteBuilder(
     return commonSpriteBuilder
 }
 
-
-
-
-
 fun ProjectBuilder.createGlobalVariable(name: String, isCloud: Boolean = false): ScratchVariable {
     val element = ScratchVariable(name, isCloud)
     addVariable(element)

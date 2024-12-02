@@ -1,6 +1,7 @@
 package de.jensklingenberg.example.ext
 
 import de.jensklingenberg.scrako.builder.CommonScriptBuilder
+import de.jensklingenberg.scrako.builder.SpriteScriptBuilder
 import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.common.StringBlock
@@ -9,10 +10,10 @@ import de.jensklingenberg.scratch3.control.ifThen
 import de.jensklingenberg.scratch3.operator.OperatorEquals
 
 
-fun CommonScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =
+fun SpriteScriptBuilder.switch(block: String, operatorSpec: Switch.() -> Unit) =
     switch(StringBlock(block), operatorSpec)
 
-fun CommonScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
+fun SpriteScriptBuilder.switch(block: ReporterBlock, operatorSpec: Switch.() -> Unit) {
     val test = Switch().apply(operatorSpec)
 
     if (test.mutableList.size == 1) {

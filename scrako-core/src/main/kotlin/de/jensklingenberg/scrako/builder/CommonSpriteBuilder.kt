@@ -29,12 +29,12 @@ open class CommonSpriteBuilder(open val name: String) {
     }
 
     internal fun build(context: Context, isStage: Boolean): Target {
-        val functionsMap = mutableListOf<InternalArgument>()
+        val functionsMap = mutableListOf<ArgumentDataHolder>()
         commonScriptBuilders.forEach {
             it.functionsMap.forEach { function ->
                 function.value.forEach { argument2 ->
                     functionsMap.add(
-                        InternalArgument(
+                        ArgumentDataHolder(
                             argument2.name,
                             UUID.randomUUID().toString(),
                             function.key,

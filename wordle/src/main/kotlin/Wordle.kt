@@ -12,45 +12,9 @@ import de.jensklingenberg.scrako.builder.spriteBuilder
 import de.jensklingenberg.scratch3.common.cat
 import de.jensklingenberg.scratch3.event.whenFlagClicked
 import de.jensklingenberg.scratch3.looks.say
-import java.io.File
 
 
 fun main() {
-//xml:space="preserve" fill="#000000"
-
-    val files = File("/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/sprites").listFiles()
-
-    files.forEach {
-        val content = it.readText()
-        val newContent =
-            content.replace("xml:space=\"preserve\" fill=\"#000000\"", "xml:space=\"preserve\" fill=\"#00FF00\"")
-        //File(it.parent + "/"+it.nameWithoutExtension+"Green."+it.extension).writeText(newContent)
-        println(
-            "val ${it.nameWithoutExtension}Green = Costume2(\n" +
-                    "    name = \"${it.nameWithoutExtension}Green\",\n" +
-                    "    bitmapResolution = 1,\n" +
-                    "    dataFormat = \"svg\",\n" +
-                    "    rotationCenterX = 6.7899971008301065,\n" +
-                    "    rotationCenterY = 15.75\n" +
-                    ")"
-        )
-    }
-
-    files.forEach {
-        val content = it.readText()
-        val newContent =
-            content.replace("xml:space=\"preserve\" fill=\"#000000\"", "xml:space=\"preserve\" fill=\"#0000FF\"")
-        // File(it.parent + "/"+it.nameWithoutExtension+"Blue."+it.extension).writeText(newContent)
-        println(
-            "val ${it.nameWithoutExtension}Blue = Costume2(\n" +
-                    "    name = \"${it.nameWithoutExtension}Blue\",\n" +
-                    "    bitmapResolution = 1,\n" +
-                    "    dataFormat = \"svg\",\n" +
-                    "    rotationCenterX = 6.7899971008301065,\n" +
-                    "    rotationCenterY = 15.75\n" +
-                    ")"
-        )
-    }
 
     val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
     val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/"
