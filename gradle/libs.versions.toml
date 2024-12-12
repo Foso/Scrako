@@ -1,7 +1,7 @@
 [versions]
 groupId = "de.jensklingenberg.scrako"
 vannikMavenPublish = "0.28.0"
-coreVersion = "0.8.3"
+coreVersion = "0.8.4"
 junit = "4.13.2"
 mockk = "1.13.13"
 mockito-kotlin = "4.1.0"
