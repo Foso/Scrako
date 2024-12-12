@@ -4,24 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="icons2">
-      <change afterPath="$PROJECT_DIR$/para.txt" afterDir="false" />
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="fix wordle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/ext/Switch.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/ext/Switch.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MyStageBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/MyStageBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/Sprite2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/example/src/main/kotlin/de/jensklingenberg/example/sprites/Sprite2.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/example/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/import/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/import/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/para.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scrako-core/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/Context.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/Context.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/InternalArgument.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ArgumentDataHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/ProjectBuilder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/src/test/kotlin/de/jensklingenberg/ListTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/test/kotlin/de/jensklingenberg/ListTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch3/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/sensing/SensingBlock.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/common/SensingBlock.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/sensing/SensingOf.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/sensing/SensingOf.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/ChangeEffectBy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/ChangeEffectBy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/SetEffectTo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/SetEffectTo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/turbowarp/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordle/src/main/kotlin/Wordle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/wordle/src/main/kotlin/Wordle.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordle/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/wordle/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordle/src/main/kotlin/de/jensklingenberg/example/sprites/Stage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/wordle/src/main/kotlin/de/jensklingenberg/example/sprites/Stage.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,14 +297,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00072" summary="spark">
-      <option name="closed" value="true" />
-      <created>1730448724466</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1730448724466</updated>
     </task>
     <task id="LOCAL-00073" summary="imports">
       <option name="closed" value="true" />
@@ -695,7 +682,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731482145295</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="fix wordle">
+      <option name="closed" value="true" />
+      <created>1733134622607</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1733134622607</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -721,7 +716,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="importer6" />
     <MESSAGE value="importer7" />
     <MESSAGE value="LengthOf" />
     <MESSAGE value="importer8" />
@@ -746,7 +740,8 @@
     <MESSAGE value="extensions2" />
     <MESSAGE value="icons" />
     <MESSAGE value="icons2" />
-    <option name="LAST_COMMIT_MESSAGE" value="icons2" />
+    <MESSAGE value="fix wordle" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix wordle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -917,19 +912,9 @@
           <option name="timeStamp" value="490" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/wordle/src/main/kotlin/Wordle.kt</url>
-          <line>48</line>
-          <option name="timeStamp" value="491" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/scrako-core/src/main/kotlin/de/jensklingenberg/scrako/builder/CommonSpriteBuilder.kt</url>
           <line>122</line>
           <option name="timeStamp" value="492" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/wordle/src/main/kotlin/Wordle.kt</url>
-          <line>31</line>
-          <option name="timeStamp" value="493" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/wordle/src/main/kotlin/de/jensklingenberg/example/sprites/MySprite.kt</url>

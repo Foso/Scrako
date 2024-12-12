@@ -5,7 +5,7 @@ import de.jensklingenberg.scrako.model.BlockFull
 import de.jensklingenberg.scrako.model.Target
 
 class BackdropsImport : ImportNode {
-    override val opCode: String = "looks_backdrops"
+    override val opCode: String = "de.jensklingenberg.scratch3.looks.looks_backdrops"
 
     override fun visit(
         builder: StringBuilder,

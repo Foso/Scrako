@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm")
-    kotlin("plugin.serialization") version "2.0.21"
+    kotlin("plugin.serialization") version "2.1.0"
     id("com.vanniktech.maven.publish")
 }
 val enableSigning = project.hasProperty("signingInMemoryKey")
@@ -48,7 +48,7 @@ publishing {
 
             pom {
                 name.set(project.name)
-                description.set("Kotlin wrapper for johnny-five")
+                description.set("Scratch3 Blocks for Scrako")
                 url.set("https://github.com/Foso/Scrako")
 
                 licenses {

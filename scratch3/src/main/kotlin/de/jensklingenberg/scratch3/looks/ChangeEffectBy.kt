@@ -43,4 +43,4 @@ enum class Effect {
 
 fun CommonScriptBuilder.changeEffectBy(effectName: String, block: ReporterBlock) = addNode(ChangeEffectBy(block, effectName))
 fun CommonScriptBuilder.changeEffectBy(effect: Effect, block: ReporterBlock) =
-    addNode(ChangeEffectBy(block, effect.name.toLowerCase()))
+    addNode(ChangeEffectBy(block, effect.name.lowercase()))

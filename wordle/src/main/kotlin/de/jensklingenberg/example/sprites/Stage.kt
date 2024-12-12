@@ -8,7 +8,6 @@ import de.jensklingenberg.scrako.builder.stageBuilder
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.Broadcast
-import de.jensklingenberg.scrako.common.IntBlock
 import de.jensklingenberg.scrako.common.ScratchList
 import de.jensklingenberg.scrako.common.ScratchVariable
 import de.jensklingenberg.scrako.common.backdrop
@@ -40,22 +39,21 @@ fun ProjectBuilder.Stage(
          * Start
          */
 
-        val germanWords = listOf(
-            "Apfel", "BANANE", "Birne", "Blume", "Brot",
-            "Buch", "Eiche", "Ente", "Fuchs", "Haus",
-            "Hund", "Kater", "Katze", "Maus", "Pferd",
-            "Rose", "Sonne", "Stuhl", "Tisch", "Vogel"
+        val wordsWithFiveLetters = listOf(
+            "apple",
+            "bread",
+            "chair",
         )
         val wordList =
-            createList("WORDLIST", germanWords)
+            createList("WORDLIST", wordsWithFiveLetters)
         scriptBuilder {
             whenFlagClicked()
             eraseAll()
 
-            setVariable(searchWord, itemOfXList(random(1,wordList.length()), wordList))
+            setVariable(searchWord, itemOfXList(random(1, wordList.length()), wordList))
             log(searchWord)
             repeat(5) {
-                ask("What is the word")
+                ask("What is the five letter word? (use uppercase)")
                 call("uppercase", listOf(Answer))
                 sendBroadcast(broadcast)
 

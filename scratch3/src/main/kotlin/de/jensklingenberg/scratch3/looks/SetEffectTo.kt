@@ -36,4 +36,4 @@ private class SetEffectTo(val block: ReporterBlock, val effectName: String) : No
 
 fun CommonScriptBuilder.setEffectTo(effectName: String, block: ReporterBlock) = addNode(SetEffectTo(block, effectName))
 fun CommonScriptBuilder.setEffectTo(effect: Effect, block: ReporterBlock) =
-    addNode(SetEffectTo(block, effect.name.toLowerCase()))
+    addNode(SetEffectTo(block, effect.name.lowercase()))
