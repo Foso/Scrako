@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="fix wordle">
+    <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="test upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/example/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/import/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/para.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrako-core/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/scrako-core/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/ChangeEffectBy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/ChangeEffectBy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/SetEffectTo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks/SetEffectTo.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/turbowarp/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordle/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/wordle/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wordle/src/main/kotlin/de/jensklingenberg/example/sprites/Stage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/wordle/src/main/kotlin/de/jensklingenberg/example/sprites/Stage.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,20 +39,20 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Scrako" type="f1a62948:ProjectNode" />
-                <item name="scrako-core" type="2d1252cf:ModuleNode" />
+                <item name="scratch3" type="2d1252cf:ModuleNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Scrako" type="f1a62948:ProjectNode" />
-                <item name="scrako-core" type="2d1252cf:ModuleNode" />
+                <item name="scratch3" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Scrako" type="f1a62948:ProjectNode" />
-                <item name="scrako-core" type="2d1252cf:ModuleNode" />
+                <item name="scratch3" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="publishing" type="c8890929:TasksNode$1" />
+                <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -82,6 +71,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="cd3efc5db75a453fb7cb4163211ac797c0577c01" />
@@ -113,52 +103,53 @@
     <option name="autoscrollFromSource" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build LLVMPoet.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LLVMPoet:scrako-core [publishToMavenLocal].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.LLVMPoet:scratch3 [publishToMavenLocal].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ListTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ListTest.testGlobalList.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ListTest.testGlobalVariables.executor&quot;: &quot;Debug&quot;,
-    &quot;Gradle.SayTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SayTest.testSay (1).executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.SayTest.testSay.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.VariablesTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.VariablesTest.testGlobalVariables.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.VariablesTest.testLocalVariables.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.ExampleKt.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.Import.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.ImportKt.executor&quot;: &quot;Debug&quot;,
-    &quot;Kotlin.MainKt (1).executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.MainKt (2).executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.MainKt (3).executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.MainKt.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.WordleKt (1).executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.WordleKt.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/sprites&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build LLVMPoet.executor": "Run",
+    "Gradle.LLVMPoet:scrako-core [publishToMavenLocal].executor": "Run",
+    "Gradle.LLVMPoet:scratch3 [build].executor": "Run",
+    "Gradle.LLVMPoet:scratch3 [publishToMavenLocal].executor": "Run",
+    "Gradle.ListTest.executor": "Run",
+    "Gradle.ListTest.testGlobalList.executor": "Run",
+    "Gradle.ListTest.testGlobalVariables.executor": "Debug",
+    "Gradle.SayTest.executor": "Run",
+    "Gradle.SayTest.testSay (1).executor": "Run",
+    "Gradle.SayTest.testSay.executor": "Run",
+    "Gradle.VariablesTest.executor": "Run",
+    "Gradle.VariablesTest.testGlobalVariables.executor": "Run",
+    "Gradle.VariablesTest.testLocalVariables.executor": "Run",
+    "Kotlin.ExampleKt.executor": "Run",
+    "Kotlin.Import.executor": "Run",
+    "Kotlin.ImportKt.executor": "Debug",
+    "Kotlin.MainKt (1).executor": "Run",
+    "Kotlin.MainKt (2).executor": "Run",
+    "Kotlin.MainKt (3).executor": "Run",
+    "Kotlin.MainKt.executor": "Run",
+    "Kotlin.WordleKt (1).executor": "Run",
+    "Kotlin.WordleKt.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/.github/workflows",
+    "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;/Users/jens.klingenberg/.gradle&quot;
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "/Users/jens.klingenberg/.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github/workflows" />
       <recent name="$PROJECT_DIR$/wordle/src/main/resources/sprites" />
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/event" />
       <recent name="$PROJECT_DIR$/wordle" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/looks" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/scratch3/src/main/kotlin/de/jensklingenberg/scratch3/control" />
@@ -193,7 +184,7 @@
       <recent name="scratch.event" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.WordleKt (1)">
+  <component name="RunManager" selected="Gradle.LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository]">
     <configuration name="LLVMPoet:scrako-core [publishToMavenLocal]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -216,22 +207,52 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="LLVMPoet:scratch3 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/scratch3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/scratch3" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="publishAllPublicationsToMavenCentralRepository" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="ExampleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.ExampleKt" />
-      <module name="Scrako.example.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ImportKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.newimport.ImportKt" />
-      <module name="Scrako.import.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.newimport.MainKt" />
       <module name="Scrako.example.main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -240,13 +261,6 @@
     <configuration name="WordleKt (1)" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.WordleKt" />
       <module name="Scrako.wordle.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WordleKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.jensklingenberg.WordleKt" />
-      <module name="Scrako.example.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -272,20 +286,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.LLVMPoet:scratch3 [build]" />
+      <item itemvalue="Gradle.LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository]" />
       <item itemvalue="Gradle.LLVMPoet:scrako-core [publishToMavenLocal]" />
-      <item itemvalue="Kotlin.MainKt" />
       <item itemvalue="Kotlin.WordleKt (1)" />
       <item itemvalue="Kotlin.ExampleKt" />
-      <item itemvalue="Kotlin.WordleKt" />
-      <item itemvalue="Kotlin.ImportKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository]" />
+        <item itemvalue="Gradle.LLVMPoet:scratch3 [build]" />
         <item itemvalue="Kotlin.WordleKt (1)" />
         <item itemvalue="Kotlin.ExampleKt" />
         <item itemvalue="Gradle.LLVMPoet:scrako-core [publishToMavenLocal]" />
-        <item itemvalue="Kotlin.WordleKt" />
-        <item itemvalue="Kotlin.ImportKt" />
       </list>
     </recent_temporary>
   </component>
@@ -297,46 +310,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00073" summary="imports">
-      <option name="closed" value="true" />
-      <created>1730485797051</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
-      <option name="project" value="LOCAL" />
-      <updated>1730485797051</updated>
-    </task>
-    <task id="LOCAL-00074" summary="imports">
-      <option name="closed" value="true" />
-      <created>1730487543576</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1730487543576</updated>
-    </task>
-    <task id="LOCAL-00075" summary="think">
-      <option name="closed" value="true" />
-      <created>1730488557862</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1730488557862</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Deleteoflist">
-      <option name="closed" value="true" />
-      <created>1730488866777</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1730488866777</updated>
-    </task>
-    <task id="LOCAL-00077" summary="reformat">
-      <option name="closed" value="true" />
-      <created>1730489399848</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1730489399848</updated>
     </task>
     <task id="LOCAL-00078" summary="Setx">
       <option name="closed" value="true" />
@@ -690,7 +663,47 @@
       <option name="project" value="LOCAL" />
       <updated>1733134622607</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="test upload">
+      <option name="closed" value="true" />
+      <created>1734027245653</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1734027245653</updated>
+    </task>
+    <task id="LOCAL-00123" summary="test upload">
+      <option name="closed" value="true" />
+      <created>1734027454859</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1734027454859</updated>
+    </task>
+    <task id="LOCAL-00124" summary="test upload">
+      <option name="closed" value="true" />
+      <created>1734027997793</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1734027997793</updated>
+    </task>
+    <task id="LOCAL-00125" summary="test upload">
+      <option name="closed" value="true" />
+      <created>1734028816404</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1734028816404</updated>
+    </task>
+    <task id="LOCAL-00126" summary="test upload">
+      <option name="closed" value="true" />
+      <created>1734073044743</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1734073044743</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -716,7 +729,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="importer7" />
     <MESSAGE value="LengthOf" />
     <MESSAGE value="importer8" />
     <MESSAGE value="importer9" />
@@ -741,7 +753,8 @@
     <MESSAGE value="icons" />
     <MESSAGE value="icons2" />
     <MESSAGE value="fix wordle" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix wordle" />
+    <MESSAGE value="test upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="test upload" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
