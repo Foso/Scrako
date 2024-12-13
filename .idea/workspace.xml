@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f57e7e4-1ead-48be-82e9-764aff8acb77" name="Changes" comment="test upload">
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turbowarp/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/turbowarp/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordle/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/wordle/build.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +56,13 @@
                 <item name="scratch3" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Scrako" type="f1a62948:ProjectNode" />
+                <item name="scratch3" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="publishing" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -103,46 +113,47 @@
     <option name="autoscrollFromSource" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build LLVMPoet.executor": "Run",
-    "Gradle.LLVMPoet:scrako-core [publishToMavenLocal].executor": "Run",
-    "Gradle.LLVMPoet:scratch3 [build].executor": "Run",
-    "Gradle.LLVMPoet:scratch3 [publishToMavenLocal].executor": "Run",
-    "Gradle.ListTest.executor": "Run",
-    "Gradle.ListTest.testGlobalList.executor": "Run",
-    "Gradle.ListTest.testGlobalVariables.executor": "Debug",
-    "Gradle.SayTest.executor": "Run",
-    "Gradle.SayTest.testSay (1).executor": "Run",
-    "Gradle.SayTest.testSay.executor": "Run",
-    "Gradle.VariablesTest.executor": "Run",
-    "Gradle.VariablesTest.testGlobalVariables.executor": "Run",
-    "Gradle.VariablesTest.testLocalVariables.executor": "Run",
-    "Kotlin.ExampleKt.executor": "Run",
-    "Kotlin.Import.executor": "Run",
-    "Kotlin.ImportKt.executor": "Debug",
-    "Kotlin.MainKt (1).executor": "Run",
-    "Kotlin.MainKt (2).executor": "Run",
-    "Kotlin.MainKt (3).executor": "Run",
-    "Kotlin.MainKt.executor": "Run",
-    "Kotlin.WordleKt (1).executor": "Run",
-    "Kotlin.WordleKt.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/.github/workflows",
-    "onboarding.tips.debug.path": "/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build LLVMPoet.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LLVMPoet:scrako-core [publishToMavenLocal].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LLVMPoet:scratch3 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.LLVMPoet:scratch3 [publishToMavenLocal].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ListTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ListTest.testGlobalList.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ListTest.testGlobalVariables.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.SayTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SayTest.testSay (1).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SayTest.testSay.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VariablesTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VariablesTest.testGlobalVariables.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VariablesTest.testLocalVariables.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.ExampleKt.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.Import.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.ImportKt.executor&quot;: &quot;Debug&quot;,
+    &quot;Kotlin.MainKt (1).executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.MainKt (2).executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.MainKt (3).executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.MainKt.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.WordleKt (1).executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.WordleKt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jens.klingenberg/Code/2024/LLVMPoet/.github/workflows&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/jens.klingenberg/Code/2024/LLVMPoet/turbowarp/src/main/kotlin/Main.kt&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;
   },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "/Users/jens.klingenberg/.gradle"
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/Users/jens.klingenberg/.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/.github/workflows" />
@@ -184,7 +195,7 @@
       <recent name="scratch.event" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository]">
+  <component name="RunManager" selected="Kotlin.WordleKt (1)">
     <configuration name="LLVMPoet:scrako-core [publishToMavenLocal]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -289,14 +300,15 @@
       <item itemvalue="Gradle.LLVMPoet:scratch3 [build]" />
       <item itemvalue="Gradle.LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository]" />
       <item itemvalue="Gradle.LLVMPoet:scrako-core [publishToMavenLocal]" />
+      <item itemvalue="Kotlin.WordleKt" />
       <item itemvalue="Kotlin.WordleKt (1)" />
       <item itemvalue="Kotlin.ExampleKt" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.WordleKt (1)" />
         <item itemvalue="Gradle.LLVMPoet:scratch3 [publishAllPublicationsToMavenCentralRepository]" />
         <item itemvalue="Gradle.LLVMPoet:scratch3 [build]" />
-        <item itemvalue="Kotlin.WordleKt (1)" />
         <item itemvalue="Kotlin.ExampleKt" />
         <item itemvalue="Gradle.LLVMPoet:scrako-core [publishToMavenLocal]" />
       </list>
@@ -310,14 +322,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1729260792686</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Setx">
-      <option name="closed" value="true" />
-      <created>1730489557673</created>
-      <option name="number" value="00078" />
-      <option name="presentableId" value="LOCAL-00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1730489557673</updated>
     </task>
     <task id="LOCAL-00079" summary="Setx">
       <option name="closed" value="true" />
@@ -703,7 +707,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734073044743</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="test upload">
+      <option name="closed" value="true" />
+      <created>1734073524532</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1734073524532</updated>
+    </task>
+    <option name="localTasksCounter" value="128" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

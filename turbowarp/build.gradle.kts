@@ -14,9 +14,8 @@ val enableSigning = project.hasProperty("signingInMemoryKey")
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation(project(":scrako-core"))
+    api(project(":scrako-core"))
     implementation(libs.kotlin.serialization)
-
 }
 
 
