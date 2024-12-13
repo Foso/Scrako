@@ -1,5 +1,17 @@
 # Scrako
 
+## Ktorfit Packages
+
+| Project                     |                                                                                                                  Version                                                                                                                  |
+|-----------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Scrako Core       | [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.scrako/scrako-core)](https://central.sonatype.com/artifact/de.jensklingenberg.scrako/scrako-core) |
+| ktorfit-lib                 |                              [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.ktorfit/ktorfit-lib)](https://central.sonatype.com/artifact/de.jensklingenberg.ktorfit/ktorfit-lib)                              |
+| ktorfit-lib-light           |                        [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.ktorfit/ktorfit-lib-light)](https://central.sonatype.com/artifact/de.jensklingenberg.ktorfit/ktorfit-lib-light)                        |
+| ktorfit-ksp                 |                              [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.ktorfit/ktorfit-ksp)](https://central.sonatype.com/artifact/de.jensklingenberg.ktorfit/ktorfit-ksp)                              |
+| ktorfit-converters-flow     |                  [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.ktorfit/ktorfit-converters-flow)](https://central.sonatype.com/artifact/de.jensklingenberg.ktorfit/ktorfit-converters-flow)                  |
+| ktorfit-converters-call     |                  [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.ktorfit/ktorfit-converters-call)](https://central.sonatype.com/artifact/de.jensklingenberg.ktorfit/ktorfit-converters-call)                  |
+| ktorfit-converters-response |              [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.ktorfit/ktorfit-converters-response)](https://central.sonatype.com/artifact/de.jensklingenberg.ktorfit/ktorfit-converters-response)              |
+
 # Hello World
 
 <p align="center">
