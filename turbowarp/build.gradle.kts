@@ -23,7 +23,7 @@ dependencies {
 mavenPublishing {
     coordinates(
         libs.versions.groupId.get(),
-        "scrako-core",
+        "turbowarp",
         libs.versions.coreVersion.get(),
     )
     publishToMavenCentral()
