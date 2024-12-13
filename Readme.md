@@ -82,7 +82,7 @@ scriptBuilder {
 ## Define custom block
     
 ```kotlin
-define("foo", 
+define(name="foo", 
 withoutRefresh = true, 
 arguments = listOf(Argument("bar", ArgumentType.NUMBER_OR_TEXT), Argument("baz", ArgumentType.BOOLEAN))) {
 // your code here
