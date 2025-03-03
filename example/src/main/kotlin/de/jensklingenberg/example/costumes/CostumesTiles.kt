@@ -4155,7 +4155,7 @@ val _tile265 = Costume(
     name = "tile265",
     bitmapResolution = 2,
     dataFormat = "png",
-    assetId = "705c8559a7694df429231c2024570887",
+    assetId = "705c8559a7694df429231c2025570887",
     
     rotationCenterX = 16.0,
     rotationCenterY = 16.0

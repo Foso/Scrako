@@ -1,42 +1,24 @@
 package de.jensklingenberg
 
-import de.jensklingenberg.example.sprites.Sprite2
-import de.jensklingenberg.scrako.builder.createBroadcast
-import de.jensklingenberg.scrako.builder.createGlobalVariable
 import de.jensklingenberg.scrako.builder.projectBuilder
-import kotlinx.serialization.json.Json
-import de.jensklingenberg.example.sprites.MySprite1
-import java.io.File
-
-val json = Json {
-    ignoreUnknownKeys = true
-    coerceInputValues = true
-    explicitNulls = false
-}
-
 
 fun main() {
-
-    val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
-    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/example/src/main/resources/"
-
-    val fileName = "test4.sb3"
+    val outputPath = "/Users/jens.klingenberg/Code/2025/Scrako/temp"
+    val inputPath = "/Users/jens.klingenberg/Code/2025/Scrako/example/src/main/resources/"
+    val fileName = "wordle.sb3"
 
     val proj = projectBuilder {
-        val myGlobalVar = createGlobalVariable("myGlobalVar", true)
-        val paint = createBroadcast("paint")
-        MySprite1(paint)
-        Sprite2(paint)
-        //MyStageBuilder()
-        writeProject(
-            inputPath,
-            outputPath,
-            fileName
-        )
+
     }
 
-    killTurboWarp()
+    proj.writeProject(
+        inputPath,
+        outputPath,
+        fileName,
+        true
+    )
 
+    killTurboWarp()
     startTurboWarp("${outputPath}/$fileName")
 }
 
@@ -53,9 +35,3 @@ private fun killTurboWarp() {
     val process = processBuilder.start()
     process.waitFor()
 }
-
-
-fun readList(name: String): List<String> {
-    return File(name).readLines()
-}
-

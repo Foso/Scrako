@@ -1,7 +1,7 @@
 package de.jensklingenberg
 
+import de.jensklingenberg.de.jensklingenberg.example.sprites.MySprite1
 import de.jensklingenberg.de.jensklingenberg.example.sprites.Stage
-import de.jensklingenberg.example.sprites.MySprite1
 import de.jensklingenberg.scrako.builder.Config
 import de.jensklingenberg.scrako.builder.createBroadcast
 import de.jensklingenberg.scrako.builder.createGlobalList
@@ -16,8 +16,8 @@ import de.jensklingenberg.scratch3.looks.say
 
 fun main() {
 
-    val outputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/temp"
-    val inputPath = "/Users/jens.klingenberg/Code/2024/LLVMPoet/wordle/src/main/resources/"
+    val outputPath = "/Users/jens.klingenberg/Code/2025/Scrako/temp"
+    val inputPath = "/Users/jens.klingenberg/Code/2025/Scrako/demo/wordle/src/main/resources/"
 
     val fileName = "test4.sb3"
 

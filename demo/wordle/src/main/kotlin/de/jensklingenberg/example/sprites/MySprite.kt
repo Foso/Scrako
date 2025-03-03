@@ -1,4 +1,4 @@
-package de.jensklingenberg.example.sprites
+package de.jensklingenberg.de.jensklingenberg.example.sprites
 
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterA
 import de.jensklingenberg.de.jensklingenberg.example.sprites.letterABlue
