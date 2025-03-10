@@ -1,5 +1,7 @@
 # Scrako
 
+ Kotlin libary/DSL for text based generation of Scratch (lang) projects 
+
 ## Scrako Packages
 
 | Project     |                                                                                    Version                                                                                    |
