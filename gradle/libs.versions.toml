@@ -3,7 +3,7 @@ groupId = "de.jensklingenberg.scrako"
 vannikMavenPublish = "0.28.0"
 coreVersion = "0.8.5"
 junit = "4.13.2"
-mockk = "1.13.13"
+mockk = "1.13.17"
 mockito-kotlin = "4.1.0"
 kotlin-serialization = "1.7.3"
 
