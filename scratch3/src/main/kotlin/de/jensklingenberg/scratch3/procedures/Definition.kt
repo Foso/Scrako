@@ -6,6 +6,7 @@ import de.jensklingenberg.scrako.builder.StageScriptBuilder
 import de.jensklingenberg.scrako.common.Argument
 import de.jensklingenberg.scrako.common.ArgumentType
 import de.jensklingenberg.scrako.common.BlockSpec
+import de.jensklingenberg.scrako.common.BooleanBlock
 import de.jensklingenberg.scrako.common.Node
 import de.jensklingenberg.scrako.common.ReporterBlock
 import de.jensklingenberg.scrako.model.BlockFull
@@ -56,7 +57,7 @@ internal class Definition(
     }
 }
 
-interface Argument : ReporterBlock {
+interface Argument : BooleanBlock {
     val name: String
     val defaultValue: String
 }
@@ -75,16 +76,16 @@ class DefinitionArgs(private val functionName: String, private val args2: List<A
 }
 
 fun SpriteScriptBuilder.define(
-    customBlockName: String,
+    name: String,
     arguments: List<Argument> = emptyList(),
     withoutRefresh: Boolean = false,
     builder: SpriteScriptBuilder.(DefinitionArgs) -> Unit
 ) {
-    functionsMap[customBlockName] = arguments
-    val def = DefinitionArgs(customBlockName, arguments)
+    functionsMap[name] = arguments
+    val def = DefinitionArgs(name, arguments)
     addNode(
         Definition(
-            Prototype(customBlockName, withoutRefresh, arguments),
+            Prototype(name, withoutRefresh, arguments),
             SpriteScriptBuilder().apply { builder(def) }.getNodes()
         )
     )
