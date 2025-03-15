@@ -17,7 +17,7 @@ Kotlin library/DSL for text based generation of Scratch (lang) projects
 You can also find a example project in the examples folder
 
 <p align="center">
-  <img src ="[https://raw.githubusercontent.com/Foso/Scrako/main/docs/hello.png](https://raw.githubusercontent.com/Foso/Scrako/main/docs/hello.png)"  />
+  <img src ="https://raw.githubusercontent.com/Foso/Scrako/main/docs/hello.png"  />
 </p>
 
 ```kotlin
