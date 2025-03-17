@@ -11,6 +11,7 @@ Kotlin library/DSL for text based generation of Scratch (lang) projects
 | Project     |                                                                                    Version                                                                                    |
 |-------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | Scrako Core | [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.scrako/scrako-core)](https://central.sonatype.com/artifact/de.jensklingenberg.scrako/scrako-core) |
+| Scratch3 | [![Maven Central](https://img.shields.io/maven-central/v/de.jensklingenberg.scrako/scratch3)](https://central.sonatype.com/artifact/de.jensklingenberg.scrako/scratch3) |
 
 # Hello World
 
