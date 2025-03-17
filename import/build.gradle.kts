@@ -16,7 +16,7 @@ dependencies {
     implementation(project(":scrako-core"))
     implementation(project(":turbowarp"))
     //kotlinpoet
-    implementation("com.squareup:kotlinpoet:1.18.1")
+    implementation("com.squareup:kotlinpoet:2.1.0")
 
 }
 

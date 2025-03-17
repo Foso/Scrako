@@ -19,7 +19,7 @@ dependencies {
     implementation("de.jensklingenberg.scrako:scrako-core:0.8.7")
     implementation("de.jensklingenberg.scrako:scratch3:0.8.7")
     //kotlinpoet
-    implementation("com.squareup:kotlinpoet:1.18.1")
+    implementation("com.squareup:kotlinpoet:2.1.0")
 
 }
 
