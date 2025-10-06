@@ -16,7 +16,7 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v5
 
       - name: Publish release
         run: ./gradlew :scrako-core:publishAllPublicationsToMavenCentralRepository
@@ -37,7 +37,7 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v5
 
       - name: Publish release
         run: ./gradlew :scratch3:publishAllPublicationsToMavenCentralRepository
@@ -58,7 +58,7 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v5
 
       - name: Publish release
         run: ./gradlew :turbowarp:publishAllPublicationsToMavenCentralRepository
