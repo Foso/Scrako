@@ -1,6 +1,6 @@
 [versions]
 groupId = "de.jensklingenberg.scrako"
-vannikMavenPublish = "0.28.0"
+vannikMavenPublish = "0.34.0"
 coreVersion = "0.8.7"
 junit = "4.13.2"
 mockk = "1.13.17"
